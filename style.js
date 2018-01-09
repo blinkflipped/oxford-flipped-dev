@@ -1,14 +1,14 @@
 (function (blink) {
 	'use strict';
 
-	var OxfordFlippedStyle = function() {
+	var OxfordFlippedStyleDev = function() {
 		blink.theme.styles.basic.apply(this, arguments);
 	}
 
-	OxfordFlippedStyle.prototype = {
-		bodyClassName: 'content_type_clase_oxford-flipped',
+	OxfordFlippedStyleDev.prototype = {
+		bodyClassName: 'content_type_clase_oxford-flipped-dev',
 		ckEditorStyles: {
-			name: 'oxford-flipped',
+			name: 'oxford-flipped-dev',
 			styles: [
 				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
 			]
@@ -29,8 +29,8 @@
 	};
 
 
-	OxfordFlippedStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedStyle.prototype);
+	OxfordFlippedStyleDev.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedStyleDev.prototype);
 
-	blink.theme.styles['oxford-flipped'] = OxfordFlippedStyle;
+	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedStyleDev;
 
 })( blink );
