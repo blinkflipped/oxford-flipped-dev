@@ -1,0 +1,9 @@
+// Titles
+
+.oxfl-title1 {
+  font-family: $font_family_2;
+  font-weight: bold;
+  font-style: italic;
+  @include font-size(6.5);
+  color: $color_1;
+}
