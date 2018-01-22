@@ -50,7 +50,7 @@
 		blink.getCourse(idcurso).done(function(data) {
 			var style = new OxfordFlippedStyleDev;
 			style.onCourseDataLoaded(data);
-			consolle.log("TOC");
+			console.log("TOC");
 			oxfordFlippedApp.homepage(data);
 		});
 	})
