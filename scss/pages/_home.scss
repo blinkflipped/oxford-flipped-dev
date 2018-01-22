@@ -1,5 +1,14 @@
 
-#oxfl-general-home {}
+#oxfl-general-home {
+  .oxfl-title1 {
+    background: url(img/bubble-1.svg) 0 0 no-repeat;
+    width: 350px;
+    height: 200px;
+    background-size: contain;
+    text-align: center;
+    padding: 30px 0;
+  }
+}
 
 .oxfl-home-menu {
   position: absolute;
@@ -19,13 +28,15 @@
     padding: 0;
     margin: 0;
     display: block;
-    overflow: visible;
+    overflow: hidden;
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: contain;
     background-color: transparent;
     border: 0;
     outline: 0;
+    text-indent: 100%;
+    white-space: nowrap;
     &.oxfl-monster-1 {
       width: 183px;
       height: 250px;
@@ -46,6 +57,12 @@
 }
 
 .oxfl-notifications {
+  padding: 0;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  border: 0;
+  outline: 0;
   position: absolute;
   right: 0;
   top: 50px;
@@ -53,4 +70,20 @@
   height: 188px;
   background: url(img/monster-4.svg) right center no-repeat;
   background-size: contain;
+  .oxfl-notifications-badge {
+    font-family: $font_family_1;
+    @include font-size(1.8);
+    font-weight: bold;
+    line-height: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: $color_2;
+    border: 5px solid $color_2_darken;
+    color: $negative_color;
+    text-align: center;
+    position: absolute;
+    right: 195px;
+    bottom: 60px;
+  }
 }
