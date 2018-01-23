@@ -1,0 +1,12 @@
+body.oxfl-body-episodes {
+  .oxfl-home-title {
+    opacity: 0;
+  }
+  .oxfl-notifications {
+    transform: translate(100%, 0);
+  }
+  .oxfl-home-menu {
+    opacity: 0;
+    transform: translate(0,100%);
+  }
+}

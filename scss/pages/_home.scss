@@ -1,18 +1,19 @@
 
-#oxfl-general-home {
-  .oxfl-title1 {
-    background: url(img/bubble-1.svg) 0 0 no-repeat;
-    width: 350px;
-    height: 200px;
-    background-size: contain;
-    text-align: center;
-    padding: 30px 0;
-    margin: 0;
-    position: absolute;
-    top: 90px;
-    left: 25px;
-  }
+.oxfl-home-title {
+  background: url(img/bubble-1.svg) 0 0 no-repeat;
+  width: 350px;
+  height: 200px;
+  background-size: contain;
+  text-align: center;
+  padding: 30px 0;
+  margin: 0;
+  position: absolute;
+  top: 90px;
+  left: 25px;
+  transition: opacity 1 ease-out;
+  opacity: 1;
 }
+
 
 .oxfl-home-menu {
   position: absolute;
@@ -26,6 +27,9 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 80px;
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
   .oxfl-home-menu-item {
     position: relative;
   }
@@ -84,6 +88,7 @@
     display: block;
     width: 80px;
     margin: 0 auto;
+    white-space: nowrap;
   }
 
 }
@@ -102,6 +107,7 @@
   height: 188px;
   background: url(img/monster-4.svg) right center no-repeat;
   background-size: contain;
+  transition: transform .3s ease-out;
   .oxfl-notifications-badge {
     font-family: $font_family_1;
     @include font-size(1.8);

@@ -64,10 +64,11 @@ body.view-mode {
   padding: 0 10px; }
 
 .oxfl-general {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: url(img/background_home.jpg) center center no-repeat #ffffff;
   background-size: cover;
+  overflow: hidden;
   position: absolute;
   position: relative;
   min-height: 600px;
@@ -77,7 +78,7 @@ body.view-mode {
   bottom: 0;
   z-index: 100; }
 
-#oxfl-general-home .oxfl-title1 {
+.oxfl-home-title {
   background: url(img/bubble-1.svg) 0 0 no-repeat;
   width: 350px;
   height: 200px;
@@ -87,7 +88,9 @@ body.view-mode {
   margin: 0;
   position: absolute;
   top: 90px;
-  left: 25px; }
+  left: 25px;
+  transition: opacity 1 ease-out;
+  opacity: 1; }
 
 .oxfl-home-menu {
   position: absolute;
@@ -100,7 +103,10 @@ body.view-mode {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 80px; }
+  padding: 0 80px;
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out; }
   .oxfl-home-menu .oxfl-home-menu-item {
     position: relative; }
   .oxfl-home-menu .oxfl-monster {
@@ -151,7 +157,8 @@ body.view-mode {
   .oxfl-bubble-hello .oxfl-bubble-hello-name {
     display: block;
     width: 80px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    white-space: nowrap; }
 
 .oxfl-notifications {
   padding: 0;
@@ -166,7 +173,8 @@ body.view-mode {
   width: 275px;
   height: 188px;
   background: url(img/monster-4.svg) right center no-repeat;
-  background-size: contain; }
+  background-size: contain;
+  transition: transform .3s ease-out; }
   .oxfl-notifications .oxfl-notifications-badge {
     font-family: "Quicksand", sans-serif;
     font-size: 18px;
@@ -183,5 +191,13 @@ body.view-mode {
     position: absolute;
     right: 195px;
     bottom: 60px; }
+
+body.oxfl-body-episodes .oxfl-home-title {
+  opacity: 0; }
+body.oxfl-body-episodes .oxfl-notifications {
+  transform: translate(100%, 0); }
+body.oxfl-body-episodes .oxfl-home-menu {
+  opacity: 0;
+  transform: translate(0, 100%); }
 
 /*# sourceMappingURL=style.css.map */

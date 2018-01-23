@@ -1,9 +1,10 @@
 
 .oxfl-general {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: url(img/background_home.jpg) center center no-repeat $background_color;
   background-size: cover;
+  overflow: hidden;
   position: absolute;
   position: relative; // TODO REMOVE
   min-height: 600px;
