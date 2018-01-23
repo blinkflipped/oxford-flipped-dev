@@ -67,6 +67,7 @@
   width: 120px;
   height: 100px;
   @include font-size(2.9);
+  line-height: 1.25em;
   font-family: $font_family_2;
   font-weight: bold;
   font-style: italic;
@@ -75,6 +76,16 @@
   right: 0;
   color: $color_4;
   text-align: center;
+  .oxfl-bubble-hello-text {
+    display: block;
+    margin-top: 2px;
+  }
+  .oxfl-bubble-hello-name {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+  }
+
 }
 
 .oxfl-notifications {
