@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700");
 @font-face {
   font-family: 'Myfrida';
   src: url("fonts/myfrida_bold-italic-webfont.eot");
@@ -9,7 +9,7 @@ html {
   position: relative;
   font-size: 62.5%; }
 
-body {
+body.view-mode {
   position: relative;
   z-index: 100;
   -webkit-overflow-scrolling: touch;
@@ -23,6 +23,8 @@ body {
   font-size: 28px;
   font-size: 2.8rem;
   background: #ffffff; }
+  body.view-mode .footer {
+    display: none; }
 
 .oxfl-title1 {
   font-family: "Myfrida", sans-serif;
@@ -32,14 +34,43 @@ body {
   font-size: 6.5rem;
   color: #8BE23F; }
 
+#oxfl-coins {
+  position: absolute;
+  top: 60px;
+  right: 15px;
+  z-index: 900; }
+
+#oxfl-coins-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: url(img/sprite.png) 0 0 no-repeat;
+  background-size: 60px 60px;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+#oxfl-coins-total {
+  background: rgba(77, 77, 77, 0.8);
+  border-radius: 0 40px 40px 0;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: right;
+  width: 95px;
+  height: 20px;
+  padding: 0 10px; }
+
 .oxfl-general {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: url(img/background_home.jpg) center center no-repeat #ffffff;
   background-size: cover;
   position: absolute;
   position: relative;
-  min-height: 100vh;
+  min-height: 600px;
   top: 0;
   left: 0;
   right: 0;
@@ -52,7 +83,11 @@ body {
   height: 200px;
   background-size: contain;
   text-align: center;
-  padding: 30px 0; }
+  padding: 30px 0;
+  margin: 0;
+  position: absolute;
+  top: 90px;
+  left: 25px; }
 
 .oxfl-home-menu {
   position: absolute;
@@ -66,6 +101,8 @@ body {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 80px; }
+  .oxfl-home-menu .oxfl-home-menu-item {
+    position: relative; }
   .oxfl-home-menu .oxfl-monster {
     padding: 0;
     margin: 0;
@@ -92,6 +129,22 @@ body {
       height: 318px;
       background-image: url(img/monster-3.svg); }
 
+.oxfl-bubble-hello {
+  background: url(img/bubble-2.png) 0 0 no-repeat;
+  background-size: contain;
+  width: 120px;
+  height: 100px;
+  font-size: 29px;
+  font-size: 2.9rem;
+  font-family: "Myfrida", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ED1E79;
+  text-align: center; }
+
 .oxfl-notifications {
   padding: 0;
   margin: 0;
@@ -101,7 +154,7 @@ body {
   outline: 0;
   position: absolute;
   right: 0;
-  top: 50px;
+  top: 120px;
   width: 275px;
   height: 188px;
   background: url(img/monster-4.svg) right center no-repeat;

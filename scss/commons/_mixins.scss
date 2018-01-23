@@ -31,3 +31,12 @@
 	width: 1px;
 	word-wrap: normal !important;
 }
+
+// Icon sprite
+@mixin icon-sprite() {
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(img/sprite.png) 0 0 no-repeat;
+	background-size: 60px 60px;
+}

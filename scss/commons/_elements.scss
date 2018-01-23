@@ -7,3 +7,31 @@
   @include font-size(6.5);
   color: $color_1;
 }
+
+
+// Coins
+
+#oxfl-coins {
+  position: absolute;
+  top: 60px;
+  right: 15px;
+  z-index: 900;
+}
+#oxfl-coins-icon {
+  @include icon-sprite();
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#oxfl-coins-total {
+  background: fade-out($color_3, .2);
+  border-radius: 0 40px 40px 0;
+  font-family: $font_family_1;
+  @include font-size(1.4);
+  font-weight: 500;
+  color: $negative_color;
+  text-align: right;
+  width: 95px;
+  height: 20px;
+  padding: 0 10px;
+}
