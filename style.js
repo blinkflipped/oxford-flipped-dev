@@ -85,7 +85,9 @@ oxfordFlippedApp.homepage = function(data) {
 	var elements = $('.oxfl-bubble-hello-name');
 	oxfordFlippedApp.fontSizeResize(elements);
 
-	$('body').on('click', '.oxfl-js-load-toc', oxfordFlippedApp.loadToC(data));
+	$('body').on('click', '.oxfl-js-load-toc', function() {
+		oxfordFlippedApp.loadToC(data);
+	});
 }
 
 oxfordFlippedApp.loadToC = function(data) {
@@ -93,8 +95,9 @@ oxfordFlippedApp.loadToC = function(data) {
 	console.log(data);
 	var unitList = '';
 	$.each(data.units, function(i, unit){
+		var unitTitle = unit.title;
 		console.log(unit);
-		unitList += '<li>' + unit + '</li>';
+		unitList += '<li>' + unitTitle + '</li>';
 	});
 	console.log(unitList);
 }
