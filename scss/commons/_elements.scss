@@ -20,8 +20,8 @@
 #oxfl-coins-icon {
   @include icon-sprite();
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -5px;
+  left: -15px;
 }
 #oxfl-coins-total {
   background: fade-out($color_3, .2);

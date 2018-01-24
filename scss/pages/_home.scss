@@ -1,5 +1,5 @@
 
-.oxfl-home-title {
+#oxfl-home-title {
   background: url(img/bubble-1.svg) 0 0 no-repeat;
   width: 350px;
   height: 200px;
@@ -15,14 +15,12 @@
 }
 
 
-.oxfl-home-menu {
+#oxfl-home-menu {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  height: 140px;
-  background: $home_menu_background_color;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -30,8 +28,19 @@
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
+  &:before {
+    content: '';
+    width: 100%;
+    height: 140px;
+    background: $home_menu_background_color;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
   .oxfl-home-menu-item {
     position: relative;
+    z-index: 10;
   }
 
   .oxfl-monster {
@@ -93,7 +102,7 @@
 
 }
 
-.oxfl-notifications {
+#oxfl-notifications {
   padding: 0;
   margin: 0;
   display: block;

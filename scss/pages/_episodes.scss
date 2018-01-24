@@ -1,11 +1,11 @@
 body.oxfl-body-episodes {
-  .oxfl-home-title {
+  #oxfl-home-title {
     opacity: 0;
   }
-  .oxfl-notifications {
+  #oxfl-notifications {
     transform: translate(100%, 0);
   }
-  .oxfl-home-menu {
+  #oxfl-home-menu {
     opacity: 0;
     transform: translate(0,100%);
   }

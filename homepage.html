@@ -1,20 +1,20 @@
 <div id="oxfl-coins">
   <div id="oxfl-coins-icon"></div>
-  <div id="oxfl-coins-total"></div>
+  <div id="oxfl-coins-total">'+totalCoins+'</div>
 </div>
-<div class="oxfl-general">
-  <h1 class="oxfl-title1"></h1>
-  <button class="oxfl-notifications">
-    <div class="oxfl-notifications-badge">5</div>
+<div id="oxfl-general">
+  <h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1>
+  <button id="oxfl-notifications">
+    <div class="oxfl-notifications-badge">'+totalNotifications+'</div>
   </button>
-  <div class="oxfl-home-menu">
+  <div id="oxfl-home-menu">
     <div class="oxfl-home-menu-item">
       <button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook">
         <span>Gradebook</span>
       </button>
     </div>
     <div class="oxfl-home-menu-item">
-      <button class="oxfl-monster oxfl-monster-2 oxfl-js-load-toc" id="oxfl-goto-prepare">
+      <button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare">
         <span>Prepare</span>
       </button>
     </div>
@@ -24,8 +24,10 @@
       </button>
       <div class="oxfl-bubble-hello">
         <span class="oxfl-bubble-hello-text">Hola, </span>
-        <span class="oxfl-bubble-hello-name"></span>
+        <span class="oxfl-bubble-hello-name">'+username+'</span>
       </div>
     </div>
   </div>
+  <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div>
+  <div id="oxfl-episodes"></div>
 </div>

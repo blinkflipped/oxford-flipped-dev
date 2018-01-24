@@ -47,8 +47,8 @@ body.view-mode {
   background: url(img/sprite.png) 0 0 no-repeat;
   background-size: 60px 60px;
   position: absolute;
-  top: 0;
-  left: 0; }
+  top: -5px;
+  left: -15px; }
 
 #oxfl-coins-total {
   background: rgba(77, 77, 77, 0.8);
@@ -78,7 +78,7 @@ body.view-mode {
   bottom: 0;
   z-index: 100; }
 
-.oxfl-home-title {
+#oxfl-home-title {
   background: url(img/bubble-1.svg) 0 0 no-repeat;
   width: 350px;
   height: 200px;
@@ -92,14 +92,12 @@ body.view-mode {
   transition: opacity 1 ease-out;
   opacity: 1; }
 
-.oxfl-home-menu {
+#oxfl-home-menu {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  height: 140px;
-  background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -107,9 +105,19 @@ body.view-mode {
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out; }
-  .oxfl-home-menu .oxfl-home-menu-item {
-    position: relative; }
-  .oxfl-home-menu .oxfl-monster {
+  #oxfl-home-menu:before {
+    content: '';
+    width: 100%;
+    height: 140px;
+    background: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  #oxfl-home-menu .oxfl-home-menu-item {
+    position: relative;
+    z-index: 10; }
+  #oxfl-home-menu .oxfl-monster {
     padding: 0;
     margin: 0;
     display: block;
@@ -122,15 +130,15 @@ body.view-mode {
     outline: 0;
     text-indent: 100%;
     white-space: nowrap; }
-    .oxfl-home-menu .oxfl-monster.oxfl-monster-1 {
+    #oxfl-home-menu .oxfl-monster.oxfl-monster-1 {
       width: 183px;
       height: 250px;
       background-image: url(img/monster-1.svg); }
-    .oxfl-home-menu .oxfl-monster.oxfl-monster-2 {
+    #oxfl-home-menu .oxfl-monster.oxfl-monster-2 {
       width: 346px;
       height: 490px;
       background-image: url(img/monster-2.svg); }
-    .oxfl-home-menu .oxfl-monster.oxfl-monster-3 {
+    #oxfl-home-menu .oxfl-monster.oxfl-monster-3 {
       width: 299px;
       height: 318px;
       background-image: url(img/monster-3.svg); }
@@ -160,7 +168,7 @@ body.view-mode {
     margin: 0 auto;
     white-space: nowrap; }
 
-.oxfl-notifications {
+#oxfl-notifications {
   padding: 0;
   margin: 0;
   display: block;
@@ -175,7 +183,7 @@ body.view-mode {
   background: url(img/monster-4.svg) right center no-repeat;
   background-size: contain;
   transition: transform .3s ease-out; }
-  .oxfl-notifications .oxfl-notifications-badge {
+  #oxfl-notifications .oxfl-notifications-badge {
     font-family: "Quicksand", sans-serif;
     font-size: 18px;
     font-size: 1.8rem;
@@ -192,11 +200,11 @@ body.view-mode {
     right: 195px;
     bottom: 60px; }
 
-body.oxfl-body-episodes .oxfl-home-title {
+body.oxfl-body-episodes #oxfl-home-title {
   opacity: 0; }
-body.oxfl-body-episodes .oxfl-notifications {
+body.oxfl-body-episodes #oxfl-notifications {
   transform: translate(100%, 0); }
-body.oxfl-body-episodes .oxfl-home-menu {
+body.oxfl-body-episodes #oxfl-home-menu {
   opacity: 0;
   transform: translate(0, 100%); }
 
