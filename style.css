@@ -248,7 +248,10 @@ body.oxfl-body-home #oxfl-home-menu {
   background: rgba(242, 242, 242, 0.8);
   border: 2px solid #ffffff;
   padding: 30px;
-  width: 540px; }
+  width: 540px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
 
 .oxfl-episode {
   text-align: center;
@@ -275,6 +278,15 @@ body.oxfl-body-home #oxfl-home-menu {
     clear: both; }
   .oxfl-episodes-page .oxfl-episodes-item {
     float: left;
+    width: 50%;
     padding: 5px; }
+    .oxfl-episodes-page .oxfl-episodes-item:nth-child(2n+1) {
+      clear: left; }
+
+body.oxfl-body-episodes #oxfl-episodes {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  transition-delay: 0s; }
 
 /*# sourceMappingURL=style.css.map */

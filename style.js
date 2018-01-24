@@ -97,7 +97,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 oxfordFlippedApp.loadEpisodes = function(data) {
 
-	console.log("LOAD loadEpisodes");
+	console.log("Load Episodes List");
 	console.log(data);
 
 	var unitList = document.createDocumentFragment();
@@ -108,7 +108,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 				unitImage = unit.image,
 				unitListItem = document.createElement('div');
 		unitListItem.className = 'oxfl-episodes-item';
-		unitListItem.innerHTML = '<article class="oxfl-episode"><a href="#"><h2 class="oxfl-title2">Episode '+unitNumber+'</h2><h3 class="oxfl-title3">'+unitTitle+'</h3><div class="oxfl-episode-image-wrapper"><img src="'+unitImage+'" alt="'+unitNumber+'"></div></a></article>';
+		unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+unitNumber+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title3">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitNumber+'"> </div> </a> </article>';
 		unitList.appendChild(unitListItem);
 	});
 
@@ -121,4 +121,13 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 	}
 
 	$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
+
+	$('body').on('click', '.oxfl-js-load-chapters', function() {
+		var currentEpisode = $(this).data('episode');
+		oxfordFlippedApp.loadChapters(data,currentEpisode);
+	});
+}
+
+oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
+	console.log("Load Chapters List");
 }
