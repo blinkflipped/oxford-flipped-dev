@@ -22,7 +22,8 @@ body.view-mode {
   padding: 0;
   font-size: 28px;
   font-size: 2.8rem;
-  background: #ffffff; }
+  background: #ffffff;
+  color: #000000; }
   body.view-mode .footer {
     display: none; }
 
@@ -33,6 +34,21 @@ body.view-mode {
   font-size: 65px;
   font-size: 6.5rem;
   color: #8BE23F; }
+
+.oxfl-title2 {
+  font-family: "Myfrida", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 29px;
+  font-size: 2.9rem;
+  color: #8BE23F; }
+
+.oxfl-title3 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #000000; }
 
 #oxfl-coins {
   position: absolute;
@@ -63,7 +79,7 @@ body.view-mode {
   height: 20px;
   padding: 0 10px; }
 
-.oxfl-general {
+#oxfl-general {
   width: 100vw;
   height: 100vh;
   background: url(img/background_home.jpg) center center no-repeat #ffffff;
@@ -89,8 +105,11 @@ body.view-mode {
   position: absolute;
   top: 90px;
   left: 25px;
-  transition: opacity 1 ease-out;
-  opacity: 1; }
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translate(-100%, -100%); }
 
 #oxfl-home-menu {
   position: absolute;
@@ -104,7 +123,9 @@ body.view-mode {
   padding: 0 80px;
   transition-property: opacity, transform;
   transition-duration: .3s;
-  transition-timing-function: ease-out; }
+  transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translate(0, 100%); }
   #oxfl-home-menu:before {
     content: '';
     width: 100%;
@@ -182,7 +203,8 @@ body.view-mode {
   height: 188px;
   background: url(img/monster-4.svg) right center no-repeat;
   background-size: contain;
-  transition: transform .3s ease-out; }
+  transition: transform .3s ease-out;
+  transform: translate(100%, 0); }
   #oxfl-notifications .oxfl-notifications-badge {
     font-family: "Quicksand", sans-serif;
     font-size: 18px;
@@ -200,12 +222,59 @@ body.view-mode {
     right: 195px;
     bottom: 60px; }
 
-body.oxfl-body-episodes #oxfl-home-title {
-  opacity: 0; }
-body.oxfl-body-episodes #oxfl-notifications {
-  transform: translate(100%, 0); }
-body.oxfl-body-episodes #oxfl-home-menu {
-  opacity: 0;
-  transform: translate(0, 100%); }
+body.oxfl-body-home #oxfl-home-title {
+  opacity: 1;
+  transform: translate(0, 0); }
+body.oxfl-body-home #oxfl-notifications {
+  transform: translate(0, 0); }
+body.oxfl-body-home #oxfl-home-menu {
+  opacity: 1;
+  transform: translate(0, 0); }
+
+/*body.oxfl-body-episodes {
+  #oxfl-home-title {
+    opacity: 0;
+    transform: translate(-100%, -100%);
+  }
+  #oxfl-notifications {
+    transform: translate(100%, 0);
+  }
+  #oxfl-home-menu {
+    opacity: 0;
+    transform: translate(0,100%);
+  }
+}*/
+#oxfl-episodes {
+  background: rgba(242, 242, 242, 0.8);
+  border: 2px solid #ffffff;
+  padding: 30px;
+  width: 540px; }
+
+.oxfl-episode {
+  text-align: center;
+  padding: 10px 20px;
+  background: #ffffff;
+  border: 2px dashed #FBB03B; }
+  .oxfl-episode > a {
+    display: block; }
+  .oxfl-episode .oxfl-episode-image-wrapper {
+    width: 100%;
+    height: 180px; }
+    .oxfl-episode .oxfl-episode-image-wrapper img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+
+.oxfl-episodes-page {
+  margin-left: -5px;
+  margin-right: -5px; }
+  .oxfl-episodes-page:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .oxfl-episodes-page .oxfl-episodes-item {
+    float: left;
+    padding: 5px; }
 
 /*# sourceMappingURL=style.css.map */

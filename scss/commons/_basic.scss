@@ -17,7 +17,7 @@ body.view-mode {
   padding: 0;
   @include font-size(2.8);
   background: $background_color;
-
+	color: $primary_color;
 	.footer {
 		display: none;
 	}

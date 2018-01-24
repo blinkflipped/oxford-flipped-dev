@@ -87,6 +87,8 @@ oxfordFlippedApp.homepage = function(data) {
 	var elements = $('.oxfl-bubble-hello-name');
 	oxfordFlippedApp.fontSizeResize(elements);
 
+	$('body').addClass('oxfl-body-home');
+
 	$('body').on('click', '.oxfl-js-load-episodes', function() {
 		oxfordFlippedApp.loadEpisodes(data);
 	});
@@ -94,28 +96,29 @@ oxfordFlippedApp.homepage = function(data) {
 
 
 oxfordFlippedApp.loadEpisodes = function(data) {
+
 	console.log("LOAD loadEpisodes");
 	console.log(data);
+
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
 		console.log(unit);
-		var unitTitle = unit.title;
-		var unitListItem = document.createElement('div');
+		var unitTitle = unit.title,
+				unitNumber = unit.number,
+				unitImage = unit.image,
+				unitListItem = document.createElement('div');
 		unitListItem.className = 'oxfl-episodes-item';
-		unitListItem.innerHTML = '<h2 class="oxfl-episodes-item-title">Episode'+i+'</h2>'+unitTitle;
+		unitListItem.innerHTML = '<article class="oxfl-episode"><a href="#"><h2 class="oxfl-title2">Episode '+unitNumber+'</h2><h3 class="oxfl-title3">'+unitTitle'</h3><div class="oxfl-episode-image-wrapper"><img src="'+unitImage+'" alt="'+unitNumber+'"></div></a></article>';
 		unitList.appendChild(unitListItem);
 	});
-	console.log(unitList);
 
 	$('#oxfl-episodes')[0].appendChild(unitList);
 
 	var items = $('#oxfl-episodes').find('.oxfl-episodes-item'),
 			itemsLength = items.length;
-	console.log(items, itemsLength);
-	for(var i = 0; i < itemsLength; i+=3) {
-		items.slice(i, i+3).wrapAll('<div class="oxfl-episodes-page"></div>');
-		console.log("B");
+	for(var i = 0; i < itemsLength; i+=4) {
+		items.slice(i, i+4).wrapAll('<div class="oxfl-episodes-page"></div>');
 	}
-	console.log($(items));
-	$('body').addClass('oxfl-body-episodes');
+
+	$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
 }

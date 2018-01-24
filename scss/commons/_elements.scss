@@ -8,6 +8,20 @@
   color: $color_1;
 }
 
+.oxfl-title2 {
+  font-family: $font_family_2;
+  font-weight: bold;
+  font-style: italic;
+  @include font-size(2.9);
+  color: $color_1;
+}
+
+.oxfl-title3 {
+  font-family: $font_family_1;
+  font-weight: bold;
+  @include font-size(1.4);
+  color: $primary_color;
+}
 
 // Coins
 

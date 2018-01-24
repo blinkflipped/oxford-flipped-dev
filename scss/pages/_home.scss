@@ -10,8 +10,11 @@
   position: absolute;
   top: 90px;
   left: 25px;
-  transition: opacity 1 ease-out;
-  opacity: 1;
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translate(-100%, -100%);
 }
 
 
@@ -28,6 +31,8 @@
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translate(0,100%);
   &:before {
     content: '';
     width: 100%;
@@ -117,6 +122,7 @@
   background: url(img/monster-4.svg) right center no-repeat;
   background-size: contain;
   transition: transform .3s ease-out;
+  transform: translate(100%, 0);
   .oxfl-notifications-badge {
     font-family: $font_family_1;
     @include font-size(1.8);
@@ -132,5 +138,19 @@
     position: absolute;
     right: 195px;
     bottom: 60px;
+  }
+}
+
+body.oxfl-body-home {
+  #oxfl-home-title {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  #oxfl-notifications {
+    transform: translate(0, 0);
+  }
+  #oxfl-home-menu {
+    opacity: 1;
+    transform: translate(0,0);
   }
 }
