@@ -108,7 +108,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 				unitImage = unit.image,
 				unitListItem = document.createElement('div');
 		unitListItem.className = 'oxfl-episodes-item';
-		unitListItem.innerHTML = '<article class="oxfl-episode"><a href="#"><h2 class="oxfl-title2">Episode '+unitNumber+'</h2><h3 class="oxfl-title3">'+unitTitle'</h3><div class="oxfl-episode-image-wrapper"><img src="'+unitImage+'" alt="'+unitNumber+'"></div></a></article>';
+		unitListItem.innerHTML = '<article class="oxfl-episode"><a href="#"><h2 class="oxfl-title2">Episode '+unitNumber+'</h2><h3 class="oxfl-title3">'+unitTitle+'</h3><div class="oxfl-episode-image-wrapper"><img src="'+unitImage+'" alt="'+unitNumber+'"></div></a></article>';
 		unitList.appendChild(unitListItem);
 	});
 
