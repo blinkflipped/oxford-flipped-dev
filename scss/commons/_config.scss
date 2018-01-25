@@ -19,9 +19,12 @@ $home_menu_background_color: $background_color;
 $episode_background_color: $background_color;
 $episode_border_color: $color_6;
 
+$chapter_background_color: $episode_background_color;
+$chapter_border_color: $episode_border_color;
+
 // Spaces
 
 $padding_1: 30px;
 
 $space_1: 90px;
-$space_2: 110px; 
+$space_2: 110px;

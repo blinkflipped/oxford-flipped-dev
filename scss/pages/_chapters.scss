@@ -26,8 +26,8 @@
 
 .oxfl-chapter {
   text-align: center;
-  background: $episode_background_color;
-  border: 2px dashed $episode_border_color;
+  background: $chapter_background_color;
+  border: 2px dashed $chapter_border_color;
   &>a {
     display: block;
     padding: 10px 20px;
@@ -49,7 +49,7 @@
   @include clearfix();
   margin-left: -5px;
   margin-right: -5px;
-  .oxfl-episodes-item {
+  .oxfl-chapter-item {
     float: left;
     width: 33.3333%;
     padding: 5px;

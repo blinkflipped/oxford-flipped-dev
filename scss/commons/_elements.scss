@@ -53,8 +53,13 @@
 // Buttons
 
 .oxfl-button-icon {
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
   @include icon-sprite();
   &.oxfl-button-icon-goback {
-    background-position: 0 60px;
+    background-position: 0 -60px;
   }
 }
