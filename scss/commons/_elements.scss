@@ -49,3 +49,12 @@
   height: 20px;
   padding: 0 10px;
 }
+
+// Buttons
+
+.oxfl-button-icon {
+  @include wicon-sprite();
+  &.oxfl-button-icon-goback {
+    background-position: 0 60px;
+  }
+}

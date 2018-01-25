@@ -9,12 +9,12 @@
 	.st3{fill:#FBB03B;}
 	.st4{fill:#F15A24;}
 	.st5{fill:#FCEE21;}
-	.st6{clip-path:url(#SVGID_4_);fill:#E6E6E6;}
+	.st6{clip-path:url(#SVGID_4_);fill:rgba(0,0,0,.3);}
 	.st7{clip-path:url(#SVGID_4_);fill:none;stroke:#FFFF00;stroke-width:0.989;stroke-miterlimit:10;}
 	.st8{fill:none;stroke:#FFFF00;stroke-width:0.989;stroke-miterlimit:10;}
-	.st9{clip-path:url(#SVGID_6_);fill:#E6E6E6;}
-	.st10{clip-path:url(#SVGID_8_);fill:#E6E6E6;}
-	.st11{clip-path:url(#SVGID_10_);fill:#E6E6E6;}
+	.st9{clip-path:url(#SVGID_6_);fill:rgba(0,0,0,.3);}
+	.st10{clip-path:url(#SVGID_8_);fill:rgba(0,0,0,.3);}
+	.st11{clip-path:url(#SVGID_10_);fill:rgba(0,0,0,.3);}
 	.st12{fill:#FFFFFF;}
 	.st13{fill:#1D1D1B;}
 	.st14{fill:#FF41D6;}
@@ -26,7 +26,7 @@
 </style>
 <g>
 	<g>
-		
+
 			<image style="overflow:visible;opacity:0.3;" width="558" height="399" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAi4AAAGPCAYAAAB74lsJAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAP0xJREFUeNrsnYlyG0muRcEiJVnu
 ZZb//8U343G3rIXbsyKYYQgCMpHF4n5ORAWpjaRImXV8gUSKAAAAAFwIM54CAOC9KGTLSwPAmwUA
