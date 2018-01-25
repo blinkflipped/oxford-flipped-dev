@@ -255,7 +255,7 @@ body.oxfl-body-home #oxfl-home-menu {
 }*/
 #oxfl-episodes-monster {
   opacity: 0;
-  transform: translate(-100%, -100%);
+  transform: translate(-120%, 0);
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
