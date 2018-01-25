@@ -130,10 +130,10 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	console.log("Load Chapters List");
-	console.log(data.units[currentEpisode].subunits);
-
-	var chaptersList = document.createDocumentFragment();
-	$.each(data.units, function(i, chapter){
+	console.log();
+	var chapters = data.units[currentEpisode].subunits,
+			chaptersList = document.createDocumentFragment();
+	$.each(chapters, function(i, chapter){
 		console.log(chapter);
 		var chapterTitle = chapter.title,
 				chapterNumber = i + 1,
@@ -145,7 +145,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 		chaptersList.appendChild(chapterListItem);
 	});
 	$('#oxfl-chapters').empty();
-	$('#oxfl-chapters')[0].appendChild(unitList);
+	$('#oxfl-chapters')[0].appendChild(chaptersList);
 
 	var items = $('#oxfl-chapters').find('.oxfl-chapters-item'),
 			itemsLength = items.length;
