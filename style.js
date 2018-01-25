@@ -80,7 +80,7 @@ oxfordFlippedApp.homepage = function(data) {
 			totalCoins = '1.000.000',
 			totalNotifications = '5';
 	// TODO Decide if put coins outside homepage, to make coins transversal.
-	var html = '<div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><div id="oxfl-general"><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div><div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div><div id="oxfl-episodes"></div></div>';
+	var html = '<div id="oxfl-general"><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div><div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div><div id="oxfl-episodes"></div></div>';
 
 	$('body').prepend(html);
 
@@ -108,7 +108,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 				unitImage = unit.image,
 				unitListItem = document.createElement('div');
 		unitListItem.className = 'oxfl-episodes-item';
-		unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+unitNumber+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title3">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitNumber+'"> </div> </a> </article>';
+		unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title3">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitNumber+'"> </div> </a> </article>';
 		unitList.appendChild(unitListItem);
 	});
 
@@ -130,4 +130,5 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	console.log("Load Chapters List");
+	console.log(data.unit[currentEpisode].subunits);
 }

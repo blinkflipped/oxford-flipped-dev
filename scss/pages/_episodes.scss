@@ -12,6 +12,22 @@
   }
 }*/
 
+#oxfl-episodes-monster {
+  opacity: 0;
+  transform: translate(-100%, -100%);
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  width: 300px;
+  height: 600px;
+  background: url(img/monster-5.svg) 0 0 no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -300px;
+}
+
 
 #oxfl-episodes {
   background: fade-out($color_5, .2);
@@ -21,6 +37,8 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  float: right;
+  margin: 110px 90px;
 }
 
 .oxfl-episode {
@@ -64,5 +82,9 @@ body.oxfl-body-episodes {
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s;
+  }
+  #oxfl-episodes-monster {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
