@@ -341,7 +341,6 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  float: right;
   margin: 110px 90px; }
 
 .oxfl-chapter {
@@ -360,18 +359,18 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       height: 100%;
       object-fit: cover; }
 
-.oxfl-chapter-page {
+.oxfl-chapters-page {
   margin-left: -5px;
   margin-right: -5px; }
-  .oxfl-chapter-page:after {
+  .oxfl-chapters-page:after {
     content: "";
     display: table;
     clear: both; }
-  .oxfl-chapter-page .oxfl-chapter-item {
+  .oxfl-chapters-page .oxfl-chapter-item {
     float: left;
     width: 33.3333%;
     padding: 5px; }
-    .oxfl-chapter-page .oxfl-chapter-item:nth-child(3n+1) {
+    .oxfl-chapters-page .oxfl-chapter-item:nth-child(3n+1) {
       clear: left; }
 
 body.oxfl-body-chapters #oxfl-chapters {

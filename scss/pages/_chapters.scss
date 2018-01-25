@@ -20,7 +20,6 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  float: right;
   margin: $space_2 $space_1;
 }
 
@@ -45,7 +44,7 @@
 }
 
 
-.oxfl-chapter-page {
+.oxfl-chapters-page {
   @include clearfix();
   margin-left: -5px;
   margin-right: -5px;
