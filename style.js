@@ -140,14 +140,14 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterImage = chapter.image,
 				chapterUrl = chapter.url,
 				chapterListItem = document.createElement('div');
-		chapterListItem.className = 'oxfl-chapters-item';
+		chapterListItem.className = 'oxfl-chapter-item';
 		chapterListItem.innerHTML = '<article class="oxfl-chapter"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"><div class="oxfl-chapter-header"><div class="oxfl-chapter-header-top"><h2 class="oxfl-title2">Chapter '+chapterNumber+'</h2><div>STARS OR LOCK</div></div><h3 class="oxfl-title3">'+chapterTitle+'</h3></div><div class="oxfl-episode-image-wrapper"><div class="oxfl-label">Started</div><img src="'+chapterImage+'" alt="'+chapterTitle+'"></div></a></article>';
 		chaptersList.appendChild(chapterListItem);
 	});
 	$('#oxfl-chapters').empty();
 	$('#oxfl-chapters')[0].appendChild(chaptersList);
 
-	var items = $('#oxfl-chapters').find('.oxfl-chapters-item'),
+	var items = $('#oxfl-chapters').find('.oxfl-chapter-item'),
 			itemsLength = items.length;
 	for(var i = 0; i < itemsLength; i+=6) {
 		items.slice(i, i+6).wrapAll('<div class="oxfl-chapters-page"></div>');
