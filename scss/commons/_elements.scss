@@ -53,7 +53,7 @@
 // Buttons
 
 .oxfl-button-icon {
-  @include wicon-sprite();
+  @include icon-sprite();
   &.oxfl-button-icon-goback {
     background-position: 0 60px;
   }
