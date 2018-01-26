@@ -132,7 +132,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	console.log("Load Chapters List");
 
 	var chapters = data.units[currentEpisode].subunits,
-			episodeImage =  data.units[currentEpisode].subunits.image,
+			episodeImage =  data.units[currentEpisode].image,
 			chaptersList = document.createDocumentFragment();
 
 	$.each(chapters, function(i, chapter){
@@ -152,7 +152,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 		chaptersList.appendChild(chapterListItem);
 	});
 
-	$('#oxfl-custom-background').css('background-image', episodeImage).addClass('active');
+	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')').addClass('active');
 
 	$('#oxfl-chapters').empty();
 	$('#oxfl-chapters')[0].appendChild(chaptersList);

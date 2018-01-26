@@ -62,6 +62,8 @@
   .oxfl-chapter-header-top {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
   }
   .oxfl-chapter-image-wrapper {
     width: 100%;

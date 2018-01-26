@@ -13,7 +13,7 @@
 	.st7{fill:#FF00FF;}
 	.st8{fill:#D9E021;}
 	.st9{fill:#8CC63F;}
-	.st10{fill:#CCCCCC;}
+	.st10{fill:rgba(0,0,0,.3);}
 	.st11{fill:#FFFF00;}
 	.st12{fill:#1D1D1B;}
 	.st13{fill:#29ABE2;}

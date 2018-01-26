@@ -129,16 +129,16 @@ body.view-mode {
   content: "";
   display: table;
   clear: both; }
-.oxfl-stars.oxfl-star-item {
+.oxfl-stars .oxfl-star-item {
   display: block;
-  margin: 0;
+  margin: 0 0 0 5px;
   padding: 0;
   width: 18px;
   height: 17px;
   background: url(img/stars.png) 0 0 no-repeat;
   background-size: 37px 17px;
   float: left; }
-  .oxfl-stars.oxfl-star-item.oxfl-star-item-filled {
+  .oxfl-stars .oxfl-star-item.oxfl-star-item-filled {
     background-position: -19px 0; }
 
 #oxfl-general {
@@ -437,7 +437,9 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     padding: 5px 10px; }
   .oxfl-chapter .oxfl-chapter-header-top {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px; }
   .oxfl-chapter .oxfl-chapter-image-wrapper {
     width: 100%;
     height: 110px;
