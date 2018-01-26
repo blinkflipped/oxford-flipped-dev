@@ -292,19 +292,17 @@ body.oxfl-body-home #oxfl-home-menu {
   opacity: 1;
   transform: translate(0, 0); }
 
-/*body.oxfl-body-episodes {
-  #oxfl-home-title {
-    opacity: 0;
-    transform: translate(-100%, -100%);
-  }
-  #oxfl-notifications {
-    transform: translate(100%, 0);
-  }
-  #oxfl-home-menu {
-    opacity: 0;
-    transform: translate(0,100%);
-  }
-}*/
+#oxfl-episodes-wrapper {
+  width: 980px;
+  max-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 110px;
+  transform: translate(-50%, 0);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+
 #oxfl-episodes-monster {
   opacity: 0;
   transform: translate(-120%, 0);
@@ -328,7 +326,7 @@ body.oxfl-body-home #oxfl-home-menu {
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   float: right;
-  margin: 110px 90px; }
+  margin: 0 45px 110px 90px; }
 
 .oxfl-episode {
   text-align: center;
@@ -360,6 +358,7 @@ body.oxfl-body-home #oxfl-home-menu {
     .oxfl-episodes-page .oxfl-episodes-item:nth-child(2n+1) {
       clear: left; }
 
+body.oxfl-body-episodes #oxfl-episodes-wrapper,
 body.oxfl-body-episodes #oxfl-episodes {
   visibility: visible;
   opacity: 1;
@@ -372,7 +371,10 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
 #oxfl-chapters-wrapper {
   width: 980px;
   max-width: 100%;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  transform: translate(-50%, 0);
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
@@ -389,8 +391,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   background-size: contain;
   position: absolute;
   top: 0;
-  left: 50%;
-  margin-left: -345px; }
+  left: 0; }
 
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
@@ -401,7 +402,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: 230px 0; }
+  margin: 223px auto; }
 
 .oxfl-chapter {
   background: #ffffff;

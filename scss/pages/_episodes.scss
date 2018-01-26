@@ -1,16 +1,14 @@
-/*body.oxfl-body-episodes {
-  #oxfl-home-title {
-    opacity: 0;
-    transform: translate(-100%, -100%);
-  }
-  #oxfl-notifications {
-    transform: translate(100%, 0);
-  }
-  #oxfl-home-menu {
-    opacity: 0;
-    transform: translate(0,100%);
-  }
-}*/
+#oxfl-episodes-wrapper {
+  width: $layout_max;
+  max-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 110px;
+  transform: translate(-50%,0);
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
 
 #oxfl-episodes-monster {
   opacity: 0;
@@ -37,7 +35,7 @@
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   float: right;
-  margin: $space_2 $space_1;
+  margin: 0 $space_1/2 $space_2 $space_1;
 }
 
 .oxfl-episode {
@@ -76,6 +74,7 @@
 }
 
 body.oxfl-body-episodes {
+  #oxfl-episodes-wrapper,
   #oxfl-episodes {
     visibility:visible;
     opacity: 1;

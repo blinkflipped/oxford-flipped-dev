@@ -1,7 +1,10 @@
 #oxfl-chapters-wrapper {
-  width: 980px;
+  width: $layout_max;
   max-width: 100%;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  transform: translate(-50%,0);
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
@@ -19,8 +22,7 @@
   background-size: contain;
   position: absolute;
   top: 0;
-  left: 50%;
-  margin-left: -345px;
+  left: 0;
 }
 
 
@@ -33,7 +35,7 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: 230px 0;
+  margin: 223px auto;
   //position: absolute;
   //top: 0;
   //left: 50%;
