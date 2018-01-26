@@ -2,6 +2,7 @@
   position: absolute;
   top: $header_height + 16px;
   left: 20px;
+  z-index: 200;
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
@@ -86,6 +87,8 @@
   @include clearfix();
   margin-left: -5px;
   margin-right: -5px;
+  position: relative;
+  z-index: 100;
   .oxfl-chapter-item {
     float: left;
     width: 33.3333%;

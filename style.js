@@ -80,7 +80,7 @@ oxfordFlippedApp.homepage = function(data) {
 			totalCoins = '1.000.000',
 			totalNotifications = '5';
 	// TODO Decide if put coins outside homepage, to make coins transversal.
-	var html = '<div id="oxfl-general"><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <button id="oxfl-goback-to-episodes" class="oxfl-button oxfl-button-icon oxfl-button-icon-goback" data-goback="oxfl-body-episodes"></button> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> ';
+	var html = '<div id="oxfl-general"><div id="oxfl-custom-background"></div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <button id="oxfl-goback-to-episodes" class="oxfl-button oxfl-button-icon oxfl-button-icon-goback" data-goback="oxfl-body-episodes"></button> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> ';
 
 	$('body').prepend(html);
 
@@ -132,7 +132,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	console.log("Load Chapters List");
 
 	var chapters = data.units[currentEpisode].subunits,
+			episodeImage =  data.units[currentEpisode].subunits.image,
 			chaptersList = document.createDocumentFragment();
+
 	$.each(chapters, function(i, chapter){
 		console.log(chapter);
 		var chapterTitle = chapter.title,
@@ -149,6 +151,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 		chapterListItem.innerHTML = '<article class="oxfl-chapter"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"><div class="oxfl-chapter-header"><div class="oxfl-chapter-header-top"><h2 class="oxfl-title3">Chapter '+chapterNumber+'</h2><div class="oxfl-chapter-header-top-right">'+chapterActions+'</div></div><h3 class="oxfl-title4">'+chapterTitle+'</h3></div><div class="oxfl-chapter-image-wrapper"><div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div>'+chapterImageCode+'</div></a></article>';
 		chaptersList.appendChild(chapterListItem);
 	});
+
+	$('#oxfl-custom-background').css('background-image', episodeImage).addClass('active');
+
 	$('#oxfl-chapters').empty();
 	$('#oxfl-chapters')[0].appendChild(chaptersList);
 
@@ -162,23 +167,38 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 }
 
 oxfordFlippedApp.goback = function(classRef) {
+
 	var possibleClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters'],
 			index = possibleClasses.indexOf(classRef);
+
 	possibleClasses.splice(index, 1);
-	console.log(possibleClasses);
+
 	var $body = $('body');
 	$body.addClass(classRef);
 	$.each(possibleClasses, function(i, v){
 		$body.removeClass(v);
 	});
+
+	$('#oxfl-custom-background').removeAttr('style').removeClass('active');
+
 }
 
 $(document).ready(function() {
 
 	// Go back
 	$('body').on('click', '[data-goback]', function() {
+
 		var classRef = $(this).data('goback');
 		oxfordFlippedApp.goback(classRef);
+
+	});
+
+	// Load chapter / subunit
+	$('body').on('click', '.oxfl-js-load-chapter', function(e) {
+
+		e.preventDefault();
+		console.log("AAAAA");
+
 	});
 
 });
