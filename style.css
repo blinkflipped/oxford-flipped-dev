@@ -369,6 +369,14 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   opacity: 1;
   transform: translate(0, 0); }
 
+#oxfl-chapters-wrapper {
+  width: 980px;
+  max-width: 100%;
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+
 #oxfl-chapters-monster {
   opacity: 0;
   transform: translate(0, -100%);
@@ -389,14 +397,11 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   border: 2px solid #ffffff;
   padding: 30px;
   width: 810px;
+  max-width: 100%;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: 230px 0;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0); }
+  margin: 230px 0; }
 
 .oxfl-chapter {
   background: #ffffff;
@@ -436,6 +441,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     .oxfl-chapters-page .oxfl-chapter-item:nth-child(3n+1) {
       clear: left; }
 
+body.oxfl-body-chapters #oxfl-chapters-wrapper,
 body.oxfl-body-chapters #oxfl-chapters {
   visibility: visible;
   opacity: 1;

@@ -1,3 +1,12 @@
+#oxfl-chapters-wrapper {
+  width: 980px;
+  max-width: 100%;
+  position: relative;
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+
 #oxfl-chapters-monster {
   opacity: 0;
   transform: translate(0, -100%);
@@ -20,14 +29,15 @@
   border: 2px solid $color_5_lighter;
   padding: $padding_1;
   width: 810px;
+  max-width: 100%;
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   margin: 230px 0;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%,0);
+  //position: absolute;
+  //top: 0;
+  //left: 50%;
+  //transform: translate(-50%,0);
 }
 
 .oxfl-chapter {
@@ -76,6 +86,7 @@
 }
 
 body.oxfl-body-chapters {
+  #oxfl-chapters-wrapper,
   #oxfl-chapters {
     visibility:visible;
     opacity: 1;
