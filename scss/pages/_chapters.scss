@@ -1,14 +1,17 @@
-
 #oxfl-chapters-monster {
   opacity: 0;
-  transform: translate(-100%, -100%);
+  transform: translate(0, -100%);
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
-  width: 100px;
-  height: 360px;
+  width: 690px;
+  height: 390px;
   background: url(img/monster-6.svg) 0 0 no-repeat;
   background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -345px;
 }
 
 
@@ -20,9 +23,11 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: $space_2 $space_1;
+  margin: 230px 0;
   position: absolute;
   top: 0;
+  left: 50%;
+  transform: translate(-50%,0);
 }
 
 .oxfl-chapter {
@@ -38,8 +43,14 @@
   }
   .oxfl-chapter-image-wrapper {
     width: 100%;
-    height: 180px;
+    height: 110px;
     background: fade-out($color_7, .25);
+    position: relative;
+    .oxfl-label {
+      position: absolute;
+      top: -3px;
+      left: 6px;
+    }
     img {
       display: block;
       width: 100%;

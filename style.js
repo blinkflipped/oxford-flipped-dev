@@ -141,7 +141,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
 				chapterUrl = chapter.url,
 				isStudent = true,
-				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-icon oxfl-button-icon-lock"></button>',
+				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-icon oxfl-button-icon-lock"></button>',
 				chapterState = 'Completed',
 				chapterStateID = '2',
 				chapterListItem = document.createElement('div');
