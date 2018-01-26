@@ -105,6 +105,20 @@ body.view-mode {
   .oxfl-button-icon.oxfl-button-icon-goback {
     background-position: 0 -60px; }
 
+.oxfl-button-lock {
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 40px;
+  height: 18px;
+  background: url(img/lock.png) 0 0 no-repeat;
+  background-size: 40px 18px; }
+  .oxfl-button-lock.oxfl-button-locked {
+    background-position: -40px 0; }
+
 .oxfl-label {
   width: 60px;
   height: 33px;
@@ -253,10 +267,16 @@ body.view-mode {
   font-weight: bold;
   font-style: italic;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -40px;
+  right: -40px;
   color: #ED1E79;
   text-align: center; }
+  .oxfl-bubble-hello .oxfl-bubble-hello-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -14px; }
   .oxfl-bubble-hello .oxfl-bubble-hello-text {
     display: block;
     margin-top: 2px; }
@@ -264,7 +284,8 @@ body.view-mode {
     display: block;
     width: 80px;
     margin: 0 auto;
-    white-space: nowrap; }
+    white-space: nowrap;
+    line-height: 1.2em; }
 
 #oxfl-notifications {
   padding: 0;

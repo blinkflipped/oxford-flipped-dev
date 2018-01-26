@@ -90,10 +90,17 @@
   font-weight: bold;
   font-style: italic;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -40px;
+  right: -40px;
   color: $color_4;
   text-align: center;
+  .oxfl-bubble-hello-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: -14px;
+  }
   .oxfl-bubble-hello-text {
     display: block;
     margin-top: 2px;
@@ -103,6 +110,7 @@
     width: 80px;
     margin: 0 auto;
     white-space: nowrap;
+    line-height: 1.2em;
   }
 
 }
