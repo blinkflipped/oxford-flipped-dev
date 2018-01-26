@@ -130,7 +130,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	console.log("Load Chapters List");
-	console.log();
+
 	var chapters = data.units[currentEpisode].subunits,
 			chaptersList = document.createDocumentFragment();
 	$.each(chapters, function(i, chapter){
@@ -160,3 +160,25 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 
 	$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
 }
+
+oxfordFlippedApp.goback = function(classRef) {
+	var possibleClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters'],
+			index = possibleClasses.indexOf(classRef);
+	possibleClasses.splice(index, 1);
+	console.log(possibleClasses);
+	var $body = $('body');
+	$body.addClass(classRef);
+	$.each(possibleClasses, function(i, v){
+		$body.removeClass(v);
+	});
+}
+
+$(document).ready(function() {
+
+	// Go back
+	$('body').on('click', '[data-goback]', function() {
+		var classRef = $(this).data('goback');
+		oxfordFlippedApp.goback(classRef);
+	});
+
+});

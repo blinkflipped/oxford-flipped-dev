@@ -314,7 +314,7 @@ body.oxfl-body-home #oxfl-home-menu {
   background: url(img/monster-5.svg) 0 0 no-repeat;
   background-size: contain;
   position: absolute;
-  top: 110px;
+  top: 30px;
   left: 45px; }
 
 #oxfl-episodes {
@@ -367,6 +367,14 @@ body.oxfl-body-episodes #oxfl-episodes {
 body.oxfl-body-episodes #oxfl-episodes-monster {
   opacity: 1;
   transform: translate(0, 0); }
+
+#oxfl-goback-to-episodes {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
 
 #oxfl-chapters-wrapper {
   width: 980px;
@@ -442,6 +450,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     .oxfl-chapters-page .oxfl-chapter-item:nth-child(3n+1) {
       clear: left; }
 
+body.oxfl-body-chapters #oxfl-goback-to-episodes,
 body.oxfl-body-chapters #oxfl-chapters-wrapper,
 body.oxfl-body-chapters #oxfl-chapters {
   visibility: visible;

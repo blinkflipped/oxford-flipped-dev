@@ -1,3 +1,12 @@
+#oxfl-goback-to-episodes {
+  position: absolute;
+  top: $header_height + 16px;
+  left: 20px;
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+
 #oxfl-chapters-wrapper {
   width: $layout_max;
   max-width: 100%;
@@ -88,6 +97,7 @@
 }
 
 body.oxfl-body-chapters {
+  #oxfl-goback-to-episodes,
   #oxfl-chapters-wrapper,
   #oxfl-chapters {
     visibility:visible;
