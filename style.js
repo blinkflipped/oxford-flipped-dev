@@ -108,7 +108,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 				unitImage = unit.image,
 				unitListItem = document.createElement('div');
 		unitListItem.className = 'oxfl-episodes-item';
-		unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title3">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
+		unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title4">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
 		unitList.appendChild(unitListItem);
 	});
 	$('#oxfl-episodes').empty();
@@ -138,10 +138,13 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 		var chapterTitle = chapter.title,
 				chapterNumber = i + 1,
 				chapterImage = chapter.image,
+				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
 				chapterUrl = chapter.url,
-				chapterListItem = document.createElement('div');
+				chapterListItem = document.createElement('div'),
+				isStudent = true,
+				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-icon oxfl-button-icon-lock"></button>';
 		chapterListItem.className = 'oxfl-chapter-item';
-		chapterListItem.innerHTML = '<article class="oxfl-chapter"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"><div class="oxfl-chapter-header"><div class="oxfl-chapter-header-top"><h2 class="oxfl-title2">Chapter '+chapterNumber+'</h2><div>STARS OR LOCK</div></div><h3 class="oxfl-title3">'+chapterTitle+'</h3></div><div class="oxfl-episode-image-wrapper"><div class="oxfl-label">Started</div><img src="'+chapterImage+'" alt="'+chapterTitle+'"></div></a></article>';
+		chapterListItem.innerHTML = '<article class="oxfl-chapter"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"><div class="oxfl-chapter-header"><div class="oxfl-chapter-header-top"><h2 class="oxfl-title3">Chapter '+chapterNumber+'</h2><div class="oxfl-chapter-header-top-right">'+chapterActions+'</div></div><h3 class="oxfl-title4">'+chapterTitle+'</h3></div><div class="oxfl-episode-image-wrapper"><div class="oxfl-label">Started</div>'+chapterImageCode+'</div></a></article>';
 		chaptersList.appendChild(chapterListItem);
 	});
 	$('#oxfl-chapters').empty();
