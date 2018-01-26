@@ -71,3 +71,26 @@
     background-position: 0 -60px;
   }
 }
+
+// Labels
+
+.oxfl-label {
+  width: 60px;
+  height: 33px;
+  background: url(img/labels.png) 0 0 no-repeat;
+  background-size: 60px 33px;
+  font-family: $font_family_1;
+  @include font-size(0.8);
+  font-weight: 500;
+  color: $label_color;
+  text-align: center;
+  &.oxfl-label-1 {
+    background-position: 0 0;
+  }
+  &.oxfl-label-2 {
+    background-position: 0 -33px;
+  }
+  &.oxfl-label-3 {
+    background-position: 0 -66px;
+  }
+}
