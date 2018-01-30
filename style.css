@@ -43,7 +43,7 @@ body.view-mode {
   font-size: 29px;
   font-size: 2.9rem;
   color: #8BE23F;
-  margin: 0 0 5px 0; }
+  margin: 0; }
 
 .oxfl-title3 {
   font-family: "Myfrida", sans-serif;
@@ -56,11 +56,21 @@ body.view-mode {
 
 .oxfl-title4 {
   font-family: "Quicksand", sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 14px;
   font-size: 1.4rem;
   color: #000000;
-  margin: 0 0 20px 0; }
+  margin: 0 0 5px 0;
+  display: flex;
+  height: 30px;
+  width: 100%;
+  min-width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center; }
+  .oxfl-chapter .oxfl-title4 {
+    justify-content: flex-start;
+    text-align: left; }
 
 #oxfl-coins {
   position: absolute;
@@ -116,7 +126,7 @@ body.view-mode {
   height: 18px;
   background: url(img/lock.png) 0 0 no-repeat;
   background-size: 40px 18px; }
-  .oxfl-button-lock.oxfl-button-locked {
+  .oxfl-button-lock.oxfl-button-locked, .oxfl-button-lock.locked {
     background-position: -20px 0; }
 
 .oxfl-label {
