@@ -143,14 +143,16 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
 				chapterUrl = chapter.url,
 				chapterID = chapter.id,
+				chapterLockStatus = chapter.lock,
+				chapterLockClass = (chapterLockStatus === '8' || chapterLockStatus === '2') ? 'locked' : 'lock';
 				isStudent = false,
-				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-toggle-lock-episode"></button>',
+				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-toggle-lock-episode '+chapterLockClass+'"></button>',
 				chapterState = 'Completed',
 				chapterStateID = '2',
 				chapterListItem = document.createElement('div');
 		chapterListItem.className = 'oxfl-chapter-item';
 //		chapterListItem.innerHTML = '<article class="oxfl-chapter"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'" data-id="'+chapterID+'"><div class="oxfl-chapter-header"><div class="oxfl-chapter-header-top"><h2 class="oxfl-title3">Chapter '+chapterNumber+'</h2><div class="oxfl-chapter-header-top-right">'+chapterActions+'</div></div><h3 class="oxfl-title4">'+chapterTitle+'</h3></div><div class="oxfl-chapter-image-wrapper"><div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div>'+chapterImageCode+'</div></a></article>';
-		chapterListItem.innerHTML = '		<article class="oxfl-chapter" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3><a href="javascript:void(0)" class="oxfl-js-load-chapter oxfl-title4" data-url="'+chapterUrl+'">'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
+		chapterListItem.innerHTML = '<article class="oxfl-chapter" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3><a href="javascript:void(0)" class="oxfl-js-load-chapter oxfl-title4" data-url="'+chapterUrl+'">'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
 		chaptersList.appendChild(chapterListItem);
 	});
 
@@ -205,10 +207,10 @@ $(document).ready(function() {
 	});
 
 	// Lock/unlock chapters
-	$('body').on('click', 'oxfl-js-toggle-lock-episode', function(e) {
+	$('body').on('click', '.oxfl-js-toggle-lock-episode', function(e) {
 
 		e.preventDefault();
-		var chapterID = $(this).closest('.oxfl-js-load-chapter').data('id');
+		var chapterID = $(this).closest('.oxfl-chapter').data('id');
 		console.log("TOGGLE LOCK");
 		onCursoCambiarBloqueado(chapterID, idcurso);
 
