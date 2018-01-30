@@ -35,6 +35,8 @@ body.view-mode {
   font-size: 6.5rem;
   color: #8BE23F;
   margin: 0; }
+  .oxfl-title1 a {
+    color: #8BE23F; }
 
 .oxfl-title2 {
   font-family: "Myfrida", sans-serif;
@@ -44,6 +46,8 @@ body.view-mode {
   font-size: 2.9rem;
   color: #8BE23F;
   margin: 0; }
+  .oxfl-title2 a {
+    color: #8BE23F; }
 
 .oxfl-title3 {
   font-family: "Myfrida", sans-serif;
@@ -53,6 +57,8 @@ body.view-mode {
   font-size: 2.2rem;
   color: #ED1E79;
   margin: 0; }
+  .oxfl-title3 a {
+    color: #ED1E79; }
 
 .oxfl-title4 {
   font-family: "Quicksand", sans-serif;
@@ -60,17 +66,17 @@ body.view-mode {
   font-size: 14px;
   font-size: 1.4rem;
   color: #000000;
-  margin: 0 0 5px 0;
-  display: flex;
-  height: 30px;
-  width: 100%;
-  min-width: 100%;
-  text-align: center;
-  align-items: center;
-  justify-content: center; }
-  .oxfl-chapter .oxfl-title4 {
-    justify-content: flex-start;
-    text-align: left; }
+  margin: 0 0 5px 0; }
+  .oxfl-episode .oxfl-title4 {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    min-width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center; }
+  .oxfl-title4 a {
+    color: #000000; }
 
 #oxfl-coins {
   position: absolute;
@@ -462,10 +468,10 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
 
 .oxfl-chapter {
   background: #ffffff;
-  border: 2px dashed #FBB03B; }
-  .oxfl-chapter > a {
-    display: block;
-    padding: 5px 10px; }
+  border: 2px dashed #FBB03B;
+  padding: 5px 10px; }
+  .oxfl-chapter a {
+    display: block; }
   .oxfl-chapter .oxfl-chapter-header-top {
     display: flex;
     justify-content: space-between;

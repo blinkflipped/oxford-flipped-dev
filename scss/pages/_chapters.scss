@@ -55,9 +55,9 @@
 .oxfl-chapter {
   background: $chapter_background_color;
   border: 2px dashed $chapter_border_color;
-  &>a {
+  padding: 5px 10px;
+  a {
     display: block;
-    padding: 5px 10px;
   }
   .oxfl-chapter-header-top {
     display: flex;
