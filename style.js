@@ -234,11 +234,11 @@ $(document).ready(function() {
 		var chapterID = $(this).data('id'),
 				isLocked = $(this).hasClass('locked');
 
-		if (isLocked) {
+	/*	if (isLocked) {
 			$(this).addClass('unlock').removeClass('locked');
 		} else {
 			$(this).removeClass('unlock').addClass('locked');
-		}
+		}*/
 
 		onCursoCambiarBloqueado(chapterID, idcurso);
 
