@@ -158,3 +158,77 @@
   }
 
 }
+
+// Modals
+.view-mode {
+  .modal-backdrop {
+    background: $color_8;
+    &.in {
+      opacity: .74!important;
+    }
+  }
+}
+
+.oxfl-modal {
+  .modal-dialog {
+    width: 370px;
+  }
+  .modal-header {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    border: 0;
+    min-height: 0;
+    .close {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      border: 2px solid $color_9;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: $negative_color;
+      background: $color_6;
+      opacity: 1;
+      padding: 0;
+      margin: 0;
+      span {
+        display: block;
+        height: 36px;
+        line-height: 21px;
+        font-size: 50px;
+        text-shadow: none;
+      }
+    }
+  }
+  .modal-body {
+    @include font-size(1.9);
+    font-family: $font_family_1;
+  }
+  .modal-content {
+    border-radius: 0;
+    border: 2px solid $color_9;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  }
+  .modal-footer {
+    border: 0;
+    border-radius: 0;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    .btn {
+      background: url(img/buttons.png) 0 0 no-repeat transparent;
+      background-size: 76px 83px;
+      color: $negative_color;
+      width: 76px;
+      height: 42px;
+      text-align: center;
+      font-family: $font_family_1;
+      @include font-size(2.5);
+      font-weight: bold;
+      &.btn-secondary {
+        background-position: 0 -83px;
+      }
+    }
+  }
+}

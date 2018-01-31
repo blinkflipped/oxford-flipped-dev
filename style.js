@@ -80,7 +80,7 @@ oxfordFlippedApp.homepage = function(data) {
 			totalCoins = '1.000.000',
 			totalNotifications = '5';
 	// TODO Decide if put coins outside homepage, to make coins transversal.
-	var html = '<div id="oxfl-general"><div id="oxfl-custom-background"></div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <button id="oxfl-goback-to-episodes" class="oxfl-button oxfl-button-icon oxfl-button-icon-goback" data-goback="oxfl-body-episodes"></button> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> <div class="modal fade" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure? </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary">Yes</button> </div> </div> </div> </div>';
+	var html = '<div id="oxfl-general"><div id="oxfl-custom-background"></div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <button id="oxfl-goback-to-episodes" class="oxfl-button oxfl-button-icon oxfl-button-icon-goback" data-goback="oxfl-body-episodes"></button> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> <div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure? </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-episode">Yes</button> </div> </div> </div> </div>';
 
 	$('body').prepend(html);
 
@@ -146,7 +146,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterLockStatus = chapter.lock,
 				chapterLockClass = (chapterLockStatus === 8 || chapterLockStatus === 2) ? 'locked' : 'unlock';
 				isStudent = false,
-				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-toggle-lock-episode '+chapterLockClass+'"></button>',
+				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-episode '+chapterLockClass+'"></button>',
 				chapterState = 'Completed',
 				chapterStateID = '2',
 				chapterListItem = document.createElement('div');
@@ -207,7 +207,7 @@ $(document).ready(function() {
 	});
 
 	// Lock/unlock chapters
-	$('body').on('click', '.oxfl-js-toggle-lock-episode', function(e) {
+	$('body').on('click', '.oxfl-js-modal-lock-episode', function(e) {
 
 		e.preventDefault();
 
@@ -216,15 +216,19 @@ $(document).ready(function() {
 
 		if (isLocked) {
 			$('#oxfl-modal-lock-chapters-text').text('unlock');
-			$('#oxfl-modal-lock-chapters').data('lock-status', 'locked');
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('locked');
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
-			$('#oxfl-modal-lock-chapters').data('lock-status', 'unlocked');
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock');
 		}
 
 		$('#oxfl-modal-lock-chapters').modal().data('chapter-id', chapterID);
 
-		/*
+	});
+
+	$('body').on('click', '.oxfl-js-toggle-lock-episode', function(e) {
+
+		e.preventDefault();
 
 		if (isLocked) {
 			$(this).addClass('unlock').removeClass('locked');
@@ -233,7 +237,7 @@ $(document).ready(function() {
 		}
 
 		onCursoCambiarBloqueado(chapterID, idcurso);
-		*/
+
 	});
 
 });

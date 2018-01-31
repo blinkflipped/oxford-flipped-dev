@@ -171,6 +171,66 @@ body.view-mode {
   .oxfl-stars .oxfl-star-item.oxfl-star-item-filled {
     background-position: -19px 0; }
 
+.view-mode .modal-backdrop {
+  background: #CCCCCC; }
+  .view-mode .modal-backdrop.in {
+    opacity: 0.74 !important; }
+
+.oxfl-modal .modal-dialog {
+  width: 370px; }
+.oxfl-modal .modal-header {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  border: 0;
+  min-height: 0; }
+  .oxfl-modal .modal-header .close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    border: 2px solid #FCEE21;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #FBB03B;
+    opacity: 1;
+    padding: 0;
+    margin: 0; }
+    .oxfl-modal .modal-header .close span {
+      display: block;
+      height: 36px;
+      line-height: 21px;
+      font-size: 50px;
+      text-shadow: none; }
+.oxfl-modal .modal-body {
+  font-size: 19px;
+  font-size: 1.9rem;
+  font-family: "Quicksand", sans-serif; }
+.oxfl-modal .modal-content {
+  border-radius: 0;
+  border: 2px solid #FCEE21;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
+.oxfl-modal .modal-footer {
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  text-align: center;
+  justify-content: space-between; }
+  .oxfl-modal .modal-footer .btn {
+    background: url(img/buttons.png) 0 0 no-repeat transparent;
+    background-size: 76px 83px;
+    color: #ffffff;
+    width: 76px;
+    height: 42px;
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
+    font-size: 25px;
+    font-size: 2.5rem;
+    font-weight: bold; }
+    .oxfl-modal .modal-footer .btn.btn-secondary {
+      background-position: 0 -83px; }
+
 #oxfl-general {
   width: 100%;
   height: 100vh;
