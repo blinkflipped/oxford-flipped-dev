@@ -239,7 +239,7 @@ $(document).ready(function() {
 		} else {
 			$(this).removeClass('unlock').addClass('locked');
 		}*/
-
+		console.log("A");
 		onCursoCambiarBloqueado(chapterID, idcurso);
 
 	});
