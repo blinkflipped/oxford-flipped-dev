@@ -216,13 +216,13 @@ $(document).ready(function() {
 
 		if (isLocked) {
 			$('#oxfl-modal-lock-chapters-text').text('unlock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('locked');
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('locked').data('chapter-id', chapterID);
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock');
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock').data('chapter-id', chapterID);
 		}
 
-		$('#oxfl-modal-lock-chapters').modal().data('chapter-id', chapterID);
+		$('#oxfl-modal-lock-chapters').modal()
 
 	});
 
@@ -230,7 +230,8 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		var isLocked = $(this).hasClass('locked');
+		var chapterID = $(this).data('id'),
+				isLocked = $(this).hasClass('locked');
 
 		if (isLocked) {
 			$(this).addClass('unlock').removeClass('locked');
