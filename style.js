@@ -216,11 +216,12 @@ $(document).ready(function() {
 
 		if (isLocked) {
 			$('#oxfl-modal-lock-chapters-text').text('unlock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('locked').data('chapter-id', chapterID);
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('locked');
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock').data('chapter-id', chapterID);
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock');
 		}
+		$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').attr('data-chapter-id', chapterID);
 
 		$('#oxfl-modal-lock-chapters').modal()
 
