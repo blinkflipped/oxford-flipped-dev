@@ -153,7 +153,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	var chapters = data.units[currentEpisode].subunits,
 			episodeImage =  data.units[currentEpisode].image,
 			chaptersList = document.createDocumentFragment();
-
+	console.log(chaptersList);
 	$.each(chapters, function(i, chapter){
 		console.log(chapter);
 		var chapterTitle = chapter.title,
