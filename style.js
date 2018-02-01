@@ -236,7 +236,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var chapterUrl = $(this).data('url');
 
-		showIframe(chapterUrl, 1000, 700, false, true, false, '');
+		showIFrame(chapterUrl, 1000, 700, false, true, false, '');
 
 	});
 
