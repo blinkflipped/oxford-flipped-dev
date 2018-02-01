@@ -178,9 +178,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')').addClass('active');
 
 	var $chaptersWrapper = $('#oxfl-chapters');
-	$chaptersWrapper.empty();
+	$chaptersWrapper.empty().slick('unslick');
 	$chaptersWrapper[0].appendChild(chaptersList);
-	//$chaptersWrapper.slick('unslick');
 
 	var items = $('#oxfl-chapters').find('.oxfl-chapter-item'),
 			itemsLength = items.length;

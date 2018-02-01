@@ -333,7 +333,7 @@ body.view-mode {
     left: -40px; }
   .slick-arrow.slick-next {
     background-position: 0 -41px;
-    left: -40px; }
+    right: -40px; }
   .slick-arrow.slick-disabled {
     display: none !important; }
 
