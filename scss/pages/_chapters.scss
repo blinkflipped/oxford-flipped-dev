@@ -37,6 +37,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 100;
   .oxfl-body-user-not-student & {
     background-image: url(img/monster-6-b.svg);
   }
@@ -52,11 +53,14 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: 223px auto;
+  margin: 226px auto;
   //position: absolute;
   //top: 0;
   //left: 50%;
   //transform: translate(-50%,0);
+  .slick-list {
+    z-index: 500;
+  }
 }
 
 .oxfl-chapter {
@@ -87,6 +91,28 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+  .oxfl-body-user-student &.locked {
+    .oxfl-chapter-image-wrapper {
+      .oxfl-label  {
+        display: none;
+      }
+      img {
+        opacity: .3;
+      }
+      &::before {
+        content: '';
+        display: block;
+        width: 48px;
+        height: 60px;
+        background: url(img/lock-large.png) 0 0 no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
     }
   }
 }
