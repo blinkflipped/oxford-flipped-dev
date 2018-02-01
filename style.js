@@ -179,7 +179,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 
 	var $chaptersWrapper = $('#oxfl-chapters');
 	$chaptersWrapper.empty();
-	$chaptersWrapper.slick('unslick');
+	if ($chaptersWrapper.hasClass('slick-initialized')) {
+		$chaptersWrapper.slick('unslick');
+	}
 	$chaptersWrapper[0].appendChild(chaptersList);
 
 	var items = $chaptersWrapper.find('.oxfl-chapter-item'),
