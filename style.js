@@ -181,13 +181,15 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	$chaptersWrapper.empty().end().slick('unslick');
 	$chaptersWrapper[0].appendChild(chaptersList);
 
-	var items = $('#oxfl-chapters').find('.oxfl-chapter-item'),
+	var items = $chaptersWrapper.find('.oxfl-chapter-item'),
 			itemsLength = items.length;
-	for(var i = 0; i < itemsLength; i+=6) {
-		items.slice(i, i+6).wrapAll('<div class="oxfl-chapters-page"></div>');
-	}
+	if (itemsLength) {
+		for(var i = 0; i < itemsLength; i+=6) {
+			items.slice(i, i+6).wrapAll('<div class="oxfl-chapters-page"></div>');
+		}
 
-	$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+		$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+	}
 
 	$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
 }
