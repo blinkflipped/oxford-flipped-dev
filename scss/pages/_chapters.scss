@@ -30,13 +30,16 @@
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
-  width: 690px;
+  width: 815px;
   height: 390px;
   background: url(img/monster-6.svg) 0 0 no-repeat;
   background-size: contain;
   position: absolute;
   top: 0;
   left: 0;
+  .oxfl-body-user-not-student & {
+    background-image: url(img/monster-6-b.svg);
+  }
 }
 
 

@@ -76,6 +76,7 @@ var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
+oxfordFlippedApp.config.isStudent = false;
 
 oxfordFlippedApp.fontSizeResize = function(elements) {
 	if (elements.length < 0) {
@@ -92,19 +93,22 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 oxfordFlippedApp.homepage = function(data) {
 	console.log("Homepage");
 	$('body').addClass('htmlReady');
+
 	var bookTitle = data.title,
 			username = 'Federico Antonio',
 			totalCoins = '1.000.000',
 			totalNotifications = '5';
-	// TODO Decide if put coins outside homepage, to make coins transversal.
-	var html = '<div id="oxfl-general"><div id="oxfl-custom-background"></div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <button id="oxfl-goback-to-episodes" class="oxfl-button oxfl-button-icon oxfl-button-icon-goback" data-goback="oxfl-body-episodes"></button> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> <div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure? </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-episode">Yes</button> </div> </div></div> </div> </div>';
+
+	var html = '<div id="oxfl-general"><div id="oxfl-custom-background"></div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><h1 class="oxfl-title1" id="oxfl-home-title">'+bookTitle+'</h1><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <button id="oxfl-goback-to-episodes" class="oxfl-button oxfl-button-icon oxfl-button-icon-goback" data-goback="oxfl-body-episodes"></button> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> <div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure?</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-episode">Yes</button> </div> </div></div> </div> </div>';
 
 	$('body').prepend(html);
 
 	var elements = $('.oxfl-bubble-hello-name');
 	oxfordFlippedApp.fontSizeResize(elements);
 
-	$('body').addClass('oxfl-body-home');
+	var userBodyClass = (oxfordFlippedApp.config.isStudent) ? 'oxfl-body-user-student' : 'oxfl-body-user-not-student';
+
+	$('body').addClass('oxfl-body-home '+userBodyClass);
 
 	$('body').on('click', '.oxfl-js-load-episodes', function() {
 		oxfordFlippedApp.loadEpisodes(data);
@@ -160,19 +164,20 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterNumber = i + 1,
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
-				chapterUrl = chapter.url,
 				chapterID = chapter.id,
 				chapterLockStatus = chapter.lock,
 				chapterLockClass = (chapterLockStatus === 8 || chapterLockStatus === 2) ? 'locked' : 'unlock';
-				isStudent = false,
-				chapterActions = (isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-episode '+chapterLockClass+'"></button>',
+				chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-episode '+chapterLockClass+'"></button>',
 				chapterState = 'Completed',
 				chapterStateID = '2',
-				chapterListItem = document.createElement('div');
+				chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? '' : 'class="oxfl-js-load-chapter" data-url="'+chapter.url+'"',
+				chapterListItem = document.createElement('div'),
+				chapterinnerHTML =  '<article class="oxfl-chapter" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)"'+chapterUrl+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)"'+chapterUrl+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrl+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
+
 		chapterListItem.className = 'oxfl-chapter-item';
-//		chapterListItem.innerHTML = '<article class="oxfl-chapter"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'" data-id="'+chapterID+'"><div class="oxfl-chapter-header"><div class="oxfl-chapter-header-top"><h2 class="oxfl-title3">Chapter '+chapterNumber+'</h2><div class="oxfl-chapter-header-top-right">'+chapterActions+'</div></div><h3 class="oxfl-title4">'+chapterTitle+'</h3></div><div class="oxfl-chapter-image-wrapper"><div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div>'+chapterImageCode+'</div></a></article>';
-		chapterListItem.innerHTML = '<article class="oxfl-chapter" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'">'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" class="oxfl-js-load-chapter" data-url="'+chapterUrl+'"> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
+		chapterListItem.innerHTML = chapterinnerHTML;
 		chaptersList.appendChild(chapterListItem);
+		
 	});
 
 	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')').addClass('active');

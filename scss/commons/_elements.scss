@@ -205,17 +205,23 @@
   .modal-body {
     @include font-size(1.9);
     font-family: $font_family_1;
+    text-align: center;
   }
   .modal-content {
     border-radius: 0;
     border: 2px solid $color_9;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    &>p {
+      max-width: 260px;
+      margin: 0 auto;
+    }
   }
   .modal-footer {
     border: 0;
     border-radius: 0;
     background: url(img/monster-7.svg) center bottom no-repeat transparent;
     padding-bottom: 100px;
+    padding-top: 0;
     background-size: 240px 95px;
     .modal-footer-inner {
       display: flex;
@@ -260,6 +266,7 @@
   position: absolute;
   top: 50%;
   transform: translate(0,-50%);
+  outline: none;
   &.slick-prev {
     background-position: 0 0;
     left: -40px;

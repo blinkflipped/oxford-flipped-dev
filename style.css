@@ -281,16 +281,21 @@ body.view-mode {
 .oxfl-modal .modal-body {
   font-size: 19px;
   font-size: 1.9rem;
-  font-family: "Quicksand", sans-serif; }
+  font-family: "Quicksand", sans-serif;
+  text-align: center; }
 .oxfl-modal .modal-content {
   border-radius: 0;
   border: 2px solid #FCEE21;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
+  .oxfl-modal .modal-content > p {
+    max-width: 260px;
+    margin: 0 auto; }
 .oxfl-modal .modal-footer {
   border: 0;
   border-radius: 0;
   background: url(img/monster-7.svg) center bottom no-repeat transparent;
   padding-bottom: 100px;
+  padding-top: 0;
   background-size: 240px 95px; }
   .oxfl-modal .modal-footer .modal-footer-inner {
     display: flex;
@@ -327,7 +332,8 @@ body.view-mode {
   margin: 0;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%); }
+  transform: translate(0, -50%);
+  outline: none; }
   .slick-arrow.slick-prev {
     background-position: 0 0;
     left: -40px; }
@@ -658,13 +664,15 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
-  width: 690px;
+  width: 815px;
   height: 390px;
   background: url(img/monster-6.svg) 0 0 no-repeat;
   background-size: contain;
   position: absolute;
   top: 0;
   left: 0; }
+  .oxfl-body-user-not-student #oxfl-chapters-monster {
+    background-image: url(img/monster-6-b.svg); }
 
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
