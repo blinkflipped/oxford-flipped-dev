@@ -75,6 +75,8 @@
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
+oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
+
 oxfordFlippedApp.fontSizeResize = function(elements) {
 	if (elements.length < 0) {
 		return;
@@ -135,11 +137,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 		items.slice(i, i+4).wrapAll('<div class="oxfl-episodes-page"></div>');
 	}
 
-	$('#oxfl-episodes').slick({
-		arrows: true,
-		dots: true,
-		infinite: false
-	});
+	$('#oxfl-episodes').slick(oxfordFlippedApp.config.carouselOpt);
 
 	$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
 
@@ -179,14 +177,18 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 
 	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')').addClass('active');
 
-	$('#oxfl-chapters').empty();
-	$('#oxfl-chapters')[0].appendChild(chaptersList);
+	var $chaptersWrapper = $('#oxfl-chapters');
+	$chaptersWrapper.empty();
+	$chaptersWrapper[0].appendChild(chaptersList);
+	//$chaptersWrapper.slick('unslick');
 
 	var items = $('#oxfl-chapters').find('.oxfl-chapter-item'),
 			itemsLength = items.length;
 	for(var i = 0; i < itemsLength; i+=6) {
 		items.slice(i, i+6).wrapAll('<div class="oxfl-chapters-page"></div>');
 	}
+
+	$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 
 	$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
 }

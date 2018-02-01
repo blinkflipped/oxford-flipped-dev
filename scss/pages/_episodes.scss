@@ -34,13 +34,16 @@
 #oxfl-episodes {
   background: fade-out($color_5, .2);
   border: 2px solid $color_5_lighter;
-  padding: $padding_1;
   width: 550px;
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   float: right;
   margin: 0 $space_1/2 $space_2 $space_1;
+  padding: 0;
+  .oxfl-episodes-page {
+    padding: $padding_1;
+  }
 }
 
 .oxfl-episode {

@@ -20,6 +20,8 @@ $color_6: #FBB03B; // Orange
 $color_7: #39B54A; //Green 2
 $color_8: #CCCCCC;
 $color_9: #FCEE21; // Yellow
+$color_10: #999999;
+
 
 $home_menu_background_color: $background_color;
 
@@ -30,6 +32,10 @@ $chapter_background_color: $episode_background_color;
 $chapter_border_color: $episode_border_color;
 
 $label_color: #ffffff;
+
+$dot_background_color: $color_10;
+$dot_background_color_active: $color_4;
+
 
 // Spaces
 
