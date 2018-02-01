@@ -76,7 +76,7 @@ var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
-oxfordFlippedApp.config.isStudent = true;
+oxfordFlippedApp.config.isStudent = false;
 
 oxfordFlippedApp.fontSizeResize = function(elements) {
 	if (elements.length < 0) {
