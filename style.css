@@ -315,7 +315,7 @@ body.view-mode {
       background-position: 0 -42px; }
 
 .slick-arrow {
-  background: url(image/arrows.png) 0 0 no-repeat transparent;
+  background: url(img/arrows.png) 0 0 no-repeat transparent;
   background-size: 58px 82px;
   width: 58px;
   height: 41px;
