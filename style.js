@@ -1,11 +1,11 @@
 (function (blink) {
 	'use strict';
 
-	var OxfordFlippedStyleDev = function() {
+	var OxfordFlippedDevStyle = function() {
 		blink.theme.styles.basic.apply(this, arguments);
 	}
 
-	OxfordFlippedStyleDev.prototype = {
+	OxfordFlippedDevStyle.prototype = {
 		bodyClassName: 'content_type_clase_oxford-flipped-dev',
 		ckEditorStyles: {
 			name: 'oxford-flipped-dev',
@@ -41,14 +41,14 @@
 	};
 
 
-	OxfordFlippedStyleDev.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedStyleDev.prototype);
+	OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
 
-	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedStyleDev;
+	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
 
 	blink.events.on('loadSeguimientoCurso', function() {
 		// Ejemplo carga de datos del libro en el toc del curso.
 		blink.getCourse(idcurso).done(function(data) {
-			var style = new OxfordFlippedStyleDev;
+			var style = new OxfordFlippedDevStyle;
 			style.onCourseDataLoaded(data);
 			console.log("TOC");
 			oxfordFlippedApp.homepage(data);
