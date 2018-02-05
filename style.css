@@ -83,7 +83,7 @@ html {
   position: relative;
   font-size: 62.5%; }
 
-body.view-mode {
+body.view-mode.body_curso {
   position: relative;
   z-index: 100;
   -webkit-overflow-scrolling: touch;
@@ -98,7 +98,7 @@ body.view-mode {
   font-size: 2.8rem;
   background: #ffffff;
   color: #000000; }
-  body.view-mode .footer {
+  body.view-mode.body_curso .footer {
     display: none; }
 
 .oxfl-title1 {
