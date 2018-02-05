@@ -79,10 +79,11 @@
   src: url("fonts/myfrida_bold-italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/myfrida_bold-italic-webfont.woff2") format("woff2"), url("fonts/myfrida_bold-italic-webfont.woff") format("woff"), url("fonts/myfrida_bold-italic-webfont.ttf") format("truetype"), url("fonts/myfrida_bold-italic-webfont.svg#myfridabold_italic") format("svg");
   font-weight: bold;
   font-style: italic; }
+/*
 html {
-  position: relative;
-  font-size: 62.5%; }
-
+	position: relative;
+	font-size: 62.5%
+}*/
 body.view-mode.body_curso {
   position: relative;
   z-index: 100;
