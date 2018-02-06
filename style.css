@@ -101,6 +101,17 @@ body.view-mode.body_curso {
   color: #000000; }
   body.view-mode.body_curso .footer {
     display: none; }
+  body.view-mode.body_curso::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff; }
+  body.view-mode.body_curso.htmlReady::before {
+    display: none; }
 
 .oxfl-title1 {
   font-family: "Myfrida", sans-serif;
@@ -391,14 +402,15 @@ body.view-mode.body_curso {
   height: 160px; }
   .oxfl-popover .oxfl-popover-inner {
     display: flex;
-    width: 160px;
+    width: 150px;
     height: 120px;
     align-items: center;
     justify-content: center; }
   .oxfl-popover .popover-content {
     color: #ffffff;
     text-align: center;
-    max-width: 140px; }
+    max-width: 140px;
+    padding: 6px; }
   .oxfl-popover .arrow {
     display: none !important; }
   .oxfl-popover .oxfl-close {

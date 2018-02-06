@@ -339,7 +339,7 @@
   height: 160px;
   .oxfl-popover-inner {
     display: flex;
-    width: 160px;
+    width: 150px;
     height: 120px;
     align-items: center;
     justify-content: center;
@@ -349,6 +349,7 @@
     //background-color: $popover_background_color;
     text-align: center;
     max-width: 140px;
+    padding: 6px;
   }
   .arrow {
     display: none!important;
