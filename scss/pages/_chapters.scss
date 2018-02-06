@@ -115,6 +115,9 @@
       min-height: 20px;
     }
     .oxfl-chapter-image-wrapper {
+      img {
+        object-fit: contain;
+      }
       &::before {
         width: 110px;
         height: 110px;

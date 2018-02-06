@@ -787,6 +787,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
     justify-content: flex-end;
     min-height: 20px; }
+  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper img {
+    object-fit: contain; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
     width: 110px;
     height: 110px;

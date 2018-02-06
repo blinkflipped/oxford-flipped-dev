@@ -87,9 +87,9 @@ oxfordFlippedApp.popover = function() {
 	});
 
 	$('body').on('click', '#oxfl-popover-close', function(e) {
-		console.log("AA");
 		$('.oxfl-js-popover').popover('hide');
-	})
+	});
+
 	$('.oxfl-js-popover').on('click', function(e) {
 		$('.oxfl-js-popover').not(this).popover('hide');
 	});
