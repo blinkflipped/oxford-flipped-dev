@@ -109,7 +109,8 @@ body.view-mode.body_curso {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #ffffff; }
+    background: #ffffff;
+    z-index: 1000; }
   body.view-mode.body_curso.htmlReady::before {
     display: none; }
 

@@ -121,7 +121,7 @@ oxfordFlippedApp.homepage = function(data) {
 	$('body').addClass('htmlReady');
 
 	var bookTitle = data.title,
-			username = 'Federico Antonio',
+			username = 'Federico Antonio',//TODO TAKE FIRST STRING OF NAME
 			totalCoins = '1.000.000',
 			totalNotifications = '5';
 
