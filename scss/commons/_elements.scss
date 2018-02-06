@@ -109,7 +109,8 @@
   background: url(img/lock.png) 0 0 no-repeat;
   background-size: 40px 18px;
   &.oxfl-button-locked,
-  &.locked {
+  &.locked,
+  &.lock {
     background-position: -20px 0;
   }
 }
