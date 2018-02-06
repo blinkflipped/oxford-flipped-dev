@@ -166,7 +166,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
 				chapterID = chapter.id,
 				chapterLockStatus = chapter.lock,
-				chapterLockClass = (chapterLockStatus === 8 || chapterLockStatus === 2) ? 'locked' : 'unlock';
+				chapterLockClass = (chapterLockStatus === 8 || chapterLockStatus === 2) ? 'lock' : 'unlock';
 				chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-episode '+chapterLockClass+'"></button>',
 				chapterState = 'Completed',
 				chapterStateID = '2',
@@ -248,11 +248,11 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		var chapterID = $(this).closest('.oxfl-chapter').data('id'),
-				isLocked = $(this).hasClass('locked');
+				isLocked = $(this).hasClass('lock');
 
 		if (isLocked) {
 			$('#oxfl-modal-lock-chapters-text').text('unlock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('locked');
+			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('lock');
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
 			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock');
@@ -268,19 +268,20 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		var chapterID = $(this).data('chapter-id'),
-				isLocked = $(this).hasClass('locked');
+				isLocked = $(this).hasClass('lock');
 
 		onCursoCambiarBloqueado(chapterID, idcurso);
-
+		console.log(isLocked);
 		var isDone = true,
 				newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
 		console.log(newIsLocked);
 
 		if (isDone) {
 			if (newIsLocked) {
-				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').removeClass('unlock').addClass('locked');
+				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').addClass('unlock').removeClass('lock');
+
 			} else {
-				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').addClass('unlock').removeClass('locked');
+				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').removeClass('unlock').addClass('lock');
 			}
 			$('#oxfl-modal-lock-chapters').modal('hide');
 		}
