@@ -170,7 +170,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars"><li class="oxfl-star-item oxfl-star-item-filled"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-episode '+chapterLockClass+'"></button>',
 				chapterState = 'Completed',
 				chapterStateID = '2',
-				chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? '' : 'class="oxfl-js-load-chapter" data-url="'+chapter.url+'"',
+				chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? '' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 				chapterListItem = document.createElement('div'),
 				chapterinnerHTML =  '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
 
@@ -234,9 +234,11 @@ $(document).ready(function() {
 	$('body').on('click', '.oxfl-js-load-chapter', function(e) {
 
 		e.preventDefault();
-		var chapterUrl = $(this).data('url');
+		//var chapterUrl = $(this).data('url');
+		//showIFrame(chapterUrl, 1000, 700, false, true, false, '');
 
-		showIFrame(chapterUrl, 1000, 700, false, true, false, '');
+		var chapterID = $(this).data('chapter-id');
+		blink.domain.openActivity(chapterID);
 
 	});
 
@@ -265,16 +267,20 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		var chapterID = $(this).data('id'),
+		var chapterID = $(this).data('chapter-id'),
 				isLocked = $(this).hasClass('locked');
 
-	/*	if (isLocked) {
-			$(this).addClass('unlock').removeClass('locked');
-		} else {
-			$(this).removeClass('unlock').addClass('locked');
-		}*/
-		console.log("A");
 		onCursoCambiarBloqueado(chapterID, idcurso);
+
+		var isDone = true,
+				newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
+		if (isDone) {
+			if (newIsLocked) {
+				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').addClass('unlock').removeClass('locked');
+			} else {
+				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').removeClass('unlock').addClass('locked');
+			}
+		}
 
 	});
 
