@@ -86,7 +86,7 @@ oxfordFlippedApp.popover = function() {
 		container: 'body'
 	});
 
-	$('#oxfl-popover-close').on('click', function(e) {
+	$('body').on('click', '#oxfl-popover-close', function(e) {
 		console.log("AA");
 		$('.oxfl-js-popover').popover('hide');
 	})
