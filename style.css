@@ -717,7 +717,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     .oxfl-chapter .oxfl-chapter-image-wrapper .oxfl-label {
       position: absolute;
       top: -3px;
-      left: 6px; }
+      left: 6px;
+      z-index: 20; }
     .oxfl-chapter .oxfl-chapter-image-wrapper img {
       display: block;
       width: 100%;
@@ -725,6 +726,10 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       object-fit: cover;
       position: relative;
       z-index: 10; }
+  .oxfl-chapter.oxfl-chapter-challenge .oxfl-title3 {
+    text-align: center; }
+  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
+    justify-content: flex-end; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
     width: 110px;
     height: 110px;

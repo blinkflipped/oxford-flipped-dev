@@ -95,6 +95,7 @@
       position: absolute;
       top: -3px;
       left: 6px;
+      z-index: 20;
     }
     img {
       display: block;
@@ -106,6 +107,12 @@
     }
   }
   &.oxfl-chapter-challenge {
+    .oxfl-title3 {
+      text-align: center;
+    }
+    .oxfl-chapter-header-top {
+      justify-content: flex-end;
+    }
     .oxfl-chapter-image-wrapper {
       &::before {
         width: 110px;

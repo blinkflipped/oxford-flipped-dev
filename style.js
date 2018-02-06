@@ -177,7 +177,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? '' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 				chapterListItem = document.createElement('div'),
 				//chapterChallengeClass = (chapterIsChallenge) ? 'oxfl-chapter-challenge' : '',
-				chapterinnerHTML = (chapterIsChallenge) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
+				chapterinnerHTML = (chapterIsChallenge) ? '<article class="oxfl-chapter oxfl-chapter-challenge '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
 
 		chapterListItem.className = 'oxfl-chapter-item';
 		chapterListItem.innerHTML = chapterinnerHTML;
@@ -277,19 +277,23 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		var chapterID = $(this).closest('.oxfl-chapter').data('id'),
-				isLocked = $(this).hasClass('lock');
+		var chapterID = $(this).closest('.oxfl-chapter').attr('data-id'),
+				isLocked = $(this).hasClass('lock'),
+				$modal = $('#oxfl-modal-lock-chapters');
+
+		console.log(chapterID);
+		console.log(isLocked);
 
 		if (isLocked) {
 			$('#oxfl-modal-lock-chapters-text').text('unlock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('lock');
+			$modal.find('.oxfl-js-toggle-lock-episode').addClass('lock');
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
-			$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').addClass('unlock');
+			$modal.find('.oxfl-js-toggle-lock-episode').addClass('unlock');
 		}
-		$('#oxfl-modal-lock-chapters .oxfl-js-toggle-lock-episode').attr('data-chapter-id', chapterID);
+		$modal.find('.oxfl-js-toggle-lock-episode').attr('data-chapter-id', chapterID);
 
-		$('#oxfl-modal-lock-chapters').modal()
+		$modal.modal()
 
 	});
 
