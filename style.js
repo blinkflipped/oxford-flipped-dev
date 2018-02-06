@@ -247,6 +247,26 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 }
 
+oxfordFlippedApp.popover = function() {
+
+	$('.oxfl-js-popover').popover({
+		placement: 'top',
+		template: '<div class="popover oxfl-popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-title"></h3><button type="button" id="oxfl-popover-close" class="oxlf-close"><span>&times;</span></button><div class="popover-content"></div></div>'
+		container: 'body'
+	});
+	$('.oxfl-js-popover').on('click', function (e) {
+		$('.oxfl-js-popover').not(this).popover('hide');
+	});
+	$(document).click(function(event) {
+		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length) {
+			if($('.oxfl-popover').is(":visible")) {
+				$('.oxfl-js-popover').popover('hide');
+			}
+		}
+	});
+
+}
+
 $(document).ready(function() {
 
 	// Go back

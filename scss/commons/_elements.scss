@@ -324,3 +324,36 @@
   }
 
 }
+
+// Popovers
+
+.oxfl-popover {
+  @include font-size(1.4);
+  color: $popover_color;
+  .popover-content {
+    color: $popover_color;
+    background-color: $popover_background_color;
+  }
+  .oxfl-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    border: 2px solid $color_9;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: $negative_color;
+    background: $color_6;
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    span {
+      display: block;
+      height: 36px;
+      line-height: 21px;
+      font-size: 50px;
+      text-shadow: none;
+    }
+  }
+}
