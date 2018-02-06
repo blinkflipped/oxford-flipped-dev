@@ -164,6 +164,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	$.each(chapters, function(i, chapter){
 		console.log(chapter);
 		var chapterTitle = chapter.title,
+				chapterIsChallenge = (chapterTitle === 'Challenge') ? true : false,
 				chapterNumber = i + 1,
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
@@ -175,8 +176,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterStateID = '2', //TODO CHANGE TO REAL STATE
 				chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? '' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 				chapterListItem = document.createElement('div'),
-				chapterChallengeClass = (chapterTitle === 'Challenge') ? 'oxfl-chapter-challenge' : '',
-				chapterinnerHTML =  '<article class="oxfl-chapter '+chapterChallengeClass+' '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
+				//chapterChallengeClass = (chapterIsChallenge) ? 'oxfl-chapter-challenge' : '',
+				chapterinnerHTML = (chapterIsChallenge) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>';
 
 		chapterListItem.className = 'oxfl-chapter-item';
 		chapterListItem.innerHTML = chapterinnerHTML;
@@ -225,15 +226,20 @@ oxfordFlippedApp.goback = function(classRef) {
 }
 
 oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
+	console.log(chapterID);
+	console.log(idcurso);
+	console.log(isLocked);
 
 	onCursoCambiarBloqueado(chapterID, idcurso);
-	console.log(isLocked);
+
 	var isDone = true,
 			newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
 	console.log(newIsLocked);
 
 	if (isDone) {
+
 		var $items = $('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode');
+		$items.css('border', '10px solid red');
 		if (newIsLocked) {
 			$items.removeClass('unlock').addClass('lock');
 		} else {

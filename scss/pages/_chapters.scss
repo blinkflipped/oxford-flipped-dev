@@ -89,6 +89,7 @@
       width: 100%;
       height: 100%;
       background: fade-out($color_7, .25);
+      z-index: 1;
     }
     .oxfl-label {
       position: absolute;
@@ -100,6 +101,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      position: relative;
+      z-index: 10;
     }
   }
   &.oxfl-chapter-challenge {
@@ -112,6 +115,9 @@
         left: 50%;
         transform: translate(-50%,-50%);
       }
+    }
+    .oxfl-button-lock {
+      display: none!important;
     }
   }
   .oxfl-body-user-student &.locked {
