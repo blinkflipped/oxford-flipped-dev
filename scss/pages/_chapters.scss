@@ -79,8 +79,17 @@
   .oxfl-chapter-image-wrapper {
     width: 100%;
     height: 110px;
-    background: fade-out($color_7, .25);
     position: relative;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: fade-out($color_7, .25);
+    }
     .oxfl-label {
       position: absolute;
       top: -3px;
@@ -91,6 +100,18 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+  &.oxfl-chapter-challenge {
+    .oxfl-chapter-image-wrapper {
+      &::before {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
     }
   }
   .oxfl-body-user-student &.locked {

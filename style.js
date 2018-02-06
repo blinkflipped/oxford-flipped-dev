@@ -224,6 +224,26 @@ oxfordFlippedApp.goback = function(classRef) {
 
 }
 
+oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
+
+	onCursoCambiarBloqueado(chapterID, idcurso);
+	console.log(isLocked);
+	var isDone = true,
+			newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
+	console.log(newIsLocked);
+
+	if (isDone) {
+		var $items = $('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode');
+		if (newIsLocked) {
+			$items.removeClass('unlock').addClass('lock');
+		} else {
+			$items.addClass('unlock').removeClass('lock');
+		}
+		$('#oxfl-modal-lock-chapters').modal('hide');
+	}
+
+}
+
 $(document).ready(function() {
 
 	// Go back
@@ -274,20 +294,7 @@ $(document).ready(function() {
 		var chapterID = $(this).data('chapter-id'),
 				isLocked = $(this).hasClass('lock');
 
-		onCursoCambiarBloqueado(chapterID, idcurso);
-		console.log(isLocked);
-		var isDone = true,
-				newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
-		console.log(newIsLocked);
-
-		if (isDone) {
-			if (newIsLocked) {
-				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').removeClass('unlock').addClass('lock');
-			} else {
-				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').addClass('unlock').removeClass('lock');
-			}
-			$('#oxfl-modal-lock-chapters').modal('hide');
-		}
+		oxfordFlippedApp.toggleLockChapter(chapterID, isLocked);
 
 	});
 

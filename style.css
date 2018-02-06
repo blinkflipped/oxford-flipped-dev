@@ -703,8 +703,16 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   .oxfl-chapter .oxfl-chapter-image-wrapper {
     width: 100%;
     height: 110px;
-    background: rgba(57, 181, 74, 0.75);
     position: relative; }
+    .oxfl-chapter .oxfl-chapter-image-wrapper::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(57, 181, 74, 0.75); }
     .oxfl-chapter .oxfl-chapter-image-wrapper .oxfl-label {
       position: absolute;
       top: -3px;
@@ -714,6 +722,13 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       width: 100%;
       height: 100%;
       object-fit: cover; }
+  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
   .oxfl-body-user-student .oxfl-chapter.locked a {
     cursor: default; }
   .oxfl-body-user-student .oxfl-chapter.locked .oxfl-chapter-image-wrapper .oxfl-label {
