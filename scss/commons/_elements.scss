@@ -330,9 +330,17 @@
 .oxfl-popover {
   @include font-size(1.4);
   color: $popover_color;
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+  background: url(img/popover-bubble.png) 0 0 no-repeat;
+  background-size: 160px 160px;
+  width: 160px;
+  height: 160px;
   .popover-content {
     color: $popover_color;
     background-color: $popover_background_color;
+    text-align: center;
   }
   .oxfl-close {
     position: absolute;

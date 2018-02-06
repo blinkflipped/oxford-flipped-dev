@@ -381,10 +381,18 @@ body.view-mode.body_curso {
 .oxfl-popover {
   font-size: 14px;
   font-size: 1.4rem;
-  color: #ffffff; }
+  color: #ffffff;
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+  background: url(img/popover-bubble.png) 0 0 no-repeat;
+  background-size: 160px 160px;
+  width: 160px;
+  height: 160px; }
   .oxfl-popover .popover-content {
     color: #ffffff;
-    background-color: #338DC9; }
+    background-color: #338DC9;
+    text-align: center; }
   .oxfl-popover .oxfl-close {
     position: absolute;
     top: -18px;
