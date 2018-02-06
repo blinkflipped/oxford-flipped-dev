@@ -239,7 +239,7 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 	if (isDone) {
 
 		var $items = $('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-chapter');
-		$items.css('border', '10px solid red');
+		
 		if (newIsLocked) {
 			$items.removeClass('unlock').addClass('lock');
 		} else {
