@@ -337,15 +337,24 @@
   background-size: 160px 160px;
   width: 160px;
   height: 160px;
+  .oxfl-popover-inner {
+    display: flex;
+    width: 160px;
+    height: 160px;
+    align-items: center;
+  }
   .popover-content {
     color: $popover_color;
-    background-color: $popover_background_color;
+    //background-color: $popover_background_color;
     text-align: center;
+  }
+  .arrow {
+    display: none!important;
   }
   .oxfl-close {
     position: absolute;
-    top: -18px;
-    right: -18px;
+    top: -8px;
+    right: -8px;
     border: 2px solid $color_9;
     width: 36px;
     height: 36px;

@@ -389,14 +389,20 @@ body.view-mode.body_curso {
   background-size: 160px 160px;
   width: 160px;
   height: 160px; }
+  .oxfl-popover .oxfl-popover-inner {
+    display: flex;
+    width: 160px;
+    height: 160px;
+    align-items: center; }
   .oxfl-popover .popover-content {
     color: #ffffff;
-    background-color: #338DC9;
     text-align: center; }
+  .oxfl-popover .arrow {
+    display: none !important; }
   .oxfl-popover .oxfl-close {
     position: absolute;
-    top: -18px;
-    right: -18px;
+    top: -8px;
+    right: -8px;
     border: 2px solid #FCEE21;
     width: 36px;
     height: 36px;
