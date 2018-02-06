@@ -274,12 +274,15 @@ $(document).ready(function() {
 
 		var isDone = true,
 				newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
+		console.log(newIsLocked);
+
 		if (isDone) {
 			if (newIsLocked) {
-				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').addClass('unlock').removeClass('locked');
-			} else {
 				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').removeClass('unlock').addClass('locked');
+			} else {
+				$('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-episode').addClass('unlock').removeClass('locked');
 			}
+			$('#oxfl-modal-lock-chapters').modal('hide');
 		}
 
 	});
