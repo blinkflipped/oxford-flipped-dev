@@ -78,6 +78,32 @@ oxfordFlippedApp.config = {}
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
 oxfordFlippedApp.config.isStudent = true;
 
+oxfordFlippedApp.popover = function() {
+
+	$('.oxfl-js-popover').popover({
+		placement: 'top',
+		template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+		container: 'body'
+	});
+
+	$('#oxfl-popover-close').on('click', function(e) {
+		console.log("AA");
+		$('.oxfl-js-popover').popover('hide');
+	})
+	$('.oxfl-js-popover').on('click', function(e) {
+		$('.oxfl-js-popover').not(this).popover('hide');
+	});
+
+	$(document).click(function(event) {
+		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length) {
+			if($('.oxfl-popover').is(":visible")) {
+				$('.oxfl-js-popover').popover('hide');
+			}
+		}
+	});
+
+}
+
 oxfordFlippedApp.fontSizeResize = function(elements) {
 	if (elements.length < 0) {
 		return;
@@ -206,6 +232,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 	}
 
 	$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
+
+	// Popovers
+	oxfordFlippedApp.popover();
 }
 
 oxfordFlippedApp.goback = function(classRef) {
@@ -247,30 +276,6 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 }
 
-oxfordFlippedApp.popover = function() {
-
-	$('.oxfl-js-popover').popover({
-		placement: 'top',
-		template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
-		container: 'body'
-	});
-
-	$('#oxfl-popover-close').on('click', function(e) {
-		$('.oxfl-js-popover').popover('hide');
-	})
-	$('.oxfl-js-popover').on('click', function(e) {
-		$('.oxfl-js-popover').not(this).popover('hide');
-	});
-	
-	$(document).click(function(event) {
-		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length) {
-			if($('.oxfl-popover').is(":visible")) {
-				$('.oxfl-js-popover').popover('hide');
-			}
-		}
-	});
-
-}
 
 $(document).ready(function() {
 
@@ -281,9 +286,6 @@ $(document).ready(function() {
 		oxfordFlippedApp.goback(classRef);
 
 	});
-
-	// Popovers
-	oxfordFlippedApp.popover();
 
 	// Load chapter / subunit
 	$('body').on('click', '.oxfl-js-load-chapter', function(e) {
