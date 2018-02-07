@@ -227,6 +227,7 @@ body.view-mode.body_curso {
   top: -8px;
   right: -8px; }
   .btn-close-iframe a {
+    display: block;
     border: 2px solid #FCEE21;
     width: 36px;
     height: 36px;
@@ -241,10 +242,13 @@ body.view-mode.body_curso {
       display: none; }
     .btn-close-iframe a .fa {
       display: block;
-      height: 36px;
       line-height: 21px;
-      font-size: 50px;
-      text-shadow: none; }
+      font-size: 40px;
+      text-shadow: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
       .btn-close-iframe a .fa::before {
         content: '\d7';
         color: #ffffff; }
@@ -872,8 +876,9 @@ body.oxfl-body-chapters #oxfl-chapters-monster {
   opacity: 1;
   transform: translate(0, 0); }
 
-body.body_clase.view-mode #iframe_div {
-  border: 2px solid #FCEE21; }
+#iframe_div {
+  outline: 2px solid #FCEE21; }
+
 body.body_clase.view-mode #swipeview-slider > div {
   background-color: #ffffff; }
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
@@ -891,7 +896,7 @@ body.body_clase.view-mode #actividad .content .header {
     body.body_clase.view-mode #actividad .content .header .title .title-logo {
       display: none; }
 body.body_clase.view-mode .navbar-bottom {
-  background: transparent; }
+  background-color: #ffffff; }
   body.body_clase.view-mode .navbar-bottom .slider-indicators li {
     background-color: #8BE23F; }
     body.body_clase.view-mode .navbar-bottom .slider-indicators li.active {
@@ -906,10 +911,27 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .t
   color: #EE7558;
   margin: 0;
   transform: rotate(-33deg);
-  max-width: 320px; }
+  max-width: 320px;
+  margin-top: 50px; }
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-container {
   background: url(img/monster-8.svg) left bottom no-repeat;
   background-size: 486px 424px; }
+body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img {
+  width: 298px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: rotate(10deg); }
+  body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img .multimedia-container {
+    width: 298px;
+    height: 230px; }
+    body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img .multimedia-container img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img .zoom_flag {
+    display: none !important; }
 
 .oxfl-checkpoint-1-cover {
   background: url(img/bubble-3.png) 0 0 no-repeat;
@@ -920,18 +942,26 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-cont
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center; }
+  text-align: center;
+  position: fixed;
+  top: 20px;
+  right: 20px; }
   .oxfl-checkpoint-1-cover h2,
   .oxfl-checkpoint-1-cover h3 {
     color: #ffffff;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
-    font-style: italic;
     font-size: 30px;
-    font-size: 3rem; }
+    font-size: 3rem;
+    max-width: 210px;
+    margin: 0 0 5px 0; }
   .oxfl-checkpoint-1-cover .bck-content {
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
-    color: #000000; }
+    color: #000000;
+    font-size: 16px;
+    font-size: 1.6rem;
+    max-width: 340px;
+    margin-bottom: 10px; }
 
 /*# sourceMappingURL=style.css.map */

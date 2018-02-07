@@ -121,6 +121,7 @@
   top: -8px;
   right: -8px;
   a {
+    display: block;
     border: 2px solid $color_9;
     width: 36px;
     height: 36px;
@@ -131,15 +132,19 @@
     padding: 0;
     margin: 0;
     outline: none;
+
     span {
       display: none;
     }
     .fa {
       display: block;
-      height: 36px;
       line-height: 21px;
-      font-size: 50px;
+      font-size: 40px;
       text-shadow: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
       &::before {
         content: '\d7';
         color: $negative_color;

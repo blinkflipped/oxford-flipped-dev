@@ -1,9 +1,9 @@
 
-body.body_clase.view-mode {
+#iframe_div {
+  outline: 2px solid $color_9;
+}
 
-  #iframe_div {
-    border: 2px solid $color_9;
-  }
+body.body_clase.view-mode {
 
   #swipeview-slider>div {
     background-color: $background_color;
@@ -35,7 +35,7 @@ body.body_clase.view-mode {
     }
   }
   .navbar-bottom {
-    background: transparent;
+    background-color: $background_color;
     .slider-indicators {
       li {
         background-color: $color_1;
