@@ -20,6 +20,7 @@ body.body_clase.view-mode {
     }
     .content {
       .header {
+        border: 0;
         .chapter {
           display: none;
         }
@@ -29,26 +30,6 @@ body.body_clase.view-mode {
           .title-logo {
             display: none
           }
-        }
-      }
-    }
-    .oxfl-checkpoint-1-cover-wrapper {
-      .header {
-        .title {
-          h3 {
-            font-family: $font_family_2;
-            font-weight: bold;
-            font-style: italic;
-            @include font-size(7.0);
-            color: $color_12;
-            margin: 0;
-          }
-        }
-      }
-      .carousel-inner {
-        .item-container {
-          background: url(img/monster-8.svg) left bottom no-repeat;
-          background-size: 486px 424px;
         }
       }
     }

@@ -1,0 +1,53 @@
+
+body.body_clase.view-mode {
+
+  #actividad {
+
+    .oxfl-checkpoint-1-cover-wrapper {
+      .header {
+        .title {
+          h3 {
+            font-family: $font_family_2;
+            font-weight: bold;
+            font-style: italic;
+            @include font-size(7.0);
+            color: $color_12;
+            margin: 0;
+            transform: rotate(-33deg);
+            max-width: 320px;
+          }
+        }
+      }
+      .item-container {
+        background: url(img/monster-8.svg) left bottom no-repeat;
+        background-size: 486px 424px;
+      }
+    }
+  }
+
+}
+
+.oxfl-checkpoint-1-cover {
+  background: url(img/bubble-3.png) 0 0 no-repeat;
+  background-size: contain;
+  width: 470px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  h2,
+  h3 {
+    color: $negative_color;
+    font-family: $font_family_2;
+    font-weight: bold;
+    font-style: italic;
+    @include font-size(3.0);
+  }
+  .bck-content {
+    font-family: $font_family_1;
+    font-weight: 500;
+    color: $primary_color;
+  }
+}

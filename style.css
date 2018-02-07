@@ -881,13 +881,22 @@ body.body_clase.view-mode #actividad .carousel-inner .item-container {
   -webkit-box-shadow: none;
   box-shadow: none;
   padding: 0; }
-body.body_clase.view-mode #actividad .content .header .chapter {
-  display: none; }
-body.body_clase.view-mode #actividad .content .header .title {
-  margin: 0;
+body.body_clase.view-mode #actividad .content .header {
   border: 0; }
-  body.body_clase.view-mode #actividad .content .header .title .title-logo {
+  body.body_clase.view-mode #actividad .content .header .chapter {
     display: none; }
+  body.body_clase.view-mode #actividad .content .header .title {
+    margin: 0;
+    border: 0; }
+    body.body_clase.view-mode #actividad .content .header .title .title-logo {
+      display: none; }
+body.body_clase.view-mode .navbar-bottom {
+  background: transparent; }
+  body.body_clase.view-mode .navbar-bottom .slider-indicators li {
+    background-color: #8BE23F; }
+    body.body_clase.view-mode .navbar-bottom .slider-indicators li.active {
+      background-color: #ED1E79; }
+
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .title h3 {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
@@ -895,15 +904,34 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .t
   font-size: 70px;
   font-size: 7rem;
   color: #EE7558;
-  margin: 0; }
-body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .carousel-inner .item-container {
+  margin: 0;
+  transform: rotate(-33deg);
+  max-width: 320px; }
+body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-container {
   background: url(img/monster-8.svg) left bottom no-repeat;
   background-size: 486px 424px; }
-body.body_clase.view-mode .navbar-bottom {
-  background: transparent; }
-  body.body_clase.view-mode .navbar-bottom .slider-indicators li {
-    background-color: #8BE23F; }
-    body.body_clase.view-mode .navbar-bottom .slider-indicators li.active {
-      background-color: #ED1E79; }
+
+.oxfl-checkpoint-1-cover {
+  background: url(img/bubble-3.png) 0 0 no-repeat;
+  background-size: contain;
+  width: 470px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
+  .oxfl-checkpoint-1-cover h2,
+  .oxfl-checkpoint-1-cover h3 {
+    color: #ffffff;
+    font-family: "Myfrida", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    font-size: 3rem; }
+  .oxfl-checkpoint-1-cover .bck-content {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    color: #000000; }
 
 /*# sourceMappingURL=style.css.map */
