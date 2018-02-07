@@ -11,6 +11,7 @@
 			name: 'oxford-flipped-dev',
 			styles: [
 				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
+				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
 			]
 		},
 
@@ -32,6 +33,7 @@
 		onActivityDataLoaded: function(data) {
 			console.log("onActivityDataLoaded");
 			console.log(data);
+			oxfordFlippedApp.activityCheckpointCover();
 		},
 
 		onCourseDataLoaded: function(data) {
@@ -276,6 +278,13 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 }
 
+oxfordFlippedApp.activityCheckpointCover = function() {
+
+	$('.oxfl-checkpoint-1-cover').each(function(i,e) {
+		$(e).closest('.js-slider-item').addClass('oxfl-checkpoint-1-cover-wrapper');
+	});
+
+}
 
 $(document).ready(function() {
 

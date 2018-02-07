@@ -1,0 +1,67 @@
+
+body.body_clase.view-mode {
+
+  #iframe_div {
+    border: 2px solid $color_9;
+  }
+
+  #swipeview-slider>div {
+    background-color: $background_color;
+  }
+
+  #actividad {
+    .carousel-inner {
+      .item-container {
+        background: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+    .content {
+      .header {
+        .chapter {
+          display: none;
+        }
+        .title {
+          margin: 0;
+          border: 0;
+          .title-logo {
+            display: none
+          }
+        }
+      }
+    }
+    .oxfl-checkpoint-1-cover-wrapper {
+      .header {
+        .title {
+          h3 {
+            font-family: $font_family_2;
+            font-weight: bold;
+            font-style: italic;
+            @include font-size(7.0);
+            color: $color_12;
+            margin: 0;
+          }
+        }
+      }
+      .carousel-inner {
+        .item-container {
+          background: url(img/monster-8.svg) left bottom no-repeat;
+          background-size: 486px 424px;
+        }
+      }
+    }
+  }
+  .navbar-bottom {
+    background: transparent;
+    .slider-indicators {
+      li {
+        background-color: $color_1;
+        &.active {
+          background-color: $color_4;
+        }
+      }
+    }
+  }
+}

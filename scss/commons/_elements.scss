@@ -56,6 +56,7 @@
   }
 }
 
+
 // Coins
 
 #oxfl-coins {
@@ -112,6 +113,38 @@
   &.locked,
   &.lock {
     background-position: -20px 0;
+  }
+}
+
+.btn-close-iframe {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  a {
+    border: 2px solid $color_9;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: $negative_color;
+    background: $color_6;
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    span {
+      display: none;
+    }
+    .fa {
+      display: block;
+      height: 36px;
+      line-height: 21px;
+      font-size: 50px;
+      text-shadow: none;
+      &::before {
+        content: '\d7';
+        color: $negative_color;
+      }
+    }
   }
 }
 

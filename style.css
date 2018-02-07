@@ -222,6 +222,33 @@ body.view-mode.body_curso {
   .oxfl-button-lock.oxfl-button-locked, .oxfl-button-lock.locked, .oxfl-button-lock.lock {
     background-position: -20px 0; }
 
+.btn-close-iframe {
+  position: absolute;
+  top: -8px;
+  right: -8px; }
+  .btn-close-iframe a {
+    border: 2px solid #FCEE21;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #FBB03B;
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    outline: none; }
+    .btn-close-iframe a span {
+      display: none; }
+    .btn-close-iframe a .fa {
+      display: block;
+      height: 36px;
+      line-height: 21px;
+      font-size: 50px;
+      text-shadow: none; }
+      .btn-close-iframe a .fa::before {
+        content: '\d7';
+        color: #ffffff; }
+
 .oxfl-label {
   width: 60px;
   height: 33px;
@@ -844,5 +871,39 @@ body.oxfl-body-chapters #oxfl-chapters {
 body.oxfl-body-chapters #oxfl-chapters-monster {
   opacity: 1;
   transform: translate(0, 0); }
+
+body.body_clase.view-mode #iframe_div {
+  border: 2px solid #FCEE21; }
+body.body_clase.view-mode #swipeview-slider > div {
+  background-color: #ffffff; }
+body.body_clase.view-mode #actividad .carousel-inner .item-container {
+  background: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 0; }
+body.body_clase.view-mode #actividad .content .header .chapter {
+  display: none; }
+body.body_clase.view-mode #actividad .content .header .title {
+  margin: 0;
+  border: 0; }
+  body.body_clase.view-mode #actividad .content .header .title .title-logo {
+    display: none; }
+body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .title h3 {
+  font-family: "Myfrida", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 70px;
+  font-size: 7rem;
+  color: #EE7558;
+  margin: 0; }
+body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .carousel-inner .item-container {
+  background: url(img/monster-8.svg) left bottom no-repeat;
+  background-size: 486px 424px; }
+body.body_clase.view-mode .navbar-bottom {
+  background: transparent; }
+  body.body_clase.view-mode .navbar-bottom .slider-indicators li {
+    background-color: #8BE23F; }
+    body.body_clase.view-mode .navbar-bottom .slider-indicators li.active {
+      background-color: #ED1E79; }
 
 /*# sourceMappingURL=style.css.map */
