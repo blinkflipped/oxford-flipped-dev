@@ -1,61 +1,67 @@
 (function (blink) {
 	'use strict';
 
-	var OxfordFlippedDevStyle = function() {
-		blink.theme.styles.basic.apply(this, arguments);
-	}
+	$.getScript('/themes/responsive/assets/styles/oxford-flipped/style.js',
+		function() {
 
-	OxfordFlippedDevStyle.prototype = {
-		bodyClassName: 'content_type_clase_oxford-flipped-dev',
-		ckEditorStyles: {
-			name: 'oxford-flipped-dev',
-			styles: [
-				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
-				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
-			]
-		},
+			var OxfordFlippedDevStyle = function() {
+				blink.theme.styles['oxford-flipped'].apply(this, arguments);
+			}
 
-		init: function() {
-			var parent = blink.theme.styles.basic.prototype;
-			parent.init.call(this);
+			OxfordFlippedDevStyle.prototype = {
+				bodyClassName: 'content_type_clase_oxford-flipped-dev',
+				ckEditorStyles: {
+					name: 'oxford-flipped-dev',
+					styles: [
+						{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
+						{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
+					]
+				},
 
-			// Ejemplo carga de datos de la clase en una actividad.
-			blink.getActivity(idcurso, idclase).done((function(data) {
-				this.onActivityDataLoaded(data);
-			}).bind(this));
+				init: function() {
+					var parent = blink.theme.styles['oxford-flipped'].prototype;
+					parent.init.call(this);
 
-			// Ejemplo carga de datos del libro en una actividad.
-			blink.getCourse(idcurso).done((function(data) {
-				this.onCourseDataLoaded(data);
-			}).bind(this));
-		},
+					// Ejemplo carga de datos de la clase en una actividad.
+					blink.getActivity(idcurso, idclase).done((function(data) {
+						this.onActivityDataLoaded(data);
+					}).bind(this));
 
-		onActivityDataLoaded: function(data) {
-			console.log("onActivityDataLoaded");
-			console.log(data);
-			oxfordFlippedApp.activityCheckpointCover();
-		},
+					// Ejemplo carga de datos del libro en una actividad.
+					blink.getCourse(idcurso).done((function(data) {
+						this.onCourseDataLoaded(data);
+					}).bind(this));
+				},
 
-		onCourseDataLoaded: function(data) {
-			console.log("onCourseDataLoaded");
-			console.log(data);
+				onActivityDataLoaded: function(data) {
+					console.log("onActivityDataLoaded");
+					console.log(data);
+					oxfordFlippedApp.activityCheckpointCover();
+				},
+
+				onCourseDataLoaded: function(data) {
+					console.log("onCourseDataLoaded");
+					console.log(data);
+				}
+			};
+
+
+			OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
+
+			blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
+
+			blink.events.on('loadSeguimientoCurso', function() {
+				// Ejemplo carga de datos del libro en el toc del curso.
+				blink.getCourse(idcurso).done(function(data) {
+					var style = new OxfordFlippedDevStyle;
+					style.onCourseDataLoaded(data);
+					console.log("TOC");
+					oxfordFlippedApp.homepage(data);
+				});
+			})
+
 		}
-	};
-
-
-	OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
-
-	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
-
-	blink.events.on('loadSeguimientoCurso', function() {
-		// Ejemplo carga de datos del libro en el toc del curso.
-		blink.getCourse(idcurso).done(function(data) {
-			var style = new OxfordFlippedDevStyle;
-			style.onCourseDataLoaded(data);
-			console.log("TOC");
-			oxfordFlippedApp.homepage(data);
-		});
-	})
+	);
 
 })( blink );
 
