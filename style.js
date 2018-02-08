@@ -53,6 +53,7 @@
 			var style = new OxfordFlippedDevStyle;
 			style.onCourseDataLoaded(data);
 			console.log("TOC");
+			console.log(data);
 			oxfordFlippedApp.homepage(data);
 		});
 	})
