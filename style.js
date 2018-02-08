@@ -210,8 +210,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				chapterListItem = document.createElement('div');
 		console.log(actividades);
 		console.log(actividades[chapterID]);
-		console.log("Estado: "+actividades[chapterID].estado);
-		console.log("Clasificacion: "+actividades[chapterID].clasificacion);
+		//console.log("Estado: "+actividades[chapterID].estado);
+		//console.log("Clasificacion: "+actividades[chapterID].clasificacion);
 		chapterListItem.className = 'oxfl-chapter-item';
 		chapterListItem.innerHTML = chapterinnerHTML;
 		chaptersList.appendChild(chapterListItem);
