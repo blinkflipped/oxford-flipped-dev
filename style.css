@@ -488,7 +488,7 @@ body.view-mode.body_curso .navbar.libro {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100; }
+  z-index: 1000; }
 
 #oxfl-custom-background {
   position: absolute;

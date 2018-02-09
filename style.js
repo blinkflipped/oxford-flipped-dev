@@ -40,9 +40,6 @@
 			console.log("onCourseDataLoaded");
 			console.log(data);
 			var isBookCover = (idclase.toString() === data.units[0].subunits[0].id) ? true : false;
-			console.log(data.units[0].subunits[0].id);
-			console.log(idclase);
-			console.log(isBookCover);
 			if (isBookCover) {
 				oxfordFlippedApp.homepage(data);
 			}
@@ -126,7 +123,7 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 
 oxfordFlippedApp.homepage = function(data) {
 	console.log("Homepage");
-	$('body').addClass('htmlReady');
+	$('body').addClass('htmlReady'); // TODO CAMBIAR
 
 	var bookTitle = data.title,
 			username = nombreusuario,
@@ -157,16 +154,19 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
+		console.log(i);
 		console.log(unit);
-		var unitTitle = unit.title,
-				unitNumber = unit.number,
-				unitImage = unit.image,
-				unitListItem = document.createElement('div'),
-				unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
-		unitListItem.className = 'oxfl-episodes-item';
-		if (!unitIsMarketplace) {
-			unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title4">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
-			unitList.appendChild(unitListItem);
+		if (i != 0) {
+			var unitTitle = unit.title,
+					unitNumber = unit.number,
+					unitImage = unit.image,
+					unitListItem = document.createElement('div'),
+					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
+			unitListItem.className = 'oxfl-episodes-item';
+			if (!unitIsMarketplace) {
+				unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title4">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
+				unitList.appendChild(unitListItem);
+			}
 		}
 	});
 	$('#oxfl-episodes').empty();
@@ -184,13 +184,14 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
 		var currentEpisode = $(this).data('episode');
-		oxfordFlippedApp.loadChapters(data,currentEpisode);
+		var activities = actividades;
+		oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
 	});
 }
 
-oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
+oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	console.log("Load Chapters List");
-	console.log(actividades);
+	console.log(activities);
 
 	var chapters = data.units[currentEpisode].subunits,
 			episodeImage =  data.units[currentEpisode].image,
@@ -214,8 +215,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode) {
 				//chapterChallengeClass = (chapterIsChallenge) ? 'oxfl-chapter-challenge' : '',
 				chapterinnerHTML = (chapterIsChallenge) ? '<article class="oxfl-chapter oxfl-chapter-challenge '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterState+'</div> '+chapterImageCode+' </div> </a> </article>',
 				chapterListItem = document.createElement('div');
-		console.log(actividades);
-		console.log(actividades[chapterID]);
+		console.log(activities);
+		console.log(activities[chapterID]);
 		//console.log("Estado: "+actividades[chapterID].estado);
 		//console.log("Clasificacion: "+actividades[chapterID].clasificacion);
 		chapterListItem.className = 'oxfl-chapter-item';
