@@ -35,7 +35,10 @@ body.view-mode.body_curso {
 	&.htmlReady::before {
 		display: none;
 	}
+}
 
+body.view-mode.body_clase,
+body.view-mode.body_curso {
 	.navbar.libro {
 		background: $color_1!important;
 		.libro-left,

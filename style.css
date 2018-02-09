@@ -113,11 +113,15 @@ body.view-mode.body_curso {
     z-index: 1000; }
   body.view-mode.body_curso.htmlReady::before {
     display: none; }
-  body.view-mode.body_curso .navbar.libro {
+
+body.view-mode.body_clase .navbar.libro,
+body.view-mode.body_curso .navbar.libro {
+  background: #8BE23F !important; }
+  body.view-mode.body_clase .navbar.libro .libro-left,
+  body.view-mode.body_clase .navbar.libro .libro-right,
+  body.view-mode.body_curso .navbar.libro .libro-left,
+  body.view-mode.body_curso .navbar.libro .libro-right {
     background: #8BE23F !important; }
-    body.view-mode.body_curso .navbar.libro .libro-left,
-    body.view-mode.body_curso .navbar.libro .libro-right {
-      background: #8BE23F !important; }
 
 .oxfl-title1 {
   font-family: "Myfrida", sans-serif;
