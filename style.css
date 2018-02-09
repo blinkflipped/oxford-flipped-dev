@@ -129,6 +129,7 @@ body.view-mode.body_curso .navbar.libro {
   font-style: italic;
   font-size: 65px;
   font-size: 6.5rem;
+  line-height: 0.95em;
   color: #8BE23F;
   margin: 0; }
   .oxfl-title1 a {
@@ -176,7 +177,7 @@ body.view-mode.body_curso .navbar.libro {
 
 .oxfl-title5 {
   font-family: "Quicksand", sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 20px;
   font-size: 2rem;
   color: #000000;
@@ -382,6 +383,9 @@ body.view-mode.body_curso .navbar.libro {
     .oxfl-modal .modal-footer .btn.btn-secondary {
       background-position: 0 -42px; }
 
+.slick-track {
+  outline: none; }
+
 .slick-arrow {
   background: url(img/arrows.png) 0 0 no-repeat transparent;
   background-size: 58px 82px;
@@ -525,17 +529,22 @@ body.view-mode.body_curso .navbar.libro {
   margin: 0;
   position: absolute;
   top: 90px;
-  left: 25px;
+  left: 50px;
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
   opacity: 0;
-  transform: translate(-100%, -100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  transform: rotate(12deg); }
+  transform: translate(-100%, -100%); }
+  #oxfl-home-title > div {
+    width: 300px;
+    height: 160px;
+    transform: rotate(-12deg);
+    margin-right: 20px;
+    margin-bottom: 10px; }
 
 #oxfl-home-menu {
   position: absolute;
