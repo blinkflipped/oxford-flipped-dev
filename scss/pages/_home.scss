@@ -1,8 +1,8 @@
 
 #oxfl-home-title {
   background: url(img/bubble-1.svg) 0 0 no-repeat;
-  width: 350px;
-  height: 200px;
+  width: 404px;
+  height: 277px;
   background-size: contain;
   text-align: center;
   padding: 30px 0;
@@ -15,6 +15,11 @@
   transition-timing-function: ease-out;
   opacity: 0;
   transform: translate(-100%, -100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(12deg);
 }
 
 
