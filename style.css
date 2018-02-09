@@ -555,7 +555,7 @@ body.view-mode.body_curso .navbar.libro {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 80px;
+  padding: 0 80px 20px;
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
@@ -579,7 +579,7 @@ body.view-mode.body_curso .navbar.libro {
     display: block;
     overflow: hidden;
     background-repeat: no-repeat;
-    background-position: 0 0;
+    background-position: center bottom;
     background-size: contain;
     background-color: transparent;
     border: 0;
@@ -635,18 +635,18 @@ body.view-mode.body_curso .navbar.libro {
   padding: 0;
   margin: 0;
   display: block;
-  overflow: hidden;
   border: 0;
   outline: 0;
   position: absolute;
+  z-index: 100;
   right: 0;
   top: 120px;
-  width: 275px;
-  height: 188px;
+  width: 215px;
+  height: 155px;
   background: url(img/monster-4.svg) right center no-repeat;
   background-size: contain;
   transition: transform .3s ease-out;
-  transform: translate(100%, 0); }
+  transform: translate(150%, 0); }
   #oxfl-notifications .oxfl-notifications-badge {
     font-family: "Quicksand", sans-serif;
     font-size: 18px;
@@ -662,7 +662,7 @@ body.view-mode.body_curso .navbar.libro {
     text-align: center;
     position: absolute;
     right: 195px;
-    bottom: 60px; }
+    bottom: 40px; }
 
 body.oxfl-body-home #oxfl-home-title {
   opacity: 1;
