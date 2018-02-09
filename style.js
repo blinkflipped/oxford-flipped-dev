@@ -39,6 +39,11 @@
 		onCourseDataLoaded: function(data) {
 			console.log("onCourseDataLoaded");
 			console.log(data);
+			var isBookCover = (idclase === data.units[0].subunit[0].id) ? true : false;
+			console.log(isBookCover);
+			if (isBookCover) {
+				oxfordFlippedApp.homepage(data);
+			}
 		}
 	};
 
@@ -53,7 +58,6 @@
 			var style = new OxfordFlippedDevStyle;
 			style.onCourseDataLoaded(data);
 			console.log("TOC");
-			oxfordFlippedApp.homepage(data);
 		});
 	})
 
