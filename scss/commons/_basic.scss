@@ -35,4 +35,12 @@ body.view-mode.body_curso {
 	&.htmlReady::before {
 		display: none;
 	}
+
+	.navbar.libro {
+		background: $color_1!important;
+		.libro-left,
+		.libro-right {
+			background: $color_1!important;
+		}
+	}
 }
