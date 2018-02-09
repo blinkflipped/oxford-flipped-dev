@@ -39,7 +39,7 @@
 		onCourseDataLoaded: function(data) {
 			console.log("onCourseDataLoaded");
 			console.log(data);
-			var isBookCover = (idclase === data.units[0].subunits[0].id) ? true : false;
+			var isBookCover = (idclase.toString() === data.units[0].subunits[0].id) ? true : false;
 			console.log(data.units[0].subunits[0].id);
 			console.log(idclase);
 			console.log(isBookCover);
