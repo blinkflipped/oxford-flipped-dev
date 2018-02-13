@@ -393,7 +393,7 @@ $(document).ready(function() {
 		console.log(isLocked);
 
 		if (isLocked) {
-			$('#oxfl-modal-lock-chapters-text')challengeLockClass('unlock');
+			$('#oxfl-modal-lock-chapters-text').text('unlock');
 			$modal.find('.oxfl-js-toggle-lock-chapter').addClass('lock').removeClass('unlock');
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
