@@ -179,7 +179,7 @@ oxfordFlippedApp.homepage = function(data) {
 		oxfordFlippedApp.loadEpisodes(data);
 	});
 
-	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'alert("WIP")');
+	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'alert("WIP")'); //cerrarIframe()
 }
 
 
@@ -194,13 +194,14 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 		console.log(unit);
 		if (i != 0) {
 			var unitTitle = unit.title,
+					unitDescription = unit.description,
 					unitNumber = i,
 					unitImage = unit.image,
 					unitListItem = document.createElement('div'),
 					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
 			unitListItem.className = 'oxfl-episodes-item';
 			if (!unitIsMarketplace) {
-				unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">Episode '+unitNumber+'</h2> <h3 class="oxfl-title4">'+unitTitle+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
+				unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
 				unitList.appendChild(unitListItem);
 			}
 		}
