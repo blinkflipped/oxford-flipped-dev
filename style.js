@@ -230,6 +230,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 			chaptersList = document.createDocumentFragment();
 	//console.log(chaptersList);
 
+	var chaptersNotStarted = false;
+
 	$.each(chapters, function(i, chapter){
 
 		console.log(chapter);
@@ -248,10 +250,15 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		// Regular Chapters
 		if (!chapterIsChallenge) {
 
+			// Activities dont started
+			if (typeof activities[chapterID] === 'undefined') {
+				chaptersNotStarted = true;
+			}
+
 			//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
-			var chapterStateArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
-					chapterStateID = (typeof activities[chapterID] === 'undefined') ? 2 : actividades[chapterID].estado,
-					chapterStateText =  chapterStateArr[chapterStateID];
+			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
+					chapterStateID = (typeof activities[chapterID] === 'undefined') ? 2 : activities[chapterID].estado,
+					chapterStateText =  chapterStateTextArr[chapterStateID];
 
 			//Lock Chapters
 			var chapterLockStatus = chapter.lock,
@@ -269,7 +276,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 			console.log(activities.length);
 			console.log(chapters.length);
 
-			var isChallengeLock = true,
+			console.log(chaptersNotStarted);
+
+			var isChallengeLock = (chaptersNotStarted) ? true: false,
 					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 			var chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 					chapterPopoverText = oxfordFlippedApp.text.popoverChallenge,
