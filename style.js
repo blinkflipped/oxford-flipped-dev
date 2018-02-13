@@ -85,7 +85,7 @@ var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
-oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
+oxfordFlippedApp.config.isStudent = false;
 
 oxfordFlippedApp.text = {
 	text1 : 'Oxford Flipped',
@@ -155,6 +155,8 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 oxfordFlippedApp.homepage = function(data) {
 	console.log("Homepage");
 	$('body').addClass('htmlReady'); // TODO CAMBIAR
+
+	oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 
 	var bookTitle = data.title,
 			username = nombreusuario,
