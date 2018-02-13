@@ -179,13 +179,13 @@
   text-align: center;
   padding-right: 5px;
   padding-top: 3px;
-  &.oxfl-label-1 {
+  &.oxfl-label-2 {//New
     background-position: 0 0;
   }
-  &.oxfl-label-2 {
+  &.oxfl-label-0 {//Started
     background-position: 0 -33px;
   }
-  &.oxfl-label-3 {
+  &.oxfl-label-1 {//Completed
     background-position: 0 -66px;
   }
 }
@@ -204,6 +204,23 @@
     background-size: 37px 17px;
     float: left;
     &.oxfl-star-item-filled {
+      background-position: -19px 0;
+    }
+  }
+  &-filled-0 {}
+  &-filled-1 {
+    .oxfl-star-item:first-child {
+      background-position: -19px 0;
+    }
+  }
+  &-filled-2 {
+    .oxfl-star-item:first-child,
+    .oxfl-star-item:nth-child(2) {
+      background-position: -19px 0;
+    }
+  }
+  &-filled-3 {
+    .oxfl-star-item {
       background-position: -19px 0;
     }
   }

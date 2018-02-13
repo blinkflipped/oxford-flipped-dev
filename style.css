@@ -286,11 +286,11 @@ body.view-mode.body_curso .navbar.libro {
   text-align: center;
   padding-right: 5px;
   padding-top: 3px; }
-  .oxfl-label.oxfl-label-1 {
-    background-position: 0 0; }
   .oxfl-label.oxfl-label-2 {
+    background-position: 0 0; }
+  .oxfl-label.oxfl-label-0 {
     background-position: 0 -33px; }
-  .oxfl-label.oxfl-label-3 {
+  .oxfl-label.oxfl-label-1 {
     background-position: 0 -66px; }
 
 .oxfl-stars::after {
@@ -308,6 +308,13 @@ body.view-mode.body_curso .navbar.libro {
   float: left; }
   .oxfl-stars .oxfl-star-item.oxfl-star-item-filled {
     background-position: -19px 0; }
+.oxfl-stars-filled-1 .oxfl-star-item:first-child {
+  background-position: -19px 0; }
+.oxfl-stars-filled-2 .oxfl-star-item:first-child,
+.oxfl-stars-filled-2 .oxfl-star-item:nth-child(2) {
+  background-position: -19px 0; }
+.oxfl-stars-filled-3 .oxfl-star-item {
+  background-position: -19px 0; }
 
 .view-mode .modal-backdrop {
   background: #CCCCCC; }
