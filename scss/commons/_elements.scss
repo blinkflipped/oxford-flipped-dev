@@ -130,8 +130,8 @@
 
 .btn-close-iframe {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: 18px;
+  right: -18px;
   a {
     display: block;
     border: 2px solid $color_9;
@@ -151,6 +151,7 @@
     .fa {
       display: block;
       line-height: 21px;
+      height: 18px;
       font-size: 40px;
       text-shadow: none;
       position: absolute;

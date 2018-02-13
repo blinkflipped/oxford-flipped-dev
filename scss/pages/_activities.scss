@@ -4,9 +4,43 @@
 }
 
 body.body_clase.view-mode {
+  .side-panel,
+  #help-panel {
+    box-shadow: none!important;
+  }
 
   #swipeview-slider>div {
     background-color: $background_color;
+  }
+
+  .slider-control,
+  .slider-control:focus {
+    background: transparent;
+    width: 50px;
+    height: 150px;
+    border-radius: 0;
+    .fa {
+      background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
+      background-size: 16px 30px;
+      width: 16px;
+      height: 16px;
+      &::before {
+        content: none;
+      }
+    }
+    &.right {
+      border-radius: 0;
+    }
+    &.left {
+      border-radius: 0;
+      .fa {
+        background-position: 0 30px;
+      }
+    }
+    &.disabled {
+      display: none!important;
+      opacity: 0;
+    }
   }
 
   #actividad {

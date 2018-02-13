@@ -27,10 +27,12 @@ body.body_clase.view-mode {
         width: 298px;
         position: fixed;
         bottom: 0;
-        right: 70px;
+        left: 50%;
+        transform: translate(-50%,0);
+        margin-left: 160px;
         background: url(img/slide_img-shadow.png) center bottom no-repeat;
         background-size: 262px 17px;
-        padding-bottom: 20px;
+        padding-bottom: 50px;
         .multimedia-container {
           width: 298px;
           height: 230px;
@@ -63,7 +65,10 @@ body.body_clase.view-mode {
     text-align: center;
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 50%;
+    z-index: 500;
+    transform: translate(-50%,0);
+    margin-left: -190px;
     h2,
     h3 {
       color: $negative_color;
