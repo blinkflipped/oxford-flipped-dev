@@ -178,6 +178,8 @@ oxfordFlippedApp.homepage = function(data) {
 	$('body').on('click', '.oxfl-js-load-episodes', function() {
 		oxfordFlippedApp.loadEpisodes(data);
 	});
+
+	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'alert("WIP")');
 }
 
 
