@@ -16,14 +16,16 @@ body.body_clase.view-mode {
   .slider-control,
   .slider-control:focus {
     background: transparent;
-    width: 50px;
+    width: 70px;
     height: 150px;
     border-radius: 0;
+    opacity: 1;
+    cursor: pointer;
     .fa {
       background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
-      background-size: 16px 30px;
+      background-size: 16px 60px;
       width: 16px;
-      height: 16px;
+      height: 32px;
       &::before {
         content: none;
       }
@@ -34,7 +36,7 @@ body.body_clase.view-mode {
     &.left {
       border-radius: 0;
       .fa {
-        background-position: 0 30px;
+        background-position: 0 -30px;
       }
     }
     &.disabled {

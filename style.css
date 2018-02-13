@@ -269,7 +269,7 @@ body.oxfl-body-chapters {
     .btn-close-iframe a .fa {
       display: block;
       line-height: 21px;
-      height: 18px;
+      height: 26px;
       font-size: 40px;
       text-shadow: none;
       position: absolute;
@@ -939,15 +939,17 @@ body.body_clase.view-mode #swipeview-slider > div {
 body.body_clase.view-mode .slider-control,
 body.body_clase.view-mode .slider-control:focus {
   background: transparent;
-  width: 50px;
+  width: 70px;
   height: 150px;
-  border-radius: 0; }
+  border-radius: 0;
+  opacity: 1;
+  cursor: pointer; }
   body.body_clase.view-mode .slider-control .fa,
   body.body_clase.view-mode .slider-control:focus .fa {
     background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
-    background-size: 16px 30px;
+    background-size: 16px 60px;
     width: 16px;
-    height: 16px; }
+    height: 32px; }
     body.body_clase.view-mode .slider-control .fa::before,
     body.body_clase.view-mode .slider-control:focus .fa::before {
       content: none; }
@@ -959,7 +961,7 @@ body.body_clase.view-mode .slider-control:focus {
     border-radius: 0; }
     body.body_clase.view-mode .slider-control.left .fa,
     body.body_clase.view-mode .slider-control:focus.left .fa {
-      background-position: 0 30px; }
+      background-position: 0 -30px; }
   body.body_clase.view-mode .slider-control.disabled,
   body.body_clase.view-mode .slider-control:focus.disabled {
     display: none !important;
@@ -1035,7 +1037,7 @@ body.body_clase.view-mode .oxfl-checkpoint-1-cover {
   left: 50%;
   z-index: 500;
   transform: translate(-50%, 0);
-  margin-left: -190px; }
+  margin-left: 190px; }
   body.body_clase.view-mode .oxfl-checkpoint-1-cover h2,
   body.body_clase.view-mode .oxfl-checkpoint-1-cover h3 {
     color: #ffffff;
