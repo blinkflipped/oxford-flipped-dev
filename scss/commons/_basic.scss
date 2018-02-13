@@ -49,7 +49,9 @@ body.view-mode.body_curso {
 }
 
 
-body.oxfl-body-home {
+body.oxfl-body-home,
+body.oxfl-body-episodes,
+body.oxfl-body-chapters {
 	overflow: auto;
 	-webkit-overflow-scrolling: auto;
 }

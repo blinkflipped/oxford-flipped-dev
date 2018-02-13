@@ -123,7 +123,9 @@ body.view-mode.body_curso .navbar.libro {
   body.view-mode.body_curso .navbar.libro .libro-right {
     background: #8BE23F !important; }
 
-body.oxfl-body-home {
+body.oxfl-body-home,
+body.oxfl-body-episodes,
+body.oxfl-body-chapters {
   overflow: auto;
   -webkit-overflow-scrolling: auto; }
 
@@ -508,7 +510,7 @@ body.oxfl-body-home {
   background-size: cover;
   overflow: hidden;
   position: absolute;
-  min-height: 700px;
+  min-height: 750px;
   top: 0;
   left: 0;
   right: 0;
