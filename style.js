@@ -278,7 +278,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 			console.log(chaptersNotStarted);
 
-			var isChallengeLock = (chaptersNotStarted) ? true: false,
+			var isChallengeLock = (chaptersNotStarted && oxfordFlippedApp.config.isStudent) ? true : false,
 					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 			var chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 					chapterPopoverText = oxfordFlippedApp.text.popoverChallenge,
