@@ -20,18 +20,21 @@ body.body_clase.view-mode {
         }
       }
       .item-container {
-        background: url(img/monster-8.svg) left bottom no-repeat;
+        background: url(img/monster-8.svg) 45px bottom no-repeat;
         background-size: 486px 424px;
       }
       .slide_img {
         width: 298px;
         position: fixed;
         bottom: 0;
-        right: 0;
-        transform: rotate(10deg);
+        right: 70px;
+        background: url(img/slide_img-shadow.png) center bottom no-repeat;
+        background-size: 262px 17px;
+        padding-bottom: 20px;
         .multimedia-container {
           width: 298px;
           height: 230px;
+          transform: rotate(10deg);
           img {
             display: block;
             width: 100%;
