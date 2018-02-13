@@ -269,7 +269,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 			console.log(chapters.length);
 
 			var isChallengeLock = true,
-					challengeLockClass = (isChallengeLock) = 'lock' : 'unlock';
+					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 			var chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 					chapterPopoverText = oxfordFlippedApp.text.popoverChallenge,
 					chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
@@ -393,7 +393,7 @@ $(document).ready(function() {
 		console.log(isLocked);
 
 		if (isLocked) {
-			$('#oxfl-modal-lock-chapters-text').text('unlock');
+			$('#oxfl-modal-lock-chapters-text')challengeLockClass('unlock');
 			$modal.find('.oxfl-js-toggle-lock-chapter').addClass('lock').removeClass('unlock');
 		} else {
 			$('#oxfl-modal-lock-chapters-text').text('lock');
