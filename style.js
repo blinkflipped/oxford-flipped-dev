@@ -390,7 +390,7 @@ $(document).ready(function() {
 		//showIFrame(chapterUrl, 1000, 700, false, true, false, '');
 
 		var chapterID = $(this).attr('data-chapter-id');
-		blink.theme.iframeWidth = 924;
+		blink.theme.iframeWidth = 1300; //TEST //924;
 		blink.domain.openActivity(chapterID);
 
 	});
