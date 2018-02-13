@@ -41,6 +41,10 @@
 			console.log(data);
 			var isBookCover = (idclase.toString() === data.units[0].subunits[0].id) ? true : false;
 			if (isBookCover) {
+				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+				loadScript(urlSeguimiento, true, function() {
+					console.log(window.actividades);
+				});
 				oxfordFlippedApp.homepage(data);
 			}
 		}
@@ -190,7 +194,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
 		var currentEpisode = $(this).data('episode');
-		var activities = actividades;
+		var activities = window.actividades;
 		oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
 	});
 }
