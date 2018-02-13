@@ -170,7 +170,7 @@
 .oxfl-label {
   width: 60px;
   height: 33px;
-  background: url(img/labels.png) 0 0 no-repeat;
+  background: url(img/labels.png) 0 1px no-repeat;
   background-size: 60px 99px;
   font-family: $font_family_1;
   @include font-size(0.8);
@@ -180,7 +180,7 @@
   padding-right: 5px;
   padding-top: 3px;
   &.oxfl-label-2 {//New
-    background-position: 0 0;
+    background-position: 0 1px;
   }
   &.oxfl-label-0 {//Started
     background-position: 0 -33px;

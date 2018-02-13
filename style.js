@@ -85,7 +85,7 @@ var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
-oxfordFlippedApp.config.isStudent = true;
+oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 
 oxfordFlippedApp.text = {
 	text1 : 'Oxford Flipped',
@@ -276,10 +276,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 					chapterinnerHTML = '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>';
 
 		} else { // Challenge Chapter
-
-			console.log(activities);
-			console.log(activities.length);
-			console.log(chapters.length);
 
 			console.log(chaptersNotStarted);
 			console.log(chaptersWithoutGrade);
