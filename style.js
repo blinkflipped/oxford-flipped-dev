@@ -265,6 +265,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 		} else { // Challenge Chapter
 
+			console.log(activities);
 			console.log(activities.length);
 			console.log(chapters.length);
 
