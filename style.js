@@ -375,7 +375,7 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 		var navigationList = document.createDocumentFragment();
 		$.each(data.slides, function(i, slide){
-			var navigationListItem = document.createElement('li'),
+			var navigationListItem = document.createElement('li');
 			navigationListItem.className = 'oxfl-activities-navigation-item';
 			navigationListItem.innerHTML = '<span></span>';
 			navigationList.appendChild(navigationListItem);
