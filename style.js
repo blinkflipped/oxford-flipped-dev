@@ -12,6 +12,9 @@
 			styles: [
 				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
 				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
+				{ name: 'Content Zone Video', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz-video' } },
+				{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz-infographic' } },
+				{ name: 'Content Zone Text', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz-text' } },
 			]
 		},
 

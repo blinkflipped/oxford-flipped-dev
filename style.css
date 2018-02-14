@@ -1078,7 +1078,7 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-
     top: 20px;
     left: 20px;
     right: 20px;
-    bottom: 20px;
+    bottom: 0;
     z-index: 100; }
     body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-inner .oxfl-coins-bubble-1 {
       background: url(img/final-1-coins.png) 0 0 no-repeat transparent;
