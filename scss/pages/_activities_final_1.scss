@@ -3,6 +3,7 @@ body.body_clase.view-mode {
 
   #actividad {
     .oxfl-final-screen-one {
+      display: none;
       background: url(img/final-1.svg) center center no-repeat $background_color;
       background-size: contain;
       position: absolute;
@@ -24,6 +25,9 @@ body.body_clase.view-mode {
           right: 120px;
           text-align: right;
         }
+      }
+      .oxfl-final-screen-one-wrapper-active & {
+        display: block;
       }
     }
 
