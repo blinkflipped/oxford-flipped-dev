@@ -372,24 +372,24 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 	console.log(data.slides.length);
 
+	var navigationList = document.createDocumentFragment();
+	$.each(data.slides, function(i, slide){
+		var navigationListItem = document.createElement('li');
+		//slider-indicator
+		//navigationListItem.className = 'oxfl-activities-navigation-item';
+		navigationListItem.className = 'slider-indicator';
+		navigationListItem.innerHTML = '<span></span>';
+		navigationList.appendChild(navigationListItem);
+	});
+	//$('.navbar-bottom .slider-indicators').remove();
+	$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
 
-		var navigationList = document.createDocumentFragment();
-		$.each(data.slides, function(i, slide){
-			var navigationListItem = document.createElement('li');
-			//slider-indicator
-			//navigationListItem.className = 'oxfl-activities-navigation-item';
-			navigationListItem.className = 'slider-indicator';
-			navigationListItem.innerHTML = '<span></span>';
-			navigationList.appendChild(navigationListItem);
-		});
-		//$('.navbar-bottom .slider-indicators').remove();
-		$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
+	$('#oxfl-activities-navigation')[0].appendChild(navigationList);
 
-		//Test 
-		$('.navbar-bottom .slider-indicators li').removeAttr('data-go-to');
-
-		$('#oxfl-activities-navigation')[0].appendChild(navigationList);
-
+	blink.events.on('slider:change', function(currentSection) {
+		console.log(currentSection);
+		$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
+	});
 
 }
 
