@@ -972,7 +972,8 @@ body.body_clase.view-mode .slider-control:focus {
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
   background: transparent;
   -webkit-box-shadow: none;
-  box-shadow: none; }
+  box-shadow: none;
+  padding: 0 20px; }
 body.body_clase.view-mode #actividad .content .header {
   border: 0; }
   body.body_clase.view-mode #actividad .content .header .chapter {
@@ -985,7 +986,8 @@ body.body_clase.view-mode #actividad .content .header {
 body.body_clase.view-mode .navbar-bottom {
   background-color: #ffffff; }
   body.body_clase.view-mode .navbar-bottom .slider-indicators li {
-    background-color: #8BE23F; }
+    background-color: #8BE23F;
+    cursor: default; }
     body.body_clase.view-mode .navbar-bottom .slider-indicators li.active {
       background-color: #ED1E79; }
 

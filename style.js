@@ -35,6 +35,7 @@
 			console.log(data);
 			oxfordFlippedApp.activityCreateFalseNavigation(data);
 			oxfordFlippedApp.activityCheckpointCover();
+			oxfordFlippedApp.activityFinalScreenOne();
 		},
 
 		onCourseDataLoaded: function(data) {
@@ -414,6 +415,23 @@ oxfordFlippedApp.activityCheckpointCover = function() {
 
 	$('.oxfl-checkpoint-1-cover').each(function(i,e) {
 		$(e).closest('.js-slider-item').addClass('oxfl-checkpoint-1-cover-wrapper');
+	});
+
+}
+
+oxfordFlippedApp.activityFinalScreenOne = function() {
+
+	//slide_content_type_28
+	var $slide = $('.slide_content_type_28');
+
+	var html = '<button class="btn btn-default oxfl-demo-show">DEMO: SHOW COINS COUNT</button><div class="oxfl-final-screen-one"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div>';
+	$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
+
+	// DEMO
+	$('body').on('click', '.oxfl-demo-show', function() {
+		var coins = '1000';
+		$('#oxfl-total-coins-1').text(coins);
+		$slide.closest('.js-slider-item').addClass('oxfl-final-screen-one-wrapper-active');
 	});
 
 }
