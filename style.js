@@ -33,6 +33,7 @@
 		onActivityDataLoaded: function(data) {
 			console.log("onActivityDataLoaded");
 			console.log(data);
+			oxfordFlippedApp.activityCreateFalseNavigation(data);
 			oxfordFlippedApp.activityCheckpointCover();
 		},
 
@@ -364,6 +365,22 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 		}
 		$('#oxfl-modal-lock-chapters').modal('hide');
 	}
+
+}
+
+oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
+
+	console.log(data.slides.length);
+
+	var navigationList = document.createDocumentFragment();
+	$.each(data.slides, function(i, slide){
+		unitListItem.className = 'oxfl-episodes-item';
+		unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> <div class="oxfl-episode-image-wrapper"> <img src="'+unitImage+'" alt="'+unitTitle+'"> </div> </a> </article>';
+		unitList.appendChild(unitListItem);
+	});
+	$('.navbar-bottom .slider-indicators').remove();
+	$('.navbar-bottom').prepend('<ul id="oxfl-activities-navigation"></ul>');
+	$('#oxfl-activities-navigation')[0].appendChild(navigationList);
 
 }
 
