@@ -384,6 +384,10 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 		});
 		//$('.navbar-bottom .slider-indicators').remove();
 		$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
+
+		//Test 
+		$('.navbar-bottom .slider-indicators li').removeAttr('data-go-to');
+
 		$('#oxfl-activities-navigation')[0].appendChild(navigationList);
 
 
