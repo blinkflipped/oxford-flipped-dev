@@ -33,6 +33,7 @@
 		onActivityDataLoaded: function(data) {
 			console.log("onActivityDataLoaded");
 			console.log(data);
+			oxfordFlippedApp.activityIncludeModals();
 			oxfordFlippedApp.activityCreateFalseNavigation(data);
 			oxfordFlippedApp.activityCheckpointCover();
 		},
@@ -94,7 +95,8 @@ oxfordFlippedApp.text = {
 	chapterStatus1 : 'Completed',
 	chapterStatus2 : 'New',
 	popoverChallenge : 'To access the Challenge you first have to complete all chapters',
-	popoverChapter: 'Your teacher first has to provide access to you'
+	popoverChapter: 'Your teacher first has to provide access to you',
+	confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -180,7 +182,7 @@ oxfordFlippedApp.homepage = function(data) {
 		oxfordFlippedApp.loadEpisodes(data);
 	});
 
-	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'alert("WIP")'); //cerrarIframe()
+	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.activityModalCloseIframe();');
 }
 
 
@@ -368,26 +370,37 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 }
 
-oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
+oxfordFlippedApp.activityModalCloseIframe = function() {
 
-	console.log(data.slides.length);
+	var $modal = $('#oxfl-modal-close-chapter');
+	$modal.modal();
+
+}
+
+oxfordFlippedApp.activityIncludeModals = function() {
+
+	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary" onclick="cerrarIframe();">Yes</button> </div> </div></div> </div>';
+
+	$('body').prepend(modalHTML);
+
+}
+
+oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 	var navigationList = document.createDocumentFragment();
 	$.each(data.slides, function(i, slide){
 		var navigationListItem = document.createElement('li');
-		//slider-indicator
 		//navigationListItem.className = 'oxfl-activities-navigation-item';
 		navigationListItem.className = 'slider-indicator';
 		navigationListItem.innerHTML = '<span></span>';
 		navigationList.appendChild(navigationListItem);
 	});
-	//$('.navbar-bottom .slider-indicators').remove();
+	$('.navbar-bottom .slider-indicators').remove();
 	$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
 
 	$('#oxfl-activities-navigation')[0].appendChild(navigationList);
 
 	blink.events.on('slider:change', function(currentSection) {
-		console.log(currentSection);
 		$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
 	});
 
