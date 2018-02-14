@@ -424,7 +424,7 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 	//slide_content_type_28
 	var $slide = $('.slide_content_type_28');
 
-	var html = '<button class="btn btn-default oxfl-demo-show">DEMO: SHOW COINS COUNT</button><div class="oxfl-final-screen-one"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div>';
+	var html = '<button class="btn btn-default oxfl-demo-show" style="position: fixed; top: 50px; right: 50px">DEMO: SHOW COINS COUNT</button><div class="oxfl-final-screen-one"><div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
 	$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
 
 	// DEMO
