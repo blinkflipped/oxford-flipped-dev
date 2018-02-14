@@ -33,7 +33,6 @@
 		onActivityDataLoaded: function(data) {
 			console.log("onActivityDataLoaded");
 			console.log(data);
-			oxfordFlippedApp.activityIncludeModals();
 			oxfordFlippedApp.activityCreateFalseNavigation(data);
 			oxfordFlippedApp.activityCheckpointCover();
 		},
@@ -156,6 +155,7 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 }
 
 oxfordFlippedApp.homepage = function(data) {
+
 	console.log("Homepage");
 	$('body').addClass('htmlReady'); // TODO CAMBIAR
 
@@ -182,9 +182,13 @@ oxfordFlippedApp.homepage = function(data) {
 		oxfordFlippedApp.loadEpisodes(data);
 	});
 
-	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.activityModalCloseIframe();');
-}
+	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
 
+	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary" onclick="cerrarIframe();">Yes</button> </div> </div></div> </div>';
+
+	$('body').prepend(modalHTML);
+
+}
 
 oxfordFlippedApp.loadEpisodes = function(data) {
 
@@ -370,18 +374,10 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 }
 
-oxfordFlippedApp.activityModalCloseIframe = function() {
+oxfordFlippedApp.modalCloseIframe = function() {
 
-	var $modal = $('#oxfl-modal-close-chapter');
-	$modal.modal();
-
-}
-
-oxfordFlippedApp.activityIncludeModals = function() {
-
-	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary" onclick="cerrarIframe();">Yes</button> </div> </div></div> </div>';
-
-	$('body').prepend(modalHTML);
+	var $modalCloseIframe = $('#oxfl-modal-close-chapter');
+	$modalCloseIframe.modal();
 
 }
 
@@ -399,6 +395,7 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 	$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
 
 	$('#oxfl-activities-navigation')[0].appendChild(navigationList);
+	$('#oxfl-activities-navigation').find('li').first().addClass('active');
 
 	blink.events.on('slider:change', function(currentSection) {
 		$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
