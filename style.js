@@ -442,10 +442,12 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 
 oxfordFlippedApp.activityContentZone = function() {
 
-	$('.pregunta').each(function(i,e) {
+	//$('.pregunta').each(function(i,e) {
+	$('.js-slider-item').each(function(i,e) {
 		if ($(e).find('.oxfl-cz').length) {
 			var backgroundImage = $(e).find('.image_slide').attr('src');
-			$(e).closest('.js-slider-item').addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
+			//$(e).closest('.js-slider-item').addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
+			$(e).addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
 		}
 	});
 
