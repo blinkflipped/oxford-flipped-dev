@@ -184,7 +184,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
 
-	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary" onclick="cerrarIframe();">Yes</button> </div> </div></div> </div>';
+	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">Yes</button> </div> </div></div> </div>';
 
 	$('body').prepend(modalHTML);
 
@@ -378,6 +378,13 @@ oxfordFlippedApp.modalCloseIframe = function() {
 
 	var $modalCloseIframe = $('#oxfl-modal-close-chapter');
 	$modalCloseIframe.modal();
+
+}
+
+oxfordFlippedApp.closeIframe = function() {
+
+	cerrarIframe();
+	$('#oxfl-modal-close-chapter').modal('hide');
 
 }
 
