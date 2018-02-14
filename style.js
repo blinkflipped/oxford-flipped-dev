@@ -372,15 +372,18 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 	console.log(data.slides.length);
 
-	var navigationList = document.createDocumentFragment();
-	$.each(data.slides, function(i, slide){
-		unitListItem.className = 'oxfl-activities-navigation-item';
-		unitListItem.innerHTML = '<li></li>';
-		unitList.appendChild(navigationList);
-	});
-	$('.navbar-bottom .slider-indicators').remove();
-	$('.navbar-bottom').prepend('<ul id="oxfl-activities-navigation"></ul>');
-	$('#oxfl-activities-navigation')[0].appendChild(navigationList);
+
+		var navigationList = document.createDocumentFragment();
+		$.each(data.slides, function(i, slide){
+			var navigationListItem = document.createElement('li'),
+			navigationListItem.className = 'oxfl-activities-navigation-item';
+			navigationListItem.innerHTML = '<span></span>';
+			navigationList.appendChild(navigationListItem);
+		});
+		$('.navbar-bottom .slider-indicators').remove();
+		$('.navbar-bottom').prepend('<ul id="oxfl-activities-navigation"></ul>');
+		$('#oxfl-activities-navigation')[0].appendChild(navigationList);
+
 
 }
 
