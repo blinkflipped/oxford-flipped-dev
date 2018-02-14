@@ -380,8 +380,8 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 			navigationListItem.innerHTML = '<span></span>';
 			navigationList.appendChild(navigationListItem);
 		});
-		$('.navbar-bottom .slider-indicators').remove();
-		$('.navbar-bottom').prepend('<ul id="oxfl-activities-navigation"></ul>');
+		//$('.navbar-bottom .slider-indicators').remove();
+		$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
 		$('#oxfl-activities-navigation')[0].appendChild(navigationList);
 
 
