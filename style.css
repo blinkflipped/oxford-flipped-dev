@@ -1106,4 +1106,7 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-
 body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active .oxfl-final-screen-one {
   display: block; }
 
+body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .slide_img {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

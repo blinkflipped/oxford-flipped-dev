@@ -12,9 +12,9 @@
 			styles: [
 				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
 				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
-				{ name: 'Content Zone Video', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz-video' } },
-				{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz-infographic' } },
-				{ name: 'Content Zone Text', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz-text' } },
+				{ name: 'Content Zone Video', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz oxfl-cz-video' } },
+				{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
+				{ name: 'Content Zone Text', type: 'widget', widget: 'blink_dropdown', attributes: { 'class': 'oxfl-cz oxfl-cz-text' } },
 			]
 		},
 
@@ -39,6 +39,7 @@
 			oxfordFlippedApp.activityCreateFalseNavigation(data);
 			oxfordFlippedApp.activityCheckpointCover();
 			oxfordFlippedApp.activityFinalScreenOne();
+			oxfordFlippedApp.activityContentZone();
 		},
 
 		onCourseDataLoaded: function(data) {
@@ -435,6 +436,17 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 		var coins = '1000';
 		$('#oxfl-total-coins-1').text(coins);
 		$slide.closest('.js-slider-item').addClass('oxfl-final-screen-one-wrapper-active');
+	});
+
+}
+
+oxfordFlippedApp.activityContentZone = function() {
+
+	$('.js-slider-item').each(function(i,e) {
+		if ($(e).find('.oxfl-cz').length) {
+			var backgroundImage = $(e).find('.image_slide').attr('src');
+			$(e).addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
+		}
 	});
 
 }
