@@ -61,8 +61,9 @@ body.body_clase.view-mode {
         bottom: 0;
         outline: none;
         text-align: center;
-        &-disabled {
+        &.oxfl-disabled {
           filter: grayscale(1);
+          cursor: default;
         }
         span {
           display: block;

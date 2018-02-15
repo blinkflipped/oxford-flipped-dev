@@ -1167,8 +1167,9 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     bottom: 0;
     outline: none;
     text-align: center; }
-    body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next-disabled {
-      filter: grayscale(1); }
+    body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next.oxfl-disabled {
+      filter: grayscale(1);
+      cursor: default; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next span {
       display: block;
       width: 180px;
