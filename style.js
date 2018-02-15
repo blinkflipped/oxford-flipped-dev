@@ -447,8 +447,17 @@ oxfordFlippedApp.activityContentZone = function() {
 		if ($(e).find('.oxfl-cz').length) {
 			var backgroundImage = $(e).find('.image_slide').attr('src');
 			//$(e).closest('.js-slider-item').addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
-			$(e).addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
+			$(e).addClass('oxfl-content-zone-wrapper').append('<div class="oxfl-content-zone-background"></div>').find('.oxfl-content-zone-background').css('background-image', 'url('+backgroundImage+')');
 		}
+	});
+
+	$('.oxfl-cz').each(function(i,e) {
+		$(e).find('.bck-content').hide();
+	});
+
+	$('.oxfl-cz').on('click', '.bck-title', function() {
+		var $content = $(this).next('.bck-content');
+		$content.slideDown();
 	});
 
 }
