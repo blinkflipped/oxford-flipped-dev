@@ -61,6 +61,7 @@ body.body_clase.view-mode {
           transition: top .3s ease-out;
           background: $background_color;
           .oxfl-cz-content {
+            height: calc(100% - #{$cz_header_height});
             max-height: calc(100% - #{$cz_header_height});
             overflow: auto;
             -webkit-overflow-scrolling: touch;
@@ -95,13 +96,13 @@ body.body_clase.view-mode {
             font-family: $font_family_2;
             @include font-size(1.2);
             color: $color_6;
-            padding: 36px 6px 6px;
+            padding: 30px 6px 6px;
             position: absolute;
             right: 50px;
             top: 50%;
             transform: translate(0,-50%);
             outline: none;
-            width: 65px;
+            width: 78px;
             text-align: center;
           }
         }
