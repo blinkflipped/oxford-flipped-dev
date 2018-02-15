@@ -456,8 +456,15 @@ oxfordFlippedApp.activityContentZone = function() {
 	});
 
 	$('.oxfl-cz').on('click', '.bck-title', function() {
-		var $content = $(this).next('.bck-content');
-		$content.slideDown();
+		var $content = $(this).next('.bck-content'),
+				contentPos = $content.offset().top,
+				$wrapper = $(this).closest('.js-slider-item');
+		$content.show();
+		$wrapper.find('.bck-content').not($content).hide();
+		$('html, body').animate({
+			scrollTop: contentPos
+		}, 200);
+
 	});
 
 }

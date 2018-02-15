@@ -1,4 +1,6 @@
 
+$cz_button_height: 270px;
+
 body.body_clase.view-mode {
 
   #actividad {
@@ -46,28 +48,48 @@ body.body_clase.view-mode {
       .oxfl-cz {
 
         .bck-content {
-            margin: 100vh 0 0 0;
+            margin: $cz_button_height 0 0 0;
             width: 100%;
         }
         .bck-title {
           position: absolute;
           top: 0;
-          width: 33%;//Demo
-          height: 300px;//Demo
+          height: $cz_button_height;
           left: 0;
-          background: pink; //Demo
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: center bottom;
+          background-size: contain;
+          p {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%,0);
+            font-family: $font_family_1;
+            font-weight: bold;
+            @include font-size(1.8);
+            color: $negative_color;
+          }
         }
-
+        &-video {
+          .bck-title {
+            background-image: url(img/monster-9.svg);
+            left: 0;
+            width: 191px;
+          }
+        }
         &-infographic {
           .bck-title {
-            background: lavender;//Demo
-            left: 33%;//Demo
+            width: 203px;
+            background-image: url(img/monster-10.svg);
+            left: 191px;
           }
         }
         &-text {
           .bck-title {
-            background: #61f5cc;//Demo
-            left: 66%;//Demo
+            width: 138px;
+            background-image: url(img/monster-11.svg);
+            left: 203px + 191px;
           }
         }
       }
