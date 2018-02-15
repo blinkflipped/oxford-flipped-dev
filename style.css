@@ -1154,6 +1154,26 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     display: none; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .layout-panel {
     width: 100% !important; }
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next {
+    border: 0;
+    overflow: visible;
+    background: url(img/monster-contentzone.svg) center bottom no-repeat;
+    background-size: contain;
+    width: 296px;
+    height: 158px;
+    font-family: "Myfrida", sans-serif;
+    font-size: 44px;
+    font-size: 4.4rem;
+    color: #FBB03B;
+    padding: 30px 6px 6px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    outline: none;
+    text-align: center; }
+    body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next span {
+      display: block;
+      width: 180px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content {
     position: fixed;
     top: 100vh;
@@ -1168,6 +1188,25 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       max-height: calc(100% - 125px);
       overflow: auto;
       -webkit-overflow-scrolling: touch; }
+      body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 {
+        height: 90%;
+        position: relative; }
+        body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 .bck-video-player {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0; }
+          body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 .bck-video-player .video-js .vjs-big-play-button {
+            border: 0;
+            background: url(img/player.png) 0 0 no-repeat;
+            width: 132px;
+            height: 128px;
+            background-size: contain; }
+            body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 .bck-video-player .video-js .vjs-big-play-button::before {
+              content: none; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content.oxfl-visible {
       top: 0; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .oxfl-cz-header {

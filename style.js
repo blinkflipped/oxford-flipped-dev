@@ -101,7 +101,8 @@ oxfordFlippedApp.text = {
 	popoverChallenge : 'To access the Challenge you first have to complete all chapters',
 	popoverChapter: 'Your teacher first has to provide access to you',
 	confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?',
-	closeContentZone : 'Back to top'
+	closeContentZone : 'Back to top',
+	nextContentZone : 'Are you ready?'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -446,9 +447,9 @@ oxfordFlippedApp.activityContentZone = function() {
 	//$('.pregunta').each(function(i,e) {
 	$('.js-slider-item').each(function(i,e) {
 		if ($(e).find('.oxfl-cz').length) {
-			var backgroundImage = $(e).find('.image_slide').attr('src');
-			//$(e).closest('.js-slider-item').addClass('oxfl-content-zone-wrapper').css('background-image', 'url('+backgroundImage+')');
-			$(e).addClass('oxfl-content-zone-wrapper').append('<div class="oxfl-content-zone-background"></div>').find('.oxfl-content-zone-background').css('background-image', 'url('+backgroundImage+')');
+			var backgroundImage = $(e).find('.image_slide').attr('src'),
+					buttonNextHTML = '<button class="oxfl-cz-button-next oxfl-js-cz-next"><span>'+oxfordFlippedApp.text.nextContentZone+'</span></button>';
+			$(e).addClass('oxfl-content-zone-wrapper').append(buttonNextHTML+'<div class="oxfl-content-zone-background"></div>').find('.oxfl-content-zone-background').css('background-image', 'url('+backgroundImage+')');
 		}
 	});
 
@@ -459,7 +460,7 @@ oxfordFlippedApp.activityContentZone = function() {
 				html = '<div class="oxfl-cz-header"><h4 class="oxfl-cz-header-title">'+title+'</h4><button class="oxfl-cz-header-button oxfl-js-cz-close">'+oxfordFlippedApp.text.closeContentZone+'</button></div>';
 
 		$content.wrapInner('<div class="oxfl-cz-content"></div>').prepend(html);
-		console.log("A");
+
 	});
 
 	$('.oxfl-cz').on('click', '.bck-title', function() {

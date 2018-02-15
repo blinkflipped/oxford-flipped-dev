@@ -48,8 +48,28 @@ body.body_clase.view-mode {
       .layout-panel {
         width: 100%!important;
       }
+      .oxfl-cz-button-next {
+        border: 0;
+        overflow: visible;
+        background: url(img/monster-contentzone.svg) center bottom no-repeat;
+        background-size: contain;
+        width: 296px;
+        height: 158px;
+        font-family: $font_family_2;
+        @include font-size(4.4);
+        color: $color_6;
+        padding: 30px 6px 6px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        outline: none;
+        text-align: center;
+        span {
+          display: block;
+          width: 180px;
+        }
+      }
       .oxfl-cz {
-
         .bck-content {
           position: fixed;
           top: 100vh;
@@ -65,6 +85,29 @@ body.body_clase.view-mode {
             max-height: calc(100% - #{$cz_header_height});
             overflow: auto;
             -webkit-overflow-scrolling: touch;
+            .bck-video-container2 {
+              height: 90%;
+              position: relative;
+              .bck-video-player {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                .video-js .vjs-big-play-button {
+                  border: 0;
+                  background: url(img/player.png) 0 0 no-repeat;
+                  width: 132px;
+                  height: 128px;
+                  background-size: contain;
+                  &::before {
+                    content: none;
+                  }
+                }
+              }
+            }
           }
           &.oxfl-visible {
             top: 0;
