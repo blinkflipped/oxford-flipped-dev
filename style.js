@@ -40,6 +40,7 @@
 			oxfordFlippedApp.activityCheckpointCover();
 			oxfordFlippedApp.activityFinalScreenOne();
 			oxfordFlippedApp.activityContentZone();
+			oxfordFlippedApp.activityFinalScreenTest();
 		},
 
 		onCourseDataLoaded: function(data) {
@@ -505,6 +506,16 @@ oxfordFlippedApp.activityContentZone = function() {
 		$modal.modal('hide');
 		blink.activity.showNextSection();
 
+	});
+
+}
+
+oxfordFlippedApp.activityFinalScreenTest = function() {
+
+	blink.events.on('slider:change', function(currentSection) {
+		var isFinalSlide = blink.activity.currentStyle.Slider.isLastSection(currentSection);
+		console.log(isFinalSlide);
+		// isFinalSlide && hacerCosasEnLaSlideFinal()
 	});
 
 }
