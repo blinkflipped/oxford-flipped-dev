@@ -1,5 +1,6 @@
 
 $cz_button_height: 270px;
+$cz_button_top: 50px;
 
 body.body_clase.view-mode {
 
@@ -12,7 +13,7 @@ body.body_clase.view-mode {
         left: 0;
         z-index: -1;
         width: 100%;
-        height: 80vh;
+        height: 460px;
         background-position: center top;
         background-size: cover;
         background-repeat: no-repeat;
@@ -48,12 +49,12 @@ body.body_clase.view-mode {
       .oxfl-cz {
 
         .bck-content {
-            margin: $cz_button_height 0 0 0;
+            margin: $cz_button_height+$cz_button_top 0 0 0;
             width: 100%;
         }
         .bck-title {
           position: absolute;
-          top: 0;
+          top: $cz_button_top;
           height: $cz_button_height;
           left: 0;
           background-color: transparent;
@@ -75,21 +76,21 @@ body.body_clase.view-mode {
           .bck-title {
             background-image: url(img/monster-9.svg);
             left: 0;
-            width: 191px;
+            width: 210px;
           }
         }
         &-infographic {
           .bck-title {
-            width: 203px;
+            width: 220px;
             background-image: url(img/monster-10.svg);
-            left: 191px;
+            left: 210px;
           }
         }
         &-text {
           .bck-title {
-            width: 138px;
+            width: 160px;
             background-image: url(img/monster-11.svg);
-            left: 203px + 191px;
+            left: 220px + 210px;
           }
         }
       }
