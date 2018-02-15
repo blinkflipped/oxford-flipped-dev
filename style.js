@@ -458,8 +458,8 @@ oxfordFlippedApp.activityContentZone = function() {
 				title = $wrapper.find('.header .title h3').text(),
 				html = '<div class="oxfl-cz-header"><h4 class="oxfl-cz-header-title">'+title+'</h4><button class="oxfl-cz-header-button oxfl-js-cz-close">'+oxfordFlippedApp.text.closeContentZone+'</button></div>';
 
-		$content.wrapInner('<div class="oxfl-cz-content"></div>').end().prepend(html);
-
+		$content.wrapInner('<div class="oxfl-cz-content"></div>').prepend(html);
+		console.log("A");
 	});
 
 	$('.oxfl-cz').on('click', '.bck-title', function() {
