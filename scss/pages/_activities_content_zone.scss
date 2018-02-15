@@ -3,8 +3,36 @@ body.body_clase.view-mode {
 
   #actividad {
     .oxfl-content-zone-wrapper {
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
       .slide_img {
         display: none;
+      }
+      .oxfl-cz {
+        .bck-dropdown-button {
+          position: absolute;
+          top: 0;
+          width: 33%;//Demo
+          height: 300px;//Demo
+          left: 0;
+          background: pink; //Demo
+        }
+        .bck-dropdown-content {
+          padding-top: 310px; //Demo
+        }
+        &-infographic {
+          .bck-dropdown-button {
+            background: lavender;//Demo
+            left: 33%;//Demo
+          }
+        }
+        &-text {
+          .bck-dropdown-button {
+            background: #61f5cc;//Demo
+            left: 66%;//Demo
+          }
+        }
       }
     }
   }
