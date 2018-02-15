@@ -874,7 +874,11 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       height: 100%;
       object-fit: cover;
       position: relative;
-      z-index: 10; }
+      z-index: 10;
+      transition: transform .3s;
+      transform: scale(1); }
+    .oxfl-chapter .oxfl-chapter-image-wrapper:hover img {
+      transform: scale(1.1); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-title3 {
     text-align: center; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
@@ -1126,7 +1130,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     background-size: cover;
     background-repeat: no-repeat; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .header {
-    padding-top: 60px; }
+    padding-top: 40px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .header .title {
       width: 430px;
       height: 125px;
@@ -1167,7 +1171,6 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .oxfl-cz-header {
     background: #ffffff;
     height: 125px;
-    margin-top: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1186,21 +1189,23 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .oxfl-cz-header-button {
       border: 0;
       overflow: visible;
-      background: url(img/arrow-up.png) left top no-repeat;
-      background-size: 61px 33px;
+      background: url(img/arrow-up.png) center top no-repeat;
+      background-size: 30px 18px;
       font-family: "Myfrida", sans-serif;
       font-size: 12px;
       font-size: 1.2rem;
       color: #FBB03B;
-      padding: 30px 6px 6px;
+      padding: 36px 6px 6px;
       position: absolute;
       right: 50px;
       top: 50%;
       transform: translate(0, -50%);
-      outline: none; }
+      outline: none;
+      width: 65px;
+      text-align: center; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-title {
     position: absolute;
-    top: 90px;
+    top: 50px;
     height: 270px;
     left: 0;
     background-color: transparent;
