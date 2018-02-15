@@ -100,7 +100,8 @@ oxfordFlippedApp.text = {
 	chapterStatus2 : 'New',
 	popoverChallenge : 'To access the Challenge you first have to complete all chapters',
 	popoverChapter: 'Your teacher first has to provide access to you',
-	confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?'
+	confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?',
+	closeContentZone : 'Back to top'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -451,9 +452,15 @@ oxfordFlippedApp.activityContentZone = function() {
 		}
 	});
 
-	//$('.oxfl-cz').each(function(i,e) {
-	//	$(e).find('.bck-content').hide();
-	//});
+	$('.oxfl-cz').each(function(i,e) {
+		var $wrapper = $(e).closest('.js-slider-item'),
+				$content = $(e).find('.bck-content'),
+				title = $wrapper.find('.header .title h3').text(),
+				html = '<div class="oxfl-cz-header"><h4 class="oxfl-cz-header-title">'+title+'</h4><button class="oxfl-cz-header-button oxfl-js-cz-close">'+oxfordFlippedApp.text.closeContentZone+'</button></div>';
+
+		$content.prepend(html);
+
+	});
 
 	$('.oxfl-cz').on('click', '.bck-title', function() {
 		var $content = $(this).next('.bck-content'),
@@ -461,14 +468,12 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		$content.addClass('oxfl-visible');
 		$wrapper.find('.bck-content').not($content).removeClass('oxfl-visible');
-		//$content.show();
-		//$wrapper.find('.bck-content').not($content).hide();
-		//var contentPos = $content.offset().top;
 
-		//$wrapper.animate({
-		//	scrollTop: contentPos
-		//}, 200);
+	});
 
+	$('.oxfl-cz').on('click', '.xfl-js-cz-close', function() {
+		console.log("CLICK");
+		$(this).closest('.bck-content').removeClass('oxfl-visible');
 	});
 
 }

@@ -49,11 +49,11 @@ body.body_clase.view-mode {
       .oxfl-cz {
 
         .bck-content {
-          position: absolute;
+          position: fixed;
           top: 100vh;
           left: 0;
-          z-index: 100;
-          height: 100vh;
+          z-index: 500;
+          height: calc(100vh - #{$header_height});
           //margin: $cz_button_height+$cz_button_top 0 0 0;
           width: 100%;
           transition: top .3 ease-out;
@@ -62,6 +62,34 @@ body.body_clase.view-mode {
             top: 0;
           }
         }
+        .oxfl-cz-header {
+          background: $background_color;
+          height: 125px;
+          display: flex;
+          align-items: center;
+          position: relative;
+          &-title {
+            font-family: $font_family_2;
+            font-weight: bold;
+            font-style: italic;
+            @include font-size(3.7);
+            line-height: 0.8em;
+            color: $color_1;
+            margin: 0;
+            text-align: center;
+          }
+          &-button {
+            border: 0;
+            overflow: visible;
+            background: url(img/arrow-up.png) left top no-repeat;
+            background-size: 61px 33px;
+            font-family: $font_family_2;
+            @include font-size(1.2);
+            color: $color_6;
+            padding: 30px 6px 6px;
+          }
+        }
+
         .bck-title {
           position: absolute;
           top: $cz_button_top;

@@ -1142,16 +1142,42 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .slide_img {
 body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .layout-panel {
   width: 100% !important; }
 body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content {
-  position: absolute;
+  position: fixed;
   top: 100vh;
   left: 0;
-  z-index: 100;
-  height: 100vh;
+  z-index: 500;
+  height: calc(100vh - 44px);
   width: 100%;
   transition: top .3 ease-out;
   background: #ffffff; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content.oxfl-visible {
     top: 0; }
+body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .oxfl-cz-header {
+  background: #ffffff;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  position: relative; }
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .oxfl-cz-header-title {
+    font-family: "Myfrida", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 37px;
+    font-size: 3.7rem;
+    line-height: 0.8em;
+    color: #8BE23F;
+    margin: 0;
+    text-align: center; }
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .oxfl-cz-header-button {
+    border: 0;
+    overflow: visible;
+    background: url(img/arrow-up.png) left top no-repeat;
+    background-size: 61px 33px;
+    font-family: "Myfrida", sans-serif;
+    font-size: 12px;
+    font-size: 1.2rem;
+    color: #FBB03B;
+    padding: 30px 6px 6px; }
 body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-title {
   position: absolute;
   top: 50px;
