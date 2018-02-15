@@ -1155,7 +1155,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-ti
   background-size: contain; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-title p {
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     left: 50%;
     transform: translate(-50%, 0);
     font-family: "Quicksand", sans-serif;

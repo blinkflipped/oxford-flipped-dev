@@ -457,11 +457,12 @@ oxfordFlippedApp.activityContentZone = function() {
 
 	$('.oxfl-cz').on('click', '.bck-title', function() {
 		var $content = $(this).next('.bck-content'),
-				contentPos = $content.offset().top,
 				$wrapper = $(this).closest('.js-slider-item');
-		console.log(contentPos);
+
 		$content.show();
 		$wrapper.find('.bck-content').not($content).hide();
+		var contentPos = $content.offset().top;
+		console.log(contentPos);
 		$wrapper.animate({
 			scrollTop: contentPos
 		}, 200);
