@@ -49,8 +49,18 @@ body.body_clase.view-mode {
       .oxfl-cz {
 
         .bck-content {
-            margin: $cz_button_height+$cz_button_top 0 0 0;
-            width: 100%;
+          position: absolute;
+          top: 100vh;
+          left: 0;
+          z-index: 100;
+          height: 100vh;
+          //margin: $cz_button_height+$cz_button_top 0 0 0;
+          width: 100%;
+          transition: top .3 ease-out;
+          background: $background_color;
+          &.oxfl-visible {
+            top: 0;
+          }
         }
         .bck-title {
           position: absolute;
@@ -63,7 +73,7 @@ body.body_clase.view-mode {
           background-size: contain;
           p {
             position: absolute;
-            bottom: 4px;
+            bottom: 12px;
             left: 50%;
             transform: translate(-50%,0);
             font-family: $font_family_1;

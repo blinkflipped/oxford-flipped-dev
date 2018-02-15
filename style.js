@@ -451,21 +451,23 @@ oxfordFlippedApp.activityContentZone = function() {
 		}
 	});
 
-	$('.oxfl-cz').each(function(i,e) {
-		$(e).find('.bck-content').hide();
-	});
+	//$('.oxfl-cz').each(function(i,e) {
+	//	$(e).find('.bck-content').hide();
+	//});
 
 	$('.oxfl-cz').on('click', '.bck-title', function() {
 		var $content = $(this).next('.bck-content'),
 				$wrapper = $(this).closest('.js-slider-item');
 
-		$content.show();
-		$wrapper.find('.bck-content').not($content).hide();
-		var contentPos = $content.offset().top;
-		console.log(contentPos);
-		$wrapper.animate({
-			scrollTop: contentPos
-		}, 200);
+		$content.addClass('oxfl-visible');
+		$wrapper.find('.bck-content').not($content).removeClass('oxfl-visible');
+		//$content.show();
+		//$wrapper.find('.bck-content').not($content).hide();
+		//var contentPos = $content.offset().top;
+
+		//$wrapper.animate({
+		//	scrollTop: contentPos
+		//}, 200);
 
 	});
 
