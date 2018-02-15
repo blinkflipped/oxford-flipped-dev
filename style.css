@@ -1160,20 +1160,27 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     background: url(img/monster-contentzone.svg) center bottom no-repeat;
     background-size: contain;
     width: 296px;
-    height: 158px;
-    font-family: "Myfrida", sans-serif;
-    font-size: 44px;
-    font-size: 4.4rem;
-    color: #FBB03B;
+    height: 315px;
     padding: 30px 6px 6px;
     position: fixed;
     right: 0;
     bottom: 0;
     outline: none;
     text-align: center; }
+    body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next-disabled {
+      filter: grayscale(1); }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next span {
       display: block;
-      width: 180px; }
+      width: 180px;
+      font-family: "Myfrida", sans-serif;
+      font-size: 44px;
+      font-size: 4.4rem;
+      line-height: 1em;
+      color: #FBB03B;
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translate(-50%, 0); }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content {
     position: fixed;
     top: 100vh;

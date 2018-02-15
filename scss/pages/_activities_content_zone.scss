@@ -54,19 +54,27 @@ body.body_clase.view-mode {
         background: url(img/monster-contentzone.svg) center bottom no-repeat;
         background-size: contain;
         width: 296px;
-        height: 158px;
-        font-family: $font_family_2;
-        @include font-size(4.4);
-        color: $color_6;
+        height: 315px;
         padding: 30px 6px 6px;
         position: fixed;
         right: 0;
         bottom: 0;
         outline: none;
         text-align: center;
+        &-disabled {
+          filter: grayscale(1);
+        }
         span {
           display: block;
           width: 180px;
+          font-family: $font_family_2;
+          @include font-size(4.4);
+          line-height: 1em;
+          color: $color_6;
+          position: absolute;
+          top: 50px;
+          left: 50%;
+          transform: translate(-50%,0);
         }
       }
       .oxfl-cz {

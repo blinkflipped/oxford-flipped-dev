@@ -448,7 +448,7 @@ oxfordFlippedApp.activityContentZone = function() {
 	$('.js-slider-item').each(function(i,e) {
 		if ($(e).find('.oxfl-cz').length) {
 			var backgroundImage = $(e).find('.image_slide').attr('src'),
-					buttonNextHTML = '<button class="oxfl-cz-button-next oxfl-js-cz-next"><span>'+oxfordFlippedApp.text.nextContentZone+'</span></button>';
+					buttonNextHTML = '<button class="oxfl-cz-button-next oxfl-cz-button-next-disabled oxfl-js-cz-next"><span>'+oxfordFlippedApp.text.nextContentZone+'</span></button>';
 			$(e).addClass('oxfl-content-zone-wrapper').append(buttonNextHTML+'<div class="oxfl-content-zone-background"></div>').find('.oxfl-content-zone-background').css('background-image', 'url('+backgroundImage+')');
 		}
 	});
