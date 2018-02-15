@@ -45,6 +45,12 @@ body.view-mode.body_curso {
 		.libro-right {
 			background: $color_1!important;
 		}
+		.libro-right ul li.close-back-wrapper,
+		.navbar-divider {
+			&::after {
+				background-color: $color_1;
+				left: 0;
+			}
 	}
 }
 

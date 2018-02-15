@@ -68,6 +68,7 @@ body.body_clase.view-mode {
           display: flex;
           align-items: center;
           position: relative;
+          padding: 0 80px;
           &-title {
             font-family: $font_family_2;
             font-weight: bold;
@@ -87,6 +88,10 @@ body.body_clase.view-mode {
             @include font-size(1.2);
             color: $color_6;
             padding: 30px 6px 6px;
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translate(0,-50%);
           }
         }
 
@@ -103,10 +108,11 @@ body.body_clase.view-mode {
             position: absolute;
             bottom: 12px;
             left: 50%;
+            margin-left: -5px;
             transform: translate(-50%,0);
             font-family: $font_family_1;
             font-weight: bold;
-            @include font-size(1.8);
+            @include font-size(1.6);
             color: $negative_color;
           }
         }
@@ -129,6 +135,9 @@ body.body_clase.view-mode {
             width: 160px;
             background-image: url(img/monster-11.svg);
             left: 220px + 210px;
+            p {
+              margin-left: 0;
+            }
           }
         }
       }
