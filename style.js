@@ -476,7 +476,8 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		$content.addClass('oxfl-visible');
 		$wrapper.find('.bck-content').not($content).removeClass('oxfl-visible');
-
+		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
+		
 	});
 
 	$('.oxfl-cz').on('click', '.oxfl-js-cz-close', function() {
