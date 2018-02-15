@@ -476,14 +476,16 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		$content.addClass('oxfl-visible');
 		$wrapper.find('.bck-content').not($content).removeClass('oxfl-visible');
-		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
-		
+
+
 	});
 
 	$('.oxfl-cz').on('click', '.oxfl-js-cz-close', function() {
 
+		var $wrapper = $(this).closest('.js-slider-item');
 		console.log("CLICK");
 		$(this).closest('.bck-content').removeClass('oxfl-visible');
+		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
 
 	});
 
@@ -499,6 +501,8 @@ oxfordFlippedApp.activityContentZone = function() {
 	$('body').on('click', '.oxfl-js-start-test', function() {
 
 		console.log("START");
+		var $modal = $('#oxfl-modal-start-test');
+		$modal.modal('hide');
 		blink.activity.showNextSection();
 
 	});

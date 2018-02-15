@@ -168,6 +168,7 @@ body.body_clase.view-mode {
           background-repeat: no-repeat;
           background-position: center bottom;
           background-size: contain;
+          cursor: pointer;
           p {
             position: absolute;
             bottom: 12px;
@@ -192,6 +193,9 @@ body.body_clase.view-mode {
             width: 220px;
             background-image: url(img/monster-10.svg);
             left: 210px;
+            p {
+              bottom: 14px;
+            }
           }
         }
         &-text {

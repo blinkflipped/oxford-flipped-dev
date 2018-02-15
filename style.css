@@ -1054,6 +1054,7 @@ body.body_clase.view-mode .oxfl-checkpoint-1-cover {
   z-index: 500;
   transform: translate(-50%, 0);
   margin-left: 190px; }
+  body.body_clase.view-mode .oxfl-checkpoint-1-cover .bck-title,
   body.body_clase.view-mode .oxfl-checkpoint-1-cover h2,
   body.body_clase.view-mode .oxfl-checkpoint-1-cover h3 {
     color: #ffffff;
@@ -1061,7 +1062,7 @@ body.body_clase.view-mode .oxfl-checkpoint-1-cover {
     font-weight: bold;
     font-size: 30px;
     font-size: 3rem;
-    max-width: 210px;
+    max-width: 280px;
     margin: 0 0 5px 0; }
   body.body_clase.view-mode .oxfl-checkpoint-1-cover .bck-content {
     font-family: "Quicksand", sans-serif;
@@ -1260,7 +1261,8 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: contain; }
+    background-size: contain;
+    cursor: pointer; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-title p {
       position: absolute;
       bottom: 12px;
@@ -1280,6 +1282,8 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     width: 220px;
     background-image: url(img/monster-10.svg);
     left: 210px; }
+    body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title p {
+      bottom: 14px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title {
     width: 160px;
     background-image: url(img/monster-11.svg);
