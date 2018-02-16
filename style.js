@@ -1,75 +1,77 @@
 (function (blink) {
 	'use strict';
 
-	var OxfordFlippedDevStyle = function() {
-		blink.theme.styles.basic.apply(this, arguments);
-	}
-
-	OxfordFlippedDevStyle.prototype = {
-		bodyClassName: 'content_type_clase_oxford-flipped-dev',
-		ckEditorStyles: {
-			name: 'oxford-flipped-dev',
-			styles: [
-				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
-				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
-				{ name: 'Content Zone Video', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-video' } },
-				{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
-				{ name: 'Content Zone Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-text' } },
-			]
-		},
-
-		init: function() {
-			var parent = blink.theme.styles.basic.prototype;
-			parent.init.call(this);
-
-			// Ejemplo carga de datos de la clase en una actividad.
-			blink.getActivity(idcurso, idclase).done((function(data) {
-				this.onActivityDataLoaded(data);
-			}).bind(this));
-
-			// Ejemplo carga de datos del libro en una actividad.
-			blink.getCourse(idcurso).done((function(data) {
-				this.onCourseDataLoaded(data);
-			}).bind(this));
-		},
-
-		onActivityDataLoaded: function(data) {
-			console.log("onActivityDataLoaded");
-			console.log(data);
-			oxfordFlippedApp.activityCreateFalseNavigation(data);
-			oxfordFlippedApp.activityCheckpointCover();
-			oxfordFlippedApp.activityFinalScreenOne();
-			oxfordFlippedApp.activityContentZone();
-			oxfordFlippedApp.activityFinalScreenTest();
-		},
-
-		onCourseDataLoaded: function(data) {
-			console.log("onCourseDataLoaded");
-			console.log(data);
-			var isBookCover = (idclase.toString() === data.units[0].subunits[0].id) ? true : false;
-			if (isBookCover) {
-				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-				loadScript(urlSeguimiento, true, function() {
-					console.log(window.actividades);
-				});
-				oxfordFlippedApp.homepage(data);
-			}
+	$.getScript('/themes/responsive/assets/styles/oxford-flipped/style.js', function() {
+		var OxfordFlippedDevStyle = function() {
+			blink.theme.styles['oxford-flipped'].apply(this, arguments);
 		}
-	};
+
+		OxfordFlippedDevStyle.prototype = {
+			bodyClassName: 'content_type_clase_oxford-flipped-dev',
+			ckEditorStyles: {
+				name: 'oxford-flipped-dev',
+				styles: [
+					{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
+					{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
+					{ name: 'Content Zone Video', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-video' } },
+					{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
+					{ name: 'Content Zone Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-text' } },
+				]
+			},
+
+			init: function() {
+				var parent = blink.theme.styles['oxford-flipped'].prototype;
+				parent.init.call(this);
+
+				// Ejemplo carga de datos de la clase en una actividad.
+				blink.getActivity(idcurso, idclase).done((function(data) {
+					this.onActivityDataLoaded(data);
+				}).bind(this));
+
+				// Ejemplo carga de datos del libro en una actividad.
+				blink.getCourse(idcurso).done((function(data) {
+					this.onCourseDataLoaded(data);
+				}).bind(this));
+			},
+
+			onActivityDataLoaded: function(data) {
+				console.log("onActivityDataLoaded");
+				console.log(data);
+				oxfordFlippedApp.activityCreateFalseNavigation(data);
+				oxfordFlippedApp.activityCheckpointCover();
+				oxfordFlippedApp.activityFinalScreenOne();
+				oxfordFlippedApp.activityContentZone();
+				oxfordFlippedApp.activityFinalScreenTest();
+			},
+
+			onCourseDataLoaded: function(data) {
+				console.log("onCourseDataLoaded");
+				console.log(data);
+				var isBookCover = (idclase.toString() === data.units[0].subunits[0].id) ? true : false;
+				if (isBookCover) {
+					var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+					loadScript(urlSeguimiento, true, function() {
+						console.log(window.actividades);
+					});
+					oxfordFlippedApp.homepage(data);
+				}
+			}
+		};
 
 
-	OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
+		OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
 
-	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
+		blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
 
-	blink.events.on('loadSeguimientoCurso', function() {
-		// Ejemplo carga de datos del libro en el toc del curso.
-		blink.getCourse(idcurso).done(function(data) {
-			var style = new OxfordFlippedDevStyle;
-			style.onCourseDataLoaded(data);
-			console.log("TOC");
+		blink.events.on('loadSeguimientoCurso', function() {
+			// Ejemplo carga de datos del libro en el toc del curso.
+			blink.getCourse(idcurso).done(function(data) {
+				var style = new OxfordFlippedDevStyle;
+				style.onCourseDataLoaded(data);
+				console.log("TOC");
+			});
 		});
-	})
+	});
 
 })( blink );
 
