@@ -823,7 +823,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   left: 0;
   z-index: 100;
   background-image: url(img/monster_test.gif);
-  height: 418px; }
+  width: 715px;
+  height: 370px; }
 
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
