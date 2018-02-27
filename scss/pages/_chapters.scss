@@ -39,8 +39,11 @@
   left: 0;
   z-index: 100;
   .oxfl-body-user-not-student & {
-    background-image: url(img/monster-6-b.svg);
+    //TODO REMOVE COMMENT AFTER GIF TEST background-image: url(img/monster-6-b.svg);
   }
+  //TODO REMOVE AFTER GIF TEST
+  background-image: url(img/monster_test.gif);
+  height: 418px;
 }
 
 
