@@ -197,6 +197,9 @@ body.body_clase.view-mode {
               bottom: 14px;
             }
           }
+          .oxfl-cz-content {
+            text-align: center;
+          }
         }
         &-text {
           .bck-title {
@@ -206,6 +209,9 @@ body.body_clase.view-mode {
             p {
               margin-left: 0;
             }
+          }
+          .oxfl-cz-content {
+            padding: 0 100px;
           }
         }
       }

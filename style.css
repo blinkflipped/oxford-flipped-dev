@@ -879,7 +879,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       z-index: 10;
       transition: transform .3s;
       transform: scale(1); }
-  .oxfl-chapter:hover .oxfl-chapter-image-wrapper img {
+  .oxfl-chapter:not(.lock):hover .oxfl-chapter-image-wrapper img {
     transform: scale(1.1); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-title3 {
     text-align: center; }
@@ -1285,11 +1285,15 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     left: 210px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title p {
       bottom: 14px; }
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .oxfl-cz-content {
+    text-align: center; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title {
     width: 160px;
     background-image: url(img/monster-11.svg);
     left: 430px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title p {
       margin-left: 0; }
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .oxfl-cz-content {
+    padding: 0 100px; }
 
 /*# sourceMappingURL=style.css.map */
