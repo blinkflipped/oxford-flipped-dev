@@ -39,23 +39,42 @@ body.body_clase.view-mode {
 
 .oxfl-coins-bubble-2 {
   background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
-  width: 483px;
-  height: 138px;
+  width: 330px;
+  height: 98px;
   background-size: contain;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%,0);
-  margin-left: -250px;
+  margin-left: 60px;
   &-coins {
     position: absolute;
-    top: 25px;
-    right: 110px;
+    top: 14px;
+    right: 85px;
     text-align: right;
     @include font-size(6.0);
     line-height: 1em;
     color: $negative_color;
     font-family: $font_family_1;
     font-weight: 500;
+  }
+}
+
+.oxfl-final-slide-stars {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url(img/endscreen-stars-regular-0.png) 0 0 no-repeat transparent;
+  width: 318px;
+  height: 345px;
+  background-size: contain;
+  &-1 {
+    background-image: url(img/endscreen-stars-regular-1.png);
+  }
+  &-2 {
+    background-image: url(img/endscreen-stars-regular-2.png);
+  }
+  &-3 {
+    background-image: url(img/endscreen-stars-regular-3.png);
   }
 }
