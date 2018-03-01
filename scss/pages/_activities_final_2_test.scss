@@ -1,0 +1,24 @@
+
+body.body_clase.view-mode {
+
+  #actividad {
+    .oxfl-final-slide {
+      background: url(img/endscreen-ok-regular.svg) center center no-repeat;
+      background-size: cover;
+      .item-container  {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &.oxfl-final-slide-on {
+    .content-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .navbar.libro,
+    .navbar-bottom {
+      display: none;
+    }
+  }
+}

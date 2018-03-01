@@ -529,11 +529,24 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
 		if (isFinalSlide) {
+			console.log(window.actividades);
 			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 			loadScript(urlSeguimiento, true, function() {
 				console.log(window.actividades);
-				console.log("C");
 			});
+			$('body').addClass('oxfl-final-slide-on');
+			var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
+			if (finalSlideLoaded) {
+
+			} else {
+				var finalSlideContent = '<div class="oxfl-bubble-">Before you leave</div><button>VIEW TIP</button><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-2"></div></div></div></div>';
+				$('#slider-item-'+currentSection).addClass('oxfl-final-slide');
+
+			}
+			var finalCoins = 3000;
+			$('#oxfl-total-coins-2').text(finalCoins);
+		} else {
+			$('body').removeClass('oxfl-final-slide-on');
 		}
 	});
 
