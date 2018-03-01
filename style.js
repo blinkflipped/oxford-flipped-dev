@@ -531,11 +531,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		if (isFinalSlide) {
 			console.log("A");
 			console.log(window.actividades);
-			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-			loadScript(urlSeguimiento, true, function() {
-				console.log("B");
-				console.log(window.actividades);
-			});
+
 			$('body').addClass('oxfl-final-slide-on');
 			var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
 			if (finalSlideLoaded) {
