@@ -539,8 +539,8 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 			if (finalSlideLoaded) {
 
 			} else {
-				
-				var finalSlideContent = '<div class="oxfl-bubble-">Before you leave</div><button>VIEW TIP</button><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-2"></div></div></div></div>';
+
+				var finalSlideContent = '<div class="oxfl-bubble-">Before you leave</div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div>';
 				$('#slider-item-'+currentSection).addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 
 			}

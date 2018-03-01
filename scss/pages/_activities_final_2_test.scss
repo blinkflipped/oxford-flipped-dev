@@ -9,6 +9,18 @@ body.body_clase.view-mode {
       background-size: contain ;
       .item-container  {
         max-width: 100%;
+        .header {
+          display: none;
+        }
+        .oxfl-end-screen-tip {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          display: none;
+        }
       }
     }
   }
@@ -22,5 +34,28 @@ body.body_clase.view-mode {
     .navbar-bottom {
       display: none;
     }
+  }
+}
+
+.oxfl-coins-bubble-2 {
+  background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
+  width: 483px;
+  height: 138px;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+  margin-left: -250px;
+  &-coins {
+    position: absolute;
+    top: 25px;
+    right: 110px;
+    text-align: right;
+    @include font-size(6.0);
+    line-height: 1em;
+    color: $negative_color;
+    font-family: $font_family_1;
+    font-weight: 500;
   }
 }
