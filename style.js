@@ -530,33 +530,42 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
 		if (isFinalSlide) {
-			console.log("A");
-			console.log(window.actividades);
-			var finalGrade =  window.actividades[idclase].clasificacion;
 
-			$('body').addClass('oxfl-final-slide-on');
-			var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
+			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+			loadScript(urlSeguimiento, true, function() {
+				console.log("B");
+				console.log(window.actividades);
 
-			if (finalGrade > oxfordFlippedApp.config.minGrade) {
+				var finalGrade =  window.actividades[idclase].clasificacion;
 
-				if (!finalSlideLoaded) {
+				$('body').addClass('oxfl-final-slide-on');
+				var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
 
-					var finalSlideContent = '<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">Before you leave</div></div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div>';
-					$('#slider-item-'+currentSection).addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
+				if (finalGrade > oxfordFlippedApp.config.minGrade) {
 
+					if (!finalSlideLoaded) {
+
+						var finalSlideContent = '<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">Before you leave</div></div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div>';
+						$('#slider-item-'+currentSection).addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
+
+					}
+					var finalCoins = 3000,
+							grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : finalGrade,
+							totalStars = oxfordFlippedApp.gradeToStars(grade);
+					$('#oxfl-total-coins-2').text(finalCoins);
+					$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
+
+				} else {
+					if (!finalSlideLoaded) {
+						var finalSlideContent = '<div>TRY AGAIN</div>';
+						$('#slider-item-'+currentSection).addClass('oxfl-final-slide oxfl-final-slide-fail');
+					}
 				}
-				var finalCoins = 3000,
-						grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : finalGrade,
-						totalStars = oxfordFlippedApp.gradeToStars(grade);
-				$('#oxfl-total-coins-2').text(finalCoins);
-				$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
 
-			} else {
-				if (!finalSlideLoaded) {
-					var finalSlideContent = '<div>TRY AGAIN</div>';
-					$('#slider-item-'+currentSection).addClass('oxfl-final-slide oxfl-final-slide-fail');
-				}
-			}
+
+			});
+
+
 
 		} else {
 			$('body').removeClass('oxfl-final-slide-on');

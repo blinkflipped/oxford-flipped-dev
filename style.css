@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700");
 .slick-slider {
   position: relative;
@@ -1311,7 +1310,7 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
     margin: 0; }
     body.body_clase.view-mode #actividad .oxfl-final-slide .item-container .header {
       display: none; }
-    body.body_clase.view-mode #actividad .oxfl-final-slide .item-container .oxfl-end-screen-tip  {
+    body.body_clase.view-mode #actividad .oxfl-final-slide .item-container .oxfl-end-screen-tip {
       position: fixed;
       top: 0;
       left: 0;
