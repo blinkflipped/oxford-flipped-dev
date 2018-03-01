@@ -112,7 +112,10 @@
       transition: transform .3s;
       transform: scale(1);
     }
-    &:hover {
+
+  }
+  &:hover {
+    .oxfl-chapter-image-wrapper {
       img {
         transform: scale(1.1);
       }

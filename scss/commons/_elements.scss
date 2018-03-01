@@ -169,25 +169,25 @@
 // Labels
 
 .oxfl-label {
-  width: 60px;
-  height: 33px;
-  background: url(img/labels.png) 0 1px no-repeat;
-  background-size: 60px 99px;
+  width: 90px;
+  height: 51px;
+  background: url(img/labels.png) 0 0 no-repeat;
+  background-size: 90px 149px;
   font-family: $font_family_1;
-  @include font-size(0.8);
+  @include font-size(1.1);
   font-weight: 500;
   color: $label_color;
   text-align: center;
-  padding-right: 5px;
-  padding-top: 3px;
+  padding-right: 7px;
+  padding-top: 7px;
   &.oxfl-label-2 {//New
-    background-position: 0 1px;
+    background-position: 0 0;
   }
   &.oxfl-label-0 {//Started
-    background-position: 0 -33px;
+    background-position: 0 -51px;
   }
   &.oxfl-label-1 {//Completed
-    background-position: 0 -66px;
+    background-position: 0 -102px;
   }
 }
 

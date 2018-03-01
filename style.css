@@ -287,24 +287,24 @@ body.oxfl-body-chapters {
         color: #ffffff; }
 
 .oxfl-label {
-  width: 60px;
-  height: 33px;
-  background: url(img/labels.png) 0 1px no-repeat;
-  background-size: 60px 99px;
+  width: 90px;
+  height: 51px;
+  background: url(img/labels.png) 0 0 no-repeat;
+  background-size: 90px 149px;
   font-family: "Quicksand", sans-serif;
-  font-size: 8px;
-  font-size: 0.8rem;
+  font-size: 11px;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #ffffff;
   text-align: center;
-  padding-right: 5px;
-  padding-top: 3px; }
+  padding-right: 7px;
+  padding-top: 7px; }
   .oxfl-label.oxfl-label-2 {
-    background-position: 0 1px; }
+    background-position: 0 0; }
   .oxfl-label.oxfl-label-0 {
-    background-position: 0 -33px; }
+    background-position: 0 -51px; }
   .oxfl-label.oxfl-label-1 {
-    background-position: 0 -66px; }
+    background-position: 0 -102px; }
 
 .oxfl-stars::after {
   content: "";
@@ -330,7 +330,7 @@ body.oxfl-body-chapters {
   background-position: -19px 0; }
 
 .view-mode .modal-backdrop {
-  background: #CCCCCC; }
+  background: #242b34; }
   .view-mode .modal-backdrop.in {
     opacity: 0.74 !important; }
 
@@ -757,8 +757,8 @@ body.oxfl-body-home #oxfl-home-menu {
       object-fit: cover;
       transition: transform .3s;
       transform: scale(1); }
-    .oxfl-episode .oxfl-episode-image-wrapper:hover img {
-      transform: scale(1.1); }
+  .oxfl-episode:hover .oxfl-episode-image-wrapper img {
+    transform: scale(1.1); }
 
 .oxfl-episodes-page {
   margin-left: -5px;
@@ -879,8 +879,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       z-index: 10;
       transition: transform .3s;
       transform: scale(1); }
-    .oxfl-chapter .oxfl-chapter-image-wrapper:hover img {
-      transform: scale(1.1); }
+  .oxfl-chapter:hover .oxfl-chapter-image-wrapper img {
+    transform: scale(1.1); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-title3 {
     text-align: center; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
@@ -1042,8 +1042,8 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img
 body.body_clase.view-mode .oxfl-checkpoint-1-cover {
   background: url(img/bubble-3.png) 0 0 no-repeat;
   background-size: contain;
-  width: 470px;
-  height: 230px;
+  width: 470px !important;
+  height: 230px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
