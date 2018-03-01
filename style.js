@@ -47,7 +47,10 @@
 				oxfordFlippedApp.activityContentZone();
 				oxfordFlippedApp.activityFinalScreenTest();
 			},
-
+			removeFinalSlide: function () {
+				var parent = blink.theme.styles.basic.prototype;
+				parent.removeFinalSlide.call(this, true);
+			},
 			onCourseDataLoaded: function(data) {
 				console.log("onCourseDataLoaded");
 				console.log(data);
