@@ -3,8 +3,10 @@ body.body_clase.view-mode {
 
   #actividad {
     .oxfl-final-slide {
-      background: url(img/endscreen-ok-regular.svg) center center no-repeat;
-      background-size: cover;
+      background-position: center center;
+      background-image: url(img/endscreen-ok-regular.svg), url(img/endscreen-ok-regular-bg.png);
+      background-repeat: no-repeat, repeat-x;
+      background-size: contain ;
       .item-container  {
         max-width: 100%;
       }
