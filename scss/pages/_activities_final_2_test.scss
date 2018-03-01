@@ -65,7 +65,9 @@ body.body_clase.view-mode {
 .oxfl-final-slide-stars {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+  margin-left: 340px;
   background: url(img/endscreen-stars-regular-0.png) 0 0 no-repeat transparent;
   width: 210px;
   height: 225px;

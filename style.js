@@ -144,17 +144,17 @@ oxfordFlippedApp.popover = function() {
 
 }
 
-oxfordFlippedApp.gradeToStars = function(chapterGrade) {
+oxfordFlippedApp.gradeToStars = function(grade) {
 	// De 0-50 = 0 estrellas; De 51-70 = 1 estrella; De 71-99 = 2 estrellas; 100 = 3 estrellas
 	var minGrade = 50,
 			oneStarGradeMax = 70,
 			twoStarsGradeMax = 99;
 	var totalStars = 0;
-	if (chapterGrade > minGrade && chapterGrade <= oneStarGradeMax) {
+	if (grade > minGrade && grade <= oneStarGradeMax) {
 		totalStars = 1;
-	} else if (chapterGrade > oneStarGradeMax && chapterGrade <= twoStarsGradeMax) {
+	} else if (grade > oneStarGradeMax && grade <= twoStarsGradeMax) {
 		totalStars = 2;
-	} else if (chapterGrade > twoStarsGradeMax) {
+	} else if (grade > twoStarsGradeMax) {
 		totalStars = 3;
 	}
 
@@ -275,8 +275,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 				chapterIsChallenge = (chapterTitle === 'Challenge') ? true : false;
 
 		//Stars
-		var chapterGrade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
-				chapterStars = (typeof activities[chapterID] === 'undefined') ? 0 : oxfordFlippedApp.gradeToStars(chapterGrade);
+		var grade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
+				chapterStars = (typeof activities[chapterID] === 'undefined') ? 0 : oxfordFlippedApp.gradeToStars(grade);
 
 		console.log(activities[chapterID]);
 
@@ -529,10 +529,10 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
 		if (isFinalSlide) {
-			console.log(window.actividades);
+			console.log("A"+window.actividades);
 			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 			loadScript(urlSeguimiento, true, function() {
-				console.log(window.actividades);
+				console.log("B"+window.actividades);
 			});
 			$('body').addClass('oxfl-final-slide-on');
 			var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
@@ -545,7 +545,8 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 
 			}
 			var finalCoins = 3000,
-					totalStars = 2;
+					grade = (typeof window.actividades[idClase] === 'undefined') ? 0 : window.actividades[idClase].notas[0],
+					totalStars = oxfordFlippedApp.gradeToStars(grade);
 			$('#oxfl-total-coins-2').text(finalCoins);
 			$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
 		} else {
