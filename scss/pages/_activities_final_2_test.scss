@@ -6,7 +6,11 @@ body.body_clase.view-mode {
       background-position: center center;
       background-image: url(img/endscreen-ok-regular.svg), url(img/endscreen-ok-regular-bg.png);
       background-repeat: no-repeat, repeat-x;
-      background-size: contain ;
+      background-size: contain;
+      &-fail {
+        background: #000000;
+        color: #ffffff;
+      }
       .item-container  {
         max-width: 100%;
         padding: 0;
