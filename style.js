@@ -536,12 +536,12 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 				console.log("B");
 				console.log(window.actividades);
 
-				var finalGrade =  window.actividades[idclase].clasificacion;
+				var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
 
 				$('body').addClass('oxfl-final-slide-on');
 				var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
 
-				if (finalGrade > oxfordFlippedApp.config.minGrade) {
+				if (grade > oxfordFlippedApp.config.minGrade) {
 
 					if (!finalSlideLoaded) {
 
@@ -550,7 +550,6 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 
 					}
 					var finalCoins = 3000,
-							grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : finalGrade,
 							totalStars = oxfordFlippedApp.gradeToStars(grade);
 					$('#oxfl-total-coins-2').text(finalCoins);
 					$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
