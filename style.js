@@ -516,9 +516,19 @@ oxfordFlippedApp.activityContentZone = function() {
 oxfordFlippedApp.activityFinalScreenTest = function() {
 
 	blink.events.on('slider:change', function(currentSection) {
-		var isFinalSlide = blink.activity.currentStyle.Slider.isLastSection(currentSection);
+		console.log(blink.activity.currentStyle.Slider.$items.length);
+		console.log(currentSection);
+		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
+				isFinalSlide = (totalSlides === currentSection) ? true : false;
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
+		if (isFinalSlide) {
+			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+			loadScript(urlSeguimiento, true, function() {
+				console.log(window.actividades);
+				console.log("C");
+			});
+		}
 	});
 
 }
