@@ -529,9 +529,11 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
 		if (isFinalSlide) {
-			//console.log("A"+window.actividades);
+			console.log("A");
+			console.log(window.actividades);
 			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 			loadScript(urlSeguimiento, true, function() {
+				console.log("B");
 				console.log(window.actividades);
 			});
 			$('body').addClass('oxfl-final-slide-on');
@@ -545,7 +547,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 
 			}
 			var finalCoins = 3000,
-					grade = (typeof window.actividades[idClase] === 'undefined') ? 0 : window.actividades[idClase].notas[0],
+					grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion,
 					totalStars = oxfordFlippedApp.gradeToStars(grade);
 			$('#oxfl-total-coins-2').text(finalCoins);
 			$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
