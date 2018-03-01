@@ -525,7 +525,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		console.log(blink.activity.currentStyle.Slider.$items.length);
 		console.log(currentSection);
 		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
-				isFinalSlide = (totalSlides === currentSection) ? true : false;
+				isFinalSlide = (totalSlides === currentSection+1) ? true : false;
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
 		if (isFinalSlide) {
