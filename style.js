@@ -24,6 +24,9 @@
 				var parent = blink.theme.styles['oxford-flipped'].prototype;
 				parent.init.call(this);
 
+				// Remove last slides
+				this.removeFinalSlide();
+
 				// Ejemplo carga de datos de la clase en una actividad.
 				blink.getActivity(idcurso, idclase).done((function(data) {
 					this.onActivityDataLoaded(data);
