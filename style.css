@@ -1303,7 +1303,9 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
   background-repeat: no-repeat, repeat-x;
   background-size: contain; }
   body.body_clase.view-mode #actividad .oxfl-final-slide .item-container {
-    max-width: 100%; }
+    max-width: 100%;
+    padding: 0;
+    margin: 0; }
     body.body_clase.view-mode #actividad .oxfl-final-slide .item-container .header {
       display: none; }
     body.body_clase.view-mode #actividad .oxfl-final-slide .item-container .oxfl-end-screen-tip  {
@@ -1348,8 +1350,8 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
   top: 0;
   right: 0;
   background: url(img/endscreen-stars-regular-0.png) 0 0 no-repeat transparent;
-  width: 318px;
-  height: 345px;
+  width: 210px;
+  height: 225px;
   background-size: contain; }
   .oxfl-final-slide-stars-1 {
     background-image: url(img/endscreen-stars-regular-1.png); }

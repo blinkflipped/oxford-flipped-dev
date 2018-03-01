@@ -9,6 +9,8 @@ body.body_clase.view-mode {
       background-size: contain ;
       .item-container  {
         max-width: 100%;
+        padding: 0;
+        margin: 0;
         .header {
           display: none;
         }
@@ -65,8 +67,8 @@ body.body_clase.view-mode {
   top: 0;
   right: 0;
   background: url(img/endscreen-stars-regular-0.png) 0 0 no-repeat transparent;
-  width: 318px;
-  height: 345px;
+  width: 210px;
+  height: 225px;
   background-size: contain;
   &-1 {
     background-image: url(img/endscreen-stars-regular-1.png);
