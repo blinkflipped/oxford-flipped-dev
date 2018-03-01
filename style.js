@@ -541,7 +541,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 				$('body').addClass('oxfl-final-slide-on');
 				var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
 
-				if (grade > oxfordFlippedApp.config.minGrade) {
+				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 
 					if (!finalSlideLoaded) {
 
