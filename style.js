@@ -529,7 +529,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		console.log(isFinalSlide);
 		// isFinalSlide && hacerCosasEnLaSlideFinal()
 		if (isFinalSlide) {
-			console.log("A"+window.actividades);
+			//console.log("A"+window.actividades);
 			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 			loadScript(urlSeguimiento, true, function() {
 				console.log("B"+window.actividades);
