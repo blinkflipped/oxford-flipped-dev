@@ -542,15 +542,17 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 				var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
 
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
+					$('#slider-item-'+currentSection).removeClass('oxfl-final-slide-fail');
 
 					if (!finalSlideLoaded) {
 
 						var finalSlideContent = '<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">Before you leave</div></div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div>';
-						$('#slider-item-'+currentSection).addClass('oxfl-final-slide').removeClass('oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
+						$('#slider-item-'+currentSection).addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 
 					}
 					var finalCoins = 3000,
 							totalStars = oxfordFlippedApp.gradeToStars(grade);
+
 					$('#oxfl-total-coins-2').text(finalCoins);
 					$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
 
