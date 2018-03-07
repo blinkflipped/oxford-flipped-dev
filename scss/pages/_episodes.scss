@@ -72,6 +72,7 @@ $episodes_monster_height: $episodes_image_height/2;
     width: 100%;
     min-height: 90px;
     height: calc((100vh - #{$episodes_image_height})/2);
+    max-height: 200px;
     overflow: hidden;
     img {
       display: block;

@@ -27,6 +27,12 @@ body.body_clase.view-mode {
           z-index: -1;
           display: none;
         }
+        .oxfl-button-large-next {
+          position: fixed;
+          right: 40px;
+          bottom: 4px;
+          z-index: 100;
+        }
       }
     }
   }
@@ -45,20 +51,21 @@ body.body_clase.view-mode {
 
 .oxfl-coins-bubble-2 {
   background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
-  width: 330px;
+  width: 240px;
   height: 98px;
   background-size: contain;
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translate(-50%,0);
-  margin-left: 60px;
+  margin-left: 10px;
+  z-index: 100;
   &-coins {
     position: absolute;
-    top: 14px;
-    right: 85px;
+    top: 18px;
+    right: 65px;
     text-align: right;
-    @include font-size(6.0);
+    @include font-size(3.0);
     line-height: 1em;
     color: $negative_color;
     font-family: $font_family_1;
@@ -84,5 +91,33 @@ body.body_clase.view-mode {
   }
   &-3 {
     background-image: url(img/endscreen-stars-regular-3.png);
+  }
+}
+
+.oxfl-bubble-leave {
+  display: block;
+  width: 264px;
+  height: 90px;
+  padding: 45px 10px 10px;
+  background: url(img/bubble-4.png) 0 0 no-repeat transparent;
+  background-size: contain;
+  @include font-size(1.8);
+  line-height: 1em;
+  color: $negative_color;
+  font-family: $font_family_1;
+  font-weight: 500;
+  .oxfl-bubble-leave-inner {
+    display: flex;
+    height: 45px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .oxfl-final-slide & {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%,0);
+    margin-left: 160px;
   }
 }

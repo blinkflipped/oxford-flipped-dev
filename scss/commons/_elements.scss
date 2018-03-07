@@ -155,6 +155,41 @@
   }
 }
 
+.oxfl-button-large {
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 70px;
+  height: 70px;
+  border: 2px solid $color_6;
+  background: $button_large_background_color;
+  border-radius: 100%;
+  position: relative;
+  span {
+    display: block;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  &.oxfl-button-large-next {
+    span {
+      background: url(img/arrows.png) 0 -41px no-repeat transparent;
+      background-size: 58px 82px;
+      width: 58px;
+      height: 41px;
+    }
+
+  }
+}
+
+
+
 .btn-close-iframe {
   position: absolute;
   top: 18px;

@@ -286,6 +286,33 @@ body.oxfl-body-chapters {
   .oxfl-button-lock.oxfl-button-locked, .oxfl-button-lock.locked, .oxfl-button-lock.lock {
     background-position: -20px 0; }
 
+.oxfl-button-large {
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #FBB03B;
+  background: #ffffff;
+  border-radius: 100%;
+  position: relative; }
+  .oxfl-button-large span {
+    display: block;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .oxfl-button-large.oxfl-button-large-next span {
+    background: url(img/arrows.png) 0 -41px no-repeat transparent;
+    background-size: 58px 82px;
+    width: 58px;
+    height: 41px; }
+
 .btn-close-iframe {
   position: absolute;
   top: 18px;
@@ -788,6 +815,7 @@ body.oxfl-body-home #oxfl-home-menu {
     width: 100%;
     min-height: 90px;
     height: calc((100vh - 420px)/2);
+    max-height: 200px;
     overflow: hidden; }
     .oxfl-episode .oxfl-episode-image-wrapper img {
       display: block;
@@ -1169,6 +1197,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     z-index: -1;
     width: 100%;
     height: 460px;
+    height: calc(100% - 160px);
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat; }
@@ -1239,7 +1268,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       overflow: auto;
       -webkit-overflow-scrolling: touch; }
       body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 {
-        height: 90%;
+        height: 100%;
         position: relative; }
         body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 .bck-video-player {
           height: 100%;
@@ -1319,7 +1348,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     background-image: url(img/monster-9.svg);
     left: 0;
     width: 210px; }
-  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .oxfl-cz-content {
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .bck-content .oxfl-cz-content {
     overflow: hidden; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title {
     width: 220px;
@@ -1366,6 +1395,11 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
       bottom: 0;
       z-index: -1;
       display: none; }
+    body.body_clase.view-mode #actividad .oxfl-final-slide .item-container .oxfl-button-large-next {
+      position: fixed;
+      right: 40px;
+      bottom: 4px;
+      z-index: 100; }
 body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
   padding-top: 0;
   padding-bottom: 0; }
@@ -1375,21 +1409,22 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
 
 .oxfl-coins-bubble-2 {
   background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
-  width: 330px;
+  width: 240px;
   height: 98px;
   background-size: contain;
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translate(-50%, 0);
-  margin-left: 60px; }
+  margin-left: 10px;
+  z-index: 100; }
   .oxfl-coins-bubble-2-coins {
     position: absolute;
-    top: 14px;
-    right: 85px;
+    top: 18px;
+    right: 65px;
     text-align: right;
-    font-size: 60px;
-    font-size: 6rem;
+    font-size: 30px;
+    font-size: 3rem;
     line-height: 1em;
     color: #ffffff;
     font-family: "Quicksand", sans-serif;
@@ -1411,5 +1446,31 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
     background-image: url(img/endscreen-stars-regular-2.png); }
   .oxfl-final-slide-stars-3 {
     background-image: url(img/endscreen-stars-regular-3.png); }
+
+.oxfl-bubble-leave {
+  display: block;
+  width: 264px;
+  height: 90px;
+  padding: 45px 10px 10px;
+  background: url(img/bubble-4.png) 0 0 no-repeat transparent;
+  background-size: contain;
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 1em;
+  color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500; }
+  .oxfl-bubble-leave .oxfl-bubble-leave-inner {
+    display: flex;
+    height: 45px;
+    width: 100%;
+    text-align: center;
+    align-items: center; }
+  .oxfl-final-slide .oxfl-bubble-leave {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-left: 160px; }
 
 /*# sourceMappingURL=style.css.map */

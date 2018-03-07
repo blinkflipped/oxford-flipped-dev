@@ -130,7 +130,9 @@ oxfordFlippedApp.text = {
 	buttoninnfo: 'More info',
 	buttonmarketplace: 'Marketplace',
 	buttongoback: 'Go back',
-	hello : 'Hola,'
+	hello : 'Hola,',
+	beforeYouLeave : 'Before you leave',
+	viewtip : 'View tip'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -582,7 +584,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				}
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 
-					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">Before you leave</div></div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div></div>';
+					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div></div>';
 					$('#slider-item-'+currentSection).removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 
 					var finalCoins = 3000,
