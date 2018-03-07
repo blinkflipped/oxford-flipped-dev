@@ -394,8 +394,9 @@ oxfordFlippedApp.gohome = function() {
 			index = oxfordFlippedApp.config.bodyClasses.indexOf(homeClass);
 	oxfordFlippedApp.config.bodyClasses.splice(index, 1);
 
+	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
 	var $body = $('body');
-	$body.addClass(classRef);
+	$body.addClass(homeClass);
 	$.each(possibleClasses, function(i, v){
 		$body.removeClass(v);
 	});
@@ -413,7 +414,7 @@ oxfordFlippedApp.goback = function(classRef) {
 				'oxfl-body-marketplace' : 'oxfl-body-home'
 			};
 
-	oxfordFlippedApp.config.bodyClasses.splice(index, 1);
+	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
 	var $body = $('body');
 	$body.addClass(classRef);
 	$.each(possibleClasses, function(i, v){
