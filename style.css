@@ -1502,7 +1502,7 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     top: 40px;
     left: 50%;
     transform: translante(-50%, 0);
-    margin-left: -150px; }
+    margin-left: -430px; }
   #oxfl-final-slide-tip::after {
     content: '';
     display: block;
