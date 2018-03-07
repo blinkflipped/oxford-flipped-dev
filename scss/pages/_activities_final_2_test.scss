@@ -8,8 +8,7 @@ body.body_clase.view-mode {
       background-repeat: no-repeat, repeat-x;
       background-size: contain;
       &-fail {
-        background: #000000;
-        color: #ffffff;
+        background-image: url(img/endscreen-wrong-regular.svg), url(img/endscreen-wrong-regular-bg.png);
       }
       .item-container  {
         max-width: 100%;

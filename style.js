@@ -132,7 +132,9 @@ oxfordFlippedApp.text = {
 	buttongoback: 'Go back',
 	hello : 'Hola,',
 	beforeYouLeave : 'Before you leave...',
-	viewtip : 'View tip'
+	viewtip : 'View tip',
+	exit: 'Exit',
+	tryagain : 'Try again'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -591,7 +593,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 
 					var finalSlideTip = $finalSlide.find('.oxfl-end-screen-tip').clone().wrap('<div/>').parent().html(),
-							finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">Exit</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
+							finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
 
 					$finalSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 					$('#oxfl-final-slide-tip').prepend(finalSlideTip);
@@ -603,7 +605,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 				} else {
 
-					var finalSlideContent = '<div id="oxfl-final-slide"><div style="color: white; font-size: 60px;">TRY AGAIN</div></div>';
+					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 					$finalSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 
 				}
