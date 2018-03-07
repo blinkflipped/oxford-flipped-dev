@@ -557,7 +557,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 				} else {
 
 					var finalSlideContent = '<div id="oxfl-final-slide"><div style="color: white; font-size: 60px;">TRY AGAIN</div></div>';
-					$('#slider-item-'+currentSection).addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').preprend(finalSlideContent);
+					$('#slider-item-'+currentSection).addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 
 				}
 
