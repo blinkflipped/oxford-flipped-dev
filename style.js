@@ -612,8 +612,7 @@ $(document).ready(function() {
 	// Go back
 	$('body').on('click', '[data-goback]', function() {
 
-		var classRef = $(this).attr('data-goback'),
-				;
+		var classRef = $(this).attr('data-goback');
 		oxfordFlippedApp.goback(classRef);
 
 	});
