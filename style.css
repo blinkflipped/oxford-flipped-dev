@@ -1394,10 +1394,16 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
       bottom: 40px;
       z-index: 100; }
 body.body_clase.view-mode #actividad .oxfl-end-screen-tip {
-  width: 369px;
+  display: none;
+  width: 369px !important;
   height: 254px;
   background: url(img/bubble-5.png) 0 0 no-repeat;
-  background-size: contain; }
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip .bck-title,
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip h2,
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip h3 {
@@ -1406,21 +1412,24 @@ body.body_clase.view-mode #actividad .oxfl-end-screen-tip {
     font-weight: bold;
     font-size: 48px;
     font-size: 4.8rem;
-    max-width: 280px;
-    margin: 0 0 5px 0; }
+    max-width: 320px;
+    margin: 0 auto 0;
+    text-align: center; }
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip .bck-content {
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
     color: #ffffff;
     font-size: 18px;
     font-size: 1.8rem;
-    max-width: 340px;
+    max-width: 320px;
     margin-bottom: 10px; }
 body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
   padding-top: 0;
   padding-bottom: 0; }
 body.body_clase.view-mode.oxfl-final-slide-on .navbar.libro,
 body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
+  display: none; }
+body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control {
   display: none; }
 
 #oxfl-final-slide-tip {
@@ -1431,6 +1440,8 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
   bottom: 0;
   z-index: -1;
   display: none; }
+  #oxfl-final-slide-tip .oxfl-end-screen-tip {
+    display: block; }
   #oxfl-final-slide-tip::after {
     content: '';
     display: block;
@@ -1441,12 +1452,20 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
     background-size: contain;
     height: 100%;
     width: 100%;
-    z-index: -1; }
+    z-index: -1;
+    opacity: 0;
+    transform: translate(-100%, -100%);
+    transition-property: opacity, transform;
+    transition-duration: .3s;
+    transition-timing-function: ease-out; }
   .oxfl-end-screen-tip-on #oxfl-final-slide-tip {
     z-index: 100;
     display: block;
     background: url(img/endscreen-ok-regular-bg.png) 0 0 repeat-x;
     background-size: contain; }
+    .oxfl-end-screen-tip-on #oxfl-final-slide-tip::after {
+      opacity: 1;
+      transform: translate(0, 0); }
 
 .oxfl-coins-bubble-2 {
   background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
@@ -1491,8 +1510,8 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
 .oxfl-bubble-leave {
   display: block;
   width: 264px;
-  height: 90px;
-  padding: 45px 10px 10px;
+  height: 100px;
+  padding: 34px 10px 10px;
   background: url(img/bubble-4.png) 0 0 no-repeat transparent;
   background-size: contain;
   font-size: 18px;
@@ -1504,6 +1523,9 @@ body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
   display: flex;
   text-align: center;
   align-items: center; }
+  .oxfl-bubble-leave-inner {
+    width: 100%;
+    text-align: center; }
   .oxfl-final-slide .oxfl-bubble-leave {
     position: absolute;
     bottom: 40px;

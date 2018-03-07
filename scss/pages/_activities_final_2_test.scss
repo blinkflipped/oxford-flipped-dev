@@ -28,10 +28,16 @@ body.body_clase.view-mode {
       }
     }
     .oxfl-end-screen-tip {
-      width: 369px;
+      display: none;
+      width: 369px!important;
       height: 254px;
       background: url(img/bubble-5.png) 0 0 no-repeat;
       background-size: contain;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       .bck-title,
       h2,
       h3 {
@@ -39,15 +45,16 @@ body.body_clase.view-mode {
         font-family: $font_family_2;
         font-weight: bold;
         @include font-size(4.8);
-        max-width: 280px;
-        margin: 0 0 5px 0;
+        max-width: 320px;
+        margin: 0 auto 0;
+        text-align: center;
       }
       .bck-content {
         font-family: $font_family_1;
         font-weight: 500;
         color: $negative_color;
         @include font-size(1.8);
-        max-width: 340px;
+        max-width: 320px;
         margin-bottom: 10px;
       }
     }
@@ -63,6 +70,11 @@ body.body_clase.view-mode {
       display: none;
     }
   }
+  &.oxfl-end-screen-tip-on {
+    .slider-control {
+      display: none;
+    }
+  }
 }
 
 #oxfl-final-slide-tip {
@@ -73,6 +85,9 @@ body.body_clase.view-mode {
   bottom: 0;
   z-index: -1;
   display: none;
+  .oxfl-end-screen-tip {
+    display: block;
+  }
   &::after {
     content: '';
     display: block;
@@ -84,12 +99,21 @@ body.body_clase.view-mode {
     height: 100%;
     width: 100%;
     z-index: -1;
+    opacity: 0;
+    transform: translate(-100%,-100%);
+    transition-property: opacity, transform;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
   }
   .oxfl-end-screen-tip-on & {
     z-index: 100;
     display: block;
     background: url(img/endscreen-ok-regular-bg.png) 0 0 repeat-x;
     background-size: contain;
+    &::after {
+      opacity: 1;
+      transform: translate(0,0);
+    }
   }
 }
 
@@ -141,8 +165,8 @@ body.body_clase.view-mode {
 .oxfl-bubble-leave {
   display: block;
   width: 264px;
-  height: 90px;
-  padding: 45px 10px 10px;
+  height: 100px;
+  padding: 34px 10px 10px;
   background: url(img/bubble-4.png) 0 0 no-repeat transparent;
   background-size: contain;
   @include font-size(1.8);
@@ -153,6 +177,10 @@ body.body_clase.view-mode {
   display: flex;
   text-align: center;
   align-items: center;
+  &-inner {
+    width: 100%;
+    text-align: center;
+  }
   .oxfl-final-slide & {
     position: absolute;
     bottom: 40px;

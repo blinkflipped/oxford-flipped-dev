@@ -574,7 +574,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 		if (isFinalSlide) {
 			var $finalSlide = $('#slider-item-'+currentSection);
-			$finalSlide.removeClass('oxfl-end-screen-tip-on');
+			$('body').removeClass('oxfl-end-screen-tip-on');
 
 			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 			loadScript(urlSeguimiento, true, function() {
@@ -590,8 +590,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				}
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 
-					var finalSlideTip = $finalSlide.find('.oxfl-end-screen-tip'),
-							finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div><div id="oxfl-final-slide-tip">'+finalSlideTip+'<button>Exit</button><button>Go back</button></div></div>';
+					var finalSlideTip = $finalSlide.find('.oxfl-end-screen-tip').html(),
+							finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div><div id="oxfl-final-slide-tip">'+finalSlideTip+'<button>Exit</button><button>Go back</button></div></div>';
 					$finalSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 
 					var finalCoins = 3000,
@@ -613,7 +613,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 				e.preventDefault();
 				console.log("TIP");
-				$('#slider-item-'+currentSection).addClass('oxfl-end-screen-tip-on');
+				$('body').addClass('oxfl-end-screen-tip-on');
 
 			});
 
