@@ -286,6 +286,28 @@ body.oxfl-body-chapters {
   .oxfl-button-lock.oxfl-button-locked, .oxfl-button-lock.locked, .oxfl-button-lock.lock {
     background-position: -20px 0; }
 
+.oxfl-button-bubble {
+  font-size: 19px;
+  font-size: 1.9rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 24px;
+  font-size: 2.4rem;
+  overflow: visible;
+  outline: 0;
+  margin: 0;
+  padding: 4px;
+  border: 0;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat; }
+  .oxfl-button-bubble-1 {
+    width: 186px;
+    height: 74px;
+    background-image: url(img/button-2.png);
+    padding-top: 10px; }
+
 .oxfl-button-large {
   overflow: visible;
   outline: 0;
@@ -1412,6 +1434,7 @@ body.body_clase.view-mode #actividad .oxfl-end-screen-tip {
     font-weight: bold;
     font-size: 48px;
     font-size: 4.8rem;
+    line-height: 1em;
     max-width: 320px;
     margin: 0 auto 0;
     text-align: center; }
@@ -1429,7 +1452,7 @@ body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
 body.body_clase.view-mode.oxfl-final-slide-on .navbar.libro,
 body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
   display: none; }
-body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control {
+body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slider-control) {
   display: none; }
 
 #oxfl-final-slide-tip {
@@ -1438,10 +1461,16 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
-  display: none; }
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
   #oxfl-final-slide-tip .oxfl-end-screen-tip {
-    display: flex; }
+    display: flex !important;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translante(-50%, 0);
+    margin-left: -150px; }
   #oxfl-final-slide-tip::after {
     content: '';
     display: block;
@@ -1450,17 +1479,19 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control {
     right: 0;
     background: url(img/monster-tip.svg) right bottom no-repeat;
     background-size: contain;
-    height: 100%;
+    height: 90%;
     width: 100%;
     z-index: -1;
     opacity: 0;
-    transform: translate(-100%, -100%);
+    transform: translate(100%, 100%);
     transition-property: opacity, transform;
     transition-duration: .3s;
     transition-timing-function: ease-out; }
   .oxfl-end-screen-tip-on #oxfl-final-slide-tip {
-    z-index: 100;
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s;
     background: url(img/endscreen-ok-regular-bg.png) 0 0 repeat-x;
     background-size: contain; }
     .oxfl-end-screen-tip-on #oxfl-final-slide-tip::after {

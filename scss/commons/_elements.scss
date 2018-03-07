@@ -155,6 +155,28 @@
   }
 }
 
+.oxfl-button-bubble {
+  @include font-size(1.9);
+  font-family: $font_family_1;
+  font-weight: 700;
+  text-align: center;
+  @include font-size(2.4);
+  overflow: visible;
+  outline: 0;
+  margin: 0;
+  padding: 4px;
+  border: 0;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  &-1 {
+    width: 186px;
+    height: 74px;
+    background-image: url(img/button-2.png);
+    padding-top: 10px;
+  }
+}
+
 .oxfl-button-large {
   overflow: visible;
   outline: 0;

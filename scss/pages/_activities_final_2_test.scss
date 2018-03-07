@@ -45,6 +45,7 @@ body.body_clase.view-mode {
         font-family: $font_family_2;
         font-weight: bold;
         @include font-size(4.8);
+        line-height: 1em;
         max-width: 320px;
         margin: 0 auto 0;
         text-align: center;
@@ -71,7 +72,7 @@ body.body_clase.view-mode {
     }
   }
   &.oxfl-end-screen-tip-on {
-    .slider-control {
+    .slider-control:not(.oxfl-slider-control ) {
       display: none;
     }
   }
@@ -83,10 +84,16 @@ body.body_clase.view-mode {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
-  display: none;
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   .oxfl-end-screen-tip {
-    display: flex;
+    display: flex!important;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translante(-50%,0);
+    margin-left: -150px;
   }
   &::after {
     content: '';
@@ -96,18 +103,20 @@ body.body_clase.view-mode {
     right: 0;
     background: url(img/monster-tip.svg) right bottom no-repeat;
     background-size: contain;
-    height: 100%;
+    height: 90%;
     width: 100%;
     z-index: -1;
     opacity: 0;
-    transform: translate(-100%,-100%);
+    transform: translate(100%,100%);
     transition-property: opacity, transform;
     transition-duration: .3s;
     transition-timing-function: ease-out;
   }
   .oxfl-end-screen-tip-on & {
-    z-index: 100;
-    display: block;
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s;
     background: url(img/endscreen-ok-regular-bg.png) 0 0 repeat-x;
     background-size: contain;
     &::after {
