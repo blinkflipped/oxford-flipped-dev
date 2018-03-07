@@ -16,6 +16,7 @@ body.body_clase.view-mode {
         min-height: 100%!important;
         padding: 0;
         margin: 0;
+        overflow: hidden;
         .header {
           display: none;
         }
@@ -33,7 +34,6 @@ body.body_clase.view-mode {
       height: 254px;
       background: url(img/bubble-5.png) 0 0 no-repeat;
       background-size: contain;
-      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -86,7 +86,7 @@ body.body_clase.view-mode {
   z-index: -1;
   display: none;
   .oxfl-end-screen-tip {
-    display: block;
+    display: flex;
   }
   &::after {
     content: '';
