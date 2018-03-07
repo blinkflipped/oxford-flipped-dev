@@ -391,9 +391,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 oxfordFlippedApp.gohome = function() {
 	var homeClass = 'oxfl-body-home',
-			index = oxfordFlippedApp.config.bodyClasses.indexOf(homeClass);
+			possibleClasses = oxfordFlippedApp.config.bodyClasses,
+			index = possibleClasses.indexOf(homeClass);
 
-	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
 	console.log(possibleClasses);
 	var $body = $('body');
 	$body.addClass(homeClass);
@@ -406,7 +406,8 @@ oxfordFlippedApp.gohome = function() {
 
 oxfordFlippedApp.goback = function(classRef) {
 
-	var index = oxfordFlippedApp.config.bodyClasses.indexOf(classRef),
+	var possibleClasses = oxfordFlippedApp.config.bodyClasses,
+			index = possibleClasses.indexOf(homeClass),
 			possibleParents = {
 				'oxfl-body-home' : '',
 				'oxfl-body-episodes' : 'oxfl-body-home',
@@ -414,8 +415,6 @@ oxfordFlippedApp.goback = function(classRef) {
 				'oxfl-body-marketplace' : 'oxfl-body-home'
 			};
 
-	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
-	console.log(possibleClasses);
 	var $body = $('body');
 	$body.addClass(classRef);
 	$.each(possibleClasses, function(i, v){
