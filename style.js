@@ -583,7 +583,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 			var $lastSlide = $('#slider-item-'+currentSection),
 					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length;
 			if (isFinalSlide) {
-
+							
 				$('body').removeClass('oxfl-end-screen-tip-on');
 
 				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
@@ -610,31 +610,32 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 						$('#oxfl-total-coins-2').text(finalCoins);
 						$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
+
+
+					} else {
+
+						var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
+						$lastSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
+
 					}
 
-				} else {
+				});
 
-					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
-					$lastSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
+				$('body').on('click', '.oxfl-js-show-final-tip', function(e) {
 
-				}
+					e.preventDefault();
+					console.log("TIP");
+					$('body').addClass('oxfl-end-screen-tip-on');
 
-			});
+				});
 
-			$('body').on('click', '.oxfl-js-show-final-tip', function(e) {
+				$('body').on('click', '.oxfl-js-hide-final-tip', function(e) {
 
-				e.preventDefault();
-				console.log("TIP");
-				$('body').addClass('oxfl-end-screen-tip-on');
+					e.preventDefault();
+					$('body').removeClass('oxfl-end-screen-tip-on');
 
-			});
-
-			$('body').on('click', '.oxfl-js-hide-final-tip', function(e) {
-
-				e.preventDefault();
-				$('body').removeClass('oxfl-end-screen-tip-on');
-
-			});
+				});
+			}
 
 		} else {
 			$('body').removeClass('oxfl-final-slide-on');
