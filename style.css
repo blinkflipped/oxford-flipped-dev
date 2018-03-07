@@ -1448,6 +1448,7 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
   background-repeat: no-repeat, repeat-x;
   background-size: contain; }
   body.body_clase.view-mode #actividad .oxfl-final-slide-fail {
+    background-position: center top;
     background-image: url(img/endscreen-wrong-regular.svg), url(img/endscreen-wrong-regular-bg.png); }
   body.body_clase.view-mode #actividad .oxfl-final-slide .item-container {
     max-width: 100%;
