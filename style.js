@@ -583,7 +583,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 			var $lastSlide = $('#slider-item-'+currentSection),
 					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length;
 			if (isFinalSlide) {
-							
+				parent.top.oxfordFlippedApp.hideIframeButton();
+
 				$('body').removeClass('oxfl-end-screen-tip-on');
 
 				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
@@ -638,6 +639,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 			}
 
 		} else {
+			parent.top.oxfordFlippedApp.showIframeButton();
 			$('body').removeClass('oxfl-final-slide-on');
 		}
 
@@ -669,6 +671,13 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
 
+}
+
+oxfordFlippedApp.hideIframeButton = function() {
+	$('#iframe_div .btn-close-iframe').hide();
+}
+oxfordFlippedApp.showIframeButton = function() {
+	$('#iframe_div .btn-close-iframe').show();
 }
 
 $(document).ready(function() {
