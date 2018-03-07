@@ -648,9 +648,9 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	var hasCover = $('.oxfl-checkpoint-1-cover-wrapper').length,
-			coverIDNum = if(hasCover) ? Number($('.oxfl-checkpoint-1-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
+			coverIDNum = (hasCover) ? Number($('.oxfl-checkpoint-1-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
 			hasContentZone = $('.oxfl-content-zone-wrapper').length,
-			contentZoneIDNum = if(hasContentZone) ? Number($('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '')) : '';
+			contentZoneIDNum = (hasContentZone) ? Number($('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '')) : '';
 
 	if (currentSection === coverIDNum) {
 
