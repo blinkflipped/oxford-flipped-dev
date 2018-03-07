@@ -46,8 +46,8 @@
 				oxfordFlippedApp.activityFinalScreenOne();
 				oxfordFlippedApp.activityContentZone();
 				blink.events.on('slider:change', function(currentSection) {
-					oxfordFlippedApp.activityFinalScreenTest();
-					oxfordFlippedApp.onSliderChange();
+					oxfordFlippedApp.activityFinalScreenTest(currentSection);
+					oxfordFlippedApp.onSliderChange(currentSection);
 				});
 			},
 			removeFinalSlide: function () {
@@ -469,10 +469,6 @@ oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 	$('#oxfl-activities-navigation')[0].appendChild(navigationList);
 	$('#oxfl-activities-navigation').find('li').first().addClass('active');
 
-	blink.events.on('slider:change', function(currentSection) {
-		$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
-	});
-
 }
 
 oxfordFlippedApp.activityCheckpointCover = function() {
@@ -564,7 +560,7 @@ oxfordFlippedApp.activityContentZone = function() {
 
 }
 
-oxfordFlippedApp.activityFinalScreenTest = function() {
+oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
 				isFinalSlide = (totalSlides === currentSection+1) ? true : false;
@@ -610,7 +606,7 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 
 }
 
-oxfordFlippedApp.onSliderChange = function() {
+oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	var coverIDNum = $('.oxfl-checkpoint-1-cover-wrapper').attr('id').replace('slider-item-', ''),
 			contentZoneIDNum = $('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '');
@@ -633,6 +629,8 @@ oxfordFlippedApp.onSliderChange = function() {
 		$('body').removeClass('oxfl-content-zone-on');
 
 	}
+
+	$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
 
 }
 
