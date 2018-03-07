@@ -43,12 +43,14 @@ body.body_clase.view-mode {
     }
     &.right {
       border-radius: 0;
+      right: 0;
       .fa {
         left: 30px;
       }
     }
     &.left {
       border-radius: 0;
+      left: 0;
       .fa {
         right: 30px;
         background-position: 0 -30px;

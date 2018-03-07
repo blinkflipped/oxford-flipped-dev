@@ -170,12 +170,24 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
+  color: $negative_color;
   &-1 {
     width: 186px;
     height: 74px;
     background-image: url(img/button-2.png);
     padding-top: 0;
-    color: $negative_color;
+  }
+  &-2 {
+    width: 180px;
+    height: 64px;
+    background-image: url(img/button-2-a.png);
+    padding-top: 0;
+  }
+  &-3 {
+    width: 125px;
+    height: 66px;
+    background-image: url(img/button-2-b.png);
+    padding-top: 0;
   }
 }
 
@@ -211,7 +223,6 @@
 
   }
 }
-
 
 
 .btn-close-iframe {
@@ -252,6 +263,17 @@
       }
     }
   }
+}
+
+// Separate text between Buttons
+
+.oxfl-separate-text {
+  color: $negative_color;
+  font-family: $font_family_2;
+  text-align: center;
+  @include font-size(1.8);
+  line-height: 1em;
+  margin: 15px auto;
 }
 
 // Labels

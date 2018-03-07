@@ -37,27 +37,11 @@
 					this.onCourseDataLoaded(data);
 				}).bind(this));
 			},
-
-			onActivityDataLoaded: function(data) {
-				console.log("onActivityDataLoaded");
-				console.log(data);
-				oxfordFlippedApp.activityCreateFalseNavigation(data);
-				oxfordFlippedApp.activityCheckpointCover();
-				oxfordFlippedApp.activityFinalScreenOne();
-				oxfordFlippedApp.activityContentZone();
-				blink.events.on('slider:change', function(currentSection) {
-					oxfordFlippedApp.activityFinalScreenTest(currentSection);
-					oxfordFlippedApp.onSliderChange(currentSection);
-				});
-			},
-			removeFinalSlide: function () {
-				var parent = blink.theme.styles.basic.prototype;
-				parent.removeFinalSlide.call(this, true);
-			},
 			onCourseDataLoaded: function(data) {
 				console.log("onCourseDataLoaded");
 				console.log(data);
-				var isBookCover = (idclase.toString() === data.units[0].subunits[0].id) ? true : false;
+				window.bookcover = data.units[0].subunits[0].id;
+				var isBookCover = (idclase.toString() === window.bookcover) ? true : false;
 				if (isBookCover) {
 					var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 					loadScript(urlSeguimiento, true, function() {
@@ -65,6 +49,25 @@
 					});
 					oxfordFlippedApp.homepage(data);
 				}
+			},
+			onActivityDataLoaded: function(data) {
+				var isBookCover = (idclase.toString() === window.bookcover) ? true : false;
+				if (!isBookCover) {
+					console.log("onActivityDataLoaded");
+					console.log(data);
+					oxfordFlippedApp.activityCreateFalseNavigation(data);
+					oxfordFlippedApp.activityCheckpointCover();
+					oxfordFlippedApp.activityFinalScreenOne();
+					oxfordFlippedApp.activityContentZone();
+					blink.events.on('slider:change', function(currentSection) {
+						oxfordFlippedApp.activityFinalScreenTest(currentSection);
+						oxfordFlippedApp.onSliderChange(currentSection);
+					});
+				}
+			},
+			removeFinalSlide: function () {
+				var parent = blink.theme.styles.basic.prototype;
+				parent.removeFinalSlide.call(this, true);
 			}
 		};
 
@@ -134,7 +137,8 @@ oxfordFlippedApp.text = {
 	beforeYouLeave : 'Before you leave...',
 	viewtip : 'View tip',
 	exit: 'Exit',
-	tryagain : 'Try again'
+	tryagain : 'Try again',
+	or : 'or'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -605,7 +609,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 				} else {
 
-					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
+					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 					$finalSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 
 				}
