@@ -105,8 +105,31 @@
   padding: 0;
   margin: 0;
   @include icon-sprite();
+  span {
+    @include screen-reader-text();
+  }
+  &.oxfl-button-icon-home {
+    background-position: -30px 0;
+  }
+  &.oxfl-button-icon-info {
+    background-position: 0 -30px;
+  }
+  &.oxfl-button-icon-marketplace {
+    background-position: -30px -30px;
+  }
   &.oxfl-button-icon-goback {
     background-position: 0 -60px;
+  }
+}
+
+#oxfl-general-buttons {
+  position: absolute;
+  top: 60px;
+  left: 15px;
+  z-index: 900;
+  @include clearfix();
+  .oxfl-button-icon {
+    float: left;
   }
 }
 
@@ -134,22 +157,24 @@
   right: -18px;
   a {
     display: block;
-    border: 2px solid $color_9;
+    background: url(img/close-button-1.png) 0 0 no-repeat;
+    background-size: contain;
+    //border: 2px solid $color_9;
     width: 36px;
     height: 36px;
-    border-radius: 50%;
-    color: $negative_color;
-    background: $color_6;
+    //border-radius: 50%;
+    //color: $negative_color;
+    //background: $color_6;
     opacity: 1;
     padding: 0;
     margin: 0;
     outline: none;
-
     span {
       display: none;
     }
     .fa {
-      display: block;
+      display: none;
+      //display: block;
       line-height: 21px;
       height: 26px;
       font-size: 40px;
@@ -252,18 +277,22 @@
       position: absolute;
       top: -18px;
       right: -18px;
-      border: 2px solid $color_9;
+      //border: 2px solid $color_9;
+      display: block;
+      background: url(img/close-button-1.png) 0 0 no-repeat;
+      background-size: contain;
       width: 36px;
       height: 36px;
-      border-radius: 50%;
-      color: $negative_color;
-      background: $color_6;
+      //border-radius: 50%;
+      //color: $negative_color;
+      //background: $color_6;
       opacity: 1;
       padding: 0;
       margin: 0;
       outline: none;
       span {
-        display: block;
+        display: none;
+        //display: block;
         height: 36px;
         line-height: 30px;
         font-size: 50px;
