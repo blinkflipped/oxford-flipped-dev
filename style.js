@@ -396,11 +396,11 @@ oxfordFlippedApp.goback = function(classRef) {
 
 	oxfordFlippedApp.config.currentPage = classRef;
 
-	var hasParent = (possibleParents[possibleClasses] != '') ? true : false;
+	var hasParent = (possibleParents[classRef] != '') ? true : false;
 
 	if (hasParent) {
 		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({
-			'data-goback': possibleParents[possibleClasses]
+			'data-goback': possibleParents[classRef]
 		});
 	} else {
 		$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
