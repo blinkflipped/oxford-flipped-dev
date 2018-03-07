@@ -575,42 +575,47 @@ oxfordFlippedApp.activityFinalScreenTip = function(currentSection) {
 oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
-				isFinalSlide = (totalSlides === currentSection+1) ? true : false;
-		console.log(isFinalSlide);
+				isLastSlide = (totalSlides === currentSection+1) ? true : false;
+		console.log(isLastSlide);
 
-		if (isFinalSlide) {
-			var $finalSlide = $('#slider-item-'+currentSection);
-			$('body').removeClass('oxfl-end-screen-tip-on');
+		if (isLastSlide) {
 
-			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-			loadScript(urlSeguimiento, true, function() {
+			var $lastSlide = $('#slider-item-'+currentSection),
+					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length;
+			if (isFinalSlide) {
 
-				console.log(window.actividades);
+				$('body').removeClass('oxfl-end-screen-tip-on');
 
-				var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
+				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+				loadScript(urlSeguimiento, true, function() {
 
-				$('body').addClass('oxfl-final-slide-on');
-				var finalSlideLoaded = $finalSlide.hasClass('oxfl-final-slide');
-				if (finalSlideLoaded) {
-					$('#oxfl-final-slide').remove();
-				}
-				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
+					console.log(window.actividades);
 
-					var finalSlideTip = $finalSlide.find('.oxfl-end-screen-tip').clone().wrap('<div/>').parent().html(),
-							finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
+					var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
 
-					$finalSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
-					$('#oxfl-final-slide-tip').prepend(finalSlideTip);
-					var finalCoins = 3000,
-							totalStars = oxfordFlippedApp.gradeToStars(grade);
+					$('body').addClass('oxfl-final-slide-on');
+					var finalSlideLoaded = $lastSlide.hasClass('oxfl-final-slide');
+					if (finalSlideLoaded) {
+						$('#oxfl-final-slide').remove();
+					}
+					if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 
-					$('#oxfl-total-coins-2').text(finalCoins);
-					$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
+						var finalSlideTip = $lastSlide.find('.oxfl-end-screen-tip').clone().wrap('<div/>').parent().html(),
+								finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
+
+						$lastSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
+						$('#oxfl-final-slide-tip').prepend(finalSlideTip);
+						var finalCoins = 3000,
+								totalStars = oxfordFlippedApp.gradeToStars(grade);
+
+						$('#oxfl-total-coins-2').text(finalCoins);
+						$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
+					}
 
 				} else {
 
 					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
-					$finalSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
+					$lastSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 
 				}
 
