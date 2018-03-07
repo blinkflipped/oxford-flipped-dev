@@ -590,10 +590,11 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				}
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 
-					var finalSlideTip = $finalSlide.find('.oxfl-end-screen-tip').clone(),
-							finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip">'+finalSlideTip+'<button class="oxfl-button-bubble oxfl-button-bubble-1">Exit</button><button class="left slider-control oxfl-slider-control oxfl-oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
-					$finalSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
+					var finalSlideTip = $finalSlide.find('.oxfl-end-screen-tip'),
+							finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1">Exit</button><button class="left oxfl-slider-control oxfl-oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
 
+					$finalSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
+					$('#oxfl-final-slide-tip').prepend(finalSlideTip);
 					var finalCoins = 3000,
 							totalStars = oxfordFlippedApp.gradeToStars(grade);
 

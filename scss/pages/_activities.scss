@@ -12,30 +12,45 @@ body.body_clase.view-mode {
   #swipeview-slider>div {
     background-color: $background_color;
   }
-
+  .oxfl-slide-control,
   .slider-control,
   .slider-control:focus {
+    position: fixed;
+    top: 50%;
+    margin-top: -55px;
+    color: #FFF;
+    font-size: 20px;
     background: transparent;
     width: 70px;
     height: 150px;
     border-radius: 0;
     opacity: 1;
+    outline: none;
+    border: 0;
     cursor: pointer;
     .fa {
       background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
       background-size: 16px 60px;
       width: 16px;
       height: 32px;
+      top: 50%;
+      position: absolute;
+      margin-top: -20px;
+      font-size: 2em;
       &::before {
         content: none;
       }
     }
     &.right {
       border-radius: 0;
+      .fa {
+        left: 30px;
+      }
     }
     &.left {
       border-radius: 0;
       .fa {
+        right: 30px;
         background-position: 0 -30px;
       }
     }
