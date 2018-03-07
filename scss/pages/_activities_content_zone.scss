@@ -8,6 +8,11 @@ body.body_clase.view-mode {
   #actividad {
     .oxfl-content-zone-wrapper {
       overflow: hidden;
+      //.item-container {
+      //  padding: 0;
+      //  max-width: 100%;
+      //  margin: 0;
+      //}
       .oxfl-content-zone-background {
         display: block;
         position: absolute;
@@ -187,6 +192,9 @@ body.body_clase.view-mode {
             left: 0;
             width: 210px;
           }
+          .oxfl-cz-content {
+            overflow: hidden;
+          }
         }
         &-infographic {
           .bck-title {
@@ -215,6 +223,19 @@ body.body_clase.view-mode {
           }
         }
       }
+    }
+  }
+  &.oxfl-content-zone-on {
+    .navbar-bottom {
+      display: none;
+    }
+    .content-wrapper {
+      padding-bottom: 0;
+    }
+  }
+  &.oxfl-content-zone-card-on {
+    .slider-control {
+      display: none;
     }
   }
 }

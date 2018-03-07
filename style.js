@@ -45,7 +45,10 @@
 				oxfordFlippedApp.activityCheckpointCover();
 				oxfordFlippedApp.activityFinalScreenOne();
 				oxfordFlippedApp.activityContentZone();
-				oxfordFlippedApp.activityFinalScreenTest();
+				blink.events.on('slider:change', function(currentSection) {
+					oxfordFlippedApp.activityFinalScreenTest();
+					oxfordFlippedApp.onSliderChange();
+				});
 			},
 			removeFinalSlide: function () {
 				var parent = blink.theme.styles.basic.prototype;
@@ -126,7 +129,8 @@ oxfordFlippedApp.text = {
 	buttonhome : 'Home',
 	buttoninnfo: 'More info',
 	buttonmarketplace: 'Marketplace',
-	buttongoback: 'Go back'
+	buttongoback: 'Go back',
+	hello : 'Hola,'
 }
 
 oxfordFlippedApp.popover = function() {
@@ -195,7 +199,7 @@ oxfordFlippedApp.homepage = function(data) {
 			totalNotifications = '5',
 			backgroundImage = data.units[0].subunits[0].image;
 
-	var html = '<div id="oxfl-general" style="background-image: url('+backgroundImage+');"><div id="oxfl-custom-background"></div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">'+oxfordFlippedApp.text.text1+'</div><h1 class="oxfl-title1">'+bookTitle+'</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home"> <span>'+oxfordFlippedApp.text.buttonhome+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info"> <span>'+oxfordFlippedApp.text.buttoninfo+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace"> <span>'+oxfordFlippedApp.text.buttonmarketplace+'</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled" data-goback=""> <span>'+oxfordFlippedApp.text.buttongoback+'</span> </button> </div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">Hola, </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> <div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure?</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div> </div>';
+	var html = '<div id="oxfl-general" style="background-image: url('+backgroundImage+');"><div id="oxfl-custom-background"></div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">'+oxfordFlippedApp.text.text1+'</div><h1 class="oxfl-title1">'+bookTitle+'</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home"> <span>'+oxfordFlippedApp.text.buttonhome+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info"> <span>'+oxfordFlippedApp.text.buttoninfo+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace"> <span>'+oxfordFlippedApp.text.buttonmarketplace+'</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled" data-goback=""> <span>'+oxfordFlippedApp.text.buttongoback+'</span> </button> </div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><button id="oxfl-notifications"><div class="oxfl-notifications-badge">'+totalNotifications+'</div></button><div id="oxfl-home-menu"><div class="oxfl-container"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>Gradebook</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>Prepare</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3" id="oxfl-goto-marketplace"><span>Marketplace</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">'+oxfordFlippedApp.text.hello+' </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"></div> <div id="oxfl-episodes"></div> </div> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div></div> <div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure?</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div> </div>';
 
 	$('body').prepend(html);
 
@@ -526,16 +530,16 @@ oxfordFlippedApp.activityContentZone = function() {
 				$wrapper = $(this).closest('.js-slider-item');
 
 		$content.addClass('oxfl-visible');
+		$('body').addClass('oxfl-content-zone-card-on');
 		$wrapper.find('.bck-content').not($content).removeClass('oxfl-visible');
-
 
 	});
 
 	$('.oxfl-cz').on('click', '.oxfl-js-cz-close', function() {
 
 		var $wrapper = $(this).closest('.js-slider-item');
-		console.log("CLICK");
 		$(this).closest('.bck-content').removeClass('oxfl-visible');
+		$('body').removeClass('oxfl-content-zone-card-on');
 		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
 
 	});
@@ -562,9 +566,6 @@ oxfordFlippedApp.activityContentZone = function() {
 
 oxfordFlippedApp.activityFinalScreenTest = function() {
 
-	blink.events.on('slider:change', function(currentSection) {
-		console.log(blink.activity.currentStyle.Slider.$items.length);
-		console.log(currentSection);
 		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
 				isFinalSlide = (totalSlides === currentSection+1) ? true : false;
 		console.log(isFinalSlide);
@@ -606,7 +607,32 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 		} else {
 			$('body').removeClass('oxfl-final-slide-on');
 		}
-	});
+
+}
+
+oxfordFlippedApp.onSliderChange = function() {
+
+	var coverIDNum = $('.oxfl-checkpoint-1-cover-wrapper').attr('id').replace('slider-item-', ''),
+			contentZoneIDNum = $('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '');
+
+	if (currentSection === coverIDNum) {
+
+		console.log("You're in Checkpoint 1");
+
+	} else {
+
+	}
+
+	if (currentSection === contentZoneIDNum) {
+
+		console.log("You're in Content Zone");
+		$('body').addClass('oxfl-content-zone-on');
+
+	} else {
+
+		$('body').removeClass('oxfl-content-zone-on');
+
+	}
 
 }
 
