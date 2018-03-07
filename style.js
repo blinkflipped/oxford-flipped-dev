@@ -394,6 +394,7 @@ oxfordFlippedApp.gohome = function() {
 			index = oxfordFlippedApp.config.bodyClasses.indexOf(homeClass);
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
+	console.log(possibleClasses);
 	var $body = $('body');
 	$body.addClass(homeClass);
 	$.each(possibleClasses, function(i, v){
@@ -414,6 +415,7 @@ oxfordFlippedApp.goback = function(classRef) {
 			};
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
+	console.log(possibleClasses);
 	var $body = $('body');
 	$body.addClass(classRef);
 	$.each(possibleClasses, function(i, v){
