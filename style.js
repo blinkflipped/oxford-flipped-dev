@@ -392,7 +392,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 oxfordFlippedApp.gohome = function() {
 	var homeClass = 'oxfl-body-home',
 			index = oxfordFlippedApp.config.bodyClasses.indexOf(homeClass);
-	oxfordFlippedApp.config.bodyClasses.splice(index, 1);
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.splice(index, 1);
 	var $body = $('body');
