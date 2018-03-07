@@ -240,8 +240,14 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 			}
 		}
 	});
-	$('#oxfl-episodes').empty();
-	$('#oxfl-episodes')[0].appendChild(unitList);
+
+	var $episodesWrapper = $('#oxfl-episodes');
+
+	if ($episodesWrapper.hasClass('slick-initialized')) {
+		$episodesWrapper.slick('unslick');
+	}
+	$episodesWrapper.empty();
+	$episodesWrapper[0].appendChild(unitList);
 
 	var items = $('#oxfl-episodes').find('.oxfl-episodes-item'),
 			itemsLength = items.length;
@@ -363,6 +369,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	// Popovers
 	oxfordFlippedApp.popover();
 }
+
 
 oxfordFlippedApp.goback = function(classRef) {
 
