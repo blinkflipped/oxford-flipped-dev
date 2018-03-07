@@ -35,9 +35,6 @@
   left: 0;
   right: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   padding: 0 80px 20px;
   transition-property: opacity, transform;
   transition-duration: .3s;
@@ -54,6 +51,11 @@
     left: 0;
     right: 0;
   }
+}
+#oxfl-home-menu-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   .oxfl-home-menu-item {
     position: relative;
     z-index: 10;

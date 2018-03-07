@@ -609,9 +609,6 @@ body.oxfl-body-chapters {
   left: 0;
   right: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   padding: 0 80px 20px;
   transition-property: opacity, transform;
   transition-duration: .3s;
@@ -627,10 +624,15 @@ body.oxfl-body-chapters {
     bottom: 0;
     left: 0;
     right: 0; }
-  #oxfl-home-menu .oxfl-home-menu-item {
+
+#oxfl-home-menu-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+  #oxfl-home-menu-inner .oxfl-home-menu-item {
     position: relative;
     z-index: 10; }
-  #oxfl-home-menu .oxfl-monster {
+  #oxfl-home-menu-inner .oxfl-monster {
     padding: 0;
     margin: 0;
     display: block;
@@ -643,15 +645,15 @@ body.oxfl-body-chapters {
     outline: 0;
     text-indent: 100%;
     white-space: nowrap; }
-    #oxfl-home-menu .oxfl-monster.oxfl-monster-1 {
+    #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 {
       width: 183px;
       height: 250px;
       background-image: url(img/monster-1.svg); }
-    #oxfl-home-menu .oxfl-monster.oxfl-monster-2 {
+    #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
       width: 346px;
       height: 490px;
       background-image: url(img/monster-2.svg); }
-    #oxfl-home-menu .oxfl-monster.oxfl-monster-3 {
+    #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
       width: 299px;
       height: 318px;
       background-image: url(img/monster-3.svg); }
