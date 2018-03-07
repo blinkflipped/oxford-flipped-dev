@@ -169,11 +169,13 @@
   display: inline-block;
   background-size: contain;
   background-repeat: no-repeat;
+  background-color: transparent;
   &-1 {
     width: 186px;
     height: 74px;
     background-image: url(img/button-2.png);
-    padding-top: 10px;
+    padding-top: 0;
+    color: $negative_color;
   }
 }
 

@@ -87,6 +87,11 @@ body.body_clase.view-mode {
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  .oxfl-button-bubble-1 {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+  }
   .oxfl-end-screen-tip {
     display: flex!important;
     position: absolute;
@@ -99,7 +104,7 @@ body.body_clase.view-mode {
     content: '';
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: -6px; // TODO CAMBIAR CUANDO SE ACTUALICE EL MONSTRUo
     right: 0;
     background: url(img/monster-tip.svg) right bottom no-repeat;
     background-size: contain;

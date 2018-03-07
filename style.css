@@ -301,12 +301,14 @@ body.oxfl-body-chapters {
   border: 0;
   display: inline-block;
   background-size: contain;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-color: transparent; }
   .oxfl-button-bubble-1 {
     width: 186px;
     height: 74px;
     background-image: url(img/button-2.png);
-    padding-top: 10px; }
+    padding-top: 0;
+    color: #ffffff; }
 
 .oxfl-button-large {
   overflow: visible;
@@ -1041,7 +1043,7 @@ body.body_clase.view-mode #help-panel {
   box-shadow: none !important; }
 body.body_clase.view-mode #swipeview-slider > div {
   background-color: #ffffff; }
-body.body_clase.view-mode .oxfl-slide-control,
+body.body_clase.view-mode .oxfl-slider-control,
 body.body_clase.view-mode .slider-control,
 body.body_clase.view-mode .slider-control:focus {
   position: fixed;
@@ -1057,7 +1059,7 @@ body.body_clase.view-mode .slider-control:focus {
   outline: none;
   border: 0;
   cursor: pointer; }
-  body.body_clase.view-mode .oxfl-slide-control .fa,
+  body.body_clase.view-mode .oxfl-slider-control .fa,
   body.body_clase.view-mode .slider-control .fa,
   body.body_clase.view-mode .slider-control:focus .fa {
     background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
@@ -1068,28 +1070,28 @@ body.body_clase.view-mode .slider-control:focus {
     position: absolute;
     margin-top: -20px;
     font-size: 2em; }
-    body.body_clase.view-mode .oxfl-slide-control .fa::before,
+    body.body_clase.view-mode .oxfl-slider-control .fa::before,
     body.body_clase.view-mode .slider-control .fa::before,
     body.body_clase.view-mode .slider-control:focus .fa::before {
       content: none; }
-  body.body_clase.view-mode .oxfl-slide-control.right,
+  body.body_clase.view-mode .oxfl-slider-control.right,
   body.body_clase.view-mode .slider-control.right,
   body.body_clase.view-mode .slider-control:focus.right {
     border-radius: 0; }
-    body.body_clase.view-mode .oxfl-slide-control.right .fa,
+    body.body_clase.view-mode .oxfl-slider-control.right .fa,
     body.body_clase.view-mode .slider-control.right .fa,
     body.body_clase.view-mode .slider-control:focus.right .fa {
       left: 30px; }
-  body.body_clase.view-mode .oxfl-slide-control.left,
+  body.body_clase.view-mode .oxfl-slider-control.left,
   body.body_clase.view-mode .slider-control.left,
   body.body_clase.view-mode .slider-control:focus.left {
     border-radius: 0; }
-    body.body_clase.view-mode .oxfl-slide-control.left .fa,
+    body.body_clase.view-mode .oxfl-slider-control.left .fa,
     body.body_clase.view-mode .slider-control.left .fa,
     body.body_clase.view-mode .slider-control:focus.left .fa {
       right: 30px;
       background-position: 0 -30px; }
-  body.body_clase.view-mode .oxfl-slide-control.disabled,
+  body.body_clase.view-mode .oxfl-slider-control.disabled,
   body.body_clase.view-mode .slider-control.disabled,
   body.body_clase.view-mode .slider-control:focus.disabled {
     display: none !important;
@@ -1487,6 +1489,10 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+  #oxfl-final-slide-tip .oxfl-button-bubble-1 {
+    position: absolute;
+    bottom: 40px;
+    left: 40px; }
   #oxfl-final-slide-tip .oxfl-end-screen-tip {
     display: flex !important;
     position: absolute;
@@ -1498,7 +1504,7 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     content: '';
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: -6px;
     right: 0;
     background: url(img/monster-tip.svg) right bottom no-repeat;
     background-size: contain;
