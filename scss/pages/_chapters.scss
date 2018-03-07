@@ -32,6 +32,7 @@
   transition-timing-function: ease-out;
   width: 815px;
   height: 390px;
+
   background: url(img/monster-6.svg) 0 0 no-repeat;
   background-size: contain;
   position: absolute;
@@ -43,7 +44,14 @@
   }
   //TODO REMOVE AFTER GIF TEST
   background-image: url(img/monster_test.gif);
+  background-position: left bottom;
+  //position: static;
   width: 715px;
+  //width: 52%;
+  //margin-bottom: -10.4%;
+  //max-height: 370px;
+  //min-height: 260px;
+  //height: calc(100vh - 430px);
   height: 370px;
 }
 
@@ -58,6 +66,7 @@
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   margin: 226px auto;
+  //margin: 0 auto;
   //position: absolute;
   //top: 0;
   //left: 50%;

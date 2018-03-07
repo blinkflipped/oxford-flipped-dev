@@ -252,7 +252,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 	$('#oxfl-episodes').slick(oxfordFlippedApp.config.carouselOpt);
 
 	$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
-	$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-episodes');
+	$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-home');
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
 		var currentEpisode = $(this).data('episode');

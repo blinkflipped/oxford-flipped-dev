@@ -72,7 +72,7 @@
 // Coins
 
 #oxfl-coins {
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: 15px;
   z-index: 900;
@@ -105,6 +105,9 @@
   padding: 0;
   margin: 0;
   @include icon-sprite();
+  &.disabled {
+    display: none;
+  }
   span {
     @include screen-reader-text();
   }
@@ -123,13 +126,14 @@
 }
 
 #oxfl-general-buttons {
-  position: absolute;
+  position: fixed;
   top: 60px;
   left: 15px;
   z-index: 900;
   @include clearfix();
   .oxfl-button-icon {
     float: left;
+    margin-right: 15px;
   }
 }
 

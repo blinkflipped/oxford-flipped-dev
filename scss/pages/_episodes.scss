@@ -1,9 +1,18 @@
+
+$episodes_title_height : 30px;
+$episodes_description_height : 30px;
+$episodes_top :  90px;
+$episodes_padding :  $padding_1;
+$episodes_item_spaces: 30px;
+
+$episodes_image_height : (($episodes_title_height + $episodes_description_height)*2 + ($episodes_item_spaces*2) + $episodes_top + $episodes_padding)*2;
+
 #oxfl-episodes-wrapper {
   width: $layout_max;
   max-width: 100%;
   position: absolute;
   left: 50%;
-  top: 110px;
+  top: $episodes_top;
   transform: translate(-50%,0);
   visibility:hidden;
   opacity:0;
@@ -42,7 +51,7 @@
   margin: 0 $space_1/2 $space_2 $space_1;
   padding: 0;
   .oxfl-episodes-page {
-    padding: $padding_1;
+    padding: $episodes_padding;
   }
 }
 
@@ -56,7 +65,8 @@
   }
   .oxfl-episode-image-wrapper {
     width: 100%;
-    height: 180px;
+    min-height: 90px;
+    height: calc(100vh - #{$episodes_image_height});
     overflow: hidden;
     img {
       display: block;
