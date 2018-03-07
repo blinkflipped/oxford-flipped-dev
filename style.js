@@ -100,7 +100,7 @@
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
-oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false}
+oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
 
 oxfordFlippedApp.config.minGrade = 50;
@@ -585,7 +585,7 @@ $(document).ready(function() {
 	// Go back
 	$('body').on('click', '[data-goback]', function() {
 
-		var classRef = $(this).data('goback');
+		var classRef = $(this).attr('data-goback');
 		oxfordFlippedApp.goback(classRef);
 
 	});

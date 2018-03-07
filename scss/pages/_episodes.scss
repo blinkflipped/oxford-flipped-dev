@@ -1,11 +1,13 @@
 
 $episodes_title_height : 30px;
 $episodes_description_height : 30px;
-$episodes_top :  90px;
+$episodes_top :  120px;
 $episodes_padding :  $padding_1;
 $episodes_item_spaces: 30px;
+$episodes_safe_space : 0;
 
-$episodes_image_height : (($episodes_title_height + $episodes_description_height)*2 + ($episodes_item_spaces*2) + $episodes_top + $episodes_padding)*2;
+$episodes_image_height : ($episodes_title_height + $episodes_description_height + $episodes_item_spaces + $episodes_top)*2;
+$episodes_monster_height: $episodes_image_height/2;
 
 #oxfl-episodes-wrapper {
   width: $layout_max;
@@ -31,8 +33,11 @@ $episodes_image_height : (($episodes_title_height + $episodes_description_height
   transition-timing-function: ease-out;
   will-change: transform;
   width: 300px;
-  height: 600px;
-  background: url(img/monster-5.svg) 0 0 no-repeat;
+  height: calc(100vh - #{$episodes_monster_height});
+  min-height: 440px;
+  max-height: 600px;
+  //min-height: $episodes_image_height;
+  background: url(img/monster-5.svg) right center no-repeat;
   background-size: contain;
   position: absolute;
   top: 30px;
@@ -66,7 +71,7 @@ $episodes_image_height : (($episodes_title_height + $episodes_description_height
   .oxfl-episode-image-wrapper {
     width: 100%;
     min-height: 90px;
-    height: calc(100vh - #{$episodes_image_height});
+    height: calc((100vh - #{$episodes_image_height})/2);
     overflow: hidden;
     img {
       display: block;

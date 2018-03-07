@@ -730,7 +730,7 @@ body.oxfl-body-home #oxfl-home-menu {
   max-width: 100%;
   position: absolute;
   left: 50%;
-  top: 90px;
+  top: 120px;
   transform: translate(-50%, 0);
   visibility: hidden;
   opacity: 0;
@@ -748,8 +748,10 @@ body.oxfl-body-home #oxfl-home-menu {
   transition-timing-function: ease-out;
   will-change: transform;
   width: 300px;
-  height: 600px;
-  background: url(img/monster-5.svg) 0 0 no-repeat;
+  height: calc(100vh - 210px);
+  min-height: 440px;
+  max-height: 600px;
+  background: url(img/monster-5.svg) right center no-repeat;
   background-size: contain;
   position: absolute;
   top: 30px;
@@ -778,7 +780,7 @@ body.oxfl-body-home #oxfl-home-menu {
   .oxfl-episode .oxfl-episode-image-wrapper {
     width: 100%;
     min-height: 90px;
-    height: calc(100vh - 600px);
+    height: calc((100vh - 420px)/2);
     overflow: hidden; }
     .oxfl-episode .oxfl-episode-image-wrapper img {
       display: block;
