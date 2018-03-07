@@ -540,16 +540,15 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 
 				$('body').addClass('oxfl-final-slide-on');
 				var finalSlideLoaded = $('#slider-item-'+currentSection).hasClass('oxfl-final-slide');
-
+				if (finalSlideLoaded) {
+					$('#oxfl-final-slide').remove();
+				}
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
+
 					$('#slider-item-'+currentSection).removeClass('oxfl-final-slide-fail');
+					var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">Before you leave</div></div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div></div>';
+					$('#slider-item-'+currentSection).addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 
-					if (!finalSlideLoaded) {
-
-						var finalSlideContent = '<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">Before you leave</div></div><button>VIEW TIP</button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div></div></div>';
-						$('#slider-item-'+currentSection).addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
-
-					}
 					var finalCoins = 3000,
 							totalStars = oxfordFlippedApp.gradeToStars(grade);
 
@@ -557,16 +556,13 @@ oxfordFlippedApp.activityFinalScreenTest = function() {
 					$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
 
 				} else {
-					if (!finalSlideLoaded) {
-						var finalSlideContent = '<div>TRY AGAIN</div>';
-						$('#slider-item-'+currentSection).addClass('oxfl-final-slide oxfl-final-slide-fail');
-					}
+
+					var finalSlideContent = '<div id="oxfl-final-slide"><div style="color: white; font-size: 60px;">TRY AGAIN</div></div>';
+					$('#slider-item-'+currentSection).addClass('oxfl-final-slide oxfl-final-slide-fail');
+
 				}
 
-
 			});
-
-
 
 		} else {
 			$('body').removeClass('oxfl-final-slide-on');
