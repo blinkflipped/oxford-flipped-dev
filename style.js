@@ -398,6 +398,9 @@ oxfordFlippedApp.goback = function(classRef) {
 
 	var hasParent = (possibleParents[classRef] != '') ? true : false;
 
+	console.log(possibleParents[classRef]);
+	console.log(hasParent);
+
 	if (hasParent) {
 		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({
 			'data-goback': possibleParents[classRef]
