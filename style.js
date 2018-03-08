@@ -395,6 +395,7 @@ oxfordFlippedApp.gohome = function() {
 			index = possibleClasses.indexOf(homeClass);
 
 	console.log(possibleClasses);
+	console.log(index);
 	var $body = $('body');
 	$body.addClass(homeClass);
 	$.each(possibleClasses, function(i, v){
@@ -407,7 +408,7 @@ oxfordFlippedApp.gohome = function() {
 oxfordFlippedApp.goback = function(classRef) {
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses,
-			index = possibleClasses.indexOf(homeClass),
+			index = possibleClasses.indexOf(classRef),
 			possibleParents = {
 				'oxfl-body-home' : '',
 				'oxfl-body-episodes' : 'oxfl-body-home',
