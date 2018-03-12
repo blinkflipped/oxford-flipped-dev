@@ -620,7 +620,7 @@ body.oxfl-body-chapters {
   background-size: cover;
   overflow: hidden;
   position: absolute;
-  min-height: 700px;
+  min-height: 600px;
   min-width: 800px;
   top: 0;
   left: 0;
@@ -657,6 +657,7 @@ body.oxfl-body-chapters {
   margin: 0;
   position: absolute;
   top: 90px;
+  top: 10%;
   left: 50px;
   transition-property: opacity, transform;
   transition-duration: .3s;
@@ -771,6 +772,7 @@ body.oxfl-body-chapters {
   z-index: 100;
   right: 0;
   top: 120px;
+  top: 14%;
   width: 215px;
   height: 155px;
   background: url(img/monster-4.svg) right center no-repeat;

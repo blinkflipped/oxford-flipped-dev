@@ -409,7 +409,7 @@ oxfordFlippedApp.gohome = function() {
 
 oxfordFlippedApp.goback = function(classRef) {
 
-	var possibleClasses = oxfordFlippedApp.config.bodyClasses,
+	var possibleClasses = $.extend( {}, oxfordFlippedApp.config.bodyClasses ),
 			index = possibleClasses.indexOf(classRef),
 			possibleParents = {
 				'oxfl-body-home' : '',
