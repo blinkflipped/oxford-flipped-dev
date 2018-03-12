@@ -73,22 +73,56 @@
     background-color: transparent;
     border: 0;
     outline: 0;
-    text-indent: 100%;
+    position: relative;
     white-space: nowrap;
+    span {
+      @include font-size(2.0);
+      font-family: $font_family_1;
+      font-weight: 700;
+      color: $negative_color;
+      background-color: transparent;
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: inline-block;
+      position: absolute;
+      text-align: center;
+    }
     &.oxfl-monster-1 {
       width: 183px;
       height: 250px;
       background-image: url(img/monster-1.svg);
+      span {
+        background-image: url(img/monster-1-bubble.png);
+        width: 151px;
+        height: 63px;
+        top: 0;
+        right: 0;
+      }
     }
     &.oxfl-monster-2 {
       width: 346px;
       height: 490px;
       background-image: url(img/monster-2.svg);
+      span {
+        background-image: url(img/monster-2-bubble.png);
+        width: 135px;
+        height: 62px;
+        top: 43%;
+        left: 50%;
+        margin-left: -60px;
+      }
     }
     &.oxfl-monster-3 {
       width: 299px;
       height: 318px;
       background-image: url(img/monster-3.svg);
+      span {
+        background-image: url(img/monster-3-bubble.png);
+        width: 161px;
+        height: 58px;
+        bottom: 0;
+        left: 0;
+      }
     }
   }
 }
