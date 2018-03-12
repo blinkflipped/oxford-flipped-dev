@@ -1458,7 +1458,7 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
     background-repeat: no-repeat;
     background-size: contain, cover; }
     body.body_clase.view-mode #actividad .oxfl-final-slide-challenge.oxfl-final-slide-fail {
-      background-image: url(img/endscreen-wrong-challenge.svg), url(img/endscreen-challenge-bg.jpg);
+      background-image: url(img/endscreen-wrong-challenge.png), url(img/endscreen-challenge-bg.jpg);
       background-repeat: no-repeat;
       background-size: contain, cover; }
   body.body_clase.view-mode #actividad .oxfl-final-slide .item-container {
