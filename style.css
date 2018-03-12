@@ -84,35 +84,18 @@ html {
 	position: relative;
 	font-size: 62.5%
 }*/
-body.view-mode {
-  position: relative;
-  z-index: 100;
-  -webkit-overflow-scrolling: touch;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-variant-ligatures: common-ligatures;
-  font-family: "Quicksand", sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 28px;
-  font-size: 2.8rem;
+body.view-mode::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #ffffff;
-  color: #000000; }
-  body.view-mode .footer {
-    display: none; }
-  body.view-mode::before {
-    content: '';
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #ffffff;
-    z-index: 1002; }
-  .htmlReady body.view-mode::before {
-    display: none; }
+  z-index: 1002; }
+.htmlReady body.view-mode::before {
+  display: none; }
 
 body.view-mode.body_clase .navbar.libro,
 body.view-mode.body_curso .navbar.libro {

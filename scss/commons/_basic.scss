@@ -5,22 +5,22 @@ html {
 }*/
 
 body.view-mode {
-	position: relative;
-	z-index: 100;
-	-webkit-overflow-scrolling: touch;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-rendering: optimizeLegibility;
-	font-variant-ligatures: common-ligatures;
-  font-family: $font_family_1;
-  margin: 0;
-  padding: 0;
-  @include font-size(2.8);
-  background: $background_color;
-	color: $primary_color;
-	.footer {
-		display: none;
-	}
+	//position: relative;
+	//z-index: 100;
+	//-webkit-overflow-scrolling: touch;
+	//-webkit-font-smoothing: antialiased;
+	//-moz-osx-font-smoothing: grayscale;
+	//text-rendering: optimizeLegibility;
+	//font-variant-ligatures: common-ligatures;
+  //font-family: $font_family_1;
+  //margin: 0;
+  //padding: 0;
+  //@include font-size(2.8);
+  //background: $background_color;
+	//color: $primary_color;
+	//.footer {
+	//	display: none;
+	//}
 	&::before {
 		content: '';
 		display: block;
