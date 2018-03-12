@@ -48,6 +48,10 @@
 						console.log(window.actividades);
 					});
 					oxfordFlippedApp.homepage(data);
+				} else {
+					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
+						$('html').addClass('htmlReady');
+					});
 				}
 				oxfordFlippedApp.getChallengeIDs(data);
 			},
