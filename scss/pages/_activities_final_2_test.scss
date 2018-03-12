@@ -12,7 +12,7 @@ body.body_clase.view-mode {
         background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);
       }
       &-challenge {
-        background-position: center center;
+        background-position: center bottom;
         background-image: url(img/endscreen-ok-challenge.png), url(img/endscreen-challenge-bg.jpg);
         background-repeat: no-repeat;
         background-size: contain, cover;
@@ -182,6 +182,7 @@ body.body_clase.view-mode {
   left: 50%;
   transform: translate(-50%,0);
   margin-left: 340px;
+  margin-left: 10vw;
   background: url(img/endscreen-stars-regular-0.png) 0 0 no-repeat transparent;
   width: 210px;
   height: 225px;
@@ -235,8 +236,8 @@ body.body_clase.view-mode {
 .oxfl-final-slide-challenge:not(.oxfl-final-slide-fail) {
   .oxfl-button-bubble {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 20px;
+    right: 20px;
     left: auto;
     top: auto;
   }
