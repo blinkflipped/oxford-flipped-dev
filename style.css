@@ -1584,6 +1584,13 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     color: #ffffff;
     font-family: "Quicksand", sans-serif;
     font-weight: 500; }
+  .oxfl-final-slide-challenge .oxfl-coins-bubble-2 {
+    top: 50%;
+    margin-top: -40px;
+    background-image: url(img/final-2-coins-b.png);
+    width: 215px;
+    height: 70px;
+    margin-left: 41vh; }
 
 .oxfl-final-slide-stars {
   position: absolute;
@@ -1633,5 +1640,12 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
   bottom: 40px;
   right: 40px;
   text-align: center; }
+
+.oxfl-final-slide-challenge:not(.oxfl-final-slide-fail) .oxfl-button-bubble {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  left: auto;
+  top: auto; }
 
 /*# sourceMappingURL=style.css.map */
