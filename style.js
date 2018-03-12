@@ -318,8 +318,9 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	$('#oxfl-episodes').slick(oxfordFlippedApp.config.carouselOpt);
 
+	$('body').removeClass('oxfl-body-home');
 	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-		$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
+		$('body').addClass('oxfl-body-episodes');
 		oxfordFlippedApp.config.currentPage = 'oxfl-body-episodes';
 	});
 	$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-home');
@@ -407,8 +408,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 	});
 
-	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')').addClass('active');
-
 	var $chaptersWrapper = $('#oxfl-chapters');
 
 	if ($chaptersWrapper.hasClass('slick-initialized')) {
@@ -427,9 +426,15 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 	}
 
+	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')');
+
+	$('body').removeClass('oxfl-body-episodes');
+
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-		$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
+		$('body').addClass('oxfl-body-chapters');
 		oxfordFlippedApp.config.currentPage = 'oxfl-body-chapters';
+		$('#oxfl-custom-background').addClass('active');
+
 	});
 	$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
 
