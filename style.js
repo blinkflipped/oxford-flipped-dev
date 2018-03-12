@@ -654,7 +654,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					}
 					if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 						if (isChallenge) {
-							var finalSlideContent = '<div id="oxfl-final-slide" class="oxfl-final-slide-challenge"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
+							var finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
 							var finalSlideTip = $lastSlide.find('.oxfl-end-screen-tip').clone().wrap('<div/>').parent().html(),
@@ -673,7 +673,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 					} else {
 						if (isChallenge) {
-							var finalSlideContent = '<div id="oxfl-final-slide" class="oxfl-final-slide-challenge"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
+							var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
 							var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
