@@ -118,6 +118,8 @@ oxfordFlippedApp.config.currentPage = '';
 
 oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters'];
 
+oxfordFlippedApp.config.challengeIDs = [];
+
 oxfordFlippedApp.text = {
 	text1 : 'Oxford Flipped',
 	chapterStatus0 : 'Started',
@@ -141,6 +143,30 @@ oxfordFlippedApp.text = {
 	exit: 'Exit',
 	tryagain : 'Try again',
 	or : 'or'
+}
+
+oxfordFlippedApp.getChallengeIDs = function(data) {
+
+	console.log(data);
+	$.each(data.units, function(i, unit){
+		console.log(i);
+		console.log(unit);
+		if (i != 0) {
+			var unitTitle = unit.title,
+					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
+			if (!unitIsMarketplace) {
+				var totalSubunits = unit.subunits.length;
+				$.each(unit.subunits, function(i, subunit){
+					if (i != totalSubunits) {
+						oxfordFlippedApp.config.challengeIDs.push(subunit.id);
+					}
+				});
+
+			}
+		}
+	});
+	console.log(oxfordFlippedApp.config.challengeIDs);
+
 }
 
 oxfordFlippedApp.popover = function() {
@@ -230,6 +256,8 @@ oxfordFlippedApp.homepage = function(data) {
 	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
 
 	$('body').prepend(modalHTML);
+
+	oxfordFlippedApp.getChallengeIDs(data);
 
 }
 
