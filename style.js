@@ -159,7 +159,7 @@ oxfordFlippedApp.getChallengeIDs = function(data) {
 				console.log(totalSubunits);
 				$.each(unit.subunits, function(i, subunit){
 					console.log(i);
-					if (i === totalSubunits) {
+					if (i === totalSubunits-1) {
 						oxfordFlippedApp.config.challengeIDs.push(subunit.id);
 					}
 				});
