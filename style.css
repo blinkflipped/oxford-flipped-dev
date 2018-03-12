@@ -627,7 +627,7 @@ body.oxfl-body-chapters {
   right: 0;
   bottom: 0;
   z-index: 1000; }
-  #oxfl-general .oxfl-body-chapters {
+  .oxfl-body-chapters #oxfl-general {
     min-height: 760px; }
 
 #oxfl-custom-background {
