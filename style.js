@@ -318,8 +318,10 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	$('#oxfl-episodes').slick(oxfordFlippedApp.config.carouselOpt);
 
-	$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
-	oxfordFlippedApp.config.currentPage = 'oxfl-body-episodes';
+	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass('oxfl-body-episodes').removeClass('oxfl-body-home');
+		oxfordFlippedApp.config.currentPage = 'oxfl-body-episodes';
+	});
 	$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-home');
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
@@ -425,8 +427,10 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 	}
 
-	$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
-	oxfordFlippedApp.config.currentPage = 'oxfl-body-chapters';
+	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').removeClass('oxfl-body-episodes').addClass('oxfl-body-chapters');
+		oxfordFlippedApp.config.currentPage = 'oxfl-body-chapters';
+	});
 	$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
 
 	// Popovers
