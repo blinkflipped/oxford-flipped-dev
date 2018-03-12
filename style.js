@@ -156,8 +156,10 @@ oxfordFlippedApp.getChallengeIDs = function(data) {
 					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
 			if (!unitIsMarketplace) {
 				var totalSubunits = unit.subunits.length;
+				console.log(totalSubunits);
 				$.each(unit.subunits, function(i, subunit){
-					if (i != totalSubunits) {
+					console.log(i);
+					if (i === totalSubunits) {
 						oxfordFlippedApp.config.challengeIDs.push(subunit.id);
 					}
 				});
@@ -431,6 +433,9 @@ oxfordFlippedApp.gohome = function() {
 	$.each(possibleClasses, function(i, v){
 		$body.removeClass(v);
 	});
+
+	$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
+	$('#oxfl-custom-background').removeAttr('style').removeClass('active');
 
 	oxfordFlippedApp.config.currentPage = homeClass;
 }
