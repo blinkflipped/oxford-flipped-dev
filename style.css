@@ -1374,7 +1374,8 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       height: calc(100% - 125px);
       max-height: calc(100% - 125px);
       overflow: auto;
-      -webkit-overflow-scrolling: touch; }
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 100px; }
       body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content .oxfl-cz-content .bck-video-container2 {
         height: 100%;
         position: relative; }
@@ -1457,6 +1458,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     left: 0;
     width: 210px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .bck-content .oxfl-cz-content {
+    padding-bottom: 0;
     overflow: hidden; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title {
     width: 220px;
