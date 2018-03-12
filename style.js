@@ -49,7 +49,9 @@
 					});
 					oxfordFlippedApp.homepage(data);
 				} else {
-					$('html').addClass('htmlReady');
+					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
+						$('html').addClass('htmlReady');
+					});
 				}
 				oxfordFlippedApp.getChallengeIDs(data);
 			},
