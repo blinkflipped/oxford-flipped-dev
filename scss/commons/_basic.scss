@@ -4,7 +4,7 @@ html {
 	font-size: 62.5%
 }*/
 
-body.view-mode.body_curso {
+body.view-mode {
 	position: relative;
 	z-index: 100;
 	-webkit-overflow-scrolling: touch;
@@ -30,9 +30,9 @@ body.view-mode.body_curso {
 		right: 0;
 		bottom: 0;
 		background: $background_color;
-		z-index: 1000;
+		z-index: 1002;
 	}
-	&.htmlReady::before {
+	.htmlReady &::before {
 		display: none;
 	}
 }
