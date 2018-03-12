@@ -634,7 +634,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 			var $lastSlide = $('#slider-item-'+currentSection),
 					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
-					isChallenge = oxfordFlippedApp.config.challengeIDs.indexOf(idclase) >= 0;
+					isChallenge = oxfordFlippedApp.config.challengeIDs.indexOf(idclase.toString()) >= 0;
 			if (isFinalSlide) {
 				parent.top.oxfordFlippedApp.hideIframeButton();
 
