@@ -9,7 +9,7 @@ body.body_clase.view-mode {
       background-size: contain;
       &-fail {
         background-position: center top;
-        background-image: url(img/endscreen-wrong-regular.svg), url(img/endscreen-wrong-regular-bg.png);
+        background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);
       }
       .item-container  {
         max-width: 100%;
