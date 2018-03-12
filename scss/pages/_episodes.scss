@@ -44,15 +44,19 @@ $episodes_monster_height: $episodes_image_height/2;
   left: $space_1/2;
   span {
     @include font-size(5.6);
-    line-height: 1.2em;
-    font-family: $font_family_1;
+    line-height: .9em;
+    font-family: $font_family_2;
     font-weight: 700;
+    font-style: italic;
+    text-align: center;
     color: $negative_color;
     background: url(img/monster-5-bubble.png) 0 0 no-repeat;
     background-size: contain;
     width: 279px;
     height: 200px;
-    padding-top: 15px;
+    padding-top: 20px;
+    padding-right: 20px;
+    display: block;
   }
 }
 
