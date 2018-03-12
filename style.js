@@ -48,10 +48,6 @@
 						console.log(window.actividades);
 					});
 					oxfordFlippedApp.homepage(data);
-				} else {
-					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
-						$('html').addClass('htmlReady');
-					});
 				}
 				oxfordFlippedApp.getChallengeIDs(data);
 			},
@@ -67,6 +63,9 @@
 					blink.events.on('slider:change', function(currentSection) {
 						oxfordFlippedApp.activityFinalScreenTest(currentSection);
 						oxfordFlippedApp.onSliderChange(currentSection);
+					});
+					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
+						$('html').addClass('htmlReady');
 					});
 				}
 			},
