@@ -1591,14 +1591,13 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     width: 215px;
     height: 70px;
     margin-left: 41vh; }
+    .oxfl-final-slide-challenge .oxfl-coins-bubble-2 .oxfl-coins-bubble-2-coins {
+      top: 20px; }
 
 .oxfl-final-slide-stars {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  margin-left: 340px;
-  margin-left: 10vw;
+  right: 60px;
   background: url(img/endscreen-stars-regular-0.png) 0 0 no-repeat transparent;
   width: 210px;
   height: 225px;
