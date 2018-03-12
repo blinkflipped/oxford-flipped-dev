@@ -240,11 +240,6 @@ oxfordFlippedApp.homepage = function(data) {
 	console.log("Homepage");
 	//$('body').addClass('htmlReady'); // TODO CAMBIAR
 
-	$('body').imagesLoaded({background: 'div, a, span'}, function(){
-		$('html').addClass('htmlReady');
-	});
-
-
 	oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 
 	var bookTitle = data.title,
@@ -262,8 +257,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	var userBodyClass = (oxfordFlippedApp.config.isStudent) ? 'oxfl-body-user-student' : 'oxfl-body-user-not-student';
 
-	$('body').addClass('oxfl-body-home '+userBodyClass);
-	oxfordFlippedApp.config.currentPage = 'oxfl-body-home';
+
 
 	$('body').on('click', '.oxfl-js-load-episodes', function() {
 		oxfordFlippedApp.loadEpisodes(data);
@@ -274,6 +268,13 @@ oxfordFlippedApp.homepage = function(data) {
 	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
 
 	$('body').prepend(modalHTML);
+
+
+	$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('html').addClass('htmlReady');
+		$('body').addClass('oxfl-body-home '+userBodyClass);
+		oxfordFlippedApp.config.currentPage = 'oxfl-body-home';
+	});
 
 }
 
