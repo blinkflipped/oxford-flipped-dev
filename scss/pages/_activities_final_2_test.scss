@@ -12,10 +12,12 @@ body.body_clase.view-mode {
         background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);
       }
       &-challenge {
-
+        background-position: center center;
+        background-image: url(img/endscreen-ok-challenge.png), url(img/endscreen-challenge-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: contain, cover;
         &.oxfl-final-slide-fail {
-          background-position: center center;
-          background-image: url(img/endscreen-wrong-challenge.svg), url(img/endscreen-wrong-challenge-bg.jpg);
+          background-image: url(img/endscreen-wrong-challenge.svg), url(img/endscreen-challenge-bg.jpg);
           background-repeat: no-repeat;
           background-size: contain, cover;
         }
