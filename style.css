@@ -740,7 +740,8 @@ body.oxfl-body-chapters {
         width: 151px;
         height: 63px;
         top: 0;
-        right: 0; }
+        right: 0;
+        line-height: 45px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
       width: 346px;
       height: 490px;
@@ -751,7 +752,10 @@ body.oxfl-body-chapters {
         height: 62px;
         top: 43%;
         left: 50%;
-        margin-left: -60px; }
+        margin-left: -60px;
+        font-size: 22px;
+        font-size: 2.2rem;
+        line-height: 40px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
       width: 299px;
       height: 318px;
@@ -761,7 +765,8 @@ body.oxfl-body-chapters {
         width: 161px;
         height: 58px;
         bottom: 0;
-        left: 0; }
+        left: 0;
+        line-height: 60px; }
 
 .oxfl-bubble-hello {
   background: url(img/bubble-2.png) 0 0 no-repeat;
@@ -869,6 +874,18 @@ body.oxfl-body-home #oxfl-home-menu {
   position: absolute;
   top: 30px;
   left: 45px; }
+  #oxfl-episodes-monster span {
+    font-size: 56px;
+    font-size: 5.6rem;
+    line-height: 1.2em;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    background: url(img/monster-5-bubble.png) 0 0 no-repeat;
+    background-size: contain;
+    width: 279px;
+    height: 200px;
+    padding-top: 15px; }
 
 #oxfl-episodes {
   background: rgba(242, 242, 242, 0.8);

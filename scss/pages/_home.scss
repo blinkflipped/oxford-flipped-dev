@@ -97,6 +97,7 @@
         height: 63px;
         top: 0;
         right: 0;
+        line-height: 45px;
       }
     }
     &.oxfl-monster-2 {
@@ -110,6 +111,8 @@
         top: 43%;
         left: 50%;
         margin-left: -60px;
+        @include font-size(2.2);
+        line-height: 40px;
       }
     }
     &.oxfl-monster-3 {
@@ -122,6 +125,7 @@
         height: 58px;
         bottom: 0;
         left: 0;
+        line-height: 60px;
       }
     }
   }
