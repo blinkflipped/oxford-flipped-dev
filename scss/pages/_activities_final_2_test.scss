@@ -11,6 +11,15 @@ body.body_clase.view-mode {
         background-position: center top;
         background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);
       }
+      &-challenge {
+
+        &.oxfl-final-slide-fail {
+          background-position: center center;
+          background-image: url(img/endscreen-wrong-challenge.svg), url(img/endscreen-wrong-challenge-bg.jpg);
+          background-repeat: no-repeat;
+          background-size: contain, cover;
+        }
+      }
       .item-container  {
         max-width: 100%;
         min-height: 100%!important;
