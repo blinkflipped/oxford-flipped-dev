@@ -339,10 +339,28 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 	});
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
-		var currentEpisode = $(this).data('episode');
-		var activities = window.actividades;
+		var currentEpisode = $(this).data('episode'),
+				activities = window.actividades;
 		oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
 	});
+}
+
+oxfordFlippedApp.marginBottomMonsterChapters = function() {
+		var $monster = $('#oxfl-chapters-monster'),
+				marginBottom = parseInt($monster.css('margin-bottom')),
+				marginBottom = -134,
+				height = parseInt($monster.css('height')),
+				height = 370,
+				newHeight = $monster.outerHeight(),
+				newMarginBottom = newHeight*marginBottom/height;
+
+		oxfordFlippedApp.console(marginBottom);
+		oxfordFlippedApp.console(height);
+		oxfordFlippedApp.console(newHeight);
+		oxfordFlippedApp.console(newMarginBottom);
+
+		$monster.css('margin-bottom', newMarginBottom);
+
 }
 
 oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
@@ -452,6 +470,14 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 	// Popovers
 	oxfordFlippedApp.popover();
+
+	// Monster margin bottom
+	oxfordFlippedApp.marginBottomMonsterChapters();
+
+	$(window).resize(function() {
+		oxfordFlippedApp.marginBottomMonsterChapters();
+	});
+	
 }
 
 

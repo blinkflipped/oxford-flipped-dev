@@ -49,10 +49,12 @@
   width: 715px;
   //width: 52%;
   //margin-bottom: -10.4%;
-  //max-height: 370px;
-  //min-height: 260px;
-  //height: calc(100vh - 430px);
+  max-height: 370px;
+  min-height: 260px;
+  height: calc(100vh - 430px);
   height: 370px;
+  position: relative;
+  margin-bottom: -143px;
 }
 
 
@@ -65,8 +67,8 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: 226px auto;
-  //margin: 0 auto;
+  //margin: 226px auto;
+  margin: 0 auto;
   //position: absolute;
   //top: 0;
   //left: 50%;

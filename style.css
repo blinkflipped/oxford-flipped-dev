@@ -975,7 +975,12 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   background-image: url(img/monster_test.gif);
   background-position: left bottom;
   width: 715px;
-  height: 370px; }
+  max-height: 370px;
+  min-height: 260px;
+  height: calc(100vh - 430px);
+  height: 370px;
+  position: relative;
+  margin-bottom: -143px; }
 
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
@@ -986,7 +991,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  margin: 226px auto; }
+  margin: 0 auto; }
   #oxfl-chapters .slick-list {
     z-index: 500; }
 
