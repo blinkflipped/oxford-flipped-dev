@@ -38,14 +38,15 @@
 				}).bind(this));
 			},
 			onCourseDataLoaded: function(data) {
-				console.log("onCourseDataLoaded");
-				console.log(data);
+				oxfordFlippedApp.console("onCourseDataLoaded");
+				oxfordFlippedApp.console(data);
+
 				window.bookcover = data.units[0].subunits[0].id;
 				var isBookCover = (idclase.toString() === window.bookcover) ? true : false;
 				if (isBookCover) {
 					var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 					loadScript(urlSeguimiento, true, function() {
-						console.log(window.actividades);
+						oxfordFlippedApp.console(window.actividades);
 					});
 					oxfordFlippedApp.homepage(data);
 				}
@@ -54,8 +55,8 @@
 			onActivityDataLoaded: function(data) {
 				var isBookCover = (idclase.toString() === window.bookcover) ? true : false;
 				if (!isBookCover) {
-					console.log("onActivityDataLoaded");
-					console.log(data);
+					oxfordFlippedApp.console("onActivityDataLoaded");
+					oxfordFlippedApp.console(data);
 					oxfordFlippedApp.activityCreateFalseNavigation(data);
 					oxfordFlippedApp.activityCheckpointCover();
 					oxfordFlippedApp.activityFinalScreenOne();
@@ -64,9 +65,9 @@
 						oxfordFlippedApp.activityFinalScreenTest(currentSection);
 						oxfordFlippedApp.onSliderChange(currentSection);
 					});
-					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
+					//$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
 						$('html').addClass('htmlReady');
-					});
+					//});
 				}
 			},
 			removeFinalSlide: function () {
@@ -85,7 +86,7 @@
 			blink.getCourse(idcurso).done(function(data) {
 				var style = new OxfordFlippedDevStyle;
 				style.onCourseDataLoaded(data);
-				console.log("TOC");
+				oxfordFlippedApp.console("TOC");
 			});
 		});
 	});
@@ -116,6 +117,8 @@
 
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
+
+oxfordFlippedApp.config.isDEV = true;
 
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
@@ -159,20 +162,27 @@ oxfordFlippedApp.text = {
 	selectepidose : 'Select episode'
 }
 
+oxfordFlippedApp.console = function(logValue) {
+	if (oxfordFlippedApp.config.isDEV) {
+		console.log(logValue);
+	}
+}
+
 oxfordFlippedApp.getChallengeIDs = function(data) {
 
-	console.log(data);
+	oxfordFlippedApp.console(data);
+
 	$.each(data.units, function(i, unit){
-		console.log(i);
-		console.log(unit);
+
+		oxfordFlippedApp.console(unit);
 		if (i != 0) {
 			var unitTitle = unit.title,
 					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
 			if (!unitIsMarketplace) {
 				var totalSubunits = unit.subunits.length;
-				console.log(totalSubunits);
+				oxfordFlippedApp.console(totalSubunits);
 				$.each(unit.subunits, function(i, subunit){
-					console.log(i);
+					oxfordFlippedApp.console(i);
 					if (i === totalSubunits-1) {
 						oxfordFlippedApp.config.challengeIDs.push(subunit.id);
 					}
@@ -181,7 +191,7 @@ oxfordFlippedApp.getChallengeIDs = function(data) {
 			}
 		}
 	});
-	console.log(oxfordFlippedApp.config.challengeIDs);
+	oxfordFlippedApp.console(oxfordFlippedApp.config.challengeIDs);
 
 }
 
@@ -240,8 +250,7 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 
 oxfordFlippedApp.homepage = function(data) {
 
-	console.log("Homepage");
-	//$('body').addClass('htmlReady'); // TODO CAMBIAR
+	oxfordFlippedApp.console("Homepage");
 
 	oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 
@@ -283,13 +292,14 @@ oxfordFlippedApp.homepage = function(data) {
 
 oxfordFlippedApp.loadEpisodes = function(data) {
 
-	console.log("Load Episodes List");
-	console.log(data);
+	oxfordFlippedApp.console("Load Episodes List");
+	oxfordFlippedApp.console(data);
 
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
-		console.log(i);
-		console.log(unit);
+
+		oxfordFlippedApp.console(unit);
+
 		if (i != 0) {
 			var unitTitle = unit.title,
 					unitDescription = unit.description,
@@ -336,20 +346,19 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 }
 
 oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
-	console.log("Load Chapters List");
-	//console.log(activities);
+
+	oxfordFlippedApp.console("Load Chapters List");
 
 	var chapters = data.units[currentEpisode].subunits,
 			episodeImage =  data.units[currentEpisode].image,
 			chaptersList = document.createDocumentFragment();
-	//console.log(chaptersList);
 
 	var chaptersNotStarted = false,
 			chaptersWithoutGrade = false;
 
 	$.each(chapters, function(i, chapter){
 
-		console.log(chapter);
+		oxfordFlippedApp.console(chapter);
 		var chapterID = chapter.id,
 				chapterTitle = chapter.title,
 				chapterImage = chapter.image,
@@ -360,7 +369,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		var grade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
 				chapterStars = (typeof activities[chapterID] === 'undefined') ? 0 : oxfordFlippedApp.gradeToStars(grade);
 
-		console.log(activities[chapterID]);
+		oxfordFlippedApp.console(activities[chapterID]);
 
 		// Regular Chapters
 		if (!chapterIsChallenge) {
@@ -391,8 +400,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 		} else { // Challenge Chapter
 
-			console.log(chaptersNotStarted);
-			console.log(chaptersWithoutGrade);
+			oxfordFlippedApp.console(chaptersNotStarted);
+			oxfordFlippedApp.console(chaptersWithoutGrade);
 
 			var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false,
 					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
@@ -453,8 +462,6 @@ oxfordFlippedApp.gohome = function() {
 
 	possibleClasses.splice(index, 1);
 
-	console.log(possibleClasses);
-	console.log(index);
 	var $body = $('body');
 	$body.addClass(homeClass);
 	$.each(possibleClasses, function(i, v){
@@ -490,9 +497,6 @@ oxfordFlippedApp.goback = function(classRef) {
 
 	var hasParent = (possibleParents[classRef] != '') ? true : false;
 
-	console.log(possibleParents[classRef]);
-	console.log(hasParent);
-
 	if (hasParent) {
 		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({
 			'data-goback': possibleParents[classRef]
@@ -511,7 +515,7 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 	var isDone = true,
 			newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
-	console.log(newIsLocked);
+	oxfordFlippedApp.console(newIsLocked);
 
 	if (isDone) {
 
@@ -639,7 +643,7 @@ oxfordFlippedApp.activityContentZone = function() {
 
 	$('body').on('click', '.oxfl-js-start-test', function() {
 
-		console.log("START");
+		oxfordFlippedApp.console("START");
 		var $modal = $('#oxfl-modal-start-test');
 		$modal.modal('hide');
 		blink.activity.showNextSection();
@@ -656,7 +660,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
 				isLastSlide = (totalSlides === currentSection+1) ? true : false;
-		console.log(isLastSlide);
+		oxfordFlippedApp.console(isLastSlide);
 
 		if (isLastSlide) {
 
@@ -671,7 +675,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 				loadScript(urlSeguimiento, true, function() {
 
-					console.log(window.actividades);
+					oxfordFlippedApp.console(window.actividades);
 
 					var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
 
@@ -716,7 +720,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				$('body').on('click', '.oxfl-js-show-final-tip', function(e) {
 
 					e.preventDefault();
-					console.log("TIP");
+					oxfordFlippedApp.console("TIP");
 					$('body').addClass('oxfl-end-screen-tip-on');
 
 				});
@@ -745,7 +749,7 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	if (currentSection === coverIDNum) {
 
-		console.log("You're in Checkpoint 1");
+		oxfordFlippedApp.console("You're in Checkpoint 1");
 
 	} else {
 
@@ -753,7 +757,7 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	if (currentSection === contentZoneIDNum) {
 
-		console.log("You're in Content Zone");
+		oxfordFlippedApp.console("You're in Content Zone");
 		$('body').addClass('oxfl-content-zone-on');
 
 	} else {
@@ -812,8 +816,8 @@ $(document).ready(function() {
 				isLocked = $(this).hasClass('lock'),
 				$modal = $('#oxfl-modal-lock-chapters');
 
-		console.log(chapterID);
-		console.log(isLocked);
+		oxfordFlippedApp.console(chapterID);
+		oxfordFlippedApp.console(isLocked);
 
 		if (isLocked) {
 			$('#oxfl-modal-lock-chapters-text').text('unlock');
@@ -845,15 +849,5 @@ $(document).ready(function() {
 		parent.top.oxfordFlippedApp.closeIframe();
 
 	});
-
-/*
-	$('body').on('click', '.oxfl-js-show-final-tip', function(e) {
-
-		e.preventDefault();
-		console.log("TIP");
-		oxfordFlippedApp.activityFinalScreenTip(currentSection);
-		$('#slider-item-'+currentSection).addClass('oxfl-end-screen-tip-on');
-
-	});*/
 
 });
