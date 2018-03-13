@@ -347,10 +347,10 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 oxfordFlippedApp.marginBottomMonsterChapters = function() {
 		var $monster = $('#oxfl-chapters-monster'),
-				marginBottom = parseInt($monster.css('margin-bottom')),
-				//marginBottom = -143,
-				height = parseInt($monster.css('height')),
-				//height = 370,
+				//marginBottom = parseInt($monster.css('margin-bottom')),
+				marginBottom = -143,
+				//height = parseInt($monster.css('height')),
+				height = 370,
 				newHeight = $monster.outerHeight(),
 				newMarginBottom = newHeight*marginBottom/height;
 
