@@ -118,7 +118,7 @@
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
 
-oxfordFlippedApp.config.isDEV = true;
+oxfordFlippedApp.config.isDEV = false;
 
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
