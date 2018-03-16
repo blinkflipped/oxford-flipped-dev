@@ -504,7 +504,7 @@ oxfordFlippedApp.loadMarketplace = function(data) {
 	//oxfordFlippedApp.popover();
 
 }
-
+/*
 oxfordFlippedApp.loadMarketplaceInner = function(data,type) {
 
 	oxfordFlippedApp.console("Load Marketplace");
@@ -628,7 +628,7 @@ oxfordFlippedApp.loadMarketplaceInner = function(data,type) {
 
 }
 
-
+*/
 oxfordFlippedApp.gohome = function() {
 	var homeClass = 'oxfl-body-home',
 			possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
