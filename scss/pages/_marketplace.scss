@@ -1,0 +1,21 @@
+
+#oxfl-marketplace-wrapper {
+  width: $layout_max;
+  max-width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+
+
+body.oxfl-body-marketplace {
+  #oxfl-marketplace-wrapper {
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s;
+  }
+}

@@ -130,7 +130,7 @@ oxfordFlippedApp.config.twoStarsGradeMax = 99;
 oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
 oxfordFlippedApp.config.currentPage = '';
 
-oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters'];
+oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace'];
 
 oxfordFlippedApp.config.challengeIDs = [];
 
@@ -363,6 +363,160 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	var chapters = data.units[currentEpisode].subunits,
 			episodeImage =  data.units[currentEpisode].image,
 			chaptersList = document.createDocumentFragment();
+
+	var chaptersNotStarted = false,
+			chaptersWithoutGrade = false;
+
+	$.each(chapters, function(i, chapter){
+
+		oxfordFlippedApp.console(chapter);
+		var chapterID = chapter.id,
+				chapterTitle = chapter.title,
+				chapterDescription = chapter.description,
+				chapterImage = chapter.image,
+				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
+				chapterIsChallenge = (chapterTitle === 'Challenge') ? true : false;
+
+		//Stars
+		var grade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
+				chapterStars = (typeof activities[chapterID] === 'undefined') ? 0 : oxfordFlippedApp.gradeToStars(grade);
+
+		oxfordFlippedApp.console(activities[chapterID]);
+
+		// Regular Chapters
+		if (!chapterIsChallenge) {
+
+			// Activities dont started
+			if (typeof activities[chapterID] === 'undefined') {
+				chaptersNotStarted = true;
+			} else {
+				if (activities[chapterID].clasificacion === '') {
+					chaptersWithoutGrade = true;
+				}
+			}
+
+			//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
+			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
+					chapterStateID = (typeof activities[chapterID] === 'undefined') ? 2 : activities[chapterID].estado,
+					chapterStateText =  chapterStateTextArr[chapterStateID];
+
+			//Lock Chapters
+			var chapterLockStatus = chapter.lock,
+					chapterLockClass = (chapterLockStatus === 8 || chapterLockStatus === 2) ? 'lock' : 'unlock';
+
+			var chapterNumber = i + 1,
+					chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
+					chapterPopoverText = oxfordFlippedApp.text.popoverChapter,
+					chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
+					chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>';
+
+		} else { // Challenge Chapter
+
+			oxfordFlippedApp.console(chaptersNotStarted);
+			oxfordFlippedApp.console(chaptersWithoutGrade);
+
+			var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false,
+					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
+			var chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
+					chapterPopoverText = oxfordFlippedApp.text.popoverChallenge,
+					chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
+					chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>';
+
+		}
+
+		var chapterListItem = document.createElement('div');
+
+		chapterListItem.className = 'oxfl-chapter-item';
+		chapterListItem.innerHTML = chapterinnerHTML;
+		chaptersList.appendChild(chapterListItem);
+
+	});
+
+	var $chaptersWrapper = $('#oxfl-chapters');
+
+	if ($chaptersWrapper.hasClass('slick-initialized')) {
+		$chaptersWrapper.slick('unslick');
+	}
+	$chaptersWrapper.empty();
+	$chaptersWrapper[0].appendChild(chaptersList);
+
+	var items = $chaptersWrapper.find('.oxfl-chapter-item'),
+			itemsLength = items.length;
+	if (itemsLength) {
+		for(var i = 0; i < itemsLength; i+=6) {
+			items.slice(i, i+6).wrapAll('<div class="oxfl-chapters-page"></div>');
+		}
+
+		$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+	}
+
+	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')');
+
+	$('body').removeClass('oxfl-body-episodes');
+
+	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass('oxfl-body-chapters');
+		oxfordFlippedApp.config.currentPage = 'oxfl-body-chapters';
+		$('#oxfl-custom-background').addClass('active');
+		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
+	});
+
+
+	// Popovers
+	oxfordFlippedApp.popover();
+
+	// Monster margin bottom
+	oxfordFlippedApp.marginBottomMonsterChapters();
+
+	$(window).resize(function() {
+		oxfordFlippedApp.marginBottomMonsterChapters();
+	});
+
+}
+
+oxfordFlippedApp.loadMarketplace = function(data) {
+
+	oxfordFlippedApp.console("Load Marketplace");
+
+	$('#oxfl-marketplace-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+		var marketplaceClass = 'oxfl-body-marketplace',
+				possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
+				index = possibleClasses.indexOf(marketplaceClass);
+
+		possibleClasses.splice(index, 1);
+
+		var $body = $('body');
+		$body.addClass(marketplaceClass);
+		$.each(possibleClasses, function(i, v){
+			$body.removeClass(v);
+		});
+
+		$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
+		var marketplaceBackground = '';
+		$('#oxfl-custom-background').css('background-image', 'url('+marketplaceBackground+')').addClass('active');
+
+		oxfordFlippedApp.config.currentPage = marketplaceClass;
+		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-home'});
+	});
+
+
+	// Popovers
+	//oxfordFlippedApp.popover();
+
+}
+
+oxfordFlippedApp.loadMarketplaceInner = function(data,type) {
+
+	oxfordFlippedApp.console("Load Marketplace");
+	var units = data.units,
+			marketplaceList = document.createDocumentFragment();
+	$.each(units, function(i, unit){
+		var marketplaceResources = unit.resources,
+				episodeImage =  data.units[currentEpisode].image,
+
+
+
+	});
 
 	var chaptersNotStarted = false,
 			chaptersWithoutGrade = false;
