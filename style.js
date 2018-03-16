@@ -347,17 +347,10 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 oxfordFlippedApp.marginBottomMonsterChapters = function() {
 		var $monster = $('#oxfl-chapters-monster'),
-				//marginBottom = parseInt($monster.css('margin-bottom')),
-				marginBottom = -143,
-				//height = parseInt($monster.css('height')),
-				height = 370,
+				marginBottom = -143, // Margin bottom init
+				height = 370, //Height init
 				newHeight = $monster.outerHeight(),
 				newMarginBottom = newHeight*marginBottom/height;
-
-		oxfordFlippedApp.console(marginBottom);
-		oxfordFlippedApp.console(height);
-		oxfordFlippedApp.console(newHeight);
-		oxfordFlippedApp.console(newMarginBottom);
 
 		$monster.css('margin-bottom', newMarginBottom);
 
@@ -379,6 +372,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		oxfordFlippedApp.console(chapter);
 		var chapterID = chapter.id,
 				chapterTitle = chapter.title,
+				chapterDescription = chapter.description,
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
 				chapterIsChallenge = (chapterTitle === 'Challenge') ? true : false;
@@ -414,7 +408,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 					chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
 					chapterPopoverText = oxfordFlippedApp.text.popoverChapter,
 					chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === 8 || chapterLockStatus === 2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-					chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> Chapter '+chapterNumber+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterTitle+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> Chapter '+chapterNumber+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>';
+					chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>';
 
 		} else { // Challenge Chapter
 
