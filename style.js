@@ -484,6 +484,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		var resourceList = document.createDocumentFragment()
 				resourceType = type;
+		oxfordFlippedApp.console(data);
 		$.each(data.units, function(i, unit){
 
 			oxfordFlippedApp.console(unit);
@@ -559,10 +560,12 @@ oxfordFlippedApp.loadMarketplace = function(data) {
 	// Click on buttons
 
 	$('body').on('click', '.oxfl-js-load-summary' , function(data) {
+		oxfordFlippedApp.console(data);
 		oxfordFlippedApp.loadMarketplaceList(data,'libro',6);
 	});
 
 	$('body').on('click', '.oxfl-js-load-game' , function(data) {
+		oxfordFlippedApp.console(data);
 		oxfordFlippedApp.loadMarketplaceList(data,'actividad',4);
 	});
 

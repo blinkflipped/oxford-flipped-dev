@@ -874,7 +874,8 @@ body.oxfl-body-home #oxfl-home-menu {
     background-repeat: no-repeat;
     background-color: transparent;
     border: 0;
-    position: relative; }
+    position: relative;
+    outline: none; }
   #oxfl-marketplace-menu .oxfl-marketplace-menu-button-bubble {
     color: #ffffff;
     font-family: "Myfrida", sans-serif;
