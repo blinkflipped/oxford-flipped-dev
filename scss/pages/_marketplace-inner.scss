@@ -23,7 +23,7 @@
   margin: 0 $space_1/2 $space_2 $space_1;
   padding: 0;
   .oxfl-resource-page {
-    padding: $episodes_padding;
+    padding: $padding_1;
   }
 }
 
@@ -39,7 +39,7 @@
   .oxfl-resource-image-wrapper {
     width: 100%;
     min-height: 90px;
-    height: calc((100vh - #{$episodes_image_height})/2);
+    height: 132px;
     max-height: 200px;
     overflow: hidden;
     img {
