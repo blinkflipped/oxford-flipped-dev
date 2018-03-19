@@ -134,6 +134,8 @@ oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', '
 
 oxfordFlippedApp.config.challengeIDs = [];
 
+oxfordFlippedApp.bookData = '';
+
 oxfordFlippedApp.text = {
 	text1 : 'Oxford Flipped',
 	chapterStatus0 : 'Started',
@@ -255,6 +257,8 @@ oxfordFlippedApp.homepage = function(data) {
 	oxfordFlippedApp.console("Homepage");
 
 	oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
+
+	oxfordFlippedApp.bookData = data;
 
 	var bookTitle = data.title,
 			username = nombreusuario,
@@ -530,11 +534,13 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 }
 
-oxfordFlippedApp.loadMarketplace = function(data) {
+oxfordFlippedApp.loadMarketplace = function() {
 
 	oxfordFlippedApp.console("Load Marketplace");
+	oxfordFlippedApp.console("Load Marketplace 2222");
+	oxfordFlippedApp.console(oxfordFlippedApp.bookData);
 
-	var marketplaceBackground = data.units[0].subunits[1].image;
+	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
 	$('#oxfl-custom-background').css('background-image', 'url('+marketplaceBackground+')');
 
 	$('#oxfl-marketplace-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
@@ -559,14 +565,14 @@ oxfordFlippedApp.loadMarketplace = function(data) {
 
 	// Click on buttons
 
-	$('body').on('click', '.oxfl-js-load-summary' , function(data) {
-		oxfordFlippedApp.console(data);
-		oxfordFlippedApp.loadMarketplaceList(data,'libro',6);
+	$('body').on('click', '.oxfl-js-load-summary' , function() {
+		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
+		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,'libro',6);
 	});
 
-	$('body').on('click', '.oxfl-js-load-game' , function(data) {
-		oxfordFlippedApp.console(data);
-		oxfordFlippedApp.loadMarketplaceList(data,'actividad',4);
+	$('body').on('click', '.oxfl-js-load-game' , function() {
+		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
+		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,'actividad',4);
 	});
 
 	// Popovers
