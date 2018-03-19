@@ -1,13 +1,88 @@
 
 #oxfl-marketplace-wrapper {
-  width: $layout_max;
+  width: 100%;
   max-width: 100%;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%,0);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+
+#oxfl-marketplace-menu {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 80px 20px;
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translate(0,100%);
+  &::before {
+    content: '';
+    width: 100%;
+    height: 200px;
+    background: $home_menu_background_color;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  #oxfl-marketplace-menu-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .oxfl-marketplace-menu-button {
+      position: relative;
+      z-index: 10;
+    }
+  }
+  .oxfl-marketplace-menu-button {
+    background-size: contain;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+  }
+  .oxfl-marketplace-menu-button-bubble {
+    color: $negative_color;
+    font-family: $font_family_2;
+    font-weight: 700;
+    font-style: italic;
+    position: absolute;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+  .oxfl-marketplace-menu-button-1 {
+    width: 297px;
+    height: 384px;
+    background-image: url(img/monster-12.svg);
+    .oxfl-marketplace-menu-button-bubble {
+      width: 450px;
+      height: 110px;
+      @include font-size(5.3);
+      background-image: url(img/bubble-6.png);
+      top: 50%;
+    }
+  }
+  .oxfl-marketplace-menu-button-2 {
+    width: 308px;
+    height: 342px;
+    background-image: url(img/monster-13.svg);
+    .oxfl-marketplace-menu-button-bubble {
+      width: 274px;
+      height: 134px;
+      @include font-size(4.8);
+      background-image: url(img/bubble-7.png);
+      bottom: 0;
+    }
+  }
 }
 
 
@@ -17,5 +92,9 @@ body.oxfl-body-marketplace {
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s;
+  }
+  #oxfl-marketplace-menu {
+    opacity: 1;
+    transform: translate(0,0);
   }
 }

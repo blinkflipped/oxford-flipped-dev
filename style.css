@@ -827,20 +827,90 @@ body.oxfl-body-home #oxfl-home-menu {
   transform: translate(0, 0); }
 
 #oxfl-marketplace-wrapper {
-  width: 980px;
+  width: 100%;
   max-width: 100%;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+
+#oxfl-marketplace-menu {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 80px 20px;
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translate(0, 100%); }
+  #oxfl-marketplace-menu::before {
+    content: '';
+    width: 100%;
+    height: 200px;
+    background: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  #oxfl-marketplace-menu #oxfl-marketplace-menu-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; }
+    #oxfl-marketplace-menu #oxfl-marketplace-menu-inner .oxfl-marketplace-menu-button {
+      position: relative;
+      z-index: 10; }
+  #oxfl-marketplace-menu .oxfl-marketplace-menu-button {
+    background-size: contain;
+    background-position: 0 0;
+    background-repeat: no-repeat; }
+  #oxfl-marketplace-menu .oxfl-marketplace-menu-button-bubble {
+    color: #ffffff;
+    font-family: "Myfrida", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    position: absolute;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 0; }
+  #oxfl-marketplace-menu .oxfl-marketplace-menu-button-1 {
+    width: 297px;
+    height: 384px;
+    background-image: url(img/monster-12.svg); }
+    #oxfl-marketplace-menu .oxfl-marketplace-menu-button-1 .oxfl-marketplace-menu-button-bubble {
+      width: 450px;
+      height: 110px;
+      font-size: 53px;
+      font-size: 5.3rem;
+      background-image: url(img/bubble-6.png);
+      top: 50%; }
+  #oxfl-marketplace-menu .oxfl-marketplace-menu-button-2 {
+    width: 308px;
+    height: 342px;
+    background-image: url(img/monster-13.svg); }
+    #oxfl-marketplace-menu .oxfl-marketplace-menu-button-2 .oxfl-marketplace-menu-button-bubble {
+      width: 274px;
+      height: 134px;
+      font-size: 48px;
+      font-size: 4.8rem;
+      background-image: url(img/bubble-7.png);
+      bottom: 0; }
 
 body.oxfl-body-marketplace #oxfl-marketplace-wrapper {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   transition-delay: 0s; }
+body.oxfl-body-marketplace #oxfl-marketplace-menu {
+  opacity: 1;
+  transform: translate(0, 0); }
 
 #oxfl-episodes-wrapper {
   width: 980px;
