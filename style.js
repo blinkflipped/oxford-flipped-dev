@@ -784,7 +784,7 @@ oxfordFlippedApp.goback = function(classRef) {
 	} else {
 		oxfordFlippedApp.console("B");
 		console.log(oxfordFlippedApp.config.backgrounds[classRef]);
-		$('#oxfl-custom-background').css('background-image', oxfordFlippedApp.config.backgrounds[classRef]).addClass('active');
+		$('#oxfl-custom-background').css('background-image', 'url('+oxfordFlippedApp.config.backgrounds[classRef]+')').addClass('active');
 	}
 
 }

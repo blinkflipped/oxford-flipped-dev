@@ -992,32 +992,57 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     .oxfl-resources-page.oxfl-resources-page-ipp-6 .oxfl-resource-item:nth-child(3n+1) {
       clear: left; }
 
+#oxfl-resources-actividad-monster,
+#oxfl-resources-libro-monster {
+  position: relative;
+  left: -40px;
+  margin: 50px auto -2px; }
+
 #oxfl-resources-actividad-monster {
   width: 290px;
   height: 214px;
   background: url(img/monster-14.svg) 0 0 no-repeat;
-  background-size: contain;
-  position: relative;
-  left: -40px;
-  margin: 0 auto -2px; }
+  background-size: contain; }
 
-.oxfl-resources-actividad-monster-bubble {
+#oxfl-resources-libro-monster {
+  width: 282px;
+  height: 190px;
+  background: url(img/monster-15.svg) 0 0 no-repeat;
+  background-size: contain; }
+
+.oxfl-resources-actividad-monster-bubble,
+.oxfl-resources-libro-monster-bubble {
   font-family: "Myfrida", sans-serif;
   font-weight: 700;
   font-style: italic;
-  font-size: 44px;
-  font-size: 4.4rem;
+  font-size: 40px;
+  font-size: 4rem;
   line-height: 1em;
+  color: #ffffff;
+  background-image: url(img/monster-14-15-bubble.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center; }
+  .oxfl-resources-actividad-monster-bubble span,
+  .oxfl-resources-libro-monster-bubble span {
+    display: block;
+    transform: rotate(10deg);
+    margin: 12px; }
+
+.oxfl-resources-actividad-monster-bubble {
   width: 196px;
   height: 112px;
-  background: url(img/monster-14-bubble.png) 0 0 no-repeat;
-  background-size: contain;
   position: absolute;
-  right: 0;
-  top: 50%; }
-  .oxfl-resources-actividad-monster-bubble span {
-    display: block;
-    transform: rotate(-10deg); }
+  right: -160px;
+  top: 25%; }
+
+.oxfl-resources-libro-monster-bubble {
+  width: 208px;
+  height: 119px;
+  position: absolute;
+  right: -160px;
+  top: 25%; }
 
 body.oxfl-body-marketplace-actividad #oxfl-resources-actividad-wrapper {
   visibility: visible;
