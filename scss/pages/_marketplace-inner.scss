@@ -90,20 +90,26 @@
   background: url(img/monster-14.svg) 0 0 no-repeat;
   background-size: contain;
   position: relative;
-  &-bubble {
-    font-family: $font_family_2;
-    font-weight: 700;
-    font-style: italic;
-    @include font-size(4.4);
-    line-height: 1em;
-    width: 196px;
-    height: 112px;
-    background: url(img/monster-14-bubble.png) 0 0 no-repeat;
-    background-size: contain;
-    span {
-      display: block;
-      transform: rotate(-10deg);
-    }
+  left: -40px;
+  margin: 0 auto -2px;
+}
+
+.oxfl-resources-actividad-monster-bubble {
+  font-family: $font_family_2;
+  font-weight: 700;
+  font-style: italic;
+  @include font-size(4.4);
+  line-height: 1em;
+  width: 196px;
+  height: 112px;
+  background: url(img/monster-14-bubble.png) 0 0 no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  span {
+    display: block;
+    transform: rotate(-10deg);
   }
 }
 
