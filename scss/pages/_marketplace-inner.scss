@@ -60,7 +60,6 @@
   }
 }
 
-
 .oxfl-resources-page {
   @include clearfix();
   margin-left: -5px;
@@ -87,6 +86,21 @@
   }
 }
 
+#oxfl-resources-actividad-monster {
+  width: 290px;
+  height: 214px;
+  background: url(img/monster-14.svg) 0 0 no-repeat;
+  background-size: contain;
+  position: relative;
+  &-bubble {
+    font-family: $font_family_2;
+    font-weight: 700;
+    font-style: italic;
+    @include font-size(4.4);
+    line-height: 1em;
+    transform: rotate(-10deg);
+  }
+}
 
 
 body.oxfl-body-marketplace-actividad {
