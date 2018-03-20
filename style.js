@@ -777,9 +777,11 @@ oxfordFlippedApp.goback = function(classRef) {
 		$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
 	}
 	console.log(oxfordFlippedApp.config.backgrounds[classRef]);
-	if (oxfordFlippedApp.config.backgrounds[classRef] != '') {
+	if (oxfordFlippedApp.config.backgrounds[classRef] === '') {
+		oxfordFlippedApp.console("A");
 		$('#oxfl-custom-background').removeAttr('style').removeClass('active');
 	} else {
+		oxfordFlippedApp.console("B");
 		$('#oxfl-custom-background').css('background-image', oxfordFlippedApp.config.backgrounds[classRef]).addClass('active');
 	}
 

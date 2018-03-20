@@ -506,6 +506,9 @@
           background-color: $dot_background_color_active;
         }
       }
+      &:first-child:last-child {
+        display: none;
+      }
     }
   }
 
