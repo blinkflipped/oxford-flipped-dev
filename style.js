@@ -517,7 +517,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 
-								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="" data-resource="'+resourceId+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+resourceTitle+'</h2><div class="oxfl-resource-coins">'+resourceValue+'<span class="icon icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
+								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+resourceTitle+'</h2><div class="oxfl-resource-coins">'+resourceValue+'<span class="icon icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 								resourceList.appendChild(resourceListItem);
 
 					} else {
@@ -560,7 +560,7 @@ oxfordFlippedApp.loadMarketplace = function() {
 	oxfordFlippedApp.console("Load Marketplace");
 
 	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
-	$('#oxfl-custom-background').css('background-image', 'url('+marketplaceBackground+')');
+	$('#oxfl-custom-background').removeClass('active').css('background-image', 'url('+marketplaceBackground+')');
 
 	oxfordFlippedApp.config.backgrounds['oxfl-body-marketplace'] = marketplaceBackground;
 
@@ -870,7 +870,6 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 
 oxfordFlippedApp.activityContentZone = function() {
 
-	//$('.pregunta').each(function(i,e) {
 	$('.js-slider-item').each(function(i,e) {
 
 		if ($(e).find('.oxfl-cz').length) {
@@ -929,10 +928,6 @@ oxfordFlippedApp.activityContentZone = function() {
 		blink.activity.showNextSection();
 
 	});
-
-}
-
-oxfordFlippedApp.activityFinalScreenTip = function(currentSection) {
 
 }
 
@@ -1084,6 +1079,16 @@ $(document).ready(function() {
 		var chapterID = $(this).attr('data-chapter-id');
 		blink.theme.iframeWidth = 1300; //TEST //924;
 		blink.domain.openActivity(chapterID);
+
+	});
+
+	// Load resource / marketplace
+	$('body').on('click', '.oxfl-js-load-resource', function(e) {
+
+		e.preventDefault();
+		var resourceID = $(this).attr('data-resource-id');
+		blink.theme.iframeWidth = 1300;
+		blink.domain.openActivity(resourceID);
 
 	});
 
