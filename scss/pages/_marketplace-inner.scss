@@ -15,12 +15,12 @@
 .oxfl-resources-container {
   background: fade-out($color_5, .2);
   border: 2px solid $color_5_lighter;
-  width: 550px;
+  width: 770px;
+  max-width: 100%;
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  float: right;
-  margin: 0 $space_1/2 $space_2 $space_1;
+  margin: 0 auto $space_2;
   padding: 0;
   .oxfl-resource-page {
     padding: $padding_1;
@@ -60,6 +60,32 @@
   }
 }
 
+
+.oxfl-resources-page {
+  @include clearfix();
+  margin-left: -5px;
+  margin-right: -5px;
+  .oxfl-resource-item {
+    float: left;
+    padding: 5px;
+  }
+  &.oxfl-resources-page-ipp-4 {
+    .oxfl-resource-item {
+      width: 50%;
+      &:nth-child(2n+1) {
+        clear: left;
+      }
+    }
+  }
+  &.oxfl-resources-page-ipp-6 {
+    .oxfl-resource-item {
+      width: 33.333%;
+      &:nth-child(3n+1) {
+        clear: left;
+      }
+    }
+  }
+}
 
 
 

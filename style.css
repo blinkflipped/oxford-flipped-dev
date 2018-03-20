@@ -940,12 +940,12 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
 .oxfl-resources-container {
   background: rgba(242, 242, 242, 0.8);
   border: 2px solid #ffffff;
-  width: 550px;
+  width: 770px;
+  max-width: 100%;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  float: right;
-  margin: 0 45px 110px 90px;
+  margin: 0 auto 110px;
   padding: 0; }
   .oxfl-resources-container .oxfl-resource-page {
     padding: 30px; }
@@ -972,6 +972,25 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       transform: scale(1); }
   .oxfl-resource:hover .oxfl-resource-image-wrapper img {
     transform: scale(1.1); }
+
+.oxfl-resources-page {
+  margin-left: -5px;
+  margin-right: -5px; }
+  .oxfl-resources-page::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .oxfl-resources-page .oxfl-resource-item {
+    float: left;
+    padding: 5px; }
+  .oxfl-resources-page.oxfl-resources-page-ipp-4 .oxfl-resource-item {
+    width: 50%; }
+    .oxfl-resources-page.oxfl-resources-page-ipp-4 .oxfl-resource-item:nth-child(2n+1) {
+      clear: left; }
+  .oxfl-resources-page.oxfl-resources-page-ipp-6 .oxfl-resource-item {
+    width: 33.333%; }
+    .oxfl-resources-page.oxfl-resources-page-ipp-6 .oxfl-resource-item:nth-child(3n+1) {
+      clear: left; }
 
 body.oxfl-body-marketplace-actividad #oxfl-resources-actividad-wrapper {
   visibility: visible;
