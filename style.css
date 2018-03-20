@@ -996,7 +996,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
 #oxfl-resources-libro-monster {
   position: relative;
   left: -40px;
-  margin: 50px auto -2px; }
+  margin: 90px auto -2px; }
 
 #oxfl-resources-actividad-monster {
   width: 290px;
@@ -1008,7 +1008,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   width: 282px;
   height: 190px;
   background: url(img/monster-15.svg) 0 0 no-repeat;
-  background-size: contain; }
+  background-size: contain;
+  left: -100px; }
 
 .oxfl-resources-actividad-monster-bubble,
 .oxfl-resources-libro-monster-bubble {
@@ -1041,8 +1042,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   width: 208px;
   height: 119px;
   position: absolute;
-  right: -160px;
-  top: 25%; }
+  right: -140px;
+  top: 2%; }
 
 body.oxfl-body-marketplace-actividad #oxfl-resources-actividad-wrapper {
   visibility: visible;

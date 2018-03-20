@@ -560,7 +560,7 @@ oxfordFlippedApp.loadMarketplace = function() {
 	oxfordFlippedApp.console("Load Marketplace");
 
 	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
-	$('#oxfl-custom-background').removeClass('active').css('background-image', 'url('+marketplaceBackground+')');
+	$('#oxfl-custom-background').css('background-image', 'url('+marketplaceBackground+')');
 
 	oxfordFlippedApp.config.backgrounds['oxfl-body-marketplace'] = marketplaceBackground;
 
