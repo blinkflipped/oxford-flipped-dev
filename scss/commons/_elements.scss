@@ -190,6 +190,12 @@
     background-image: url(img/button-2-b.png);
     padding-top: 0;
   }
+  &-4 {
+    width: 75px;
+    height: 30px;
+    background-image: url(img/button-2-b.png);
+    padding-top: 0;
+  }
 }
 
 .oxfl-button-large {
@@ -431,8 +437,40 @@
       }
     }
   }
+  &-2 {
+    .modal-dialog {
+      width: 450px;
+    }
+    .modal-content {
+      border-radius: 10px;
+      .modal-header {
+        text-align: center;
+        padding: $padding_1;
+      }
+      .oxfl-title2 {
+        color: $color_3;
+      }
+    }
+  }
 }
 
+// Notifications list
+
+.oxfl-notification-item {
+  display: flex;
+  justify-content: space-between;
+  .oxfl-title3 {
+    @include font-size(1.8);
+    color: $color_6;
+    &::after {
+      content: '-'
+    }
+  }
+  .oxfl-notification-item-chapter {
+    @include font-size(1.4);
+    padding-left: 4px;
+  }
+}
 
 // Slider
 .slick-track,

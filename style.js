@@ -402,7 +402,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 								notifChapterTitle = chapter.title,
 								notifChapterID = chapter.id;
 						notificationsListItem.className = 'oxfl-notification-item';
-						notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div>'+notifChapterTitle+'</div><div><button class="oxfl-button oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
+						notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div class="oxfl-notification-item-chapter">'+notifChapterTitle+'</div><div><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
 						notificationsList.appendChild(notificationsListItem);
 					}
 				}
@@ -415,6 +415,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 		$notifWrapper[0].appendChild(notificationsList);
 		$('#oxfl-notifications .oxfl-notifications-badge').text(totalNotif);
 		// Si abres actividad, el botón cierra modal y abre activdad. A concretar si tiene que desaparecer de notificaciones
+		// PENDIENTE
 	}
 
 }
