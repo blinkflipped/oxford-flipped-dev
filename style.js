@@ -1124,6 +1124,9 @@ $(document).ready(function() {
 		e.preventDefault();
 		//var chapterUrl = $(this).data('url');
 		//showIFrame(chapterUrl, 1000, 700, false, true, false, '');
+		
+		$modal = $('#oxfl-modal-list-notifications');
+		$modal.modal('hide');
 
 		var chapterID = $(this).attr('data-chapter-id');
 		blink.theme.iframeWidth = 1300; //TEST //924;
