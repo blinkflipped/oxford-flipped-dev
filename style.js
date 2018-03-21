@@ -400,10 +400,10 @@ oxfordFlippedApp.loadNotifications = function(data) {
 						totalNotif++;
 						var notifEpisodeTitle = unit.title,
 								notifChapterTitle = chapter.title,
-								notifChapterID = chapter.id,
-								notificationsListItem.className = 'oxfl-notification-item';
-								notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div>'+notifChapterTitle+'</div><div><button class="oxfl-button oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
-								notificationsList.appendChild(notificationsListItem);
+								notifChapterID = chapter.id;
+						notificationsListItem.className = 'oxfl-notification-item';
+						notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div>'+notifChapterTitle+'</div><div><button class="oxfl-button oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
+						notificationsList.appendChild(notificationsListItem);
 					}
 				}
 			});
