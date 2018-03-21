@@ -850,7 +850,7 @@ body.oxfl-body-chapters {
 body.oxfl-body-home #oxfl-home-title {
   opacity: 1;
   transform: translate(0, 0); }
-body.oxfl-body-home #oxfl-notifications {
+body.oxfl-body-home #oxfl-notifications.active {
   transform: translate(0, 0); }
 body.oxfl-body-home #oxfl-home-menu {
   opacity: 1;
