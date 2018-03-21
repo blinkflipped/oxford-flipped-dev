@@ -1241,6 +1241,10 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   padding: 5px 10px; }
   .oxfl-chapter a {
     display: block; }
+    .oxfl-chapter a .oxfl-title4 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
   .oxfl-chapter .oxfl-title4 a {
     text-overflow: ellipsis;
     white-space: nowrap;

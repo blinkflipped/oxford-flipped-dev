@@ -84,6 +84,11 @@
   padding: 5px 10px;
   a {
     display: block;
+    .oxfl-title4 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
   .oxfl-title4 {
     a {
