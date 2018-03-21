@@ -498,16 +498,19 @@ body.oxfl-body-chapters {
   border-radius: 10px; }
   .oxfl-modal-2 .modal-content .modal-header {
     text-align: center;
-    padding: 30px 10px; }
+    padding: 30px 10px 20px; }
   .oxfl-modal-2 .modal-content .oxfl-title2,
   .oxfl-modal-2 .modal-content .oxfl-title3 {
     color: #4D4D4D; }
+  .oxfl-modal-2 .modal-content .oxfl-notification-item .oxfl-title3 {
+    color: #FBB03B; }
 .oxfl-modal-2 .modal-body {
   text-align: left; }
 
 .oxfl-notification-item {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin-bottom: 10px; }
   .oxfl-notification-item .oxfl-title3 {
     font-size: 18px;
     font-size: 1.8rem;

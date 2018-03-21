@@ -446,11 +446,16 @@
       border-radius: 10px;
       .modal-header {
         text-align: center;
-        padding: $padding_1 10px;
+        padding: $padding_1 10px 20px;
       }
       .oxfl-title2,
       .oxfl-title3 {
         color: $color_3;
+      }
+      .oxfl-notification-item {
+        .oxfl-title3 {
+          color: $color_6;
+        }
       }
     }
     .modal-body {
@@ -464,6 +469,7 @@
 .oxfl-notification-item {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
   .oxfl-title3 {
     @include font-size(1.8);
     color: $color_6;
