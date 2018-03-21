@@ -304,10 +304,12 @@ body.oxfl-body-chapters {
     background-image: url(img/button-2-b.png);
     padding-top: 0; }
   .oxfl-button-bubble-4 {
-    width: 75px;
+    width: 80px;
     height: 30px;
-    background-image: url(img/button-2-b.png);
-    padding-top: 0; }
+    background-image: url(img/button-2-a.png);
+    padding-top: 0;
+    font-size: 14px;
+    font-size: 1.4rem; }
 
 .oxfl-button-large {
   overflow: visible;
@@ -496,9 +498,12 @@ body.oxfl-body-chapters {
   border-radius: 10px; }
   .oxfl-modal-2 .modal-content .modal-header {
     text-align: center;
-    padding: 30px; }
-  .oxfl-modal-2 .modal-content .oxfl-title2 {
+    padding: 30px 10px; }
+  .oxfl-modal-2 .modal-content .oxfl-title2,
+  .oxfl-modal-2 .modal-content .oxfl-title3 {
     color: #4D4D4D; }
+.oxfl-modal-2 .modal-body {
+  text-align: left; }
 
 .oxfl-notification-item {
   display: flex;
@@ -506,13 +511,21 @@ body.oxfl-body-chapters {
   .oxfl-notification-item .oxfl-title3 {
     font-size: 18px;
     font-size: 1.8rem;
-    color: #FBB03B; }
+    color: #FBB03B;
+    white-space: nowrap; }
     .oxfl-notification-item .oxfl-title3::after {
-      content: "-"; }
+      content: ' -';
+      display: inline-block;
+      margin-left: 4px; }
   .oxfl-notification-item .oxfl-notification-item-chapter {
     font-size: 14px;
     font-size: 1.4rem;
-    padding-left: 4px; }
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-grow: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
 
 .slick-track,
 .slick-slide {
