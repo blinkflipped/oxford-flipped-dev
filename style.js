@@ -380,7 +380,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 oxfordFlippedApp.loadNotifications = function(data) {
 
 	//var notificationsList = document.createDocumentFragment();
-	oxfordFlippedApp.console(data);
+	//oxfordFlippedApp.console(data);
 
 	//var notifArr = [];
 
@@ -411,7 +411,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 	$.each(data.units, function(i, unit){
 
-			oxfordFlippedApp.console(unit);
+			//oxfordFlippedApp.console(unit);
 
 			//var notificationsListItem = document.createElement('div');
 
@@ -426,6 +426,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 						// Comprobar que esas actividades NO estan en el json de actividades (no están empezadas o completadas)
 						if (typeof window.actividades[chapter.id] === 'undefined') {
 							console.log("IS NEW AND NOT LOCKED");
+							console.log(unit);
 							console.log(getParent(unit, chapter.id));
 						}
 					}
@@ -506,7 +507,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 	$.each(chapters, function(i, chapter){
 
-		oxfordFlippedApp.console(chapter);
+		//oxfordFlippedApp.console(chapter);
 		var chapterID = chapter.id,
 				chapterTitle = chapter.title,
 				chapterDescription = chapter.description,
@@ -518,7 +519,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		var grade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
 				chapterStars = (typeof activities[chapterID] === 'undefined') ? 0 : oxfordFlippedApp.gradeToStars(grade);
 
-		oxfordFlippedApp.console(activities[chapterID]);
+		//oxfordFlippedApp.console(activities[chapterID]);
 
 		// Regular Chapters
 		if (!chapterIsChallenge) {
@@ -549,8 +550,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 		} else { // Challenge Chapter
 
-			oxfordFlippedApp.console(chaptersNotStarted);
-			oxfordFlippedApp.console(chaptersWithoutGrade);
+			//oxfordFlippedApp.console(chaptersNotStarted);
+			//oxfordFlippedApp.console(chaptersWithoutGrade);
 
 			var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false,
 					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
@@ -615,10 +616,10 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		var resourceList = document.createDocumentFragment()
 				resourceType = type;
-		oxfordFlippedApp.console(data);
+		//oxfordFlippedApp.console(data);
 		$.each(data.units, function(i, unit){
 
-			oxfordFlippedApp.console(unit);
+			//oxfordFlippedApp.console(unit);
 
 			if (i != 0) {
 				var resources = unit.resources;
