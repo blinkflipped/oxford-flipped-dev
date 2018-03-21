@@ -94,7 +94,7 @@ body.view-mode::before {
   bottom: 0;
   background: #ffffff;
   z-index: 1002; }
-.htmlReady body.view-mode::before {
+body.view-mode.canvas_events_loaded::before, .htmlReady body.view-mode::before {
   display: none; }
 
 body.view-mode.body_clase .navbar.libro,
