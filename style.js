@@ -570,7 +570,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 
-								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="'+resourceurl+'" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" data-onclick="'+resourceOnClickTitle+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+resourceTitle+'</h2><div class="oxfl-resource-coins">'+resourceValue+'<span class="icon icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
+								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClickTitle+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+resourceTitle+'</h2><div class="oxfl-resource-coins">'+resourceValue+'<span class="icon icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 								resourceList.appendChild(resourceListItem);
 
 					} else {
@@ -1173,7 +1173,7 @@ $(document).ready(function() {
 
 		e.preventDefault();
 		var resourceOnclick = $(this).attr('data-onclick');
-		resourceOnclick;
+		//resourceOnclick;
 		//blink.theme.iframeWidth = 1300;
 		//blink.domain.openActivity(resourceID);
 		//redireccionar(resourceUrl, false, undefined);
