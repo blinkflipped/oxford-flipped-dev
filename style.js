@@ -69,8 +69,8 @@
 					});
 					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
 						$('html').addClass('htmlReady');
-					});*/
-				}
+					});
+				}*/
 			},
 			removeFinalSlide: function () {
 				/*var parent = blink.theme.styles['oxford-flipped'].prototype;
