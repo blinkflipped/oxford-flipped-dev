@@ -1,12 +1,11 @@
 (function (blink) {
 	'use strict';
 
-//	$.getScript('/themes/responsive/assets/styles/oxford-flipped/style.js', function() {
+	$.getScript('/themes/responsive/assets/styles/oxford-flipped/style.js', function() {
 		console.log("TEST1");
 		var OxfordFlippedDevStyle = function() {
-			blink.theme.styles.basic.apply(this, arguments);
-
-			//blink.theme.styles['oxford-flipped'].apply(this, arguments);
+			//blink.theme.styles.basic.apply(this, arguments);
+			blink.theme.styles['oxford-flipped'].apply(this, arguments);
 		}
 
 		OxfordFlippedDevStyle.prototype = {
@@ -24,8 +23,8 @@
 				]
 			},
 			init: function() {
-				//var parent = blink.theme.styles['oxford-flipped'].prototype;
-				var parent = blink.theme.styles.basic.prototype;
+				var parent = blink.theme.styles['oxford-flipped'].prototype;
+				//var parent = blink.theme.styles.basic.prototype;
 				parent.init.call(this);
 
 				// Remove last slides
@@ -77,15 +76,15 @@
 				}
 			},
 			removeFinalSlide: function () {
-				//var parent = blink.theme.styles['oxford-flipped'].prototype;
-				var parent = blink.theme.styles.basic.prototype;
+				var parent = blink.theme.styles['oxford-flipped'].prototype;
+				//var parent = blink.theme.styles.basic.prototype;
 				parent.removeFinalSlide.call(this, true);
 			}
 		};
 
 
-		//OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
-		OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
+		OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
+		//OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
 
 		blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
 
@@ -97,7 +96,7 @@
 				oxfordFlippedApp.console("TOC");
 			});
 		});
-	//});
+	});
 
 })( blink );
 
