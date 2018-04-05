@@ -26,17 +26,18 @@
 				parent.init.call(this);
 
 				// Remove last slides
-				this.removeFinalSlide();
+				//this.removeFinalSlide();
 
 				// Ejemplo carga de datos de la clase en una actividad.
-				/*blink.getActivity(idcurso, idclase).done((function(data) {
+				blink.getActivity(idcurso, idclase).done((function(data) {
 					this.onActivityDataLoaded(data);
 				}).bind(this));
-*/
+
 				// Ejemplo carga de datos del libro en una actividad.
-				/*blink.getCourse(idcurso).done((function(data) {
+				blink.getCourse(idcurso).done((function(data) {
 					this.onCourseDataLoaded(data);
-				}).bind(this));*/
+				}).bind(this));
+				console.log("Test2");
 			},
 			onCourseDataLoaded: function(data) {
 				//oxfordFlippedApp.console("onCourseDataLoaded");
