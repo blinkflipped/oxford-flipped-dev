@@ -2,6 +2,7 @@
 	'use strict';
 
 	$.getScript('/themes/responsive/assets/styles/oxford-flipped/style.js', function() {
+		console.log("TEST1");
 		var OxfordFlippedDevStyle = function() {
 			blink.theme.styles['oxford-flipped'].apply(this, arguments);
 		}
@@ -20,7 +21,6 @@
 					{ name: 'Challenge Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-challenge-cover' } },
 				]
 			},
-
 			init: function() {
 				var parent = blink.theme.styles['oxford-flipped'].prototype;
 				parent.init.call(this);
@@ -67,9 +67,9 @@
 						oxfordFlippedApp.activityFinalScreenTest(currentSection);
 						oxfordFlippedApp.onSliderChange(currentSection);
 					});
-					//$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
+					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
 						$('html').addClass('htmlReady');
-					//});
+					});
 				}
 			},
 			removeFinalSlide: function () {
