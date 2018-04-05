@@ -1078,7 +1078,7 @@ oxfordFlippedApp.challengeCover = function() {
 	$('.oxfl-challenge-cover').each(function(i,e) {
 		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
 		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton);
-		$('body').addClass('oxfl-challenge-cover-wrapper-on');
+		//$('body').addClass('oxfl-challenge-cover-wrapper-on');
 	});
 
 	$('body').on('click', '.oxfl-js-start-challenge', function() {
