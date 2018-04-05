@@ -73,7 +73,8 @@
 				}
 			},
 			removeFinalSlide: function () {
-				var parent = blink.theme.styles.basic.prototype;
+				var parent = blink.theme.styles['oxford-flipped'].prototype;
+				//var parent = blink.theme.styles.basic.prototype;
 				parent.removeFinalSlide.call(this, true);
 			}
 		};
