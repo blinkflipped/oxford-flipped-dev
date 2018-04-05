@@ -79,7 +79,11 @@
 		};
 
 
-		OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
+		//OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
+		OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
+
+
+
 
 		blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
 
