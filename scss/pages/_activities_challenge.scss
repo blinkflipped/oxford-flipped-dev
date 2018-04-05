@@ -1,0 +1,48 @@
+
+body.body_clase.view-mode {
+
+  #actividad {
+    .oxfl-challenge-cover-wrapper {
+      background-position: center center;
+      background-image: url(img/endscreen-challenge-cover-bg.png), url(img/endscreen-challenge-bg.jpg);
+      background-repeat: no-repeat;
+      background-size: contain, cover;
+      .item-container  {
+        max-width: 100%;
+        min-height: 100%!important;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        .header {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.oxfl-challenge-cover {
+  background: url(img/bubble-8.png) 0 0 no-repeat;
+  background-size: contain;
+  width: 265px !important;
+  height: 113px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 500;
+  transform: translate(0,-50%);
+  .bck-title {
+    color: $negative_color;
+    font-family:$font_family_2;
+    font-weight: bold;
+    @include font-size(3.0);
+    max-width: 250px;
+    margin: 0 0 5px 0;
+  }
+
+}

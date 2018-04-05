@@ -17,6 +17,7 @@
 					{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
 					{ name: 'Content Zone Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-text' } },
 					{ name: 'End Screen Tip Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-end-screen-tip' } },
+					{ name: 'Challenge Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-challenge-cover' } },
 				]
 			},
 
@@ -59,6 +60,7 @@
 					oxfordFlippedApp.console(data);
 					oxfordFlippedApp.activityCreateFalseNavigation(data);
 					oxfordFlippedApp.activityCheckpointCover();
+					oxfordFlippedApp.challengeCover();
 					oxfordFlippedApp.activityFinalScreenOne();
 					oxfordFlippedApp.activityContentZone();
 					blink.events.on('slider:change', function(currentSection) {
@@ -391,13 +393,13 @@ oxfordFlippedApp.loadNotifications = function(data) {
 					// Comprobar que esas actividades NO estan en el json de actividades (no están empezadas o completadas)
 					if (typeof window.actividades[chapter.id] === 'undefined') {
 						var notificationsListItem = document.createElement('div');
-						console.log("IS NEW AND NOT LOCKED");
 						totalNotif++;
 						var notifEpisodeTitle = unit.title,
 								notifChapterTitle = chapter.title,
+								notifChapterDescription = chapter.description,
 								notifChapterID = chapter.id;
 						notificationsListItem.className = 'oxfl-notification-item';
-						notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div class="oxfl-notification-item-chapter">'+notifChapterTitle+'</div><div><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
+						notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div class="oxfl-notification-item-chapter">'+notifChapterTitle+'.</div><div class="oxfl-notification-item-chapter-description">'+notifChapterDescription+'</div><div><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
 						notificationsList.appendChild(notificationsListItem);
 					}
 				}
@@ -1064,6 +1066,19 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 }
 
+oxfordFlippedApp.challengeCover = function() {
+
+	$('.oxfl-challenge-cover').each(function(i,e) {
+		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
+		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton);
+	});
+
+	$('body').on('click', '.oxfl-js-start-challenge', function() {
+		blink.activity.showNextSection();
+	});
+
+}
+
 oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	var hasCover = $('.oxfl-checkpoint-1-cover-wrapper').length,
@@ -1124,7 +1139,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		//var chapterUrl = $(this).data('url');
 		//showIFrame(chapterUrl, 1000, 700, false, true, false, '');
-		
+
 		$modal = $('#oxfl-modal-list-notifications');
 		$modal.modal('hide');
 
