@@ -1031,7 +1031,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 					} else {
 						if (isChallenge) {
-							var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
+							var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-go-to-start">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
 							var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
@@ -1046,7 +1046,6 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				$('body').on('click', '.oxfl-js-show-final-tip', function(e) {
 
 					e.preventDefault();
-					oxfordFlippedApp.console("TIP");
 					$('body').addClass('oxfl-end-screen-tip-on');
 
 				});
@@ -1055,6 +1054,14 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 					e.preventDefault();
 					$('body').removeClass('oxfl-end-screen-tip-on');
+
+				});
+
+				$('body').on('click', '.oxfl-js-go-to-start', function(e) {
+
+					e.preventDefault();
+					$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+					blink.activity.showSection(0);
 
 				});
 			}
@@ -1071,10 +1078,12 @@ oxfordFlippedApp.challengeCover = function() {
 	$('.oxfl-challenge-cover').each(function(i,e) {
 		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
 		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton);
+		$('body').addClass('oxfl-challenge-cover-wrapper-on');
 	});
 
 	$('body').on('click', '.oxfl-js-start-challenge', function() {
 		blink.activity.showNextSection();
+		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
 	});
 
 }

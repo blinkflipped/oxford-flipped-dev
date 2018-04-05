@@ -525,11 +525,10 @@ body.oxfl-body-chapters {
     font-size: 1.4rem;
     padding-left: 8px;
     padding-right: 8px;
+    flex-grow: 2;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap; }
-  .oxfl-notification-item-chapter-description {
-    flex-grow: 2; }
 
 .slick-track,
 .slick-slide {
@@ -1990,6 +1989,10 @@ body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper {
   background-image: url(img/endscreen-challenge-cover-bg.png), url(img/endscreen-challenge-bg.jpg);
   background-repeat: no-repeat;
   background-size: contain, cover; }
+  body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper .oxfl-button-bubble {
+    position: fixed;
+    right: 40px;
+    bottom: 40px; }
   body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper .item-container {
     max-width: 100%;
     min-height: 100% !important;
@@ -1998,8 +2001,7 @@ body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper {
     overflow: hidden; }
     body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper .item-container .header {
       display: none; }
-
-.oxfl-challenge-cover {
+body.body_clase.view-mode .oxfl-challenge-cover {
   background: url(img/bubble-8.png) 0 0 no-repeat;
   background-size: contain;
   width: 265px !important;
@@ -2011,16 +2013,27 @@ body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper {
   text-align: center;
   position: fixed;
   top: 50%;
-  right: 0;
+  left: 50%;
   z-index: 500;
-  transform: translate(0, -50%); }
-  .oxfl-challenge-cover .bck-title {
+  transform: translate(-50%, -50%);
+  margin-left: 320px; }
+  body.body_clase.view-mode .oxfl-challenge-cover .bck-title {
     color: #ffffff;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-size: 30px;
     font-size: 3rem;
     max-width: 250px;
-    margin: 0 0 5px 0; }
+    margin: 5px auto 0;
+    padding-left: 40px; }
+  body.body_clase.view-mode .oxfl-challenge-cover .bck-content {
+    display: none; }
+body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .content-wrapper {
+  padding-top: 0;
+  padding-bottom: 0; }
+body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .slider-control {
+  display: none !important; }
+body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .navbar-bottom {
+  display: none !important; }
 
 /*# sourceMappingURL=style.css.map */
