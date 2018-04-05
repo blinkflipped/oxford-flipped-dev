@@ -26,7 +26,7 @@
 				parent.init.call(this);
 
 				// Remove last slides
-				//this.removeFinalSlide();
+				this.removeFinalSlide();
 
 				// Ejemplo carga de datos de la clase en una actividad.
 				/*blink.getActivity(idcurso, idclase).done((function(data) {
@@ -73,9 +73,9 @@
 				}*/
 			},
 			removeFinalSlide: function () {
-				/*var parent = blink.theme.styles['oxford-flipped'].prototype;
+				var parent = blink.theme.styles['oxford-flipped'].prototype;
 				//var parent = blink.theme.styles.basic.prototype;
-				parent.removeFinalSlide.call(this, true);*/
+				parent.removeFinalSlide.call(this, true);
 			}
 		};
 
