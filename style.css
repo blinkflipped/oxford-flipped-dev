@@ -209,6 +209,13 @@ body.oxfl-body-chapters {
   height: 20px;
   padding: 0 10px; }
 
+.oxfl-icon-coin {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: url(img/sprite.png) 0 0 no-repeat;
+  background-size: 44px 66px; }
+
 .oxfl-button-icon {
   border: 0;
   overflow: visible;
@@ -493,7 +500,7 @@ body.oxfl-body-chapters {
     .oxfl-modal .modal-footer .btn.btn-secondary {
       background-position: 0 -42px; }
 .oxfl-modal-2 .modal-dialog {
-  width: 450px; }
+  width: 570px; }
 .oxfl-modal-2 .modal-content {
   border-radius: 10px; }
   .oxfl-modal-2 .modal-content .modal-header {
@@ -1014,6 +1021,15 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       object-fit: cover;
       transition: transform .3s;
       transform: scale(1); }
+  .oxfl-resource-header {
+    display: flex; }
+  .oxfl-resource-coins {
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: right;
+    color: #FBB03B; }
   .oxfl-resource:hover .oxfl-resource-image-wrapper img {
     transform: scale(1.1); }
 

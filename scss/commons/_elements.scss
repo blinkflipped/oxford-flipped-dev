@@ -96,6 +96,17 @@
   padding: 0 10px;
 }
 
+.oxfl-icon {
+  &-coin {
+    display: block;
+    width: 22px;
+    height: 22px;
+    background: url(img/sprite.png) 0 0 no-repeat;
+    background-size: 44px 66px;
+  }
+}
+
+
 // Buttons
 
 .oxfl-button-icon {
@@ -440,7 +451,7 @@
   }
   &-2 {
     .modal-dialog {
-      width: 450px;
+      width: 570px;
     }
     .modal-content {
       border-radius: 10px;
