@@ -124,23 +124,16 @@
 
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {}
-
 oxfordFlippedApp.config.isDEV = true;
-
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
-
 oxfordFlippedApp.config.minGrade = 50;
 oxfordFlippedApp.config.oneStarGradeMax = 70;
 oxfordFlippedApp.config.twoStarsGradeMax = 99;
-
 oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
 oxfordFlippedApp.config.currentPage = '';
-
 oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-libro', 'oxfl-body-marketplace-actividad'];
-
 oxfordFlippedApp.config.challengeIDs = [];
-
 oxfordFlippedApp.config.backgrounds = {
 	'oxfl-body-home' : '',
 	'oxfl-body-episodes': '',
@@ -149,7 +142,6 @@ oxfordFlippedApp.config.backgrounds = {
 	'oxfl-body-marketplace-libro': '',
 	'oxfl-body-marketplace-actividad' : ''
 }
-
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
 
