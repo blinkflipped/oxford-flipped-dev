@@ -4,6 +4,11 @@
 }
 
 body.body_clase.view-mode {
+
+  .revision-budget {
+    display: none!important;
+  }
+
   .side-panel,
   #help-panel {
     box-shadow: none!important;

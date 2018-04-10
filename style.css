@@ -210,7 +210,7 @@ body.oxfl-body-chapters {
   padding: 0 10px; }
 
 .oxfl-icon-coin {
-  display: block;
+  display: inline-block;
   width: 22px;
   height: 22px;
   background: url(img/sprite.png) 0 0 no-repeat;
@@ -1022,7 +1022,13 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       transition: transform .3s;
       transform: scale(1); }
   .oxfl-resource-header {
-    display: flex; }
+    display: flex;
+    justify-content: space-between; }
+    .oxfl-resource-header .oxfl-title4 {
+      max-width: calc(100% - 60px);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
   .oxfl-resource-coins {
     font-family: "Quicksand", sans-serif;
     font-size: 15px;
@@ -1030,6 +1036,12 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     font-weight: 500;
     text-align: right;
     color: #FBB03B; }
+    .oxfl-resource-coins span {
+      display: inline-block;
+      vertical-align: middle; }
+    .oxfl-resource-coins .oxfl-icon-coin {
+      display: inline-block;
+      vertical-align: middle; }
   .oxfl-resource:hover .oxfl-resource-image-wrapper img {
     transform: scale(1.1); }
 
@@ -1305,10 +1317,17 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden; }
-  .oxfl-chapter .oxfl-title4 a {
+  .oxfl-chapter .oxfl-title3,
+  .oxfl-chapter .oxfl-title4 {
+    max-width: calc(100% - 70px);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
+    .oxfl-chapter .oxfl-title3 a,
+    .oxfl-chapter .oxfl-title4 a {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
   .oxfl-chapter .oxfl-chapter-header-top {
     display: flex;
     justify-content: space-between;
@@ -1410,6 +1429,8 @@ body.oxfl-body-chapters #oxfl-chapters-monster {
 #iframe_div {
   outline: 2px solid #FCEE21; }
 
+body.body_clase.view-mode .revision-budget {
+  display: none !important; }
 body.body_clase.view-mode .side-panel,
 body.body_clase.view-mode #help-panel {
   box-shadow: none !important; }

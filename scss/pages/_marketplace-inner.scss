@@ -51,6 +51,13 @@
   }
   &-header {
     display: flex;
+    justify-content: space-between;
+    .oxfl-title4 {
+      max-width: calc(100% - 60px);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 
   &-coins {
@@ -59,6 +66,16 @@
     font-weight: 500;
     text-align: right;
     color: $color_6;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .oxfl-icon {
+      &-coin {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
   }
 
   &:hover {

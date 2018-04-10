@@ -243,7 +243,7 @@ oxfordFlippedApp.popover = function() {
 oxfordFlippedApp.gradeToStars = function(grade) {
 	// De 0-50 = 0 estrellas; De 51-70 = 1 estrella; De 71-99 = 2 estrellas; 100 = 3 estrellas
 	var totalStars = 0;
-	if (grade > oxfordFlippedApp.config.twoStarsGradeMax && grade <= oxfordFlippedApp.config.oneStarGradeMax) {
+	if (grade > oxfordFlippedApp.config.minGrade && grade <= oxfordFlippedApp.config.oneStarGradeMax) {
 		totalStars = 1;
 	} else if (grade > oxfordFlippedApp.config.oneStarGradeMax && grade <= oxfordFlippedApp.config.twoStarsGradeMax) {
 		totalStars = 2;
@@ -567,7 +567,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 
-								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClickTitle+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins">'+resourceValue+'<span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
+								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClickTitle+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 								resourceList.appendChild(resourceListItem);
 
 					} else {
