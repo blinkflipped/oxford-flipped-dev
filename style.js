@@ -1694,8 +1694,13 @@ $(document).ready(function() {
 
 	blink.events.on('course:refresh', (function() {
 		console.log("DATA updated");
+		console.log(window.actividades);
 	}));
 
 	oxfordFlippedApp.console('Test 19');
+
+	// Test Check conexión
+
+	blink.checkConnection(console.log("A"), console.log("B"));
 
 });
