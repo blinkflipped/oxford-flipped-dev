@@ -1144,7 +1144,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 				$.each(resources, function(x, resource){
 					if (resource.type === resourceType) {
 						var resourceTitle = resource.title,
-								resourceValue = 500,
+								resourceValue = resource.game_token,
 								resourceImage = resource.image,
 								resourceId = resource.id,
 								resourceurl = resource.url,
@@ -1154,7 +1154,6 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 								resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClickTitle+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 								resourceList.appendChild(resourceListItem);
-
 					} else {
 						oxfordFlippedApp.console('Not current type');
 					}
