@@ -1,104 +1,689 @@
 (function (blink) {
 	'use strict';
 
-	//$.getScript('/themes/responsive/assets/styles/oxford-flipped/style.js', function() {
-		console.log("TEST1");
-		var OxfordFlippedDevStyle = function() {
-			blink.theme.styles.basic.apply(this, arguments);
-			//blink.theme.styles['oxford-flipped'].apply(this, arguments);
-		}
+	var OxfordFlippedDevStyle = function () {
+		blink.theme.styles.basic.apply(this, arguments);
+	};
 
-		OxfordFlippedDevStyle.prototype = {
-			bodyClassName: 'content_type_clase_oxford-flipped-dev',
-			ckEditorStyles: {
-				name: 'oxford-flipped-dev',
-				styles: [
-					{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
-					{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
-					{ name: 'Content Zone Video', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-video' } },
-					{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
-					{ name: 'Content Zone Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-text' } },
-					{ name: 'End Screen Tip Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-end-screen-tip' } },
-					{ name: 'Challenge Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-challenge-cover' } },
-				]
-			},
-			init: function() {
-				//var parent = blink.theme.styles['oxford-flipped'].prototype;
-				var parent = blink.theme.styles.basic.prototype;
-				parent.init.call(this);
+	OxfordFlippedDevStyle.prototype = {
+		bodyClassName: 'content_type_clase_oxford-flipped-dev',
+		extraPlugins: ['image2'],
+		activityInitialized: false,
+		gameToken: 0,
+		userCoins: 0,
+		vocabularyCoins: 10,
+		pageIsLoading: false,
+		vocabularyCalculated: 0,
+		marketPlaceTag: 'marketplace',
+		ckEditorStyles: {
+			name: 'oxford-flipped-dev',
+			styles: [
+				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
+				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
+				{ name: 'Content Zone Video', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-video' } },
+				{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
+				{ name: 'Content Zone Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-text' } },
+				{ name: 'End Screen Tip Text', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-end-screen-tip' } },
+				{ name: 'Challenge Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-challenge-cover' } },
+			]
+		},
 
-				// Remove last slides
-				this.removeFinalSlide();
+		init: function() {
+			this.activityInitialized = true;
+			var parent = blink.theme.styles.basic.prototype;
+			parent.init.call(this);
+			this.fetchData();
+			this.initSequencingContentZone();
+			this.initSequencingTipChallenge();
+			this.removeFinalSlide();
+		},
 
-				// Ejemplo carga de datos de la clase en una actividad.
-				blink.getActivity(idcurso, idclase).done((function(data) {
-					this.onActivityDataLoaded(data);
-				}).bind(this));
+		/**
+		 * Ejecutar métodos referentes al sequencing con content zone.
+		 */
+		initSequencingContentZone: function() {
+			this.contentZone = this.lookupDirectorSlide("contentzone");
 
-				// Ejemplo carga de datos del libro en una actividad.
-				blink.getCourse(idcurso).done((function(data) {
-					this.onCourseDataLoaded(data);
-				}).bind(this));
-				console.log("Test2");
-			},
-			onCourseDataLoaded: function(data) {
-				//oxfordFlippedApp.console("onCourseDataLoaded");
-				//oxfordFlippedApp.console(data);
-
-				window.bookcover = data.units[0].subunits[0].id;
-				var isBookCover = (idclase.toString() === window.bookcover) ? true : false;
-				if (isBookCover) {
-					var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-					loadScript(urlSeguimiento, true, function() {
-						oxfordFlippedApp.console(window.actividades);
-					});
-					oxfordFlippedApp.homepage(data);
-				}
-				oxfordFlippedApp.getChallengeIDs(data);
-			},
-			onActivityDataLoaded: function(data) {
-				var isBookCover = (idclase.toString() === window.bookcover) ? true : false;
-				if (!isBookCover) {
-					oxfordFlippedApp.console("onActivityDataLoaded");
-					oxfordFlippedApp.console(data);
-					oxfordFlippedApp.activityCreateFalseNavigation(data);
-					oxfordFlippedApp.activityCheckpointCover();
-					oxfordFlippedApp.challengeCover();
-					oxfordFlippedApp.activityFinalScreenOne();
-					oxfordFlippedApp.activityContentZone();
-					blink.events.on('slider:change', function(currentSection) {
-						oxfordFlippedApp.activityFinalScreenTest(currentSection);
-						oxfordFlippedApp.onSliderChange(currentSection);
-					});
-					$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
-						$('html').addClass('htmlReady');
-					});
-				}
-			},
-			removeFinalSlide: function () {
-				//var parent = blink.theme.styles['oxford-flipped'].prototype;
-				var parent = blink.theme.styles.basic.prototype;
-				parent.removeFinalSlide.call(this, true);
+			if (this.contentZone) {
+				this.navigationOverride();
+				this.navigationEvents();
+				this.setSequencingContentZoneEvents();
+				this.initSystemSaveSCORM();
 			}
-		};
+		},
 
+		/**
+		 * Ejecutar métodos referentes al sequencing con tip challenge.
+		 */
+		initSequencingTipChallenge: function() {
+			this.tipChallenge = this.lookupDirectorSlide("tipchallenge");
 
-		//OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles['oxford-flipped'](), OxfordFlippedDevStyle.prototype);
-		OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
+			if (!this.tipChallenge) {
+				return false;
+			}
 
-		blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
+			this.setSequencingChallengeEvents();
+		},
 
-		blink.events.on('loadSeguimientoCurso', function() {
-			// Ejemplo carga de datos del libro en el toc del curso.
-			blink.getCourse(idcurso).done(function(data) {
-				var style = new OxfordFlippedDevStyle;
-				style.onCourseDataLoaded(data);
-				oxfordFlippedApp.console("TOC");
+		/**
+		 * Sobrescribir el guardado de notas en caso de ser alumno el usuario.
+		 */
+		initSystemSaveSCORM: function() {
+			var slideVocabulary = window["t" + (this.contentZone - 1) + "_slide"];
+			slideVocabulary.esEvaluable = false;
+
+			if (blink.user.esAlumno()) {
+				lockPreviousQualification = (function() {
+					return this.lockPreviousQualification();
+				}).bind(this);
+			}
+		},
+
+		lockPreviousQualification: function() {
+			if (blink.user.esAlumno() && this.contentZone) {
+				var notaActual = calcularClasificacion(),
+				notaAnterior = scormAPI.LMSGetValue('cmi.core.score.raw');
+				if (this.hasTriedAllExercise() && notaActual >= notaAnterior) {
+					return false;
+				}
+
+				return true;
+			}
+
+			return false;
+		},
+
+		/**
+		 * Comprueba si se han realizado todos los ejercicios del sequencing.
+		 * @return {Boolean} Todos los ejercicios del sequencing completados.
+		 */
+		hasTriedAllExercise: function() {
+			var allExerciseComplete = true;
+
+			for (var idSlide = 0; idSlide < blink.activity.numSlides; idSlide++) {
+				var currentSlide = window["t"+idSlide+"_slide"];
+
+				if (currentSlide) {
+					var isExercise = currentSlide.esEvaluable,
+						hasExercises = currentSlide.numElementosEvaluables >= 1,
+						hasTried = currentSlide.intentos && currentSlide.intentos > 0;
+
+					if (isExercise && hasExercises && !hasTried) {
+						allExerciseComplete = false;
+					}
+				}
+			}
+
+			return allExerciseComplete;
+		},
+
+		removeFinalSlide: function() {
+			var parent = blink.theme.styles.basic.prototype;
+			parent.removeFinalSlide.call(this, true);
+		},
+
+		/**
+		 * Define la slide que indicará el 'break' de la secuencia de la actividad.
+		 * @param  {String} name	Nombre de la sección que define la slide 'break'.
+		 * @return {Int} 			Índice de la slide 'break'.
+		 */
+		lookupDirectorSlide: function(name) {
+			var indexBreakSlide;
+
+			window.secuencia.forEach(function(index) {
+				var slide = window["t"+index+"_slide"],
+					seccion = slide.seccion.toLowerCase().replace(" ", "");
+
+				if (!!~seccion.indexOf(name)) {
+					indexBreakSlide = index;
+				}
 			});
+
+			return indexBreakSlide;
+		},
+
+		navigationOverride: function() {
+			// Modo corrección excluido
+			if ((window.modoClase && window.modoClase == 4) || completed) {
+				return false;
+			}
+
+			var vocabulary 				= this.contentZone - 1,
+				currentSlide 			= window['t'+activeSlide+'_slide'],
+				vocabularySlide 		= window['t'+vocabulary+'_slide'],
+				shouldHideNavigation	= this.shouldHideNavigation(),
+				vocabularyData			= suspdata.status["t"+vocabularySlide.uid],
+				currentSlideData 		= suspdata.status["t"+currentSlide.uid],
+				vocabularyPristine 		= vocabularyData && vocabularyData.pristine,
+				slideIsContent 			= currentSlide.esContenido,
+				$sliderControl 			= $(".slider-control"),
+				$sliderLeft 			= $(".left.slider-control"),
+				$sliderRight 			= $(".right.slider-control");
+
+			// Modificar botones de la slide.
+			currentSlide.reviewButtons.principal['btn-reset'] = { "statusOptions" : {} };
+			currentSlide.reviewButtons.principal['btn-solution'] = { "statusOptions" : {} };
+
+			$sliderRight.removeClass('not-allowed');
+
+			// Si estoy en la slide "Content Zone"
+			if (activeSlide == this.contentZone) {
+				$sliderControl.hideBlink();
+			// Si estoy en la slide 'Vocabulary' sin tener clasificacion 1 y nunca la he resuelto.
+			} else if (activeSlide == vocabulary && shouldHideNavigation && vocabularyPristine) {
+				$sliderRight.addClass('not-allowed');
+			// Si es slide "test".
+			} else if (activeSlide > this.contentZone) {
+				// Si es la primera slide "test".
+				if (activeSlide == (this.contentZone + 1)) {
+					$sliderControl.hideBlink();
+				// Si no es la primera, se muestra la flecha 'previous'.
+				} else {
+					$sliderLeft.showBlink();
+				}
+				// Si se le ha dado click a corregir se muestra la flecha "next".
+				$sliderRight[(currentSlide.intentos <= 0 ? 'hide' : 'show') + 'Blink']();
+			// Si es slide contenido (science tip).
+			} else {
+				$sliderControl.showBlink();
+			}
+		},
+
+		navigationEvents: function() {
+			var self = this;
+
+			$('.slider-control').off('click');
+
+			$('.left.slider-control').on('click', function() {
+				if (!self.pageIsLoading) {
+					blink.activity.showPrevSection();
+					self.pageIsLoading = true;
+				}
+			})
+
+			$('.right.slider-control').on('click', function() {
+				if (!self.pageIsLoading && !$(this).hasClass("not-allowed")) {
+					blink.activity.showNextSection();
+					self.pageIsLoading = true;
+				}
+			});
+
+			$('.oxfl-cz').on('click', '.bck-title', function() {
+				blink.theme.buttonState.disabled('#boton_rotulador, #boton_borrador, #boton_notes', true);
+			});
+
+			$('.oxfl-cz').on('click', '.oxfl-js-cz-close', function() {
+				blink.theme.buttonState.disabled('#boton_rotulador, #boton_borrador, #boton_notes', false);
+			});
+		},
+
+		shouldHideNavigation: function() {
+			var currentSlide = window['t'+activeSlide+'_slide'],
+				slideStatus	= currentSlide.getReviewStatus();
+
+			// Si es slide de examen.
+			if (activeSlide > this.contentZone) {
+				return slideStatus != "sinIntentos"
+			// Si es vocabulary.
+			} else {
+				// Por ahora con esto no sirve la sopa de letras.
+				return currentSlide.clasificacion != 1;
+			}
+		},
+
+		quitAndGoToContentZone: function() {
+			var controlSlide = this.contentZone;
+			blink.theme.showSection(controlSlide, true);
+
+			for (var slidesExamen = controlSlide + 1; slidesExamen < blink.activity.numSlides; slidesExamen++) {
+				window["t"+slidesExamen+"_slide"].clearSlide();
+			}
+		},
+
+		exitSequencing: function() {
+			if (!this.contentZone) {
+				return false;
+			}
+
+			var vocabulary = this.contentZone - 1,
+				isVobularySlide = vocabulary == activeSlide,
+				currentSlide = window['t'+activeSlide+'_slide'],
+				isVobularyAndCorrect = isVobularySlide && currentSlide.clasificacion == 1;
+
+			// Si ya se ha pasado a la "content zone" o la slide "vocabulary" está correcta.
+			if ((activeSlide >= this.contentZone) || isVobularyAndCorrect) {
+				var vocabularyData = "t" + window["t"+ vocabulary +"_slide"].uid;
+				suspdata.status[vocabularyData].pristine = false;
+			}
+
+			this.clearExerciseData();
+		},
+
+		exitChallenge: function() {
+			var allExerciseComplete = true;
+
+			for (var idSlide = 0; idSlide < blink.activity.numSlides; idSlide++) {
+				var currentSlide = window['t'+idSlide+'_slide'],
+					isExercise = typeof currentSlide.clasificacion !== 'undefined',
+					isComplete = currentSlide.clasificacion === 1;
+
+				if (currentSlide && isExercise && !isComplete) {
+					allExerciseComplete = false;
+				}
+			}
+
+			if (!allExerciseComplete) {
+				for (var idSlide = 0; idSlide < blink.activity.numSlides; idSlide++) {
+					var currentSlide = window['t'+idSlide+'_slide'],
+						isExercise = typeof currentSlide.clasificacion !== 'undefined',
+						hasTried = currentSlide.intentos >= 1;
+
+					if (currentSlide && isExercise && hasTried) {
+						currentSlide.pristine = false;
+					}
+				}
+			}
+
+			this.clearExerciseData();
+		},
+
+		clearExerciseData: function() {
+			window.do_commit_sincr = true;
+			loadSuspendData(JSON.stringify(suspdata));
+
+			for (var idSlide = 0; idSlide < blink.activity.numSlides; idSlide++) {
+				var slide = window["t"+idSlide+"_slide"];
+				slide && slide.esEjercicio && slide.clearSlide();
+			}
+		},
+
+		storeGameScore: function(coins) {
+			if (!suspdata.game_score) {
+				suspdata.game_score = 0;
+			}
+
+			suspdata.game_score += coins;
+			updateSCORM();
+		},
+
+		shouldCalculateGameScore: function() {
+			var currentSlide = window['t'+activeSlide+'_slide'],
+				lastSlide =  blink.activity.numSlides - 1,
+				isLastSlide = activeSlide == lastSlide;
+
+			return (isLastSlide && currentSlide.getClassification());
+		},
+
+		calculateActivityGameScore: function() {
+			var activityCoins = 0,
+				activityGrade = this.calculateExercisesGrade();
+
+			if (this.superiorAprobado(activityGrade)) {
+				activityCoins = parseInt(((activityGrade/100) * this.gameToken).toFixed());
+			}
+
+			return activityCoins;
+		},
+
+		superiorAprobado: function(clasificacion) {
+			if (isNaN(clasificacion)) {
+				return true;
+			}
+
+			var aprobado = 50;
+
+			if (typeof grade_aprobado != 'undefined' && grade_aprobado != '') {
+				aprobado = grade_aprobado;
+			}
+
+			return clasificacion > aprobado;
+		},
+
+		shouldCalculateVocabularyCoins: function() {
+			var indexVocabularySlide = this.contentZone - 1,
+				currentSlide = window['t'+activeSlide+'_slide'];
+
+			return (activeSlide == indexVocabularySlide && currentSlide.clasificacion == 1 && this.vocabularyCalculated == 0);
+		},
+
+		calculateVocabularyCoins: function() {
+			var vocabularyCoins = this.vocabularyCoins || 0;
+			this.vocabularyCalculated++;
+			return vocabularyCoins;
+		},
+
+		calculateExercisesGrade: function() {
+			var exercisesTotalScore = 0,
+				exercisesCount = 0;
+
+			for (var idSlide = this.contentZone + 1; idSlide < blink.activity.numSlides; idSlide++) {
+				var slide = window["t"+idSlide+"_slide"];
+
+				if (slide.getClassification()) {
+					exercisesTotalScore +=  parseFloat(slide.getClassification()) * 100;
+					exercisesCount++;
+				}
+			}
+
+			if (exercisesCount <= 0) {
+				return 0;
+			}
+
+			return exercisesTotalScore/exercisesCount;
+		},
+
+		/**
+		 * Calcula la cantidad de monedas que posee el usuario
+		 * @param  {Array} activities  Arreglo del conjunto de datos de cada actividad.
+		 * @return {Int}             Cantidad de monedas que posee el usuario.
+		 */
+		calculateUserCoins: function(activities) {
+			var userCoins = 0;
+
+			activities.forEach((function(activity, index) {
+				var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
+					subunit = _.findWhere(unit.subunits, {id: index.toString()});
+
+				if (subunit.tag && subunit.tag.indexOf(this.marketPlaceTag) != -1 && activity.game_token) {
+					userCoins -= activity.game_token;
+				} else if (activity.game_score) {
+					userCoins += activity.game_score;
+				}
+			}).bind(this));
+
+			return userCoins;
+		},
+
+		/**
+		 * Verifica si el usuario puede comprar una actividad del Market Place.
+		 * @param  {Object} activity Objeto con información de la actividad
+		 * @return {Bool}          Si puede o no comprar una activdad.
+		 */
+		checkUserCanBuyActivityMarketPlace: function (activity) {
+			return (this.userCoins - activity.game_token) >= 0;
+		},
+
+		/**
+		 * Compra un actividad del Market Place
+		 * @param  {activityId} activityId ID de la actividad
+		 */
+		buyActivityMarketPlace: function (activityId) {
+			if (actividades && actividades[activityId]) {
+				return alert('actividad comprada');
+			}
+
+			blink.getActivity(idcurso, parseInt(activityId)).done((function(activity) {
+				if (!this.checkUserCanBuyActivityMarketPlace(activity)) {
+					return _showAlert(textweb('gamificacion_monedas_insuficientes'));
+				}
+
+				if (!blink.isApp || (blink.isApp && blink.appVersion >= 4.1)) {
+					blink.rest.connection(function(connection) {
+						if (!connection) {
+						    return _showAlert(textweb('tablettxt_require_connection'));
+						}
+
+						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
+							if (o.startsWith('ERROR')){
+								_showAlert(textweb('error_general_AJAX'));
+							}
+
+							if (blink.isApp) {
+								blink.ajax('/blink:forceCheckUpdates', function(o) {
+									if (o.startsWith('ERROR')){
+										_showAlert(textweb('error_general_AJAX'));
+									}
+								});
+							}
+						});
+
+					});
+				}
+
+			}).bind(this));
+		},
+
+		/**
+		 * Configura los eventos necesarios para el sequencing de los "Episodes".
+		 */
+		setSequencingContentZoneEvents: function() {
+			var $closeIframeButton = parent.$('#oxfl-modal-close-chapter').find('.btn-primary');
+
+			this.setSequencyToInit();
+
+			// Listeners al pasar de slide.
+			blink.events.on('slide:update:after section:shown', (function() {
+				this.contentZone && this.navigationOverride();
+				this.pageIsLoading = false;
+			}).bind(this));
+
+			// Listener al actualizar slide para comprobar si se deben proporcionar las monedas de Vocabulario
+			blink.events.on('slide:update:after', (function() {
+				if (this.shouldCalculateVocabularyCoins()) {
+					blink.events.trigger('vocabulary:done');
+					this.storeGameScore(this.calculateVocabularyCoins());
+				}
+
+				if (this.shouldCalculateGameScore()) {
+					this.storeGameScore(this.calculateActivityGameScore());
+				}
+			}).bind(this));
+		},
+
+		/**
+		 * Configura los eventos necesarios para el sequencing de los "Challenge".
+		 */
+		setSequencingChallengeEvents: function() {
+			var $closeIframeButton = parent.$('#oxfl-modal-close-chapter').find('.btn-primary');
+
+			this.setSequencyToInit();
+
+			// Se sobrescribe el salir de la actividad.
+			$closeIframeButton.removeAttr('onclick').off('click').on('click', (function() {
+				this.tipChallenge && this.exitChallenge();
+			}).bind(this));
+		},
+
+		/**
+		 * Cierra el iframe de una actividad flipped.
+		 */
+		closeIframe: function() {
+			if (parent) {
+				parent.cerrarIframe();
+				parent.$('#oxfl-modal-close-chapter').modal('hide');
+			}
+		},
+
+		/**
+		 * Lleva a la primera slide de una actividad en caso de ser alumno.
+		 */
+		setSequencyToInit: function() {
+			var user = blink.user;
+
+			if (user.esAlumno()) {
+				window.numSec = 1;
+			}
+		},
+
+		/**
+		 * Obtener el game token actual de la actividad.
+		 * @param  {Object} data Información de la actividad.
+		 * @return {Int}      Game token.
+		 */
+		getActivityGameToken: function(data) {
+			var game_token = 0;
+
+			if (data.game_token) {
+				game_token = data.game_token;
+			}
+
+			return game_token;
+		},
+
+		/**
+		 * Carga de datos del libro en un actividad
+		 */
+		fetchData: function() {
+			blink.getCourse(idcurso).done((function(data) {
+				this.onCourseDataLoaded(data);
+			}).bind(this));
+		},
+
+		/**
+		 * Realiza operaciones al cargar los datos del curso.
+		 * @param  {Object} data Información del curso.
+		 */
+		onCourseDataLoaded: function(data) {
+			var unit = _.findWhere(data.units, {id: window.idtema.toString()});
+			var subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()});
+
+			this.cursoJson = data;
+			this.onActivityDataLoaded(subunit);
+
+			window.bookcover = data.units[0].subunits[0].id;
+			var isBookCover = idclase.toString() === window.bookcover;
+
+			if (isBookCover) {
+				this.loadUserData();
+				oxfordFlippedApp.homepage(data, this.userCoins);
+			}
+
+			oxfordFlippedApp.getChallengeIDs(data);
+		},
+
+		/**
+		 * Realiza operaciones al cargar los datos de la actividad.
+		 * @param  {Object} data Información de la actividad.
+		 */
+		onActivityDataLoaded: function(data) {
+			var isBookCover = idclase.toString() === window.bookcover;
+
+			if (!isBookCover) {
+				oxfordFlippedApp.console("onActivityDataLoaded");
+				oxfordFlippedApp.console(data);
+				oxfordFlippedApp.activityCreateFalseNavigation(data);
+				oxfordFlippedApp.activityCheckpointCover();
+				oxfordFlippedApp.challengeCover();
+				oxfordFlippedApp.activityFinalScreenOne();
+				oxfordFlippedApp.activityContentZone();
+
+				blink.events.on('slider:change', function(currentSection) {
+					oxfordFlippedApp.activityFinalScreenTest(currentSection);
+					oxfordFlippedApp.onSliderChange(currentSection);
+				});
+
+				$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
+					$('html').addClass('htmlReady');
+				});
+			}
+
+			this.gameToken = this.getActivityGameToken(data);
+		},
+
+		loadUserData: function() {
+			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+
+			loadScript(urlSeguimiento, true, (function() {
+				this.refreshUserData();
+			}).bind(this));
+		},
+
+		/**
+		 * Actualiza los datos del usuario desde el seguimiento del curso.
+		 * @param  {Object} data Información del curso.
+		 */
+		refreshUserData: function() {
+			this.userCoins = this.calculateUserCoins(window.actividades);
+			parent && parent.blink.events.trigger('course:refresh');
+		},
+
+		/**
+		 * Operciones a ejecutar antes de salir de una ventana.
+		 */
+		onAfterUnloadVentana: function() {
+			this.exitSequencing();
+
+			if (window.actividades) {
+				parent.actividades = window.actividades;
+			}
+
+			this.refreshUserData();
+		},
+
+		/**
+		 * Indica si se debe mostrar el nivel de slide en el gradebook
+		 */
+		showSlidesGradebook: function() {
+			return false;
+		},
+
+		/**
+		 * Indica si se puede acceder a la actividad desde los links del Gradebook y Ficha Alumno
+		 */
+		canOpenActivity: function() {
+			return this.activityInitialized;
+		},
+	};
+
+	OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
+
+	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
+
+	blink.events.on('digitalbook:bpdfloaded', function() {
+		// Ejemplo carga de datos del curso desde un libro digital.
+		blink.getCourse(idcurso).done(function(data) {
+			var style = new OxfordFlippedDevStyle;
+			style.onCourseDataLoaded(data);
 		});
-	//});
+	});
 
 })( blink );
+
+$(function() {
+	$('.mascara_button').click(function() {
+		gotoMyLibrary();
+	});
+});
+
+// Principal
+
+Slide.prototype.reviewButtons.principal["btn-correct"] = {
+	"btnTextDef" : textweb('course_53'),
+	"statusOptions" : {
+		"conTodoRelleno" 	: { "visible" : true, 	"active"	: true 	},
+		"conIntentos" 		: { "visible" : true, 	"active"	: true 	},
+		"sinIntentos" 		: { "visible" : true, 	"active"	: false	},
+		"sinRespuesta" 		: { "visible" : true, 	"active"	: true	}
+	}
+}
+
+Slide.prototype.reviewButtons.principal["btn-reset"] = {
+	"statusOptions": {}
+}
+
+Slide.prototype.reviewButtons.principal["btn-solution"] = {
+	"statusOptions": {}
+}
+
+// Alumno
+
+Slide.prototype.reviewButtons.alumno["btn-correct"] = {
+	"btnTextDef" : textweb('course_53'),
+	"statusOptions" : {
+		"conTodoRelleno" 	: { "visible" : true, 	"active"	: true 	},
+		"conIntentos" 		: { "visible" : true, 	"active"	: true 	},
+		"sinIntentos" 		: { "visible" : true, 	"active"	: false	},
+		"sinRespuesta" 		: { "visible" : true, 	"active"	: true	}
+	}
+}
+
+Slide.prototype.reviewButtons.alumno["btn-reset"] = {
+	"statusOptions": {}
+}
+
+Slide.prototype.reviewButtons.alumno["btn-solution"] = {
+	"statusOptions": {}
+}
 
 // VENDORS
 
@@ -1103,5 +1688,15 @@ $(document).ready(function() {
 		$modal.modal('show');
 
 	});
+
+	blink.events.on('vocabulary:done', (function() {
+		console.log("Vocabulary DONE");
+	}));
+
+	blink.events.on('course:refresh', (function() {
+		console.log("DATA updated");
+	}));
+
+	oxfordFlippedApp.console('Test 19');
 
 });
