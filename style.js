@@ -1259,10 +1259,9 @@ oxfordFlippedApp.gohome = function() {
 
 	oxfordFlippedApp.config.currentPage = homeClass;
 }
-var testnumber = 1;
+
 oxfordFlippedApp.goback = function(classRef) {
-	testnumber++;
-	console.log(testnumber);
+
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
 			index = possibleClasses.indexOf(classRef),
 			possibleParents = {
@@ -1276,9 +1275,6 @@ oxfordFlippedApp.goback = function(classRef) {
 
 	possibleClasses.splice(index, 1);
 
-	console.log(index);
-	console.log(classRef);
-
 	var $body = $('body');
 	$body.addClass(classRef);
 	$.each(possibleClasses, function(i, v){
@@ -1288,15 +1284,13 @@ oxfordFlippedApp.goback = function(classRef) {
 	oxfordFlippedApp.config.currentPage = classRef;
 
 	var hasParent = (possibleParents[classRef] != '') ? true : false;
-	console.log(hasParent);
+
 	if (hasParent) {
 		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({
 			'data-goback': possibleParents[classRef]
 		});
-		console.log(possibleParents[classRef]);
 	} else {
 		$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
-		console.log("NOT PARENT");
 	}
 
 	if (oxfordFlippedApp.config.backgrounds[classRef] === '') {
@@ -1464,6 +1458,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 			var $lastSlide = $('#slider-item-'+currentSection),
 					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
 					isChallenge = oxfordFlippedApp.config.challengeIDs.indexOf(idclase.toString()) >= 0;
+			console.log(oxfordFlippedApp.config.challengeIDs);
+			console.log(isChallenge);
 			if (isFinalSlide) {
 				parent.top.oxfordFlippedApp.hideIframeButton();
 

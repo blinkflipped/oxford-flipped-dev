@@ -345,6 +345,12 @@ body.oxfl-body-chapters {
     width: 58px;
     height: 41px; }
 
+.oxfl-button-bubble, .oxfl-button-large {
+  transform: scale(1);
+  transition: transform .3s linear; }
+  .oxfl-button-bubble:hover, .oxfl-button-large:hover {
+    transform: scale(1.1); }
+
 .btn-close-iframe {
   position: absolute;
   top: 18px;
