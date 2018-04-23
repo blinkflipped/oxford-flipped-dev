@@ -1383,47 +1383,15 @@ oxfordFlippedApp.activityCheckpointCover = function() {
 oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 	//slide_content_type_28
-	var $slide = $('.slide_content_type_28');
+	var prevContentZone =  (typeof contentZoneIndex !== 'undefined') ? contentZoneIndex - 1 : '';
 
-	console.log("CCCCCC");
-	console.log(contentZoneIndex);
-	console.log(contentZoneIndex - 1);
+	if (prevContentZone != '') {
+		var html = '<button class="btn btn-default oxfl-demo-show" style="position: fixed; top: 50px; right: 50px">DEMO: SHOW COINS COUNT</button><div class="oxfl-final-screen-one"><div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
 
+		var $slide = $('.js-slide-wrapper[data-slide-index="'+prevContentZone+'"]');
+		$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
 
-	/*
-	var sections = blink.activity.sections;
-
-		$.each(sections, function(i, section){
-
-			oxfordFlippedApp.console(section);
-			oxfordFlippedApp.console(section[i]);
-
-			$.each(sections, function(it, subsection) {
-				console.log(subsection.seccion);
-				if (subsection.seccion == )
-			});
-
-			$.each(blink.activity.sections, function(i, section){
-
-				var unitTitle = unit.title,
-						unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
-				if (!unitIsMarketplace) {
-					var totalSubunits = unit.subunits.length;
-					oxfordFlippedApp.console(totalSubunits);
-					$.each(unit.subunits, function(i, subunit){
-						oxfordFlippedApp.console(i);
-						var chapterIsChallenge = (subunit.title === 'Challenge');
-						if (chapterIsChallenge) {
-							oxfordFlippedApp.config.challengeIDs.push(subunit.id);
-						}
-					});
-			}
-		});
-*/
-
-
-	var html = '<button class="btn btn-default oxfl-demo-show" style="position: fixed; top: 50px; right: 50px">DEMO: SHOW COINS COUNT</button><div class="oxfl-final-screen-one"><div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
-	$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
+	}
 
 	// DEMO
 	$('body').on('click', '.oxfl-demo-show', function() {
