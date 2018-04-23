@@ -560,7 +560,7 @@
 			if (!isBookCover) {
 				this.contentZone = this.lookupDirectorSlide("contentzone");
 				console.log("AAAA");
-				console.log(this.contentZone):
+				console.log(this.contentZone);
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
 				oxfordFlippedApp.activityCreateFalseNavigation(data);
