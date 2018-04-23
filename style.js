@@ -886,6 +886,8 @@ oxfordFlippedApp.homepage = function(data) {
 			console.log(subunit);
 			console.log(subunit.onclickTitle);
 			$('.oxfl-js-open-info').show().on('click', function() {
+				console.log("AA");
+				console.log(subunit.onclickTitle);
 				return subunit.onclickTitle;
 			});
 		}
