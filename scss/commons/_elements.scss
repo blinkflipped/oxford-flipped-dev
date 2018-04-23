@@ -521,10 +521,10 @@
 }
 .slick-arrow {
   background-image: url(img/arrows.png)!important;
-  background-position:  0 0;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: 58px 82px;
+  background-position:  0 0!important;
+  background-repeat: no-repeat!important;
+  background-color: transparent!important;
+  background-size: 58px 82px!important;
   width: 58px;
   height: 41px;
   text-indent: 100%;
@@ -545,14 +545,14 @@
   &.slick-prev,
   &.slick-prev:hover,
   &.slick-prev:focus {
-    background-position: 0 0;
+    background-position: 0 0!important;
     left: -40px;
   }
 
   &.slick-next,
   &.slick-next:hover,
   &.slick-next:focus {
-    background-position: 0 -41px;
+    background-position: 0 -41px!important;
     right: -40px;
   }
   &.slick-disabled {

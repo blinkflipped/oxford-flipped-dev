@@ -550,10 +550,10 @@ body.oxfl-body-chapters {
 
 .slick-arrow {
   background-image: url(img/arrows.png) !important;
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: 58px 82px;
+  background-position: 0 0 !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  background-size: 58px 82px !important;
   width: 58px;
   height: 41px;
   text-indent: 100%;
@@ -571,10 +571,10 @@ body.oxfl-body-chapters {
   .slick-arrow:hover {
     transform: scale(1.1) translate(0, -50%); }
   .slick-arrow.slick-prev, .slick-arrow.slick-prev:hover, .slick-arrow.slick-prev:focus {
-    background-position: 0 0;
+    background-position: 0 0 !important;
     left: -40px; }
   .slick-arrow.slick-next, .slick-arrow.slick-next:hover, .slick-arrow.slick-next:focus {
-    background-position: 0 -41px;
+    background-position: 0 -41px !important;
     right: -40px; }
   .slick-arrow.slick-disabled {
     display: none !important; }
@@ -995,8 +995,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   opacity: 1;
   transform: translate(0, 0); }
 
-#oxfl-resources-actividad-wrapper,
-#oxfl-resources-libro-wrapper {
+#oxfl-resources-game-wrapper,
+#oxfl-resources-summary-wrapper {
   width: 100%;
   max-width: 100%;
   position: absolute;
@@ -1082,27 +1082,27 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     .oxfl-resources-page.oxfl-resources-page-ipp-6 .oxfl-resource-item:nth-child(3n+1) {
       clear: left; }
 
-#oxfl-resources-actividad-monster,
-#oxfl-resources-libro-monster {
+#oxfl-resources-game-monster,
+#oxfl-resources-summary-monster {
   position: relative;
   left: -40px;
   margin: 90px auto -2px; }
 
-#oxfl-resources-actividad-monster {
+#oxfl-resources-game-monster {
   width: 290px;
   height: 214px;
   background: url(img/monster-14.svg) 0 0 no-repeat;
   background-size: contain; }
 
-#oxfl-resources-libro-monster {
+#oxfl-resources-summary-monster {
   width: 282px;
   height: 190px;
   background: url(img/monster-15.svg) 0 0 no-repeat;
   background-size: contain;
   left: -100px; }
 
-.oxfl-resources-actividad-monster-bubble,
-.oxfl-resources-libro-monster-bubble {
+.oxfl-resources-game-monster-bubble,
+.oxfl-resources-summary-monster-bubble {
   font-family: "Myfrida", sans-serif;
   font-weight: 700;
   font-style: italic;
@@ -1115,43 +1115,43 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   background-repeat: no-repeat;
   background-size: contain;
   text-align: center; }
-  .oxfl-resources-actividad-monster-bubble span,
-  .oxfl-resources-libro-monster-bubble span {
+  .oxfl-resources-game-monster-bubble span,
+  .oxfl-resources-summary-monster-bubble span {
     display: block;
     transform: rotate(10deg);
     margin: 16px; }
 
-.oxfl-resources-actividad-monster-bubble {
+.oxfl-resources-game-monster-bubble {
   width: 196px;
   height: 112px;
   position: absolute;
   right: -160px;
   top: 25%; }
 
-.oxfl-resources-libro-monster-bubble {
+.oxfl-resources-summary-monster-bubble {
   width: 208px;
   height: 119px;
   position: absolute;
   right: -140px;
   top: 2%; }
 
-body.oxfl-body-marketplace-game #oxfl-resources-actividad-wrapper {
+body.oxfl-body-marketplace-game #oxfl-resources-game-wrapper {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   transition-delay: 0s; }
-  body.oxfl-body-marketplace-game #oxfl-resources-actividad-wrapper .oxfl-resources-container {
+  body.oxfl-body-marketplace-game #oxfl-resources-game-wrapper .oxfl-resources-container {
     visibility: visible;
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s; }
 
-body.oxfl-body-marketplace-summary #oxfl-resources-libro-wrapper {
+body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   transition-delay: 0s; }
-  body.oxfl-body-marketplace-summary #oxfl-resources-libro-wrapper .oxfl-resources-container {
+  body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper .oxfl-resources-container {
     visibility: visible;
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
@@ -2220,13 +2220,13 @@ body.body_clase.view-mode .oxfl-challenge-cover .bck-title {
 #oxfl-marketplace-menu .oxfl-marketplace-menu-button-2 .oxfl-marketplace-menu-button-bubble {
   font-size: 48px; }
 
-.oxfl-resources-actividad-monster-bubble, .oxfl-resources-libro-monster-bubble {
+.oxfl-resources-game-monster-bubble, .oxfl-resources-summary-monster-bubble {
   font-size: 40px; }
 
 .oxfl-resource-coins {
   font-size: 15px; }
 
-.oxfl-resources-actividad-monster-bubble, .oxfl-resources-libro-monster-bubble {
+.oxfl-resources-game-monster-bubble, .oxfl-resources-summary-monster-bubble {
   font-size: 40px; }
 
 /*# sourceMappingURL=style.css.map */
