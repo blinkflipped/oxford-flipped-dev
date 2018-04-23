@@ -1382,7 +1382,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   .oxfl-chapter:not(.lock):hover .oxfl-chapter-image-wrapper img {
     transform: scale(1.1); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-title3 {
-    text-align: center; }
+    text-align: center;
+    max-width: 100%; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
     justify-content: flex-end;
     min-height: 20px; }

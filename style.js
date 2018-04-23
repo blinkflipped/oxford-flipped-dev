@@ -757,7 +757,7 @@ oxfordFlippedApp.text = {
 	exit: 'Exit',
 	tryagain : 'Try again',
 	or : 'or',
-	selectepidose : 'Select episode',
+	selectepidose : 'Select unit',
 	buygame : 'Buy a game',
 	buysummary : 'Buy a summary',
 	choosegame : 'Choose a game',
@@ -877,6 +877,8 @@ oxfordFlippedApp.homepage = function(data) {
 	$.each(data.units[0].subunits, function(i, subunit){
 		var unitTitle = subunit.title,
 				unitIsInfo = (subunit.title === 'Info');
+		console.log(subunit.title);
+		console.log(unitIsInfo);
 		if (unitIsInfo) {
 			console.log(subunit);
 			$('.oxfl-js-open-info').show().attr('onclick', subunit.onclickTitle);
@@ -921,7 +923,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 oxfordFlippedApp.loadEpisodes = function(data) {
 
-	oxfordFlippedApp.console("Load Episodes List");
+	oxfordFlippedApp.console("Load Unit List");
 	oxfordFlippedApp.console(data);
 
 	var unitList = document.createDocumentFragment();
