@@ -43,9 +43,6 @@
 		 */
 		initSequencingContentZone: function() {
 			this.contentZone = this.lookupDirectorSlide("contentzone");
-			console.log("A");
-			console.log(this);
-			console.log(this.contentZone);
 			if (this.contentZone) {
 				this.navigationOverride();
 				this.navigationEvents();
@@ -561,12 +558,14 @@
 			var isBookCover = idclase.toString() === window.bookcover;
 
 			if (!isBookCover) {
+				this.contentZone = this.lookupDirectorSlide("contentzone");
+
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
 				oxfordFlippedApp.activityCreateFalseNavigation(data);
 				oxfordFlippedApp.activityCheckpointCover();
 				oxfordFlippedApp.challengeCover();
-				oxfordFlippedApp.activityFinalScreenOne();
+				oxfordFlippedApp.activityFinalScreenOne(this.contentZone);
 				oxfordFlippedApp.activityContentZone();
 
 				blink.events.on('slider:change', function(currentSection) {
@@ -580,6 +579,7 @@
 			}
 
 			this.gameToken = this.getActivityGameToken(data);
+
 		},
 
 		loadUserData: function() {
@@ -739,9 +739,9 @@ oxfordFlippedApp.text = {
 	chapterStatus0 : 'Started',
 	chapterStatus1 : 'Completed',
 	chapterStatus2 : 'New',
-	popoverChallenge : 'To access the Challenge you first have to complete all chapters',
-	popoverChapter: 'Your teacher first has to provide access to you',
-	confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?',
+	//popoverChallenge : 'To access the Challenge you first have to complete all chapters',
+	//popoverChapter: 'Your teacher first has to provide access to you',
+	//confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?',
 	closeContentZone : 'Back to top',
 	nextContentZone : 'Are you ready?',
 	startTest : 'You are about to start the consolidation test. Remember that once you start it, it is not recommended to quit or you will lose any progress made.',
@@ -907,7 +907,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
 
-	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.confirmCloseIframe+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
+	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.oxfordFlipped_lost_progress_alert+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
 
 	$('body').prepend(modalHTML);
 
@@ -1078,7 +1078,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 			var chapterNumber = i + 1,
 					chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
-					chapterPopoverText = oxfordFlippedApp.text.popoverChapter,
+					chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 					chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 					chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterImageCode+' </div> </a> </article>';
 
@@ -1090,7 +1090,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 			var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false,
 					challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 			var chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
-					chapterPopoverText = oxfordFlippedApp.text.popoverChallenge,
+					chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
 					chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 					chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>';
 
@@ -1383,7 +1383,12 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 
 	//slide_content_type_28
 	var $slide = $('.slide_content_type_28');
-/*
+
+	console.log(this.contentZone);
+	console.log(this.contentZone - 1);
+
+
+	/*
 	var sections = blink.activity.sections;
 
 		$.each(sections, function(i, section){
