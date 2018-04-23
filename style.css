@@ -1545,7 +1545,9 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .t
   margin-top: 50px; }
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-container {
   background: url(img/monster-8.svg) 45px bottom no-repeat;
-  background-size: 486px 424px; }
+  background-size: 486px 424px;
+  margin-top: 0;
+  margin-bottom: 0; }
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img {
   width: 298px;
   position: fixed;
