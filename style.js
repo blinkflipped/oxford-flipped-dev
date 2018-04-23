@@ -1383,7 +1383,7 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 
 	//slide_content_type_28
 	var $slide = $('.slide_content_type_28');
-
+/*
 	var sections = blink.activity.sections;
 
 		$.each(sections, function(i, section){
@@ -1412,7 +1412,7 @@ oxfordFlippedApp.activityFinalScreenOne = function() {
 					});
 			}
 		});
-
+*/
 
 
 	var html = '<button class="btn btn-default oxfl-demo-show" style="position: fixed; top: 50px; right: 50px">DEMO: SHOW COINS COUNT</button><div class="oxfl-final-screen-one"><div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
