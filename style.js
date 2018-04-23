@@ -1150,7 +1150,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		var resourceList = document.createDocumentFragment(),
-				activityHTML = 'archivo';
+				activityHTML = 'actividad';
 
 		$.each(data.units, function(i, unit){
 

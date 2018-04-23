@@ -1041,12 +1041,16 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       transform: scale(1); }
   .oxfl-resource-header {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    align-items: center; }
     .oxfl-resource-header .oxfl-title4 {
       max-width: calc(100% - 60px);
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap; }
+    .oxfl-resource-header .oxfl-resource-coins,
+    .oxfl-resource-header .oxfl-title4 {
+      margin-bottom: 5px; }
   .oxfl-resource-coins {
     font-family: "Quicksand", sans-serif;
     font-size: 15px;
