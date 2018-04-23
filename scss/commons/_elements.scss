@@ -520,14 +520,24 @@
   padding: 0;
   margin: 0;
   position: absolute;
+  z-index: 100;
   top: 50%;
   transform: translate(0,-50%);
   outline: none;
-  &.slick-prev {
+  transition: transform .3s linear;
+  &:hover {
+    transform: scale(1.1) translate(0,-50%);
+  }
+  &.slick-prev,
+  &.slick-prev:hover,
+  &.slick-prev:focus {
     background-position: 0 0;
     left: -40px;
   }
-  &.slick-next {
+
+  &.slick-next,
+  &.slick-next:hover,
+  &.slick-next:focus {
     background-position: 0 -41px;
     right: -40px;
   }

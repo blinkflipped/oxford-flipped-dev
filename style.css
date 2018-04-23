@@ -553,13 +553,17 @@ body.oxfl-body-chapters {
   padding: 0;
   margin: 0;
   position: absolute;
+  z-index: 100;
   top: 50%;
   transform: translate(0, -50%);
-  outline: none; }
-  .slick-arrow.slick-prev {
+  outline: none;
+  transition: transform .3s linear; }
+  .slick-arrow:hover {
+    transform: scale(1.1) translate(0, -50%); }
+  .slick-arrow.slick-prev, .slick-arrow.slick-prev:hover, .slick-arrow.slick-prev:focus {
     background-position: 0 0;
     left: -40px; }
-  .slick-arrow.slick-next {
+  .slick-arrow.slick-next, .slick-arrow.slick-next:hover, .slick-arrow.slick-next:focus {
     background-position: 0 -41px;
     right: -40px; }
   .slick-arrow.slick-disabled {
@@ -754,7 +758,9 @@ body.oxfl-body-chapters {
     border: 0;
     outline: 0;
     position: relative;
-    white-space: nowrap; }
+    white-space: nowrap;
+    transform: scale(1);
+    transition: transform .3s linear; }
     #oxfl-home-menu-inner .oxfl-monster span {
       font-size: 20px;
       font-size: 2rem;
@@ -767,6 +773,8 @@ body.oxfl-body-chapters {
       display: inline-block;
       position: absolute;
       text-align: center; }
+    #oxfl-home-menu-inner .oxfl-monster:hover {
+      transform: scale(1.05); }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 {
       width: 183px;
       height: 250px;

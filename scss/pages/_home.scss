@@ -75,6 +75,8 @@
     outline: 0;
     position: relative;
     white-space: nowrap;
+    transform: scale(1);
+    transition: transform .3s linear;
     span {
       @include font-size(2.0);
       font-family: $font_family_1;
@@ -86,6 +88,9 @@
       display: inline-block;
       position: absolute;
       text-align: center;
+    }
+    &:hover {
+      transform: scale(1.05);
     }
     &.oxfl-monster-1 {
       width: 183px;
