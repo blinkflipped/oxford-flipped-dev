@@ -509,7 +509,10 @@
   outline: none;
 }
 .slick-arrow {
-  background: url(img/arrows.png) 0 0 no-repeat transparent;
+  background-image: url(img/arrows.png)!important;
+  background-position:  0 0;
+  background-repeat: no-repeat;
+  background-color: transparent;
   background-size: 58px 82px;
   width: 58px;
   height: 41px;

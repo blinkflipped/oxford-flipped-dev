@@ -717,15 +717,15 @@ oxfordFlippedApp.config.oneStarGradeMax = 70;
 oxfordFlippedApp.config.twoStarsGradeMax = 99;
 oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
 oxfordFlippedApp.config.currentPage = '';
-oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-libro', 'oxfl-body-marketplace-actividad'];
+oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-summary', 'oxfl-body-marketplace-game'];
 oxfordFlippedApp.config.challengeIDs = [];
 oxfordFlippedApp.config.backgrounds = {
 	'oxfl-body-home' : '',
 	'oxfl-body-episodes': '',
 	'oxfl-body-chapters': '',
 	'oxfl-body-marketplace': '',
-	'oxfl-body-marketplace-libro': '',
-	'oxfl-body-marketplace-actividad' : ''
+	'oxfl-body-marketplace-summary': '',
+	'oxfl-body-marketplace-game' : ''
 }
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
@@ -1264,11 +1264,14 @@ oxfordFlippedApp.goback = function(classRef) {
 				'oxfl-body-episodes' : 'oxfl-body-home',
 				'oxfl-body-chapters' : 'oxfl-body-episodes',
 				'oxfl-body-marketplace' : 'oxfl-body-home',
-				'oxfl-body-marketplace-actividad' : 'oxfl-body-marketplace',
-				'oxfl-body-marketplace-libro' : 'oxfl-body-marketplace'
+				'oxfl-body-marketplace-game' : 'oxfl-body-marketplace',
+				'oxfl-body-marketplace-summary' : 'oxfl-body-marketplace'
 			};
 
 	possibleClasses.splice(index, 1);
+
+	console.log(index);
+	console.log(classRef);
 
 	var $body = $('body');
 	$body.addClass(classRef);
@@ -1279,13 +1282,15 @@ oxfordFlippedApp.goback = function(classRef) {
 	oxfordFlippedApp.config.currentPage = classRef;
 
 	var hasParent = (possibleParents[classRef] != '') ? true : false;
-
+	console.log(hasParent);
 	if (hasParent) {
 		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({
 			'data-goback': possibleParents[classRef]
 		});
+		console.log(possibleParents[classRef]);
 	} else {
 		$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
+		console.log("NOT PARENT");
 	}
 
 	if (oxfordFlippedApp.config.backgrounds[classRef] === '') {
