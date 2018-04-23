@@ -746,7 +746,7 @@ oxfordFlippedApp.text = {
 	no : 'No',
 	yes : 'Yes',
 	buttonhome : 'Home',
-	buttoninnfo: 'More info',
+	buttoninfo: 'About',
 	buttonmarketplace: 'Marketplace',
 	buttongradebook : 'Gradebook',
 	buttonprepare : 'Prepare',
@@ -881,7 +881,11 @@ oxfordFlippedApp.homepage = function(data) {
 		console.log(unitIsInfo);
 		if (unitIsInfo) {
 			console.log(subunit);
-			$('.oxfl-js-open-info').show().attr('onclick', subunit.onclickTitle);
+			console.log(subunit.onclickTitle);
+			function infoClick() {
+				subunit.onclickTitle;
+			}
+			$('.oxfl-js-open-info').on('click', infoClick()).show();
 		}
 	});
 
