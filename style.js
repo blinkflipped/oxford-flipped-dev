@@ -763,7 +763,12 @@ oxfordFlippedApp.text = {
 	choosegame : 'Choose a game',
 	chooseshorcut : 'Choose a shorcut',
 	start : 'Start!',
-	titleNotif : 'You have new chapters available!'
+	titleNotif : 'You have new chapters available!',
+	gamificacion_monedas_insuficientes: 'You do not have enough coins.',
+	oxfordFlipped_lost_progress_alert: 'Are you sure you want to exit?',
+	oxfordFlipped_no_access_alert: 'Oops! Your teacher hasn’t given you access to this lesson yet.',
+	oxfordFlipped_no_complete_alert: 'Oops! You must complete all the lessons in the unit to access the challenge.',
+	oxfordFlipped_return_contentzone_alert:  'Are you sure you want to quit the test? Any progress will be lost.'
 }
 
 oxfordFlippedApp.console = function(logValue) {
@@ -1254,9 +1259,10 @@ oxfordFlippedApp.gohome = function() {
 
 	oxfordFlippedApp.config.currentPage = homeClass;
 }
-
+var testnumber = 1;
 oxfordFlippedApp.goback = function(classRef) {
-
+	testnumber++;
+	console.log(testnumber);
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
 			index = possibleClasses.indexOf(classRef),
 			possibleParents = {
