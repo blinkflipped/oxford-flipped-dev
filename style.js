@@ -885,10 +885,12 @@ oxfordFlippedApp.homepage = function(data) {
 		if (unitIsInfo) {
 			console.log(subunit);
 			console.log(subunit.onclickTitle);
+			var fnstring = subunit.onclickTitle;
+			var fn = window[fnstring];
 			$('.oxfl-js-open-info').show().on('click', function() {
 				console.log("AA");
 				console.log(subunit.onclickTitle);
-				subunit.onclickTitle();
+				if (typeof fn === "function") fn();
 			});
 		}
 	});
