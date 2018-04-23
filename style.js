@@ -888,7 +888,7 @@ oxfordFlippedApp.homepage = function(data) {
 			$('.oxfl-js-open-info').show().on('click', function() {
 				console.log("AA");
 				console.log(subunit.onclickTitle);
-				return subunit.onclickTitle;
+				subunit.onclickTitle();
 			});
 		}
 	});
