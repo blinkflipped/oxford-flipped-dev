@@ -558,15 +558,15 @@
 			var isBookCover = idclase.toString() === window.bookcover;
 
 			if (!isBookCover) {
-				this.contentZone = this.lookupDirectorSlide("contentzone");
-				console.log("AAAA");
-				console.log(this.contentZone);
+				var contentZoneIndex = this.lookupDirectorSlide("contentzone");
+				console.log("DDDD");
+				console.log(contentZoneIndex);
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
 				oxfordFlippedApp.activityCreateFalseNavigation(data);
 				oxfordFlippedApp.activityCheckpointCover();
 				oxfordFlippedApp.challengeCover();
-				oxfordFlippedApp.activityFinalScreenOne(this.contentZone);
+				oxfordFlippedApp.activityFinalScreenOne(contentZoneIndex);
 				oxfordFlippedApp.activityContentZone();
 
 				blink.events.on('slider:change', function(currentSection) {
@@ -1380,14 +1380,14 @@ oxfordFlippedApp.activityCheckpointCover = function() {
 
 }
 
-oxfordFlippedApp.activityFinalScreenOne = function() {
+oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 	//slide_content_type_28
 	var $slide = $('.slide_content_type_28');
 
-	console.log("BBBBBBB");
-	console.log(this.contentZone);
-	console.log(this.contentZone - 1);
+	console.log("CCCCCC");
+	console.log(contentZoneIndex);
+	console.log(contentZoneIndex - 1);
 
 
 	/*
