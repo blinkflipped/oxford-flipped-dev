@@ -885,7 +885,7 @@ oxfordFlippedApp.homepage = function(data) {
 		if (unitIsInfo) {
 			console.log(subunit);
 			console.log(subunit.onclickTitle);
-			var fnstring = subunit.onclickTitle.toString;
+			var fnstring = subunit.onclickTitle;
 			var fn = window[fnstring];
 			console.log("BB");
 			console.log(fnstring);
