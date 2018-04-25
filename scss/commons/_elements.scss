@@ -792,3 +792,13 @@
     z-index: 1030;
   }
 }
+
+// Blink elements
+
+.video-js .vjs-control-bar {
+  background-color: $color_13;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 4px 0px 0px $color_13_darker;
+  -moz-box-shadow: 0px 4px 0px 0px $color_13_darker;
+  box-shadow: 0px 4px 0px 0px $color_13_darker;
+}

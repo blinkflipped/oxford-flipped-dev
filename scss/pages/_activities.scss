@@ -1,6 +1,9 @@
 
 #iframe_div {
   outline: 2px solid $color_9;
+  &.audio {
+    outline: none;
+  }
 }
 
 body.body_clase.view-mode {

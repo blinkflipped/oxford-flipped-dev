@@ -1404,15 +1404,16 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 	}
 
-	$('.slider-control.not-allowed').popover({
-		placement: 'top',
-		template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
-		content : oxfordFlippedApp.text.opoverGoToContentZoneDisabled,
-		container: 'body'
-	});
+
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed");
-		$(this).popover('show');
+		console.log("Not allowed 2");
+		$(this).popover({
+			placement: 'top',
+			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+			content : oxfordFlippedApp.text.opoverGoToContentZoneDisabled,
+			container: 'body'
+		}, 'show');
+		//$(this).popover('show');
 	});
 
 	blink.events.on('vocabulary:done', (function() {
