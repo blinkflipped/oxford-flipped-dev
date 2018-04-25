@@ -866,7 +866,7 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 	});
 }
 
-oxfordFlippedApp.homepage = function(data,this.userCoins) {
+oxfordFlippedApp.homepage = function(data) {
 
 	oxfordFlippedApp.console("Homepage");
 
