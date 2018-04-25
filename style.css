@@ -520,6 +520,16 @@ body.oxfl-body-chapters {
     color: #FBB03B; }
 .oxfl-modal-2 .modal-body {
   text-align: left; }
+.oxfl-modal-3 .modal-body {
+  text-align: center;
+  min-height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom; }
+.oxfl-modal-3.oxfl-modal-marketplace-noconnection .modal-body {
+  background-image: url(img/no-connection.png); }
+.oxfl-modal-3.oxfl-modal-marketplace-nocoins .modal-body {
+  background-image: url(img/no-coins.png); }
 
 .oxfl-notification-item {
   display: flex;

@@ -377,7 +377,7 @@
 		 * @return {Int}             Cantidad de monedas que posee el usuario.
 		 */
 		calculateUserCoins: function(activities) {
-			var userCoins = 0;
+			var userCoins = 100000; //TEST
 
 			activities.forEach((function(activity, index) {
 				var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
@@ -750,6 +750,7 @@ oxfordFlippedApp.text = {
 	startTest : 'You are about to start the consolidation test. Remember that once you start it, it is not recommended to quit or you will lose any progress made.',
 	no : 'No',
 	yes : 'Yes',
+	ok : 'Ok',
 	buttonhome : 'Home',
 	buttoninfo: 'About',
 	buttonmarketplace: 'Marketplace',
@@ -773,7 +774,10 @@ oxfordFlippedApp.text = {
 	oxfordFlipped_lost_progress_alert: 'Are you sure you want to exit?',
 	oxfordFlipped_no_access_alert: 'Oops! Your teacher hasn’t given you access to this lesson yet.',
 	oxfordFlipped_no_complete_alert: 'Oops! You must complete all the lessons in the unit to access the challenge.',
-	oxfordFlipped_return_contentzone_alert:  'Are you sure you want to quit the test? Any progress will be lost.'
+	oxfordFlipped_return_contentzone_alert:  'Are you sure you want to quit the test? Any progress will be lost.',
+	modalLock:  'You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure?',
+	noconnection:  'Ooops. No tienes conexión',
+	nocoins : 'No tienes monedas suficientes'
 }
 
 oxfordFlippedApp.console = function(logValue) {
@@ -862,7 +866,7 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 	});
 }
 
-oxfordFlippedApp.homepage = function(data) {
+oxfordFlippedApp.homepage = function(data,this.userCoins) {
 
 	oxfordFlippedApp.console("Homepage");
 
@@ -870,12 +874,14 @@ oxfordFlippedApp.homepage = function(data) {
 
 	oxfordFlippedApp.bookData = data;
 
+	console.log(blink.activity.currentStyle.userCoins, this.userCoins);
+
 	var bookTitle = data.title,
 			username = nombreusuario,
 			totalCoins = this.userCoins ? this.userCoins : 0, //TODO PROBAR A VER SI FUNCIONA
 			backgroundImage = data.units[0].subunits[0].image;
 
-	var html = '<div id="oxfl-general" style="background-image: url('+backgroundImage+');"><div id="oxfl-custom-background"></div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">'+oxfordFlippedApp.text.text1+'</div><h1 class="oxfl-title1">'+bookTitle+'</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home oxfl-js-gohome"> <span>'+oxfordFlippedApp.text.buttonhome+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info oxfl-js-open-info" style="display: none"> <span>'+oxfordFlippedApp.text.buttoninfo+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace oxfl-js-load-marketplace"> <span>'+oxfordFlippedApp.text.buttonmarketplace+'</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled" data-goback=""> <span>'+oxfordFlippedApp.text.buttongoback+'</span> </button> </div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><button id="oxfl-notifications" class="oxfl-js-open-notifications"><div class="oxfl-notifications-badge"></div></button><div id="oxfl-home-menu"><div id="oxfl-home-menu-inner" class="oxfl-container"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>'+oxfordFlippedApp.text.buttongradebook+'</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>'+oxfordFlippedApp.text.buttonprepare+'</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3 oxfl-js-load-marketplace" id="oxfl-goto-marketplace"><span>'+oxfordFlippedApp.text.buttonmarketplace+'</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">'+oxfordFlippedApp.text.hello+' </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"><span>'+oxfordFlippedApp.text.selectepidose+'</span></div> <div id="oxfl-episodes"></div> </div> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div> <div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buygame+'</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buysummary+'</span> </button> </div> </div> </div> <div id="oxfl-resources-game-wrapper"> <div id="oxfl-resources-game-monster"> <div class="oxfl-resources-game-monster-bubble"><span>'+oxfordFlippedApp.text.choosegame+'</span></div> </div> <div id="oxfl-resources-game" class="oxfl-resources-container"> </div> </div> <div id="oxfl-resources-summary-wrapper"> <div id="oxfl-resources-summary-monster"> <div class="oxfl-resources-summary-monster-bubble"><span>'+oxfordFlippedApp.text.chooseshorcut+'</span></div> </div> <div id="oxfl-resources-summary" class="oxfl-resources-container"> </div> </div> </div><div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>You are about to <span id="oxfl-modal-lock-chapters-text"></span> a chapter for your students, are you sure?</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div></div> <div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-list-notifications" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <div class="oxfl-title3">'+oxfordFlippedApp.text.titleNotif+'</div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div id="oxfl-notifications-list"></div> </div> </div></div> </div> ';
+	var html = '<div id="oxfl-general" style="background-image: url('+backgroundImage+');"><div id="oxfl-custom-background"></div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">'+oxfordFlippedApp.text.text1+'</div><h1 class="oxfl-title1">'+bookTitle+'</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home oxfl-js-gohome"> <span>'+oxfordFlippedApp.text.buttonhome+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info oxfl-js-open-info" style="display: none"> <span>'+oxfordFlippedApp.text.buttoninfo+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace oxfl-js-load-marketplace"> <span>'+oxfordFlippedApp.text.buttonmarketplace+'</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled" data-goback=""> <span>'+oxfordFlippedApp.text.buttongoback+'</span> </button> </div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><button id="oxfl-notifications" class="oxfl-js-open-notifications"><div class="oxfl-notifications-badge"></div></button><div id="oxfl-home-menu"><div id="oxfl-home-menu-inner" class="oxfl-container"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>'+oxfordFlippedApp.text.buttongradebook+'</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>'+oxfordFlippedApp.text.buttonprepare+'</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3 oxfl-js-load-marketplace" id="oxfl-goto-marketplace"><span>'+oxfordFlippedApp.text.buttonmarketplace+'</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">'+oxfordFlippedApp.text.hello+' </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"><span>'+oxfordFlippedApp.text.selectepidose+'</span></div> <div id="oxfl-episodes"></div> </div> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div> <div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buygame+'</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buysummary+'</span> </button> </div> </div> </div> <div id="oxfl-resources-game-wrapper"> <div id="oxfl-resources-game-monster"> <div class="oxfl-resources-game-monster-bubble"><span>'+oxfordFlippedApp.text.choosegame+'</span></div> </div> <div id="oxfl-resources-game" class="oxfl-resources-container"> </div> </div> <div id="oxfl-resources-summary-wrapper"> <div id="oxfl-resources-summary-monster"> <div class="oxfl-resources-summary-monster-bubble"><span>'+oxfordFlippedApp.text.chooseshorcut+'</span></div> </div> <div id="oxfl-resources-summary" class="oxfl-resources-container"> </div> </div> </div><div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.modalLock+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div></div> <div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-list-notifications" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <div class="oxfl-title3">'+oxfordFlippedApp.text.titleNotif+'</div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div id="oxfl-notifications-list"></div> </div> </div></div> </div> <div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-noconnection" id="oxfl-modal-marketplace-noconnection" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.noconnection+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div> <div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-nocoins" id="oxfl-modal-marketplace-nocoins" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.nocoins+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div>';
 
 	oxfordFlippedApp.config.backgrounds['oxfl-body-home'] = backgroundImage;
 	$('body').prepend(html);
@@ -1631,7 +1637,31 @@ oxfordFlippedApp.showIframeButton = function() {
 }
 
 oxfordFlippedApp.oxflMarketplaceModal = function() {
-	console.log("HEY");
+	console.log("HEY2");
+	blink.checkConnection(
+		function() {
+		console.log("conexión ok");
+		oxfordFlippedApp.oxflMarketplaceModalNoCoins();
+	},
+		function() {
+		oxfordFlippedApp.oxflMarketplaceModalNoConnection();
+	});
+}
+
+oxfordFlippedApp.oxflMarketplaceModalNoCoins = function() {
+	console.log("No coins");
+
+	var $modal = $('#oxfl-modal-marketplace-nocoins');
+	$modal.modal('show');
+
+}
+
+oxfordFlippedApp.oxflMarketplaceModalNoConnection = function() {
+	console.log("No connection");
+
+	var $modal = $('#oxfl-modal-marketplace-noconnection');
+	$modal.modal('show');
+
 }
 
 $(document).ready(function() {
@@ -1738,20 +1768,5 @@ $(document).ready(function() {
 		console.log("DATA updated");
 		console.log(window.actividades);
 	}));
-
-	oxfordFlippedApp.console('Test 19');
-
-	// Test Check conexión
-
-	blink.checkConnection(
-                function() {
-                    console.log("conexión ok")
-                },
-                function() {
-                    console.log("conexión KO")
-                }
-            );
-
-
 
 });
