@@ -421,6 +421,30 @@ body.oxfl-body-chapters {
   .oxfl-label.oxfl-label-1 {
     background-position: 0 -102px; }
 
+.oxfl-strip {
+  display: inline-block;
+  background: #FBB03B;
+  width: 118px;
+  height: 26px;
+  position: relative;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0 0 0 20px; }
+  .oxfl-strip::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    background: none;
+    border: 13px solid #FBB03B;
+    border-right-color: transparent;
+    position: absolute;
+    right: 20px;
+    top: 0; }
+
 .oxfl-stars::after {
   content: "";
   display: table;
@@ -572,8 +596,6 @@ body.oxfl-body-chapters {
   width: 100%;
   z-index: 10; }
   .oxfl-modal-4 .modal-footer .modal-footer-inner {
-    text-align: right;
-    justify-content: flex-end;
     padding: 0;
     max-width: 100%; }
 .oxfl-modal-4 .modal-body {

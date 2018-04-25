@@ -342,6 +342,34 @@
   }
 }
 
+// Strips
+
+.oxfl-strip {
+  display: inline-block;
+  background: $color_6;
+  width: 118px;
+  height: 26px;
+  position: relative;
+  font-family: $font_family_1;
+  @include font-size(1.4);
+  font-weight: 500;
+  color: $negative_color;
+  padding: 0 0 0 20px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    background: none;
+    border: 13px solid $color_6;
+    border-right-color: transparent;
+    position: absolute;
+    right: 20px;
+    top: 0;
+  }
+}
+
 // Stars
 
 .oxfl-stars {
@@ -549,8 +577,6 @@
       width: 100%;
       z-index: 10;
       .modal-footer-inner {
-        text-align: right;
-        justify-content: flex-end;
         padding: 0;
         max-width: 100%;
       }
