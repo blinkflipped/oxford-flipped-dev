@@ -1406,11 +1406,12 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 2");
+		console.log("Not allowed 3");
 		$(this).popover({
 			placement: 'top',
 			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
 			content : oxfordFlippedApp.text.opoverGoToContentZoneDisabled,
+			title : '',
 			container: 'body'
 		}, 'show');
 		//$(this).popover('show');
@@ -1522,7 +1523,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 							var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 									finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
 							if (finalSlideBackground != '') {
-								$lastSlide.css('background-image', finalSlideBackground).find('.slide_aux').remove();
+								$lastSlide.css('background-image', finalSlideBackground).find('.slide_aux').hide();
 							}
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
@@ -1545,7 +1546,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 							var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 									finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-go-to-start">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 							if (finalSlideBackground != '') {
-								$lastSlide.css('background-image', finalSlideBackground).find('.slide_aux').remove();
+								$lastSlide.css('background-image', finalSlideBackground).find('.slide_aux').hide();
 							}
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
@@ -1596,7 +1597,7 @@ oxfordFlippedApp.challengeCover = function() {
 		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
 		var challengeBackground = $slide.find('.image_slide').attr('src');
 		if (challengeBackground != '') {
-			$slide.css('background-image', challengeBackground).find('.slide_aux').remove();
+			$slide.css('background-image', challengeBackground).find('.slide_aux').hide();
 		}
 		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton);
 		//$('body').addClass('oxfl-challenge-cover-wrapper-on');
