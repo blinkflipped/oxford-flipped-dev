@@ -80,7 +80,7 @@
 
 		lockPreviousQualification: function() {
 			if (blink.user.esAlumno() && this.contentZone) {
-				var notaActual = calcularClasificacion(),
+				var notaActual = calcularClasificacion(),
 				notaAnterior = scormAPI.LMSGetValue('cmi.core.score.raw');
 				if (this.hasTriedAllExercise() && notaActual >= notaAnterior) {
 					return false;
