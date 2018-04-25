@@ -559,7 +559,6 @@
 
 			if (!isBookCover) {
 				var contentZoneIndex = this.lookupDirectorSlide("contentzone");
-				console.log("DDDD");
 				console.log(contentZoneIndex);
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
@@ -714,6 +713,8 @@ var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {};
 oxfordFlippedApp.config.isDEV = true;
 oxfordFlippedApp.config.ConfigActivityIndex = 0;
+oxfordFlippedApp.config.nameActivityInfo = 'Info';
+oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
 oxfordFlippedApp.config.minGrade = 50;
@@ -882,7 +883,7 @@ oxfordFlippedApp.homepage = function(data) {
 	$.each(data.units[0].subunits, function(i, subunit){
 		console.log(subunit);
 		var unitTitle = subunit.title,
-				unitIsInfo = (subunit.title === 'Info');
+				unitIsInfo = (subunit.title === oxfordFlippedApp.config.nameActivityInfo);
 		if (unitIsInfo) {
 			$('.oxfl-js-open-info').show().attr('onclick', subunit.onclickTitle);
 		}
@@ -1050,7 +1051,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
 				chapterIsChallenge = (chapterTitle === 'Challenge'),
-				chapterIsMarketplace = (chapterTag === 'marketplace');
+				chapterIsMarketplace = (chapterTag === oxfordFlippedApp.config.tagMarketplace);
 
 		//Stars
 		var grade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
@@ -1160,7 +1161,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 				var subunits = unit.subunits;
 
 				$.each(subunits, function(x, resource){
-					if (resource.tag === 'marketplace') {
+					if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
 						var resourceTitle = resource.title,
 								resourceValue = resource.game_token,
 								resourceImage = resource.image,
@@ -1171,6 +1172,10 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxflMarketplaceModal()',
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
+
+								console.log(oxfordFlippedApp.config.isStudent);
+								console.log(window.actividades);
+								console.log(resourceStateNew);
 
 						resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 						if ((type === 'game' && resourceType === activityHTML) || (type === 'summary' && resourceType !== activityHTML)) {
