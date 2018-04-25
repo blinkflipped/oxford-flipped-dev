@@ -1178,7 +1178,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 											resourceurl = resource.url,
 											resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
 											resourceStateClass = (resourceStateNew) ? 'oxfl-resource-locked' : '',
-											resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxfordFlippedApp.oxflMarketplaceModal('+resourceValue+', '+resourceTitle+','+resourceDescription+','+resourceId+')',
+											resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxfordFlippedApp.oxflMarketplaceModal('+resourceValue+', "'+resourceTitle+'","'+resourceDescription+'","'+resourceId+'")',
 											resourceListItem = document.createElement('div');
 											resourceListItem.className = 'oxfl-resource-item';
 											console.log("Marketplaceresources");
