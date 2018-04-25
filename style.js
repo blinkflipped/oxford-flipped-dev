@@ -1171,7 +1171,8 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 									var resourceId = resource.id,
 											resourceurl = resource.url,
 											resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
-											resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxflMarketplaceModal()',
+											resourceStateClass = (resourceStateNew) ? 'oxfl-resource-locked' : '',
+											resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxfordFlippedApp.oxflMarketplaceModal()',
 											resourceListItem = document.createElement('div');
 											resourceListItem.className = 'oxfl-resource-item';
 											console.log("Marketplaceresources");
@@ -1180,7 +1181,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 											console.log(window.actividades);
 											console.log(resourceId);
 											console.log(resourceStateNew);
-									resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
+									resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 									resourceList.appendChild(resourceListItem);
 								}
 
@@ -1216,11 +1217,6 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 			$('#oxfl-custom-background').addClass('active');
 			$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-marketplace'});
 		});
-
-		function oxflMarketplaceModal() {
-			console.log("HEY");
-		}
-
 }
 
 oxfordFlippedApp.loadMarketplace = function() {
@@ -1632,6 +1628,10 @@ oxfordFlippedApp.hideIframeButton = function() {
 }
 oxfordFlippedApp.showIframeButton = function() {
 	$('#iframe_div .btn-close-iframe').show();
+}
+
+oxfordFlippedApp.oxflMarketplaceModal = function() {
+	console.log("HEY");
 }
 
 $(document).ready(function() {
