@@ -49,17 +49,6 @@
       transition: transform .3s;
       transform: scale(1);
     }
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: fade-out($color_7, .25);
-      z-index: 1;
-    }
   }
   &-header {
     display: flex;
@@ -106,6 +95,17 @@
     .oxfl-resource-image-wrapper {
       img {
         opacity: .3;
+      }
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: fade-out($color_7, .25);
+        z-index: 1;
       }
       &::after {
         content: '';

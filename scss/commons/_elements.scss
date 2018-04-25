@@ -29,6 +29,7 @@
   font-family: $font_family_2;
   font-weight: bold;
   @include font-size(3.8);
+  line-height: 1em;
   color: $color_4;
   margin: 0 0 15px 0;
   a {
