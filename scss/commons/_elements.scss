@@ -538,6 +538,32 @@
       }
     }
   }
+  &-4 {
+    .modal-footer {
+      padding-bottom: 10px;
+      text-align: right;
+      background: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      .modal-footer-inner {
+        text-align: right;
+        justify-content: flex-end;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+
+    .modal-body {
+      padding-bottom: 80px;
+      text-align: center;
+      @include font-size(1.8);
+      font-weight: bold;
+      font-family: $font_family_1;
+    }
+  }
 }
 
 // Notifications list

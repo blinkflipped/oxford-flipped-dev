@@ -562,6 +562,27 @@ body.oxfl-body-chapters {
   background-image: url(img/no-coins.png);
   background-size: 230px 183px;
   min-height: 240px; }
+.oxfl-modal-4 .modal-footer {
+  padding-bottom: 10px;
+  text-align: right;
+  background: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; }
+  .oxfl-modal-4 .modal-footer .modal-footer-inner {
+    text-align: right;
+    justify-content: flex-end;
+    padding: 0;
+    max-width: 100%; }
+.oxfl-modal-4 .modal-body {
+  padding-bottom: 80px;
+  text-align: center;
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif; }
 
 .oxfl-notification-item {
   display: flex;
