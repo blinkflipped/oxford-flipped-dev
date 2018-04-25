@@ -1168,7 +1168,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 								resourceId = resource.id,
 								resourceurl = resource.url,
 								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
-								resourceOnClick = (!oxfordFlippedApp.config.isStudent || oxfordFlippedApp.config.isStudent && !resourceStateNew) ? resource.onclickTitle : 'oxflMarketplaceModal()',
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxflMarketplaceModal()',
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 
