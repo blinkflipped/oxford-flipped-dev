@@ -142,6 +142,16 @@ body.oxfl-body-chapters {
   .oxfl-title2 a {
     color: #8BE23F; }
 
+.oxfl-title2b {
+  font-family: "Myfrida", sans-serif;
+  font-weight: bold;
+  font-size: 38px;
+  font-size: 3.8rem;
+  color: #ED1E79;
+  margin: 0; }
+  .oxfl-title2b a {
+    color: #ED1E79; }
+
 .oxfl-title3 {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
@@ -527,11 +537,13 @@ body.oxfl-body-chapters {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 10; }
   .oxfl-modal-3 .modal-footer .modal-footer-inner {
     text-align: right;
     justify-content: flex-end;
-    padding: 0 10px; }
+    padding: 0;
+    max-width: 100%; }
 .oxfl-modal-3 .modal-body {
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -539,11 +551,13 @@ body.oxfl-body-chapters {
   font-size: 18px;
   font-size: 1.8rem;
   font-weight: bold;
-  font-family: "Quicksand", sans-serif; }
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 10px; }
 .oxfl-modal-3.oxfl-modal-marketplace-noconnection .modal-body {
   background-image: url(img/no-connection.png);
   background-size: 160px 130px;
-  min-height: 200px; }
+  min-height: 220px;
+  margin-bottom: 20px; }
 .oxfl-modal-3.oxfl-modal-marketplace-nocoins .modal-body {
   background-image: url(img/no-coins.png);
   background-size: 230px 183px;
