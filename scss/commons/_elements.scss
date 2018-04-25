@@ -485,24 +485,36 @@
     }
   }
   &-3 {
-    .modal-body {
-      text-align: center;
-      min-height: 200px;
-      background-size: contain;
+    .modal-footer {
+      padding-bottom: 10px;
+      text-align: right;
+      background: none;
+      &-inner {
+        text-align: right;
+        justify-content: flex-end;
+      }
+    }
+    .modal-body  {
       background-repeat: no-repeat;
       background-position: center bottom;
+      text-align: center;
+      min-height: 220px;
+      @include font-size(1.8);
+      font-weight: bold;
+      font-family: $font_family_1;
     }
     &.oxfl-modal-marketplace-noconnection {
       .modal-body {
         background-image: url(img/no-connection.png);
+        background-size: 160px 130px;
       }
     }
     &.oxfl-modal-marketplace-nocoins {
       .modal-body {
         background-image: url(img/no-coins.png);
+        background-size: 230px 183px;
       }
     }
-
   }
 }
 

@@ -520,16 +520,28 @@ body.oxfl-body-chapters {
     color: #FBB03B; }
 .oxfl-modal-2 .modal-body {
   text-align: left; }
-.oxfl-modal-3 .modal-body {
-  text-align: center;
-  min-height: 200px;
-  background-size: contain;
+.oxfl-modal-3 .modal-footer {
+  padding-bottom: 10px;
+  text-align: right;
+  background: none; }
+  .oxfl-modal-3 .modal-footer-inner {
+    text-align: right;
+    justify-content: flex-end; }
+.oxfl-modal-3 .modal-body   {
   background-repeat: no-repeat;
-  background-position: center bottom; }
+  background-position: center bottom;
+  text-align: center;
+  min-height: 220px;
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif; }
 .oxfl-modal-3.oxfl-modal-marketplace-noconnection .modal-body {
-  background-image: url(img/no-connection.png); }
+  background-image: url(img/no-connection.png);
+  background-size: 160px 130px; }
 .oxfl-modal-3.oxfl-modal-marketplace-nocoins .modal-body {
-  background-image: url(img/no-coins.png); }
+  background-image: url(img/no-coins.png);
+  background-size: 230px 183px; }
 
 .oxfl-notification-item {
   display: flex;
