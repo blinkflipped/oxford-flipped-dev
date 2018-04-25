@@ -567,13 +567,18 @@
 				oxfordFlippedApp.challengeCover();
 				oxfordFlippedApp.activityFinalScreenOne(contentZoneIndex);
 				oxfordFlippedApp.activityContentZone();
-
-
 				blink.events.on('slider:change', function(currentSection) {
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
-				blink.events.trigger('slider:change');
+
+				blink.events.on('showSlide:after', function(currentSection) {
+					console.log("showslide:after");
+					console.log(currentSection);
+					oxfordFlippedApp.activityFinalScreenTest(currentSection);
+					oxfordFlippedApp.onSliderChange(currentSection);
+				});
+
 				$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
 					$('html').addClass('htmlReady');
 				});
@@ -1407,7 +1412,7 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 4");
+		console.log("Not allowed 5");
 		$(this).popover({
 			placement: 'top',
 			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
@@ -1415,8 +1420,23 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 			title : '',
 			container: 'body'
 		}).popover('show');
+		console.log($(this).popover());
 		//$(this).popover('show');
 	});
+
+	$('#signin').popover({
+	 html: true,
+	 trigger: 'manual',
+	 content: function() {
+		 return $.ajax({url: '/path/to/content',
+										dataType: 'html',
+										async: false}).responseText;
+	 }
+ }).click(function(e) {
+	 $(this).popover('toggle');
+ });
+
+
 
 	blink.events.on('vocabulary:done', (function() {
 		oxfordFlippedApp.console("Prev Content Zone DONE");
