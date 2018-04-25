@@ -1165,22 +1165,24 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 						var resourceTitle = resource.title,
 								resourceValue = resource.game_token,
 								resourceImage = resource.image,
-								resourceType = resource.type,
-								resourceId = resource.id,
-								resourceurl = resource.url,
-								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
-								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxflMarketplaceModal()',
-								resourceListItem = document.createElement('div');
-								resourceListItem.className = 'oxfl-resource-item';
+								resourceType = resource.type;
 
-								console.log(oxfordFlippedApp.config.isStudent);
-								console.log(window.actividades);
-								console.log(resourceStateNew);
-
-						resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
-						if ((type === 'game' && resourceType === activityHTML) || (type === 'summary' && resourceType !== activityHTML)) {
-							resourceList.appendChild(resourceListItem);
-						}
+								if ((type === 'game' && resourceType === activityHTML) || (type === 'summary' && resourceType !== activityHTML)) {
+									var resourceId = resource.id,
+											resourceurl = resource.url,
+											resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
+											resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : 'oxflMarketplaceModal()',
+											resourceListItem = document.createElement('div');
+											resourceListItem.className = 'oxfl-resource-item';
+											console.log("Marketplaceresources");
+											console.log(resourceTitle);
+											console.log(oxfordFlippedApp.config.isStudent);
+											console.log(window.actividades);
+											console.log(resourceId);
+											console.log(resourceStateNew);
+									resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
+									resourceList.appendChild(resourceListItem);
+								}
 
 					} else {
 						//oxfordFlippedApp.console('Not current type');
