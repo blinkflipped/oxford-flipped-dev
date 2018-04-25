@@ -1406,14 +1406,14 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 3");
+		console.log("Not allowed 4");
 		$(this).popover({
 			placement: 'top',
 			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
 			content : oxfordFlippedApp.text.opoverGoToContentZoneDisabled,
 			title : '',
 			container: 'body'
-		}, 'show');
+		}).popover('show');
 		//$(this).popover('show');
 	});
 
@@ -1596,6 +1596,7 @@ oxfordFlippedApp.challengeCover = function() {
 		var $slide = $(e).closest('.js-slider-item');
 		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
 		var challengeBackground = $slide.find('.image_slide').attr('src');
+		console.log($slide.find('.image_slide'));
 		if (challengeBackground != '') {
 			$slide.css('background-image', challengeBackground).find('.slide_aux').hide();
 		}
@@ -1628,7 +1629,9 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 	} else {
 
 	}
-
+	console.log("CHECK IF CHALLENGE COVER")
+	console.log(currentSection);
+	console.log(coverChallengeIDNum);
 	if (currentSection === coverChallengeIDNum) {
 		$('body').addClass('oxfl-challenge-cover-wrapper-on');
 	} else {
