@@ -30,7 +30,7 @@
   font-weight: bold;
   @include font-size(3.8);
   color: $color_4;
-  margin: 0;
+  margin: 0 0 15px 0;
   a {
     color: $color_4;
   }
@@ -347,7 +347,7 @@
 .oxfl-strip {
   display: inline-block;
   background: $color_6;
-  width: 118px;
+  width: 98px;
   height: 26px;
   position: relative;
   font-family: $font_family_1;
@@ -355,7 +355,17 @@
   font-weight: 500;
   color: $negative_color;
   padding: 0 0 0 20px;
-
+  display: flex;
+  align-items: center;
+  &-inner {
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .oxfl-icon {
+      margin-left: 6px;
+    }
+  }
   &::before {
     content: '';
     display: block;
@@ -365,7 +375,7 @@
     border: 13px solid $color_6;
     border-right-color: transparent;
     position: absolute;
-    right: 20px;
+    right: -20px;
     top: 0;
   }
 }
@@ -497,6 +507,11 @@
       &.btn-secondary {
         background-position: 0 -42px;
       }
+      transform: scale(1);
+      transition: transform .3s linear;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
   &-2 {
@@ -567,6 +582,9 @@
     }
   }
   &-4 {
+    .modal-dialog {
+      width: 500px;
+    }
     .modal-footer {
       padding-bottom: 10px;
       text-align: right;
@@ -576,9 +594,11 @@
       left: 0;
       width: 100%;
       z-index: 10;
+      padding-left: 0;
       .modal-footer-inner {
         padding: 0;
         max-width: 100%;
+        align-items: center;
       }
     }
 
@@ -586,7 +606,7 @@
       padding-bottom: 80px;
       text-align: center;
       @include font-size(1.8);
-      font-weight: bold;
+      font-weight: 400;
       font-family: $font_family_1;
     }
   }

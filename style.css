@@ -148,7 +148,7 @@ body.oxfl-body-chapters {
   font-size: 38px;
   font-size: 3.8rem;
   color: #ED1E79;
-  margin: 0; }
+  margin: 0 0 15px 0; }
   .oxfl-title2b a {
     color: #ED1E79; }
 
@@ -424,7 +424,7 @@ body.oxfl-body-chapters {
 .oxfl-strip {
   display: inline-block;
   background: #FBB03B;
-  width: 118px;
+  width: 98px;
   height: 26px;
   position: relative;
   font-family: "Quicksand", sans-serif;
@@ -432,7 +432,14 @@ body.oxfl-body-chapters {
   font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
-  padding: 0 0 0 20px; }
+  padding: 0 0 0 20px;
+  display: flex;
+  align-items: center; }
+  .oxfl-strip-inner span {
+    display: inline-block;
+    vertical-align: middle; }
+  .oxfl-strip-inner .oxfl-icon {
+    margin-left: 6px; }
   .oxfl-strip::before {
     content: '';
     display: block;
@@ -442,7 +449,7 @@ body.oxfl-body-chapters {
     border: 13px solid #FBB03B;
     border-right-color: transparent;
     position: absolute;
-    right: 20px;
+    right: -20px;
     top: 0; }
 
 .oxfl-stars::after {
@@ -537,9 +544,13 @@ body.oxfl-body-chapters {
     min-width: 0;
     font-size: 25px;
     font-size: 2.5rem;
-    font-weight: bold; }
+    font-weight: bold;
+    transform: scale(1);
+    transition: transform .3s linear; }
     .oxfl-modal .modal-footer .btn.btn-secondary {
       background-position: 0 -42px; }
+    .oxfl-modal .modal-footer .btn:hover {
+      transform: scale(1.1); }
 .oxfl-modal-2 .modal-dialog {
   width: 570px; }
 .oxfl-modal-2 .modal-content {
@@ -586,6 +597,8 @@ body.oxfl-body-chapters {
   background-image: url(img/no-coins.png);
   background-size: 230px 183px;
   min-height: 240px; }
+.oxfl-modal-4 .modal-dialog {
+  width: 500px; }
 .oxfl-modal-4 .modal-footer {
   padding-bottom: 10px;
   text-align: right;
@@ -594,16 +607,18 @@ body.oxfl-body-chapters {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  padding-left: 0; }
   .oxfl-modal-4 .modal-footer .modal-footer-inner {
     padding: 0;
-    max-width: 100%; }
+    max-width: 100%;
+    align-items: center; }
 .oxfl-modal-4 .modal-body {
   padding-bottom: 80px;
   text-align: center;
   font-size: 18px;
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 400;
   font-family: "Quicksand", sans-serif; }
 
 .oxfl-notification-item {
