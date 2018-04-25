@@ -1411,6 +1411,7 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 		container: 'body'
 	});
 	$('body').on('click', '.slider-control.not-allowed', function() {
+		console.log("Not allowed");
 		$(this).popover('show');
 	});
 
