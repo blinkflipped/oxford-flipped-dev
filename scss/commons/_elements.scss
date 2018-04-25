@@ -489,16 +489,21 @@
       padding-bottom: 10px;
       text-align: right;
       background: none;
-      &-inner {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      .modal-footer-inner {
         text-align: right;
         justify-content: flex-end;
+        padding: 0 10px;
       }
     }
-    .modal-body  {
+
+    .modal-body {
       background-repeat: no-repeat;
       background-position: center bottom;
       text-align: center;
-      min-height: 220px;
       @include font-size(1.8);
       font-weight: bold;
       font-family: $font_family_1;
@@ -507,12 +512,14 @@
       .modal-body {
         background-image: url(img/no-connection.png);
         background-size: 160px 130px;
+        min-height: 200px;
       }
     }
     &.oxfl-modal-marketplace-nocoins {
       .modal-body {
         background-image: url(img/no-coins.png);
         background-size: 230px 183px;
+        min-height: 240px;
       }
     }
   }
