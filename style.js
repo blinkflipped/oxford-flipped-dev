@@ -568,11 +568,12 @@
 				oxfordFlippedApp.activityFinalScreenOne(contentZoneIndex);
 				oxfordFlippedApp.activityContentZone();
 
+
 				blink.events.on('slider:change', function(currentSection) {
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
-
+				blink.events.trigger('slider:change');
 				$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
 					$('html').addClass('htmlReady');
 				});
@@ -1597,6 +1598,7 @@ oxfordFlippedApp.challengeCover = function() {
 		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
 		var challengeBackground = $slide.find('.image_slide').attr('src');
 		console.log($slide.find('.image_slide'));
+		console.log(challengeBackground);
 		if (challengeBackground != '') {
 			$slide.css('background-image', challengeBackground).find('.slide_aux').hide();
 		}
