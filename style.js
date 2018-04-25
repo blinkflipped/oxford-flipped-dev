@@ -80,7 +80,7 @@
 
 		lockPreviousQualification: function() {
 			if (blink.user.esAlumno() && this.contentZone) {
-				var notaActual = calcularClasificacion(),
+				var notaActual = calcularClasificacion(),
 				notaAnterior = scormAPI.LMSGetValue('cmi.core.score.raw');
 				if (this.hasTriedAllExercise() && notaActual >= notaAnterior) {
 					return false;
@@ -713,6 +713,7 @@ Slide.prototype.reviewButtons.alumno["btn-solution"] = {
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {};
 oxfordFlippedApp.config.isDEV = true;
+oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
 oxfordFlippedApp.config.minGrade = 50;
@@ -788,7 +789,7 @@ oxfordFlippedApp.getChallengeIDs = function(data) {
 
 		oxfordFlippedApp.console(unit);
 
-		if (i != 0) {
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var unitTitle = unit.title,
 					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
 			if (!unitIsMarketplace) {
@@ -879,6 +880,7 @@ oxfordFlippedApp.homepage = function(data) {
 	$('body').prepend(html);
 
 	$.each(data.units[0].subunits, function(i, subunit){
+		console.log(subunit);
 		var unitTitle = subunit.title,
 				unitIsInfo = (subunit.title === 'Info');
 		if (unitIsInfo) {
@@ -929,7 +931,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 		oxfordFlippedApp.console(unit);
 
-		if (i != 0) {
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var unitTitle = unit.title,
 					unitDescription = unit.description,
 					unitNumber = i,
@@ -981,7 +983,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 	var totalNotif = 0;
 	$.each(data.units, function(i, unit){
-		if (i != 0) {
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var chapters = unit.subunits;
 			$.each(chapters, function(x, chapter){
 				//Lock Chapters
@@ -1154,7 +1156,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		$.each(data.units, function(i, unit){
 
-			if (i != 0) {
+			if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 				var subunits = unit.subunits;
 
 				$.each(subunits, function(x, resource){
@@ -1165,17 +1167,18 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 								resourceType = resource.type,
 								resourceId = resource.id,
 								resourceurl = resource.url,
-								resourceOnClickTitle = resource.onclickTitle,
+								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || oxfordFlippedApp.config.isStudent && !resourceStateNew) : resource.onclickTitle ? 'oxflMarketplaceModal()',
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 
-						resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClickTitle+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
+						resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <img src="'+resourceImage+'" alt="'+resourceTitle+'"> </div> </a> </article>';
 						if ((type === 'game' && resourceType === activityHTML) || (type === 'summary' && resourceType !== activityHTML)) {
 							resourceList.appendChild(resourceListItem);
 						}
 
 					} else {
-						oxfordFlippedApp.console('Not current type');
+						//oxfordFlippedApp.console('Not current type');
 					}
 				});
 
@@ -1206,6 +1209,10 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 			$('#oxfl-custom-background').addClass('active');
 			$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-marketplace'});
 		});
+
+		function oxflMarketplaceModal() {
+			console.log("HEY");
+		}
 
 }
 
