@@ -13,13 +13,24 @@ body.body_clase.view-mode {
       }
       &-challenge {
         background-position: center bottom;
-        background-image: url(img/endscreen-ok-challenge.png), url(img/endscreen-challenge-bg.jpg);
+        background-image: url(img/endscreen-challenge-bg.jpg);
         background-repeat: no-repeat;
-        background-size: contain, cover;
-        &.oxfl-final-slide-fail {
-          background-image: url(img/endscreen-wrong-challenge.png), url(img/endscreen-challenge-bg.jpg);
+        background-size: cover;
+        .item-container {
+          background-position: center bottom;
+          background-image: url(img/endscreen-ok-challenge.png);
           background-repeat: no-repeat;
-          background-size: contain, cover;
+          background-size: contain;
+        }
+        &.oxfl-final-slide-fail {
+          background-image: url(img/endscreen-challenge-bg.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          .item-container {
+            background-image: url(img/endscreen-wrong-challenge.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
         }
       }
       .item-container  {

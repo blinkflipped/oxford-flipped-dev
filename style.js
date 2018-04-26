@@ -577,6 +577,7 @@
 				blink.events.on('slider:changed', function(currentSection) {
 
 					var currentSection = blink.activity.currentSection;
+					console.log("Slider changed");
 					console.log(currentSection);
 					oxfordFlippedApp.onSliderChanged();
 

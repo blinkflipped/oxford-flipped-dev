@@ -4,9 +4,9 @@ body.body_clase.view-mode {
   #actividad {
     .oxfl-challenge-cover-wrapper {
       background-position: center center;
-      background-image: url(img/endscreen-challenge-cover-bg.png), url(img/endscreen-challenge-bg.jpg);
+      background-image: url(img/endscreen-challenge-bg.jpg);
       background-repeat: no-repeat;
-      background-size: contain, cover;
+      background-size: cover;
       .oxfl-button-bubble {
         position: fixed;
         right: 40px;
@@ -15,6 +15,10 @@ body.body_clase.view-mode {
       .item-container  {
         max-width: 100%;
         min-height: 100%!important;
+        background-position: center center;
+        background-image: url(img/endscreen-challenge-cover-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
         padding: 0;
         margin: 0;
         overflow: hidden;
