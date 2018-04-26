@@ -411,6 +411,7 @@
 			console.log(actividades);
 			console.log(activityId);
 			if (actividades && actividades[activityId]) {
+				console.log("DONE");
 				oxfordFlippedApp.updateMarketplaceList(activityId);
 				//alert('actividad comprada');
 			}
@@ -1318,12 +1319,13 @@ oxfordFlippedApp.loadMarketplace = function() {
 
 }
 
-oxfordFlippedApp.updateMarketplaceList = function(id) {
-	var idTema = window.actividades[id].idtema;
-
+oxfordFlippedApp.updateMarketplaceList = function(activityId) {
+	var idTema = window.actividades[activityId].idtema;
+	console.log(idTema);
+	console.log(oxfordFlippedApp.bookData.units[idTema].subunits);
 	$.each(oxfordFlippedApp.bookData.units[idTema].subunits, function(i, subunit) {
 		console.log(subunit.id);
-		if (subunit.id === id) {
+		if (subunit.id === activityId) {
 			$('[data-resource-id="'+id+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
 			return false;
 		}
