@@ -931,6 +931,7 @@ oxfordFlippedApp.homepage = function(data) {
 		oxfordFlippedApp.loadMarketplace(data);
 	});
 
+
 	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
 
 	var modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.oxfordFlipped_lost_progress_alert+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
@@ -1371,10 +1372,13 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 }
 
 oxfordFlippedApp.modalCloseIframe = function() {
-
-	var $modalCloseIframe = $('#oxfl-modal-close-chapter');
-	$modalCloseIframe.modal();
-
+	var isMultimedia = !($('#multimedia_iframe').is(':empty'));
+	if (isMultimedia) {
+		oxfordFlippedApp.closeIframe();
+	} else {
+		var $modalCloseIframe = $('#oxfl-modal-close-chapter');
+		$modalCloseIframe.modal();
+	}
 }
 
 oxfordFlippedApp.closeIframe = function() {
