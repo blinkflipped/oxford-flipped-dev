@@ -539,6 +539,7 @@
 			window.bookcover = data.units[0].subunits[0].id;
 			this.cursoJson = data;
 			this.onActivityDataLoaded(subunit);
+			oxfordFlippedApp.getChallengeIDs(data);
 
 			console.log("onCourseDataLoaded");
 			var isBookCover = idclase.toString() === window.bookcover;
@@ -548,7 +549,6 @@
 				oxfordFlippedApp.homepage(data, this.userCoins);
 			}
 
-			oxfordFlippedApp.getChallengeIDs(data);
 		},
 
 		/**
