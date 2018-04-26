@@ -556,7 +556,7 @@
 		 * @param  {Object} data Información de la actividad.
 		 */
 		onActivityDataLoaded: function(data) {
-			window.bookcover = if(typeof window.bookcover  === 'undefined') : data.units[0].subunits[0].id ? window.bookcover;
+			window.bookcover = (typeof window.bookcover  === 'undefined') : data.units[0].subunits[0].id ? window.bookcover;
 			var isBookCover = idclase.toString() === window.bookcover;
 			console.log("¿ES cover?");
 			console.log(idclase.toString());
