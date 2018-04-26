@@ -1876,27 +1876,20 @@ $(document).ready(function() {
 
 	// Popover in Not allowed
 	var popoverNotAllowed = '';
-	console.log(popoverNotAllowed);
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 8");
+		console.log("Not allowed 9");
 		console.log(popoverNotAllowed);
 		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
-			console.log("AAAA");
 			popoverNotAllowed = $(this).popover({
-				placement: 'top',
+				placement: 'left',
 				template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
 				content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
 				title : '',
 				container: 'body'
 			});
-			console.log(popoverNotAllowed);
-			//popoverNotAllowed.popover('show');
-		} else {
-			console.log(popoverNotAllowed);
 		}
-		popoverNotAllowed.popover('show');
-		console.log(popoverNotAllowed)
-		//$(this).popover('show');
+		popoverNotAllowed.popover('toggle');
+		console.log(popoverNotAllowed);
 	});
 
 });
