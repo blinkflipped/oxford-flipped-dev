@@ -575,13 +575,10 @@
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
 				blink.events.on('slider:changed', function(currentSection) {
-				//	oxfordFlippedApp.activityFinalScreenTest(currentSection);
-					//console.log("current section on changed"+currentSection);
-					console.log("A");
-					console.log(this);
-					console.log(currentSection);
-					//console.log(this.currentSection);
-					oxfordFlippedApp.onSliderChanged(currentSection);
+
+					var currentSection = blink.activity.currentSection;
+					oxfordFlippedApp.onSliderChanged();
+					
 				});
 
 			/*	blink.events.on('showSlide:after', function(currentSection) {
