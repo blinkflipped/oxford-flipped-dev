@@ -577,8 +577,6 @@
 				blink.events.on('slider:changed', function() {
 
 					var currentSection = blink.activity.currentSection;
-					console.log("Slider changed");
-					console.log(currentSection);
 					oxfordFlippedApp.onSliderChanged(currentSection);
 
 				});
@@ -1519,6 +1517,9 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
 					isChallenge = oxfordFlippedApp.config.challengeIDs.indexOf(idclase.toString()) >= 0;
 
+			console.log('Challenge? Final slide?');
+			console.log(isFinalSlide);
+			console.log(isChallenge);
 			if (isFinalSlide) {
 				parent.top.oxfordFlippedApp.hideIframeButton();
 
@@ -1621,13 +1622,7 @@ oxfordFlippedApp.challengeCover = function() {
 		var $slide = $(e).closest('.js-slider-item');
 		var startButton = '<button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-start-challenge">'+oxfordFlippedApp.text.start+'</button>';
 		var challengeBackground = $slide.find('.image_slide').attr('src');
-		console.log($slide.find('.image_slide'));
-		console.log(challengeBackground);
 		if (challengeBackground != '') {
-			console.log("Background 3");
-			console.log($slide.css('background-image'));
-			var baseBackground = $slide.css('background-image');
-			console.log(baseBackground.substr(baseBackground.indexOf(",") + 1));
 			$slide.css('background-image', 'url('+challengeBackground+')').find('.slide_aux').hide();
 		}
 		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton);
@@ -1660,9 +1655,7 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 	if (currentSection === coverIDNum) {
 		oxfordFlippedApp.console("You're in Checkpoint 1");
 	}
-	console.log("CHECK IF CHALLENGE COVER 2")
-	console.log(currentSection);
-	console.log(coverChallengeIDNum);
+
 	if (currentSection === coverChallengeIDNum) {
 		$('body').addClass('oxfl-challenge-cover-wrapper-on');
 	}
@@ -1691,10 +1684,6 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 			hasCoverChallenge = $('.oxfl-challenge-cover-wrapper').length,
 			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
 			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
-
-	console.log('HAS CHANGED');
-	console.log(currentSection);
-	console.log(coverIDNum,contentZoneIDNum,coverChallengeIDNum);
 
 	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
 
@@ -1895,17 +1884,13 @@ $(document).ready(function() {
 				});
 			}
 			popoverNotAllowed.popover('enable');
-			console.log("Enabled");
 			if(!$('.oxfl-popover').is(":visible")) {
 				popoverNotAllowed.popover('show');
 			}
 		} else {
-			console.log("NOT NOT ALLOWED");
-			console.log(popoverNotAllowed);
 			if (typeof popoverNotAllowed !== undefined && popoverNotAllowed !== '') {
 				popoverNotAllowed.popover('destroy');
 				popoverNotAllowed = '';
-				console.log(popoverNotAllowed);
 			}
 		}
 	});
