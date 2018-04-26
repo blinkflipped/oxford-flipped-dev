@@ -377,7 +377,7 @@
 		 * @return {Int}             Cantidad de monedas que posee el usuario.
 		 */
 		calculateUserCoins: function(activities) {
-			var userCoins = 0; //TEST
+			var userCoins = 0;
 
 			activities.forEach((function(activity, index) {
 				var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
@@ -1320,11 +1320,9 @@ oxfordFlippedApp.loadMarketplace = function() {
 }
 
 oxfordFlippedApp.updateMarketplaceList = function(activityId) {
+
 	var idTema = window.actividades[activityId].idtema;
-	console.log(idTema);
-	console.log(oxfordFlippedApp.bookData.units[idTema].subunits);
 	$.each(oxfordFlippedApp.bookData.units[idTema].subunits, function(i, subunit) {
-		console.log(subunit.id);
 		if (subunit.id === activityId) {
 			$('[data-resource-id="'+id+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
 			return false;
@@ -1928,8 +1926,9 @@ $(document).ready(function() {
 	});
 
 	blink.events.on('course:refresh', (function() {
-		console.log("DATA updated");
+		console.log("DATA updated 2");
 		console.log(window.actividades);
+		console.log(blink.activity.currentStyle.userCoins);
 	}));
 
 	// htmlReady out of Activities TODO CHECK

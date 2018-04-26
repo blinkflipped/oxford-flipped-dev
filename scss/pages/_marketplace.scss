@@ -53,6 +53,11 @@
     border: 0;
     position: relative;
     outline: none;
+    transform: scale(1);
+    transition: transform .3s linear;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
   .oxfl-marketplace-menu-button-bubble {
     color: $negative_color;
