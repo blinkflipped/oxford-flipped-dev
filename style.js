@@ -1904,6 +1904,7 @@ $(document).ready(function() {
 			console.log(popoverNotAllowed);
 			if (typeof popoverNotAllowed !== undefined && popoverNotAllowed !== '') {
 				popoverNotAllowed.popover('destroy');
+				popoverNotAllowed = '';
 				console.log(popoverNotAllowed);
 			}
 		}
