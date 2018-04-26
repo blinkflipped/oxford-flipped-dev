@@ -10,6 +10,8 @@
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .oxfl-resources-container {

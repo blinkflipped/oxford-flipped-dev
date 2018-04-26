@@ -115,7 +115,9 @@ body.view-mode.body_curso .navbar.libro {
 body.oxfl-body-home,
 body.oxfl-body-episodes,
 body.oxfl-body-chapters,
-body.oxfl-body-marketplace {
+body.oxfl-body-marketplace,
+body.oxfl-body-marketplace-summary,
+body.oxfl-body-marketplace-game {
   overflow: auto;
   -webkit-overflow-scrolling: auto; }
 
@@ -1160,7 +1162,9 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   bottom: 0;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
 
 .oxfl-resources-container {
   background: rgba(242, 242, 242, 0.8);
