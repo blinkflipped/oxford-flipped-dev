@@ -841,7 +841,7 @@ oxfordFlippedApp.popover = function() {
 	});
 
 	$('body').on('click', '#oxfl-popover-close', function(e) {
-		$('.oxfl-js-popover').popover('hide');
+		$('.oxfl-js-popover, .slider-control.not-allowed').popover('hide');
 	});
 
 	$('.oxfl-js-popover').on('click', function(e) {
@@ -849,7 +849,7 @@ oxfordFlippedApp.popover = function() {
 	});
 
 	$(document).click(function(event) {
-		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length) {
+		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length  && !$(event.target).closest('.slider-control.not-allowed').length) {
 			if($('.oxfl-popover').is(":visible")) {
 				$('.oxfl-js-popover').popover('hide');
 			}

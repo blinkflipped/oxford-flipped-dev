@@ -746,6 +746,23 @@
   background-size: 160px 160px;
   width: 160px;
   height: 160px;
+  &.left {
+    // TODO Change bubble background
+    /*background: none;
+    &::before {
+      content: '';
+      display: block;
+      background: url(img/popover-bubble.png) 0 0 no-repeat;
+      background-size: 160px 160px;
+      width: 160px;
+      height: 160px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }*/
+
+  }
   .oxfl-popover-inner {
     display: flex;
     width: 150px;
