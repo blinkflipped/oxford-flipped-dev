@@ -1879,7 +1879,7 @@ $(document).ready(function() {
 	$('body').on('click', '.slider-control.not-allowed', function() {
 		console.log("Not allowed 7");
 		console.log(popoverNotAllowed);
-		if (popoverNotAllowed === '') {
+		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
 			popoverNotAllowed = $(this).popover({
 				placement: 'top',
 				template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
@@ -1887,10 +1887,10 @@ $(document).ready(function() {
 				title : '',
 				container: 'body'
 			});
-
+			console.log(popoverNotAllowed);
 			//popoverNotAllowed.popover('show');
 		} else {
-
+			console.log(popoverNotAllowed);
 		}
 		popoverNotAllowed.popover('show');
 		console.log(popoverNotAllowed)
