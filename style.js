@@ -1150,7 +1150,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 				var chapterActions = (oxfordFlippedApp.config.isStudent) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>';
+						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"><a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div>  <div class="oxfl-chapter-image-wrapper"> '+chapterImageCode+' </div> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</h2></a> </article>';
 			}
 			var chapterListItem = document.createElement('div');
 
@@ -1330,8 +1330,45 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 
 }
 
+oxfordFlippedApp.updateUserData = function() {
+	var chaptersNotStarted = false,
+			chaptersWithoutGrade = false;
 
+	$('.oxfl-chapter').each(function(i,e) {
+		var dataChapterId = $(e).attr('data-id'),
+				dataChapter = window.actividades[dataChapterId];
 
+		if (typeof dataChapter !== 'undefined') {
+
+			var newState = dataChapter.estado,
+					newGrade = dataChapter.clasificacion,
+					newStars = oxfordFlippedApp.gradeToStars(newGrade);
+			console.log(newState,newGrade,newStars);
+
+			$(e).find('.oxfl-stars').removeClass('oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
+
+			//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
+			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
+					chapterStateID = newState,
+					chapterStateText =  chapterStateTextArr[chapterStateID];
+
+			$(e).find('oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
+
+			if (newGrade === '') {
+				chaptersWithoutGrade = true;
+			}
+		} else {
+			chaptersNotStarted = true;
+		}
+		if (!chaptersNotStarted && !chaptersWithoutGrade) {
+			// Challenge is open
+			var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
+					innerHTML = $challengeLink.html(),
+					newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+dataChapterId+'"';
+			$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
+		}
+	});
+}
 
 oxfordFlippedApp.gohome = function() {
 	var homeClass = 'oxfl-body-home',
@@ -1925,9 +1962,12 @@ $(document).ready(function() {
 	});
 
 	blink.events.on('course:refresh', (function() {
-		console.log("DATA updated 2");
+
+		console.log("DATA updated 3");
 		console.log(window.actividades);
 		console.log(blink.activity.currentStyle.userCoins);
+		oxfordFlippedApp.updateUserData();
+
 	}));
 
 	// htmlReady out of Activities TODO CHECK
@@ -1939,7 +1979,7 @@ $(document).ready(function() {
 	var popoverNotAllowed = '';
 	$('body').on('click', '.slider-control', function() {
 		if ($(this).is('.not-allowed')) {
-			if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
+			if (typeof popoverNotAllowed === 'undefined' || popoverNotAllowed === '') {
 				popoverNotAllowed = $(this).popover({
 					placement: 'left',
 					template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
@@ -1953,7 +1993,7 @@ $(document).ready(function() {
 				popoverNotAllowed.popover('show');
 			}
 		} else {
-			if (typeof popoverNotAllowed !== undefined && popoverNotAllowed !== '') {
+			if (typeof popoverNotAllowed !== 'undefined' && popoverNotAllowed !== '') {
 				popoverNotAllowed.popover('destroy');
 				popoverNotAllowed = '';
 			}
