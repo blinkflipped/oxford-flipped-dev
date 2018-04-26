@@ -556,6 +556,7 @@
 		 * @param  {Object} data Información de la actividad.
 		 */
 		onActivityDataLoaded: function(data) {
+			window.bookcover = if(typeof window.bookcover  === 'undefined') : data.units[0].subunits[0].id ? window.bookcover;
 			var isBookCover = idclase.toString() === window.bookcover;
 			console.log("¿ES cover?");
 			console.log(idclase.toString());
@@ -579,6 +580,7 @@
 				});
 				blink.events.on('slider:changed', function(currentSection) {
 				//	oxfordFlippedApp.activityFinalScreenTest(currentSection);
+					console.log("current section on changed"+currentSection);
 					oxfordFlippedApp.onSliderChanged(currentSection);
 				});
 
