@@ -540,6 +540,7 @@
 			this.onActivityDataLoaded(subunit);
 
 			window.bookcover = data.units[0].subunits[0].id;
+			console.log("onCourseDataLoaded");
 			var isBookCover = idclase.toString() === window.bookcover;
 
 			if (isBookCover) {
@@ -556,7 +557,9 @@
 		 */
 		onActivityDataLoaded: function(data) {
 			var isBookCover = idclase.toString() === window.bookcover;
-
+			console.log("¿ES cover?");
+			console.log(idclase.toString());
+			console.log(window.bookcover);
 			if (!isBookCover) {
 				var contentZoneIndex = this.lookupDirectorSlide("contentzone");
 
@@ -573,6 +576,10 @@
 				blink.events.on('slider:change', function(currentSection) {
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
+				});
+				blink.events.on('slider:changed', function(currentSection) {
+				//	oxfordFlippedApp.activityFinalScreenTest(currentSection);
+					oxfordFlippedApp.onSliderChanged(currentSection);
 				});
 
 			/*	blink.events.on('showSlide:after', function(currentSection) {
@@ -1413,20 +1420,6 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 	}
 
-
-	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 5");
-		$(this).popover({
-			placement: 'top',
-			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
-			content : oxfordFlippedApp.text.opoverGoToContentZoneDisabled,
-			title : '',
-			container: 'body'
-		}).popover('show');
-		console.log($(this).popover());
-		//$(this).popover('show');
-	});
-
 	$('#signin').popover({
 	 html: true,
 	 trigger: 'manual',
@@ -1643,18 +1636,19 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 			hasContentZone = $('.oxfl-content-zone-wrapper').length,
 			contentZoneIDNum = (hasContentZone) ? Number($('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '')) : '',
 			hasCoverChallenge = $('.oxfl-challenge-cover-wrapper').length,
-			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '';
+			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
+			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
 
-	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
+	if (isFinalSlide) {
+		$('body').addClass('oxfl-final-slide-on');
+	}
+
+	//$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
 
 	if (currentSection === coverIDNum) {
-
 		oxfordFlippedApp.console("You're in Checkpoint 1");
-
-	} else {
-
 	}
-	console.log("CHECK IF CHALLENGE COVER")
+	console.log("CHECK IF CHALLENGE COVER 2")
 	console.log(currentSection);
 	console.log(coverChallengeIDNum);
 	if (currentSection === coverChallengeIDNum) {
@@ -1670,11 +1664,53 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 
 	} else {
 
-		$('body').removeClass('oxfl-content-zone-on');
+		//$('body').removeClass('oxfl-content-zone-on');
 
 	}
 
 	$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
+}
+
+
+oxfordFlippedApp.onSliderChanged = function(currentSection) {
+
+	var hasCover = $('.oxfl-checkpoint-1-cover-wrapper').length,
+			coverIDNum = (hasCover) ? Number($('.oxfl-checkpoint-1-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
+			hasContentZone = $('.oxfl-content-zone-wrapper').length,
+			contentZoneIDNum = (hasContentZone) ? Number($('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '')) : '',
+			hasCoverChallenge = $('.oxfl-challenge-cover-wrapper').length,
+			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
+			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
+
+	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
+
+	if (!isFinalSlide) {
+		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+	}
+
+	if (currentSection !== coverChallengeIDNum) {
+		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
+	}
+
+	if (currentSection !== contentZoneIDNum) {
+		$('body').removeClass('oxfl-content-zone-on');
+	}
+
+	$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+
+
+	$('body').on('click', '.slider-control.not-allowed', function() {
+		console.log("Not allowed 6");
+		$(this).popover({
+			placement: 'top',
+			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+			content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
+			title : '',
+			container: 'body'
+		}).popover('show');
+		console.log($(this).popover());
+		//$(this).popover('show');
+	});
 
 }
 
