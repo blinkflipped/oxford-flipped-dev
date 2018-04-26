@@ -1552,7 +1552,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 						$lastSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 						$('#oxfl-final-slide-tip').prepend(finalSlideTip);
-						var finalCoins = 3000,
+						var finalCoins = blink.activity.currentStyle.calculateActivityGameScore(), // TODO Check
 								totalStars = oxfordFlippedApp.gradeToStars(grade);
 
 						$('#oxfl-total-coins-2').text(finalCoins);
