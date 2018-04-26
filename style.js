@@ -905,8 +905,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	oxfordFlippedApp.console("Homepage");
 
-	//oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
-	oxfordFlippedApp.config.isStudent = true; //TODO TEST
+	oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 
 	oxfordFlippedApp.bookData = data;
 
