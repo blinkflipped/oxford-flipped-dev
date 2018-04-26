@@ -1900,6 +1900,8 @@ $(document).ready(function() {
 				popoverNotAllowed.popover('show');
 			}
 		} else {
+			console.log("NOT NOT ALLOWED");
+			console.log(popoverNotAllowed);
 			if (typeof popoverNotAllowed !== undefined && popoverNotAllowed !== '') {
 				popoverNotAllowed.popover('destroy');
 				console.log(popoverNotAllowed);
