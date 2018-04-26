@@ -567,17 +567,20 @@
 				oxfordFlippedApp.challengeCover();
 				oxfordFlippedApp.activityFinalScreenOne(contentZoneIndex);
 				oxfordFlippedApp.activityContentZone();
+				var sectionOnLoad = blink.activity.currentSection;
+				oxfordFlippedApp.onSliderChange(sectionOnLoad);
+				console.log("Se carga en la seccion:"+sectionOnLoad);
 				blink.events.on('slider:change', function(currentSection) {
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
 
-				blink.events.on('showSlide:after', function(currentSection) {
+			/*	blink.events.on('showSlide:after', function(currentSection) {
 					console.log("showslide:after");
 					console.log(currentSection);
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
-				});
+				});*/
 
 				$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
 					$('html').addClass('htmlReady');
