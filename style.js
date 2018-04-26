@@ -1884,7 +1884,7 @@ $(document).ready(function() {
 	// Popover in Not allowed
 	var popoverNotAllowed = '';
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 11");
+		console.log("Not allowed 12");
 		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
 			popoverNotAllowed = $(this).popover({
 				placement: 'left',
@@ -1895,7 +1895,7 @@ $(document).ready(function() {
 			});
 		}
 		console.log(popoverNotAllowed);
-		$(this).popover('toggle');
+		popoverNotAllowed.popover('show');
 		console.log(popoverNotAllowed);
 	});
 
