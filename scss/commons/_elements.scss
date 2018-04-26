@@ -5,7 +5,7 @@
   font-weight: bold;
   font-style: italic;
   @include font-size(6.5);
-  line-height: 0.95em;
+  line-height: 0.77em;
   color: $color_1;
   margin: 0;
   a {
@@ -179,7 +179,7 @@
 }
 
 .oxfl-button-bubble {
-  @include font-size(1.9);
+  @include font-size(2.4);
   font-family: $font_family_1;
   font-weight: 700;
   text-align: center;
@@ -194,6 +194,9 @@
   background-repeat: no-repeat;
   background-color: transparent;
   color: $negative_color;
+  .oxfl-notification-item & {
+    @include font-size(1.4);
+  }
   &-1 {
     width: 186px;
     height: 74px;
@@ -613,6 +616,17 @@
     }
   }
 }
+
+// Custom by Blink
+
+.oxfl-modal .modal-body {
+    font-size: 19px;
+}
+
+.oxfl-modal .modal-footer .btn {
+	font-size: 25px;
+}
+
 
 // Notifications list
 

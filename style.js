@@ -1343,7 +1343,6 @@ oxfordFlippedApp.updateUserData = function() {
 			var newState = dataChapter.estado,
 					newGrade = dataChapter.clasificacion,
 					newStars = oxfordFlippedApp.gradeToStars(newGrade);
-			console.log(newState,newGrade,newStars);
 
 			$(e).find('.oxfl-stars').removeClass('oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
 
@@ -1360,6 +1359,7 @@ oxfordFlippedApp.updateUserData = function() {
 		} else {
 			chaptersNotStarted = true;
 		}
+
 		if (!chaptersNotStarted && !chaptersWithoutGrade) {
 			// Challenge is open
 			var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
@@ -1368,6 +1368,9 @@ oxfordFlippedApp.updateUserData = function() {
 			$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
 		}
 	});
+
+	var totalCoins = blink.activity.currentStyle.userCoins ? blink.activity.currentStyle.userCoins : 0;
+	$('#oxfl-coins-total').text(totalCoins);
 }
 
 oxfordFlippedApp.gohome = function() {
