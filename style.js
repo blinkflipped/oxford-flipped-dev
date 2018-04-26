@@ -577,8 +577,9 @@
 				blink.events.on('slider:changed', function(currentSection) {
 
 					var currentSection = blink.activity.currentSection;
+					console.log(currentSection);
 					oxfordFlippedApp.onSliderChanged();
-					
+
 				});
 
 			/*	blink.events.on('showSlide:after', function(currentSection) {
@@ -1539,7 +1540,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 							var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 									finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
 							if (finalSlideBackground != '') {
-								$lastSlide.css('background-image', finalSlideBackground).find('.slide_aux').hide();
+								$lastSlide.css('background-image', 'url('+finalSlideBackground+')').find('.slide_aux').hide();
 							}
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
@@ -1562,7 +1563,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 							var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 									finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-go-to-start">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 							if (finalSlideBackground != '') {
-								$lastSlide.css('background-image', finalSlideBackground).find('.slide_aux').hide();
+								$lastSlide.css('background-image', 'url('+finalSlideBackground+')').find('.slide_aux').hide();
 							}
 							$lastSlide.addClass('oxfl-final-slide-challenge');
 						} else {
@@ -1615,7 +1616,8 @@ oxfordFlippedApp.challengeCover = function() {
 		console.log($slide.find('.image_slide'));
 		console.log(challengeBackground);
 		if (challengeBackground != '') {
-			$slide.css('background-image', challengeBackground).find('.slide_aux').hide();
+			console.log("Background");
+			$slide.css('background-image', 'url('+challengeBackground+')').find('.slide_aux').hide();
 		}
 		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton);
 		//$('body').addClass('oxfl-challenge-cover-wrapper-on');
@@ -1652,8 +1654,6 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 	console.log(coverChallengeIDNum);
 	if (currentSection === coverChallengeIDNum) {
 		$('body').addClass('oxfl-challenge-cover-wrapper-on');
-	} else {
-		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
 	}
 
 	if (currentSection === contentZoneIDNum) {
@@ -1695,21 +1695,11 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 		$('body').removeClass('oxfl-content-zone-on');
 	}
 
-	$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+	if (currentSection !== coverChallengeIDNum) {
+		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
+	}
 
-
-	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 6");
-		$(this).popover({
-			placement: 'top',
-			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
-			content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
-			title : '',
-			container: 'body'
-		}).popover('show');
-		console.log($(this).popover());
-		//$(this).popover('show');
-	});
+	//$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
 
 }
 
@@ -1872,9 +1862,23 @@ $(document).ready(function() {
 		console.log(window.actividades);
 	}));
 
-	// htmlReady out of Activities
+	// htmlReady out of Activities TODO CHECK
 	$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
 		$('html').addClass('htmlReady');
+	});
+
+	// Popover in Not allowed
+	$('body').on('click', '.slider-control.not-allowed', function() {
+		console.log("Not allowed 6");
+		$(this).popover({
+			placement: 'top',
+			template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+			content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
+			title : '',
+			container: 'body'
+		}).popover('show');
+		console.log($(this).popover());
+		//$(this).popover('show');
 	});
 
 });
