@@ -1875,7 +1875,8 @@ $(document).ready(function() {
 	});
 
 	// Popover in Not allowed
-	var popoverNotAllowed;
+	var popoverNotAllowed = 1;
+	console.log(popoverNotAllowed);
 	$('body').on('click', '.slider-control.not-allowed', function() {
 		console.log("Not allowed 8");
 		console.log(popoverNotAllowed);
