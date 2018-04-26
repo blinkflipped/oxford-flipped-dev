@@ -1883,25 +1883,26 @@ $(document).ready(function() {
 
 	// Popover in Not allowed
 	var popoverNotAllowed = '';
-	$('body').on('click', '.slider-control.not-allowed', function() {
-		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
-			popoverNotAllowed = $(this).popover({
-				placement: 'left',
-				template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
-				content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
-				title : '',
-				container: 'body'
-			});
-		}
-		console.log($(this));
-		if (!$(this).is('.not-allowed')) {
-			popoverNotAllowed.popover('disable');
-			console.log("Disabled");
-		} else {
+	$('body').on('click', '.slider-control', function() {
+		if ($(this).is('.not-allowed')) {
+			if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
+				popoverNotAllowed = $(this).popover({
+					placement: 'left',
+					template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+					content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
+					title : '',
+					container: 'body'
+				});
+			}
 			popoverNotAllowed.popover('enable');
 			console.log("Enabled");
 			if(!$('.oxfl-popover').is(":visible")) {
 				popoverNotAllowed.popover('show');
+			}
+		} else {
+			if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
+				popoverNotAllowed.popover('destroy');
+				console.log(popoverNotAllowed);
 			}
 		}
 	});
