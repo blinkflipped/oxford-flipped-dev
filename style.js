@@ -1900,7 +1900,7 @@ $(document).ready(function() {
 				popoverNotAllowed.popover('show');
 			}
 		} else {
-			if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
+			if (typeof popoverNotAllowed !== undefined && popoverNotAllowed !== '') {
 				popoverNotAllowed.popover('destroy');
 				console.log(popoverNotAllowed);
 			}
