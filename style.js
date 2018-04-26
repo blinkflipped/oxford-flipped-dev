@@ -1645,7 +1645,7 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
 
 	if (isFinalSlide) {
-		$('body').addClass('oxfl-final-slide-on');
+		oxfordFlippedApp.activityFinalScreenTest(currentSection);
 	}
 
 	//$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
