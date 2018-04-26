@@ -1895,8 +1895,10 @@ $(document).ready(function() {
 		}
 		if (!$(this).hasClass('not-allowed')) {
 			popoverNotAllowed.popover('disable');
+			console.log("Disabled");
 		} else {
 			popoverNotAllowed.popover('enable');
+			console.log("Enabled");
 			if(!$('.oxfl-popover').is(":visible")) {
 				popoverNotAllowed.popover('show');
 			}
