@@ -1884,7 +1884,7 @@ $(document).ready(function() {
 	// Popover in Not allowed
 	var popoverNotAllowed = '';
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 10");
+		console.log("Not allowed 11");
 		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
 			popoverNotAllowed = $(this).popover({
 				placement: 'left',
@@ -1894,8 +1894,13 @@ $(document).ready(function() {
 				container: 'body'
 			});
 		}
-		popoverNotAllowed[0].popover('toggle');
 		console.log(popoverNotAllowed);
+		$(this).popover('toggle');
+		console.log(popoverNotAllowed);
+	});
+
+	$('body').on('click', '#oxfl-popover-close', function(e) {
+		$('.oxfl-js-popover, .slider-control.not-allowed').popover('hide');
 	});
 
 });
