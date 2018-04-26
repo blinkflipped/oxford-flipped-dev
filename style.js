@@ -1354,7 +1354,7 @@ oxfordFlippedApp.goback = function(classRef) {
 				'oxfl-body-marketplace' : oxfordFlippedApp.config.tagMarketplace,
 				'oxfl-body-marketplace-game' : oxfordFlippedApp.config.tagMarketplace,
 				'oxfl-body-marketplace-summary' : oxfordFlippedApp.config.tagMarketplace
-			},
+			};
 
 
 	possibleClasses.splice(index, 1);
