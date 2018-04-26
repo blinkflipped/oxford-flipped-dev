@@ -1875,12 +1875,13 @@ $(document).ready(function() {
 	});
 
 	// Popover in Not allowed
-	var popoverNotAllowed = 1;
+	var popoverNotAllowed = '';
 	console.log(popoverNotAllowed);
 	$('body').on('click', '.slider-control.not-allowed', function() {
 		console.log("Not allowed 8");
 		console.log(popoverNotAllowed);
 		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
+			console.log("AAAA");
 			popoverNotAllowed = $(this).popover({
 				placement: 'top',
 				template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
@@ -1895,7 +1896,6 @@ $(document).ready(function() {
 		}
 		popoverNotAllowed.popover('show');
 		console.log(popoverNotAllowed)
-		console.log($(this).popover());
 		//$(this).popover('show');
 	});
 
