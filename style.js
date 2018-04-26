@@ -1895,7 +1895,9 @@ $(document).ready(function() {
 			});
 		}
 		console.log(popoverNotAllowed);
-		popoverNotAllowed.popover('show');
+		if(!$('.oxfl-popover').is(":visible")) {
+			popoverNotAllowed.popover('show');
+		}
 		console.log(popoverNotAllowed);
 	});
 
