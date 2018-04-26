@@ -1616,9 +1616,9 @@ oxfordFlippedApp.challengeCover = function() {
 		console.log($slide.find('.image_slide'));
 		console.log(challengeBackground);
 		if (challengeBackground != '') {
-			console.log("Background 2");
-			console.log($slide.css('background'));
-			var baseBackground = $slide.css('background');
+			console.log("Background 3");
+			console.log($slide.css('background-image'));
+			var baseBackground = $slide.css('background-image');
 			console.log(baseBackground.substr(baseBackground.indexOf(",") + 1));
 			$slide.css('background-image', 'url('+challengeBackground+')').find('.slide_aux').hide();
 		}
