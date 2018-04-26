@@ -1685,22 +1685,25 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
 			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
 
+	console.log('HAS CHANGED');
+	console.log(currentSection);
+	console.log(coverIDNum,contentZoneIDNum,coverChallengeIDNum);
+
 	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
 
 	if (!isFinalSlide) {
 		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+		console.log("Not final Slide");
 	}
 
 	if (currentSection !== coverChallengeIDNum) {
 		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
+		console.log("Not Cover challenge");
 	}
 
 	if (currentSection !== contentZoneIDNum) {
 		$('body').removeClass('oxfl-content-zone-on');
-	}
-
-	if (currentSection !== coverChallengeIDNum) {
-		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
+		console.log("Not  content zone");
 	}
 
 	//$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
