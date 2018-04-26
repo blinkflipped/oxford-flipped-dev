@@ -1152,13 +1152,12 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterImageCode+' </div> </a> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</a> </h2></article>';
 			}
+			var chapterListItem = document.createElement('div');
+
+			chapterListItem.className = 'oxfl-chapter-item';
+			chapterListItem.innerHTML = chapterinnerHTML;
+			chaptersList.appendChild(chapterListItem);
 		}
-
-		var chapterListItem = document.createElement('div');
-
-		chapterListItem.className = 'oxfl-chapter-item';
-		chapterListItem.innerHTML = chapterinnerHTML;
-		chaptersList.appendChild(chapterListItem);
 
 	});
 
