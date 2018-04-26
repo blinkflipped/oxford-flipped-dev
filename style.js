@@ -1893,7 +1893,8 @@ $(document).ready(function() {
 				container: 'body'
 			});
 		}
-		if (!$(this).hasClass('not-allowed')) {
+		console.log($(this));
+		if (!$(this).is('.not-allowed')) {
 			popoverNotAllowed.popover('disable');
 			console.log("Disabled");
 		} else {
