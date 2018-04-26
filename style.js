@@ -536,10 +536,10 @@
 			var unit = _.findWhere(data.units, {id: window.idtema.toString()});
 			var subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()});
 
+			window.bookcover = data.units[0].subunits[0].id;
 			this.cursoJson = data;
 			this.onActivityDataLoaded(subunit);
 
-			window.bookcover = data.units[0].subunits[0].id;
 			console.log("onCourseDataLoaded");
 			var isBookCover = idclase.toString() === window.bookcover;
 
@@ -562,6 +562,7 @@
 			console.log("¿ES cover?");
 			console.log(idclase.toString());
 			console.log(window.bookcover);
+			console.log(isBookCover);
 			if (!isBookCover) {
 				var contentZoneIndex = this.lookupDirectorSlide("contentzone");
 
