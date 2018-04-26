@@ -1188,7 +1188,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       vertical-align: middle; }
     .oxfl-resource-coins .oxfl-icon-coin {
       display: inline-block;
-      vertical-align: middle; }
+      vertical-align: middle;
+      margin-left: 6px; }
   .oxfl-resource:hover .oxfl-resource-image-wrapper img {
     transform: scale(1.1); }
   .oxfl-resource-locked .oxfl-resource-image-wrapper img {

@@ -411,7 +411,8 @@
 			console.log(actividades);
 			console.log(activityId);
 			if (actividades && actividades[activityId]) {
-				return alert('actividad comprada');
+				oxfordFlippedApp.updateMarketplaceList(activityId);
+				//alert('actividad comprada');
 			}
 
 			blink.getActivity(idcurso, parseInt(activityId)).done((function(activity) {
@@ -1316,6 +1317,21 @@ oxfordFlippedApp.loadMarketplace = function() {
 	//oxfordFlippedApp.popover();
 
 }
+
+oxfordFlippedApp.updateMarketplaceList = function(id) {
+	var idTema = window.actividades[id].idtema;
+
+	$.each(oxfordFlippedApp.bookData.units[idTema].subunits, function(i, subunit) {
+		console.log(subunit.id);
+		if (subunit.id === id) {
+			$('[data-resource-id="'+id+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
+			return false;
+		}
+	}
+
+}
+
+
 
 
 oxfordFlippedApp.gohome = function() {
