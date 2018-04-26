@@ -574,12 +574,12 @@
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
-				blink.events.on('slider:changed', function(currentSection) {
+				blink.events.on('slider:changed', function() {
 
 					var currentSection = blink.activity.currentSection;
 					console.log("Slider changed");
 					console.log(currentSection);
-					oxfordFlippedApp.onSliderChanged();
+					oxfordFlippedApp.onSliderChanged(currentSection);
 
 				});
 
