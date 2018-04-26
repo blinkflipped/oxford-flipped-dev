@@ -560,6 +560,8 @@
 			if (!isBookCover) {
 				var contentZoneIndex = this.lookupDirectorSlide("contentzone");
 
+				if (data.title === oxfordFlippedApp.config.nameChallenge) oxfordFlippedApp.config.challengeIDs.push(data.id);
+
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
 				oxfordFlippedApp.activityCreateFalseNavigation(data);
@@ -729,6 +731,7 @@ oxfordFlippedApp.config = {};
 oxfordFlippedApp.config.isDEV = true;
 oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.nameActivityInfo = 'Info';
+oxfordFlippedApp.config.nameChallenge = 'Challenge';
 oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
@@ -817,7 +820,7 @@ oxfordFlippedApp.getChallengeIDs = function(data) {
 			if (!unitIsMarketplace) {
 				$.each(unit.subunits, function(i, subunit){
 					oxfordFlippedApp.console(i);
-					var chapterIsChallenge = (subunit.title === 'Challenge');
+					var chapterIsChallenge = (subunit.title ===  oxfordFlippedApp.config.nameChallenge);
 					if (chapterIsChallenge) {
 						oxfordFlippedApp.config.challengeIDs.push(subunit.id);
 					}
