@@ -407,6 +407,9 @@
 		 * @param  {activityId} activityId ID de la actividad
 		 */
 		buyActivityMarketPlace: function (activityId) {
+			console.log("Intentando comprar");
+			console.log(actividades);
+			console.log(activityId);
 			if (actividades && actividades[activityId]) {
 				return alert('actividad comprada');
 			}
