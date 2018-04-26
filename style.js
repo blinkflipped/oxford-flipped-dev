@@ -1878,6 +1878,7 @@ $(document).ready(function() {
 	var popoverNotAllowed;
 	$('body').on('click', '.slider-control.not-allowed', function() {
 		console.log("Not allowed 7");
+		console.log(popoverNotAllowed);
 		if (popoverNotAllowed === '') {
 			popoverNotAllowed = $(this).popover({
 				placement: 'top',
@@ -1886,10 +1887,12 @@ $(document).ready(function() {
 				title : '',
 				container: 'body'
 			});
-			popoverNotAllowed.popover('show');
+
+			//popoverNotAllowed.popover('show');
 		} else {
-			popoverNotAllowed.popover('show');
+
 		}
+		popoverNotAllowed.popover('show');
 		console.log(popoverNotAllowed)
 		console.log($(this).popover());
 		//$(this).popover('show');
