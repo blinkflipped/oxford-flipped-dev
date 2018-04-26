@@ -1884,7 +1884,6 @@ $(document).ready(function() {
 	// Popover in Not allowed
 	var popoverNotAllowed = '';
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 12");
 		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
 			popoverNotAllowed = $(this).popover({
 				placement: 'left',
@@ -1894,13 +1893,15 @@ $(document).ready(function() {
 				container: 'body'
 			});
 		}
-		console.log(popoverNotAllowed);
-		if(!$('.oxfl-popover').is(":visible")) {
-			popoverNotAllowed.popover('show');
+		if (!$(this).hasClass('not-allowed')) {
+			popoverNotAllowed.popover('disable');
+		} else {
+			popoverNotAllowed.popover('enable');
+			if(!$('.oxfl-popover').is(":visible")) {
+				popoverNotAllowed.popover('show');
+			}
 		}
-		console.log(popoverNotAllowed);
 	});
-
 	$('body').on('click', '#oxfl-popover-close', function(e) {
 		$('.oxfl-js-popover, .slider-control.not-allowed').popover('hide');
 	});
