@@ -952,7 +952,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('html').addClass('htmlReady');
-		var isMarketplace = window.getParameterByHash(oxfordFlippedApp.config.tagMarketplace);
+		var isMarketplace = oxfordFlippedApp.getParameterByHash(oxfordFlippedApp.config.tagMarketplace);
 		if (isMarketplace !== null) {
 			$('body').addClass(userBodyClass);
 			oxfordFlippedApp.loadMarketplace(data);
