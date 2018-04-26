@@ -419,7 +419,7 @@
 				if (!blink.isApp || (blink.isApp && blink.appVersion >= 4.1)) {
 					blink.rest.connection(function(connection) {
 						if (!connection) {
-						    return _showAlert(textweb('tablettxt_require_connection'));
+								return _showAlert(textweb('tablettxt_require_connection'));
 						}
 
 						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
@@ -1877,9 +1877,9 @@ $(document).ready(function() {
 	// Popover in Not allowed
 	var popoverNotAllowed;
 	$('body').on('click', '.slider-control.not-allowed', function() {
-		console.log("Not allowed 7");
+		console.log("Not allowed 8");
 		console.log(popoverNotAllowed);
-		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
+		if (typeof popoverNotAllowed === undefined || popoverNotAllowed === '') {
 			popoverNotAllowed = $(this).popover({
 				placement: 'top',
 				template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
