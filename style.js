@@ -1566,13 +1566,13 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 			isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
 			testSlidesLength = (isFinalSlide) ? totalSlides - 1 : totalSlides;
 
-	console.log("activityTestSlides 4");
+	console.log("activityTestSlides 5");
 	console.log(nextContentZone, totalSlides, $lastSlide, isFinalSlide, testSlidesLength);
 
 	if (nextContentZone) {
 		var buttonQuitTest = '<button class="oxfl-button-round oxfl-button-round-circled oxfl-js-quit-test-modal"><span>'+oxfordFlippedApp.text.quit+'</span></button>';
 		var i;
-		for (i = nextContentZone; i <= testSlidesLength; i++) {
+		for (i = nextContentZone; i < testSlidesLength; i++) {
 			$('#slider-item-'+i).find('.js-slide-wrapper').append(buttonQuitTest);
 		}
 	}
