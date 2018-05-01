@@ -1875,7 +1875,7 @@ $(document).ready(function() {
 
 	// Go back
 	$('body').on('click', '[data-goback]', function() {
-
+		console.log("Check 1");
 		var classRef = $(this).attr('data-goback');
 		oxfordFlippedApp.goback(classRef);
 
@@ -1905,7 +1905,7 @@ $(document).ready(function() {
 	});
 
 	// Load resource / marketplace
-	$('body').on('click', '.oxfl-js-load-resource', function(e) {
+	/*$('body').on('click', '.oxfl-js-load-resource', function(e) {
 
 		e.preventDefault();
 		var resourceOnclick = $(this).attr('data-onclick');
@@ -1914,7 +1914,7 @@ $(document).ready(function() {
 		//blink.domain.openActivity(resourceID);
 		//redireccionar(resourceUrl, false, undefined);
 
-	});
+	});*/
 
 	// Lock/unlock chapters
 	$('body').on('click', '.oxfl-js-modal-lock-chapter', function(e) {
@@ -1962,7 +1962,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var resourceID = $(this).attr('data-marketplace-id');
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
-
+		blink.activity.currentStyle.loadUserData(); //TODO CHeck
 	});
 
 	$('body').on('click', '.oxfl-js-open-notifications', function(e) {
