@@ -1532,15 +1532,17 @@ oxfordFlippedApp.closeIframe = function() {
 oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 	var navigationList = document.createDocumentFragment();
-	console.log("activityCreateFalseNavigation 2");
+	console.log("activityCreateFalseNavigation 3");
 	var totalSlides = blink.activity.currentStyle.Slider.$items.length;
-	$.each(totalSlides, function(i, slide){
+	console.log(totalSlides);
+	var i;
+	for (i = 0; i < totalSlides; i++) {
 		var navigationListItem = document.createElement('li');
 		//navigationListItem.className = 'oxfl-activities-navigation-item';
 		navigationListItem.className = 'slider-indicator';
 		navigationListItem.innerHTML = '<span></span>';
 		navigationList.appendChild(navigationListItem);
-	});
+	}
 	$('.navbar-bottom .slider-indicators').remove();
 	$('.navbar-bottom').prepend('<ul class="slider-indicators" id="oxfl-activities-navigation"></ul>');
 

@@ -1723,9 +1723,11 @@ body.body_clase.view-mode .slider-control:focus {
   body.body_clase.view-mode .slider-control:focus.disabled {
     display: none !important;
     opacity: 0; }
-  body.body_clase.view-mode .oxfl-slider-control.not-allowed,
+  body.body_clase.view-mode .oxfl-slider-control.not-allowed, body.body_clase.view-mode .oxfl-slider-control.not-allowed:hover,
   body.body_clase.view-mode .slider-control.not-allowed,
-  body.body_clase.view-mode .slider-control:focus.not-allowed {
+  body.body_clase.view-mode .slider-control.not-allowed:hover,
+  body.body_clase.view-mode .slider-control:focus.not-allowed,
+  body.body_clase.view-mode .slider-control:focus.not-allowed:hover {
     opacity: .3; }
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
   background: transparent;

@@ -68,7 +68,8 @@ body.body_clase.view-mode {
       display: none!important;
       opacity: 0;
     }
-    &.not-allowed {
+    &.not-allowed,
+    &.not-allowed:hover {
       opacity: .3;
     }
   }
