@@ -13,7 +13,9 @@
   right: 0;
   bottom: 0;
   z-index: 1000;
-  .oxfl-body-chapters & {
+  .oxfl-body-chapters &,
+  .oxfl-body-marketplace-game &,
+  .oxfl-body-marketplace-summary & {
     min-height: 760px;
   }
 }

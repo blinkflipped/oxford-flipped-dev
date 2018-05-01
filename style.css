@@ -852,7 +852,7 @@ body.oxfl-body-marketplace-game {
   right: 0;
   bottom: 0;
   z-index: 1000; }
-  .oxfl-body-chapters #oxfl-general {
+  .oxfl-body-chapters #oxfl-general, .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
     min-height: 760px; }
 
 #oxfl-custom-background {
@@ -1186,8 +1186,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; }
+  overflow: hidden;
+  -webkit-overflow-scrolling: auto; }
 
 .oxfl-resources-container {
   background: rgba(242, 242, 242, 0.8);

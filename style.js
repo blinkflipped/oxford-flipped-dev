@@ -989,8 +989,8 @@ oxfordFlippedApp.homepage = function(data) {
 		oxfordFlippedApp.loadMarketplace(data);
 	});
 
-	var coinsPosRight = oxfordFlippedApp.getScrollBarWidth() + 15;
-	$('#oxfl-coins').css('right', coinsPosRight);
+	//var coinsPosRight = oxfordFlippedApp.getScrollBarWidth() + 15;
+	//$('#oxfl-coins').css('right', coinsPosRight);
 
 	$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
 
@@ -1565,9 +1565,6 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 			$lastSlide = $('#slider-item-'+lastIndex),
 			isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
 			testSlidesLength = (isFinalSlide) ? totalSlides - 1 : totalSlides;
-
-	console.log("activityTestSlides 5");
-	console.log(nextContentZone, totalSlides, $lastSlide, isFinalSlide, testSlidesLength);
 
 	if (nextContentZone) {
 		var buttonQuitTest = '<button class="oxfl-button-round oxfl-button-round-circled oxfl-js-quit-test-modal"><span>'+oxfordFlippedApp.text.quit+'</span></button>';
