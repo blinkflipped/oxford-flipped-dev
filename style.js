@@ -411,9 +411,7 @@
 			console.log(actividades);
 			console.log(activityId);
 			if (actividades && actividades[activityId]) {
-				console.log("DONE");
-				oxfordFlippedApp.updateMarketplaceList(activityId);
-				//alert('actividad comprada');
+				return alert('actividad comprada con anterioridad');
 			}
 
 			blink.getActivity(idcurso, parseInt(activityId)).done((function(activity) {
@@ -428,16 +426,29 @@
 						}
 
 						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
+							//TODO Comprobar esta funcion
 							if (o.startsWith('ERROR')){
 								_showAlert(textweb('error_general_AJAX'));
 							}
 
 							if (blink.isApp) {
+
 								blink.ajax('/blink:forceCheckUpdates', function(o) {
 									if (o.startsWith('ERROR')){
 										_showAlert(textweb('error_general_AJAX'));
+									} else {
+										oxfordFlippedApp.updateMarketplaceList(activityId);
 									}
 								});
+
+							} else {
+
+								if (o.startsWith('ERROR')){
+									_showAlert(textweb('error_general_AJAX'));
+								} else {
+									oxfordFlippedApp.updateMarketplaceList(activityId);
+								}
+
 							}
 						});
 
@@ -569,7 +580,7 @@
 
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
-				oxfordFlippedApp.activityCreateFalseNavigation(data);
+				//oxfordFlippedApp.activityCreateFalseNavigation(data); //TODO Comprobar si funciona bien
 				oxfordFlippedApp.activityCheckpointCover();
 				oxfordFlippedApp.challengeCover();
 				oxfordFlippedApp.activityFinalScreenOne(contentZoneIndex);
