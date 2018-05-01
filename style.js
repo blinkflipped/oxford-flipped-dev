@@ -1564,9 +1564,9 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 			lastIndex = totalSlides-1,
 			$lastSlide = $('#slider-item-'+lastIndex),
 			isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
-			testSlidesLength = (isFinalSlide) ? totalSlides - contentZoneIndex - 1 : totalSlides - contentZoneIndex;
+			testSlidesLength = (isFinalSlide) ? totalSlides - 1 : totalSlides;
 
-	console.log("activityTestSlides 3");
+	console.log("activityTestSlides 4");
 	console.log(nextContentZone, totalSlides, $lastSlide, isFinalSlide, testSlidesLength);
 
 	if (nextContentZone) {
@@ -1625,7 +1625,7 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 		oxfordFlippedApp.console("Prev Content Zone DONE");
 		var coins = blink.activity.currentStyle.calculateVocabularyCoins(); // TODO Check
 		$('#oxfl-total-coins-1').text(coins);
-		$slide.closest('.js-slider-item').addClass('oxfl-final-screen-one-wrapper-active');
+		$slide.closest('.js-slider-item').scrollTop(0).addClass('oxfl-final-screen-one-wrapper-active');
 	}));
 
 }
