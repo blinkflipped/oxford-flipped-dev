@@ -1532,9 +1532,8 @@ oxfordFlippedApp.closeIframe = function() {
 oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 	var navigationList = document.createDocumentFragment();
-	console.log("activityCreateFalseNavigation 3");
 	var totalSlides = blink.activity.currentStyle.Slider.$items.length;
-	console.log(totalSlides);
+
 	var i;
 	for (i = 0; i < totalSlides; i++) {
 		var navigationListItem = document.createElement('li');
@@ -1562,10 +1561,12 @@ oxfordFlippedApp.activityCheckpointCover = function() {
 oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 	var nextContentZone =  (typeof contentZoneIndex !== 'undefined') ? contentZoneIndex+1 : false;
 	var totalSlides = blink.activity.currentStyle.Slider.$items.length,
-			$lastSlide = $('#slider-item-'+totalSlides),
-			isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
+			lastIndex = totalSlides-1,
+			$lastSlide = $('#slider-item-'+lastIndex),
+			isFinalSlide = $lastSlide.is('.oxfl-final-slide'),
 			testSlidesLength = (isFinalSlide) ? totalSlides - contentZoneIndex - 1 : totalSlides - contentZoneIndex;
 
+	console.log("activityTestSlides 2");
 	console.log(nextContentZone, totalSlides, $lastSlide, isFinalSlide, testSlidesLength);
 
 	if (nextContentZone) {
