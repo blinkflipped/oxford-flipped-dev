@@ -380,6 +380,26 @@ body.oxfl-body-marketplace-game {
     width: 58px;
     height: 41px; }
 
+.oxfl-button-round {
+  color: #ffffff;
+  border-color: transparent;
+  font-family: "Myfrida", sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  font-size: 2.3rem;
+  padding: 9px 30px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  background-color: #D42E5E;
+  -webkit-box-shadow: 0px 4px 0px 0px #9F2347;
+  -moz-box-shadow: 0px 4px 0px 0px #9F2347;
+  box-shadow: 0px 4px 0px 0px #9F2347; }
+  .oxfl-button-round-circled {
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    transform: rotate(-33deg); }
+
 .oxfl-button-bubble, .oxfl-button-large {
   transform: scale(1);
   transition: transform .3s linear; }
@@ -758,19 +778,8 @@ body.oxfl-body-marketplace-game {
   width: 160px;
   height: 160px; }
   .oxfl-popover.left {
-    /*background: none;
-    &::before {
-      content: '';
-      display: block;
-      background: url(img/popover-bubble.png) 0 0 no-repeat;
-      background-size: 160px 160px;
-      width: 160px;
-      height: 160px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }*/ }
+    background-image: url(img/popover-bubble-2.png);
+    background-size: contain; }
   .oxfl-popover .oxfl-popover-inner {
     display: flex;
     width: 150px;
