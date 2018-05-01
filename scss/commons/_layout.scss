@@ -13,10 +13,12 @@
   right: 0;
   bottom: 0;
   z-index: 1000;
-  .oxfl-body-chapters &,
+  .oxfl-body-chapters & {
+    min-height: 760px;
+  }
   .oxfl-body-marketplace-game &,
   .oxfl-body-marketplace-summary & {
-    min-height: 760px;
+    min-height: 860px;
   }
 }
 

@@ -852,8 +852,10 @@ body.oxfl-body-marketplace-game {
   right: 0;
   bottom: 0;
   z-index: 1000; }
-  .oxfl-body-chapters #oxfl-general, .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
+  .oxfl-body-chapters #oxfl-general {
     min-height: 760px; }
+  .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
+    min-height: 860px; }
 
 #oxfl-custom-background {
   position: absolute;
