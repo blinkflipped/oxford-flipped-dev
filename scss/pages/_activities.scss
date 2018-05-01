@@ -68,6 +68,9 @@ body.body_clase.view-mode {
       display: none!important;
       opacity: 0;
     }
+    &.not-allowed {
+      opacity: .3;
+    }
   }
 
   #actividad {

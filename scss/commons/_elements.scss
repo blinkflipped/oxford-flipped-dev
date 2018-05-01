@@ -259,23 +259,36 @@
 }
 
 .oxfl-button-round {
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
   color:$negative_color;
-  border-color: transparent;
   font-family: $font_family_2;
   font-weight: bold;
   @include font-size(2.3);
   padding: 9px 30px;
   text-transform: uppercase;
   border-radius: 30px;
-  background-color: $color_14;
-  -webkit-box-shadow: 0px 4px 0px 0px $color_14_darker;
-  -moz-box-shadow: 0px 4px 0px 0px $color_14_darker;
-  box-shadow: 0px 4px 0px 0px $color_14_darker;
+  background-color: $color_13;
+  -webkit-box-shadow: 0px 4px 0px 0px $color_13_darker;
+  -moz-box-shadow: 0px 4px 0px 0px $color_13_darker;
+  box-shadow: 0px 4px 0px 0px $color_13_darker;
   &-circled {
-    width: 46px;
-    height: 46px;
+    width: 60px;
+    height: 60px;
     padding: 0;
     transform: rotate(-33deg);
+    background-color: $color_14;
+    -webkit-box-shadow: 0px 4px 0px 0px $color_14_darker;
+    -moz-box-shadow: 0px 4px 0px 0px $color_14_darker;
+    box-shadow: 0px 4px 0px 0px $color_14_darker;
+    span {
+      display: inline-block;
+      margin-left: -4px;
+    }
   }
 }
 
@@ -499,6 +512,8 @@
     border-radius: 0;
     border: 2px solid $color_9;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    max-height: none!important;
+    height: auto!important;
     &>p {
       max-width: 260px;
       margin: 0 auto;

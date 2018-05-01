@@ -1532,9 +1532,9 @@ oxfordFlippedApp.closeIframe = function() {
 oxfordFlippedApp.activityCreateFalseNavigation = function(data) {
 
 	var navigationList = document.createDocumentFragment();
-	console.log("activityCreateFalseNavigation");
-	console.log(data);
-	$.each(data.slides, function(i, slide){
+	console.log("activityCreateFalseNavigation 2");
+	var totalSlides = blink.activity.currentStyle.Slider.$items.length;
+	$.each(totalSlides, function(i, slide){
 		var navigationListItem = document.createElement('li');
 		//navigationListItem.className = 'oxfl-activities-navigation-item';
 		navigationListItem.className = 'slider-indicator';
@@ -1641,6 +1641,11 @@ oxfordFlippedApp.activityContentZone = function() {
 
 	});
 
+	$('.oxfl-content-zone-wrapper').scroll(function() {
+		var scrtop = $(this).scrollTop();
+		$(this).find('.oxfl-cz-button-next').css('bottom', -scrtop);
+	});
+
 	$('.oxfl-cz').each(function(i,e) {
 		var $wrapper = $(e).closest('.js-slider-item'),
 				$content = $(e).find('.bck-content'),
@@ -1657,7 +1662,7 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		$content.addClass('oxfl-visible');
 		$('body').addClass('oxfl-content-zone-card-on');
-		$wrapper.find('.bck-content').not($content).removeClass('oxfl-visible');
+		$wrapper.scrollTop(0).find('.bck-content').not($content).removeClass('oxfl-visible');
 
 	});
 

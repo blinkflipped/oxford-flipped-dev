@@ -381,8 +381,13 @@ body.oxfl-body-marketplace-game {
     height: 41px; }
 
 .oxfl-button-round {
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
   color: #ffffff;
-  border-color: transparent;
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-size: 23px;
@@ -390,15 +395,22 @@ body.oxfl-body-marketplace-game {
   padding: 9px 30px;
   text-transform: uppercase;
   border-radius: 30px;
-  background-color: #D42E5E;
-  -webkit-box-shadow: 0px 4px 0px 0px #9F2347;
-  -moz-box-shadow: 0px 4px 0px 0px #9F2347;
-  box-shadow: 0px 4px 0px 0px #9F2347; }
+  background-color: #29AAE3;
+  -webkit-box-shadow: 0px 4px 0px 0px #2f81a7;
+  -moz-box-shadow: 0px 4px 0px 0px #2f81a7;
+  box-shadow: 0px 4px 0px 0px #2f81a7; }
   .oxfl-button-round-circled {
-    width: 46px;
-    height: 46px;
+    width: 60px;
+    height: 60px;
     padding: 0;
-    transform: rotate(-33deg); }
+    transform: rotate(-33deg);
+    background-color: #D42E5E;
+    -webkit-box-shadow: 0px 4px 0px 0px #9F2347;
+    -moz-box-shadow: 0px 4px 0px 0px #9F2347;
+    box-shadow: 0px 4px 0px 0px #9F2347; }
+    .oxfl-button-round-circled span {
+      display: inline-block;
+      margin-left: -4px; }
 
 .oxfl-button-bubble, .oxfl-button-large {
   transform: scale(1);
@@ -560,7 +572,9 @@ body.oxfl-body-marketplace-game {
 .oxfl-modal .modal-content {
   border-radius: 0;
   border: 2px solid #FCEE21;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  max-height: none !important;
+  height: auto !important; }
   .oxfl-modal .modal-content > p {
     max-width: 260px;
     margin: 0 auto; }
@@ -1709,6 +1723,10 @@ body.body_clase.view-mode .slider-control:focus {
   body.body_clase.view-mode .slider-control:focus.disabled {
     display: none !important;
     opacity: 0; }
+  body.body_clase.view-mode .oxfl-slider-control.not-allowed,
+  body.body_clase.view-mode .slider-control.not-allowed,
+  body.body_clase.view-mode .slider-control:focus.not-allowed {
+    opacity: .3; }
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
   background: transparent;
   -webkit-box-shadow: none;
@@ -1756,10 +1774,11 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-cont
   background: url(img/monster-8.svg) 45px bottom no-repeat;
   background-size: 486px 424px;
   margin-top: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  min-height: 580px !important; }
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img {
   width: 298px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
@@ -1860,7 +1879,7 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active .oxfl
   display: block; }
 
 body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
-  overflow: hidden; }
+  overflow: auto; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-content-zone-background {
     display: block;
     position: absolute;
@@ -1909,7 +1928,8 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     right: 0;
     bottom: 0;
     outline: none;
-    text-align: center; }
+    text-align: center;
+    transition: bottom .3s linear; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next.oxfl-disabled {
       filter: grayscale(1);
       cursor: default; }
@@ -1927,7 +1947,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       transform: translate(-50%, 0); }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-content {
     position: fixed;
-    top: 100vh;
+    top: 200%;
     left: 0;
     z-index: 500;
     height: calc(100vh - 44px);
@@ -2046,6 +2066,8 @@ body.body_clase.view-mode.oxfl-content-zone-on .content-wrapper {
   padding-bottom: 0; }
 body.body_clase.view-mode.oxfl-content-zone-card-on .slider-control {
   display: none; }
+body.body_clase.view-mode.oxfl-content-zone-card-on #actividad .oxfl-content-zone-wrapper {
+  overflow: hidden; }
 
 body.body_clase.view-mode #actividad .oxfl-final-slide {
   background-position: center center;
