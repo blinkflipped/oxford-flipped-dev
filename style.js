@@ -1563,16 +1563,16 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 	var totalSlides = blink.activity.currentStyle.Slider.$items.length,
 			lastIndex = totalSlides-1,
 			$lastSlide = $('#slider-item-'+lastIndex),
-			isFinalSlide = $lastSlide.is('.oxfl-final-slide'),
+			isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
 			testSlidesLength = (isFinalSlide) ? totalSlides - contentZoneIndex - 1 : totalSlides - contentZoneIndex;
 
-	console.log("activityTestSlides 2");
+	console.log("activityTestSlides 3");
 	console.log(nextContentZone, totalSlides, $lastSlide, isFinalSlide, testSlidesLength);
 
 	if (nextContentZone) {
 		var buttonQuitTest = '<button class="oxfl-button-round oxfl-button-round-circled oxfl-js-quit-test-modal"><span>'+oxfordFlippedApp.text.quit+'</span></button>';
 		var i;
-		for (i = nextContentZone; i < testSlidesLength; i++) {
+		for (i = nextContentZone; i <= testSlidesLength; i++) {
 			$('#slider-item-'+i).find('.js-slide-wrapper').append(buttonQuitTest);
 		}
 	}
