@@ -1022,7 +1022,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	oxfordFlippedApp.console("Homepage");
 
-	var currentPage = oxfordFlippedApp.config.tree[0].hash,
+	var currentPage = 'home',
 			bodyClass = oxfordFlippedApp.config.tree[currentPage].class,
 			hash = oxfordFlippedApp.config.tree[currentPage].hash,
 			currentHash = window.location.hash;
