@@ -1394,7 +1394,7 @@ oxfordFlippedApp.updateUserData = function() {
 			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
-
+			console.log(chapterStateText);
 			$(e).find('oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 
 			if (newGrade === '') {
@@ -2052,7 +2052,7 @@ $(document).ready(function() {
 
 	blink.events.on('course:refresh', (function() {
 
-		console.log("DATA updated 3");
+		console.log("DATA updated 4");
 		console.log(window.actividades);
 		console.log(blink.activity.currentStyle.userCoins);
 		oxfordFlippedApp.updateUserData();
