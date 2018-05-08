@@ -1603,6 +1603,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   .oxfl-chapter .oxfl-title3,
   .oxfl-chapter .oxfl-title4 {
     max-width: calc(100% - 70px);
+    min-width: calc(100% - 70px);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
