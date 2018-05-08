@@ -126,7 +126,8 @@ body.body_clase.view-mode {
     .header .title h3 {
       font-family: $font_family_2;
       font-weight: bold;
-      @include font-size(2.9);
+      //@include font-size(2.9);
+      font-size: 29px;
       color: $color_6;
       margin-top: 30px;
     }

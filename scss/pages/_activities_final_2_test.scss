@@ -66,6 +66,7 @@ body.body_clase.view-mode {
         color: $negative_color;
         font-family: $font_family_2;
         font-weight: bold;
+        font-style: italic;
         @include font-size(4.8);
         line-height: 1em;
         max-width: 320px;

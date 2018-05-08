@@ -1570,7 +1570,7 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 		var buttonQuitTest = '<button class="oxfl-button-round oxfl-button-round-circled oxfl-js-quit-test-modal"><span>'+oxfordFlippedApp.text.quit+'</span></button>';
 		var i;
 		for (i = nextContentZone; i < testSlidesLength; i++) {
-			$('#slider-item-'+i).find('.js-slide-wrapper').append(buttonQuitTest);
+			$('#slider-item-'+i).find('.js-slide-wrapper .review').append(buttonQuitTest);
 		}
 	}
 
@@ -2052,7 +2052,8 @@ $(document).ready(function() {
 
 	blink.events.on('course:refresh', (function() {
 
-		console.log("DATA updated 4");
+		console.log("DATA updated 5");
+		console.log(actividades);
 		console.log(window.actividades);
 		console.log(blink.activity.currentStyle.userCoins);
 		oxfordFlippedApp.updateUserData();

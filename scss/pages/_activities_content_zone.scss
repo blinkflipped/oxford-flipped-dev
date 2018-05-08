@@ -78,6 +78,8 @@ body.body_clase.view-mode {
           display: block;
           width: 180px;
           font-family: $font_family_2;
+          font-weight: bold;
+          font-style: italic;
           //@include font-size(4.4);
           font-size: 44px;
           line-height: 1em;
@@ -157,6 +159,8 @@ body.body_clase.view-mode {
             background: url(img/arrow-up.png) center top no-repeat;
             background-size: 30px 18px;
             font-family: $font_family_2;
+            font-weight: bold;
+            font-style: italic;
             //@include font-size(1.2);
             font-size: 12px;
             color: $color_6;
