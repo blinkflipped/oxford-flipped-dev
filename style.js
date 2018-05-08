@@ -1028,10 +1028,10 @@ oxfordFlippedApp.loadByHash = function(currentHash) {
 oxfordFlippedApp.homepage = function(data) {
 
 	oxfordFlippedApp.console("Homepage");
-
-	var currentPage = oxfordFlippedApp.config.tree[0].id,
-			bodyClass = oxfordFlippedApp.config.tree[currentPage].class,
-			hash = oxfordFlippedApp.config.tree[currentPage].hash,
+  var currentIndex = 0;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash,
 			currentHash = window.location.hash;
 			//marketplaceHash = oxfordFlippedApp.config.tree['marketplace'].hash,
 			//isMarketplace = oxfordFlippedApp.getParameterByHash(marketplaceHash);
