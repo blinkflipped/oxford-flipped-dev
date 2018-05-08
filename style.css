@@ -202,6 +202,9 @@ body.oxfl-body-marketplace-game {
   .mascara_portrait {
     display: block; } }
 @media only screen and (max-width: 390px) {
+  .mascara_container {
+    width: 252px; }
+
   .mascara_img {
     background-image: url(img/mascara_500x300.png); } }
 .oxfl-title1 {
