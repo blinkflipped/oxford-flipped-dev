@@ -75,6 +75,24 @@
 
 @font-face {
   font-family: 'Myfrida';
+  src: url("fonts/myfrida_regular-webfont.eot");
+  src: url("fonts/myfrida_regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/myfrida_regular-webfont.woff2") format("woff2"), url("fonts/myfrida_regular-webfont.woff") format("woff"), url("fonts/myfrida_regular-webfont.ttf") format("truetype"), url("fonts/myfrida_regular-webfont.svg#myfridaregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Myfrida';
+  src: url("fonts/myfrida_regular_italic-webfont.eot");
+  src: url("fonts/myfrida_regular_italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/myfrida_regular_italic-webfont.woff2") format("woff2"), url("fonts/myfrida_regular_italic-webfont.woff") format("woff"), url("fonts/myfrida_regular_italic-webfont.ttf") format("truetype"), url("fonts/myfrida_regular_italic-webfont.svg#myfridaitalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+@font-face {
+  font-family: 'Myfrida';
+  src: url("fonts/myfrida_bold-webfont.eot");
+  src: url("fonts/myfrida_bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/myfrida_bold-webfont.woff2") format("woff2"), url("fonts/myfrida_bold-webfont.woff") format("woff"), url("fonts/myfrida_bold-webfont.ttf") format("truetype"), url("fonts/myfrida_bold-webfont.svg#myfridabold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+@font-face {
+  font-family: 'Myfrida';
   src: url("fonts/myfrida_bold-italic-webfont.eot");
   src: url("fonts/myfrida_bold-italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/myfrida_bold-italic-webfont.woff2") format("woff2"), url("fonts/myfrida_bold-italic-webfont.woff") format("woff"), url("fonts/myfrida_bold-italic-webfont.ttf") format("truetype"), url("fonts/myfrida_bold-italic-webfont.svg#myfridabold_italic") format("svg");
   font-weight: bold;
@@ -131,7 +149,6 @@ body.oxfl-body-marketplace-game {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-size: 23px;
-  font-size: 2.3rem;
   padding: 9px 30px;
   text-transform: uppercase;
   border-radius: 30px;
@@ -139,13 +156,60 @@ body.oxfl-body-marketplace-game {
   -moz-box-shadow: 0px 4px 0px 0px #2f81a7;
   box-shadow: 0px 4px 0px 0px #2f81a7; }
 
+.revision-budget,
+.attemps {
+  visibility: hidden; }
+
+.mascara_portrait {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background: #fff; }
+
+.mascara_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: 420px;
+  box-shadow: 5px 5px 15px #aaa;
+  border-radius: 5px;
+  text-align: center; }
+
+.mascara_img {
+  width: 100%;
+  height: 100%;
+  background: url(img/mascara-portrait.png) center center/100% 100% no-repeat; }
+
+.mascara_button {
+  position: absolute;
+  bottom: 8%;
+  left: 40%;
+  border: none;
+  padding: 10px 18px;
+  background: transparent;
+  color: transparent; }
+
+#ficha-alumno .title a:hover {
+  cursor: default; }
+
+@media only screen and (max-width: 767px), (orientation: portrait) {
+  .mascara_portrait {
+    display: block; } }
+@media only screen and (max-width: 390px) {
+  .mascara_img {
+    background-image: url(img/mascara_500x300.png); } }
 .oxfl-title1 {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-style: italic;
   font-size: 65px;
-  font-size: 6.5rem;
-  line-height: 0.77em;
+  line-height: 59px;
   color: #8BE23F;
   margin: 0; }
   .oxfl-title1 a {
@@ -156,7 +220,6 @@ body.oxfl-body-marketplace-game {
   font-weight: bold;
   font-style: italic;
   font-size: 29px;
-  font-size: 2.9rem;
   color: #8BE23F;
   margin: 0; }
   .oxfl-title2 a {
@@ -178,7 +241,6 @@ body.oxfl-body-marketplace-game {
   font-weight: bold;
   font-style: italic;
   font-size: 22px;
-  font-size: 2.2rem;
   color: #ED1E79;
   margin: 0; }
   .oxfl-title3 a {
@@ -188,7 +250,6 @@ body.oxfl-body-marketplace-game {
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
   font-size: 14px;
-  font-size: 1.4rem;
   color: #000000;
   margin: 0 0 5px 0; }
   .oxfl-episode .oxfl-title4 {
@@ -206,7 +267,6 @@ body.oxfl-body-marketplace-game {
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
   font-size: 20px;
-  font-size: 2rem;
   color: #000000;
   margin: 0 0 5px 0; }
   .oxfl-title5 a {
@@ -233,7 +293,6 @@ body.oxfl-body-marketplace-game {
   border-radius: 0 40px 40px 0;
   font-family: "Quicksand", sans-serif;
   font-size: 14px;
-  font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
   text-align: right;
@@ -310,12 +369,9 @@ body.oxfl-body-marketplace-game {
 
 .oxfl-button-bubble {
   font-size: 24px;
-  font-size: 2.4rem;
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
   text-align: center;
-  font-size: 24px;
-  font-size: 2.4rem;
   overflow: visible;
   outline: 0;
   margin: 0;
@@ -465,7 +521,6 @@ body.oxfl-body-marketplace-game {
   background-size: 90px 149px;
   font-family: "Quicksand", sans-serif;
   font-size: 11px;
-  font-size: 1.1rem;
   font-weight: 500;
   color: #ffffff;
   text-align: center;
@@ -566,7 +621,6 @@ body.oxfl-body-marketplace-game {
       text-shadow: none; }
 .oxfl-modal .modal-body {
   font-size: 19px;
-  font-size: 1.9rem;
   font-family: "Quicksand", sans-serif;
   text-align: center; }
 .oxfl-modal .modal-content {
@@ -602,7 +656,6 @@ body.oxfl-body-marketplace-game {
     padding: 2px;
     min-width: 0;
     font-size: 25px;
-    font-size: 2.5rem;
     font-weight: bold;
     transform: scale(1);
     transition: transform .3s linear; }
@@ -950,7 +1003,6 @@ body.oxfl-body-marketplace-game {
     transition: transform .3s linear; }
     #oxfl-home-menu-inner .oxfl-monster span {
       font-size: 20px;
-      font-size: 2rem;
       font-family: "Quicksand", sans-serif;
       font-weight: 700;
       color: #ffffff;
@@ -985,7 +1037,6 @@ body.oxfl-body-marketplace-game {
         left: 50%;
         margin-left: -60px;
         font-size: 22px;
-        font-size: 2.2rem;
         line-height: 40px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
       width: 299px;
@@ -1005,8 +1056,7 @@ body.oxfl-body-marketplace-game {
   width: 120px;
   height: 100px;
   font-size: 29px;
-  font-size: 2.9rem;
-  line-height: 0.7931034483em;
+  line-height: 23px;
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-style: italic;
@@ -1147,7 +1197,6 @@ body.oxfl-body-home #oxfl-home-menu {
       width: 244px;
       height: 110px;
       font-size: 53px;
-      font-size: 5.3rem;
       background-image: url(img/bubble-6.png);
       top: 50%;
       right: -177px;
@@ -1161,7 +1210,6 @@ body.oxfl-body-home #oxfl-home-menu {
       width: 274px;
       height: 134px;
       font-size: 48px;
-      font-size: 4.8rem;
       background-image: url(img/bubble-7.png);
       bottom: 0;
       left: -137px;
@@ -1238,7 +1286,6 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   .oxfl-resource-coins {
     font-family: "Quicksand", sans-serif;
     font-size: 15px;
-    font-size: 1.5rem;
     font-weight: 500;
     text-align: right;
     color: #FBB03B; }
@@ -1320,7 +1367,6 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   font-weight: 700;
   font-style: italic;
   font-size: 40px;
-  font-size: 4rem;
   line-height: 1em;
   color: #ffffff;
   background-image: url(img/monster-14-15-bubble.png);
@@ -1403,8 +1449,7 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   left: 45px; }
   #oxfl-episodes-monster span {
     font-size: 56px;
-    font-size: 5.6rem;
-    line-height: .9em;
+    line-height: 50px;
     font-family: "Myfrida", sans-serif;
     font-weight: 700;
     font-style: italic;
@@ -1767,12 +1812,27 @@ body.body_clase.view-mode .navbar-bottom {
 #actividad .content .review .attemps {
   display: none; }
 
+.libro-right,
+.libro-left {
+  background: #8BE23F !important; }
+
+.navbar.libro {
+  background: #8BE23F !important; }
+
+.libro-right ul li.close-back-wrapper::before,
+.navbar-divider::before {
+  background-color: #8BE23F; }
+
+.libro-right ul li.close-back-wrapper::before, .libro-right ul li.close-back-wrapper::after,
+.navbar-divider::before,
+.navbar-divider::after {
+  width: 0px; }
+
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .title h3 {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-style: italic;
   font-size: 70px;
-  font-size: 7rem;
   color: #EE7558;
   margin: 0;
   transform: rotate(-33deg);
@@ -1829,7 +1889,6 @@ body.body_clase.view-mode .oxfl-checkpoint-1-cover {
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-size: 30px;
-    font-size: 3rem;
     max-width: 280px;
     margin: 0 0 5px 0; }
   body.body_clase.view-mode .oxfl-checkpoint-1-cover .bck-content {
@@ -1876,7 +1935,6 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-
         right: 110px;
         text-align: right;
         font-size: 59px;
-        font-size: 5.9rem;
         line-height: 1em;
         color: #ffffff;
         font-family: "Quicksand", sans-serif;
@@ -1915,7 +1973,6 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
         font-weight: bold;
         font-style: italic;
         font-size: 50px;
-        font-size: 5rem;
         line-height: 0.8em;
         color: #8BE23F;
         margin: 0;
@@ -1946,7 +2003,6 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       width: 180px;
       font-family: "Myfrida", sans-serif;
       font-size: 44px;
-      font-size: 4.4rem;
       line-height: 1em;
       color: #FBB03B;
       position: absolute;
@@ -2014,7 +2070,6 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       background-size: 30px 18px;
       font-family: "Myfrida", sans-serif;
       font-size: 12px;
-      font-size: 1.2rem;
       color: #FBB03B;
       padding: 30px 6px 6px;
       position: absolute;
@@ -2043,7 +2098,6 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       font-family: "Quicksand", sans-serif;
       font-weight: bold;
       font-size: 16px;
-      font-size: 1.6rem;
       color: #ffffff; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .bck-title {
     background-image: url(img/monster-9.svg);
@@ -2221,7 +2275,6 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     right: 65px;
     text-align: right;
     font-size: 30px;
-    font-size: 3rem;
     line-height: 1em;
     color: #ffffff;
     font-family: "Quicksand", sans-serif;
@@ -2332,7 +2385,6 @@ body.body_clase.view-mode .oxfl-challenge-cover {
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-size: 30px;
-    font-size: 3rem;
     max-width: 250px;
     margin: 5px auto 0;
     padding-left: 40px; }

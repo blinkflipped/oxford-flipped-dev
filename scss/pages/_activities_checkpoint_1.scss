@@ -10,7 +10,8 @@ body.body_clase.view-mode {
             font-family: $font_family_2;
             font-weight: bold;
             font-style: italic;
-            @include font-size(7.0);
+            //@include font-size(7.0);
+            font-size: 70px;
             color: $color_12;
             margin: 0;
             transform: rotate(-33deg);
@@ -78,7 +79,8 @@ body.body_clase.view-mode {
       color: $negative_color;
       font-family: $font_family_2;
       font-weight: bold;
-      @include font-size(3.0);
+      //@include font-size(3.0);
+      font-size: 30px;
       max-width: 280px;
       margin: 0 0 5px 0;
     }

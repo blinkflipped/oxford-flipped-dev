@@ -78,7 +78,8 @@
     .oxfl-marketplace-menu-button-bubble {
       width: 244px;
       height: 110px;
-      @include font-size(5.3);
+      //@include font-size(5.3);
+      font-size: 53px;
       background-image: url(img/bubble-6.png);
       top: 50%;
       right: -177px;
@@ -93,7 +94,8 @@
     .oxfl-marketplace-menu-button-bubble {
       width: 274px;
       height: 134px;
-      @include font-size(4.8);
+      //@include font-size(4.8);
+      font-size: 48px;
       background-image: url(img/bubble-7.png);
       bottom: 0;
       left: -137px;

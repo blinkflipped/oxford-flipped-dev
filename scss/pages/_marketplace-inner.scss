@@ -71,7 +71,8 @@
 
   &-coins {
     font-family: $font_family_1;
-    @include font-size(1.5);
+    //@include font-size(1.5);
+    font-size: 15px;
     font-weight: 500;
     text-align: right;
     color: $color_6;
@@ -181,7 +182,8 @@
   font-family: $font_family_2;
   font-weight: 700;
   font-style: italic;
-  @include font-size(4.0);
+  //@include font-size(4.0);
+  font-size: 40px;
   line-height: 1em;
   color: $negative_color;
   background-image: url(img/monster-14-15-bubble.png);

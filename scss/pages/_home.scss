@@ -78,7 +78,8 @@
     transform: scale(1);
     transition: transform .3s linear;
     span {
-      @include font-size(2.0);
+      //@include font-size(2.0);
+      font-size: 20px;
       font-family: $font_family_1;
       font-weight: 700;
       color: $negative_color;
@@ -116,7 +117,8 @@
         top: 43%;
         left: 50%;
         margin-left: -60px;
-        @include font-size(2.2);
+        //@include font-size(2.2);
+        font-size: 22px;
         line-height: 40px;
       }
     }
@@ -141,8 +143,10 @@
   background-size: contain;
   width: 120px;
   height: 100px;
-  @include font-size(2.9);
-  line-height: (23em/29);
+  //@include font-size(2.9);
+  //line-height: (23em/29);
+  font-size: 29px;
+  line-height: 23px;
   font-family: $font_family_2;
   font-weight: bold;
   font-style: italic;

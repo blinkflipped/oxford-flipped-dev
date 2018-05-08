@@ -37,7 +37,8 @@ body.body_clase.view-mode {
               top: 25px;
               right: 110px;
               text-align: right;
-              @include font-size(5.9);
+              //@include font-size(5.9);
+              font-size: 59px;
               line-height: 1em;
               color: $negative_color;
               font-family: $font_family_1;

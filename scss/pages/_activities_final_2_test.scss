@@ -171,7 +171,8 @@ body.body_clase.view-mode {
     top: 18px;
     right: 65px;
     text-align: right;
-    @include font-size(3.0);
+    //@include font-size(3.0);
+    font-size: 30px;
     line-height: 1em;
     color: $negative_color;
     font-family: $font_family_1;

@@ -135,3 +135,27 @@ body.body_clase.view-mode {
     }
   }
 }
+
+.libro-right,
+.libro-left {
+    background: $color_1 !important;
+}
+
+.navbar.libro {
+    background: $color_1 !important;
+}
+
+.libro-right ul li.close-back-wrapper,
+.navbar-divider {
+  &::before {
+    background-color: $color_1;
+  }
+}
+
+.libro-right ul li.close-back-wrapper,
+.navbar-divider {
+  &::before,
+  &::after {
+    width: 0px;
+  }
+}
