@@ -764,31 +764,38 @@ oxfordFlippedApp.config.firstTime = true;
 oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-game', 'oxfl-body-marketplace-summary', 'oxfl-body-gradebook'];
 
 oxfordFlippedApp.config.tree = {
-	'home' : {
+	0 : {
+    'id' : 'home',
 		'hash' : 'home',
 		'class' : oxfordFlippedApp.config.bodyClasses[0]
 	},
-	'units' : {
+	1 : {
+    'id' : 'units',
 		'hash' : 'units',
 		'class' : oxfordFlippedApp.config.bodyClasses[1]
 	},
-	'unit' : {
+	2 : {
+    'id' : 'unit',
 		'hash' : 'unit_',
 		'class' : oxfordFlippedApp.config.bodyClasses[2]
 	},
-	'marketplace' : {
+	3 : {
+    'id' : 'marketplace',
 		'hash' : 'marketplace',
 		'class' : oxfordFlippedApp.config.bodyClasses[3]
 	},
-	'marketplace_games' : {
+	4 : {
+    'id' : 'marketplace_games',
 		'hash' : 'marketplace_games',
 		'class' : oxfordFlippedApp.config.bodyClasses[4]
 	},
-	'marketplace_summaries' : {
+	5 : {
+    'id' : 'marketplace_summaries',
 		'hash' : 'marketplace_summaries',
 		'class' : oxfordFlippedApp.config.bodyClasses[5]
 	},
-	'gradebook' : {
+	6 : {
+    'id' : 'gradebook',
 		'hash' : 'gradebook',
 		'class' : oxfordFlippedApp.config.bodyClasses[6]
 	}
@@ -996,23 +1003,23 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 
 oxfordFlippedApp.loadByHash = function(currentHash) {
 
-	if (currentHash === oxfordFlippedApp.config.tree[0].hash) {
+	if (currentHash === oxfordFlippedApp.config.tree[0].id) {
 		oxfordFlippedApp.homepage();
-	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[1].id) {
 		//oxfordFlippedApp.loadMarketplace();
 		console.log("Load Units");
-	} else if (currentHash === oxfordFlippedApp.config.tree[2].hash) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
 		//oxfordFlippedApp.loadMarketplace();
 		console.log("Load Unit, what id??");
-	} else if (currentHash === oxfordFlippedApp.config.tree[3].hash) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[3].id) {
 		oxfordFlippedApp.loadMarketplace();
-	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[4].id) {
 		console.log("CHECK")
 		oxfordFlippedApp.loadMarketplaceList('game');
-	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[5].id) {
 		console.log("CHECK 2")
 		oxfordFlippedApp.loadMarketplaceList('summary');
-	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[6].id) {
 		console.log("Load Gradebook")
 	}
 
@@ -1022,7 +1029,7 @@ oxfordFlippedApp.homepage = function(data) {
 
 	oxfordFlippedApp.console("Homepage");
 
-	var currentPage = 'home',
+	var currentPage = oxfordFlippedApp.config.tree[0].id,
 			bodyClass = oxfordFlippedApp.config.tree[currentPage].class,
 			hash = oxfordFlippedApp.config.tree[currentPage].hash,
 			currentHash = window.location.hash;
