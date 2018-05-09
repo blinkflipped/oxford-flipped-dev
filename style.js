@@ -1062,6 +1062,7 @@ oxfordFlippedApp.homepage = function(data) {
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash,
 			currentHash = window.location.hash;
+			currentHash = currentHash.replace('#','');
 			//marketplaceHash = oxfordFlippedApp.config.tree['marketplace'].hash,
 			//isMarketplace = oxfordFlippedApp.getParameterByHash(marketplaceHash);
 
