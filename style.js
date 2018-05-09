@@ -985,7 +985,7 @@ oxfordFlippedApp.changeUrl = function(key,value) {
 			var urlValue=searchUrl+'&'+key+'='+value;
 		}
 		else {	//If key present in query string
-			oldValue = getParameterByName(key);
+			oldValue = oxfordFlippedApp.getParameterByName(key);
 			if(searchUrl.indexOf("?"+key+"=")!= "-1") {
 				urlValue = searchUrl.replace('?'+key+'='+oldValue,'?'+key+'='+value);
 			}
@@ -1010,7 +1010,7 @@ oxfordFlippedApp.removeQString = function(key) {
 	var searchUrl=location.search;
 
 	if(key!="") {
-		oldValue = getParameterByName(key);
+		oldValue = oxfordFlippedApp.getParameterByName(key);
 		removeVal=key+"="+oldValue;
 		if(searchUrl.indexOf('?'+removeVal+'&')!= "-1") {
 			urlValue=urlValue.replace('?'+removeVal+'&','?');
