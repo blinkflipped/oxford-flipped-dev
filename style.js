@@ -960,6 +960,16 @@ oxfordFlippedApp.getParameterByHash = function(name, url) {
 	return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+oxfordFlippedApp.getParameterByName = function(name, url) {
+	if (!url) url = window.location.href;
+	name = name.replace(/[\[\]]/g, "\\$&");
+	var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+	if (!results) return null;
+	if (!results[2]) return '';
+	return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 oxfordFlippedApp.removeUnusedClass = function(currentClass) {
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
@@ -1013,8 +1023,18 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 		oxfordFlippedApp.loadEpisodes(data);
 		console.log("Load Units 2");
 	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
-		//oxfordFlippedApp.loadMarketplace();
-		console.log("Load Unit, what id??");
+
+		var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
+		if (oxflunit !== '') {
+			var currentEpisode = oxflunit,
+					activities = window.actividades;
+			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
+		} else {
+			console.log("Not Unit ID given");
+			window.location.hash = oxfordFlippedApp.config.tree[0].hash;
+			oxfordFlippedApp.homepage();
+		}
+
 	} else if (currentHash === oxfordFlippedApp.config.tree[3].id) {
 		oxfordFlippedApp.loadMarketplace();
 	} else if (currentHash === oxfordFlippedApp.config.tree[4].id) {
@@ -1092,7 +1112,6 @@ oxfordFlippedApp.homepage = function(data) {
 		$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
 			$('html').addClass('htmlReady');
 			$('body').addClass(userBodyClass);
-			console.log(currentHash);
 
 			if (currentHash !== '') {
 				// TODO CHECK
@@ -1167,14 +1186,22 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 		items.slice(i, i+4).wrapAll('<div class="oxfl-episodes-page"></div>');
 	}
 
+
 	$('#oxfl-episodes').slick(oxfordFlippedApp.config.carouselOpt);
 
-	$('body').removeClass('oxfl-body-home');
+	var currentIndex = 1;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
 	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-		$('body').addClass('oxfl-body-episodes');
-		window.location.hash = '';
-		oxfordFlippedApp.config.currentPage = 'oxfl-body-episodes';
-		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-home');
+		window.location.hash = hash;
+		$('body').addClass(bodyClass);
+
+		oxfordFlippedApp.config.currentPage = currentPage; // TODO VER SI LO USAMOS
+		//TODO QUITADO POR AHORA QUIZAS NO LO USEMOS ASI $(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-home');
 	});
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
@@ -1337,18 +1364,25 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	}
 
 	$('#oxfl-custom-background').css('background-image', 'url('+episodeImage+')');
-	oxfordFlippedApp.config.backgrounds['oxfl-body-chapters'] = episodeImage;
+	oxfordFlippedApp.config.backgrounds['oxfl-body-chapters'] = episodeImage; //TODO Ver si lo usamos
+
+
+	var currentIndex = 2;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
 	$('body').removeClass('oxfl-body-episodes');
 
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-		$('body').addClass('oxfl-body-chapters');
-		window.location.hash = '';
-		oxfordFlippedApp.config.currentPage = 'oxfl-body-chapters';
+		$('body').addClass(bodyClass);
+		window.location.hash = hash;
+		oxfordFlippedApp.config.currentPage = currentPage;
 		$('#oxfl-custom-background').addClass('active');
-		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
+		//TODO comprobar si lo usamos $(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
 	});
-
 
 	// Popovers
 	oxfordFlippedApp.popover();
