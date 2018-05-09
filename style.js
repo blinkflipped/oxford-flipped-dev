@@ -1010,7 +1010,8 @@ oxfordFlippedApp.loadByHash = function(currentHash) {
 		oxfordFlippedApp.homepage();
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].id) {
 		//oxfordFlippedApp.loadMarketplace();
-		console.log("Load Units");
+		oxfordFlippedApp.loadEpisodes();
+		console.log("Load Units 2");
 	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
 		//oxfordFlippedApp.loadMarketplace();
 		console.log("Load Unit, what id??");
