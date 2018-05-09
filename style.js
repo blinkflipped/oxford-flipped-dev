@@ -776,7 +776,7 @@ oxfordFlippedApp.config.tree = {
 	},
 	2 : {
     'id' : 'unit',
-		'hash' : 'unit',
+		'hash' : 'unit_',
 		'class' : oxfordFlippedApp.config.bodyClasses[2]
 	},
 	3 : {
@@ -1096,13 +1096,15 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 
 	console.log(oxfordFlippedApp.config.tree);
 
-	if (currentHash === oxfordFlippedApp.config.tree[0].id) {
+	if (currentHash === oxfordFlippedApp.config.tree[0].hash) {
 		oxfordFlippedApp.homepage();
-	} else if (currentHash === oxfordFlippedApp.config.tree[1].id) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) {
 		//oxfordFlippedApp.loadMarketplace();
 		oxfordFlippedApp.loadEpisodes(data);
-	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
-		var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
+	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) {
+		// This works different because of the ID
+		//var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash));
 		console.log(oxflunit);
 		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
@@ -1114,15 +1116,15 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 			oxfordFlippedApp.loadEpisodes(data);
 		}
 
-	} else if (currentHash === oxfordFlippedApp.config.tree[3].id) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[3].hash) {
 		oxfordFlippedApp.loadMarketplace();
-	} else if (currentHash === oxfordFlippedApp.config.tree[4].id) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) {
 		console.log("CHECK")
 		oxfordFlippedApp.loadMarketplaceList('game');
-	} else if (currentHash === oxfordFlippedApp.config.tree[5].id) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) {
 		console.log("CHECK 2")
 		oxfordFlippedApp.loadMarketplaceList('summary');
-	} else if (currentHash === oxfordFlippedApp.config.tree[6].id) {
+	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
 		console.log("Load Gradebook")
 	} else {
 		console.log("Incorrect hash, redirecting to HOME");
@@ -1144,7 +1146,7 @@ oxfordFlippedApp.homepage = function(data) {
 			//marketplaceHash = oxfordFlippedApp.config.tree['marketplace'].hash,
 			//isMarketplace = oxfordFlippedApp.getParameterByHash(marketplaceHash);
 
-	oxfordFlippedApp.removeQString('ounit');
+	//oxfordFlippedApp.removeQString('ounit');
 
 	if (oxfordFlippedApp.config.firstTime) {
 
@@ -1238,7 +1240,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 	oxfordFlippedApp.console("Load Unit List");
 	oxfordFlippedApp.console(data);
 
-	oxfordFlippedApp.removeQString('ounit');
+	//oxfordFlippedApp.removeQString('ounit');
 
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
@@ -1458,7 +1460,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	var currentIndex = 2;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
-			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash,
+			hashWithID = hash+currentEpisode;
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
@@ -1466,9 +1469,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
-		window.location.hash = hash;
-		console.log("TEST");
-		oxfordFlippedApp.changeUrl('ounit',currentEpisode);
+		window.location.hash = hashWithID;
+		console.log("TEST 2");
+		//oxfordFlippedApp.changeUrl('ounit',currentEpisode);
 
 		oxfordFlippedApp.config.currentPage = currentPage;
 		$('#oxfl-custom-background').addClass('active');
@@ -1491,7 +1494,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 		var resourceList = document.createDocumentFragment(),
 				activityHTML = 'actividad';
 
-		oxfordFlippedApp.removeQString('ounit');
+		//oxfordFlippedApp.removeQString('ounit');
 
 		$.each(data.units, function(i, unit){
 
@@ -1558,7 +1561,7 @@ oxfordFlippedApp.loadMarketplace = function() {
 
 	oxfordFlippedApp.console("Load Marketplace");
 
-	oxfordFlippedApp.removeQString('ounit');
+	//oxfordFlippedApp.removeQString('ounit');
 
 	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
 	$('#oxfl-custom-background').css('background-image', 'url('+marketplaceBackground+')');
