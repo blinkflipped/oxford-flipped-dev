@@ -974,12 +974,16 @@ oxfordFlippedApp.getParameterByName = function(name, url) {
 oxfordFlippedApp.changeUrl = function(key,value) {
 	//Get query string value
 	//var searchUrl=location.search;
-	var searchUrl = window.location.href;
+	var searchUrl = window.location.search;
+
+	var baseUrl = window.location.href.replace(searchUrl,'');
 	console.log(searchUrl);
+	console.log(baseUrl);
 	if(searchUrl.indexOf("?")== "-1") {
 		var urlValue='?'+key+'='+value;
 		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
-		history.pushState(null, null, urlValue);
+		var newUrlValue = baseUrl + urlValue;
+		history.pushState(null, null, newUrlValue);
 	}
 	else {
 		//Check for key in query string, if not present
@@ -996,7 +1000,8 @@ oxfordFlippedApp.changeUrl = function(key,value) {
 			}
 		}
 		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
-		history.pushState(null, null, urlValue);
+		var newUrlValue = baseUrl + urlValue;
+		history.pushState(null, null, newUrlValue);
 		//history.pushState function is used to add history state.
 		//It takes three parameters: a state object, a title (which is currently ignored), and (optionally) a URL.
 	}
