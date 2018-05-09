@@ -1002,6 +1002,9 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 }
 
 oxfordFlippedApp.loadByHash = function(currentHash) {
+  var currentHash = currentHash.replace('#','');
+
+	console.log(oxfordFlippedApp.config.tree);
 
 	if (currentHash === oxfordFlippedApp.config.tree[0].id) {
 		oxfordFlippedApp.homepage();
