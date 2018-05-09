@@ -1025,13 +1025,14 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
 
 		var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
-		if (oxflunit !== '') {
+		console.log(oxflunit);
+		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
 			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
 		} else {
 			console.log("Not Unit ID given");
-			window.location.hash = oxfordFlippedApp.config.tree[0].hash;
+			window.location.hash = '';
 			oxfordFlippedApp.homepage();
 		}
 
@@ -1047,7 +1048,7 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 		console.log("Load Gradebook")
 	} else {
 		console.log("Incorrect hash, redirecting to HOME");
-		window.location.hash = oxfordFlippedApp.config.tree[0].hash;
+		window.location.hash = '';
 		oxfordFlippedApp.homepage();
 	}
 
