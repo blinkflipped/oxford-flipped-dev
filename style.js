@@ -1104,7 +1104,7 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) {
 		// This works different because of the ID
 		//var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
-		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash));
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash);
 		console.log(oxflunit);
 		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
