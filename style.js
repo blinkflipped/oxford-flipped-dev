@@ -973,7 +973,9 @@ oxfordFlippedApp.getParameterByName = function(name, url) {
 //Add or modify querystring
 oxfordFlippedApp.changeUrl = function(key,value) {
 	//Get query string value
-	var searchUrl=location.search;
+	//var searchUrl=location.search;
+	var searchUrl = window.location.href;
+	console.log(searchUrl);
 	if(searchUrl.indexOf("?")== "-1") {
 		var urlValue='?'+key+'='+value;
 		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
@@ -1653,23 +1655,8 @@ oxfordFlippedApp.updateUserData = function() {
 }
 
 oxfordFlippedApp.gohome = function() {
-	var homeClass = 'oxfl-body-home',
-			possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
-			index = possibleClasses.indexOf(homeClass);
-
-	possibleClasses.splice(index, 1);
-
-	var $body = $('body');
-	$body.addClass(homeClass);
-	$.each(possibleClasses, function(i, v){
-		$body.removeClass(v);
-	});
-
-	$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
-	$('#oxfl-custom-background').removeAttr('style').removeClass('active');
-
 	window.location.hash = '';
-	oxfordFlippedApp.config.currentPage = homeClass;
+	oxfordFlippedApp.homepage();
 }
 /*
 oxfordFlippedApp.goback = function(classRef) {
