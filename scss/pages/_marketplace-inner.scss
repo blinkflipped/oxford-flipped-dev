@@ -12,6 +12,7 @@
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   overflow: hidden;
   -webkit-overflow-scrolling: auto;
+  pointer-events: none;
 }
 
 
@@ -222,6 +223,7 @@ body.oxfl-body-marketplace-game {
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s;
+    pointer-events: auto;
     .oxfl-resources-container {
       visibility:visible;
       opacity: 1;
@@ -239,6 +241,7 @@ body.oxfl-body-marketplace-summary {
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s;
+    pointer-events: auto;
     .oxfl-resources-container {
       visibility:visible;
       opacity: 1;

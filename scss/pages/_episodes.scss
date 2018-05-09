@@ -19,6 +19,7 @@ $episodes_monster_height: $episodes_image_height/2;
   visibility:hidden;
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  pointer-events: none;
 }
 
 #oxfl-episodes-monster {
@@ -132,6 +133,7 @@ body.oxfl-body-episodes {
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s;
+    pointer-events: auto;
   }
   #oxfl-episodes-monster {
     opacity: 1;

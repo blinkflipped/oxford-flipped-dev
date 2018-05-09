@@ -776,7 +776,7 @@ oxfordFlippedApp.config.tree = {
 	},
 	2 : {
     'id' : 'unit',
-		'hash' : 'unit_',
+		'hash' : 'unit',
 		'class' : oxfordFlippedApp.config.bodyClasses[2]
 	},
 	3 : {
@@ -970,6 +970,79 @@ oxfordFlippedApp.getParameterByName = function(name, url) {
 	return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+//Add or modify querystring
+oxfordFlippedApp.changeUrl = function(key,value) {
+	//Get query string value
+	var searchUrl=location.search;
+	if(searchUrl.indexOf("?")== "-1") {
+		var urlValue='?'+key+'='+value;
+		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
+		history.pushState(null, null, urlValue);
+	}
+	else {
+		//Check for key in query string, if not present
+		if(searchUrl.indexOf(key)== "-1") {
+			var urlValue=searchUrl+'&'+key+'='+value;
+		}
+		else {	//If key present in query string
+			oldValue = getParameterByName(key);
+			if(searchUrl.indexOf("?"+key+"=")!= "-1") {
+				urlValue = searchUrl.replace('?'+key+'='+oldValue,'?'+key+'='+value);
+			}
+			else {
+				urlValue = searchUrl.replace('&'+key+'='+oldValue,'&'+key+'='+value);
+			}
+		}
+		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
+		history.pushState(null, null, urlValue);
+		//history.pushState function is used to add history state.
+		//It takes three parameters: a state object, a title (which is currently ignored), and (optionally) a URL.
+	}
+	//objQueryString.key=value;
+	//sendAjaxReq(objQueryString);
+}
+
+//Function used to remove querystring
+oxfordFlippedApp.removeQString = function(key) {
+	var urlValue=document.location.href;
+
+	//Get query string value
+	var searchUrl=location.search;
+
+	if(key!="") {
+		oldValue = getParameterByName(key);
+		removeVal=key+"="+oldValue;
+		if(searchUrl.indexOf('?'+removeVal+'&')!= "-1") {
+			urlValue=urlValue.replace('?'+removeVal+'&','?');
+		}
+		else if(searchUrl.indexOf('&'+removeVal+'&')!= "-1") {
+			urlValue=urlValue.replace('&'+removeVal+'&','&');
+		}
+		else if(searchUrl.indexOf('?'+removeVal)!= "-1") {
+			urlValue=urlValue.replace('?'+removeVal,'');
+		}
+		else if(searchUrl.indexOf('&'+removeVal)!= "-1") {
+			urlValue=urlValue.replace('&'+removeVal,'');
+		}
+	}
+	else {
+		var searchUrl=location.search;
+		urlValue=urlValue.replace(searchUrl,'');
+	}
+	//history.pushState({state:1, rand: Math.random()}, '', urlValue);
+	history.pushState(null, null, urlValue);
+}
+
+
+
+
+
+
+
+
+
+
+
 oxfordFlippedApp.removeUnusedClass = function(currentClass) {
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
@@ -1021,9 +1094,7 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].id) {
 		//oxfordFlippedApp.loadMarketplace();
 		oxfordFlippedApp.loadEpisodes(data);
-		console.log("Load Units 2");
 	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
-
 		var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
 		console.log(oxflunit);
 		if (oxflunit !== '' && oxflunit !== null) {
@@ -1031,9 +1102,9 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 					activities = window.actividades;
 			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
 		} else {
-			console.log("Not Unit ID given");
+			console.log("Not Unit ID given, redirecting to Units");
 			window.location.hash = '';
-			oxfordFlippedApp.homepage();
+			oxfordFlippedApp.loadEpisodes(data);
 		}
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[3].id) {
@@ -1065,6 +1136,8 @@ oxfordFlippedApp.homepage = function(data) {
 			currentHash = currentHash.replace('#','');
 			//marketplaceHash = oxfordFlippedApp.config.tree['marketplace'].hash,
 			//isMarketplace = oxfordFlippedApp.getParameterByHash(marketplaceHash);
+
+	oxfordFlippedApp.removeQString('ounit');
 
 	if (oxfordFlippedApp.config.firstTime) {
 
@@ -1157,6 +1230,8 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	oxfordFlippedApp.console("Load Unit List");
 	oxfordFlippedApp.console(data);
+
+	oxfordFlippedApp.removeQString('ounit');
 
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
@@ -1385,6 +1460,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
 		window.location.hash = hash;
+		console.log("TEST");
+		oxfordFlippedApp.changeUrl('ounit',currentEpisode);
+
 		oxfordFlippedApp.config.currentPage = currentPage;
 		$('#oxfl-custom-background').addClass('active');
 		//TODO comprobar si lo usamos $(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
@@ -1405,6 +1483,8 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		var resourceList = document.createDocumentFragment(),
 				activityHTML = 'actividad';
+
+		oxfordFlippedApp.removeQString('ounit');
 
 		$.each(data.units, function(i, unit){
 
@@ -1470,6 +1550,8 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 oxfordFlippedApp.loadMarketplace = function() {
 
 	oxfordFlippedApp.console("Load Marketplace");
+
+	oxfordFlippedApp.removeQString('ounit');
 
 	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
 	$('#oxfl-custom-background').css('background-image', 'url('+marketplaceBackground+')');

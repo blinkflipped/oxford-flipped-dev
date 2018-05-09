@@ -1141,7 +1141,8 @@ body.oxfl-body-home #oxfl-home-menu {
   bottom: 0;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  pointer-events: none; }
 
 #oxfl-marketplace-menu {
   position: absolute;
@@ -1226,7 +1227,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-wrapper {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  transition-delay: 0s; }
+  transition-delay: 0s;
+  pointer-events: auto; }
 body.oxfl-body-marketplace #oxfl-marketplace-menu {
   opacity: 1;
   transform: translate(0, 0); }
@@ -1244,7 +1246,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   overflow: hidden;
-  -webkit-overflow-scrolling: auto; }
+  -webkit-overflow-scrolling: auto;
+  pointer-events: none; }
 
 .oxfl-resources-container {
   background: rgba(242, 242, 242, 0.8);
@@ -1405,7 +1408,8 @@ body.oxfl-body-marketplace-game #oxfl-resources-game-wrapper {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  transition-delay: 0s; }
+  transition-delay: 0s;
+  pointer-events: auto; }
   body.oxfl-body-marketplace-game #oxfl-resources-game-wrapper .oxfl-resources-container {
     visibility: visible;
     opacity: 1;
@@ -1416,7 +1420,8 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  transition-delay: 0s; }
+  transition-delay: 0s;
+  pointer-events: auto; }
   body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper .oxfl-resources-container {
     visibility: visible;
     opacity: 1;
@@ -1432,7 +1437,8 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   transform: translate(-50%, 0);
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  pointer-events: none; }
 
 #oxfl-episodes-monster {
   opacity: 0;
@@ -1525,7 +1531,8 @@ body.oxfl-body-episodes #oxfl-episodes {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  transition-delay: 0s; }
+  transition-delay: 0s;
+  pointer-events: auto; }
 body.oxfl-body-episodes #oxfl-episodes-monster {
   opacity: 1;
   transform: translate(0, 0); }
@@ -1548,7 +1555,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   transform: translate(-50%, 0);
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.3s,opacity 0.3s linear; }
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  pointer-events: none; }
 
 #oxfl-chapters-monster {
   opacity: 0;
@@ -1706,7 +1714,8 @@ body.oxfl-body-chapters #oxfl-chapters {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
-  transition-delay: 0s; }
+  transition-delay: 0s;
+  pointer-events: auto; }
 body.oxfl-body-chapters #oxfl-chapters-monster {
   opacity: 1;
   transform: translate(0, 0); }
