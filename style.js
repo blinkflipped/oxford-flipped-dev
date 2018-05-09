@@ -1001,7 +1001,7 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 	});
 }
 
-oxfordFlippedApp.loadByHash = function(currentHash) {
+oxfordFlippedApp.loadByHash = function(currentHash,data) {
   var currentHash = currentHash.replace('#','');
 
 	console.log(oxfordFlippedApp.config.tree);
@@ -1010,7 +1010,7 @@ oxfordFlippedApp.loadByHash = function(currentHash) {
 		oxfordFlippedApp.homepage();
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].id) {
 		//oxfordFlippedApp.loadMarketplace();
-		oxfordFlippedApp.loadEpisodes();
+		oxfordFlippedApp.loadEpisodes(data);
 		console.log("Load Units 2");
 	} else if (currentHash === oxfordFlippedApp.config.tree[2].id) {
 		//oxfordFlippedApp.loadMarketplace();
@@ -1097,7 +1097,7 @@ oxfordFlippedApp.homepage = function(data) {
 			if (currentHash !== '') {
 				// TODO CHECK
 				//oxfordFlippedApp.loadMarketplace(data);
-				oxfordFlippedApp.loadByHash(currentHash);
+				oxfordFlippedApp.loadByHash(currentHash,data);
 			} else {
 				$('body').addClass(bodyClass);
 				oxfordFlippedApp.removeUnusedClass(bodyClass);
@@ -1116,7 +1116,7 @@ oxfordFlippedApp.homepage = function(data) {
 		if (currentHash !== '') {
 			// TODO CHECK
 			//oxfordFlippedApp.loadMarketplace(data);
-			oxfordFlippedApp.loadByHash(currentHash);
+			oxfordFlippedApp.loadByHash(currentHash,data);
 		} else {
 			$('body').addClass(bodyClass);
 			oxfordFlippedApp.removeUnusedClass(bodyClass);
