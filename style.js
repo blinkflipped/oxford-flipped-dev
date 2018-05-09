@@ -1118,7 +1118,7 @@ oxfordFlippedApp.homepage = function(data) {
 			$('html').addClass('htmlReady');
 			$('body').addClass(userBodyClass);
 
-			if (currentHash !== '') {
+			if (currentHash !== '' && !hash) {
 				// TODO CHECK
 				//oxfordFlippedApp.loadMarketplace(data);
 				oxfordFlippedApp.loadByHash(currentHash,data);
@@ -1137,7 +1137,7 @@ oxfordFlippedApp.homepage = function(data) {
 	} else {
 		console.log("Ya cargado");
 		console.log(currentHash);
-		if (currentHash !== '') {
+		if (currentHash !== ''&& !hash) {
 			// TODO CHECK
 			//oxfordFlippedApp.loadMarketplace(data);
 			oxfordFlippedApp.loadByHash(currentHash,data);
