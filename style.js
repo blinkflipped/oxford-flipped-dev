@@ -1045,6 +1045,10 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 		oxfordFlippedApp.loadMarketplaceList('summary');
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].id) {
 		console.log("Load Gradebook")
+	} else {
+		console.log("Incorrect hash, redirecting to HOME");
+		window.location.hash = oxfordFlippedApp.config.tree[0].hash;
+		oxfordFlippedApp.homepage();
 	}
 
 }
