@@ -1264,10 +1264,12 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 	});
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
-		var currentEpisode = $(this).data('episode'),
-				activities = window.actividades,
-				updateHash = true;
-		oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
+		var currentEpisode = $(this).data('episode');
+				//activities = window.actividades,
+				//updateHash = true;
+		//oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
+		var newHash = oxfordFlippedApp.config.tree[5].hash + currentEpisode;
+		window.location.hash = newHash;
 	});
 }
 
