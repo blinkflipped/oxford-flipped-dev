@@ -750,6 +750,8 @@ oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.nameActivityInfo = 'Info';
 oxfordFlippedApp.config.nameChallenge = 'Challenge';
 oxfordFlippedApp.config.tagMarketplace = 'marketplace';
+oxfordFlippedApp.config.marketplaceType1 = 'game';
+oxfordFlippedApp.config.marketplaceType2 = 'summary';
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
 oxfordFlippedApp.config.minGrade = 50;
@@ -1121,10 +1123,12 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 		oxfordFlippedApp.loadMarketplace();
 	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) {
 		console.log("CHECK")
-		oxfordFlippedApp.loadMarketplaceList('game');
+		//oxfordFlippedApp.bookData
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4);
+		(data,type,itemperpage)
 	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) {
 		console.log("CHECK 2")
-		oxfordFlippedApp.loadMarketplaceList('summary');
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6);
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
 		console.log("Load Gradebook")
 	} else {
@@ -1490,10 +1494,11 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 		var resourceList = document.createDocumentFragment(),
 				activityHTML = 'actividad';
 
-		var currentIndex = (type === 'games') ? 4 : 5;
+		var currentIndex = (type === oxfordFlippedApp.config.marketplaceType1) ? 4 : 5;
 		var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
 				bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 				hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
 
 		$.each(data.units, function(i, unit){
 
@@ -1503,7 +1508,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 				$.each(subunits, function(x, resource){
 					if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
 						var resourceType = resource.type;
-							if ((type === 'game' && resourceType === activityHTML) || (type === 'summary' && resourceType !== activityHTML)) {
+							if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === activityHTML) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== activityHTML)) {
 								var resourceTitle = resource.title,
 										resourceDescription = resource.description,
 										resourceValue = resource.game_token,
@@ -1588,12 +1593,12 @@ oxfordFlippedApp.loadMarketplace = function() {
 
 	$('body').on('click', '.oxfl-js-load-summary' , function() {
 		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
-		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,'summary',6);
+		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType2,6);
 	});
 
 	$('body').on('click', '.oxfl-js-load-game' , function() {
 		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
-		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,'game',4);
+		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType1,4);
 	});
 
 }
