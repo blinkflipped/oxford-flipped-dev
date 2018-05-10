@@ -1046,6 +1046,8 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 			window.location.hash = '';
 			var updateHash = true;
 			oxfordFlippedApp.homepage(data,updateHash);
+		} else {
+			$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled');
 		}
 
 	}
