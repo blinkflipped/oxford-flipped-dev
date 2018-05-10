@@ -580,7 +580,7 @@
 
 				oxfordFlippedApp.console("onActivityDataLoaded");
 				oxfordFlippedApp.console(data);
-				oxfordFlippedApp.activityCreateFalseNavigation(data); //TODO Comprobar si funciona bien
+				oxfordFlippedApp.activityCreateFalseNavigation(data);
 				oxfordFlippedApp.activityCheckpointCover();
 				oxfordFlippedApp.challengeCover();
 				oxfordFlippedApp.activityFinalScreenOne(contentZoneIndex);
@@ -745,7 +745,7 @@ Slide.prototype.reviewButtons.alumno["btn-solution"] = {
 
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {};
-oxfordFlippedApp.config.isDEV = (ENTORNO === 'DEV'); //TODO CHECK
+oxfordFlippedApp.config.isDEV = (ENTORNO === 'DEV');
 oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.nameActivityInfo = 'Info';
 oxfordFlippedApp.config.nameChallenge = 'Challenge';
@@ -758,7 +758,6 @@ oxfordFlippedApp.config.minGrade = 50;
 oxfordFlippedApp.config.oneStarGradeMax = 70;
 oxfordFlippedApp.config.twoStarsGradeMax = 99;
 oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
-oxfordFlippedApp.config.currentPage = '';
 
 oxfordFlippedApp.config.firstTime = true;
 
@@ -804,14 +803,6 @@ oxfordFlippedApp.config.tree = {
 
 oxfordFlippedApp.config.challengeIDs = [];
 oxfordFlippedApp.config.backgroundWrapper = '#oxfl-custom-background';
-oxfordFlippedApp.config.backgrounds = { // TODO VER si lo usamos
-	'oxfl-body-home' : '',
-	'oxfl-body-episodes': '',
-	'oxfl-body-chapters': '',
-	'oxfl-body-marketplace': '',
-	'oxfl-body-marketplace-summary': '',
-	'oxfl-body-marketplace-game' : ''
-}
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
 
@@ -1175,11 +1166,9 @@ oxfordFlippedApp.homepage = function(data) {
 
 		var html = '<div id="oxfl-general"><div id="oxfl-custom-background"><div id="oxfl-custom-background-inner-1"></div> <div id="oxfl-custom-background-inner-2"></div> </div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">'+oxfordFlippedApp.text.text1+'</div><h1 class="oxfl-title1">'+bookTitle+'</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home oxfl-js-gohome"> <span>'+oxfordFlippedApp.text.buttonhome+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info oxfl-js-open-info" style="display: none"> <span>'+oxfordFlippedApp.text.buttoninfo+'</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace oxfl-js-load-marketplace"> <span>'+oxfordFlippedApp.text.buttonmarketplace+'</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled" data-goback=""> <span>'+oxfordFlippedApp.text.buttongoback+'</span></button></div><div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div><button id="oxfl-notifications" class="oxfl-js-open-notifications"><div class="oxfl-notifications-badge"></div></button><div id="oxfl-home-menu"><div id="oxfl-home-menu-inner" class="oxfl-container"><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-1" id="oxfl-goto-gradebook"><span>'+oxfordFlippedApp.text.buttongradebook+'</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>'+oxfordFlippedApp.text.buttonprepare+'</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3 oxfl-js-load-marketplace" id="oxfl-goto-marketplace"><span>'+oxfordFlippedApp.text.buttonmarketplace+'</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">'+oxfordFlippedApp.text.hello+' </span><span class="oxfl-bubble-hello-name">'+username+'</span></div></div></div></div></div><div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"><span>'+oxfordFlippedApp.text.selectepidose+'</span></div> <div id="oxfl-episodes"></div> </div> <div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-5"></div> <div id="oxfl-chapters"></div> </div> <div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buygame+'</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buysummary+'</span> </button> </div> </div> </div> <div id="oxfl-resources-game-wrapper"> <div id="oxfl-resources-game-monster"> <div class="oxfl-resources-game-monster-bubble"><span>'+oxfordFlippedApp.text.choosegame+'</span></div> </div> <div id="oxfl-resources-game" class="oxfl-resources-container"> </div> </div> <div id="oxfl-resources-summary-wrapper"> <div id="oxfl-resources-summary-monster"> <div class="oxfl-resources-summary-monster-bubble"><span>'+oxfordFlippedApp.text.chooseshorcut+'</span></div> </div> <div id="oxfl-resources-summary" class="oxfl-resources-container"> </div> </div> </div><div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.modalLock+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div></div> <div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-list-notifications" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <div class="oxfl-title3">'+oxfordFlippedApp.text.titleNotif+'</div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div id="oxfl-notifications-list"></div> </div> </div></div> </div> <div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-noconnection" id="oxfl-modal-marketplace-noconnection" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.noconnection+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div> <div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-nocoins" id="oxfl-modal-marketplace-nocoins" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.gamificacion_monedas_insuficientes+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div> <div class="modal fade oxfl-modal oxfl-modal-4 oxfl-modal-marketplace-info" id="oxfl-modal-marketplace-info" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div class="oxfl-title2b" id="oxfl-modal-marketplace-info-title"></div> <p id="oxfl-modal-marketplace-info-description"></p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <div class="oxfl-strip"> <div class="oxfl-strip-inner"> <span id="oxfl-modal-marketplace-info-coin"></span> <span class="oxfl-icon oxfl-icon-coin"></span> </div> </div> <button type="button" class="btn btn-primary oxfl-js-buy-resource" data-marketplace-id data-dismiss="modal">'+oxfordFlippedApp.text.buy+'</button> </div> </div> </div> </div> </div>';
 
-		//TODO CHECK SI LO USAMOS oxfordFlippedApp.config.backgrounds['oxfl-body-home'] = backgroundImage;
 		$('body').prepend(html);
 
 		oxfordFlippedApp.changeBackground(backgroundImage);
-		//$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+backgroundImage+')');
 
 		$.each(data.units[0].subunits, function(i, subunit){
 			var unitTitle = subunit.title,
@@ -1214,20 +1203,15 @@ oxfordFlippedApp.homepage = function(data) {
 		$('body').prepend(modalHTML);
 
 		$('body').imagesLoaded({background: 'div, a, span, button'}, function(){
-			//$(oxfordFlippedApp.config.backgroundWrapper).addClass('active');
 			$('html').addClass('htmlReady');
 			$('body').addClass(userBodyClass);
 			if (currentHash !== '' && currentHash !== hash) {
-				// TODO CHECK
-				//oxfordFlippedApp.loadMarketplace(data);
 				oxfordFlippedApp.loadByHash(currentHash,data);
 			} else {
 				$('body').addClass(bodyClass);
 				oxfordFlippedApp.removeUnusedClass(bodyClass);
 				window.location.hash = hash;
-				history.pushState(null, null, window.location.href);
-				//	oxfordFlippedApp.config.currentPage = bodyClass; // TODO Check si es necesario
-				oxfordFlippedApp.config.currentPage = currentPage; // TODO Check que funciona bien o si es necesario
+				//history.pushState(null, null, window.location.href);
 			}
 
 		});
@@ -1238,18 +1222,13 @@ oxfordFlippedApp.homepage = function(data) {
 		console.log("Ya cargado");
 		console.log(currentHash);
 		if (currentHash !== '' && currentHash !== hash) {
-			// TODO CHECK
-			//oxfordFlippedApp.loadMarketplace(data);
 			oxfordFlippedApp.loadByHash(currentHash,data);
 		} else {
 			oxfordFlippedApp.changeBackground(backgroundImage);
-			//$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+backgroundImage+')');
 			$('body').addClass(bodyClass);
 			oxfordFlippedApp.removeUnusedClass(bodyClass);
 			window.location.hash = hash;
-			history.pushState(null, null, window.location.href);
-			//	oxfordFlippedApp.config.currentPage = bodyClass; // TODO Check si es necesario
-			oxfordFlippedApp.config.currentPage = currentPage; // TODO Check que funciona bien o si es necesario
+			//history.pushState(null, null, window.location.href);
 		}
 	}
 
@@ -1304,11 +1283,8 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		window.location.hash = hash;
-		history.pushState(null, null, window.location.href);
+		//history.pushState(null, null, window.location.href);
 		$('body').addClass(bodyClass);
-
-		oxfordFlippedApp.config.currentPage = currentPage; // TODO VER SI LO USAMOS
-		//TODO QUITADO POR AHORA QUIZAS NO LO USEMOS ASI $(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr('data-goback', 'oxfl-body-home');
 	});
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
@@ -1466,8 +1442,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 		$chaptersWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 	}
 	oxfordFlippedApp.changeBackground(episodeImage);
-	//$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+episodeImage+')');
-	//oxfordFlippedApp.config.backgrounds['oxfl-body-chapters'] = episodeImage; //TODO Ver si lo usamos
 
 	var currentIndex = 2;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
@@ -1482,11 +1456,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
 		window.location.hash = hashWithID;
-		history.pushState(null, null, window.location.href);
+		//history.pushState(null, null, window.location.href);
 		console.log("TEST 3");
-		// TODO VER SI LO USAMOS oxfordFlippedApp.config.currentPage = currentPage;
-		//TODO VER SI es necesario $('#oxfl-custom-background').addClass('active');
-		//TODO comprobar si lo usamos $(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-episodes'});
 	});
 
 	// Popovers
@@ -1560,15 +1531,11 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
 		oxfordFlippedApp.changeBackground(marketplaceBackground);
-		//$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+marketplaceBackground+')');
 
 		$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 			$('body').addClass(bodyClass);
 			window.location.hash = hash;
-			history.pushState(null, null, window.location.href);
-			//TODO VER SI ES NECESARIO oxfordFlippedApp.config.currentPage = 'oxfl-body-marketplace-'+type;
-			//TODO VER SI ES NECESRAIO $('#oxfl-custom-background').addClass('active');
-			$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-marketplace'});
+			//history.pushState(null, null, window.location.href);
 		});
 }
 
@@ -1583,12 +1550,6 @@ oxfordFlippedApp.loadMarketplace = function() {
 
 	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
 	oxfordFlippedApp.changeBackground(marketplaceBackground);
-	//$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+marketplaceBackground+')');
-
-	//TODO VER SI LO USAMOS oxfordFlippedApp.config.backgrounds['oxfl-body-marketplace'] = marketplaceBackground;
-
-	//window.location.hash = oxfordFlippedApp.config.tagMarketplace;
-
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
@@ -1596,12 +1557,7 @@ oxfordFlippedApp.loadMarketplace = function() {
 
 		$('body').addClass(bodyClass);
 		window.location.hash = hash;
-		history.pushState(null, null, window.location.href);
-
-		//$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
-		//TODO VER SI ES NECESARIO $('#oxfl-custom-background').addClass('active');
-		// TOD VER SI LO USAMOS oxfordFlippedApp.config.currentPage = marketplaceClass;
-		//$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-home'});
+		//history.pushState(null, null, window.location.href);
 	});
 
 	// Click on buttons
@@ -1910,8 +1866,6 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 	 $(this).popover('toggle');
  });
 
-
-
 	blink.events.on('vocabulary:done', (function() {
 		oxfordFlippedApp.console("Prev Content Zone DONE");
 		var coins = blink.activity.currentStyle.calculateVocabularyCoins(); // TODO Check
@@ -2133,8 +2087,6 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 	if (isFinalSlide) {
 		oxfordFlippedApp.activityFinalScreenTest(currentSection);
 	}
-
-	//$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
 
 	if (currentSection === coverIDNum) {
 		oxfordFlippedApp.console("You're in Checkpoint 1");
