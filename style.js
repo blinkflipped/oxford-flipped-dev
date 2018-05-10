@@ -1100,7 +1100,7 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 	console.log(oxfordFlippedApp.config.tree);
 
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) {
-		oxfordFlippedApp.homepage();
+		oxfordFlippedApp.homepage(data);
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) {
 		//oxfordFlippedApp.loadMarketplace();
 		oxfordFlippedApp.loadEpisodes(data);
@@ -1133,7 +1133,7 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 	} else {
 		oxfordFlippedApp.console("Incorrect hash, redirecting to HOME");
 		window.location.hash = '';
-		oxfordFlippedApp.homepage();
+		oxfordFlippedApp.homepage(data);
 	}
 
 }
@@ -1675,7 +1675,7 @@ oxfordFlippedApp.updateUserData = function() {
 
 oxfordFlippedApp.gohome = function() {
 	window.location.hash = '';
-	oxfordFlippedApp.homepage();
+	oxfordFlippedApp.homepage(oxfordFlippedApp.bookData);
 }
 /*
 oxfordFlippedApp.goback = function(classRef) {
