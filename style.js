@@ -1005,6 +1005,12 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 		// This works different because we need an ID to load the Units / Chapters
 		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, ''),
 				unitExists = (oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit) >= 0);
+
+		console.log(oxflunit);
+		console.log(oxfordFlippedApp.config.unitsIDs);
+		console.log(oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit));
+		console.log(unitExists);
+
 		if (oxflunit !== '' && oxflunit !== null && unitExists) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
