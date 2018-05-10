@@ -993,6 +993,10 @@ var hashDistributorTimeout;
 oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 	clearTimeout(hashDistributorTimeout);
+
+	console.log(hashDistributorTimeout);
+
+	
 	var timeToWait = 5000;
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) { //Home
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.homepage(data,updateHash)}, timeToWait);
