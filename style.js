@@ -745,7 +745,7 @@ Slide.prototype.reviewButtons.alumno["btn-solution"] = {
 
 var oxfordFlippedApp = window.oxfordFlippedApp || {};
 oxfordFlippedApp.config = {};
-oxfordFlippedApp.config.isDEV = true;
+oxfordFlippedApp.config.isDEV = (ENTORNO === 'DEV'); //TODO CHECK
 oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.nameActivityInfo = 'Info';
 oxfordFlippedApp.config.nameChallenge = 'Challenge';
@@ -761,7 +761,6 @@ oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
 oxfordFlippedApp.config.currentPage = '';
 
 oxfordFlippedApp.config.firstTime = true;
-
 
 oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-game', 'oxfl-body-marketplace-summary', 'oxfl-body-gradebook'];
 
@@ -883,7 +882,6 @@ oxfordFlippedApp.getChallengeIDs = function(data) {
 					unitIsMarketplace = (unit.title === 'Marketplace') ? true : false;
 			if (!unitIsMarketplace) {
 				$.each(unit.subunits, function(i, subunit){
-					oxfordFlippedApp.console(i);
 					var chapterIsChallenge = (subunit.title ===  oxfordFlippedApp.config.nameChallenge);
 					if (chapterIsChallenge) {
 						oxfordFlippedApp.config.challengeIDs.push(subunit.id);
@@ -1184,7 +1182,6 @@ oxfordFlippedApp.homepage = function(data) {
 		//$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+backgroundImage+')');
 
 		$.each(data.units[0].subunits, function(i, subunit){
-			oxfordFlippedApp.console(subunit);
 			var unitTitle = subunit.title,
 					unitIsInfo = (subunit.title === oxfordFlippedApp.config.nameActivityInfo);
 			if (unitIsInfo) {
@@ -1228,6 +1225,7 @@ oxfordFlippedApp.homepage = function(data) {
 				$('body').addClass(bodyClass);
 				oxfordFlippedApp.removeUnusedClass(bodyClass);
 				window.location.hash = hash;
+				history.pushState(null, null, window.location.href);
 				//	oxfordFlippedApp.config.currentPage = bodyClass; // TODO Check si es necesario
 				oxfordFlippedApp.config.currentPage = currentPage; // TODO Check que funciona bien o si es necesario
 			}
@@ -1249,6 +1247,7 @@ oxfordFlippedApp.homepage = function(data) {
 			$('body').addClass(bodyClass);
 			oxfordFlippedApp.removeUnusedClass(bodyClass);
 			window.location.hash = hash;
+			history.pushState(null, null, window.location.href);
 			//	oxfordFlippedApp.config.currentPage = bodyClass; // TODO Check si es necesario
 			oxfordFlippedApp.config.currentPage = currentPage; // TODO Check que funciona bien o si es necesario
 		}
@@ -1263,8 +1262,6 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
-
-		oxfordFlippedApp.console(unit);
 
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var unitTitle = unit.title,
@@ -1307,6 +1304,7 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 
 	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		window.location.hash = hash;
+		history.pushState(null, null, window.location.href);
 		$('body').addClass(bodyClass);
 
 		oxfordFlippedApp.config.currentPage = currentPage; // TODO VER SI LO USAMOS
@@ -1390,7 +1388,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 	$.each(chapters, function(i, chapter){
 
-		//oxfordFlippedApp.console(chapter);
 		var chapterID = chapter.id,
 				chapterTitle = chapter.title,
 				chapterTag = chapter.tag,
@@ -1485,6 +1482,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
 		window.location.hash = hashWithID;
+		history.pushState(null, null, window.location.href);
 		console.log("TEST 3");
 		// TODO VER SI LO USAMOS oxfordFlippedApp.config.currentPage = currentPage;
 		//TODO VER SI es necesario $('#oxfl-custom-background').addClass('active');
@@ -1567,6 +1565,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 		$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 			$('body').addClass(bodyClass);
 			window.location.hash = hash;
+			history.pushState(null, null, window.location.href);
 			//TODO VER SI ES NECESARIO oxfordFlippedApp.config.currentPage = 'oxfl-body-marketplace-'+type;
 			//TODO VER SI ES NECESRAIO $('#oxfl-custom-background').addClass('active');
 			$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({'data-goback': 'oxfl-body-marketplace'});
@@ -1597,6 +1596,7 @@ oxfordFlippedApp.loadMarketplace = function() {
 
 		$('body').addClass(bodyClass);
 		window.location.hash = hash;
+		history.pushState(null, null, window.location.href);
 
 		//$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
 		//TODO VER SI ES NECESARIO $('#oxfl-custom-background').addClass('active');
@@ -1674,7 +1674,7 @@ oxfordFlippedApp.updateUserData = function() {
 }
 
 oxfordFlippedApp.gohome = function() {
-	window.location.hash = '';
+	window.location.hash = ;
 	oxfordFlippedApp.homepage(oxfordFlippedApp.bookData);
 }
 /*

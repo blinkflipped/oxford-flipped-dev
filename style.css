@@ -1280,7 +1280,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     width: 100%;
     height: 148px;
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    background: #ED1E79; }
     .oxfl-resource .oxfl-resource-image-wrapper img {
       display: block;
       width: 100%;
