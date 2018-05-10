@@ -994,7 +994,7 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 	clearTimeout(hashDistributorTimeout);
 
-	var timeToWait = 100;
+	var timeToWait = 500;
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) { //Home
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.homepage(data,updateHash)}, timeToWait);
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) { // Episodes / Units
@@ -1093,6 +1093,8 @@ oxfordFlippedApp.changeBackground = function(image) {
 }
 
 oxfordFlippedApp.homepage = function(data,updateHash) {
+
+	console.log("PAGE");
 
 	oxfordFlippedApp.console("Homepage");
 	var currentIndex = 0;
@@ -1199,6 +1201,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 
 oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 
+	console.log("PAGE");
 	oxfordFlippedApp.console("Load Unit List");
 	oxfordFlippedApp.console(data);
 
@@ -1324,6 +1327,8 @@ oxfordFlippedApp.marginBottomMonsterChapters = function() {
 
 oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHash) {
 
+	console.log("PAGE");
+
 	oxfordFlippedApp.console("Load Chapters List");
 
 	var chapters = data.units[currentEpisode].subunits,
@@ -1445,75 +1450,79 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 }
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
 
-		var resourceList = document.createDocumentFragment(),
-				activityHTML = 'actividad';
+	console.log("PAGE");
 
-		var currentIndex = (type === oxfordFlippedApp.config.marketplaceType1) ? 4 : 5;
-		var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
-				bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
-				hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+	var resourceList = document.createDocumentFragment(),
+			activityHTML = 'actividad';
+
+	var currentIndex = (type === oxfordFlippedApp.config.marketplaceType1) ? 4 : 5;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
 
-		$.each(data.units, function(i, unit){
+	$.each(data.units, function(i, unit){
 
-			if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
-				var subunits = unit.subunits;
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
+			var subunits = unit.subunits;
 
-				$.each(subunits, function(x, resource){
-					if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
-						var resourceType = resource.type;
-							if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === activityHTML) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== activityHTML)) {
-								var resourceTitle = resource.title,
-										resourceDescription = resource.description,
-										resourceValue = resource.game_token,
-										resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
-										resourceId = resource.id,
-										resourceurl = resource.url,
-										resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
-										resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
-										resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+resourceTitle+"', '"+resourceDescription+"',"+resourceId+")",
-										resourceListItem = document.createElement('div');
-										resourceListItem.className = 'oxfl-resource-item';
+			$.each(subunits, function(x, resource){
+				if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
+					var resourceType = resource.type;
+						if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === activityHTML) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== activityHTML)) {
+							var resourceTitle = resource.title,
+									resourceDescription = resource.description,
+									resourceValue = resource.game_token,
+									resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
+									resourceId = resource.id,
+									resourceurl = resource.url,
+									resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
+									resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
+									resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+resourceTitle+"', '"+resourceDescription+"',"+resourceId+")",
+									resourceListItem = document.createElement('div');
+									resourceListItem.className = 'oxfl-resource-item';
 
-								resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
-								resourceList.appendChild(resourceListItem);
-							}
-					}
-				});
-			}
-		});
-
-		var $resourceWrapper = $('#oxfl-resources-'+type);
-
-		if ($resourceWrapper.hasClass('slick-initialized')) {
-			$resourceWrapper.slick('unslick');
+							resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
+							resourceList.appendChild(resourceListItem);
+						}
+				}
+			});
 		}
-		$resourceWrapper.empty();
-		$resourceWrapper[0].appendChild(resourceList);
+	});
 
-		var items = $resourceWrapper.find('.oxfl-resource-item'),
-				itemsLength = items.length;
-		for(var i = 0; i < itemsLength; i+=itemperpage) {
-			items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
-		}
+	var $resourceWrapper = $('#oxfl-resources-'+type);
 
-		$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+	if ($resourceWrapper.hasClass('slick-initialized')) {
+		$resourceWrapper.slick('unslick');
+	}
+	$resourceWrapper.empty();
+	$resourceWrapper[0].appendChild(resourceList);
 
-		oxfordFlippedApp.removeUnusedClass(bodyClass);
+	var items = $resourceWrapper.find('.oxfl-resource-item'),
+			itemsLength = items.length;
+	for(var i = 0; i < itemsLength; i+=itemperpage) {
+		items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
+	}
 
-		var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
-		oxfordFlippedApp.changeBackground(marketplaceBackground);
+	$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 
-		// Object Fit support
-		oxfordFlippedApp.objectFitSupport();
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
-		$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
-			$('body').addClass(bodyClass);
-			if (updateHash) window.location.hash = hash;
-		});
+	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
+	oxfordFlippedApp.changeBackground(marketplaceBackground);
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
+	$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass(bodyClass);
+		if (updateHash) window.location.hash = hash;
+	});
 }
 
 oxfordFlippedApp.loadMarketplace = function(updateHash) {
+
+	console.log("PAGE");
 
 	oxfordFlippedApp.console("Load Marketplace");
 
