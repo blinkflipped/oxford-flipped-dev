@@ -1228,6 +1228,7 @@ oxfordFlippedApp.homepage = function(data) {
 			//oxfordFlippedApp.loadMarketplace(data);
 			oxfordFlippedApp.loadByHash(currentHash,data);
 		} else {
+			$(oxfordFlippedApp.config.backgroundWrapper).css('background-image', 'url('+backgroundImage+')');
 			$('body').addClass(bodyClass);
 			oxfordFlippedApp.removeUnusedClass(bodyClass);
 			window.location.hash = hash;
