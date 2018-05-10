@@ -1102,16 +1102,16 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 		//oxfordFlippedApp.loadMarketplace();
 		oxfordFlippedApp.loadEpisodes(data);
 	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) {
-		// This works different because of the ID
+		// This works different because we need an ID to load the Units / Chapters
 		//var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
-		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash);
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, '');
 		console.log(oxflunit);
 		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
 			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
 		} else {
-			console.log("Not Unit ID given, redirecting to Units");
+			oxfordFlippedApp.console("Not Unit ID given, redirecting to Units");
 			window.location.hash = '';
 			oxfordFlippedApp.loadEpisodes(data);
 		}
@@ -1127,7 +1127,7 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
 		console.log("Load Gradebook")
 	} else {
-		console.log("Incorrect hash, redirecting to HOME");
+		oxfordFlippedApp.console("Incorrect hash, redirecting to HOME");
 		window.location.hash = '';
 		oxfordFlippedApp.homepage();
 	}
