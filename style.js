@@ -1039,8 +1039,9 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 	} else { // Incorrect hash
 
-		oxfordFlippedApp.console("Incorrect hash, redirecting to HOME");
+		oxfordFlippedApp.console("Incorrect hash, redirecting to Home");
 		window.location.hash = '';
+		var updateHash = true;
 		oxfordFlippedApp.homepage(data,updateHash);
 
 	}
