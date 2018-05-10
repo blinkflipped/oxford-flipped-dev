@@ -1127,6 +1127,61 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 
 }
 
+oxfordFlippedApp.onChangeHash = function() {
+
+	var currentHash = window.location.hash.replace('#','');
+	var data = oxfordFlippedApp.bookData;
+
+	if (currentHash === oxfordFlippedApp.config.tree[0].hash) {
+		oxfordFlippedApp.homepage(data);
+	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) {
+		//oxfordFlippedApp.loadMarketplace();
+		oxfordFlippedApp.loadEpisodes(data);
+	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) {
+		// This works different because we need an ID to load the Units / Chapters
+		//var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, '');
+		console.log(oxflunit);
+		if (oxflunit !== '' && oxflunit !== null) {
+			var currentEpisode = oxflunit,
+					activities = window.actividades;
+			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
+		} else {
+			oxfordFlippedApp.console("Not Unit ID given, redirecting to Units");
+			window.location.hash = '';
+			oxfordFlippedApp.loadEpisodes(data);
+		}
+
+	} else if (currentHash === oxfordFlippedApp.config.tree[3].hash) {
+		oxfordFlippedApp.loadMarketplace();
+	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) {
+		console.log("CHECK")
+		//oxfordFlippedApp.bookData
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4);
+	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) {
+		console.log("CHECK 2")
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6);
+	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
+		console.log("Load Gradebook")
+	} else {
+		oxfordFlippedApp.console("Incorrect hash, redirecting to HOME");
+		window.location.hash = '';
+		oxfordFlippedApp.homepage(data);
+	}
+
+	console.log("PRUEBA CAMBIO DE HASH");
+
+	/*if (newState) {
+		console.log("New state");
+	} else {
+		console.log("Not New state: e.g. Go back");
+	}*/
+
+}
+
+window.addEventListener("hashchange", oxfordFlippedApp.onChangeHash, false);
+
+
 oxfordFlippedApp.changeBackground = function(image) {
 
 	var $nextBackgroundWrapper = $(oxfordFlippedApp.config.backgroundWrapper).children('div:not(.active):first');
