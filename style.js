@@ -1154,11 +1154,12 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			oxfordFlippedApp.loadEpisodes(data,updateHash);
 		});
 
-		var test2 = 0;
+		//var test2 = 0;
 		$('body').on('click', '.oxfl-js-load-marketplace', function() {
-			var updateHash = true;
-			console.log(test2++);
-			oxfordFlippedApp.loadMarketplace(data,updateHash);
+			//var updateHash = true;
+			//console.log(test2++);
+			//oxfordFlippedApp.loadMarketplace(data,updateHash);
+			window.location.hash = oxfordFlippedApp.config.tree[3].hash;
 		});
 
 		$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
@@ -1548,18 +1549,20 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 	});
 
 	// Click on buttons
-	var test = 0;
+	//var test = 0;
 	$('body').on('click', '.oxfl-js-load-summary' , function() {
-		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
-		var updateHash = true;
-		console.log(test++);
-		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
+		//oxfordFlippedApp.console(oxfordFlippedApp.bookData);
+		//var updateHash = true;
+		//console.log(test++);
+		window.location.hash = oxfordFlippedApp.config.tree[5].hash;
+		//oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
 	});
 
 	$('body').on('click', '.oxfl-js-load-game' , function() {
-		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
-		var updateHash = true;
-		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType1,4,updateHash);
+		//oxfordFlippedApp.console(oxfordFlippedApp.bookData);
+		//var updateHash = true;
+		window.location.hash = oxfordFlippedApp.config.tree[4].hash;
+		//oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType1,4,updateHash);
 	});
 
 }
