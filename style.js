@@ -557,7 +557,6 @@
 			this.onActivityDataLoaded(subunit);
 			oxfordFlippedApp.getChallengeIDs(data);
 
-			console.log("onCourseDataLoaded");
 			var isBookCover = idclase.toString() === window.bookcover;
 
 			if (isBookCover) {
@@ -589,7 +588,7 @@
 				oxfordFlippedApp.activityTestSlides(contentZoneIndex);
 				var sectionOnLoad = blink.activity.currentSection;
 				oxfordFlippedApp.onSliderChange(sectionOnLoad);
-				console.log("Se carga en la seccion:"+sectionOnLoad);
+
 				blink.events.on('slider:change', function(currentSection) {
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
@@ -600,13 +599,6 @@
 					oxfordFlippedApp.onSliderChanged(currentSection);
 
 				});
-
-			/*	blink.events.on('showSlide:after', function(currentSection) {
-					console.log("showslide:after");
-					console.log(currentSection);
-					oxfordFlippedApp.activityFinalScreenTest(currentSection);
-					oxfordFlippedApp.onSliderChange(currentSection);
-				});*/
 
 				$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
 					$('html').addClass('htmlReady');
@@ -863,11 +855,7 @@ oxfordFlippedApp.console = function(logValue) {
 
 oxfordFlippedApp.getChallengeIDs = function(data) {
 
-	oxfordFlippedApp.console(data);
-
 	$.each(data.units, function(i, unit){
-
-		oxfordFlippedApp.console(unit);
 
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var unitTitle = unit.title,
@@ -1035,12 +1023,9 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook (Not implemented)
 
-		console.log("Load Gradebook")
-
 	} else { // Incorrect hash
 
 		oxfordFlippedApp.console("Incorrect hash, redirecting to Home");
-		console.log(window.location);
 
 		if (currentHash !== '') {
 			window.location.hash = '';
@@ -1177,8 +1162,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		oxfordFlippedApp.config.firstTime = false;
 
 	} else {
-		console.log("Ya cargado");
-		console.log(currentHash);
+		// Home already loaded
 		if (currentHash !== '' && currentHash !== hash) {
 			oxfordFlippedApp.loadByHash(currentHash,data);
 		} else {
@@ -1590,65 +1574,9 @@ oxfordFlippedApp.updateUserData = function() {
 oxfordFlippedApp.gohome = function() {
 	window.location.hash = oxfordFlippedApp.config.tree[0].hash;
 }
-/*
-oxfordFlippedApp.goback = function(classRef) {
 
-	var possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
-			index = possibleClasses.indexOf(classRef),
-			possibleParents = {
-				'oxfl-body-home' : '',
-				'oxfl-body-episodes' : 'oxfl-body-home',
-				'oxfl-body-chapters' : 'oxfl-body-episodes',
-				'oxfl-body-marketplace' : 'oxfl-body-home',
-				'oxfl-body-marketplace-game' : 'oxfl-body-marketplace',
-				'oxfl-body-marketplace-summary' : 'oxfl-body-marketplace'
-			},
-			possibleHash = {
-				'oxfl-body-home' : '',
-				'oxfl-body-episodes' : '',
-				'oxfl-body-chapters' : '',
-				'oxfl-body-marketplace' : oxfordFlippedApp.config.tagMarketplace,
-				'oxfl-body-marketplace-game' : oxfordFlippedApp.config.tagMarketplace,
-				'oxfl-body-marketplace-summary' : oxfordFlippedApp.config.tagMarketplace
-			};
-
-
-	possibleClasses.splice(index, 1);
-
-	var $body = $('body');
-	$body.addClass(classRef);
-	$.each(possibleClasses, function(i, v){
-		$body.removeClass(v);
-	});
-
-	window.location.hash = possibleParents[classRef];
-	oxfordFlippedApp.config.currentPage = classRef;
-
-	var hasParent = (possibleParents[classRef] != '') ? true : false;
-
-	if (hasParent) {
-		$(oxfordFlippedApp.config.buttonGoBack).removeClass('disabled').attr({
-			'data-goback': possibleParents[classRef]
-		});
-	} else {
-		$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled').attr('data-goback', '');
-	}
-
-	if (oxfordFlippedApp.config.backgrounds[classRef] === '') {
-		oxfordFlippedApp.console("Without background");
-		$('#oxfl-custom-background').removeAttr('style').removeClass('active');
-	} else {
-		oxfordFlippedApp.console("With background");
-		$('#oxfl-custom-background').css('background-image', 'url('+oxfordFlippedApp.config.backgrounds[classRef]+')').addClass('active');
-	}
-
-}
-*/
-
-var test = 0;
 oxfordFlippedApp.goback = function(classRef) {
 	 window.history.back();
-	 console.log(test++);
 }
 
 oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
@@ -1778,10 +1706,11 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
  });
 
 	blink.events.on('vocabulary:done', (function() {
-		oxfordFlippedApp.console("Prev Content Zone DONE");
-		var coins = blink.activity.currentStyle.calculateVocabularyCoins(); // TODO Check
+
+		var coins = blink.activity.currentStyle.calculateVocabularyCoins();
 		$('#oxfl-total-coins-1').text(coins);
 		$slide.closest('.js-slider-item').scrollTop(0).addClass('oxfl-final-screen-one-wrapper-active');
+
 	}));
 
 }
@@ -1845,7 +1774,6 @@ oxfordFlippedApp.activityContentZone = function() {
 
 	$('body').on('click', '.oxfl-js-start-test', function() {
 
-		oxfordFlippedApp.console("START");
 		var $modal = $('#oxfl-modal-start-test');
 		$modal.modal('hide');
 		blink.activity.showNextSection();
@@ -1858,7 +1786,6 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 		var totalSlides = blink.activity.currentStyle.Slider.$items.length,
 				isLastSlide = (totalSlides === currentSection+1);
-		oxfordFlippedApp.console(isLastSlide);
 
 		if (isLastSlide) {
 
@@ -1866,9 +1793,6 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					isFinalSlide = $lastSlide.find('.oxfl-end-screen-tip').length,
 					isChallenge = oxfordFlippedApp.config.challengeIDs.indexOf(idclase.toString()) >= 0;
 
-			console.log('Challenge? Final slide?');
-			console.log(isFinalSlide);
-			console.log(isChallenge);
 			if (isFinalSlide) {
 				parent.top.oxfordFlippedApp.hideIframeButton();
 
@@ -1876,8 +1800,6 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 				var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 				loadScript(urlSeguimiento, true, function() {
-
-					oxfordFlippedApp.console(window.actividades);
 
 					var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
 
@@ -1999,17 +1921,12 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 		oxfordFlippedApp.activityFinalScreenTest(currentSection);
 	}
 
-	if (currentSection === coverIDNum) {
-		oxfordFlippedApp.console("You're in Checkpoint 1");
-	}
-
 	if (currentSection === coverChallengeIDNum) {
 		$('body').addClass('oxfl-challenge-cover-wrapper-on');
 	}
 
 	if (currentSection === contentZoneIDNum) {
 
-		oxfordFlippedApp.console("You're in Content Zone");
 		$('body').addClass('oxfl-content-zone-on');
 
 	} else {
@@ -2036,20 +1953,15 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 
 	if (!isFinalSlide) {
 		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
-		console.log("Not final Slide");
 	}
 
 	if (currentSection !== coverChallengeIDNum) {
 		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
-		console.log("Not Cover challenge");
 	}
 
 	if (currentSection !== contentZoneIDNum) {
 		$('body').removeClass('oxfl-content-zone-on');
-		console.log("Not  content zone");
 	}
-
-	//$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
 
 }
 
@@ -2108,7 +2020,7 @@ $(document).ready(function() {
 
 	// Go back
 	$('body').on('click', oxfordFlippedApp.config.buttonGoBack, function() {
-		console.log("Check 2");
+
 		oxfordFlippedApp.goback();
 
 	});
@@ -2135,18 +2047,6 @@ $(document).ready(function() {
 		blink.domain.openActivity(chapterID);
 
 	});
-
-	// Load resource / marketplace
-	/*$('body').on('click', '.oxfl-js-load-resource', function(e) {
-
-		e.preventDefault();
-		var resourceOnclick = $(this).attr('data-onclick');
-		//resourceOnclick;
-		//blink.theme.iframeWidth = 1300;
-		//blink.domain.openActivity(resourceID);
-		//redireccionar(resourceUrl, false, undefined);
-
-	});*/
 
 	// Lock/unlock chapters
 	$('body').on('click', '.oxfl-js-modal-lock-chapter', function(e) {
@@ -2208,7 +2108,6 @@ $(document).ready(function() {
 
 	blink.events.on('course:refresh', (function() {
 
-		console.log("DATA updated 5");
 		console.log(actividades);
 		console.log(window.actividades);
 		console.log(blink.activity.currentStyle.userCoins);
