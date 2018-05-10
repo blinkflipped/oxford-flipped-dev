@@ -923,8 +923,9 @@ body.oxfl-body-marketplace-game {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1; }
-  #oxfl-custom-background-1, #oxfl-custom-background-2 {
+  z-index: -1;
+  opacity: 1; }
+  #oxfl-custom-background-inner-1, #oxfl-custom-background-inner-2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -935,7 +936,7 @@ body.oxfl-body-marketplace-game {
     background-position: center center;
     opacity: 0;
     transition: opacity .3s ease-out; }
-    #oxfl-custom-background-1.active, #oxfl-custom-background-2.active {
+    #oxfl-custom-background-inner-1.active, #oxfl-custom-background-inner-2.active {
       opacity: 1; }
 
 .oxfl-container {

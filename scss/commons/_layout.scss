@@ -30,8 +30,9 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  &-1,
-  &-2 {
+  opacity: 1;
+  &-inner-1,
+  &-inner-2 {
     position: absolute;
     top: 0;
     left: 0;
