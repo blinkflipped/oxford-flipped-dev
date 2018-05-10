@@ -1006,10 +1006,6 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, ''),
 				unitExists = (oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit) >= 0);
 
-		console.log(oxflunit);
-		console.log(oxfordFlippedApp.config.unitsIDs);
-		console.log(unitExists);
-
 		if (oxflunit !== '' && oxflunit !== null && unitExists) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
@@ -1136,8 +1132,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 
 		$.each(data.units, function(i, unit){
 			var unitNumber = unit.number - 1,
-					unitNumber = unitNumber.toString();
-			oxfordFlippedApp.config.unitsIDs.push(unitNumber);
+					unitNumberStr = unitNumber.toString();
+			oxfordFlippedApp.config.unitsIDs.push(unitNumberStr);
 		});
 
 		var elements = $('.oxfl-bubble-hello-name');
