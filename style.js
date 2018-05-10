@@ -988,15 +988,16 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 	});
 }
 
+var hashDistributorTimeout;
 oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
+	clearTimeout(hashDistributorTimeout);
+	var timeToWait = 5000;
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) { //Home
-
-		oxfordFlippedApp.homepage(data,updateHash);
-
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.homepage(data,updateHash)}, timeToWait);
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) { // Episodes / Units
 
-		oxfordFlippedApp.loadEpisodes(data,updateHash);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadEpisodes(data,updateHash)}, timeToWait);
 
 	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) { // Unit and ID
 
@@ -1005,27 +1006,28 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
-			oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
+
+			hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash)}, timeToWait);
 
 		} else {
 
 			oxfordFlippedApp.console("Not Unit ID given, redirecting to Units");
-			window.location.hash = '';
-			oxfordFlippedApp.loadEpisodes(data,updateHash);
+			window.location.hash = oxfordFlippedApp.config.tree[1].hash;
+			//oxfordFlippedApp.loadEpisodes(data,updateHash);
 
 		}
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[3].hash) { // Marketplace
 
-		oxfordFlippedApp.loadMarketplace(updateHash);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplace(updateHash)}, timeToWait);
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) { // Games in Marketplace
 
-		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4,updateHash);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4,updateHash)}, timeToWait);
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) { // Summaries in Marketplace
 
-		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash)}, timeToWait);
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook (Not implemented)
 
@@ -1040,7 +1042,7 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 			var updateHash = false;
 			$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled');
 		}
-		oxfordFlippedApp.homepage(data,updateHash);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.homepage(data,updateHash)}, timeToWait);
 
 	}
 
