@@ -1295,6 +1295,11 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       .oxfl-resource .oxfl-resource-image-wrapper.compat-object-fit img {
         display: none; }
     .oxfl-resource .oxfl-resource-image-wrapper-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       transition: transform .3s;
       transform: scale(1); }
   .oxfl-resource-header {
@@ -1517,7 +1522,8 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
     min-height: 90px;
     height: calc((100vh - 360px)/2);
     max-height: 200px;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative; }
     .oxfl-episode .oxfl-episode-image-wrapper img {
       width: 100%;
       height: 100%;
@@ -1531,6 +1537,11 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
       .oxfl-episode .oxfl-episode-image-wrapper.compat-object-fit img {
         display: none; }
     .oxfl-episode .oxfl-episode-image-wrapper-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       transition: transform .3s;
       transform: scale(1); }
   .oxfl-episode:hover .oxfl-episode-image-wrapper-img {
@@ -1670,7 +1681,11 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       left: 6px;
       z-index: 20; }
     .oxfl-chapter .oxfl-chapter-image-wrapper-img {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 10;
       transition: transform .3s;
       transform: scale(1); }
@@ -1707,9 +1722,13 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper.compat-object-fit img {
       display: none; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img {
+    overflow: hidden;
     width: 110px;
     height: 110px;
-    border-radius: 50%; }
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
     width: 110px;
     height: 110px;

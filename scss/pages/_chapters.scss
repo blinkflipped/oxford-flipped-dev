@@ -133,7 +133,11 @@
       z-index: 20;
     }
     &-img {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 10;
       transition: transform .3s;
       transform: scale(1);
@@ -159,9 +163,13 @@
     .oxfl-chapter-image-wrapper {
       @include img-fit(contain, center center);
       &-img {
+        overflow: hidden;
         width: 110px;
         height: 110px;
         border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
       }
       &::before {
         width: 110px;
