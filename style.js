@@ -562,7 +562,8 @@
 
 			if (isBookCover) {
 				this.loadUserData();
-				oxfordFlippedApp.homepage(data, this.userCoins);
+				var updateHash = true;
+				oxfordFlippedApp.homepage(data,updateHash); // TODO Check removed usercoins
 			}
 
 		},
@@ -952,96 +953,6 @@ oxfordFlippedApp.getParameterByHash = function(name, url) {
 	return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-oxfordFlippedApp.getParameterByName = function(name, url) {
-	if (!url) url = window.location.href;
-	name = name.replace(/[\[\]]/g, "\\$&");
-	var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-			results = regex.exec(url);
-	if (!results) return null;
-	if (!results[2]) return '';
-	return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-//Add or modify querystring
-oxfordFlippedApp.changeUrl = function(key,value) {
-	//Get query string value
-	//var searchUrl=location.search;
-	var searchUrl = window.location.search;
-
-	var baseUrl = window.location.href.replace(searchUrl,'');
-	console.log(searchUrl);
-	console.log(baseUrl);
-	if(searchUrl.indexOf("?")== "-1") {
-		var urlValue='?'+key+'='+value;
-		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
-		var newUrlValue = baseUrl + urlValue;
-		history.pushState(null, null, newUrlValue);
-	}
-	else {
-		//Check for key in query string, if not present
-		if(searchUrl.indexOf(key)== "-1") {
-			var urlValue=searchUrl+'&'+key+'='+value;
-		}
-		else {	//If key present in query string
-			oldValue = oxfordFlippedApp.getParameterByName(key);
-			if(searchUrl.indexOf("?"+key+"=")!= "-1") {
-				urlValue = searchUrl.replace('?'+key+'='+oldValue,'?'+key+'='+value);
-			}
-			else {
-				urlValue = searchUrl.replace('&'+key+'='+oldValue,'&'+key+'='+value);
-			}
-		}
-		//history.pushState({state:1, rand: Math.random()}, '', urlValue);
-		var newUrlValue = baseUrl + urlValue;
-		history.pushState(null, null, newUrlValue);
-		//history.pushState function is used to add history state.
-		//It takes three parameters: a state object, a title (which is currently ignored), and (optionally) a URL.
-	}
-	//objQueryString.key=value;
-	//sendAjaxReq(objQueryString);
-}
-
-//Function used to remove querystring
-oxfordFlippedApp.removeQString = function(key) {
-	var urlValue=document.location.href;
-
-	//Get query string value
-	var searchUrl=location.search;
-
-	if(key!="") {
-		oldValue = oxfordFlippedApp.getParameterByName(key);
-		removeVal=key+"="+oldValue;
-		if(searchUrl.indexOf('?'+removeVal+'&')!= "-1") {
-			urlValue=urlValue.replace('?'+removeVal+'&','?');
-		}
-		else if(searchUrl.indexOf('&'+removeVal+'&')!= "-1") {
-			urlValue=urlValue.replace('&'+removeVal+'&','&');
-		}
-		else if(searchUrl.indexOf('?'+removeVal)!= "-1") {
-			urlValue=urlValue.replace('?'+removeVal,'');
-		}
-		else if(searchUrl.indexOf('&'+removeVal)!= "-1") {
-			urlValue=urlValue.replace('&'+removeVal,'');
-		}
-	}
-	else {
-		var searchUrl=location.search;
-		urlValue=urlValue.replace(searchUrl,'');
-	}
-	//history.pushState({state:1, rand: Math.random()}, '', urlValue);
-	history.pushState(null, null, urlValue);
-}
-
-
-
-
-
-
-
-
-
-
-
 oxfordFlippedApp.removeUnusedClass = function(currentClass) {
 
 	var possibleClasses = oxfordFlippedApp.config.bodyClasses.slice(0),
@@ -1088,41 +999,39 @@ oxfordFlippedApp.loadByHash = function(currentHash,data) {
 
 	console.log(oxfordFlippedApp.config.tree);
 
+	var updateHash = false;
+
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) {
-		oxfordFlippedApp.homepage(data);
+		oxfordFlippedApp.homepage(data,updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) {
-		//oxfordFlippedApp.loadMarketplace();
-		oxfordFlippedApp.loadEpisodes(data);
+		oxfordFlippedApp.loadEpisodes(data,updateHash);
 	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) {
 		// This works different because we need an ID to load the Units / Chapters
-		//var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
 		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, '');
-		console.log(oxflunit);
 		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
-			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
+			oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
 		} else {
 			oxfordFlippedApp.console("Not Unit ID given, redirecting to Units");
 			window.location.hash = '';
-			oxfordFlippedApp.loadEpisodes(data);
+			oxfordFlippedApp.loadEpisodes(data,updateHash);
 		}
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[3].hash) {
-		oxfordFlippedApp.loadMarketplace();
+		oxfordFlippedApp.loadMarketplace(updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) {
 		console.log("CHECK")
-		//oxfordFlippedApp.bookData
-		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4);
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4,updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) {
 		console.log("CHECK 2")
-		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6);
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
 		console.log("Load Gradebook")
 	} else {
 		oxfordFlippedApp.console("Incorrect hash, redirecting to HOME");
 		window.location.hash = '';
-		oxfordFlippedApp.homepage(data);
+		oxfordFlippedApp.homepage(data,updateHash);
 	}
 
 }
@@ -1132,41 +1041,41 @@ oxfordFlippedApp.onChangeHash = function() {
 	var currentHash = window.location.hash.replace('#','');
 	var data = oxfordFlippedApp.bookData;
 
+	var updateHash = false;
+
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) {
-		oxfordFlippedApp.homepage(data);
+		oxfordFlippedApp.homepage(data,updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) {
 		//oxfordFlippedApp.loadMarketplace();
-		oxfordFlippedApp.loadEpisodes(data);
+		oxfordFlippedApp.loadEpisodes(data,updateHash);
 	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) {
 		// This works different because we need an ID to load the Units / Chapters
-		//var oxflunit = oxfordFlippedApp.getParameterByName('ounit');
 		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, '');
-		console.log(oxflunit);
 		if (oxflunit !== '' && oxflunit !== null) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
-			oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
+			oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
 		} else {
 			oxfordFlippedApp.console("Not Unit ID given, redirecting to Units");
 			window.location.hash = '';
-			oxfordFlippedApp.loadEpisodes(data);
+			oxfordFlippedApp.loadEpisodes(data,updateHash);
 		}
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[3].hash) {
-		oxfordFlippedApp.loadMarketplace();
+		oxfordFlippedApp.loadMarketplace(updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) {
 		console.log("CHECK")
 		//oxfordFlippedApp.bookData
-		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4);
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4,updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) {
 		console.log("CHECK 2")
-		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6);
+		oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) {
 		console.log("Load Gradebook")
 	} else {
 		oxfordFlippedApp.console("Incorrect hash, redirecting to HOME");
 		window.location.hash = '';
-		oxfordFlippedApp.homepage(data);
+		oxfordFlippedApp.homepage(data,updateHash);
 	}
 
 	console.log("PRUEBA CAMBIO DE HASH");
@@ -1194,7 +1103,7 @@ oxfordFlippedApp.changeBackground = function(image) {
 
 }
 
-oxfordFlippedApp.homepage = function(data) {
+oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	oxfordFlippedApp.console("Homepage");
   var currentIndex = 0;
@@ -1244,11 +1153,13 @@ oxfordFlippedApp.homepage = function(data) {
 		}
 
 		$('body').on('click', '.oxfl-js-load-episodes', function() {
-			oxfordFlippedApp.loadEpisodes(data);
+			var updateHash = true;
+			oxfordFlippedApp.loadEpisodes(data,updateHash);
 		});
 
 		$('body').on('click', '.oxfl-js-load-marketplace', function() {
-			oxfordFlippedApp.loadMarketplace(data);
+			var updateHash = true;
+			oxfordFlippedApp.loadMarketplace(data,updateHash);
 		});
 
 		$('#iframe_div').find('.btn-close-iframe a').attr('onclick', 'oxfordFlippedApp.modalCloseIframe();');
@@ -1265,8 +1176,8 @@ oxfordFlippedApp.homepage = function(data) {
 			} else {
 				$('body').addClass(bodyClass);
 				oxfordFlippedApp.removeUnusedClass(bodyClass);
-				window.location.hash = hash;
-				//history.pushState(null, null, window.location.href);
+
+				if (updateHash) window.location.hash = hash;
 			}
 
 		});
@@ -1282,14 +1193,13 @@ oxfordFlippedApp.homepage = function(data) {
 			oxfordFlippedApp.changeBackground(backgroundImage);
 			$('body').addClass(bodyClass);
 			oxfordFlippedApp.removeUnusedClass(bodyClass);
-			window.location.hash = hash;
-			//history.pushState(null, null, window.location.href);
+			if (updateHash) window.location.hash = hash;
 		}
 	}
 
 }
 
-oxfordFlippedApp.loadEpisodes = function(data) {
+oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 
 	oxfordFlippedApp.console("Load Unit List");
 	oxfordFlippedApp.console(data);
@@ -1337,15 +1247,15 @@ oxfordFlippedApp.loadEpisodes = function(data) {
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
 	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-		window.location.hash = hash;
-		//history.pushState(null, null, window.location.href);
+		if (updateHash) window.location.hash = hash;
 		$('body').addClass(bodyClass);
 	});
 
 	$('body').on('click', '.oxfl-js-load-chapters', function() {
 		var currentEpisode = $(this).data('episode'),
-				activities = window.actividades;
-		oxfordFlippedApp.loadChapters(data,currentEpisode,activities);
+				activities = window.actividades,
+				updateHash = true;
+		oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
 	});
 }
 
@@ -1406,7 +1316,7 @@ oxfordFlippedApp.marginBottomMonsterChapters = function() {
 
 }
 
-oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
+oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHash) {
 
 	oxfordFlippedApp.console("Load Chapters List");
 
@@ -1510,9 +1420,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
-		window.location.hash = hashWithID;
-		//history.pushState(null, null, window.location.href);
-		console.log("TEST 3");
+		if (updateHash) window.location.hash = hashWithID;
 	});
 
 	// Popovers
@@ -1526,7 +1434,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities) {
 	});
 
 }
-oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
+oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
 
 		var resourceList = document.createDocumentFragment(),
 				activityHTML = 'actividad';
@@ -1589,12 +1497,11 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage) {
 
 		$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 			$('body').addClass(bodyClass);
-			window.location.hash = hash;
-			//history.pushState(null, null, window.location.href);
+			if (updateHash) window.location.hash = hash;
 		});
 }
 
-oxfordFlippedApp.loadMarketplace = function() {
+oxfordFlippedApp.loadMarketplace = function(updateHash) {
 
 	oxfordFlippedApp.console("Load Marketplace");
 
@@ -1611,20 +1518,21 @@ oxfordFlippedApp.loadMarketplace = function() {
 	$('#oxfl-marketplace-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 
 		$('body').addClass(bodyClass);
-		window.location.hash = hash;
-		//history.pushState(null, null, window.location.href);
+		if (updateHash) window.location.hash = hash;
 	});
 
 	// Click on buttons
 
 	$('body').on('click', '.oxfl-js-load-summary' , function() {
 		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
-		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType2,6);
+		var updateHash = true;
+		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
 	});
 
 	$('body').on('click', '.oxfl-js-load-game' , function() {
 		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
-		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType1,4);
+		var updateHash = true;
+		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType1,4,updateHash);
 	});
 
 }
@@ -1686,7 +1594,8 @@ oxfordFlippedApp.updateUserData = function() {
 
 oxfordFlippedApp.gohome = function() {
 	window.location.hash = '';
-	oxfordFlippedApp.homepage(oxfordFlippedApp.bookData);
+	var updateHash = true;
+	oxfordFlippedApp.homepage(oxfordFlippedApp.bookData,updateHash);
 }
 /*
 oxfordFlippedApp.goback = function(classRef) {
