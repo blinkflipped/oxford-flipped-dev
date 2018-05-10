@@ -1674,7 +1674,7 @@ oxfordFlippedApp.updateUserData = function() {
 }
 
 oxfordFlippedApp.gohome = function() {
-	window.location.hash = ;
+	window.location.hash = '';
 	oxfordFlippedApp.homepage(oxfordFlippedApp.bookData);
 }
 /*
