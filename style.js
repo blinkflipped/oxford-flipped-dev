@@ -1008,7 +1008,6 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 		console.log(oxflunit);
 		console.log(oxfordFlippedApp.config.unitsIDs);
-		console.log(oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit));
 		console.log(unitExists);
 
 		if (oxflunit !== '' && oxflunit !== null && unitExists) {
@@ -1136,7 +1135,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		});
 
 		$.each(data.units, function(i, unit){
-			var unitNumber = unit.number - 1;
+			var unitNumber = unit.number - 1,
+					unitNumber = unitNumber.toString();
 			oxfordFlippedApp.config.unitsIDs.push(unitNumber);
 		});
 
