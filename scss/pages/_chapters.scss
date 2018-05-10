@@ -132,11 +132,8 @@
       left: 6px;
       z-index: 20;
     }
+    @include img-fit();
     img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       position: relative;
       z-index: 10;
       transition: transform .3s;
@@ -161,9 +158,7 @@
       min-height: 20px;
     }
     .oxfl-chapter-image-wrapper {
-      img {
-        object-fit: contain;
-      }
+      @include img-fit(contain, center center);
       &::before {
         width: 110px;
         height: 110px;

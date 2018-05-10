@@ -40,3 +40,23 @@
 	background: url(img/sprite.png) 0 0 no-repeat;
 	background-size: 60px 90px;
 }
+
+// Object fit
+
+@mixin img-fit($fit: cover, $position: center center) {
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: $fit;
+		object-position: $position;
+		display: block;
+	}
+	&.compat-object-fit {
+		background-size: $fit;
+		background-repeat: no-repeat;
+		background-position: $position;
+		img {
+			display: none;
+		}
+	}
+}

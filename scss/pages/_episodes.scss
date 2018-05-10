@@ -93,11 +93,8 @@ $episodes_monster_height: $episodes_image_height/2;
     height: calc((100vh - #{$episodes_image_height})/2);
     max-height: 200px;
     overflow: hidden;
+    @include img-fit();
     img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       transition: transform .3s;
       transform: scale(1);
     }
