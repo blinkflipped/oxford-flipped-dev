@@ -1282,18 +1282,6 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     overflow: hidden;
     position: relative;
     background: #ED1E79; }
-    .oxfl-resource .oxfl-resource-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block; }
-    .oxfl-resource .oxfl-resource-image-wrapper.compat-object-fit {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center; }
-      .oxfl-resource .oxfl-resource-image-wrapper.compat-object-fit img {
-        display: none; }
     .oxfl-resource .oxfl-resource-image-wrapper-img {
       position: absolute;
       top: 0;
@@ -1302,6 +1290,18 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       height: 100%;
       transition: transform .3s;
       transform: scale(1); }
+      .oxfl-resource .oxfl-resource-image-wrapper-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block; }
+      .oxfl-resource .oxfl-resource-image-wrapper-img.compat-object-fit {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center; }
+        .oxfl-resource .oxfl-resource-image-wrapper-img.compat-object-fit img {
+          display: none !important; }
   .oxfl-resource-header {
     display: flex;
     justify-content: space-between;
@@ -1524,18 +1524,6 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
     max-height: 200px;
     overflow: hidden;
     position: relative; }
-    .oxfl-episode .oxfl-episode-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block; }
-    .oxfl-episode .oxfl-episode-image-wrapper.compat-object-fit {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center; }
-      .oxfl-episode .oxfl-episode-image-wrapper.compat-object-fit img {
-        display: none; }
     .oxfl-episode .oxfl-episode-image-wrapper-img {
       position: absolute;
       top: 0;
@@ -1544,6 +1532,18 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
       height: 100%;
       transition: transform .3s;
       transform: scale(1); }
+      .oxfl-episode .oxfl-episode-image-wrapper-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block; }
+      .oxfl-episode .oxfl-episode-image-wrapper-img.compat-object-fit {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center; }
+        .oxfl-episode .oxfl-episode-image-wrapper-img.compat-object-fit img {
+          display: none !important; }
   .oxfl-episode:hover .oxfl-episode-image-wrapper-img {
     transform: scale(1.1); }
 
@@ -1689,18 +1689,18 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       z-index: 10;
       transition: transform .3s;
       transform: scale(1); }
-    .oxfl-chapter .oxfl-chapter-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block; }
-    .oxfl-chapter .oxfl-chapter-image-wrapper.compat-object-fit {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center; }
-      .oxfl-chapter .oxfl-chapter-image-wrapper.compat-object-fit img {
-        display: none; }
+      .oxfl-chapter .oxfl-chapter-image-wrapper-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block; }
+      .oxfl-chapter .oxfl-chapter-image-wrapper-img.compat-object-fit {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center; }
+        .oxfl-chapter .oxfl-chapter-image-wrapper-img.compat-object-fit img {
+          display: none !important; }
   .oxfl-chapter:not(.lock):hover .oxfl-chapter-image-wrapper-img {
     transform: scale(1.1); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-title3 {
@@ -1709,18 +1709,6 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
     justify-content: flex-end;
     min-height: 20px; }
-  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    display: block; }
-  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper.compat-object-fit {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; }
-    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper.compat-object-fit img {
-      display: none; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img {
     overflow: hidden;
     width: 110px;
@@ -1728,6 +1716,18 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     border-radius: 50%;
     position: relative;
     margin: 0 auto; }
+    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block; }
+    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img.compat-object-fit {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center; }
+      .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img.compat-object-fit img {
+        display: none !important; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
     width: 110px;
     height: 110px;
@@ -1949,7 +1949,7 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img
       background-repeat: no-repeat;
       background-position: center center; }
       body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img .multimedia-container.compat-object-fit img {
-        display: none; }
+        display: none !important; }
   body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img .zoom_flag {
     display: none !important; }
 

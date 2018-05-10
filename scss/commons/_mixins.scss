@@ -56,7 +56,7 @@
 		background-repeat: no-repeat;
 		background-position: $position;
 		img {
-			display: none;
+			display: none!important;
 		}
 	}
 }

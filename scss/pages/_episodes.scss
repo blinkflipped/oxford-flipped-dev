@@ -94,8 +94,9 @@ $episodes_monster_height: $episodes_image_height/2;
     max-height: 200px;
     overflow: hidden;
     position: relative;
-    @include img-fit();
+
     &-img {
+      @include img-fit();
       position: absolute;
       top: 0;
       left: 0;

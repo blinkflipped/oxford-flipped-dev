@@ -46,8 +46,8 @@
     overflow: hidden;
     position: relative;
     background: $color_4;
-    @include img-fit();
     &-img {
+      @include img-fit();
       position: absolute;
       top: 0;
       left: 0;

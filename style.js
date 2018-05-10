@@ -2046,7 +2046,7 @@ oxfordFlippedApp.objectFitSupport = function() {
 	//----------------------------------------------------
 
 	if ( ! Modernizr.objectfit ) {
-		$('.oxfl-chapter-image-wrapper-img, .oxfl-episode-image-wrapper-img, .oxfl-resource-image-wrapper-img').each(function () {
+		$('.oxfl-chapter-image-wrapper-img, .oxfl-episode-image-wrapper-img, .oxfl-resource-image-wrapper-img, .multimedia-container').each(function () {
 			var $container = $(this),
 					imgUrl = $container.find('img').prop('src');
 			if (imgUrl && !$container.hasClass('compat-object-fit')) {
