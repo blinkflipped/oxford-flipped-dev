@@ -801,6 +801,7 @@ oxfordFlippedApp.config.tree = {
 }
 
 oxfordFlippedApp.config.challengeIDs = [];
+oxfordFlippedApp.config.unitsIDs = [];
 oxfordFlippedApp.config.backgroundWrapper = '#oxfl-custom-background';
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
@@ -1002,8 +1003,9 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[2].hash)) { // Unit and ID
 
 		// This works different because we need an ID to load the Units / Chapters
-		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, '');
-		if (oxflunit !== '' && oxflunit !== null) {
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[2].hash, ''),
+				unitExists = (oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit) >= 0);
+		if (oxflunit !== '' && oxflunit !== null && unitExists) {
 			var currentEpisode = oxflunit,
 					activities = window.actividades;
 
@@ -1127,6 +1129,11 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			}
 		});
 
+		$.each(data.units, function(i, unit){
+			var unitNumber = unit.number - 1;
+			oxfordFlippedApp.config.unitsIDs.push(unitNumber);
+		});
+
 		var elements = $('.oxfl-bubble-hello-name');
 		oxfordFlippedApp.fontSizeResize(elements);
 
@@ -1201,13 +1208,14 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var unitTitle = unit.title,
 					unitDescription = unit.description,
-					unitNumber = i,
+					//unitNumber = i,
+					unitNumber = unit.number - 1,
 					unitImage = unit.image,
 					unitListItem = document.createElement('div'),
 					unitIsMarketplace = (unit.title === 'Marketplace');
 			unitListItem.className = 'oxfl-episodes-item';
 			if (!unitIsMarketplace) {
-				unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+i+'"> <h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> <div class="oxfl-episode-image-wrapper"> <div class="oxfl-episode-image-wrapper-img"><img src="'+unitImage+'" alt="'+unitTitle+'"> </div></div> </a> </article>';
+				unitListItem.innerHTML = '<article class="oxfl-episode"> <a href="javascript:void(0)" class="oxfl-js-load-chapters" data-episode="'+unitNumber+'"> <h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> <div class="oxfl-episode-image-wrapper"> <div class="oxfl-episode-image-wrapper-img"><img src="'+unitImage+'" alt="'+unitTitle+'"> </div></div> </a> </article>';
 				unitList.appendChild(unitListItem);
 			}
 		}
