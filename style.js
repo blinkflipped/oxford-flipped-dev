@@ -1204,6 +1204,9 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 	oxfordFlippedApp.console("Load Unit List");
 	oxfordFlippedApp.console(data);
 
+	var backgroundImage = data.units[0].subunits[0].image; // Right now is the same as Homepage
+	oxfordFlippedApp.changeBackground(backgroundImage);
+
 	var unitList = document.createDocumentFragment();
 	$.each(data.units, function(i, unit){
 
@@ -1593,9 +1596,7 @@ oxfordFlippedApp.updateUserData = function() {
 }
 
 oxfordFlippedApp.gohome = function() {
-	window.location.hash = '';
-	var updateHash = true;
-	oxfordFlippedApp.homepage(oxfordFlippedApp.bookData,updateHash);
+	window.location.hash = oxfordFlippedApp.config.tree[0].hash;
 }
 /*
 oxfordFlippedApp.goback = function(classRef) {
