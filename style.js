@@ -1045,10 +1045,11 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 		if (currentHash !== '') {
 			window.location.hash = '';
 			var updateHash = true;
-			oxfordFlippedApp.homepage(data,updateHash);
 		} else {
+			var updateHash = false;
 			$(oxfordFlippedApp.config.buttonGoBack).addClass('disabled');
 		}
+		oxfordFlippedApp.homepage(data,updateHash);
 
 	}
 
