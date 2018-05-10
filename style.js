@@ -1269,7 +1269,8 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 				//activities = window.actividades,
 				//updateHash = true;
 		//oxfordFlippedApp.loadChapters(data,currentEpisode,activities,updateHash);
-		var newHash = oxfordFlippedApp.config.tree[5].hash + currentEpisode;
+		var newHash = oxfordFlippedApp.config.tree[2].hash + currentEpisode;
+		console.log(newHash);
 		window.location.hash = newHash;
 	});
 }
