@@ -1150,8 +1150,9 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		}
 
 		$('body').on('click', '.oxfl-js-load-episodes', function() {
-			var updateHash = true;
-			oxfordFlippedApp.loadEpisodes(data,updateHash);
+			//var updateHash = true;
+			//oxfordFlippedApp.loadEpisodes(data,updateHash);
+			window.location.href = oxfordFlippedApp.config.tree[1].hash;
 		});
 
 		//var test2 = 0;
