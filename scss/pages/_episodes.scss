@@ -94,14 +94,14 @@ $episodes_monster_height: $episodes_image_height/2;
     max-height: 200px;
     overflow: hidden;
     @include img-fit();
-    img {
+    &-img {
       transition: transform .3s;
       transform: scale(1);
     }
   }
   &:hover {
     .oxfl-episode-image-wrapper {
-      img {
+      &-img {
         transform: scale(1.1);
       }
     }
