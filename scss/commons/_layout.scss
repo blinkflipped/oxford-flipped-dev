@@ -2,7 +2,8 @@
 #oxfl-general {
   width: 100%;
   height: 100vh;
-  background: url(img/background_home.jpg) center center no-repeat $background_color;
+  //background: url(img/background_home.jpg) center center no-repeat $background_color;
+  background: $color_5;
   background-size: cover;
   overflow: hidden;
   position: absolute;
@@ -24,18 +25,26 @@
 
 #oxfl-custom-background {
   position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: -1;
-  opacity: 0;
-  transition: opacity .3s ease-out;
-  &.active {
-    opacity: 1;
+  &-1,
+  &-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity .3s ease-out;
+    &.active {
+      opacity: 1;
+    }
   }
 }
 
