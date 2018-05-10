@@ -994,13 +994,7 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 	clearTimeout(hashDistributorTimeout);
 
-	console.log(hashDistributorTimeout);
-	var timeToWait = 5000;
-
-
-
-	setTimeout(function() {oxfordFlippedApp.console('TIMEOUT')}, timeToWait);
-
+	var timeToWait = 100;
 	if (currentHash === oxfordFlippedApp.config.tree[0].hash) { //Home
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.homepage(data,updateHash)}, timeToWait);
 	} else if (currentHash === oxfordFlippedApp.config.tree[1].hash) { // Episodes / Units
