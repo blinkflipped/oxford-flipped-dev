@@ -1179,6 +1179,10 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		}
 	}
 
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
 }
 
 oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
@@ -1230,6 +1234,10 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
 
 	$('#oxfl-episodes-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		if (updateHash) window.location.hash = hash;
@@ -1403,6 +1411,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 	$('body').removeClass('oxfl-body-episodes');
 
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
 	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hashWithID;
@@ -1480,6 +1491,9 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 		var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
 		oxfordFlippedApp.changeBackground(marketplaceBackground);
 
+		// Object Fit support
+		oxfordFlippedApp.objectFitSupport();
+
 		$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 			$('body').addClass(bodyClass);
 			if (updateHash) window.location.hash = hash;
@@ -1499,6 +1513,9 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 	oxfordFlippedApp.changeBackground(marketplaceBackground);
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
 
 	$('#oxfl-marketplace-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
 
@@ -2022,6 +2039,25 @@ oxfordFlippedApp.oxflMarketplaceModalNoConnection = function() {
 
 }
 
+oxfordFlippedApp.objectFitSupport = function() {
+
+	//----------------------------------------------------
+	// Object fit support
+	//----------------------------------------------------
+
+	if ( ! Modernizr.objectfit ) {
+		$('.oxfl-chapter .oxfl-chapter-image-wrapper, .oxfl-episode .oxfl-episode-image-wrapper, .oxfl-resource .oxfl-resource-image-wrapper').each(function () {
+			var $container = $(this),
+					imgUrl = $container.find('img').prop('src');
+			if (imgUrl && !$container.hasClass('compat-object-fit')) {
+				$container
+					.css('backgroundImage', 'url(' + imgUrl + ')')
+					.addClass('compat-object-fit');
+			}
+		});
+	}
+}
+
 $(document).ready(function() {
 
 	// Go back
@@ -2154,24 +2190,7 @@ $(document).ready(function() {
 		$('.oxfl-js-popover, .slider-control.not-allowed').popover('hide');
 	});
 
-
-	//----------------------------------------------------
-	// Object fit support
-	//----------------------------------------------------
-
-	if ( ! Modernizr.objectfit ) {
-
-
-		$('.oxfl-chapter .oxfl-chapter-image-wrapper, .oxfl-episode .oxfl-episode-image-wrapper, .oxfl-resource .oxfl-resource-image-wrapper').each(function () {
-			var $container = $(this),
-					imgUrl = $container.find('img').prop('src');
-			if (imgUrl) {
-				$container
-					.css('backgroundImage', 'url(' + imgUrl + ')')
-					.addClass('compat-object-fit');
-			}
-		});
-	}
-
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
 
 });
