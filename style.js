@@ -562,7 +562,7 @@
 
 			if (isBookCover) {
 				this.loadUserData();
-				var updateHash = true;
+				var updateHash = false;
 				oxfordFlippedApp.homepage(data,updateHash); // TODO Check removed usercoins
 			}
 
