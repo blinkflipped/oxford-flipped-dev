@@ -1154,8 +1154,10 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			oxfordFlippedApp.loadEpisodes(data,updateHash);
 		});
 
+		var test2 = 0;
 		$('body').on('click', '.oxfl-js-load-marketplace', function() {
 			var updateHash = true;
+			console.log(test2++);
 			oxfordFlippedApp.loadMarketplace(data,updateHash);
 		});
 
@@ -1546,10 +1548,11 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 	});
 
 	// Click on buttons
-
+	var test = 0;
 	$('body').on('click', '.oxfl-js-load-summary' , function() {
 		oxfordFlippedApp.console(oxfordFlippedApp.bookData);
 		var updateHash = true;
+		console.log(test++);
 		oxfordFlippedApp.loadMarketplaceList(oxfordFlippedApp.bookData,oxfordFlippedApp.config.marketplaceType2,6,updateHash);
 	});
 
