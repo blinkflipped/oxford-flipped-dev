@@ -1595,23 +1595,16 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
 
 #oxfl-chapters-monster {
   opacity: 0;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
   transform: translate(0, -100%);
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease-out;
-  width: 815px;
-  height: 390px;
-  background: url(img/monster-6.svg) 0 0 no-repeat;
   background-size: contain;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
-  background-image: url(img/monster_test.gif);
+  background-image: url(img/monster_lessons.gif);
   background-position: left bottom;
   width: 715px;
   max-height: 370px;
@@ -1619,6 +1612,26 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   height: calc(100vh - 430px);
   position: relative;
   margin-bottom: -143px; }
+  #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
+    font-size: 56px;
+    line-height: 50px;
+    font-family: "Myfrida", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    color: #ffffff;
+    background: url(img/bubble-9.png) 0 0 no-repeat;
+    background-size: contain;
+    width: 235px;
+    height: 118px;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0; }
+    #oxfl-chapters-monster .oxfl-monster-lessons-bubble span {
+      display: block; }
 
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
