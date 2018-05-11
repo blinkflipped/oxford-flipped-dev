@@ -852,6 +852,7 @@ oxfordFlippedApp.text = {
 	//nocoins : 'No tienes monedas suficientes',
 	buy : 'Buy!',
 	popoverGoToContentZoneDisabled : 'Debes completar esta actividad para continuar',
+	popoverNextContentZoneDisabled : 'Debes visualizar uno de los contenidos para continuar',
 	quit : 'Quit'
 }
 
@@ -1784,6 +1785,8 @@ oxfordFlippedApp.activityContentZone = function() {
 
 	});
 
+
+	var popoverNotAllowedContentZone = '';
 	$('.oxfl-cz').on('click', '.oxfl-js-cz-close', function() {
 
 		var $wrapper = $(this).closest('.js-slider-item');
@@ -1798,8 +1801,25 @@ oxfordFlippedApp.activityContentZone = function() {
 		if (!$(this).hasClass('oxfl-disabled')) {
 			var $modal = $('#oxfl-modal-start-test');
 			$modal.modal();
+			if (typeof popoverNotAllowedContentZone !== 'undefined' && popoverNotAllowedContentZone !== '') {
+				popoverNotAllowedContentZone.popover('destroy');
+				popoverNotAllowedContentZone = '';
+			}
+		} else {
+			if (typeof popoverNotAllowedContentZone === 'undefined' || popoverNotAllowedContentZone === '') {
+				popoverNotAllowedContentZone = $(this).popover({
+					placement: 'top',
+					template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+					content : oxfordFlippedApp.text.popoverNextContentZoneDisabled,
+					title : '',
+					container: 'body'
+				});
+			}
+			popoverNotAllowedContentZone.popover('enable');
+			if(!$('.oxfl-popover').is(":visible")) {
+				popoverNotAllowedContentZone.popover('show');
+			}
 		}
-
 	});
 
 	$('body').on('click', '.oxfl-js-start-test', function() {
