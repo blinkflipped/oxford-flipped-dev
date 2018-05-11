@@ -1873,6 +1873,8 @@ body.body_clase.view-mode .slider-control:focus {
   body.body_clase.view-mode .slider-control:focus.not-allowed,
   body.body_clase.view-mode .slider-control:focus.not-allowed:hover {
     opacity: .3; }
+body.body_clase.view-mode #actividad .class_slide {
+  position: relative; }
 body.body_clase.view-mode #actividad .oxfl-button-round-circled {
   position: absolute;
   bottom: 20px;

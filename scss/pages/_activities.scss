@@ -75,6 +75,9 @@ body.body_clase.view-mode {
   }
 
   #actividad {
+    .class_slide {
+      position: relative; // TODO Check all activities not to be broken.
+    }
     .oxfl-button-round-circled {
       position: absolute;
       bottom: 20px;
