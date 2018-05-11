@@ -1613,8 +1613,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   position: relative;
   margin-bottom: -143px; }
   #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
-    font-size: 56px;
-    line-height: 50px;
+    font-size: 36px;
+    line-height: 1em;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-style: italic;
@@ -1627,9 +1627,12 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     display: flex;
     vertical-align: middle;
     justify-content: center;
+    flex-direction: column;
     position: absolute;
     top: 0;
-    right: 0; }
+    left: 50%;
+    margin: 0 0 0 60px;
+    padding: 0 10px; }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble span {
       display: block; }
 

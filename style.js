@@ -1780,6 +1780,7 @@ oxfordFlippedApp.activityContentZone = function() {
 		var $content = $(this).next('.bck-content'),
 				$wrapper = $(this).closest('.js-slider-item');
 
+		$('.oxfl-js-popover, .slider-control.not-allowed, .oxfl-js-cz-next.oxfl-disabled').popover('hide');
 		$content.addClass('oxfl-visible');
 		$('body').addClass('oxfl-content-zone-card-on');
 		$wrapper.scrollTop(0).find('.bck-content').not($content).removeClass('oxfl-visible');
