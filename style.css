@@ -1005,16 +1005,27 @@ body.oxfl-body-marketplace-game {
     margin: 0;
     display: block;
     overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: contain;
-    background-color: transparent;
+    background: none !important;
     border: 0;
     outline: 0;
     position: relative;
     white-space: nowrap;
-    transform: scale(1);
-    transition: transform .3s linear; }
+    position: relative;
+    transform: none; }
+    #oxfl-home-menu-inner .oxfl-monster::before, #oxfl-home-menu-inner .oxfl-monster::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: contain;
+      background-color: transparent; }
+    #oxfl-home-menu-inner .oxfl-monster::after {
+      opacity: 0; }
     #oxfl-home-menu-inner .oxfl-monster span {
       font-size: 20px;
       font-family: "Quicksand", sans-serif;
@@ -1025,13 +1036,21 @@ body.oxfl-body-marketplace-game {
       background-repeat: no-repeat;
       display: inline-block;
       position: absolute;
-      text-align: center; }
+      text-align: center;
+      z-index: 10; }
     #oxfl-home-menu-inner .oxfl-monster:hover {
-      transform: scale(1.05); }
+      transform: none; }
+      #oxfl-home-menu-inner .oxfl-monster:hover::before {
+        opacity: 0; }
+      #oxfl-home-menu-inner .oxfl-monster:hover::after {
+        opacity: 1; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 {
       width: 183px;
-      height: 250px;
-      background-image: url(img/monster-1.svg); }
+      height: 250px; }
+      #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::before {
+        background-image: url(img/monster-1.svg); }
+      #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::after {
+        background-image: url(img/monster-1-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 span {
         background-image: url(img/monster-1-bubble.png);
         width: 151px;
@@ -1041,8 +1060,11 @@ body.oxfl-body-marketplace-game {
         line-height: 45px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
       width: 346px;
-      height: 490px;
-      background-image: url(img/monster-2.svg); }
+      height: 490px; }
+      #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::before {
+        background-image: url(img/monster-2.svg); }
+      #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::after {
+        background-image: url(img/monster-2-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 span {
         background-image: url(img/monster-2-bubble.png);
         width: 135px;
@@ -1054,8 +1076,11 @@ body.oxfl-body-marketplace-game {
         line-height: 40px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
       width: 299px;
-      height: 318px;
-      background-image: url(img/monster-3.svg); }
+      height: 318px; }
+      #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::before {
+        background-image: url(img/monster-3.svg); }
+      #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::after {
+        background-image: url(img/monster-3-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 span {
         background-image: url(img/monster-3-bubble.png);
         width: 161px;

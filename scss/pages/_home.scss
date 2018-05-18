@@ -67,16 +67,31 @@
     margin: 0;
     display: block;
     overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: contain;
-    background-color: transparent;
+    background: none!important;
     border: 0;
     outline: 0;
     position: relative;
     white-space: nowrap;
-    transform: scale(1);
-    transition: transform .3s linear;
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: contain;
+      background-color: transparent;
+    }
+    &::after {
+      opacity: 0;
+    }
+    transform: none;
+    //transition: transform .3s linear;
     span {
       //@include font-size(2.0);
       font-size: 20px;
@@ -89,14 +104,23 @@
       display: inline-block;
       position: absolute;
       text-align: center;
+      z-index: 10;
     }
     &:hover {
-      transform: scale(1.05);
+      transform: none;
+      &::before{opacity:0}
+      &::after{opacity:1}
     }
     &.oxfl-monster-1 {
       width: 183px;
       height: 250px;
-      background-image: url(img/monster-1.svg);
+      &::before {
+        background-image: url(img/monster-1.svg);
+      }
+      &::after {
+        background-image: url(img/monster-1-hover.gif);
+      }
+
       span {
         background-image: url(img/monster-1-bubble.png);
         width: 151px;
@@ -109,7 +133,13 @@
     &.oxfl-monster-2 {
       width: 346px;
       height: 490px;
-      background-image: url(img/monster-2.svg);
+      &::before {
+        background-image: url(img/monster-2.svg);
+      }
+      &::after {
+        background-image: url(img/monster-2-hover.gif);
+      }
+
       span {
         background-image: url(img/monster-2-bubble.png);
         width: 135px;
@@ -125,7 +155,12 @@
     &.oxfl-monster-3 {
       width: 299px;
       height: 318px;
-      background-image: url(img/monster-3.svg);
+      &::before {
+        background-image: url(img/monster-3.svg);
+      }
+      &::after {
+        background-image: url(img/monster-3-hover.gif);
+      }
       span {
         background-image: url(img/monster-3-bubble.png);
         width: 161px;
