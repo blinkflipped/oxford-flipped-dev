@@ -1045,10 +1045,10 @@ body.oxfl-body-marketplace-game {
       #oxfl-home-menu-inner .oxfl-monster:hover::after {
         opacity: 1; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 {
-      width: 183px;
+      width: 140px;
       height: 250px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::before {
-        background-image: url(img/monster-1.svg); }
+        background-image: url(img/monster-1.png); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::after {
         background-image: url(img/monster-1-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 span {
@@ -1062,7 +1062,7 @@ body.oxfl-body-marketplace-game {
       width: 346px;
       height: 490px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::before {
-        background-image: url(img/monster-2.svg); }
+        background-image: url(img/monster-2.png); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::after {
         background-image: url(img/monster-2-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 span {
@@ -1075,10 +1075,10 @@ body.oxfl-body-marketplace-game {
         font-size: 22px;
         line-height: 40px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
-      width: 299px;
+      width: 222px;
       height: 318px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::before {
-        background-image: url(img/monster-3.svg); }
+        background-image: url(img/monster-3.png); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::after {
         background-image: url(img/monster-3-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 span {

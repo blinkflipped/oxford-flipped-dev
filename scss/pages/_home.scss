@@ -112,10 +112,10 @@
       &::after{opacity:1}
     }
     &.oxfl-monster-1 {
-      width: 183px;
+      width: 140px; //183
       height: 250px;
       &::before {
-        background-image: url(img/monster-1.svg);
+        background-image: url(img/monster-1.png);
       }
       &::after {
         background-image: url(img/monster-1-hover.gif);
@@ -134,7 +134,7 @@
       width: 346px;
       height: 490px;
       &::before {
-        background-image: url(img/monster-2.svg);
+        background-image: url(img/monster-2.png);
       }
       &::after {
         background-image: url(img/monster-2-hover.gif);
@@ -153,10 +153,10 @@
       }
     }
     &.oxfl-monster-3 {
-      width: 299px;
+      width: 222px;//299
       height: 318px;
       &::before {
-        background-image: url(img/monster-3.svg);
+        background-image: url(img/monster-3.png);
       }
       &::after {
         background-image: url(img/monster-3-hover.gif);
