@@ -815,6 +815,9 @@
     background-image: url(img/popover-bubble-2.png);
     background-size: contain;
   }
+  &.oxfl-popover-contentzone {
+    margin-top: 35px;
+  }
   .oxfl-popover-inner {
     display: flex;
     width: 150px;

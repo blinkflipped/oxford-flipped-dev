@@ -854,6 +854,8 @@ body.oxfl-body-marketplace-game {
   .oxfl-popover.left {
     background-image: url(img/popover-bubble-2.png);
     background-size: contain; }
+  .oxfl-popover.oxfl-popover-contentzone {
+    margin-top: 35px; }
   .oxfl-popover .oxfl-popover-inner {
     display: flex;
     width: 150px;
@@ -1664,6 +1666,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     padding: 0 10px; }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble span {
       display: block; }
+    .oxfl-body-user-not-student #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
+      font-size: 28px; }
 
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
@@ -1965,6 +1969,8 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .t
   transform: rotate(-33deg);
   max-width: 320px;
   margin-top: 50px; }
+body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .class_slide {
+  min-height: 480px !important; }
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-container {
   background: url(img/monster-8.svg) 45px bottom no-repeat;
   background-size: 486px 424px;
