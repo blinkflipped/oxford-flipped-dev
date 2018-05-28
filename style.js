@@ -1269,32 +1269,63 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 
 oxfordFlippedApp.loadNotifications = function(data) {
 
-	var notificationsList = document.createDocumentFragment();
+	console.log("Notifications");
 
+	var notificationsList = document.createDocumentFragment();
 	var totalNotif = 0;
+
 	$.each(data.units, function(i, unit){
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
+
+			var unitsNotStarted = false,
+					unitsWithoutGrade = false;
+
 			var chapters = unit.subunits;
 			$.each(chapters, function(x, chapter){
-				//Lock Chapters
-				var chapterLockStatus = chapter.lock;
-				// Buscar todas las actividades - chapters - que están abiertas (NO lock)
-				if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
-					// Comprobar que esas actividades NO estan en el json de actividades (no están empezadas o completadas)
-					if (typeof window.actividades[chapter.id] === 'undefined') {
-						var notifChapterTag = chapter.tag;
-						if (notifChapterTag != oxfordFlippedApp.config.tagMarketplace) {
-							totalNotif++;
-							var notificationsListItem = document.createElement('div');
-							var notifEpisodeTitle = unit.title,
-									notifChapterTitle = chapter.title,
-									notifChapterDescription = chapter.description,
-									notifChapterID = chapter.id;
-							notificationsListItem.className = 'oxfl-notification-item';
-							notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div class="oxfl-notification-item-chapter">'+notifChapterTitle+'.</div><div class="oxfl-notification-item-chapter-description">'+notifChapterDescription+'</div><div><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
-							notificationsList.appendChild(notificationsListItem);
-						}
 
+				var notifEpisodeTitle = unit.title,
+						notifChapterIsChallenge = (notifChapterTitle === 'Challenge');
+
+				var notifChapterTitle = chapter.title,
+						notifChapterDescription = chapter.description,
+						notifChapterID = chapter.id;
+
+				if (!notifChapterIsChallenge) {
+
+					// Activities not started
+					if (typeof activities[notifChapterID] === 'undefined') {
+						chaptersNotStarted = true;
+					} else {
+					// Activities started or completed
+						if (activities[notifChapterID].clasificacion === '') {
+							chaptersWithoutGrade = true;
+						}
+					}
+
+					var chapterLockStatus = chapter.lock;
+					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
+					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
+						// Comprobar que esas actividades NO estan en el json de actividades (no están empezadas o completadas)
+						if (typeof window.actividades[chapter.id] === 'undefined') {
+							var notifChapterTag = chapter.tag;
+							if (notifChapterTag != oxfordFlippedApp.config.tagMarketplace) {
+								totalNotif++;
+								var notificationsListItem = document.createElement('div');
+								notificationsListItem.className = 'oxfl-notification-item';
+								notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div class="oxfl-notification-item-chapter">'+notifChapterTitle+'.</div><div class="oxfl-notification-item-chapter-description">'+notifChapterDescription+'</div><div><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
+								notificationsList.appendChild(notificationsListItem);
+							}
+						}
+					}
+				} else {
+					var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+					
+					if (!isChallengeLock) {
+						totalNotif++;
+						var notificationsListItem = document.createElement('div');
+						notificationsListItem.className = 'oxfl-notification-item';
+						notificationsListItem.innerHTML = '<div><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></div><div class="oxfl-notification-item-chapter">'+notifChapterTitle+'.</div><div class="oxfl-notification-item-chapter-description">'+notifChapterDescription+'</div><div><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></div>';
+						notificationsList.appendChild(notificationsListItem);
 					}
 				}
 			});
@@ -1641,6 +1672,7 @@ oxfordFlippedApp.modalCloseIframe = function() {
 	var isMultimedia = !($('#multimedia_iframe').is(':empty'));
 	if (isMultimedia) {
 		oxfordFlippedApp.closeIframe();
+		$('body').removeClass('oxfl-iframe-visible');
 	} else {
 		var $modalCloseIframe = $('#oxfl-modal-close-chapter');
 		$modalCloseIframe.modal();
@@ -1651,6 +1683,7 @@ oxfordFlippedApp.closeIframe = function() {
 
 	cerrarIframe();
 	$('#oxfl-modal-close-chapter').modal('hide');
+	$('body').removeClass('oxfl-iframe-visible');
 
 }
 
@@ -2089,6 +2122,7 @@ $(document).ready(function() {
 	$('body').on('click', oxfordFlippedApp.config.buttonGoBack, function() {
 
 		oxfordFlippedApp.goback();
+		console.log("Test");
 
 	});
 
@@ -2112,6 +2146,8 @@ $(document).ready(function() {
 		var chapterID = $(this).attr('data-chapter-id');
 		blink.theme.iframeWidth = oxfordFlippedApp.config.iframeWidth;
 		blink.domain.openActivity(chapterID);
+
+		$('body').addClass('oxfl-iframe-visible');
 
 	});
 
@@ -2152,7 +2188,7 @@ $(document).ready(function() {
 
 		e.preventDefault();
 		parent.top.oxfordFlippedApp.closeIframe();
-
+		$('body').removeClass('oxfl-iframe-visible');
 	});
 
 
@@ -2179,6 +2215,8 @@ $(document).ready(function() {
 		console.log(window.actividades);
 		console.log(blink.activity.currentStyle.userCoins);
 		oxfordFlippedApp.updateUserData();
+
+		oxfordFlippedApp.loadNotifications(oxfordFlippedApp.bookData);
 
 	}));
 

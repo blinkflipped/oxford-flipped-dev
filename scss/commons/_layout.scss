@@ -53,3 +53,10 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+
+
+body {
+  &.oxfl-iframe-visible {
+    overflow: hidden;
+  }
+}

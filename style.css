@@ -945,6 +945,9 @@ body.oxfl-body-marketplace-game {
   max-width: 1000px;
   margin: 0 auto; }
 
+body.oxfl-iframe-visible {
+  overflow: hidden; }
+
 #oxfl-home-title {
   background: url(img/bubble-1.svg) 0 0 no-repeat;
   width: 404px;
