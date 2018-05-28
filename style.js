@@ -1292,11 +1292,11 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 					// Activities not started
 					if (typeof window.actividades[notifChapterID] === 'undefined') {
-						chaptersNotStarted = true;
+						unitsNotStarted = true;
 					} else {
 					// Activities started or completed
 						if (window.actividades[notifChapterID].clasificacion === '') {
-							chaptersWithoutGrade = true;
+							unitsWithoutGrade = true;
 						}
 					}
 
