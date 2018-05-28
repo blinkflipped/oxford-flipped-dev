@@ -2216,6 +2216,7 @@ $(document).ready(function() {
 		console.log(blink.activity.currentStyle.userCoins);
 		oxfordFlippedApp.updateUserData();
 
+		console.log("Refresh");
 		oxfordFlippedApp.loadNotifications(oxfordFlippedApp.bookData);
 
 	}));
