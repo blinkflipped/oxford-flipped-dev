@@ -1316,7 +1316,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 						}
 					}
 				} else {
-					var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+					var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
 
 					if (!isChallengeLock) {
 						totalNotif++;
