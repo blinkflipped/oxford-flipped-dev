@@ -1293,11 +1293,11 @@ oxfordFlippedApp.loadNotifications = function(data) {
 				if (!notifChapterIsChallenge) {
 
 					// Activities not started
-					if (typeof activities[notifChapterID] === 'undefined') {
+					if (typeof window.actividades[notifChapterID] === 'undefined') {
 						chaptersNotStarted = true;
 					} else {
 					// Activities started or completed
-						if (activities[notifChapterID].clasificacion === '') {
+						if (window.actividades[notifChapterID].clasificacion === '') {
 							chaptersWithoutGrade = true;
 						}
 					}
@@ -1319,7 +1319,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 					}
 				} else {
 					var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
-					
+
 					if (!isChallengeLock) {
 						totalNotif++;
 						var notificationsListItem = document.createElement('div');
