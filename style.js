@@ -1144,7 +1144,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				modalNoCoinsHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-nocoins" id="oxfl-modal-marketplace-nocoins" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.gamificacion_monedas_insuficientes+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div>',
 				modalMarketplaceInfoHtml = '<div class="modal fade oxfl-modal oxfl-modal-4 oxfl-modal-marketplace-info" id="oxfl-modal-marketplace-info" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div class="oxfl-title2b" id="oxfl-modal-marketplace-info-title"></div> <p id="oxfl-modal-marketplace-info-description"></p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <div class="oxfl-strip"> <div class="oxfl-strip-inner"> <span id="oxfl-modal-marketplace-info-coin"></span> <span class="oxfl-icon oxfl-icon-coin"></span></div></div><button type="button" class="btn btn-primary oxfl-js-buy-resource" data-marketplace-id data-dismiss="modal">'+oxfordFlippedApp.text.buy+'</button></div></div></div></div></div>';
 
-		var totalHtml = '<div id="oxfl-general">'+homeHtml+lessonsHtml+unitHtml+marketplaceHtml+marketplaceInnerHtml+' </div> '+modalLockChaptersHtml+modalNotificationsHtml+modalConnectionHtml+modalNoCoinsHtml+modalMarketplaceInfoHtml;
+		var totalHtml = '<div id="oxfl-general">'+homeHtml+lessonsHtml+unitHtml+marketplaceHtml+marketplaceInnerHtml+gradebookHtml+' </div> '+modalLockChaptersHtml+modalNotificationsHtml+modalConnectionHtml+modalNoCoinsHtml+modalMarketplaceInfoHtml;
 
 		$('body').prepend(totalHtml);
 
@@ -1642,7 +1642,6 @@ oxfordFlippedApp.loadGradebook = function() {
 					pieSliceText: 'none',
 					pieStartAngle: -65
 				};
-
 				var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
 				chart.draw(data, options);
 			 }
