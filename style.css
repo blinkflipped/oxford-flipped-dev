@@ -918,6 +918,8 @@ body.oxfl-body-marketplace-game {
     min-height: 760px; }
   .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
     min-height: 860px; }
+  .oxfl-body-gradebook #oxfl-general {
+    min-height: 1400px; }
 
 #oxfl-custom-background {
   position: absolute;
@@ -1189,13 +1191,14 @@ body.oxfl-body-home #oxfl-home-menu {
 .oxfl-gradebook-header {
   position: relative;
   padding-bottom: 60px;
+  margin-bottom: 50px;
   text-align: center; }
   .oxfl-gradebook-header::before {
     content: '';
     display: block;
     width: 100%;
     height: 30px;
-    background: url(img/gradebook-separator.png) 0 0 no-repeat;
+    background: url(img/gradebook-separator.png) center center no-repeat;
     background-size: contain;
     position: absolute;
     bottom: 0;
@@ -1220,6 +1223,7 @@ body.oxfl-body-home #oxfl-home-menu {
   position: relative;
   padding: 60px 50px; }
   .oxfl-gradebook-title-1 span {
+    display: inline-block;
     font-family: "Quicksand", sans-serif;
     font-weight: 400;
     color: #8BE23F;
@@ -1244,7 +1248,7 @@ body.oxfl-body-home #oxfl-home-menu {
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 10px; }
+  margin: 0 auto 50px; }
 
 .oxfl-gradebook-title-3 {
   font-size: 21px;
@@ -1254,7 +1258,7 @@ body.oxfl-body-home #oxfl-home-menu {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 30px; }
+  margin: 0 auto 30px; }
 
 .oxfl-gradebook-section {
   padding-bottom: 50px; }
@@ -1262,7 +1266,7 @@ body.oxfl-body-home #oxfl-home-menu {
 .oxfl-gradebook-captions {
   display: flex;
   justify-content: space-between;
-  padding-left: 50%;
+  padding-left: 50px;
   padding-right: 50px; }
   .oxfl-gradebook-captions .oxfl-gradebook-caption {
     font-size: 18px;
@@ -1295,16 +1299,21 @@ body.oxfl-body-home #oxfl-home-menu {
   display: flex;
   justify-content: space-between; }
   .oxfl-gradebook-barchart::before {
+    content: '';
     bottom: 30px;
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: #999999; }
+    background-color: #999999;
+    position: absolute;
+    display: block; }
   .oxfl-gradebook-barchart-item {
     width: 33.3333%;
     padding: 0 15px; }
     .oxfl-gradebook-barchart-item-bar {
-      width: 30px; }
+      width: 30px;
+      margin: 0 auto;
+      border-radius: 20px 20px 0 0; }
     .oxfl-gradebook-barchart-item-number {
       font-size: 21px;
       font-size: 2.1rem;
