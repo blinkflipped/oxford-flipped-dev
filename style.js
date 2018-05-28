@@ -1269,8 +1269,6 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 
 oxfordFlippedApp.loadNotifications = function(data) {
 
-	console.log("Notifications");
-
 	var notificationsList = document.createDocumentFragment();
 	var totalNotif = 0;
 	var $notifWrapper = $('#oxfl-notifications-list');
