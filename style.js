@@ -1279,16 +1279,14 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 			var unitsNotStarted = false,
 					unitsWithoutGrade = false;
-
+			var notifEpisodeTitle = unit.title;
 			var chapters = unit.subunits;
+
 			$.each(chapters, function(x, chapter){
-
-				var notifEpisodeTitle = unit.title,
-						notifChapterIsChallenge = (notifChapterTitle === 'Challenge');
-
 				var notifChapterTitle = chapter.title,
 						notifChapterDescription = chapter.description,
-						notifChapterID = chapter.id;
+						notifChapterID = chapter.id,
+						notifChapterIsChallenge = (notifChapterTitle === 'Challenge');
 
 				if (!notifChapterIsChallenge) {
 
