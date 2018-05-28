@@ -1,34 +1,74 @@
 
-<!-- 'gradebookintro' : 'The progress shown here is based in the available lessons, that means the ones that have been opened by your professor. Not opened lessons do not affect this results' -->
-<!-- 'gradebooktitle2' : 'Total Lessons Available:'-->
-<!-- 'gradebooktitle3' : 'Lessons completed'-->
-<!-- 'gradebooktitle4' : 'Overall status'-->
-<!-- 'gradebooktitle5' : 'Stars average'-->
-<!-- 'gradebooktitle6' : 'Awards'-->
-<!-- 'gradebookcaption1' : 'Available but not started'-->
-<!-- 'gradebookcaption2' : 'Started but not finished'-->
-<!-- 'gradebookcaption3' : 'Completed'-->
-<!-- 'gradebooktableheader1' : 'Lesson Name'-->
-<!-- 'gradebooktableheader2' : 'Status'-->
-<!-- 'gradebooktableheader3' : 'Stars'-->
+<!--
+  gradebooktitle : 'My <span>flipped</span> progress',
+  gradebookintro : 'The progress shown here is based in the available lessons, that means the ones that have been opened by your professor. Not opened lessons do not affect this results',
+	gradebooktitle2 : 'Total Lessons Available:',
+	gradebooktitle3 : 'Lessons completed',
+	gradebooktitle4 : 'Overall status',
+	gradebooktitle5 : 'Stars average',
+	gradebooktitle6 : 'Awards',
+	gradebookcaption1 : 'Available but not started',
+	gradebookcaption2 : 'Started but not finished',
+	gradebookcaption3 : 'Completed',
+	gradebooktableheader1 : 'Lesson Name',
+	gradebooktableheader2 : 'Status',
+	gradebooktableheader3 : 'Stars'
+-->
 <div id="oxfl-gradebook-wrapper">
-  <div id="oxfl-gradebook-inner">
-    <h2 class="oxfl-gradebook-title-1">'+oxfordFlippedApp.text.gradebooktitle+'</h2>
+  <section id="oxfl-gradebook-inner">
+    <header class="oxfl-gradebook-header">
+      <h2 class="oxfl-gradebook-title-1">'+oxfordFlippedApp.text.gradebooktitle+'</h2>
+    </header>
     <div id="oxfl-gradebook">
-      <div class="oxfl-gradebook-text">
-        <p>'+oxfordFlippedApp.text.gradebookintro+'</p>
+      <div class="oxfl-gradebook-section">
+        <div class="oxfl-gradebook-intro">
+          <p>'+oxfordFlippedApp.text.gradebookintro+'</p>
+        </div>
       </div>
       <div class="oxfl-gradebook-section">
         <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle2+' <span id="gradebook-total-lessons-available"></span></h3>
         <div class="row">
           <div class="col-sm-4">
             <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle3+'</h4>
+            <div>
+              <div id="oxfl-gradebook-donutchart" style="width: 228px; height: 228px;"></div>
+            </div>
           </div>
           <div class="col-sm-4">
             <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle4+'</h4>
+            <div class="oxfl-gradebook-barchart">
+              <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-3">
+                <div class="oxfl-gradebook-barchart-item-bar"></div>
+                <div class="oxfl-gradebook-barchart-item-number"></div>
+              </div>
+              <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-2">
+                <div class="oxfl-gradebook-barchart-item-bar"></div>
+                <div class="oxfl-gradebook-barchart-item-number"></div>
+              </div>
+              <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-1">
+                <div class="oxfl-gradebook-barchart-item-bar"></div>
+                <div class="oxfl-gradebook-barchart-item-number"></div>
+              </div>
+            </div>
           </div>
           <div class="col-sm-4">
             <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle5+'</h4>
+            <div class="oxfl-gradebook-average-stars-wrapper">
+              <ul class="oxfl-gradebook-average-stars">
+                <li class="oxfl-gradebook-average-stars-item">
+                  <span></span>
+                </li>
+                <li class="oxfl-gradebook-average-stars-item">
+                  <span></span>
+                </li>
+                <li class="oxfl-gradebook-average-stars-item">
+                  <span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="oxfl-gradebook-average-grade-challenge">
+              <div class="oxfl-gradebook-average-grade-challenge-inner"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -64,6 +104,14 @@
                 </div>
                 <div class="oxfl-gradebook-unit-content-table-row">
                   <div class="oxfl-gradebook-unit-content-table-cell"></div>
+                  <div class="oxfl-gradebook-unit-content-table-cell"></div>
+                  <div class="oxfl-gradebook-unit-content-table-cell">
+                    <ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'">
+                      <li class="oxfl-star-item"><span></span></li>
+                      <li class="oxfl-star-item"><span></span></li>
+                      <li class="oxfl-star-item"><span></span></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,5 +128,20 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="oxfl-gradebook-wrapper"> <section id="oxfl-gradebook-inner"> <header class="oxfl-gradebook-header"> <h2 class="oxfl-gradebook-title-1">'+oxfordFlippedApp.text.gradebooktitle+'</h2> </header> <div id="oxfl-gradebook"> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-intro"> <p>'+oxfordFlippedApp.text.gradebookintro+'</p> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle2+' <span id="gradebook-total-lessons-available"></span></h3> <div class="row"> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle3+'</h4> <div> <div id="oxfl-gradebook-donutchart" style="width: 228px; height: 228px;"></div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle4+'</h4> <div class="oxfl-gradebook-barchart"> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-3"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-2"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-1"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle5+'</h4> <div class="oxfl-gradebook-average-stars-wrapper"> <ul class="oxfl-gradebook-average-stars"> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> </ul> </div> <div class="oxfl-gradebook-average-grade-challenge"> <div class="oxfl-gradebook-average-grade-challenge-inner"></div> </div> </div> </div> </div> <div class="oxfl-gradebook-section"> <ul class="oxfl-gradebook-captions"> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-1"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption1+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-2"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption2+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-3"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption3+'</span> </li> </ul> </div> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-units"> <article class="oxfl-gradebook-unit"> <header class="oxfl-gradebook-unit-header"> <h3 class="oxfl-gradebook-title-2"></h3> </header> <div class="oxfl-gradebook-unit-content"> <div class="oxfl-gradebook-unit-content-table"> <div class="oxfl-gradebook-unit-content-table-row"> <div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div> <div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div> <div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div> </div> <div class="oxfl-gradebook-unit-content-table-row"> <div class="oxfl-gradebook-unit-content-table-cell"></div> <div class="oxfl-gradebook-unit-content-table-cell"></div> <div class="oxfl-gradebook-unit-content-table-cell"> <ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"> <li class="oxfl-star-item"><span></span></li> <li class="oxfl-star-item"><span></span></li> <li class="oxfl-star-item"><span></span></li> </ul> </div> </div> </div> </div> </article> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle6+'</h3> <div class="oxfl-gradebook-awards"> <div class="oxfl-gradebook-award oxfl-gradebook-award-done"> <img src="" width="170" height="170" alt=""> </div> </div> </div> </div> </section> </div>

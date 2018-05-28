@@ -1,0 +1,212 @@
+
+#oxfl-gradebook-wrapper {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  pointer-events: none;
+  background: $background_color;
+}
+
+.oxfl-gradebook-header {
+  position: relative;
+  padding-bottom: 60px;
+  text-align: center;
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 30px;
+    background: url(img/gradebook-separator.png) 0 0 no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.oxfl-gradebook-intro {
+  @include font-size(1.8);
+  line-height: (21em/18);
+  color: $primary_color;
+}
+
+.oxfl-gradebook-title-1 {
+  @include font-size(6.2);
+  line-height: 1.1em;
+  color: $color_6;
+  font-family: $font_family_2;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 auto;
+  text-transform: uppercase;
+  position: relative;
+  padding: 60px 50px;
+  span {
+    font-family: $font_family_1;
+    font-weight: 400;
+    color: $color_1;
+    transform: rotate(-190deg);
+    text-transform: none;
+  }
+  &::before {
+    content: '';
+    width: 313px;
+    height: 68px;
+    background: url(img/gradebook-monster.png) 0 0 no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.oxfl-gradebook-title-2 {
+  @include font-size(4.0);
+  line-height: 1.1em;
+  color: $color_13;
+  font-family: $font_family_2;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.oxfl-gradebook-title-3 {
+  @include font-size(2.1);
+  line-height: 1.1em;
+  color: $color_10;
+  font-family: $font_family_2;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.oxfl-gradebook-section {
+  padding-bottom: 50px;
+}
+
+
+.oxfl-gradebook-captions {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50%;
+  padding-right: 50px;
+  .oxfl-gradebook-caption {
+    @include font-size(1.8);
+    line-height: 1em;
+    color: $color_10;
+    padding: 10px;
+    .oxfl-gradebook-caption-badge,
+    .oxfl-gradebook-caption-text {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 28px;
+    }
+
+    .oxfl-gradebook-caption-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 100%;
+      margin-right: 14px;
+    }
+
+    &-1 {
+      .oxfl-gradebook-caption-badge {
+        background-color: $color_4;
+      }
+    }
+    &-2 {
+      .oxfl-gradebook-caption-badge {
+        background-color: $color_6_mod;
+      }
+    }
+    &-3 {
+      .oxfl-gradebook-caption-badge {
+        background-color: $color_7;
+      }
+    }
+  }
+}
+
+// Charts
+
+#oxfl-gradebook-donutchart {
+  svg {
+    path {
+      stroke-width: 6px;
+    }
+  }
+}
+
+$barchart_size: 30px;
+
+.oxfl-gradebook-barchart {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  &::before {
+    bottom: $barchart_size;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color_10;
+  }
+  &-item {
+    width: 33.3333%;
+    padding: 0 15px;
+    &-bar {
+      width: $barchart_size;
+    }
+    &-number {
+      @include font-size(2.1);
+      line-height: 1.1em;
+      color: $color_10;
+      font-family: $font_family_2;
+      font-weight: bold;
+      text-align: center;
+      width: $barchart_size;
+      height: $barchart_size;
+      line-height: $barchart_size;
+    }
+    &-1 {
+      .oxfl-gradebook-barchart-item-bar {
+        background-color: $color_4;
+      }
+    }
+    &-2 {
+      .oxfl-gradebook-barchart-item-bar {
+        background-color: $color_6_mod;
+      }
+    }
+    &-3 {
+      .oxfl-gradebook-barchart-item-bar {
+        background-color: $color_7;
+      }
+    }
+  }
+}
+
+
+body.oxfl-body-gradebook {
+  #oxfl-gradebook-wrapper {
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s;
+    pointer-events: auto;
+  }
+  #oxfl-general {
+    background: $background_color;
+  }
+  #oxfl-custom-background-inner-1,
+  #oxfl-custom-background-inner-2 {
+    opacity: 0!important;
+  }
+}
