@@ -1625,34 +1625,32 @@ oxfordFlippedApp.loadGradebook = function() {
 	if (alreadyLoaded) {
 
 	} else {
-		$.getScript("https://www.gstatic.com/charts/loader.js");
-		google.charts.load("current", {packages:["corechart"]});
-		google.charts.setOnLoadCallback(drawChart);
-		function drawChart() {
-			var data = google.visualization.arrayToDataTable([
-				['Status', 'Quantity'],
-				['Not completed',     17],
-				['Completed',      3]
-			]);
+		var url = "https://www.gstatic.com/charts/loader.js";
+		$.getScript( url, function() {
+			google.charts.load("current", {packages:["corechart"]});
+			google.charts.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+					['Status', 'Quantity'],
+					['Not completed',     17],
+					['Completed',      3]
+				]);
 
-			var options = {
-				pieHole: 0.7,
-				legend: 'none',
-				pieSliceText: 'none',
-				pieStartAngle: -65,
-			};
+				var options = {
+					pieHole: 0.7,
+					legend: 'none',
+					pieSliceText: 'none',
+					pieStartAngle: -65
+				};
 
-			var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
-			chart.draw(data, options);
-		 }
+				var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
+				chart.draw(data, options);
+			 }
 
-
-		 $('#oxfl-gradebook-wrapper').addClass('loaded');
+			 $('#oxfl-gradebook-wrapper').addClass('loaded');
+		});
 
 	}
-
-
-
 
 }
 
