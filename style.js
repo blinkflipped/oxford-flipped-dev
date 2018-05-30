@@ -1692,10 +1692,13 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	var totalUnitsData = oxfordFlippedApp.bookData.units;
 
 	var $units = $('#oxlf-gradebook .oxfl-gradebook-units');
+	var unitContent = document.createDocumentFragment();
+
 	$.each(totalUnitsData, function(i, unit){
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var chapters = unit.subunits;
 			var tableRow = document.createDocumentFragment();
+
 			$.each(chapters, function(x, chapter){
 				var unitsNotStarted = false,
 						unitsWithoutGrade = false;
@@ -1748,15 +1751,16 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				tableRow.appendChild(tableRowItem);
 			});
 			console.log(tableRow);
-			unitContent = document.createElement('div');
-			unitContent.className = 'oxfl-gradebook-units-page';
+			var unitContentItem = document.createElement('div');
+			unitContentItem.className = 'oxfl-gradebook-units-page';
 			unitContentItem.innerHTML = '<article class="oxfl-gradebook-unit"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2"></h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div>'+tableRow+'</div></div></article>';
 			unitContent.appendChild(unitContentItem);
 
 		}
 	});
 
-	$units[0].appendChild(unitContentItem);
+	console.log(unitContent);
+	$units[0].appendChild(unitContent);
 
 	console.log(totalUnits);
 	console.log(unitsStarted);
