@@ -1715,7 +1715,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
 						totalUnits++;
 
-						if (typeof window.actividades[chapterID] === 'undefined') {
+						if (typeof window.actividades[chapterID] !== 'undefined') {
 							var chapterState = window.actividades[chapterID].estado;
 								//newStars = oxfordFlippedApp.gradeToStars(newGrade);
 							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
