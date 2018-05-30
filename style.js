@@ -1691,7 +1691,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	var totalGrade = 0;
 	var totalUnitsData = oxfordFlippedApp.bookData.units;
 
-	var $units = $('#oxlf-gradebook .oxfl-gradebook-units');
+	var $units = $('#oxfl-gradebook .oxfl-gradebook-units');
 	var unitContent = document.createDocumentFragment();
 
 	$.each(totalUnitsData, function(i, unit){
