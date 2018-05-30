@@ -1703,10 +1703,11 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			var unitHTML = '<div class="oxfl-gradebook-units-page"><article class="oxfl-gradebook-unit" id="oxfl-gradebook-unit-'+unitID+'"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2">'+title+'</h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div></div></div></article></div>';
 
 			$units.append(unitHTML)
+			var tableRows = document.createDocumentFragment();
 
 			$.each(chapters, function(x, chapter){
 
-				var tableRows = document.createDocumentFragment();
+
 
 				var unitsNotStarted = false,
 						unitsWithoutGrade = false;
