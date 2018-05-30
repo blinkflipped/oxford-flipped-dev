@@ -1649,7 +1649,8 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 	var barchartSize = 30;
 	var completedPercent = unitsCompleted * 100 / totalUnits,
 			startedPercet = unitsStarted * 100 / totalUnits,
-			notStartedPercent = (totalUnits - unitsStarted - unitsCompleted) * 100 / totalUnits;
+			unitsNotStarted = totalUnits - unitsStarted - unitsCompleted,
+			notStartedPercent = unitsNotStarted * 100 / totalUnits;
 
 	console.log(completedPercent);
 	console.log(startedPercet);
@@ -1658,9 +1659,15 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 	function newbarChartSize(percent) {
 		return barchartSize*percent/100;
 	}
-	$barchartItemCompleted.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+completedPercent+'% - '+newbarChartSize(completedPercent)+'px)');
-	$barchartItemStarted.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+startedPercet+'% - '+newbarChartSize(startedPercet)+'px)');
-	$barchartItemNotStarted.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)');
+	$barchartItemCompleted
+		.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+completedPercent+'% - '+newbarChartSize(completedPercent)+'px)').end()
+		.find('oxfl-gradebook-barchart-item-number').text(unitsCompleted);
+	$barchartItemStarted
+		.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+startedPercet+'% - '+newbarChartSize(startedPercet)+'px)').end()
+		.find('oxfl-gradebook-barchart-item-number').text(unitsStarted);
+	$barchartItemNotStarted
+		.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)').end()
+		.find('oxfl-gradebook-barchart-item-number').text(unitsNotStarted);
 
 }
 
@@ -1706,20 +1713,19 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					var chapterLockStatus = chapter.lock;
 					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
-						// Comprobar que esas actividades NO estan en el json de actividades (no están empezadas o completadas)
 						totalUnits++;
 
-						var chapterState = chapter.estado;
+						if (typeof window.actividades[chapterID] === 'undefined') {
+							var chapterState = window.actividades[chapterID].estado;
 								//newStars = oxfordFlippedApp.gradeToStars(newGrade);
-						//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
-
-						console.log(chapterState);
-
-						if (chapterState === 0) unitsStarted++;
-						if (chapterState === 1) {
-							unitsCompleted++;
-							var chapterGrade = dataChapter.clasificacion; //TODO Comprobar que se calculan solo sobre las completadas
-							totalGrade += chapterGrade;
+							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
+							console.log(chapterState);
+							if (chapterState === 0) unitsStarted++;
+							if (chapterState === 1) {
+								unitsCompleted++;
+								var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se calculan solo sobre las completadas
+								totalGrade += chapterGrade;
+							}
 						}
 
 					}
