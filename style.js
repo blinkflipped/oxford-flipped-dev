@@ -1696,10 +1696,18 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	$.each(totalUnitsData, function(i, unit){
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
-			var chapters = unit.subunits;
-			var tableRow = document.createDocumentFragment();
+			var chapters = unit.subunits,
+					title = unit.title,
+					unitID = unit.id;
+
+			var unitHTML = '<div class="oxfl-gradebook-units-page"><article class="oxfl-gradebook-unit" id="oxfl-gradebook-unit-'+unitID+'"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2">'+title+'</h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div></div></div></article></div>';
+
+			$units.append(unitHTML)
 
 			$.each(chapters, function(x, chapter){
+
+				var tableRows = document.createDocumentFragment();
+
 				var unitsNotStarted = false,
 						unitsWithoutGrade = false;
 
@@ -1743,26 +1751,17 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					}
 				}
 
-
 				tableRowItem = document.createElement('div'),
 				tableRowItem.className = 'oxfl-gradebook-unit-content-table-row';
 				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"></div><div class="oxfl-gradebook-unit-content-table-cell"></div><div class="oxfl-gradebook-unit-content-table-cell"><ul class="oxfl-stars"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
 
-				tableRow.appendChild(tableRowItem);
+				tableRows.appendChild(tableRowItem);
 			});
-			console.log(tableRow);
-			var unitContentItem = document.createElement('div');
-			unitContentItem.className = 'oxfl-gradebook-units-page';
-			unitContentItem.innerHTML = '<article class="oxfl-gradebook-unit"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2"></h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div></div></div></article>';
-			console.log(unitContentItem);
-			$(unitContentItem).find('.oxfl-gradebook-unit-content-table').appendChild(tableRow);
-			unitContent.appendChild(unitContentItem);
+			console.log(tableRows);
+			$('oxfl-gradebook-unit-'+unitID)[0].appendChild(tableRows);
 
 		}
 	});
-
-	console.log(unitContent);
-	$units[0].appendChild(unitContent);
 
 	console.log(totalUnits);
 	console.log(unitsStarted);
