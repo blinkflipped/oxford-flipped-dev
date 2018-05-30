@@ -1049,7 +1049,9 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash)}, timeToWait);
 
-	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook (Not implemented)
+	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook //TODO WIP
+
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadGradebook(updateHash)}, timeToWait);
 
 	} else { // Incorrect hash
 
@@ -1618,39 +1620,57 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 
 }
 
-oxfordFlippedApp.loadGradebook = function() {
+oxfordFlippedApp.drawChartGradebook = function() {
+	var data = google.visualization.arrayToDataTable([
+		['Status', 'Quantity'],
+		['Not completed',     17],
+		['Completed',      3]
+	]);
 
-	var alreadyLoaded = $('#oxfl-gradebook-wrapper').is('.loaded');
+	var options = {
+		pieHole: 0.7,
+		legend: 'none',
+		pieSliceText: 'none',
+		pieStartAngle: -65,
+		enableInteractivity: false
+	};
+	var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
+	chart.draw(data, options);
+}
+
+oxfordFlippedApp.loadGradebook = function(updateHash) {
+
+	var currentIndex = 6;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
+	var $gradebookWrapper = $('#oxfl-gradebook-wrapper'),
+			alreadyLoaded = $gradebookWrapper.is('.loaded');
 
 	if (alreadyLoaded) {
-
+		oxfordFlippedApp.drawChartGradebook();
 	} else {
 		var url = "https://www.gstatic.com/charts/loader.js";
 		$.getScript( url, function() {
+
 			google.charts.load("current", {packages:["corechart"]});
-			google.charts.setOnLoadCallback(drawChart);
-			function drawChart() {
-				var data = google.visualization.arrayToDataTable([
-					['Status', 'Quantity'],
-					['Not completed',     17],
-					['Completed',      3]
-				]);
+			google.charts.setOnLoadCallback(window.drawChartGradebook);
 
-				var options = {
-					pieHole: 0.7,
-					legend: 'none',
-					pieSliceText: 'none',
-					pieStartAngle: -65,
-					enableInteractivity: false
-				};
-				var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
-				chart.draw(data, options);
-			 }
+			$('#oxfl-gradebook-wrapper').addClass('loaded');
 
-			 $('#oxfl-gradebook-wrapper').addClass('loaded');
 		});
 
+		// Object Fit support
+		oxfordFlippedApp.objectFitSupport();
+
 	}
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
+	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass(bodyClass);
+		if (updateHash) window.location.hash = hash;
+	});
 
 }
 

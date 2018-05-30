@@ -1188,9 +1188,12 @@ body.oxfl-body-home #oxfl-home-menu {
   pointer-events: none;
   background: #ffffff; }
 
+#oxfl-gradebook-inner {
+  padding: 100px 0; }
+
 .oxfl-gradebook-header {
   position: relative;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   margin-bottom: 50px;
   text-align: center; }
   .oxfl-gradebook-header::before {
@@ -1219,16 +1222,16 @@ body.oxfl-body-home #oxfl-home-menu {
   font-weight: bold;
   display: inline-block;
   margin: 0 auto;
-  text-transform: uppercase;
+  text-transform: lowercase;
   position: relative;
-  padding: 60px 50px; }
+  padding: 60px 50px 20px; }
   .oxfl-gradebook-title-1 span {
     display: inline-block;
     font-family: "Quicksand", sans-serif;
     font-weight: 400;
     color: #8BE23F;
     transform: rotate(-190deg);
-    text-transform: none; }
+    text-transform: capitalize; }
   .oxfl-gradebook-title-1::before {
     content: '';
     width: 313px;
@@ -1810,6 +1813,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   top: 0;
   left: 0;
   z-index: 100;
+  background-repeat: no-repeat;
   background-image: url(img/monster_lessons.gif);
   background-position: left bottom;
   width: 715px;

@@ -14,9 +14,13 @@
   background: $background_color;
 }
 
+#oxfl-gradebook-inner {
+  padding: 100px 0;
+}
+
 .oxfl-gradebook-header {
   position: relative;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   margin-bottom: 50px;
   text-align: center;
   &::before {
@@ -46,16 +50,16 @@
   font-weight: bold;
   display: inline-block;
   margin: 0 auto;
-  text-transform: uppercase;
+  text-transform: lowercase;
   position: relative;
-  padding: 60px 50px;
+  padding: 60px 50px 20px;
   span {
     display: inline-block;
     font-family: $font_family_1;
     font-weight: 400;
     color: $color_1;
     transform: rotate(-190deg);
-    text-transform: none;
+    text-transform: capitalize;
   }
   &::before {
     content: '';
