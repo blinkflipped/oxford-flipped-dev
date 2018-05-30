@@ -1139,7 +1139,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				unitHtml = '<div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-lessons"><div class="oxfl-monster-lessons-bubble"><span>'+lessonPageText+'</span></div></div> <div id="oxfl-chapters"></div></div>',
 				marketplaceHtml = '<div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buygame+'</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">'+oxfordFlippedApp.text.buysummary+'</span> </button> </div> </div> </div>',
 				marketplaceInnerHtml = '<div id="oxfl-resources-game-wrapper"> <div id="oxfl-resources-game-monster"> <div class="oxfl-resources-game-monster-bubble"><span>'+oxfordFlippedApp.text.choosegame+'</span></div> </div> <div id="oxfl-resources-game" class="oxfl-resources-container"> </div> </div> <div id="oxfl-resources-summary-wrapper"> <div id="oxfl-resources-summary-monster"> <div class="oxfl-resources-summary-monster-bubble"><span>'+oxfordFlippedApp.text.chooseshorcut+'</span></div> </div> <div id="oxfl-resources-summary" class="oxfl-resources-container"> </div></div>',
-				gradebookHtml = '<div id="oxfl-gradebook-wrapper"><section id="oxfl-gradebook-inner" class="oxfl-container"><header class="oxfl-gradebook-header"> <h2 class="oxfl-gradebook-title-1">'+oxfordFlippedApp.text.gradebooktitle+'</h2> </header> <div id="oxfl-gradebook"> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-intro"> <p>'+oxfordFlippedApp.text.gradebookintro+'</p> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle2+' <span id="gradebook-total-lessons-available"></span></h3> <div class="row"> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle3+'</h4> <div> <div id="oxfl-gradebook-donutchart" style="width: 228px; height: 228px;"></div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle4+'</h4> <div class="oxfl-gradebook-barchart"> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-3"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-2"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-1"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle5+'</h4> <div class="oxfl-gradebook-average-stars-wrapper"> <ul class="oxfl-gradebook-average-stars"> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> </ul> </div> <div class="oxfl-gradebook-average-grade-challenge"> <div class="oxfl-gradebook-average-grade-challenge-inner"></div> </div> </div> </div> </div> <div class="oxfl-gradebook-section"> <ul class="oxfl-gradebook-captions"> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-1"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption1+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-2"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption2+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-3"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption3+'</span> </li> </ul> </div> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-units"> <article class="oxfl-gradebook-unit"> <header class="oxfl-gradebook-unit-header"> <h3 class="oxfl-gradebook-title-2"></h3> </header> <div class="oxfl-gradebook-unit-content"> <div class="oxfl-gradebook-unit-content-table"> <div class="oxfl-gradebook-unit-content-table-row"> <div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div> <div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div> <div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div> </div> <div class="oxfl-gradebook-unit-content-table-row"> <div class="oxfl-gradebook-unit-content-table-cell"></div> <div class="oxfl-gradebook-unit-content-table-cell"></div> <div class="oxfl-gradebook-unit-content-table-cell"> <ul class="oxfl-stars"> <li class="oxfl-star-item"><span></span></li> <li class="oxfl-star-item"><span></span></li> <li class="oxfl-star-item"><span></span></li> </ul> </div> </div> </div> </div> </article> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle6+'</h3> <div class="oxfl-gradebook-awards"> <div class="oxfl-gradebook-award oxfl-gradebook-award-done"> <img src="" width="170" height="170" alt=""> </div> </div> </div> </div> </section> </div>',
+				gradebookHtml = '<div id="oxfl-gradebook-wrapper"><section id="oxfl-gradebook-inner" class="oxfl-container"><header class="oxfl-gradebook-header"> <h2 class="oxfl-gradebook-title-1">'+oxfordFlippedApp.text.gradebooktitle+'</h2> </header> <div id="oxfl-gradebook"> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-intro"> <p>'+oxfordFlippedApp.text.gradebookintro+'</p> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle2+' <span id="gradebook-total-lessons-available"></span></h3> <div class="row"> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle3+'</h4> <div> <div id="oxfl-gradebook-donutchart" style="width: 228px; height: 228px;"></div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle4+'</h4> <div class="oxfl-gradebook-barchart"> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-3"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-2"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-1"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle5+'</h4> <div class="oxfl-gradebook-average-stars-wrapper"> <ul class="oxfl-gradebook-average-stars"> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> <li class="oxfl-gradebook-average-stars-item"> <span></span> </li> </ul> </div> <div class="oxfl-gradebook-average-grade-challenge"> <div class="oxfl-gradebook-average-grade-challenge-inner"></div> </div> </div> </div> </div> <div class="oxfl-gradebook-section"> <ul class="oxfl-gradebook-captions"> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-1"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption1+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-2"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption2+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-3"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption3+'</span> </li> </ul> </div> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-units"> <article class="oxfl-gradebook-unit"> <header class="oxfl-gradebook-unit-header"> <h3 class="oxfl-gradebook-title-2"></h3> </header> <div class="oxfl-gradebook-unit-content"> <div class="oxfl-gradebook-unit-content-table"></div> </div> </article> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle6+'</h3> <div class="oxfl-gradebook-awards"> <div class="oxfl-gradebook-award oxfl-gradebook-award-done"> <img src="" width="170" height="170" alt=""> </div> </div> </div> </div> </section> </div>',
 				modalLockChaptersHtml = '<div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.modalLock+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div></div>',
 				modalNotificationsHtml = '<div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-list-notifications" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <div class="oxfl-title3">'+oxfordFlippedApp.text.titleNotif+'</div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div id="oxfl-notifications-list"></div> </div> </div></div> </div>',
 				modalConnectionHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-noconnection" id="oxfl-modal-marketplace-noconnection" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.noconnection+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div>',
@@ -1620,11 +1620,12 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 
 }
 
-oxfordFlippedApp.drawChartGradebook = function() {
+oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
+	var notCompleted = totalUnits - unitsCompleted;
 	var data = google.visualization.arrayToDataTable([
 		['Status', 'Quantity'],
-		['Not completed',     17],
-		['Completed',      3]
+		['Not completed',     notCompleted],
+		['Completed',      unitsCompleted]
 	]);
 
 	var options = {
@@ -1633,7 +1634,7 @@ oxfordFlippedApp.drawChartGradebook = function() {
 		pieSliceText: 'none',
 		pieStartAngle: -65,
 		enableInteractivity: false,
-		colors: ['#87c943', '#999999'],
+		colors: ['#999999', '#87c943'],
 	};
 	var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
 	chart.draw(data, options);
@@ -1655,6 +1656,7 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 	console.log(completedPercent);
 	console.log(startedPercet);
 	console.log(notStartedPercent);
+	console.log(totalUnits,unitsStarted,unitsCompleted);
 
 	function newbarChartSize(percent) {
 		return barchartSize*percent/100;
@@ -1688,9 +1690,12 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	var unitsCompleted = 0;
 	var totalGrade = 0;
 	var totalUnitsData = oxfordFlippedApp.bookData.units;
+
+	var $units = $('#oxlf-gradebook .oxfl-gradebook-units');
 	$.each(totalUnitsData, function(i, unit){
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var chapters = unit.subunits;
+			var tableRow = document.createDocumentFragment();
 			$.each(chapters, function(x, chapter){
 				var unitsNotStarted = false,
 						unitsWithoutGrade = false;
@@ -1714,10 +1719,8 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
 						totalUnits++;
-
 						if (typeof window.actividades[chapterID] !== 'undefined') {
 							var chapterState = window.actividades[chapterID].estado;
-								//newStars = oxfordFlippedApp.gradeToStars(newGrade);
 							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
 							console.log(chapterState);
 							if (chapterState === 0) unitsStarted++;
@@ -1732,14 +1735,29 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				} else {
 
 					var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
-
 					if (!isChallengeLock) {
 						totalUnits++;
 					}
 				}
+
+
+				tableRowItem = document.createElement('div'),
+				tableRowItem.className = 'oxfl-gradebook-unit-content-table-row';
+				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"></div><div class="oxfl-gradebook-unit-content-table-cell"></div><div class="oxfl-gradebook-unit-content-table-cell"><ul class="oxfl-stars"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
+
+				tableRow.appendChild(tableRowItem);
 			});
+			console.log(tableRow);
+			unitContent = document.createElement('div');
+			unitContent.className = 'oxfl-gradebook-units-page';
+			unitContentItem.innerHTML = '<article class="oxfl-gradebook-unit"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2"></h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div>'+tableRow+'</div></div></article>';
+			unitContent.appendChild(unitContentItem);
+
 		}
 	});
+
+	$units[0].appendChild(unitContentItem);
+
 	console.log(totalUnits);
 	console.log(unitsStarted);
 	console.log(unitsCompleted);
