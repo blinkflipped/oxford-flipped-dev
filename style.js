@@ -1753,7 +1753,9 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			console.log(tableRow);
 			var unitContentItem = document.createElement('div');
 			unitContentItem.className = 'oxfl-gradebook-units-page';
-			unitContentItem.innerHTML = '<article class="oxfl-gradebook-unit"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2"></h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div>'+tableRow+'</div></div></article>';
+			unitContentItem.innerHTML = '<article class="oxfl-gradebook-unit"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2"></h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div></div></div></article>';
+			console.log(unitContentItem);
+			unitContentItem[0].find('.oxfl-gradebook-unit-content-table').appendChild(tableRow);
 			unitContent.appendChild(unitContentItem);
 
 		}
