@@ -1314,7 +1314,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 				var notifChapterTitle = chapter.title,
 						notifChapterDescription = chapter.description,
 						notifChapterID = chapter.id,
-						notifChapterIsChallenge = (notifChapterTitle === 'Challenge');
+						notifChapterIsChallenge = (notifChapterTitle === oxfordFlippedApp.config.nameChallenge );
 
 				if (!notifChapterIsChallenge) {
 
@@ -1398,7 +1398,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				chapterDescription = chapter.description,
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
-				chapterIsChallenge = (chapterTitle === 'Challenge'),
+				chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
 				chapterIsMarketplace = (chapterTag === oxfordFlippedApp.config.tagMarketplace);
 
 		//Stars
@@ -1632,10 +1632,36 @@ oxfordFlippedApp.drawChartGradebook = function() {
 		legend: 'none',
 		pieSliceText: 'none',
 		pieStartAngle: -65,
-		enableInteractivity: false
+		enableInteractivity: false,
+		colors: ['#87c943', '#999999'],
 	};
 	var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
 	chart.draw(data, options);
+}
+
+oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompleted) {
+
+	var $barchart = $('#oxfl-gradebook .oxfl-gradebook-barchart'),
+			$barchartItemCompleted = $barchart.find('.oxfl-gradebook-barchart-item-3'),
+			$barchartItemStarted = $barchart.find('.oxfl-gradebook-barchart-item-2'),
+			$barchartItemNotStarted = $barchart.find('.oxfl-gradebook-barchart-item-1');
+
+	var barchartSize = 30;
+	var completedPercent = unitsCompleted * 100 / totalUnits,
+			startedPercet = unitsStarted * 100 / totalUnits,
+			notStartedPercent = (totalUnits - unitsStarted - unitsCompleted) * 100 / totalUnits;
+
+	console.log(completedPercent);
+	console.log(startedPercet);
+	console.log(notStartedPercent);
+
+	function newbarChartSize(percent) {
+		return barchartSize*percent/100;
+	}
+	$barchartItemCompleted.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+completedPercent+'% - '+newbarChartSize(completedPercent)+'px)');
+	$barchartItemStarted.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+startedPercet+'% - '+newbarChartSize(startedPercet)+'px)');
+	$barchartItemNotStarted.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)');
+
 }
 
 oxfordFlippedApp.loadGradebook = function(updateHash) {
@@ -1648,6 +1674,75 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	var $gradebookWrapper = $('#oxfl-gradebook-wrapper'),
 			alreadyLoaded = $gradebookWrapper.is('.loaded');
 
+	// Gradebook Data
+
+	var totalUnits = 0;
+	var unitsStarted = 0;
+	var unitsCompleted = 0;
+	var totalGrade = 0;
+	var totalUnitsData = oxfordFlippedApp.bookData.units;
+	$.each(totalUnitsData, function(i, unit){
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
+			var chapters = unit.subunits;
+			$.each(chapters, function(x, chapter){
+				var unitsNotStarted = false,
+						unitsWithoutGrade = false;
+
+				var chapterTitle = chapter.title,
+						chapterDescription = chapter.description,
+						chapterID = chapter.id,
+						chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge);
+
+				if (!chapterIsChallenge) {
+					// Activities not started
+					if (typeof window.actividades[chapterID] === 'undefined') {
+						unitsNotStarted = true;
+					} else {
+					// Activities started or completed
+						if (window.actividades[chapterID].clasificacion === '') {
+							unitsWithoutGrade = true;
+						}
+					}
+					var chapterLockStatus = chapter.lock;
+					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
+					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
+						// Comprobar que esas actividades NO estan en el json de actividades (no están empezadas o completadas)
+						totalUnits++;
+
+						var chapterState = chapter.estado;
+								//newStars = oxfordFlippedApp.gradeToStars(newGrade);
+						//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
+
+						console.log(chapterState);
+
+						if (chapterState === 0) unitsStarted++;
+						if (chapterState === 1) {
+							unitsCompleted++;
+							var chapterGrade = dataChapter.clasificacion; //TODO Comprobar que se calculan solo sobre las completadas
+							totalGrade += chapterGrade;
+						}
+
+					}
+				} else {
+
+					var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+
+					if (!isChallengeLock) {
+						totalUnits++;
+					}
+				}
+			});
+		}
+	});
+	console.log(totalUnits);
+	console.log(unitsStarted);
+	console.log(unitsCompleted);
+	console.log(totalGrade);
+
+	oxfordFlippedApp.drawBarsGradebook(totalUnits,unitsStarted,unitsCompleted);
+
+	$('#gradebook-total-lessons-available').text(totalUnits);
+
 	if (alreadyLoaded) {
 		oxfordFlippedApp.drawChartGradebook();
 	} else {
@@ -1655,7 +1750,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		$.getScript( url, function() {
 
 			google.charts.load("current", {packages:["corechart"]});
-			google.charts.setOnLoadCallback(window.drawChartGradebook);
+			google.charts.setOnLoadCallback(oxfordFlippedApp.drawChartGradebook);
 
 			$('#oxfl-gradebook-wrapper').addClass('loaded');
 

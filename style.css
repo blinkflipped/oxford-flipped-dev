@@ -135,7 +135,8 @@ body.oxfl-body-episodes,
 body.oxfl-body-chapters,
 body.oxfl-body-marketplace,
 body.oxfl-body-marketplace-summary,
-body.oxfl-body-marketplace-game {
+body.oxfl-body-marketplace-game,
+body.oxfl-body-gradebook {
   overflow: auto;
   -webkit-overflow-scrolling: auto; }
 
@@ -919,7 +920,7 @@ body.oxfl-body-marketplace-game {
   .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
     min-height: 860px; }
   .oxfl-body-gradebook #oxfl-general {
-    min-height: 1400px; }
+    min-height: 1880px; }
 
 #oxfl-custom-background {
   position: absolute;
@@ -1189,7 +1190,8 @@ body.oxfl-body-home #oxfl-home-menu {
   background: #ffffff; }
 
 #oxfl-gradebook-inner {
-  padding: 100px 0; }
+  padding: 100px 0;
+  max-width: 800px; }
 
 .oxfl-gradebook-header {
   position: relative;
@@ -1300,7 +1302,8 @@ body.oxfl-body-home #oxfl-home-menu {
 .oxfl-gradebook-barchart {
   position: relative;
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  height: 210px; }
   .oxfl-gradebook-barchart::before {
     content: '';
     bottom: 30px;
@@ -1312,10 +1315,15 @@ body.oxfl-body-home #oxfl-home-menu {
     display: block; }
   .oxfl-gradebook-barchart-item {
     width: 33.3333%;
-    padding: 0 15px; }
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center; }
     .oxfl-gradebook-barchart-item-bar {
       width: 30px;
-      margin: 0 auto;
+      height: 0;
+      margin: 0 auto 30px;
       border-radius: 20px 20px 0 0; }
     .oxfl-gradebook-barchart-item-number {
       font-size: 21px;
