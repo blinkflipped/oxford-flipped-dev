@@ -1777,10 +1777,11 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			});
 
 			$('#oxfl-gradebook-unit-'+unitID+' .oxfl-gradebook-unit-content-table')[0].appendChild(tableRows);
-			$units.slick(oxfordFlippedApp.config.carouselOpt);
 
 		}
 	});
+
+	$units.slick(oxfordFlippedApp.config.carouselOpt);
 
 	console.log(totalUnits);
 	console.log(unitsStarted);
