@@ -1715,7 +1715,9 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				var chapterTitle = chapter.title,
 						chapterDescription = chapter.description,
 						chapterID = chapter.id,
-						chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge);
+						chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
+						chapterGralState = 3, // 0: Started, 1: Completed, 2:New, 3: Lock
+						chapterStars = 0;
 
 				if (!chapterIsChallenge) {
 					// Activities not started
@@ -1735,14 +1737,19 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							var chapterState = window.actividades[chapterID].estado;
 							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
 							console.log(chapterState);
-							if (chapterState === 0) unitsStarted++;
-							if (chapterState === 1) {
+							if (chapterState === 0) {
+								unitsStarted++;
+								chapterGralState = 0;
+							} else if (chapterState === 1) {
 								unitsCompleted++;
-								var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se calculan solo sobre las completadas
+								var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se deben calculan solo sobre las completadas como esta hecho ahora
 								totalGrade += chapterGrade;
+								chapterGralState = 1;
+								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 							}
+						} else {
+							chapterGralState = 2;
 						}
-
 					}
 				} else {
 
@@ -1754,7 +1761,9 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 				tableRowItem = document.createElement('div'),
 				tableRowItem.className = 'oxfl-gradebook-unit-content-table-row';
-				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"></div><div class="oxfl-gradebook-unit-content-table-cell"></div><div class="oxfl-gradebook-unit-content-table-cell"><ul class="oxfl-stars"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
+
+				var chapterStarsClass = (chapterGralState === 3) ? 'inactive' : chapterStars;
+				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"><h4 class="oxfl-gradebook-title-4">'+chapterTitle+'</h4></div><div class="oxfl-gradebook-unit-content-table-cell"><div class="oxfl-gradebook-unit-content-table-cell-state oxfl-gradebook-unit-content-table-cell-state-'+chapterGralState+'"></div></div><div class="oxfl-gradebook-unit-content-table-cell"><ul class="oxfl-stars oxfl-stars-'+chapterStarsClass+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
 
 				tableRows.appendChild(tableRowItem);
 			});
