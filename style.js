@@ -1634,7 +1634,7 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 		pieSliceText: 'none',
 		pieStartAngle: -65,
 		enableInteractivity: false,
-		colors: ['#999999', '#87c943'],
+		colors: ['#666666', '#87c943'],
 	};
 	var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
 	chart.draw(data, options);
@@ -1700,7 +1700,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					title = unit.title,
 					unitID = unit.id;
 
-			var unitHTML = '<div class="oxfl-gradebook-units-page"><article class="oxfl-gradebook-unit" id="oxfl-gradebook-unit-'+unitID+'"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2">'+title+'</h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div></div></div></article></div>';
+			var unitHTML = '<div class="oxfl-gradebook-units-page"><article class="oxfl-gradebook-unit" id="oxfl-gradebook-unit-'+unitID+'"><header class="oxfl-gradebook-unit-header"><h3 class="oxfl-gradebook-title-2">'+title+'</h3></header><div class="oxfl-gradebook-unit-content"><div class="oxfl-gradebook-unit-content-table"><div class="oxfl-gradebook-unit-content-table-row"><div class="oxfl-gradebook-unit-content-table-header">'+oxfordFlippedApp.text.gradebooktableheader1+'</div><div class="oxfl-gradebook-unit-content-table-header oxfl-gradebook-unit-content-table-header-state">'+oxfordFlippedApp.text.gradebooktableheader2+'</div><div class="oxfl-gradebook-unit-content-table-header oxfl-gradebook-unit-content-table-header-stars">'+oxfordFlippedApp.text.gradebooktableheader3+'</div></div></div></div></article></div>';
 
 			$units.append(unitHTML)
 			var tableRows = document.createDocumentFragment();
@@ -1763,7 +1763,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				tableRowItem.className = 'oxfl-gradebook-unit-content-table-row';
 
 				var chapterStarsClass = (chapterGralState === 3) ? 'inactive' : chapterStars;
-				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"><h4 class="oxfl-gradebook-title-4">'+chapterTitle+'</h4></div><div class="oxfl-gradebook-unit-content-table-cell"><div class="oxfl-gradebook-unit-content-table-cell-state oxfl-gradebook-unit-content-table-cell-state-'+chapterGralState+'"></div></div><div class="oxfl-gradebook-unit-content-table-cell"><ul class="oxfl-stars oxfl-stars-'+chapterStarsClass+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
+				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"><h4 class="oxfl-gradebook-title-4">'+chapterTitle+'</h4></div><div class="oxfl-gradebook-unit-content-table-cell oxfl-gradebook-unit-content-table-cell-state"><div class="oxfl-gradebook-unit-content-table-cell-state oxfl-gradebook-unit-content-table-cell-state-'+chapterGralState+'"></div></div><div class="oxfl-gradebook-unit-content-table-cell oxfl-gradebook-unit-content-table-cell-stars"><ul class="oxfl-stars oxfl-stars-'+chapterStarsClass+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
 
 				tableRows.appendChild(tableRowItem);
 			});
