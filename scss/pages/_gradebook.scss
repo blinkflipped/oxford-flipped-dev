@@ -234,6 +234,7 @@ $barchart_height: 210px;
 
 .oxfl-gradebook-unit-content-table {
   display: table;
+  width: 100%;
   &-row {
     display: table-row;
     width: 100%;
@@ -300,8 +301,6 @@ $barchart_height: 210px;
     background-size: 40px 18px;
   }
 }
-
-
 
 
 

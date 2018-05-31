@@ -1358,7 +1358,8 @@ body.oxfl-body-home #oxfl-home-menu {
     background: #ffffff; }
 
 .oxfl-gradebook-unit-content-table {
-  display: table; }
+  display: table;
+  width: 100%; }
   .oxfl-gradebook-unit-content-table-row {
     display: table-row;
     width: 100%; }

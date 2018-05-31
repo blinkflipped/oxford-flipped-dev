@@ -1707,65 +1707,68 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 			$.each(chapters, function(x, chapter){
 
+				var chapterTag = chapter.tag;
 
+				if (chapterTag != oxfordFlippedApp.config.tagMarketplace) {
 
-				var unitsNotStarted = false,
-						unitsWithoutGrade = false;
+					var unitsNotStarted = false,
+							unitsWithoutGrade = false;
 
-				var chapterTitle = chapter.title,
-						chapterDescription = chapter.description,
-						chapterID = chapter.id,
-						chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
-						chapterGralState = 3, // 0: Started, 1: Completed, 2:New, 3: Lock
-						chapterStars = 0;
+					var chapterTitle = chapter.title,
+							chapterDescription = chapter.description,
+							chapterID = chapter.id,
+							chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
+							chapterGralState = 3, // 0: Started, 1: Completed, 2:New, 3: Lock
+							chapterStars = 0;
 
-				if (!chapterIsChallenge) {
-					// Activities not started
-					if (typeof window.actividades[chapterID] === 'undefined') {
-						unitsNotStarted = true;
-					} else {
-					// Activities started or completed
-						if (window.actividades[chapterID].clasificacion === '') {
-							unitsWithoutGrade = true;
-						}
-					}
-					var chapterLockStatus = chapter.lock;
-					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
-					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
-						totalUnits++;
-						if (typeof window.actividades[chapterID] !== 'undefined') {
-							var chapterState = window.actividades[chapterID].estado;
-							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
-							console.log(chapterState);
-							if (chapterState === 0) {
-								unitsStarted++;
-								chapterGralState = 0;
-							} else if (chapterState === 1) {
-								unitsCompleted++;
-								var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se deben calculan solo sobre las completadas como esta hecho ahora
-								totalGrade += chapterGrade;
-								chapterGralState = 1;
-								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
-							}
+					if (!chapterIsChallenge) {
+						// Activities not started
+						if (typeof window.actividades[chapterID] === 'undefined') {
+							unitsNotStarted = true;
 						} else {
-							chapterGralState = 2;
+						// Activities started or completed
+							if (window.actividades[chapterID].clasificacion === '') {
+								unitsWithoutGrade = true;
+							}
+						}
+						var chapterLockStatus = chapter.lock;
+						// Buscar todas las actividades - chapters - que están abiertas (NO lock)
+						if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
+							totalUnits++;
+							if (typeof window.actividades[chapterID] !== 'undefined') {
+								var chapterState = window.actividades[chapterID].estado;
+								//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
+								console.log(chapterState);
+								if (chapterState === 0) {
+									unitsStarted++;
+									chapterGralState = 0;
+								} else if (chapterState === 1) {
+									unitsCompleted++;
+									var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se deben calculan solo sobre las completadas como esta hecho ahora
+									totalGrade += chapterGrade;
+									chapterGralState = 1;
+									chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
+								}
+							} else {
+								chapterGralState = 2;
+							}
+						}
+					} else {
+
+						var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+						if (!isChallengeLock) {
+							totalUnits++;
 						}
 					}
-				} else {
 
-					var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
-					if (!isChallengeLock) {
-						totalUnits++;
-					}
+					tableRowItem = document.createElement('div'),
+					tableRowItem.className = 'oxfl-gradebook-unit-content-table-row';
+
+					var chapterStarsClass = (chapterGralState === 3) ? 'inactive' : chapterStars;
+					tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"><h4 class="oxfl-gradebook-title-4">'+chapterTitle+'</h4></div><div class="oxfl-gradebook-unit-content-table-cell oxfl-gradebook-unit-content-table-cell-state"><div class="oxfl-gradebook-unit-lesson-state oxfl-gradebook-unit-lesson-state-'+chapterGralState+'"></div></div><div class="oxfl-gradebook-unit-content-table-cell oxfl-gradebook-unit-content-table-cell-stars"><ul class="oxfl-stars oxfl-stars-'+chapterStarsClass+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
+
+					tableRows.appendChild(tableRowItem);
 				}
-
-				tableRowItem = document.createElement('div'),
-				tableRowItem.className = 'oxfl-gradebook-unit-content-table-row';
-
-				var chapterStarsClass = (chapterGralState === 3) ? 'inactive' : chapterStars;
-				tableRowItem.innerHTML = '<div class="oxfl-gradebook-unit-content-table-cell"><h4 class="oxfl-gradebook-title-4">'+chapterTitle+'</h4></div><div class="oxfl-gradebook-unit-content-table-cell oxfl-gradebook-unit-content-table-cell-state"><div class="oxfl-gradebook-unit-lesson-state oxfl-gradebook-unit-lesson-state-'+chapterGralState+'"></div></div><div class="oxfl-gradebook-unit-content-table-cell oxfl-gradebook-unit-content-table-cell-stars"><ul class="oxfl-stars oxfl-stars-'+chapterStarsClass+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul></div>';
-
-				tableRows.appendChild(tableRowItem);
 			});
 			console.log(tableRows);
 			$('#oxfl-gradebook-unit-'+unitID+' .oxfl-gradebook-unit-content-table')[0].appendChild(tableRows);
