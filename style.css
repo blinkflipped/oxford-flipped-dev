@@ -1360,9 +1360,10 @@ body.oxfl-body-home #oxfl-home-menu {
 .oxfl-gradebook-unit-content-table {
   display: table; }
   .oxfl-gradebook-unit-content-table-row {
-    display: table-row; }
+    display: table-row;
+    width: 100%; }
   .oxfl-gradebook-unit-content-table-header, .oxfl-gradebook-unit-content-table-cell {
-    display: cell;
+    display: table-cell;
     padding: 10px;
     font-weight: 500; }
     .oxfl-gradebook-unit-content-table-header-state, .oxfl-gradebook-unit-content-table-cell-state {
@@ -1373,6 +1374,8 @@ body.oxfl-body-home #oxfl-home-menu {
       text-align: center; }
       .oxfl-gradebook-unit-content-table-header-stars .oxfl-stars-inactive, .oxfl-gradebook-unit-content-table-cell-stars .oxfl-stars-inactive {
         filter: grayscale(100%); }
+      .oxfl-gradebook-unit-content-table-header-stars .oxfl-stars, .oxfl-gradebook-unit-content-table-cell-stars .oxfl-stars {
+        display: inline-block; }
   .oxfl-gradebook-unit-content-table-header {
     color: #b3b3b3;
     font-size: 14px;
@@ -1384,6 +1387,27 @@ body.oxfl-body-home #oxfl-home-menu {
     font-size: 1.8rem;
     line-height: 1em;
     color: #666666; }
+
+.oxfl-gradebook-unit-lesson-state {
+  width: 28px;
+  height: 28px; }
+  .oxfl-gradebook-unit-lesson-state-0, .oxfl-gradebook-unit-lesson-state-1, .oxfl-gradebook-unit-lesson-state-2 {
+    border-radius: 100%; }
+  .oxfl-gradebook-unit-lesson-state-0 {
+    background-color: #ff931e; }
+  .oxfl-gradebook-unit-lesson-state-1 {
+    background-color: #39B54A; }
+  .oxfl-gradebook-unit-lesson-state-2 {
+    background-color: #ED1E79; }
+  .oxfl-gradebook-unit-lesson-state-3 {
+    border: 0;
+    overflow: visible;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    display: block;
+    background: url(img/lock.png) -20px 0 no-repeat;
+    background-size: 40px 18px; }
 
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;

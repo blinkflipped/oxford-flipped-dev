@@ -236,10 +236,11 @@ $barchart_height: 210px;
   display: table;
   &-row {
     display: table-row;
+    width: 100%;
   }
   &-header,
   &-cell {
-    display: cell;
+    display: table-cell;
     padding: 10px;
     font-weight: 500;
     &-state {
@@ -251,6 +252,9 @@ $barchart_height: 210px;
       text-align: center;
       .oxfl-stars-inactive {
         filter: grayscale(100%);
+      }
+      .oxfl-stars {
+        display: inline-block;
       }
     }
   }
@@ -265,7 +269,41 @@ $barchart_height: 210px;
     line-height: 1em;
     color: $color_15;
   }
+
 }
+
+.oxfl-gradebook-unit-lesson-state {
+  width: 28px;
+  height: 28px;
+  &-0,
+  &-1,
+  &-2 {
+    border-radius: 100%;
+  }
+  &-0 {//Started but not completed
+    background-color: $color_6_mod;
+  }
+  &-1 {//Completed
+    background-color: $color_7;
+  }
+  &-2 {//Available but not started, like New
+    background-color: $color_4
+  }
+  &-3 {// Lock!
+    border: 0;
+    overflow: visible;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    display: block;
+    background: url(img/lock.png) -20px 0 no-repeat;
+    background-size: 40px 18px;
+  }
+}
+
+
+
+
 
 body.oxfl-body-gradebook {
   #oxfl-gradebook-wrapper {
