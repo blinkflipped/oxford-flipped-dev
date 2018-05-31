@@ -1663,13 +1663,13 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 	}
 	$barchartItemCompleted
 		.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+completedPercent+'% - '+newbarChartSize(completedPercent)+'px)').end()
-		.find('oxfl-gradebook-barchart-item-number').text(unitsCompleted);
+		.find('.oxfl-gradebook-barchart-item-number').text(unitsCompleted);
 	$barchartItemStarted
 		.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+startedPercet+'% - '+newbarChartSize(startedPercet)+'px)').end()
-		.find('oxfl-gradebook-barchart-item-number').text(unitsStarted);
+		.find('.oxfl-gradebook-barchart-item-number').text(unitsStarted);
 	$barchartItemNotStarted
 		.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)').end()
-		.find('oxfl-gradebook-barchart-item-number').text(unitsNotStarted);
+		.find('.oxfl-gradebook-barchart-item-number').text(unitsNotStarted);
 
 }
 
@@ -1770,8 +1770,13 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					tableRows.appendChild(tableRowItem);
 				}
 			});
-			console.log(tableRows);
+
+			if ($units.hasClass('slick-initialized')) {
+				$units.slick('unslick');
+			}
+			$units.empty();
 			$('#oxfl-gradebook-unit-'+unitID+' .oxfl-gradebook-unit-content-table')[0].appendChild(tableRows);
+			$units.slick(oxfordFlippedApp.config.carouselOpt);
 
 		}
 	});
@@ -1792,7 +1797,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		$.getScript( url, function() {
 
 			google.charts.load("current", {packages:["corechart"]});
-			google.charts.setOnLoadCallback(oxfordFlippedApp.drawChartGradebook);
+			google.charts.setOnLoadCallback(oxfordFlippedApp.drawChartGradebook());
 
 			$('#oxfl-gradebook-wrapper').addClass('loaded');
 

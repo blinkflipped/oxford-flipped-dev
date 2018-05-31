@@ -1391,7 +1391,8 @@ body.oxfl-body-home #oxfl-home-menu {
 
 .oxfl-gradebook-unit-lesson-state {
   width: 28px;
-  height: 28px; }
+  height: 28px;
+  margin: 0 auto; }
   .oxfl-gradebook-unit-lesson-state-0, .oxfl-gradebook-unit-lesson-state-1, .oxfl-gradebook-unit-lesson-state-2 {
     border-radius: 100%; }
   .oxfl-gradebook-unit-lesson-state-0 {
