@@ -1759,7 +1759,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				tableRows.appendChild(tableRowItem);
 			});
 			console.log(tableRows);
-			$('oxfl-gradebook-unit-'+unitID)[0].appendChild(tableRows);
+			$('#oxfl-gradebook-unit-'+unitID)[0].appendChild(tableRows);
 
 		}
 	});
