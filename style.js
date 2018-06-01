@@ -1647,7 +1647,7 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 	chart.draw(data, options);
 	console.log(chart);
 	console.log(options);
-	console.log("drawChart4");
+	console.log("drawChart5");
 }
 
 oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompleted) {
@@ -1809,7 +1809,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		$.getScript( url, function() {
 
 			google.charts.load("current", {packages:["corechart"]});
-			google.charts.setOnLoadCallback(oxfordFlippedApp.drawChartGradebook);
+			google.charts.setOnLoadCallback(oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted));
 
 			$('#oxfl-gradebook-wrapper').addClass('loaded');
 
