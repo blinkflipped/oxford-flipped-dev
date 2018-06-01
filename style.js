@@ -1775,7 +1775,8 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 						}
 					} else {
 
-						var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+						//var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+						var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade)) ? true : false;
 						if (!isChallengeLock) {
 							totalUnits++;
 						}
