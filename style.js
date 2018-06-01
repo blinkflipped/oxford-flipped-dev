@@ -1623,6 +1623,11 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
 	var notCompleted = totalUnits - unitsCompleted;
+
+	console.log(notCompleted);
+	console.log(unitsCompleted);
+	console.log(totalUnits);
+
 	var data = google.visualization.arrayToDataTable([
 		['Status', 'Quantity'],
 		['Not completed',     notCompleted],

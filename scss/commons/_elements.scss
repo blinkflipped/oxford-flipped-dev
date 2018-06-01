@@ -95,6 +95,7 @@
   top: 60px;
   right: 15px;
   z-index: 900;
+  transition: opacity .3 ease-in;
 }
 #oxfl-coins-icon {
   @include icon-sprite();
@@ -135,6 +136,7 @@
   outline: 0;
   padding: 0;
   margin: 0;
+  transition: opacity .3s ease-in;
   @include icon-sprite();
   &.disabled {
     display: none;

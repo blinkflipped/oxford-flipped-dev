@@ -320,4 +320,12 @@ body.oxfl-body-gradebook {
   #oxfl-custom-background-inner-2 {
     opacity: 0!important;
   }
+
+  #oxfl-coins {
+    opacity: 0;
+  }
+  #oxfl-general-buttons .oxfl-button-icon-info,
+  #oxfl-general-buttons .oxfl-button-icon-marketplace {
+    display: none;
+  }
 }
