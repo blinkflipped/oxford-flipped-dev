@@ -1622,6 +1622,8 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 
 oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
+	$('#oxfl-gradebook-donutchart').empty();
+
 	var notCompleted = totalUnits - unitsCompleted;
 
 	console.log(notCompleted);
@@ -1650,7 +1652,7 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 	chart.draw(data, options);
 	console.log(chart);
 	console.log(options);
-	console.log("drawChart5");
+	console.log("drawChart6");
 }
 
 oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompleted) {
@@ -1809,14 +1811,14 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	$('#oxfl-gradebook-donutchart-completed').text(unitsCompleted);
 
 	if (alreadyLoaded) {
-		oxfordFlippedApp.drawChartGradebook();
+		oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
 	} else {
 		var url = "https://www.gstatic.com/charts/loader.js";
 		$.getScript( url, function() {
 
 			google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(function() { oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted); });
-
+			// TODO PASAR EL GET SCRIPT A LA HOME?
 			$('#oxfl-gradebook-wrapper').addClass('loaded');
 
 		});
