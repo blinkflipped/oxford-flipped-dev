@@ -1370,7 +1370,8 @@ body.oxfl-body-home #oxfl-home-menu {
       width: 30px;
       height: 0;
       margin: 0 auto;
-      border-radius: 20px 20px 0 0; }
+      border-radius: 20px 20px 0 0;
+      transition: height .5s ease-in 2s; }
     .oxfl-gradebook-barchart-item-number {
       font-size: 21px;
       font-size: 2.1rem;
@@ -1390,18 +1391,27 @@ body.oxfl-body-home #oxfl-home-menu {
     .oxfl-gradebook-barchart-item-3 .oxfl-gradebook-barchart-item-bar {
       background-color: #39B54A; }
 
-.oxfl-gradebook-unit {
-  background: #29AAE3;
+.oxfl-gradebook-section-2 {
   border-radius: 30px;
-  padding-bottom: 50px; }
-  .oxfl-gradebook-unit-header {
-    background: transparent;
-    padding: 2px 20px; }
-    .oxfl-gradebook-unit-header .oxfl-gradebook-title-2 {
-      color: #ffffff;
-      margin-bottom: 0; }
-  .oxfl-gradebook-unit-content {
-    background: #ffffff; }
+  border-top: 50px solid #29AAE3;
+  border-bottom: 50px solid #29AAE3;
+  padding-bottom: 0;
+  margin-bottom: 50px;
+  background: #ffffff; }
+  .oxfl-gradebook-section-2 .oxfl-gradebook-units {
+    margin-bottom: 0;
+    position: relative;
+    top: -48px;
+    z-index: 10; }
+
+.oxfl-gradebook-unit-header {
+  background: transparent;
+  padding: 2px 20px; }
+  .oxfl-gradebook-unit-header .oxfl-gradebook-title-2 {
+    color: #ffffff;
+    margin-bottom: 0; }
+.oxfl-gradebook-unit-content {
+  background: #ffffff; }
 
 .oxfl-gradebook-unit-content-table {
   display: table;
@@ -1479,7 +1489,7 @@ body.oxfl-body-home #oxfl-home-menu {
     content: '';
     display: inline-block;
     background: url(img/arrows-slide-2.png) 0 0 no-repeat transparent;
-    background-size: 12px 45px;
+    background-size: 12px 44px;
     width: 12px;
     height: 22px;
     position: absolute;

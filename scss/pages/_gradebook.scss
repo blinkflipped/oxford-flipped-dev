@@ -225,6 +225,7 @@ $barchart_height: 235px;
       height: 0;
       margin: 0 auto;
       border-radius: 20px 20px 0 0;
+      transition: height .5s ease-in 2s;
     }
     &-number {
       @include font-size(2.1);
@@ -257,10 +258,21 @@ $barchart_height: 235px;
 }
 
 // Units
-.oxfl-gradebook-unit {
-  background: $color_13;
+.oxfl-gradebook-section-2{
   border-radius: 30px;
-  padding-bottom: 50px;
+  border-top: 50px solid $color_13;
+  border-bottom: 50px solid $color_13;
+  padding-bottom: 0;
+  margin-bottom: 50px;
+  background: $background_color;
+  .oxfl-gradebook-units {
+    margin-bottom: 0;
+    position: relative;
+    top: -48px;
+    z-index: 10;
+  }
+}
+.oxfl-gradebook-unit {
   &-header {
     background: transparent;
     padding: 2px 20px;
@@ -375,7 +387,7 @@ $barchart_height: 235px;
       content: '';
       display: inline-block;
       background: url(img/arrows-slide-2.png) 0 0 no-repeat transparent;
-      background-size: 12px 45px;
+      background-size: 12px 44px;
       width: 12px;
       height: 22px;
       position: absolute;
