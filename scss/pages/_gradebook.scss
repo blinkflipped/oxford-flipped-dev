@@ -21,8 +21,8 @@
 
 .oxfl-gradebook-header {
   position: relative;
-  padding-bottom: 20px;
-  margin-bottom: 50px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   &::before {
     content: '';
@@ -41,6 +41,10 @@
   @include font-size(1.8);
   line-height: (21em/18);
   color: $primary_color;
+  font-family: $font_family_1;
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .oxfl-gradebook-title-1 {
@@ -51,12 +55,12 @@
   font-weight: bold;
   display: inline-block;
   margin: 0 auto;
-  text-transform: lowercase;
   position: relative;
-  padding: 60px 50px 20px;
+  padding: 52px 50px 20px;
   span {
     display: inline-block;
     font-family: $font_family_1;
+    @include font-size(5.6);
     font-weight: 400;
     color: $color_1;
     transform: rotate(-190deg);
@@ -71,6 +75,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
   }
 }
 
@@ -95,6 +100,14 @@
   margin: 0 auto 30px;
 }
 
+.oxfl-gradebook-title-4 {
+  margin: 0;
+  @include font-size(2.0);
+  line-height: 1em;
+  color: $color_15;
+  font-weight: 500;
+}
+
 .oxfl-gradebook-section {
   padding-bottom: 50px;
 }
@@ -103,14 +116,17 @@
 .oxfl-gradebook-captions {
   display: flex;
   justify-content: space-between;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
   .oxfl-gradebook-caption {
     @include font-size(1.8);
     line-height: 1em;
     color: $color_15;
     font-weight: 500;
     padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     .oxfl-gradebook-caption-badge,
     .oxfl-gradebook-caption-text {
       display: inline-block;
@@ -151,7 +167,7 @@
   height: 228px;
   svg {
     path {
-      stroke-width: 6px;
+      stroke-width: 3px;
     }
   }
 }
@@ -174,7 +190,7 @@
 }
 
 $barchart_size: 30px;
-$barchart_height: 210px;
+$barchart_height: 235px;
 
 .oxfl-gradebook-barchart {
   position: relative;
@@ -193,11 +209,17 @@ $barchart_height: 210px;
   }
   &-item {
     width: 33.3333%;
-    padding: 0 15px;
+    padding: 0 9px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    &:first-child {
+      padding-left: 25px;
+    }
+    &:last-child {
+      padding-right: 25px;
+    }
     &-bar {
       width: $barchart_size;
       height: 0;
@@ -208,12 +230,13 @@ $barchart_height: 210px;
       @include font-size(2.1);
       line-height: 1.1em;
       color: $color_10;
-      font-family: $font_family_2;
+      font-family: $font_family_1;
       font-weight: bold;
       text-align: center;
       width: $barchart_size;
       height: $barchart_size;
       line-height: $barchart_size;
+      padding-top: 5px;
     }
     &-1 {
       .oxfl-gradebook-barchart-item-bar {
@@ -236,7 +259,7 @@ $barchart_height: 210px;
 // Units
 .oxfl-gradebook-unit {
   background: $color_13;
-  border-radius: 40px 40px;
+  border-radius: 30px;
   padding-bottom: 50px;
   &-header {
     background: transparent;
@@ -262,8 +285,9 @@ $barchart_height: 210px;
   &-header,
   &-cell {
     display: table-cell;
-    padding: 10px;
+    padding: 7px 10px;
     font-weight: 500;
+    vertical-align: middle;
     &-state {
       width: 100px;
       text-align: center;
@@ -271,11 +295,12 @@ $barchart_height: 210px;
     &-stars {
       width: 160px;
       text-align: center;
-      .oxfl-stars-inactive {
+      .oxfl-stars-filled-inactive {
         filter: grayscale(100%);
       }
       .oxfl-stars {
         display: inline-block;
+        transform: scale(1.2);
       }
     }
   }
@@ -284,6 +309,8 @@ $barchart_height: 210px;
     @include font-size(1.4);
     line-height: 1em;
     border-bottom: 1px solid $color_16;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   &-cell {
     @include font-size(1.8);
@@ -291,6 +318,18 @@ $barchart_height: 210px;
     color: $color_15;
   }
 
+  &-row {
+    &:nth-child(2) {
+      .oxfl-gradebook-unit-content-table-cell {
+        padding-top: 25px;
+      }
+    }
+    &:last-child {
+      .oxfl-gradebook-unit-content-table-cell {
+        padding-bottom: 25px;
+      }
+    }
+  }
 }
 
 .oxfl-gradebook-unit-lesson-state {
@@ -349,6 +388,7 @@ $barchart_height: 210px;
       transform: none;
       right: 0;
       &::before {
+        content: '';
         background-position: 0 0;
       }
     }
@@ -356,7 +396,8 @@ $barchart_height: 210px;
       transform: none;
       left: 0;
       &::before {
-        background-position: 0 22px
+        content: '';
+        background-position: 0 -22px
       }
     }
   }

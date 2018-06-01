@@ -916,7 +916,8 @@ body.oxfl-body-gradebook {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000; }
+  z-index: 1000;
+  font-family: "Quicksand", sans-serif; }
   .oxfl-body-chapters #oxfl-general {
     min-height: 760px; }
   .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
@@ -1197,8 +1198,8 @@ body.oxfl-body-home #oxfl-home-menu {
 
 .oxfl-gradebook-header {
   position: relative;
-  padding-bottom: 20px;
-  margin-bottom: 50px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center; }
   .oxfl-gradebook-header::before {
     content: '';
@@ -1215,7 +1216,10 @@ body.oxfl-body-home #oxfl-home-menu {
   font-size: 18px;
   font-size: 1.8rem;
   line-height: 1.1666666667em;
-  color: #000000; }
+  color: #000000;
+  font-family: "Quicksand", sans-serif; }
+  .oxfl-gradebook-intro p:last-child {
+    margin-bottom: 0; }
 
 .oxfl-gradebook-title-1 {
   font-size: 62px;
@@ -1226,12 +1230,13 @@ body.oxfl-body-home #oxfl-home-menu {
   font-weight: bold;
   display: inline-block;
   margin: 0 auto;
-  text-transform: lowercase;
   position: relative;
-  padding: 60px 50px 20px; }
+  padding: 52px 50px 20px; }
   .oxfl-gradebook-title-1 span {
     display: inline-block;
     font-family: "Quicksand", sans-serif;
+    font-size: 56px;
+    font-size: 5.6rem;
     font-weight: 400;
     color: #8BE23F;
     transform: rotate(-190deg);
@@ -1244,7 +1249,8 @@ body.oxfl-body-home #oxfl-home-menu {
     background-size: contain;
     position: absolute;
     top: 0;
-    right: 0; }
+    right: 0;
+    z-index: 1; }
 
 .oxfl-gradebook-title-2 {
   font-size: 40px;
@@ -1267,21 +1273,32 @@ body.oxfl-body-home #oxfl-home-menu {
   text-align: center;
   margin: 0 auto 30px; }
 
+.oxfl-gradebook-title-4 {
+  margin: 0;
+  font-size: 20px;
+  font-size: 2rem;
+  line-height: 1em;
+  color: #666666;
+  font-weight: 500; }
+
 .oxfl-gradebook-section {
   padding-bottom: 50px; }
 
 .oxfl-gradebook-captions {
   display: flex;
   justify-content: space-between;
-  padding-left: 50px;
-  padding-right: 50px; }
+  padding-left: 40px;
+  padding-right: 40px; }
   .oxfl-gradebook-captions .oxfl-gradebook-caption {
     font-size: 18px;
     font-size: 1.8rem;
     line-height: 1em;
     color: #666666;
     font-weight: 500;
-    padding: 10px; }
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
     .oxfl-gradebook-captions .oxfl-gradebook-caption .oxfl-gradebook-caption-badge,
     .oxfl-gradebook-captions .oxfl-gradebook-caption .oxfl-gradebook-caption-text {
       display: inline-block;
@@ -1304,7 +1321,7 @@ body.oxfl-body-home #oxfl-home-menu {
   width: 228px;
   height: 228px; }
   #oxfl-gradebook-donutchart svg path {
-    stroke-width: 6px; }
+    stroke-width: 3px; }
 
 .oxfl-gradebook-donutchart-wrapper {
   position: relative; }
@@ -1328,7 +1345,7 @@ body.oxfl-body-home #oxfl-home-menu {
   position: relative;
   display: flex;
   justify-content: space-between;
-  height: 210px; }
+  height: 235px; }
   .oxfl-gradebook-barchart::before {
     content: '';
     bottom: 30px;
@@ -1340,11 +1357,15 @@ body.oxfl-body-home #oxfl-home-menu {
     display: block; }
   .oxfl-gradebook-barchart-item {
     width: 33.3333%;
-    padding: 0 15px;
+    padding: 0 9px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center; }
+    .oxfl-gradebook-barchart-item:first-child {
+      padding-left: 25px; }
+    .oxfl-gradebook-barchart-item:last-child {
+      padding-right: 25px; }
     .oxfl-gradebook-barchart-item-bar {
       width: 30px;
       height: 0;
@@ -1355,12 +1376,13 @@ body.oxfl-body-home #oxfl-home-menu {
       font-size: 2.1rem;
       line-height: 1.1em;
       color: #999999;
-      font-family: "Myfrida", sans-serif;
+      font-family: "Quicksand", sans-serif;
       font-weight: bold;
       text-align: center;
       width: 30px;
       height: 30px;
-      line-height: 30px; }
+      line-height: 30px;
+      padding-top: 5px; }
     .oxfl-gradebook-barchart-item-1 .oxfl-gradebook-barchart-item-bar {
       background-color: #ED1E79; }
     .oxfl-gradebook-barchart-item-2 .oxfl-gradebook-barchart-item-bar {
@@ -1370,7 +1392,7 @@ body.oxfl-body-home #oxfl-home-menu {
 
 .oxfl-gradebook-unit {
   background: #29AAE3;
-  border-radius: 40px 40px;
+  border-radius: 30px;
   padding-bottom: 50px; }
   .oxfl-gradebook-unit-header {
     background: transparent;
@@ -1389,29 +1411,37 @@ body.oxfl-body-home #oxfl-home-menu {
     width: 100%; }
   .oxfl-gradebook-unit-content-table-header, .oxfl-gradebook-unit-content-table-cell {
     display: table-cell;
-    padding: 10px;
-    font-weight: 500; }
+    padding: 7px 10px;
+    font-weight: 500;
+    vertical-align: middle; }
     .oxfl-gradebook-unit-content-table-header-state, .oxfl-gradebook-unit-content-table-cell-state {
       width: 100px;
       text-align: center; }
     .oxfl-gradebook-unit-content-table-header-stars, .oxfl-gradebook-unit-content-table-cell-stars {
       width: 160px;
       text-align: center; }
-      .oxfl-gradebook-unit-content-table-header-stars .oxfl-stars-inactive, .oxfl-gradebook-unit-content-table-cell-stars .oxfl-stars-inactive {
+      .oxfl-gradebook-unit-content-table-header-stars .oxfl-stars-filled-inactive, .oxfl-gradebook-unit-content-table-cell-stars .oxfl-stars-filled-inactive {
         filter: grayscale(100%); }
       .oxfl-gradebook-unit-content-table-header-stars .oxfl-stars, .oxfl-gradebook-unit-content-table-cell-stars .oxfl-stars {
-        display: inline-block; }
+        display: inline-block;
+        transform: scale(1.2); }
   .oxfl-gradebook-unit-content-table-header {
     color: #b3b3b3;
     font-size: 14px;
     font-size: 1.4rem;
     line-height: 1em;
-    border-bottom: 1px solid #b3b3b3; }
+    border-bottom: 1px solid #b3b3b3;
+    padding-top: 12px;
+    padding-bottom: 12px; }
   .oxfl-gradebook-unit-content-table-cell {
     font-size: 18px;
     font-size: 1.8rem;
     line-height: 1em;
     color: #666666; }
+  .oxfl-gradebook-unit-content-table-row:nth-child(2) .oxfl-gradebook-unit-content-table-cell {
+    padding-top: 25px; }
+  .oxfl-gradebook-unit-content-table-row:last-child .oxfl-gradebook-unit-content-table-cell {
+    padding-bottom: 25px; }
 
 .oxfl-gradebook-unit-lesson-state {
   width: 28px;
@@ -1461,12 +1491,14 @@ body.oxfl-body-home #oxfl-home-menu {
     transform: none;
     right: 0; }
     .oxfl-gradebook-units .slick-arrow.slick-next::before, .oxfl-gradebook-units .slick-arrow.slick-next:hover::before, .oxfl-gradebook-units .slick-arrow.slick-next:focus::before {
+      content: '';
       background-position: 0 0; }
   .oxfl-gradebook-units .slick-arrow.slick-prev, .oxfl-gradebook-units .slick-arrow.slick-prev:hover, .oxfl-gradebook-units .slick-arrow.slick-prev:focus {
     transform: none;
     left: 0; }
     .oxfl-gradebook-units .slick-arrow.slick-prev::before, .oxfl-gradebook-units .slick-arrow.slick-prev:hover::before, .oxfl-gradebook-units .slick-arrow.slick-prev:focus::before {
-      background-position: 0 22px; }
+      content: '';
+      background-position: 0 -22px; }
 
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;
