@@ -1261,8 +1261,8 @@ body.oxfl-body-home #oxfl-home-menu {
   font-size: 21px;
   font-size: 2.1rem;
   line-height: 1.1em;
-  color: #666666;
-  font-family: "Myfrida", sans-serif;
+  color: #999999;
+  font-family: "Quicksand", sans-serif;
   font-weight: bold;
   text-align: center;
   margin: 0 auto 30px; }
@@ -1302,6 +1302,23 @@ body.oxfl-body-home #oxfl-home-menu {
 #oxfl-gradebook-donutchart svg path {
   stroke-width: 6px; }
 
+.oxfl-gradebook-donutchart-wrapper {
+  position: relative; }
+
+.oxfl-gradebook-donutchart-legend {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  font-size: 4.8rem;
+  line-height: 1em;
+  color: #999999;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 .oxfl-gradebook-barchart {
   position: relative;
   display: flex;
@@ -1313,7 +1330,7 @@ body.oxfl-body-home #oxfl-home-menu {
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: #666666;
+    background-color: #999999;
     position: absolute;
     display: block; }
   .oxfl-gradebook-barchart-item {
@@ -1332,7 +1349,7 @@ body.oxfl-body-home #oxfl-home-menu {
       font-size: 21px;
       font-size: 2.1rem;
       line-height: 1.1em;
-      color: #666666;
+      color: #999999;
       font-family: "Myfrida", sans-serif;
       font-weight: bold;
       text-align: center;
@@ -1408,10 +1425,26 @@ body.oxfl-body-home #oxfl-home-menu {
     overflow: visible;
     outline: 0;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     display: block;
     background: url(img/lock.png) -20px 0 no-repeat;
     background-size: 40px 18px; }
+
+.oxfl-gradebook-units .slick-dots {
+  display: none; }
+.oxfl-gradebook-units .slick-arrow {
+  top: 0;
+  transform: none;
+  background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
+  background-size: 12px 45px;
+  width: 12px;
+  height: 22px; }
+  .oxfl-gradebook-units .slick-arrow.slick-next, .oxfl-gradebook-units .slick-arrow.slick-next:hover, .oxfl-gradebook-units .slick-arrow.slick-next:focus {
+    transform: none;
+    background-position: 0 0 !important; }
+  .oxfl-gradebook-units .slick-arrow.slick-prev, .oxfl-gradebook-units .slick-arrow.slick-prev:hover, .oxfl-gradebook-units .slick-arrow.slick-prev:focus {
+    transform: none;
+    background-position: 0 22px !important; }
 
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;

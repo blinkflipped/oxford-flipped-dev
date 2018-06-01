@@ -88,8 +88,8 @@
 .oxfl-gradebook-title-3 {
   @include font-size(2.1);
   line-height: 1.1em;
-  color: $color_15;
-  font-family: $font_family_2;
+  color: $color_10;
+  font-family: $font_family_1;
   font-weight: bold;
   text-align: center;
   margin: 0 auto 30px;
@@ -152,6 +152,22 @@
     }
   }
 }
+.oxfl-gradebook-donutchart-wrapper {
+  position: relative;
+}
+.oxfl-gradebook-donutchart-legend {
+  font-family: $font_family_1;
+  font-weight: bold;
+  @include font-size(4.8);
+  line-height: 1em;
+  color: $color_10;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 
 $barchart_size: 30px;
 $barchart_height: 210px;
@@ -167,7 +183,7 @@ $barchart_height: 210px;
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: $color_15;
+    background-color: $color_10;
     position: absolute;
     display: block;
   }
@@ -187,7 +203,7 @@ $barchart_height: 210px;
     &-number {
       @include font-size(2.1);
       line-height: 1.1em;
-      color: $color_15;
+      color: $color_10;
       font-family: $font_family_2;
       font-weight: bold;
       text-align: center;
@@ -296,13 +312,32 @@ $barchart_height: 210px;
     overflow: visible;
     outline: 0;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     display: block;
     background: url(img/lock.png) -20px 0 no-repeat;
     background-size: 40px 18px;
   }
 }
 
+.oxfl-gradebook-units {
+  .slick-dots {display: none;}
+  .slick-arrow {
+    top: 0;
+    transform: none;
+    background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
+    background-size: 12px 45px;
+    width: 12px;
+    height: 22px;
+    &.slick-next, &.slick-next:hover, &.slick-next:focus {
+      transform: none;
+      background-position: 0 0!important;
+    }
+    &.slick-prev, &.slick-prev:hover, &.slick-prev:focus {
+      transform: none;
+      background-position: 0 22px!important;
+    }
+  }
+}
 
 
 body.oxfl-body-gradebook {
