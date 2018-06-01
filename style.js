@@ -1809,7 +1809,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		$.getScript( url, function() {
 
 			google.charts.load("current", {packages:["corechart"]});
-			google.charts.setOnLoadCallback(oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted));
+			google.charts.setOnLoadCallback(function() { oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted); });
 
 			$('#oxfl-gradebook-wrapper').addClass('loaded');
 
