@@ -1188,8 +1188,10 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		// Circled text in Gradebook Awards
 		$('.oxfl-gradebook-award-label').each(function(i,e) {
 			console.log("Test");
-			var circleLabel = new CircleType($(e));
-			circleLabel.radius(200).dir(-1);
+			console.log($(e));
+			//var circleLabel = new CircleType($(e));
+			//circleLabel.radius(200).dir(-1);
+						
 		});
 
 		// Set the text radius and direction. Note: setter methods are chainable.
