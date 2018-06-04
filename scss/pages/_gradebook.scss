@@ -432,7 +432,20 @@ $total_awards : $total_rows_award*$total_cols_award;
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: $total_rows_award*$award_height $total_cols_award*$award_width;
-    background-image: url(img/awards.png)
+    background-image: url(img/awards.png);
+    width: $award_width;
+    height: $award_height;
+    position: relative;
+  }
+  .oxfl-gradebook-award-label {
+    font-family: $font_family_2;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: $negative_color;
   }
   &.inactive {
     filter: grayscale(100%);
@@ -441,6 +454,7 @@ $total_awards : $total_rows_award*$total_cols_award;
   &-1 {
     .oxfl-gradebook-award-inner {
       background-position: $award_width*0 $award_height*0;
+      //@include rotated-text(12);
     }
   }
   &-2 {
