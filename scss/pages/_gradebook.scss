@@ -414,6 +414,7 @@ $barchart_height: 235px;
       }
     }
   }
+
 }
 
 // Awards
@@ -501,6 +502,46 @@ $total_awards : $total_rows_award*$total_cols_award;
       background-position: (-$award_width*2) (-$award_height*2);
     }
   }
+}
+
+.oxfl-gradebook-awards {
+  .slick-arrow {
+    transform: none;
+    background: none!important;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    &::before {
+      content: '';
+      display: inline-block;
+      background: url(img/arrows-slide-3.png) 0 0 no-repeat transparent;
+      background-size: 30px 60px;
+      width: 30px;
+      height: 45px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      opacity: 1;
+    }
+    &.slick-next, &.slick-next:hover, &.slick-next:focus {
+      transform: none;
+      right: -80px;
+      &::before {
+        content: '';
+        background-position: 0 0;
+      }
+    }
+    &.slick-prev, &.slick-prev:hover, &.slick-prev:focus {
+      transform: none;
+      left: -80px;
+      &::before {
+        content: '';
+        background-position: 0 -60px
+      }
+    }
+  }
+
 
 }
 

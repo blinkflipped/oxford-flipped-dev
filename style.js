@@ -1872,9 +1872,12 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		if (!alreadyLoaded) {
 			// Circled text in Gradebook Awards
 			$('.oxfl-gradebook-award-label').each(function(i,e) {
+				var textLength = $(e).text().length,
+						radius = textLength*12;
+				console.log(radius);
 				var itemId = $(e).attr('id');
 				var circleLabel = new CircleType(document.getElementById(itemId));
-				circleLabel.radius(120).dir(-1);
+				circleLabel.radius(radius).dir(-1);
 			});
 		}
 	});
