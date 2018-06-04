@@ -1860,18 +1860,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 		});
 
-		// Circled text in Gradebook Awards
-		$('.oxfl-gradebook-award-label').each(function(i,e) {
-			console.log("Test5");
-			console.log($(e));
-			var itemId = $(e).attr('id');
-			console.log(itemId);
-			//var circleLabel = new CircleType(document.getElementById(itemId));
-			console.log(document.getElementById(itemId));
-			//circleLabel.radius(120).dir(-1);
-			//new CircleType(document.getElementById(itemId)).dir(-1).radius(120);
-		});
-
 		// Object Fit support
 		oxfordFlippedApp.objectFitSupport();
 
@@ -1881,6 +1869,19 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hash;
+		if (!alreadyLoaded) {
+			// Circled text in Gradebook Awards
+			$('.oxfl-gradebook-award-label').each(function(i,e) {
+				console.log("Test6");
+				console.log($(e));
+				var itemId = $(e).attr('id');
+				console.log(itemId);
+				var circleLabel = new CircleType(document.getElementById(itemId));
+				console.log(document.getElementById(itemId));
+				circleLabel.radius(120).dir(-1);
+				//new CircleType(document.getElementById(itemId)).dir(-1).radius(120);
+			});
+		}
 	});
 
 }
