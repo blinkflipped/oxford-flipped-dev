@@ -1521,7 +1521,8 @@ body.oxfl-body-home #oxfl-home-menu {
     background-image: url(img/awards.png);
     width: 300px;
     height: 300px;
-    position: relative; }
+    position: relative;
+    margin-left: -15px; }
   .oxfl-gradebook-award .oxfl-gradebook-award-label {
     font-family: "Myfrida", sans-serif;
     font-weight: bold;

@@ -436,6 +436,7 @@ $total_awards : $total_rows_award*$total_cols_award;
     width: $award_width;
     height: $award_height;
     position: relative;
+    margin-left: -15px;
   }
   .oxfl-gradebook-award-label {
     font-family: $font_family_2;
