@@ -807,18 +807,23 @@ oxfordFlippedApp.config.backgroundWrapper = '#oxfl-custom-background';
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
 
-oxfordFlippedApp.config.awards = ['percent', 'coins', 'lessonthreestars'];
-oxfordFlippedApp.config.awards.percent.bronze = 50;
-oxfordFlippedApp.config.awards.percent.silver = 75;
-oxfordFlippedApp.config.awards.percent.gold = 100;
-
-oxfordFlippedApp.config.awards.coins.bronze = 50;
-oxfordFlippedApp.config.awards.coins.silver = 100;
-oxfordFlippedApp.config.awards.coins.gold = 200;
-
-oxfordFlippedApp.config.awards.lessonthreestars.bronze = 5;
-oxfordFlippedApp.config.awards.lessonthreestars.silver = 10;
-oxfordFlippedApp.config.awards.lessonthreestars.gold = 20;
+oxfordFlippedApp.config.awards = {
+	percent : {
+		bronze : 50,
+		silver : 75,
+		gold : 100
+	},
+	coins : {
+		bronze : 50,
+		silver : 100,
+		gold: 200
+	},
+	lessonthreestars : {
+		bronze : 5,
+		silver : 10,
+		gold : 20
+	}
+}
 
 oxfordFlippedApp.bookData = '';
 
