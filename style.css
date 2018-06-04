@@ -1511,6 +1511,35 @@ body.oxfl-body-home #oxfl-home-menu {
       content: '';
       background-position: 0 -22px; }
 
+.oxfl-gradebook-award {
+  width: 300px;
+  height: 300px; }
+  .oxfl-gradebook-award-inner {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 900px 900px;
+    background-image: url(img/awards.png); }
+  .oxfl-gradebook-award.inactive {
+    filter: grayscale(100%); }
+  .oxfl-gradebook-award-1 .oxfl-gradebook-award-inner {
+    background-position: 0px 0px; }
+  .oxfl-gradebook-award-2 .oxfl-gradebook-award-inner {
+    background-position: 300px 0px; }
+  .oxfl-gradebook-award-3 .oxfl-gradebook-award-inner {
+    background-position: 600px 0px; }
+  .oxfl-gradebook-award-4 .oxfl-gradebook-award-inner {
+    background-position: 0px 300px; }
+  .oxfl-gradebook-award-5 .oxfl-gradebook-award-inner {
+    background-position: 300px 300px; }
+  .oxfl-gradebook-award-6 .oxfl-gradebook-award-inner {
+    background-position: 600px 300px; }
+  .oxfl-gradebook-award-7 .oxfl-gradebook-award-inner {
+    background-position: 0px 600px; }
+  .oxfl-gradebook-award-8 .oxfl-gradebook-award-inner {
+    background-position: 300px 600px; }
+  .oxfl-gradebook-award-9 .oxfl-gradebook-award-inner {
+    background-position: 600px 600px; }
+
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;
   opacity: 1;

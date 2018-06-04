@@ -416,6 +416,75 @@ $barchart_height: 235px;
   }
 }
 
+// Awards
+
+$award_width: 300px;
+$award_height : 300px;
+
+$total_rows_award : 3;
+$total_cols_award : 3;
+$total_awards : $total_rows_award*$total_cols_award;
+
+.oxfl-gradebook-award {
+  width: $award_width;
+  height: $award_height;
+  &-inner {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: $total_rows_award*$award_height $total_cols_award*$award_width;
+    background-image: url(img/awards.png)
+  }
+  &.inactive {
+    filter: grayscale(100%);
+  }
+
+  &-1 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*0 $award_height*0;
+    }
+  }
+  &-2 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*1 $award_height*0;
+    }
+  }
+  &-3 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*2 $award_height*0;
+    }
+  }
+  &-4 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*0 $award_height*1;
+    }
+  }
+  &-5 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*1 $award_height*1;
+    }
+  }
+  &-6 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*2 $award_height*1;
+    }
+  }
+  &-7 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*0 $award_height*2;
+    }
+  }
+  &-8 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*1 $award_height*2;
+    }
+  }
+  &-9 {
+    .oxfl-gradebook-award-inner {
+      background-position: $award_width*2 $award_height*2;
+    }
+  }
+
+}
 
 body.oxfl-body-gradebook {
   #oxfl-gradebook-wrapper {
