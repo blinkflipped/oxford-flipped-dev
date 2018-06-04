@@ -807,6 +807,7 @@ oxfordFlippedApp.config.backgroundWrapper = '#oxfl-custom-background';
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
 
+oxfordFlippedApp.config.awards = ['percent', 'coins', 'lessonthreestars'];
 oxfordFlippedApp.config.awards.percent.bronze = 50;
 oxfordFlippedApp.config.awards.percent.silver = 75;
 oxfordFlippedApp.config.awards.percent.gold = 100;
