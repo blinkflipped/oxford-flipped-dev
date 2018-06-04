@@ -1185,17 +1185,6 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		// Gradebook Awards
 		$('.oxfl-gradebook-awards').slick({arrows: true, dots: false, infinite: false,slidesToShow: 3,slidesToScroll: 3});
 
-		// Circled text in Gradebook Awards
-		$('.oxfl-gradebook-award-label').each(function(i,e) {
-			console.log("Test2");
-			console.log($(e));
-			var itemId = $(e).attr('id');
-			console.log(itemId);
-			var circleLabel = new CircleType(document.getElementById(itemId));
-			circleLabel.radius(120).dir(-1);
-			//new CircleType(document.getElementById(itemId)).dir(-1).radius(120);
-		});
-
 		// Set the text radius and direction. Note: setter methods are chainable.
 		oxfordFlippedApp.changeBackground(backgroundImage);
 
@@ -1869,6 +1858,18 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			// TODO PASAR EL GET SCRIPT A LA HOME?
 			$('#oxfl-gradebook-wrapper').addClass('loaded');
 
+		});
+
+		// Circled text in Gradebook Awards
+		$('.oxfl-gradebook-award-label').each(function(i,e) {
+			console.log("Test3");
+			console.log($(e));
+			var itemId = $(e).attr('id');
+			console.log(itemId);
+			var circleLabel = new CircleType(document.getElementById(itemId));
+			console.log(document.getElementById(itemId));
+			circleLabel.radius(120).dir(-1);
+			//new CircleType(document.getElementById(itemId)).dir(-1).radius(120);
 		});
 
 		// Object Fit support
