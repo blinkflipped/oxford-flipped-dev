@@ -1584,7 +1584,7 @@ body.oxfl-body-home #oxfl-home-menu {
     left: -80px; }
     .oxfl-gradebook-awards .slick-arrow.slick-prev::before, .oxfl-gradebook-awards .slick-arrow.slick-prev:hover::before, .oxfl-gradebook-awards .slick-arrow.slick-prev:focus::before {
       content: '';
-      background-position: 0 -42px; }
+      background-position: 0 -46px; }
 
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;
