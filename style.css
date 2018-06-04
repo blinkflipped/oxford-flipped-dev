@@ -1536,21 +1536,21 @@ body.oxfl-body-home #oxfl-home-menu {
   .oxfl-gradebook-award-1 .oxfl-gradebook-award-inner {
     background-position: 0px 0px; }
   .oxfl-gradebook-award-2 .oxfl-gradebook-award-inner {
-    background-position: 300px 0px; }
+    background-position: -300px 0px; }
   .oxfl-gradebook-award-3 .oxfl-gradebook-award-inner {
-    background-position: 600px 0px; }
+    background-position: -600px 0px; }
   .oxfl-gradebook-award-4 .oxfl-gradebook-award-inner {
-    background-position: 0px 300px; }
+    background-position: 0px -300px; }
   .oxfl-gradebook-award-5 .oxfl-gradebook-award-inner {
-    background-position: 300px 300px; }
+    background-position: -300px -300px; }
   .oxfl-gradebook-award-6 .oxfl-gradebook-award-inner {
-    background-position: 600px 300px; }
+    background-position: -600px -300px; }
   .oxfl-gradebook-award-7 .oxfl-gradebook-award-inner {
-    background-position: 0px 600px; }
+    background-position: 0px -600px; }
   .oxfl-gradebook-award-8 .oxfl-gradebook-award-inner {
-    background-position: 300px 600px; }
+    background-position: -300px -600px; }
   .oxfl-gradebook-award-9 .oxfl-gradebook-award-inner {
-    background-position: 600px 600px; }
+    background-position: -600px -600px; }
 
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;

@@ -446,6 +446,8 @@ $total_awards : $total_rows_award*$total_cols_award;
     left: 0;
     text-align: center;
     color: $negative_color;
+    //@include rotated-text(12);
+
   }
   &.inactive {
     filter: grayscale(100%);
@@ -453,48 +455,47 @@ $total_awards : $total_rows_award*$total_cols_award;
 
   &-1 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*0 $award_height*0;
-      //@include rotated-text(12);
+      background-position: (-$award_width*0) (-$award_height*0);
     }
   }
   &-2 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*1 $award_height*0;
+      background-position: (-$award_width*1) (-$award_height*0);
     }
   }
   &-3 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*2 $award_height*0;
+      background-position: (-$award_width*2) (-$award_height*0);
     }
   }
   &-4 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*0 $award_height*1;
+      background-position: (-$award_width*0) (-$award_height*1);
     }
   }
   &-5 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*1 $award_height*1;
+      background-position: (-$award_width*1) (-$award_height*1);
     }
   }
   &-6 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*2 $award_height*1;
+      background-position: (-$award_width*2) (-$award_height*1);
     }
   }
   &-7 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*0 $award_height*2;
+      background-position: (-$award_width*0) (-$award_height*2);
     }
   }
   &-8 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*1 $award_height*2;
+      background-position: (-$award_width*1) (-$award_height*2);
     }
   }
   &-9 {
     .oxfl-gradebook-award-inner {
-      background-position: $award_width*2 $award_height*2;
+      background-position: (-$award_width*2) (-$award_height*2);
     }
   }
 
