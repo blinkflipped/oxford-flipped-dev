@@ -1527,11 +1527,13 @@ body.oxfl-body-home #oxfl-home-menu {
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
-    left: 0;
     text-align: center;
-    color: #ffffff; }
+    color: #ffffff;
+    margin-left: -15px;
+    left: 50%;
+    transform: translate(-50%, 0); }
   .oxfl-gradebook-award.inactive {
     filter: grayscale(100%); }
   .oxfl-gradebook-award-1 .oxfl-gradebook-award-inner {

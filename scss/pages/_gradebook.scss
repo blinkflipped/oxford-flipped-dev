@@ -442,11 +442,13 @@ $total_awards : $total_rows_award*$total_cols_award;
     font-family: $font_family_2;
     font-weight: bold;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
-    left: 0;
     text-align: center;
     color: $negative_color;
+    margin-left: -15px;
+    left: 50%;
+    transform: translate(-50%,0);
     //@include rotated-text(12);
 
   }
