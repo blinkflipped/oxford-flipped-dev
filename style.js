@@ -1186,7 +1186,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		$('.oxfl-gradebook-awards').slick({arrows: true, dots: false, infinite: false,slidesToShow: 3,slidesToScroll: 3});
 
 		// Circled text in Gradebook Awards
-		$('.oxfl-gradebook-award-label').each(function() {
+		$('.oxfl-gradebook-award-label').each(function(i,e) {
+			console.log("Test");
 			var circleLabel = new CircleType($(e));
 			circleLabel.radius(200).dir(-1);
 		});
