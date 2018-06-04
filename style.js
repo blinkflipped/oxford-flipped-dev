@@ -1862,13 +1862,13 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 		// Circled text in Gradebook Awards
 		$('.oxfl-gradebook-award-label').each(function(i,e) {
-			console.log("Test3");
+			console.log("Test5");
 			console.log($(e));
 			var itemId = $(e).attr('id');
 			console.log(itemId);
 			var circleLabel = new CircleType(document.getElementById(itemId));
 			console.log(document.getElementById(itemId));
-			circleLabel.radius(120).dir(-1);
+			//circleLabel.radius(120).dir(-1);
 			//new CircleType(document.getElementById(itemId)).dir(-1).radius(120);
 		});
 
