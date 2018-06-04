@@ -1193,7 +1193,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			//var circleLabel = new CircleType($(e));
 			//circleLabel.radius(200).dir(-1);
 			console.log(itemId);
-			new CircleType(document.getElementById('itemId')).dir(-1).radius(384);
+			new CircleType(document.getElementById(itemId)).dir(-1).radius(384);
 		});
 
 		// Set the text radius and direction. Note: setter methods are chainable.
