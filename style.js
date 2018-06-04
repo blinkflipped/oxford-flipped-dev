@@ -6,12 +6,14 @@
 	};
 
 	OxfordFlippedDevStyle.prototype = {
+		//BK-15873 añadimos el estilo basic como parent para la herencia de los estilos del CKEditor
+		parent: blink.theme.styles.basic.prototype,
 		bodyClassName: 'content_type_clase_oxford-flipped-dev',
 		extraPlugins: ['image2'],
 		activityInitialized: false,
 		gameToken: 0,
 		userCoins: 0,
-		vocabularyCoins: 10,
+		vocabularyCoins: 50,
 		pageIsLoading: false,
 		vocabularyCalculated: 0,
 		marketPlaceTag: 'marketplace',
@@ -19,6 +21,7 @@
 			name: 'oxford-flipped-dev',
 			styles: [
 				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
+				{ name: 'Enunciado', element: 'span', attributes: { 'class': 'oxfl-enunciado'} },
 				{ name: 'Checkpoint 1 Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-checkpoint-1-cover' } },
 				{ name: 'Content Zone Video', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-video' } },
 				{ name: 'Content Zone Infographic', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-cz oxfl-cz-infographic' } },
@@ -30,38 +33,38 @@
 
 		init: function() {
 			this.activityInitialized = true;
-			var parent = blink.theme.styles.basic.prototype;
-			parent.init.call(this);
+			//BK-15873 Utilizamos this.parent declarada al inicio de la clase
+			this.parent.init.call(this);
+
 			this.fetchData();
-			this.initSequencingContentZone();
-			this.initSequencingTipChallenge();
+			this.initSequencing();
 			this.removeFinalSlide();
+			this.preventTouchCarousel();
+		},
+
+		preventTouchCarousel: function () {
+			$('#swipeview-slider')
+				.on('touchstart', function (event) {
+					event.stopPropagation();
+					event.stopImmediatePropagation();
+					return;
+				});
 		},
 
 		/**
 		 * Ejecutar métodos referentes al sequencing con content zone.
 		 */
-		initSequencingContentZone: function() {
+		initSequencing: function() {
 			this.contentZone = this.lookupDirectorSlide("contentzone");
+
 			if (this.contentZone) {
 				this.navigationOverride();
 				this.navigationEvents();
 				this.setSequencingContentZoneEvents();
 				this.initSystemSaveSCORM();
-			}
-		},
-
-		/**
-		 * Ejecutar métodos referentes al sequencing con tip challenge.
-		 */
-		initSequencingTipChallenge: function() {
-			this.tipChallenge = this.lookupDirectorSlide("tipchallenge");
-
-			if (!this.tipChallenge) {
-				return false;
-			}
-
-			this.setSequencingChallengeEvents();
+			} else {
+			    this.setSequencingChallengeEvents();
+            }
 		},
 
 		/**
@@ -117,8 +120,8 @@
 		},
 
 		removeFinalSlide: function() {
-			var parent = blink.theme.styles.basic.prototype;
-			parent.removeFinalSlide.call(this, true);
+			//BK-15873 Utilizamos this.parent declarada al inicio de la clase
+			this.parent.removeFinalSlide.call(this, true);
 		},
 
 		/**
@@ -300,7 +303,7 @@
 			if (!suspdata.game_score) {
 				suspdata.game_score = 0;
 			}
-
+			suspdata.status_completed = true;
 			suspdata.game_score += coins;
 			updateSCORM();
 		},
@@ -310,7 +313,7 @@
 				lastSlide =  blink.activity.numSlides - 1,
 				isLastSlide = activeSlide == lastSlide;
 
-			return (isLastSlide && currentSlide.getClassification());
+			return isLastSlide;
 		},
 
 		calculateActivityGameScore: function() {
@@ -355,10 +358,10 @@
 			var exercisesTotalScore = 0,
 				exercisesCount = 0;
 
-			for (var idSlide = this.contentZone + 1; idSlide < blink.activity.numSlides; idSlide++) {
-				var slide = window["t"+idSlide+"_slide"];
+			for (var idSlide = 0; idSlide < blink.activity.numSlides; idSlide++) {
+                var slide = window["t"+idSlide+"_slide"];
 
-				if (slide.getClassification()) {
+				if (slide.intentos > 0 && slide.esEvaluable && slide.getClassification()) {
 					exercisesTotalScore +=  parseFloat(slide.getClassification()) * 100;
 					exercisesCount++;
 				}
@@ -407,9 +410,6 @@
 		 * @param  {activityId} activityId ID de la actividad
 		 */
 		buyActivityMarketPlace: function (activityId) {
-			console.log("Intentando comprar");
-			console.log(actividades);
-			console.log(activityId);
 			if (actividades && actividades[activityId]) {
 				return alert('actividad comprada con anterioridad');
 			}
@@ -426,29 +426,10 @@
 						}
 
 						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
-							//TODO Comprobar esta funcion
 							if (o.startsWith('ERROR')){
 								_showAlert(textweb('error_general_AJAX'));
-							}
-
-							if (blink.isApp) {
-
-								blink.ajax('/blink:forceCheckUpdates', function(o) {
-									if (o.startsWith('ERROR')){
-										_showAlert(textweb('error_general_AJAX'));
-									} else {
-										oxfordFlippedApp.updateMarketplaceList(activityId);
-									}
-								});
-
 							} else {
-
-								if (o.startsWith('ERROR')){
-									_showAlert(textweb('error_general_AJAX'));
-								} else {
-									oxfordFlippedApp.updateMarketplaceList(activityId);
-								}
-
+								blink.events.trigger('activity:buy:done');
 							}
 						});
 
@@ -459,12 +440,20 @@
 		},
 
 		/**
-		 * Configura los eventos necesarios para el sequencing de los "Episodes".
-		 */
+		* Configura los eventos necesarios para el sequencing de los "Episodes".
+		*/
 		setSequencingContentZoneEvents: function() {
 			var $closeIframeButton = parent.$('#oxfl-modal-close-chapter').find('.btn-primary');
 
 			this.setSequencyToInit();
+
+			// Se sobrescribe el salir de la actividad.
+			$closeIframeButton.removeAttr('onclick').off('click').on('click', (function() {
+				if(this.contentZone){
+					this.exitSequencing();
+					this.closeIframe();
+				}
+			}).bind(this));
 
 			// Listeners al pasar de slide.
 			blink.events.on('slide:update:after section:shown', (function() {
@@ -478,7 +467,6 @@
 					blink.events.trigger('vocabulary:done');
 					this.storeGameScore(this.calculateVocabularyCoins());
 				}
-
 				if (this.shouldCalculateGameScore()) {
 					this.storeGameScore(this.calculateActivityGameScore());
 				}
@@ -486,8 +474,8 @@
 		},
 
 		/**
-		 * Configura los eventos necesarios para el sequencing de los "Challenge".
-		 */
+		* Configura los eventos necesarios para el sequencing de los "Challenge".
+		*/
 		setSequencingChallengeEvents: function() {
 			var $closeIframeButton = parent.$('#oxfl-modal-close-chapter').find('.btn-primary');
 
@@ -495,7 +483,17 @@
 
 			// Se sobrescribe el salir de la actividad.
 			$closeIframeButton.removeAttr('onclick').off('click').on('click', (function() {
-				this.tipChallenge && this.exitChallenge();
+				if(!this.contentZone){
+					this.exitChallenge();
+					this.closeIframe();
+				}
+			}).bind(this));
+
+			// Listener al actualizar slide para comprobar si se deben proporcionar las monedas de Vocabulario
+			blink.events.on('slide:update:after', (function() {
+				if (this.shouldCalculateGameScore()) {
+					this.storeGameScore(this.calculateActivityGameScore());
+				}
 			}).bind(this));
 		},
 
@@ -545,16 +543,19 @@
 		},
 
 		/**
-		 * Realiza operaciones al cargar los datos del curso.
-		 * @param  {Object} data Información del curso.
-		 */
+		* Realiza operaciones al cargar los datos del curso.
+		* @param  {Object} data Información del curso.
+		*/
 		onCourseDataLoaded: function(data) {
 			var unit = _.findWhere(data.units, {id: window.idtema.toString()});
 			var subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()});
 
 			window.bookcover = data.units[0].subunits[0].id;
 			this.cursoJson = data;
-			this.onActivityDataLoaded(subunit);
+
+			if(blink.activity.secuencia.length >= 1) {
+				this.onActivityDataLoaded(subunit);
+			}
 			oxfordFlippedApp.getChallengeIDs(data);
 
 			var isBookCover = idclase.toString() === window.bookcover;
@@ -562,9 +563,8 @@
 			if (isBookCover) {
 				this.loadUserData();
 				var updateHash = false;
-				oxfordFlippedApp.homepage(data,updateHash);
+				oxfordFlippedApp.homepage(data, updateHash);
 			}
-
 		},
 
 		/**
@@ -573,6 +573,7 @@
 		 */
 		onActivityDataLoaded: function(data) {
 			var isBookCover = idclase.toString() === window.bookcover;
+
 			if (!isBookCover) {
 				var contentZoneIndex = this.lookupDirectorSlide("contentzone");
 
@@ -623,6 +624,7 @@
 		 */
 		refreshUserData: function() {
 			this.userCoins = this.calculateUserCoins(window.actividades);
+			parent.blink.activity.currentStyle.userCoins = this.userCoins;
 			parent && parent.blink.events.trigger('course:refresh');
 		},
 
@@ -652,6 +654,37 @@
 		canOpenActivity: function() {
 			return this.activityInitialized;
 		},
+
+		/**
+		* Añadimos hash para que al volver de una actividad del marketplace el menú vaya a la sección marketplace
+		*/
+		processHash: function() {
+			var hash = '',
+			curso = blink.getCourse(idcurso);
+			if (window.idtema == undefined) {
+				return false;
+			}
+			// Se ejecuta asíncrono para que procesar el hash.
+			var tema = _.find(curso.responseJSON.units, function(unit) {
+				return unit.id == window.idtema && unit
+			});
+
+			var actividad = _.find(tema.subunits, function(subunit) {
+				return subunit.id == window.idclase && subunit
+			});
+
+			if (!actividad.tag || actividad.tag !== 'marketplace') {
+				return false
+			}
+
+			if (actividad.typeInt === 6 && actividad.type === 'actividad') {
+				hash = '#marketplace_games';
+			} else {
+				hash = '#marketplace_summaries';
+			}
+			return hash;
+		}
+
 	};
 
 	OxfordFlippedDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), OxfordFlippedDevStyle.prototype);
@@ -674,10 +707,20 @@ $(function() {
 	});
 });
 
+/* Cambia a modo revisión en lugar de corrección si el centro no permite correcciones */
+function actualizarModoClaseFin() {
+	if(esAlumno && modoClase == 3) modoClase = 1;
+}
+
+/*Evalúa si el usuario puede repetir la actividad*/
+function usuarioPuedeRepetir() {
+	return true;
+}
+
 // Principal
 
 Slide.prototype.reviewButtons.principal["btn-correct"] = {
-	"btnTextDef" : textweb('course_53'),
+	"btnTextDef" : textweb('oxfordFlipped_btn_correct'),
 	"statusOptions" : {
 		"conTodoRelleno" 	: { "visible" : true, 	"active"	: true 	},
 		"conIntentos" 		: { "visible" : true, 	"active"	: true 	},
@@ -697,12 +740,14 @@ Slide.prototype.reviewButtons.principal["btn-solution"] = {
 // Alumno
 
 Slide.prototype.reviewButtons.alumno["btn-correct"] = {
-	"btnTextDef" : textweb('course_53'),
+	"btnTextDef" : textweb('oxfordFlipped_btn_correct'),
 	"statusOptions" : {
 		"conTodoRelleno" 	: { "visible" : true, 	"active"	: true 	},
 		"conIntentos" 		: { "visible" : true, 	"active"	: true 	},
 		"sinIntentos" 		: { "visible" : true, 	"active"	: false	},
-		"sinRespuesta" 		: { "visible" : true, 	"active"	: true	}
+		"sinRespuesta" 		: { "visible" : true, 	"active"	: true	},
+		"correccion" 		: { "visible" : true, 	"active"	: true	},
+		"revision" 			: { "visible" : true, 	"active"	: true	}
 	}
 }
 
@@ -713,6 +758,13 @@ Slide.prototype.reviewButtons.alumno["btn-reset"] = {
 Slide.prototype.reviewButtons.alumno["btn-solution"] = {
 	"statusOptions": {}
 }
+
+
+// ████░██▄░▄██░████░████░████▄░██▄░██░░▄███▄░░██░░
+// ██▄░░░▀███▀░░░██░░██▄░░██░██░███▄██░██▀░▀██░██░░
+// ██▀░░░▄███▄░░░██░░██▀░░████▀░██▀███░███████░██░░
+// ████░██▀░▀██░░██░░████░██░██░██░░██░██░░░██░████
+
 
 // VENDORS
 
