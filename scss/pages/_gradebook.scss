@@ -515,9 +515,9 @@ $total_awards : $total_rows_award*$total_cols_award;
       content: '';
       display: inline-block;
       background: url(img/arrows-slide-3.png) 0 0 no-repeat transparent;
-      background-size: 30px 60px;
-      width: 30px;
-      height: 45px;
+      background-size: 25px 85px;
+      width: 25px;
+      height: 40px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -537,7 +537,7 @@ $total_awards : $total_rows_award*$total_cols_award;
       left: -80px;
       &::before {
         content: '';
-        background-position: 0 -60px
+        background-position: 0 -42px
       }
     }
   }

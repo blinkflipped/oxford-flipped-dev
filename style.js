@@ -1873,7 +1873,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			// Circled text in Gradebook Awards
 			$('.oxfl-gradebook-award-label').each(function(i,e) {
 				var textLength = $(e).text().length,
-						radius = textLength*12;
+						radius = 120;//textLength*12;
 				console.log(radius);
 				var itemId = $(e).attr('id');
 				var circleLabel = new CircleType(document.getElementById(itemId));

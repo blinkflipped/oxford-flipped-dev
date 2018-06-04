@@ -1565,9 +1565,9 @@ body.oxfl-body-home #oxfl-home-menu {
     content: '';
     display: inline-block;
     background: url(img/arrows-slide-3.png) 0 0 no-repeat transparent;
-    background-size: 30px 60px;
-    width: 30px;
-    height: 45px;
+    background-size: 25px 85px;
+    width: 25px;
+    height: 40px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1584,7 +1584,7 @@ body.oxfl-body-home #oxfl-home-menu {
     left: -80px; }
     .oxfl-gradebook-awards .slick-arrow.slick-prev::before, .oxfl-gradebook-awards .slick-arrow.slick-prev:hover::before, .oxfl-gradebook-awards .slick-arrow.slick-prev:focus::before {
       content: '';
-      background-position: 0 -60px; }
+      background-position: 0 -42px; }
 
 body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   visibility: visible;
