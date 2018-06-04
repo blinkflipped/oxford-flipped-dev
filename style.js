@@ -1925,7 +1925,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			// Circled text in Gradebook Awards
 			$('.oxfl-gradebook-award-label').each(function(i,e) {
 				var textLength = $(e).text().length,
-						radius = 120*10/textLength;
+						radius = textLength/120;
 						//radius = 120;
 				console.log(radius);
 				var itemId = $(e).attr('id');
