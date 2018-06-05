@@ -380,7 +380,7 @@
 		 * @return {Int}             Cantidad de monedas que posee el usuario.
 		 */
 		calculateUserCoins: function(activities) {
-			var userCoins = 10000000; //TODO CAMBIAR A 0
+			var userCoins = 0;
 
 			activities.forEach((function(activity, index) {
 				var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
@@ -1218,8 +1218,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	if (oxfordFlippedApp.config.firstTime) {
 
-		//oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
-		oxfordFlippedApp.config.isStudent = true; //TODO IMPORTANTE QUITAR; ES SOLO PARA TESTEAR
+		oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 		oxfordFlippedApp.bookData = data;
 
 		var bookTitle = data.title,
