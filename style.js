@@ -380,7 +380,7 @@
 		 * @return {Int}             Cantidad de monedas que posee el usuario.
 		 */
 		calculateUserCoins: function(activities) {
-			var userCoins = 0;
+			var userCoins = 10000000; //TODO CAMBIAR A 0
 
 			activities.forEach((function(activity, index) {
 				var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
@@ -424,11 +424,16 @@
 						if (!connection) {
 								return _showAlert(textweb('tablettxt_require_connection'));
 						}
-
+						console.log(activityId);
+						console.log("ANTES");
 						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
+							console.log(activityId);
+							console.log("DURANTE");
 							if (o.startsWith('ERROR')){
 								_showAlert(textweb('error_general_AJAX'));
 							} else {
+								console.log("COMPRADO");
+								console.log(activityId);
 								blink.events.trigger('activity:buy:done', [activityId]);
 							}
 						});
