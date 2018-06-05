@@ -429,7 +429,7 @@
 							if (o.startsWith('ERROR')){
 								_showAlert(textweb('error_general_AJAX'));
 							} else {
-								blink.events.trigger('activity:buy:done');
+								blink.events.trigger('activity:buy:done', [activityId]);
 							}
 						});
 
@@ -504,6 +504,7 @@
 			if (parent) {
 				parent.cerrarIframe();
 				parent.$('#oxfl-modal-close-chapter').modal('hide');
+				parent.$('body').removeClass('oxfl-iframe-visible');
 			}
 		},
 
@@ -2549,10 +2550,10 @@ $(document).ready(function() {
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
 		blink.activity.currentStyle.loadUserData(); //TODO CHeck
 
-		blink.events.on('activity:buy:done', function(resourceID) {
-			console.log("DONE");
-			console.log(resourceID);
-			oxfordFlippedApp.updateMarketplaceList(resourceID);
+		blink.events.on('activity:buy:done', function(event, activityId) {
+			console.log("DONE 3");
+			console.log(activityId);
+			oxfordFlippedApp.updateMarketplaceList(activityId);
 		});
 
 	});
