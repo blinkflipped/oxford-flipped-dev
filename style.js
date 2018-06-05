@@ -1966,7 +1966,7 @@ oxfordFlippedApp.updateUserData = function() {
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			console.log(chapterStateID);
 			console.log(chapterStateText);
-			$(e).find('oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
+			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 
 			if (newGrade === '') {
 				chaptersWithoutGrade = true;
