@@ -2550,7 +2550,7 @@ $(document).ready(function() {
 		blink.events.on('activity:buy:done', (function() {
 			console.log("DONE");
 			oxfordFlippedApp.updateMarketplaceList(resourceID);
-		}
+		});
 
 	});
 
