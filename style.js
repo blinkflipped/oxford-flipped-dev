@@ -424,16 +424,10 @@
 						if (!connection) {
 								return _showAlert(textweb('tablettxt_require_connection'));
 						}
-						console.log(activityId);
-						console.log("ANTES");
 						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
-							console.log(activityId);
-							console.log("DURANTE");
 							if (o.startsWith('ERROR')){
 								_showAlert(textweb('error_general_AJAX'));
 							} else {
-								console.log("COMPRADO");
-								console.log(activityId);
 								blink.events.trigger('activity:buy:done', [activityId]);
 							}
 						});
@@ -2555,12 +2549,6 @@ $(document).ready(function() {
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
 		blink.activity.currentStyle.loadUserData(); //TODO CHeck
 
-		blink.events.on('activity:buy:done', function(event, activityId) {
-			console.log("DONE 3");
-			console.log(activityId);
-			oxfordFlippedApp.updateMarketplaceList(activityId);
-		});
-
 	});
 
 	$('body').on('click', '.oxfl-js-open-notifications', function(e) {
@@ -2570,6 +2558,13 @@ $(document).ready(function() {
 		$modal = $('#oxfl-modal-list-notifications');
 		$modal.modal('show');
 
+	});
+
+	blink.events.on('activity:buy:done', function(event, activityId) {
+		console.log("DONE 4");
+		//TODO Check por qué no recibe la variable.
+		console.log(activityId);
+		oxfordFlippedApp.updateMarketplaceList(activityId);
 	});
 
 	blink.events.on('course:refresh', (function() {
