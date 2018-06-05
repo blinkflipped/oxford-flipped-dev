@@ -257,6 +257,48 @@ $barchart_height: 235px;
   }
 }
 
+// Stars average
+
+.oxfl-gradebook-average-stars {
+  width: 100%;
+  height: 82px;
+  background: url(img/gradebook-average-stars.png) center 0 no-repeat;
+  background-size: 166px 328px;
+  margin: 0 auto;
+  &-0 {
+    background-position: center 0;
+  }
+  &-1 {
+    background-position: center -82px;
+  }
+  &-2 {
+    background-position: center -164px;
+  }
+  &-3 {
+    background-position: center -246px;
+  }
+}
+
+.oxfl-gradebook-average-grade-challenge {
+  width: 100%;
+  height: 306px;
+  background: url(img/gradebook-average-grade-challenge.png) center 0 no-repeat;
+  background-size: 180px 608px;
+  margin: 0 auto;
+  &-0 {
+    background-position: center 0;
+  }
+  &-1 {
+    background-position: center -153px;
+  }
+  &-2 {
+    background-position: center -306px;
+  }
+  &-3 {
+    background-position: center -459px;
+  }
+}
+
 // Units
 .oxfl-gradebook-section-2{
   border-radius: 30px;
