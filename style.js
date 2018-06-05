@@ -2547,7 +2547,7 @@ $(document).ready(function() {
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
 		blink.activity.currentStyle.loadUserData(); //TODO CHeck
 
-		blink.events.on('activity:buy:done', (function() {
+		blink.events.on('activity:buy:done', function(resourceID) {
 			console.log("DONE");
 			oxfordFlippedApp.updateMarketplaceList(resourceID);
 		});
