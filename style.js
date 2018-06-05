@@ -1708,16 +1708,12 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 }
 
 oxfordFlippedApp.updateMarketplaceList = function(activityId) {
-	console.log(activityId);
 	var idTema = window.actividades[activityId].idtema;
-	console.log(window.actividades[activityId]);
-	console.log(idTema);
 	$.each(oxfordFlippedApp.bookData.units, function(i, unit) {
 		if (unit.id === idTema) {
 			$.each(unit.subunits, function(i, subunit) {
 				console.log(subunit);
 				if (subunit.id === activityId) {
-					console.log('coincidence');
 					$('[data-resource-id="'+activityId+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
 					return false;
 				}
@@ -1943,8 +1939,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			// Circled text in Gradebook Awards
 			$('.oxfl-gradebook-award-label').each(function(i,e) {
 				var textLength = $(e).text().length,
-						radius = textLength/120;
-						//radius = 120;
+						radius = textLength*12;
 				console.log(radius);
 				var itemId = $(e).attr('id');
 				var circleLabel = new CircleType(document.getElementById(itemId));
