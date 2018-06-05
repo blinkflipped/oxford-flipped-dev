@@ -1218,8 +1218,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	if (oxfordFlippedApp.config.firstTime) {
 
-		oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
-
+		//oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
+		oxfordFlippedApp.config.isStudent = true; //TODO IMPORTANTE QUITAR; ES SOLO PARA TESTEAR
 		oxfordFlippedApp.bookData = data;
 
 		var bookTitle = data.title,
