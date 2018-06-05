@@ -1721,7 +1721,7 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 					$('[data-resource-id="'+activityId+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
 					return false;
 				}
-			}
+			});
 		}
 	});
 }
