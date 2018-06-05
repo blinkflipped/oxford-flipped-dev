@@ -1712,13 +1712,18 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 	var idTema = window.actividades[activityId].idtema;
 	console.log(window.actividades[activityId]);
 	console.log(idTema);
-	$.each(oxfordFlippedApp.bookData.units[idTema].subunits, function(i, subunit) {
-		if (subunit.id === activityId) {
-			$('[data-resource-id="'+id+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
-			return false;
+	$.each(oxfordFlippedApp.bookData.units, function(i, unit) {
+		if (unit.id === idTema) {
+			$.each(unit.subunits, function(i, subunit) {
+				console.log(subunit);
+				if (subunit.id === activityId) {
+					console.log('coincidence');
+					$('[data-resource-id="'+activityId+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
+					return false;
+				}
+			}
 		}
 	});
-
 }
 
 oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
