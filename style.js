@@ -1708,8 +1708,10 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 }
 
 oxfordFlippedApp.updateMarketplaceList = function(activityId) {
-
+	console.log(activityId);
 	var idTema = window.actividades[activityId].idtema;
+	console.log(window.actividades[activityId]);
+	console.log(idTema);
 	$.each(oxfordFlippedApp.bookData.units[idTema].subunits, function(i, subunit) {
 		if (subunit.id === activityId) {
 			$('[data-resource-id="'+id+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
@@ -2549,6 +2551,7 @@ $(document).ready(function() {
 
 		blink.events.on('activity:buy:done', function(resourceID) {
 			console.log("DONE");
+			console.log(resourceID);
 			oxfordFlippedApp.updateMarketplaceList(resourceID);
 		});
 
