@@ -1193,6 +1193,17 @@ oxfordFlippedApp.changeBackground = function(image) {
 
 }
 
+
+oxfordFlippedApp.getState = function(chapterID) {
+	if ((typeof  window.actividades[chapterID] === 'undefined')) {
+		chapterStateID = 2; // NEW
+	} else {
+		chapterStateID = ((typeof  window.actividades[chapterID] !== 'undefined') &&  window.actividades[chapterID].status_completed === 1) ? 1 : 0; //Completed : Started
+	}
+	return chapterStateID;
+}
+
+
 oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	oxfordFlippedApp.console("Homepage");
@@ -1509,8 +1520,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 				//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
 				var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
-						chapterStateID = (typeof activities[chapterID] === 'undefined') ? 2 : activities[chapterID].estado,
-						chapterStateText =  chapterStateTextArr[chapterStateID];
+						chapterStateID = oxfordFlippedApp.getState(chapterID),
+						chapterStateText = chapterStateTextArr[chapterStateID];
 
 				//Lock Chapters
 				var chapterLockStatus = chapter.lock,
@@ -1843,26 +1854,20 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 						// Buscar todas las actividades - chapters - que están abiertas (NO lock)
 						if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
 							totalUnits++;
-							if (typeof window.actividades[chapterID] !== 'undefined') {
-								var chapterState = window.actividades[chapterID].estado;
-								//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
-								console.log(chapterState);
-								if (chapterState === 0) {
-									unitsStarted++;
-									chapterGralState = 0;
-								} else if (chapterState === 1) {
-									unitsCompleted++;
-									var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se deben calculan solo sobre las completadas como esta hecho ahora, ya que en UNIT se hace independientemente de su estado
-									totalGrade += chapterGrade;
-									chapterGralState = 1;
-									chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
-								}
-							} else {
-								chapterGralState = 2;
+							var chapterState = oxfordFlippedApp.getState(chapterID);
+							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
+							console.log(chapterState);
+							if (chapterState === 0) { //Started
+								unitsStarted++;
+							} else if (chapterState === 1) { //Completed
+								unitsCompleted++;
+								var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se deben calculan solo sobre las completadas como esta hecho ahora, ya que en UNIT se hace independientemente de su estado
+								totalGrade += chapterGrade;
+								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 							}
+							chapterGralState = chapterState;
 						}
 					} else {
-
 						//var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
 						var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade)) ? true : false;
 						if (!isChallengeLock) {
@@ -1947,7 +1952,7 @@ oxfordFlippedApp.updateUserData = function() {
 
 		if (typeof dataChapter !== 'undefined') {
 
-			var newState = dataChapter.estado,
+			var newState = oxfordFlippedApp.getState(dataChapterId),
 					newGrade = dataChapter.clasificacion,
 					newStars = oxfordFlippedApp.gradeToStars(newGrade);
 
@@ -1957,6 +1962,7 @@ oxfordFlippedApp.updateUserData = function() {
 			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
+			console.log(chapterStateID);
 			console.log(chapterStateText);
 			$(e).find('oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 
@@ -2540,6 +2546,12 @@ $(document).ready(function() {
 		var resourceID = $(this).attr('data-marketplace-id');
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
 		blink.activity.currentStyle.loadUserData(); //TODO CHeck
+
+		blink.events.on('activity:buy:done', (function() {
+			console.log("DONE");
+			oxfordFlippedApp.updateMarketplaceList(resourceID);
+		}
+
 	});
 
 	$('body').on('click', '.oxfl-js-open-notifications', function(e) {
