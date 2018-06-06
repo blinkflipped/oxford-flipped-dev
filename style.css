@@ -1558,10 +1558,9 @@ body.oxfl-body-home #oxfl-home-menu {
     font-weight: bold;
     position: absolute;
     bottom: 20px;
-    width: 100%;
     text-align: center;
     color: #ffffff;
-    margin-left: -15px;
+    margin-left: -5%;
     left: 50%;
     transform: translate(-50%, 0); }
   .oxfl-gradebook-award.inactive {
