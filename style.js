@@ -1736,7 +1736,7 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 	});
 }
 
-oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
+oxfordFlippedApp.drawChartGradebookOLD = function(totalUnits,unitsCompleted) {
 
 	$('#oxfl-gradebook-donutchart').empty();
 
@@ -1789,6 +1789,84 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 				console.log(chart);
 				console.log(options);
 				console.log("drawChart6");
+			}
+		});
+
+	};
+
+	setTimeout(function(){
+		graph_appearEffects();
+	}, 1500);
+
+}
+
+oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
+
+	$('#oxfl-gradebook-donutchart').empty();
+
+	var notCompleted = totalUnits - unitsCompleted;
+
+	console.log(notCompleted);
+	console.log(unitsCompleted);
+	console.log(totalUnits);
+
+	var options = {
+		pieHole: 0.7,
+		width: 228,
+		height: 228,
+		legend: 'none',
+		pieSliceText: 'none',
+		pieStartAngle: -65,
+		enableInteractivity: false,
+		animation: {
+			startup: true,
+			duration: 1000,
+			easing: 'out'
+		},
+		chartArea: {left: 0, top: 0, width: "100%", height: "100%"},
+		colors: ['#999999', '#87c943'],
+	};
+
+	var config = {
+		type: 'doughnut',
+		data: {
+			datasets: [{
+				data: [
+					notCompleted(),
+					unitsCompleted(),
+				],
+				backgroundColor: [
+					'#999999',
+					'#87c943'
+				],
+				label: 'Dataset 1'
+			}],
+			labels: [
+				'Not completed',
+				'Completed'
+			]
+		},
+		options: {
+			responsive: true,
+			legend: {
+				display: false,
+			},
+			title: {
+				display: false
+			},
+			animation: {
+				animateScale: true,
+				animateRotate: true
+			}
+		}
+	};
+
+	function graph_appearEffects() {
+
+		$('#oxfl-gradebook-donutchart').on('inview', function(event, isInView) {
+			if (isInView) {
+				var ctx = document.getElementById('oxfl-gradebook-donutchart').getContext('2d');
+				window.myDoughnut = new Chart(ctx, config);
 			}
 		});
 
@@ -2069,15 +2147,15 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		if (alreadyLoaded) {
 			oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
 		} else {
-			var url = "https://www.gstatic.com/charts/loader.js";
+			/*var url = "https://www.gstatic.com/charts/loader.js";
 			$.getScript( url, function() {
 
 				google.charts.load("current", {packages:["corechart"]});
 				google.charts.setOnLoadCallback(function() { oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted); });
 				$('#oxfl-gradebook-wrapper').addClass('loaded');
 
-			});
-
+			});*/
+			oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
 			// Object Fit support
 			oxfordFlippedApp.objectFitSupport();
 
