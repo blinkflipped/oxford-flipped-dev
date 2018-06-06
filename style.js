@@ -2007,17 +2007,28 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+		var customStyle = document.getElementById('gradebook-custom-style');
+
 		var gradebookHeight = $gradebookWrapper.children('#oxfl-gradebook-inner').outerHeight();
-		var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}',
-				head = document.head || document.getElementsByTagName('head')[0],
-				style = document.createElement('style');
-		style.type = 'text/css';
-		if (style.styleSheet){
-			style.styleSheet.cssText = css;
+		var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}';
+		if (customStyle.length) {
+			if (customStyle.styleSheet){
+				customStyle.styleSheet.cssText = css;
+			} else {
+				customStyle.appendChild(document.createTextNode(css));
+			}
 		} else {
-			style.appendChild(document.createTextNode(css));
+			var head = document.head || document.getElementsByTagName('head')[0],
+					style = document.createElement('style');
+					style.type = 'text/css';
+					style.id = 'gradebook-custom-style';
+			if (style.styleSheet){
+				style.styleSheet.cssText = css;
+			} else {
+				style.appendChild(document.createTextNode(css));
+			}
+			head.appendChild(style);
 		}
-		head.appendChild(style);
 
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hash;
