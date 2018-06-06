@@ -1530,7 +1530,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 				//Lock Chapters
 				var chapterLockStatus = chapter.lock,
-						chapterIsLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2);
+						chapterIsLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
 						chapterLockClass = (chapterIsLock) ? 'lock' : 'unlock';
 
 				var chapterNumber = i + 1,
