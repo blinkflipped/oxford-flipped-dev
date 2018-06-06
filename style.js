@@ -2007,8 +2007,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
-
-		var gradebookHeight = $gradebookWrapper.children('.oxfl-gradebook-inner').outerHeight();
+		var gradebookHeight = $gradebookWrapper.children('#oxfl-gradebook-inner').outerHeight();
 		var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}',
 				head = document.head || document.getElementsByTagName('head')[0],
 				style = document.createElement('style');
