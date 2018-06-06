@@ -1753,6 +1753,7 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 		pieSliceText: 'none',
 		pieStartAngle: -65,
 		enableInteractivity: false,
+		animation: {"startup": true},
 		chartArea: {left: 0, top: 0, width: "100%", height: "100%"},
 		colors: ['#999999', '#87c943'],
 	};
