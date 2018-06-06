@@ -1865,8 +1865,8 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
 		$('#oxfl-gradebook-donutchart').on('inview', function(event, isInView) {
 			if (isInView) {
-				var ctx = document.getElementById('oxfl-gradebook-donutchart').getContext('2d');
-				window.myDoughnut = new Chart(ctx, config);
+				var ctx = document.getElementById('oxfl-gradebook-donutchart').getContext("2d");
+				var doughnutChart = new Chart(ctx).Doughnut(config);
 			}
 		});
 
