@@ -1324,7 +1324,9 @@ body.oxfl-body-home #oxfl-home-menu {
     stroke-width: 3px; }
 
 .oxfl-gradebook-donutchart-wrapper {
-  position: relative; }
+  position: relative;
+  display: flex;
+  justify-content: center; }
 
 .oxfl-gradebook-donutchart-legend {
   font-family: "Quicksand", sans-serif;

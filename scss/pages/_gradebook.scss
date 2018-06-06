@@ -173,6 +173,8 @@
 }
 .oxfl-gradebook-donutchart-wrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 .oxfl-gradebook-donutchart-legend {
   font-family: $font_family_1;
