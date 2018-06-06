@@ -486,13 +486,15 @@ $total_awards : $total_rows_award*$total_cols_award;
     font-weight: bold;
     position: absolute;
     bottom: 20px;
-    //width: 100%;
     text-align: center;
     color: $negative_color;
-    margin-left: -5%;
     left: 50%;
     transform: translate(-50%,0);
     //@include rotated-text(12);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
   }
   &.inactive {
     filter: grayscale(100%);

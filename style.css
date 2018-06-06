@@ -1560,9 +1560,12 @@ body.oxfl-body-home #oxfl-home-menu {
     bottom: 20px;
     text-align: center;
     color: #ffffff;
-    margin-left: -5%;
     left: 50%;
-    transform: translate(-50%, 0); }
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0; }
   .oxfl-gradebook-award.inactive {
     filter: grayscale(100%); }
   .oxfl-gradebook-award-1 .oxfl-gradebook-award-inner {
