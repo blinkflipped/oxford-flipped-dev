@@ -1832,8 +1832,8 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 		data: {
 			datasets: [{
 				data: [
-					notCompleted(),
-					unitsCompleted(),
+					notCompleted,
+					unitsCompleted,
 				],
 				backgroundColor: [
 					'#999999',
