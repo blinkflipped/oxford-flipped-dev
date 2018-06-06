@@ -1748,7 +1748,7 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
 	var data = google.visualization.arrayToDataTable([
 		['Status', 'Quantity'],
-		['Not completed',     0],
+		['Not completed',     totalUnits],
 		['Completed',      0]
 	]);
 
