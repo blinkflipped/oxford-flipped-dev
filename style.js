@@ -950,7 +950,7 @@ oxfordFlippedApp.text = {
 	gradebooktableheader2 : 'Status',
 	gradebooktableheader3 : 'Stars',
 	gradebookawards1 : '% completed',
-	gradebookawards2 : 'coins',
+	gradebookawards2 : 'coins earned',
 	gradebookawards3 : 'chapters with 3 stars'
 }
 
@@ -2007,6 +2007,19 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+
+		var gradebookHeight = $gradebookWrapper.children('.oxfl-gradebook-inner').outerHeight();
+		var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}',
+				head = document.head || document.getElementsByTagName('head')[0],
+				style = document.createElement('style');
+		style.type = 'text/css';
+		if (style.styleSheet){
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+		head.appendChild(style);
+
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hash;
 		if (!alreadyLoaded) {
