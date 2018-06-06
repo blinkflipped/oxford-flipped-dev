@@ -1810,7 +1810,7 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 	console.log(unitsCompleted);
 	console.log(totalUnits);
 
-	var options = {
+	/*var options = {
 		pieHole: 0.7,
 		width: 228,
 		height: 228,
@@ -1825,48 +1825,47 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 		},
 		chartArea: {left: 0, top: 0, width: "100%", height: "100%"},
 		colors: ['#999999', '#87c943'],
-	};
+	};*/
 
-	var config = {
-		type: 'doughnut',
-		data: {
-			datasets: [{
-				data: [
-					notCompleted,
-					unitsCompleted,
-				],
-				backgroundColor: [
-					'#999999',
-					'#87c943'
-				],
-				label: 'Dataset 1'
-			}],
-			labels: [
-				'Not completed',
-				'Completed'
-			]
+	var options = {
+		responsive: true,
+		legend: {
+			display: false,
 		},
-		options: {
-			responsive: true,
-			legend: {
-				display: false,
-			},
-			title: {
-				display: false
-			},
-			animation: {
-				animateScale: true,
-				animateRotate: true
-			}
+		title: {
+			display: false
+		},
+		animation: {
+			animateScale: true,
+			animateRotate: true
 		}
 	};
+	var data = {
+		labels : ['Not completed','Completed'],
+		datasets : [
+			{
+				fillColor : "#999999",
+				strokeColor : "#ffffff",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : [notCompleted]
+			},
+			{
+				fillColor : "#87c943",
+				strokeColor : "#ffffff",
+				pointColor : "rgba(151,187,205,1)",
+				pointStrokeColor : "#fff",
+				data : [unitsCompleted]
+			}
+		]
+	}
 
 	function graph_appearEffects() {
 
 		$('#oxfl-gradebook-donutchart').on('inview', function(event, isInView) {
 			if (isInView) {
 				var ctx = document.getElementById('oxfl-gradebook-donutchart').getContext("2d");
-				var doughnutChart = new Chart(ctx).Doughnut(config);
+				var doughnutChart = new Chart(ctx).Doughnut(data,options);
 			}
 		});
 
