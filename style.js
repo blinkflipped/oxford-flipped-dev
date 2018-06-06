@@ -1769,16 +1769,24 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 		colors: ['#999999', '#87c943'],
 	};
 
-	var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
+	function graph_appearEffects() {
 
-	$('#oxfl-gradebook-donutchart').on('inview', function(event, isInView) {
-		if (isInView) {
-			chart.draw(data, options);
-			console.log(chart);
-			console.log(options);
-			console.log("drawChart6");
-		}
-	});
+		$('#oxfl-gradebook-donutchart').on('inview', function(event, isInView) {
+			if (isInView) {
+				var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
+
+				chart.draw(data, options);
+				console.log(chart);
+				console.log(options);
+				console.log("drawChart6");
+			}
+		});
+
+	};
+
+	setTimeout(function(){
+		graph_appearEffects();
+	}, 1500);
 
 }
 
@@ -1804,20 +1812,27 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 		return barchartSize*percent/100;
 	}
 
+	function barchart_appearEffects() {
 
-	$barchart.on('inview', function(event, isInView) {
-		if (isInView) {
-			$barchartItemCompleted
-				.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+completedPercent+'% - '+newbarChartSize(completedPercent)+'px)').end()
-				.find('.oxfl-gradebook-barchart-item-number').text(unitsCompleted);
-			$barchartItemStarted
-				.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+startedPercet+'% - '+newbarChartSize(startedPercet)+'px)').end()
-				.find('.oxfl-gradebook-barchart-item-number').text(unitsStarted);
-			$barchartItemNotStarted
-				.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)').end()
-				.find('.oxfl-gradebook-barchart-item-number').text(unitsNotStarted);
-		}
-	});
+		$barchart.on('inview', function(event, isInView) {
+			if (isInView) {
+				$barchartItemCompleted
+					.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+completedPercent+'% - '+newbarChartSize(completedPercent)+'px)').end()
+					.find('.oxfl-gradebook-barchart-item-number').text(unitsCompleted);
+				$barchartItemStarted
+					.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+startedPercet+'% - '+newbarChartSize(startedPercet)+'px)').end()
+					.find('.oxfl-gradebook-barchart-item-number').text(unitsStarted);
+				$barchartItemNotStarted
+					.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)').end()
+					.find('.oxfl-gradebook-barchart-item-number').text(unitsNotStarted);
+			}
+		});
+
+	};
+
+	setTimeout(function(){
+		barchart_appearEffects();
+	}, 1500);
 
 
 }
@@ -2020,24 +2035,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	// Init Gradebook
 	// ***
 
-	if (alreadyLoaded) {
-		oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
-	} else {
-		var url = "https://www.gstatic.com/charts/loader.js";
-		$.getScript( url, function() {
-
-			google.charts.load("current", {packages:["corechart"]});
-			google.charts.setOnLoadCallback(function() { oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted); });
-			// TODO PASAR EL GET SCRIPT A LA HOME?
-			$('#oxfl-gradebook-wrapper').addClass('loaded');
-
-		});
-
-		// Object Fit support
-		oxfordFlippedApp.objectFitSupport();
-
-	}
-
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 		var customStyle = document.getElementById('gradebook-custom-style');
@@ -2066,7 +2063,22 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hash;
-		if (!alreadyLoaded) {
+
+		if (alreadyLoaded) {
+			oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
+		} else {
+			var url = "https://www.gstatic.com/charts/loader.js";
+			$.getScript( url, function() {
+
+				google.charts.load("current", {packages:["corechart"]});
+				google.charts.setOnLoadCallback(function() { oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted); });
+				$('#oxfl-gradebook-wrapper').addClass('loaded');
+
+			});
+
+			// Object Fit support
+			oxfordFlippedApp.objectFitSupport();
+
 			// Circled text in Gradebook Awards
 			$('.oxfl-gradebook-award-label').each(function(i,e) {
 				var textLength = $(e).text().length,
@@ -2075,6 +2087,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				var circleLabel = new CircleType(document.getElementById(itemId));
 				circleLabel.radius(radius).dir(-1);
 			});
+
 		}
 	});
 
