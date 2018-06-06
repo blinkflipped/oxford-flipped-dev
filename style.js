@@ -1139,7 +1139,7 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash)}, timeToWait);
 
-	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook //TODO CHECK
+	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook
 
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadGradebook(updateHash)}, timeToWait);
 
@@ -1726,7 +1726,6 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 	$.each(oxfordFlippedApp.bookData.units, function(i, unit) {
 		if (unit.id === idTema) {
 			$.each(unit.subunits, function(i, subunit) {
-				console.log(subunit);
 				if (subunit.id === activityId) {
 					$('[data-resource-id="'+activityId+'"]').attr('onclick', subunit.onclickTitle).closest('.oxfl-resource').removeClass('oxfl-resource-locked');
 					return false;
@@ -1743,10 +1742,6 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
 	$('#oxfl-gradebook-donutchart').remove();
 	$('.oxfl-gradebook-donutchart-wrapper').append('<canvas id="oxfl-gradebook-donutchart" width="228" height="228" style="width: 228px; height: 228px;"></canvas>');
-
-	console.log(notCompleted);
-	console.log(unitsCompleted);
-	console.log(totalUnits);
 
 	var options = {
 		segmentStrokeColor : "#fff",
@@ -1768,7 +1763,6 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 			if (isInView) {
 				var ctx = document.getElementById('oxfl-gradebook-donutchart').getContext("2d");
 				var doughnutChart = new Chart(ctx).Doughnut(data, options);
-				console.log(doughnutChart);
 			}
 		});
 
@@ -1792,11 +1786,6 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 			startedPercet = unitsStarted * 100 / totalUnits,
 			unitsNotStarted = totalUnits - unitsStarted - unitsCompleted,
 			notStartedPercent = unitsNotStarted * 100 / totalUnits;
-
-	console.log(completedPercent);
-	console.log(startedPercet);
-	console.log(notStartedPercent);
-	console.log(totalUnits,unitsStarted,unitsCompleted);
 
 	function newbarChartSize(percent) {
 		return barchartSize*percent/100;
@@ -1902,7 +1891,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 								unitsStarted++;
 							} else if (chapterState === 1) { //Completed
 								unitsCompleted++;
-								var chapterGrade = window.actividades[chapterID].clasificacion; //TODO Comprobar que se deben calculan solo sobre las completadas como esta hecho ahora, ya que en UNIT se hace independientemente de su estado
+								var chapterGrade = window.actividades[chapterID].clasificacion;
 								totalGrade += chapterGrade;
 								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 								if (chapterStars === 3) {
@@ -1986,7 +1975,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		$('#oxfl-gradebook-award-8').addClass('inactive');
 	}
 
-	// "monedas conseguidas"
+	// Coins "monedas conseguidas"
 	var userCoinsTotal = 0;
 	window.actividades.forEach((function(activity, index) {
 		var unit = _.findWhere(oxfordFlippedApp.bookData.units, {id: activity.idtema}),
@@ -2087,8 +2076,6 @@ oxfordFlippedApp.updateUserData = function() {
 			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus2],
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
-			console.log(chapterStateID);
-			console.log(chapterStateText);
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 
 			if (newGrade === '') {
@@ -2125,7 +2112,6 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 	var isDone = true,
 			newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
-	oxfordFlippedApp.console(newIsLocked);
 
 	if (isDone) {
 
@@ -2384,7 +2370,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 						$lastSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
 						$('#oxfl-final-slide-tip').prepend(finalSlideTip);
-						var finalCoins = blink.activity.currentStyle.calculateActivityGameScore(), // TODO Check
+						var finalCoins = blink.activity.currentStyle.calculateActivityGameScore(),
 								totalStars = oxfordFlippedApp.gradeToStars(grade);
 
 						$('#oxfl-total-coins-2').text(finalCoins);
@@ -2503,7 +2489,7 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
 			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
 
-	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active'); // TODO Comprobar si cuando vuelves a Vocabulary esta la pantalla de las monedas o se ha reseteado.
+	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active');
 
 	if (!isFinalSlide) {
 		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
@@ -2542,6 +2528,7 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,res
 }
 
 oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
+
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
@@ -2595,7 +2582,6 @@ $(document).ready(function() {
 	$('body').on('click', oxfordFlippedApp.config.buttonGoBack, function() {
 
 		oxfordFlippedApp.goback();
-		console.log("Test");
 
 	});
 
@@ -2670,7 +2656,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var resourceID = $(this).attr('data-marketplace-id');
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
-		blink.activity.currentStyle.loadUserData(); //TODO CHeck
+		blink.activity.currentStyle.loadUserData();
 
 	});
 
@@ -2684,20 +2670,14 @@ $(document).ready(function() {
 	});
 
 	blink.events.on('activity:buy:done', function(activityId) {
-		console.log("DONE 5");
-		//TODO Check por qué no recibe la variable.
-		console.log(activityId);
+
 		oxfordFlippedApp.updateMarketplaceList(activityId);
+
 	});
 
 	blink.events.on('course:refresh', (function() {
 
-		console.log(actividades);
-		console.log(window.actividades);
-		console.log(blink.activity.currentStyle.userCoins);
 		oxfordFlippedApp.updateUserData();
-
-		console.log("Refresh");
 		if (oxfordFlippedApp.config.isStudent) {
 			oxfordFlippedApp.loadNotifications(oxfordFlippedApp.bookData);
 		}
