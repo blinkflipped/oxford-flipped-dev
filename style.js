@@ -1748,8 +1748,8 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
 	var data = google.visualization.arrayToDataTable([
 		['Status', 'Quantity'],
-		['Not completed',     notCompleted],
-		['Completed',      unitsCompleted]
+		['Not completed',     0],
+		['Completed',      0]
 	]);
 
 	var options = {
@@ -1769,13 +1769,23 @@ oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 		colors: ['#999999', '#87c943'],
 	};
 
+	var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
+
+	chart.draw(data, options);
+
 	function graph_appearEffects() {
 
 		$('#oxfl-gradebook-donutchart').on('inview', function(event, isInView) {
 			if (isInView) {
-				var chart = new google.visualization.PieChart(document.getElementById('oxfl-gradebook-donutchart'));
+
+				var data = google.visualization.arrayToDataTable([
+					['Status', 'Quantity'],
+					['Not completed',     notCompleted],
+					['Completed',      unitsCompleted]
+				]);
 
 				chart.draw(data, options);
+
 				console.log(chart);
 				console.log(options);
 				console.log("drawChart6");
@@ -1908,7 +1918,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							totalUnits++;
 							var chapterState = oxfordFlippedApp.getState(chapterID);
 							//State 0: Started; State 1: Completed. New if the ID doesnt appear in array (associated 2 in the code)
-							console.log(chapterState);
 							if (chapterState === 0) { //Started
 								unitsStarted++;
 							} else if (chapterState === 1) { //Completed
@@ -1947,13 +1956,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	var averageStars = oxfordFlippedApp.gradeToStars(totalGrade);
 	$units.slick(oxfordFlippedApp.config.carouselOpt);
-
-	console.log(totalUnits);
-	console.log(unitsStarted);
-	console.log(unitsCompleted);
-	console.log(totalGrade);
-	console.log(averageStars);
-	console.log(unitsW3Stars);
 
 	oxfordFlippedApp.drawBarsGradebook(totalUnits,unitsStarted,unitsCompleted);
 
