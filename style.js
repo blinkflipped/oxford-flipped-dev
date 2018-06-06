@@ -2012,6 +2012,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		var gradebookHeight = $gradebookWrapper.children('#oxfl-gradebook-inner').outerHeight();
 		var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}';
 		if (customStyle) {
+			customStyle.innerHTML = '';
 			if (customStyle.styleSheet){
 				customStyle.styleSheet.cssText = css;
 			} else {
