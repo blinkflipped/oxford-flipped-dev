@@ -1896,7 +1896,10 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 							// TODO Check if logic is correct: Count grade and stars in started AND completed lessons.
 							if (typeof window.actividades[chapterID] !== 'undefined') {
-								var chapterGrade = parseInt(window.actividades[chapterID].clasificacion);
+								var chapterGradeData =  window.actividades[chapterID].clasificacion,
+										chapterGrade = (chapterGradeData !== '') ? parseInt(chapterGradeData) : 0;
+								console.log(window.actividades[chapterID].clasificacion);
+								console.log(chapterGrade);
 								totalGrade += chapterGrade;
 								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 								if (chapterStars === 3) {
@@ -1912,7 +1915,10 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 						if (!isChallengeLock) {
 							//totalUnits++;// We dont count challenge lessons anymore
 							if (typeof window.actividades[chapterID] !== 'undefined') {
-								var chapterGrade = window.actividades[chapterID].clasificacion;
+								var chapterGradeData =  window.actividades[chapterID].clasificacion,
+										chapterGrade = (chapterGradeData !== '') ? parseInt(chapterGradeData) : 0;
+								console.log(window.actividades[chapterID].clasificacion);
+								console.log(chapterGrade);
 								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 							}
 							var chapterState = oxfordFlippedApp.getState(chapterID);
