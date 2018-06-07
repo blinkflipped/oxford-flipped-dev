@@ -1909,8 +1909,10 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 						var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted)) ? true : false;
 						if (!isChallengeLock) {
 							//totalUnits++;// We dont count challenge lessons anymore
-							var chapterGrade = window.actividades[chapterID].clasificacion;
-							chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
+							if (typeof window.actividades[chapterID] !== 'undefined') {
+								var chapterGrade = window.actividades[chapterID].clasificacion;
+								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
+							}
 						}
 						var chapterState = oxfordFlippedApp.getState(chapterID);
 						chapterGralState = chapterState;
