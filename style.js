@@ -1417,7 +1417,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 
 			var unitsNotStarted = false,
-					unitsWithoutGrade = false;
+					unitsNotCompleted = false;
 			var notifEpisodeTitle = unit.title;
 			var chapters = unit.subunits;
 
@@ -1433,9 +1433,9 @@ oxfordFlippedApp.loadNotifications = function(data) {
 					if (typeof window.actividades[notifChapterID] === 'undefined') {
 						unitsNotStarted = true;
 					} else {
-					// Activities started or completed
-						if (window.actividades[notifChapterID].clasificacion === '') {
-							unitsWithoutGrade = true;
+						// Activities not completed
+						if (typeof window.actividades[notifChapterID].status_completed === 'undefined' || window.actividades[notifChapterID].status_completed !== 1) {
+							unitsNotCompleted = true;
 						}
 					}
 
@@ -1455,7 +1455,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 						}
 					}
 				} else {
-					var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
+					var isChallengeLock = ((unitsNotStarted || unitsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false;
 
 					if (!isChallengeLock) {
 						totalNotif++;
@@ -1473,7 +1473,6 @@ oxfordFlippedApp.loadNotifications = function(data) {
 		$notifWrapper[0].appendChild(notificationsList);
 		$('#oxfl-notifications').addClass('active').find('.oxfl-notifications-badge').text(totalNotif);
 		// Si abres actividad, el botón cierra modal y abre activdad.
-		// PENDIENTE recibir correctamente los estados
 	}
 
 }
@@ -1525,7 +1524,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 					chaptersNotStarted = true;
 				} else {
 				// Activities started or completed
-					if (activities[chapterID].clasificacion === '') {
+					if (activities[chapterID].clasificacion === '') {// TODO CHANGE TO NOT COMPLETED
 						chaptersWithoutGrade = true;
 					}
 				}
@@ -1541,7 +1540,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
 
 				var chapterNumber = i + 1,
-						chapterActionsStudents = (!isChapterLock) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
+						chapterActionsStudents = (chapterStateID !== 2) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
@@ -1550,8 +1549,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 			} else { // Challenge Chapter
 
 				var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false,
+						challengeStateID = oxfordFlippedApp.getState(chapterID),
 						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
-				var chapterActions = (oxfordFlippedApp.config.isStudent && !isChallengeLock) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
+				var chapterActions = (oxfordFlippedApp.config.isStudent && challengeStateID !== 2) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"><a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div>  <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</h2></a> </article>';
@@ -1863,7 +1863,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 				if (chapterTag != oxfordFlippedApp.config.tagMarketplace) {
 
 					var unitsNotStarted = false,
-							unitsWithoutGrade = false;
+							unitsNotCompleted = false;
 
 					var chapterTitle = chapter.title,
 							chapterDescription = chapter.description,
@@ -1877,9 +1877,9 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 						if (typeof window.actividades[chapterID] === 'undefined') {
 							unitsNotStarted = true;
 						} else {
-						// Activities started or completed
-							if (window.actividades[chapterID].clasificacion === '') {
-								unitsWithoutGrade = true;
+							// Activities not completed
+							if (typeof window.actividades[notifChapterID].status_completed === 'undefined' || window.actividades[chapterID].status_completed !== 1) {
+								unitsNotCompleted = true;
 							}
 						}
 						var chapterLockStatus = chapter.lock;
@@ -1902,8 +1902,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							chapterGralState = chapterState;
 						}
 					} else {
-						//var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false;
-						var isChallengeLock = ((unitsNotStarted || unitsWithoutGrade)) ? true : false;
+						var isChallengeLock = ((unitsNotStarted || unitsNotCompleted)) ? true : false;
 						if (!isChallengeLock) {
 							totalUnits++;
 						}
