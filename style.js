@@ -2078,7 +2078,7 @@ oxfordFlippedApp.updateUserData = function() {
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 
-			if (newGrade === '') {
+			if (typeof dataChapter.status_completed === 'undefined' || dataChapter.status_completed !== 1) {
 				lessonsNotCompleted = true;
 			}
 		} else {
