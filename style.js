@@ -1896,8 +1896,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							if (typeof window.actividades[chapterID] !== 'undefined') {
 								var chapterGradeData =  window.actividades[chapterID].clasificacion,
 										chapterGrade = (chapterGradeData !== '') ? parseInt(chapterGradeData) : 0;
-								console.log(window.actividades[chapterID].clasificacion);
-								console.log(chapterGrade);
 								totalGrade += chapterGrade;
 								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 								if (chapterStars === 3) {
@@ -1915,8 +1913,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							if (typeof window.actividades[chapterID] !== 'undefined') {
 								var chapterGradeData =  window.actividades[chapterID].clasificacion,
 										chapterGrade = (chapterGradeData !== '') ? parseInt(chapterGradeData) : 0;
-								console.log(window.actividades[chapterID].clasificacion);
-								console.log(chapterGrade);
 								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 							}
 							var chapterState = oxfordFlippedApp.getState(chapterID);
@@ -1941,9 +1937,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	var mediaGrade = totalGrade/totalUnits;
 
-	console.log(totalGrade);
-	console.log(totalUnits);
-	console.log(mediaGrade);
 	// Calculate the average number of stars from the average grade of all lessons
 	//var averageStars = oxfordFlippedApp.gradeToStars(totalGrade);
 	var averageStars = oxfordFlippedApp.gradeToStars(mediaGrade);
