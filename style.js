@@ -2108,7 +2108,8 @@ oxfordFlippedApp.updateUserData = function() {
 			// Challenge is open
 			var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
 					innerHTML = $challengeLink.html(),
-					newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+dataChapterId+'"';
+					challengeID = $('.oxfl-chapter-challenge').attr('data-id'),
+					newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+challengeID+'"';
 			$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
 		}
 	});
