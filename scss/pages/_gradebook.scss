@@ -11,7 +11,7 @@
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   pointer-events: none;
-  background: fade-out($background_color, .3);
+  background: fade-out($background_color, .15);
 }
 
 #oxfl-gradebook-inner {
@@ -603,7 +603,7 @@ body.oxfl-body-gradebook {
   }
   #oxfl-custom-background-inner-1,
   #oxfl-custom-background-inner-2 {
-    opacity: 0!important;
+    //opacity: 0!important;
   }
 
   #oxfl-coins {

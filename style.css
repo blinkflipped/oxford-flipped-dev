@@ -1190,7 +1190,7 @@ body.oxfl-body-home #oxfl-home-menu {
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.7); }
+  background: rgba(255, 255, 255, 0.85); }
 
 #oxfl-gradebook-inner {
   padding: 100px 0 50px;
@@ -1628,9 +1628,6 @@ body.oxfl-body-gradebook #oxfl-gradebook-wrapper {
   pointer-events: auto; }
 body.oxfl-body-gradebook #oxfl-general {
   background: #ffffff; }
-body.oxfl-body-gradebook #oxfl-custom-background-inner-1,
-body.oxfl-body-gradebook #oxfl-custom-background-inner-2 {
-  opacity: 0 !important; }
 body.oxfl-body-gradebook #oxfl-coins {
   opacity: 0; }
 body.oxfl-body-gradebook #oxfl-general-buttons .oxfl-button-icon-info,
