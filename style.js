@@ -1416,8 +1416,8 @@ oxfordFlippedApp.loadNotifications = function(data) {
 	$.each(data.units, function(i, unit){
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 
-			var unitsNotStarted = false,
-					unitsNotCompleted = false;
+			var lessonsNotStarted = false,
+					lessonsNotCompleted = false;
 			var notifEpisodeTitle = unit.title;
 			var chapters = unit.subunits;
 
@@ -1431,11 +1431,11 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 					// Activities not started
 					if (typeof window.actividades[notifChapterID] === 'undefined') {
-						unitsNotStarted = true;
+						lessonsNotStarted = true;
 					} else {
 						// Activities not completed
 						if (typeof window.actividades[notifChapterID].status_completed === 'undefined' || window.actividades[notifChapterID].status_completed !== 1) {
-							unitsNotCompleted = true;
+							lessonsNotCompleted = true;
 						}
 					}
 
@@ -1455,7 +1455,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 						}
 					}
 				} else {
-					var isChallengeLock = ((unitsNotStarted || unitsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false;
+					var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false;
 
 					if (!isChallengeLock) {
 						totalNotif++;
@@ -1498,7 +1498,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 			chaptersList = document.createDocumentFragment();
 
 	var chaptersNotStarted = false,
-			chaptersWithoutGrade = false;
+			lessonsNotCompleted = false;
 
 	$.each(chapters, function(i, chapter){
 
@@ -1523,9 +1523,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				if (typeof activities[chapterID] === 'undefined') {
 					chaptersNotStarted = true;
 				} else {
-				// Activities started or completed
-					if (activities[chapterID].clasificacion === '') {// TODO CHANGE TO NOT COMPLETED
-						chaptersWithoutGrade = true;
+					// Activities not completed
+					if (typeof actividades[chapterID].status_completed === 'undefined' || actividades[chapterID].status_completed !== 1) {
+						lessonsNotCompleted = true;
 					}
 				}
 
@@ -1548,7 +1548,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 			} else { // Challenge Chapter
 
-				var isChallengeLock = ((chaptersNotStarted || chaptersWithoutGrade) && oxfordFlippedApp.config.isStudent) ? true : false,
+				var isChallengeLock = ((chaptersNotStarted || lessonsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false,
 						challengeStateID = oxfordFlippedApp.getState(chapterID),
 						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 				var chapterActions = (oxfordFlippedApp.config.isStudent && challengeStateID !== 2) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
@@ -1785,8 +1785,8 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 	var barchartSize = 30;
 	var completedPercent = unitsCompleted * 100 / totalUnits,
 			startedPercet = unitsStarted * 100 / totalUnits,
-			unitsNotStarted = totalUnits - unitsStarted - unitsCompleted,
-			notStartedPercent = unitsNotStarted * 100 / totalUnits;
+			lessonsNotStarted = totalUnits - unitsStarted - unitsCompleted,
+			notStartedPercent = lessonsNotStarted * 100 / totalUnits;
 
 	function newbarChartSize(percent) {
 		return barchartSize*percent/100;
@@ -1804,7 +1804,7 @@ oxfordFlippedApp.drawBarsGradebook = function(totalUnits,unitsStarted,unitsCompl
 					.find('.oxfl-gradebook-barchart-item-number').text(unitsStarted);
 				$barchartItemNotStarted
 					.find('.oxfl-gradebook-barchart-item-bar').css('height', 'calc('+notStartedPercent+'% - '+newbarChartSize(notStartedPercent)+'px)').end()
-					.find('.oxfl-gradebook-barchart-item-number').text(unitsNotStarted);
+					.find('.oxfl-gradebook-barchart-item-number').text(lessonsNotStarted);
 			}
 		});
 
@@ -1862,8 +1862,8 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 				if (chapterTag != oxfordFlippedApp.config.tagMarketplace) {
 
-					var unitsNotStarted = false,
-							unitsNotCompleted = false;
+					var lessonsNotStarted = false,
+							lessonsNotCompleted = false;
 
 					var chapterTitle = chapter.title,
 							chapterDescription = chapter.description,
@@ -1875,11 +1875,11 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 					if (!chapterIsChallenge) {
 						// Activities not started
 						if (typeof window.actividades[chapterID] === 'undefined') {
-							unitsNotStarted = true;
+							lessonsNotStarted = true;
 						} else {
 							// Activities not completed
-							if (typeof window.actividades[notifChapterID].status_completed === 'undefined' || window.actividades[chapterID].status_completed !== 1) {
-								unitsNotCompleted = true;
+							if (typeof window.actividades[chapterID].status_completed === 'undefined' || window.actividades[chapterID].status_completed !== 1) {
+								lessonsNotCompleted = true;
 							}
 						}
 						var chapterLockStatus = chapter.lock;
@@ -1902,7 +1902,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							chapterGralState = chapterState;
 						}
 					} else {
-						var isChallengeLock = ((unitsNotStarted || unitsNotCompleted)) ? true : false;
+						var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted)) ? true : false;
 						if (!isChallengeLock) {
 							totalUnits++;
 						}
@@ -2058,7 +2058,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 oxfordFlippedApp.updateUserData = function() {
 	var chaptersNotStarted = false,
-			chaptersWithoutGrade = false;
+			lessonsNotCompleted = false;
 
 	$('.oxfl-chapter').each(function(i,e) {
 		var dataChapterId = $(e).attr('data-id'),
@@ -2079,13 +2079,13 @@ oxfordFlippedApp.updateUserData = function() {
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 
 			if (newGrade === '') {
-				chaptersWithoutGrade = true;
+				lessonsNotCompleted = true;
 			}
 		} else {
 			chaptersNotStarted = true;
 		}
 
-		if (!chaptersNotStarted && !chaptersWithoutGrade) {
+		if (!chaptersNotStarted && !lessonsNotCompleted) {
 			// Challenge is open
 			var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
 					innerHTML = $challengeLink.html(),
