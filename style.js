@@ -2025,7 +2025,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	// ***
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
-	var backgroundImage = data.units[0].subunits[0].image;
+	var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
 	oxfordFlippedApp.changeBackground(backgroundImage);
 
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
