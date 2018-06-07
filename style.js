@@ -1856,15 +1856,13 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			$units.append(unitHTML);
 			var tableRows = document.createDocumentFragment();
 
+			var lessonsNotStarted = false,
+					lessonsNotCompleted = false;
+
 			$.each(chapters, function(x, chapter){
 
 				var chapterTag = chapter.tag;
-
 				if (chapterTag != oxfordFlippedApp.config.tagMarketplace) {
-
-					var lessonsNotStarted = false,
-							lessonsNotCompleted = false;
-
 					var chapterTitle = chapter.title,
 							chapterDescription = chapter.description,
 							chapterID = chapter.id,
