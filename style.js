@@ -1938,6 +1938,8 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	var mediaGrade = totalGrade/totalUnits;
 
+	console.log(totalGrade);
+	console.log(totalUnits);
 	console.log(mediaGrade);
 	// Calculate the average number of stars from the average grade of all lessons
 	//var averageStars = oxfordFlippedApp.gradeToStars(totalGrade);
