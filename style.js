@@ -1895,11 +1895,13 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							}
 
 							// TODO Check if logic is correct: Count grade and stars in started AND completed lessons.
-							var chapterGrade = window.actividades[chapterID].clasificacion;
-							totalGrade += chapterGrade;
-							chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
-							if (chapterStars === 3) {
-								unitsW3Stars++;
+							if (typeof window.actividades[chapterID] !== 'undefined') {
+								var chapterGrade = window.actividades[chapterID].clasificacion;
+								totalGrade += chapterGrade;
+								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
+								if (chapterStars === 3) {
+									unitsW3Stars++;
+								}
 							}
 
 							chapterGralState = chapterState;
