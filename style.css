@@ -926,7 +926,7 @@ body.oxfl-body-gradebook {
     min-height: 1880px; }
 
 #oxfl-custom-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -1190,7 +1190,7 @@ body.oxfl-body-home #oxfl-home-menu {
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   pointer-events: none;
-  background: #ffffff; }
+  background: rgba(255, 255, 255, 0.7); }
 
 #oxfl-gradebook-inner {
   padding: 100px 0 50px;

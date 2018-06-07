@@ -1892,20 +1892,29 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 								unitsStarted++;
 							} else if (chapterState === 1) { //Completed
 								unitsCompleted++;
-								var chapterGrade = window.actividades[chapterID].clasificacion;
-								totalGrade += chapterGrade;
-								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
-								if (chapterStars === 3) {
-									unitsW3Stars++;
-								}
 							}
+
+							// TODO Check if logic is correct: Count grade and stars in started AND completed lessons.
+							var chapterGrade = window.actividades[chapterID].clasificacion;
+							totalGrade += chapterGrade;
+							chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
+							if (chapterStars === 3) {
+								unitsW3Stars++;
+							}
+
 							chapterGralState = chapterState;
+
 						}
 					} else {
 						var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted)) ? true : false;
 						if (!isChallengeLock) {
-							totalUnits++;
+							//totalUnits++;// We dont count challenge lessons anymore
+							var chapterGrade = window.actividades[chapterID].clasificacion;
+							chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
 						}
+						var chapterState = oxfordFlippedApp.getState(chapterID);
+						chapterGralState = chapterState;
+
 					}
 
 					tableRowItem = document.createElement('div'),
@@ -1923,7 +1932,12 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		}
 	});
 
-	var averageStars = oxfordFlippedApp.gradeToStars(totalGrade);
+	var mediaGrade = totalGrade/totalUnits;
+
+	console.log(mediaGrade);
+	// Calculate the average number of stars from the average grade of all lessons
+	//var averageStars = oxfordFlippedApp.gradeToStars(totalGrade);
+	var averageStars = oxfordFlippedApp.gradeToStars(mediaGrade);
 	$units.slick(oxfordFlippedApp.config.carouselOpt);
 
 	oxfordFlippedApp.drawBarsGradebook(totalUnits,unitsStarted,unitsCompleted);
@@ -2007,6 +2021,9 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	// ***
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
+	var backgroundImage = data.units[0].subunits[0].image;
+	oxfordFlippedApp.changeBackground(backgroundImage);
+
 	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 		var customStyle = document.getElementById('gradebook-custom-style');
 

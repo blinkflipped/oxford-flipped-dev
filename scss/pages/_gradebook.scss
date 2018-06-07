@@ -11,7 +11,7 @@
   opacity:0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   pointer-events: none;
-  background: $background_color;
+  background: fade-out($background_color, .3);
 }
 
 #oxfl-gradebook-inner {
