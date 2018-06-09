@@ -958,7 +958,7 @@ oxfordFlippedApp.text = {
 	gradebooktableheader3 : 'Stars',
 	gradebookawards1 : '% completed',
 	gradebookawards2 : 'coins earned',
-	gradebookawards3 : 'chapters with 3 stars'
+	gradebookawards3 : 'lessons with 3 stars'
 }
 
 oxfordFlippedApp.console = function(logValue) {
