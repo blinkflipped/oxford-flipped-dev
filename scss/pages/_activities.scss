@@ -1,8 +1,10 @@
 
 #iframe_div {
-  outline: 2px solid $color_9;
+  outline: none;
+  box-shadow: 0px 0px 0px 2px $color_9;
   &.audio {
     outline: none;
+    box-shadow: none;
   }
 }
 

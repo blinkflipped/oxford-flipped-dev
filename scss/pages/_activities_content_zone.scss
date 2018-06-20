@@ -96,11 +96,12 @@ body.body_clase.view-mode {
           top: 200%;
           left: 0;
           z-index: 500;
-          height: calc(100vh - #{$header_height});
           //margin: $cz_button_height+$cz_button_top 0 0 0;
+          height: 0;
           width: 100%;
-          transition: top .3s ease-out;
+          transition: top .3s ease-out, height .3s ease-out;
           background: $background_color;
+          overflow: hidden;
           .oxfl-cz-content {
             height: calc(100% - #{$cz_header_height});
             max-height: calc(100% - #{$cz_header_height});
@@ -133,6 +134,7 @@ body.body_clase.view-mode {
           }
           &.oxfl-visible {
             top: 0;
+            height: calc(100vh - #{$header_height});
           }
         }
         .oxfl-cz-header {
