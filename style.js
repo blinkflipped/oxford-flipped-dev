@@ -1613,6 +1613,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 	});
 
 }
+
+
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
 
 	var resourceList = document.createDocumentFragment(),
@@ -1644,7 +1646,6 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 									resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+resourceTitle+"', '"+resourceDescription+"',"+resourceId+")",
 									resourceListItem = document.createElement('div');
 									resourceListItem.className = 'oxfl-resource-item';
-
 							resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
 							resourceList.appendChild(resourceListItem);
 						}
@@ -1701,7 +1702,6 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 	oxfordFlippedApp.objectFitSupport();
 
 	$('#oxfl-marketplace-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hash;
 	});
@@ -2001,7 +2001,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 			userCoinsTotal += activity.game_score;
 		}
 	}));
-	console.log(userCoinsTotal);
+
 	if (userCoinsTotal >= oxfordFlippedApp.config.awards.coins.bronze) {
 		$('#oxfl-gradebook-award-3').removeClass('inactive');
 	} else {
@@ -2104,15 +2104,19 @@ oxfordFlippedApp.updateUserData = function() {
 			chaptersNotStarted = true;
 		}
 
-		if (!chaptersNotStarted && !lessonsNotCompleted) {
-			// Challenge is open
-			var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
-					innerHTML = $challengeLink.html(),
-					challengeID = $('.oxfl-chapter-challenge').attr('data-id'),
-					newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+challengeID+'"';
-			$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
-		}
+		console.log(lessonsNotCompleted,chaptersNotStarted);
 	});
+
+	console.log('FINAL', lessonsNotCompleted,chaptersNotStarted);
+
+	if (!chaptersNotStarted && !lessonsNotCompleted) {
+		// Challenge is open
+		var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
+				innerHTML = $challengeLink.html(),
+				challengeID = $('.oxfl-chapter-challenge').attr('data-id'),
+				newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+challengeID+'"';
+		$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
+	}
 
 	var totalCoins = blink.activity.currentStyle.userCoins ? blink.activity.currentStyle.userCoins : 0;
 	$('#oxfl-coins-total').text(totalCoins);
