@@ -2104,10 +2104,7 @@ oxfordFlippedApp.updateUserData = function() {
 			chaptersNotStarted = true;
 		}
 
-		console.log(lessonsNotCompleted,chaptersNotStarted);
 	});
-
-	console.log('FINAL', lessonsNotCompleted,chaptersNotStarted);
 
 	if (!chaptersNotStarted && !lessonsNotCompleted) {
 		// Challenge is open
