@@ -279,7 +279,8 @@
   font-family: $font_family_2;
   font-weight: bold;
   font-style: italic;
-  @include font-size(2.3);
+  //@include font-size(2.3);
+  font-size: 23px;
   padding: 9px 30px;
   text-transform: uppercase;
   border-radius: 30px;
