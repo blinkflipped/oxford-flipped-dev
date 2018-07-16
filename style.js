@@ -1411,7 +1411,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 	var notificationsList = document.createDocumentFragment();
 	var totalNotif = 0;
 	var $notifWrapper = $('#oxfl-notifications-list');
-	$notifWrapper.empty();
+	$notifWrapper.empty().removeClass('active').find('.oxfl-notifications-badge').text('');
 
 	$.each(data.units, function(i, unit){
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
@@ -1471,7 +1471,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 	if (totalNotif > 0) {
 		// Pintar MODAL con el Episode al que pertenecen junto con su título y un botón de abrir actividad. A concretar si tiene fecha
 		$notifWrapper[0].appendChild(notificationsList);
-		$('#oxfl-notifications').addClass('active').find('.oxfl-notifications-badge').text(totalNotif);
+		$notifWrapper.addClass('active').find('.oxfl-notifications-badge').text(totalNotif);
 		// Si abres actividad, el botón cierra modal y abre activdad.
 	}
 
