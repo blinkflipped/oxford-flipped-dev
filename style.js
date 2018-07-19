@@ -2308,8 +2308,14 @@ oxfordFlippedApp.activityContentZone = function() {
 	var popoverNotAllowedContentZone = '';
 	$('.oxfl-cz').on('click', '.oxfl-js-cz-close', function() {
 
-		var $wrapper = $(this).closest('.js-slider-item');
-		$(this).closest('.bck-content').removeClass('oxfl-visible');
+		var $wrapper = $(this).closest('.js-slider-item'),
+				$bckContent = $(this).closest('.bck-content'),
+				videoContent = $bckContent.find('.vjs-tech').attr('id');
+
+		$bckContent.removeClass('oxfl-visible');
+		if (videoContent !== '') {
+			videojs.players[videoContent].pause();
+		}
 		$('body').removeClass('oxfl-content-zone-card-on');
 		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
 
