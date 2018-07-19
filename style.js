@@ -2310,11 +2310,15 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		var $wrapper = $(this).closest('.js-slider-item'),
 				$bckContent = $(this).closest('.bck-content'),
-				videoContent = $bckContent.find('.video-js').attr('id');
+				videoContent = $bckContent.find('.video-js');
+
 
 		$bckContent.removeClass('oxfl-visible');
-		if (videoContent !== '') {
-			videojs.players[videoContent].pause();
+		if (videoContent.length) {
+			videoContent.each(function(i,e) {
+				var videoContentID = $(e).attr('id');
+				videojs.players[videoContentID].pause();
+			});
 		}
 		$('body').removeClass('oxfl-content-zone-card-on');
 		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
