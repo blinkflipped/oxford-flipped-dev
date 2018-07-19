@@ -2313,10 +2313,7 @@ oxfordFlippedApp.activityContentZone = function() {
 				videoContent = $bckContent.find('.video-js').attr('id');
 
 		$bckContent.removeClass('oxfl-visible');
-
-		console.log(videoContent);
 		if (videoContent !== '') {
-
 			videojs.players[videoContent].pause();
 		}
 		$('body').removeClass('oxfl-content-zone-card-on');
