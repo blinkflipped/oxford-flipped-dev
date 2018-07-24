@@ -2427,10 +2427,10 @@ body.body_clase.view-mode .navbar-bottom {
   width: 0px; }
 
 #actividad .workspace.memory .front {
-  background: url(img/memory_back.png) center center;
-  border-color: #3FA8F4; }
+  background: url(img/memory_back.png) center center !important;
+  border-color: #3FA8F4 !important; }
 #actividad .workspace.memory .back {
-  border-color: #3FA8F4; }
+  border-color: #3FA8F4 !important; }
 
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .title h3 {
   font-family: "Myfrida", sans-serif;

@@ -170,11 +170,11 @@ body.body_clase.view-mode {
 #actividad {
   .workspace.memory {
     .front {
-      background: url(img/memory_back.png) center center;
-      border-color: #3FA8F4;
+      background: url(img/memory_back.png) center center!important;
+      border-color: #3FA8F4!important;
     }
     .back {
-      border-color: #3FA8F4;
+      border-color: #3FA8F4!important;
     }
   }
 }
