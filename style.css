@@ -2426,6 +2426,12 @@ body.body_clase.view-mode .navbar-bottom {
 .navbar-divider::after {
   width: 0px; }
 
+#actividad .workspace.memory .front {
+  background: url(img/memory_back.png) center center;
+  border-color: #3FA8F4; }
+#actividad .workspace.memory .back {
+  border-color: #3FA8F4; }
+
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .header .title h3 {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
@@ -2714,7 +2720,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       font-size: 16px;
       color: #ffffff; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .bck-title {
-    background-image: url(img/monster-9.svg);
+    background-image: url(img/monster-9.png);
     left: 0;
     width: 210px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .bck-content .oxfl-cz-content {
@@ -2722,7 +2728,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     overflow: hidden; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title {
     width: 220px;
-    background-image: url(img/monster-10.svg);
+    background-image: url(img/monster-10.png);
     left: 210px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title p {
       bottom: 14px; }
@@ -2730,7 +2736,7 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     text-align: center; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title {
     width: 160px;
-    background-image: url(img/monster-11.svg);
+    background-image: url(img/monster-11.png);
     left: 430px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title p {
       margin-left: 0; }
@@ -2747,7 +2753,7 @@ body.body_clase.view-mode.oxfl-content-zone-card-on #actividad .oxfl-content-zon
 
 body.body_clase.view-mode #actividad .oxfl-final-slide {
   background-position: center center;
-  background-image: url(img/endscreen-ok-regular.svg), url(img/endscreen-ok-regular-bg.png);
+  background-image: url(img/endscreen-ok-regular.png), url(img/endscreen-ok-regular-bg.png);
   background-repeat: no-repeat, repeat-x;
   background-size: contain; }
   body.body_clase.view-mode #actividad .oxfl-final-slide-fail {

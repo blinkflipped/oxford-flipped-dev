@@ -165,3 +165,16 @@ body.body_clase.view-mode {
     width: 0px;
   }
 }
+
+
+#actividad {
+  .workspace.memory {
+    .front {
+      background: url(img/memory_back.png) center center;
+      border-color: #3FA8F4;
+    }
+    .back {
+      border-color: #3FA8F4;
+    }
+  }
+}
