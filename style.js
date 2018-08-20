@@ -2007,8 +2007,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		}
 	}
 
-	console.log(userCoinsTotal);
-
 	if (userCoinsTotal >= oxfordFlippedApp.config.awards.coins.bronze) {
 		$('#oxfl-gradebook-award-3').removeClass('inactive');
 	} else {
