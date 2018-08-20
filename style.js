@@ -1995,14 +1995,19 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 	// Coins "monedas conseguidas"
 	var userCoinsTotal = 0;
-	window.actividades.forEach((function(activity, index) {
-		var unit = _.findWhere(oxfordFlippedApp.bookData.units, {id: activity.idtema}),
-				subunit = _.findWhere(unit.subunits, {id: index.toString()});
+	for (var index in window.actividades) {
+		var activity = window.actividades[index];
+		if(typeof activity === "object" ){
+			var unit = _.findWhere(oxfordFlippedApp.bookData.units, {id: activity.idtema}),
+					subunit = _.findWhere(unit.subunits, {id: index.toString()});
 
-		if (!(subunit.tag && subunit.tag.indexOf(this.marketPlaceTag) != -1) && activity.game_score) {
-			userCoinsTotal += activity.game_score;
+			if (!(subunit.tag && subunit.tag.indexOf(this.marketPlaceTag) != -1) && activity.game_score) {
+				userCoinsTotal += activity.game_score;
+			}
 		}
-	}));
+	}
+
+	console.log(userCoinsTotal);
 
 	if (userCoinsTotal >= oxfordFlippedApp.config.awards.coins.bronze) {
 		$('#oxfl-gradebook-award-3').removeClass('inactive');
