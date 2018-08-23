@@ -2682,6 +2682,7 @@ $(document).ready(function() {
 	$('body').on('click', '.oxfl-js-close-iframe-inside', function(e) {
 
 		e.preventDefault();
+		blink.activity.currentStyle.loadUserData();
 		parent.top.oxfordFlippedApp.closeIframe();
 		$('body').removeClass('oxfl-iframe-visible');
 	});
