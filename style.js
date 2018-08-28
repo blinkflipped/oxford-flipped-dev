@@ -2114,7 +2114,7 @@ oxfordFlippedApp.updateUserData = function() {
 	var chaptersNotStarted = false,
 			lessonsNotCompleted = false;
 
-	$('.oxfl-chapter').each(function(i,e) {
+	$('.oxfl-chapter:not(.oxfl-chapter-challenge)').each(function(i,e) {
 		var dataChapterId = $(e).attr('data-id'),
 				dataChapter = window.actividades[dataChapterId];
 
