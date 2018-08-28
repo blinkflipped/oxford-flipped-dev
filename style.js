@@ -1237,7 +1237,6 @@ oxfordFlippedApp.changeBackground = function(image) {
 oxfordFlippedApp.getState = function(chapterID) {
 	//custom_activity_status: 0: New; 1: Started; 2: Completed
 	chapterStateID = (typeof  window.actividades[chapterID] === 'undefined' || typeof window.actividades[chapterID].custom_activity_status === 'undefined') ? oxfordFlippedApp.config.stateNew : window.actividades[chapterID].custom_activity_status;
-	console.log(chapterStateID);
 	return chapterStateID;
 }
 
@@ -2132,7 +2131,6 @@ oxfordFlippedApp.updateUserData = function() {
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
-
 			if (typeof dataChapter.custom_activity_status === 'undefined' || dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted) {
 				lessonsNotCompleted = true;
 			}
@@ -2141,7 +2139,7 @@ oxfordFlippedApp.updateUserData = function() {
 		}
 
 	});
-
+	console.log(chaptersNotStarted, lessonsNotCompleted);
 	if (!chaptersNotStarted && !lessonsNotCompleted) {
 		// Challenge is open
 		var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
