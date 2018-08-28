@@ -1620,7 +1620,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
 
 	var resourceList = document.createDocumentFragment(),
-			activityHTML = 'actividad';
+			gameTag = 'game';
 
 	var currentIndex = (type === oxfordFlippedApp.config.marketplaceType1) ? 4 : 5;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
@@ -1635,22 +1635,22 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 
 			$.each(subunits, function(x, resource){
 				if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
-					var resourceType = resource.type;
-						if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === activityHTML) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== activityHTML)) {
-							var resourceTitle = resource.title,
-									resourceDescription = resource.description,
-									resourceValue = resource.game_token,
-									resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
-									resourceId = resource.id,
-									resourceurl = resource.url,
-									resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
-									resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
-									resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+resourceTitle+"', '"+resourceDescription+"',"+resourceId+")",
-									resourceListItem = document.createElement('div');
-									resourceListItem.className = 'oxfl-resource-item';
-							resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
-							resourceList.appendChild(resourceListItem);
-						}
+					var resourceType = resource.marketType;
+					if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === gameTag) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== gameTag)) {
+						var resourceTitle = resource.title,
+								resourceDescription = resource.description,
+								resourceValue = resource.game_token,
+								resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
+								resourceId = resource.id,
+								resourceurl = resource.url,
+								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
+								resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+resourceTitle+"', '"+resourceDescription+"',"+resourceId+")",
+								resourceListItem = document.createElement('div');
+								resourceListItem.className = 'oxfl-resource-item';
+						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
+						resourceList.appendChild(resourceListItem);
+					}
 				}
 			});
 		}
