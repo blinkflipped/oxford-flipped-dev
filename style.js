@@ -1563,7 +1563,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				}
 
 				//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
-				var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus0],
+				var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1],
 						chapterStateID = oxfordFlippedApp.getState(chapterID),
 						chapterStateText = chapterStateTextArr[chapterStateID];
 
@@ -2128,7 +2128,7 @@ oxfordFlippedApp.updateUserData = function() {
 			$(e).find('.oxfl-stars').removeClass('oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
 
 			//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
-			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus1, oxfordFlippedApp.text.chapterStatus0],
+			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1],
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
