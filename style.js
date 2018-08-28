@@ -1236,7 +1236,8 @@ oxfordFlippedApp.changeBackground = function(image) {
 
 oxfordFlippedApp.getState = function(chapterID) {
 	//custom_activity_status: 0: New; 1: Started; 2: Completed
-	chapterStateID = (typeof  window.actividades[chapterID] === 'undefined') ? oxfordFlippedApp.config.stateNew : window.actividades[chapterID].custom_activity_status;
+	chapterStateID = (typeof  window.actividades[chapterID] === 'undefined' || typeof window.actividades[chapterID].custom_activity_status === 'undefined') ? oxfordFlippedApp.config.stateNew : window.actividades[chapterID].custom_activity_status;
+	console.log(chapterStateID);
 	return chapterStateID;
 }
 
