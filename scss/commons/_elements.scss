@@ -385,13 +385,13 @@
   text-align: center;
   padding-right: 7px;
   padding-top: 7px;
-  &.oxfl-label-2 {//New
+  &.oxfl-label-0 {//New
     background-position: 0 0;
   }
-  &.oxfl-label-0 {//Started
+  &.oxfl-label-1 {//Started
     background-position: 0 -51px;
   }
-  &.oxfl-label-1 {//Completed
+  &.oxfl-label-2 {//Completed
     background-position: 0 -102px;
   }
 }

@@ -535,11 +535,11 @@ body.oxfl-body-gradebook {
   text-align: center;
   padding-right: 7px;
   padding-top: 7px; }
-  .oxfl-label.oxfl-label-2 {
-    background-position: 0 0; }
   .oxfl-label.oxfl-label-0 {
-    background-position: 0 -51px; }
+    background-position: 0 0; }
   .oxfl-label.oxfl-label-1 {
+    background-position: 0 -51px; }
+  .oxfl-label.oxfl-label-2 {
     background-position: 0 -102px; }
 
 .oxfl-strip {
