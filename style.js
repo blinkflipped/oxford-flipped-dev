@@ -2139,7 +2139,6 @@ oxfordFlippedApp.updateUserData = function() {
 		}
 
 	});
-	console.log(chaptersNotStarted, lessonsNotCompleted);
 	if (!chaptersNotStarted && !lessonsNotCompleted) {
 		// Challenge is open
 		var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
