@@ -63,8 +63,8 @@
 				this.setSequencingContentZoneEvents();
 				this.initSystemSaveSCORM();
 			} else {
-			    this.setSequencingChallengeEvents();
-            }
+					this.setSequencingChallengeEvents();
+						}
 		},
 
 		/**
@@ -156,7 +156,7 @@
 				shouldHideNavigation	= this.shouldHideNavigation(),
 				vocabularyData			= suspdata.status["t"+vocabularySlide.uid],
 				currentSlideData 		= suspdata.status["t"+currentSlide.uid],
-				vocabularyPristine 		= vocabularyData && vocabularyData.pristine,
+				vocabularyPristine 		= (suspdata.length == 0 || typeof vocabularyData == 'undefined' || (vocabularyData && (typeof vocabularyData.pristine == 'undefined' || vocabularyData.pristine))) ? true : false,
 				slideIsContent 			= currentSlide.esContenido,
 				$sliderControl 			= $(".slider-control"),
 				$sliderLeft 			= $(".left.slider-control"),
@@ -303,9 +303,24 @@
 			if (!suspdata.game_score) {
 				suspdata.game_score = 0;
 			}
-			suspdata.status_completed = true;
+			suspdata.custom_activity_status = this.calculateActivityStatus();
 			suspdata.game_score += coins;
+			suspdata.game_score
 			updateSCORM();
+		},
+
+		calculateActivityStatus: function() {
+			var isComplete = this.shouldCalculateGameScore(),
+					isStarted = this.vocabularyIsComplete(),
+					statusResult = 0;
+
+			if(isComplete) {
+					statusResult = 2;
+			} else if(this.contentZone && isStarted) {
+					statusResult = 1;
+			}
+
+			return statusResult <= suspdata.custom_activity_status? suspdata.custom_activity_status : statusResult;
 		},
 
 		shouldCalculateGameScore: function() {
@@ -348,6 +363,13 @@
 			return (activeSlide == indexVocabularySlide && currentSlide.clasificacion == 1 && this.vocabularyCalculated == 0);
 		},
 
+		vocabularyIsComplete: function() {
+			var indexVocabularySlide = this.contentZone - 1,
+					currentSlide = window['t'+activeSlide+'_slide'];
+
+			return (activeSlide >= indexVocabularySlide && currentSlide.clasificacion == 1);
+		},
+
 		calculateVocabularyCoins: function() {
 			var vocabularyCoins = this.vocabularyCoins || 0;
 			this.vocabularyCalculated++;
@@ -359,7 +381,7 @@
 				exercisesCount = 0;
 
 			for (var idSlide = 0; idSlide < blink.activity.numSlides; idSlide++) {
-                var slide = window["t"+idSlide+"_slide"];
+								var slide = window["t"+idSlide+"_slide"];
 
 				if (slide.intentos > 0 && slide.esEvaluable && slide.getClassification()) {
 					exercisesTotalScore +=  parseFloat(slide.getClassification()) * 100;
@@ -409,12 +431,13 @@
 		 * Compra un actividad del Market Place
 		 * @param  {activityId} activityId ID de la actividad
 		 */
-		buyActivityMarketPlace: function (activityId) {
+		 buyActivityMarketPlace: function (activityId) {
 			if (actividades && actividades[activityId]) {
 				return alert('actividad comprada con anterioridad');
 			}
 
 			blink.getActivity(idcurso, parseInt(activityId)).done((function(activity) {
+				var that = this;
 				if (!this.checkUserCanBuyActivityMarketPlace(activity)) {
 					return _showAlert(textweb('gamificacion_monedas_insuficientes'));
 				}
@@ -424,13 +447,19 @@
 						if (!connection) {
 								return _showAlert(textweb('tablettxt_require_connection'));
 						}
-						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, function(o) {
+
+						blink.ajax("/LMS/ajax.php?op=activity.buyActivityMarketPlace&idclase=" + activityId + "&idcurso=" + idcurso, (function(o) {
 							if (o.startsWith('ERROR')){
 								_showAlert(textweb('error_general_AJAX'));
 							} else {
-								blink.events.trigger('activity:buy:done', activityId);
+								var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+
+								loadScript(urlSeguimiento, true, (function() {
+										that.refreshUserData();
+										blink.events.trigger('activity:buy:done', activityId);
+								}).bind(this));
 							}
-						});
+						}).bind(this));
 
 					});
 				}
@@ -2393,7 +2422,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 						if (isChallenge) {
 							var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
-									finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
+									finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
 							if (finalSlideBackground != '') {
 								$lastSlide.css('background-image', 'url('+finalSlideBackground+')').find('.slide_aux').hide();
 							}
