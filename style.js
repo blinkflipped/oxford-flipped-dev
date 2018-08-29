@@ -2406,15 +2406,10 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 			if (isFinalSlide) {
 				parent.top.oxfordFlippedApp.hideIframeButton();
 
-				$('body').removeClass('oxfl-end-screen-tip-on');
+				$('body').removeClass('oxfl-end-screen-tip-on').addClass('oxfl-final-slide-on');
 
-				//var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-				//loadScript(urlSeguimiento, true, function() {
-
-				var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
-
-				$('body').addClass('oxfl-final-slide-on');
-				var finalSlideLoaded = $lastSlide.hasClass('oxfl-final-slide');
+				var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion,
+						finalSlideLoaded = $lastSlide.hasClass('oxfl-final-slide');
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
 				}
@@ -2456,8 +2451,6 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					$lastSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 
 				}
-
-				//});
 
 				$('body').on('click', '.oxfl-js-show-final-tip', function(e) {
 
@@ -2722,8 +2715,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		var resourceID = $(this).attr('data-marketplace-id');
 		blink.activity.currentStyle.buyActivityMarketPlace(resourceID);
-		//blink.activity.currentStyle.loadUserData();
-
 	});
 
 	$('body').on('click', '.oxfl-js-open-notifications', function(e) {
