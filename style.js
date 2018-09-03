@@ -2154,7 +2154,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 	} else {
 		var resourceList = document.createDocumentFragment(),
 				gameTag = 'game';
-		$.each(data.units, function(i, unit){
+		$.each(oxfordFlippedApp.bookData.units, function(i, unit){
 			if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 				var subunits = unit.subunits,
 						parentTitle = unit.title;
