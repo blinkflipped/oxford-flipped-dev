@@ -65,8 +65,7 @@ $episodes_monster_height: $episodes_image_height/2;
 
 
 #oxfl-episodes {
-  background: fade-out($color_5, .2);
-  border: 2px solid $color_5_lighter;
+  @include box1();
   width: 550px;
   visibility:hidden;
   opacity:0;
@@ -81,8 +80,7 @@ $episodes_monster_height: $episodes_image_height/2;
 
 .oxfl-episode {
   text-align: center;
-  background: $episode_background_color;
-  border: 2px dashed $episode_border_color;
+  @include box2();
   &>a {
     display: block;
     padding: 10px 20px;
@@ -94,7 +92,7 @@ $episodes_monster_height: $episodes_image_height/2;
     max-height: 200px;
     overflow: hidden;
     position: relative;
-
+    border-radius: 10px;
     &-img {
       @include img-fit();
       position: absolute;

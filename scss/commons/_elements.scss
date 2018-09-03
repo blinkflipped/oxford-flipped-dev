@@ -318,19 +318,15 @@
 
 .btn-close-iframe {
   position: absolute;
-  top: 18px;
+  top: 22px; //FORMER 18px
   right: -18px;
   z-index: 100;
   a {
     display: block;
     background: url(img/close-button-1.png) 0 0 no-repeat;
     background-size: contain;
-    //border: 2px solid $color_9;
     width: 36px;
     height: 36px;
-    //border-radius: 50%;
-    //color: $negative_color;
-    //background: $color_6;
     opacity: 1;
     padding: 0;
     margin: 0;
@@ -488,7 +484,7 @@
   .modal-header {
     padding: 0;
     background: none;
-    border-radius: 0;
+    border-radius: 20px 20px 0 0;
     border: 0;
     min-height: 0;
     .close {
@@ -525,8 +521,9 @@
     text-align: center;
   }
   .modal-content {
-    border-radius: 0;
+    border-radius: 20px;
     border: 2px solid $color_9;
+    background: $background_color;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
     max-height: none!important;
     height: auto!important;
@@ -537,7 +534,7 @@
   }
   .modal-footer {
     border: 0;
-    border-radius: 0;
+    border-radius: 0 0 20px 20px;
     background: url(img/monster-7.svg) center bottom no-repeat transparent;
     padding-bottom: 100px;
     padding-top: 0;

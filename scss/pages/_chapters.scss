@@ -73,8 +73,7 @@
 
 
 #oxfl-chapters {
-  background: fade-out($color_5, .2);
-  border: 2px solid $color_5_lighter;
+  @include box1();
   padding: $padding_1;
   width: 810px;
   max-width: 100%;
@@ -93,8 +92,7 @@
 }
 
 .oxfl-chapter {
-  background: $chapter_background_color;
-  border: 2px dashed $chapter_border_color;
+  @include box2();
   padding: 5px 10px;
   a {
     display: block;
@@ -128,6 +126,7 @@
     height: 110px;
     position: relative;
     overflow: hidden;
+    border-radius: 10px;
     &::before {
       content: '';
       display: block;

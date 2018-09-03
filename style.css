@@ -483,7 +483,7 @@ body.oxfl-body-gradebook {
 
 .btn-close-iframe {
   position: absolute;
-  top: 18px;
+  top: 22px;
   right: -18px;
   z-index: 100; }
   .btn-close-iframe a {
@@ -606,7 +606,7 @@ body.oxfl-body-gradebook {
 .oxfl-modal .modal-header {
   padding: 0;
   background: none;
-  border-radius: 0;
+  border-radius: 20px 20px 0 0;
   border: 0;
   min-height: 0; }
   .oxfl-modal .modal-header .close {
@@ -633,8 +633,9 @@ body.oxfl-body-gradebook {
   font-family: "Quicksand", sans-serif;
   text-align: center; }
 .oxfl-modal .modal-content {
-  border-radius: 0;
+  border-radius: 20px;
   border: 2px solid #FCEE21;
+  background: #ffffff;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   max-height: none !important;
   height: auto !important; }
@@ -643,7 +644,7 @@ body.oxfl-body-gradebook {
     margin: 0 auto; }
 .oxfl-modal .modal-footer {
   border: 0;
-  border-radius: 0;
+  border-radius: 0 0 20px 20px;
   background: url(img/monster-7.svg) center bottom no-repeat transparent;
   padding-bottom: 100px;
   padding-top: 0;
@@ -1754,6 +1755,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
 .oxfl-resources-container {
   background: rgba(242, 242, 242, 0.8);
   border: 2px solid #ffffff;
+  border-radius: 20px;
   width: 770px;
   max-width: 100%;
   visibility: hidden;
@@ -1767,7 +1769,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
 .oxfl-resource {
   text-align: center;
   background: #ffffff;
-  border: 2px dashed #FBB03B; }
+  border: 2px dashed #FBB03B;
+  border-radius: 15px; }
   .oxfl-resource > a {
     display: block;
     padding: 10px 20px; }
@@ -1776,7 +1779,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     height: 148px;
     overflow: hidden;
     position: relative;
-    background: #8BE23F; }
+    background: #8BE23F;
+    border-radius: 10px; }
     .oxfl-resource .oxfl-resource-image-wrapper-img {
       position: absolute;
       top: 0;
@@ -1995,6 +1999,7 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
 #oxfl-episodes {
   background: rgba(242, 242, 242, 0.8);
   border: 2px solid #ffffff;
+  border-radius: 20px;
   width: 550px;
   visibility: hidden;
   opacity: 0;
@@ -2008,7 +2013,8 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
 .oxfl-episode {
   text-align: center;
   background: #ffffff;
-  border: 2px dashed #FBB03B; }
+  border: 2px dashed #FBB03B;
+  border-radius: 15px; }
   .oxfl-episode > a {
     display: block;
     padding: 10px 20px; }
@@ -2018,7 +2024,8 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
     height: calc((100vh - 360px)/2);
     max-height: 200px;
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    border-radius: 10px; }
     .oxfl-episode .oxfl-episode-image-wrapper-img {
       position: absolute;
       top: 0;
@@ -2137,6 +2144,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
 #oxfl-chapters {
   background: rgba(242, 242, 242, 0.8);
   border: 2px solid #ffffff;
+  border-radius: 20px;
   padding: 30px;
   width: 810px;
   max-width: 100%;
@@ -2150,6 +2158,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
 .oxfl-chapter {
   background: #ffffff;
   border: 2px dashed #FBB03B;
+  border-radius: 15px;
   padding: 5px 10px; }
   .oxfl-chapter a {
     display: block; }
@@ -2178,7 +2187,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     width: 100%;
     height: 110px;
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    border-radius: 10px; }
     .oxfl-chapter .oxfl-chapter-image-wrapper::before {
       content: '';
       display: block;
@@ -2300,7 +2310,8 @@ body.oxfl-body-chapters #oxfl-chapters-monster {
 
 #iframe_div {
   outline: none;
-  box-shadow: 0px 0px 0px 2px #FCEE21; }
+  box-shadow: 0px 0px 0px 2px #FCEE21;
+  border-radius: 20px; }
   #iframe_div.audio {
     outline: none;
     box-shadow: none; }
@@ -2377,13 +2388,13 @@ body.body_clase.view-mode #actividad .class_slide {
   position: relative; }
 body.body_clase.view-mode #actividad .oxfl-button-round-circled {
   position: absolute;
-  bottom: 20px;
+  bottom: 18px;
   left: 20px; }
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
   background: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
-  padding: 0 20px; }
+  padding: 0 80px; }
 body.body_clase.view-mode #actividad .content .header {
   border: 0; }
   body.body_clase.view-mode #actividad .content .header .chapter {

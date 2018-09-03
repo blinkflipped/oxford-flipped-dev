@@ -60,3 +60,21 @@
 		}
 	}
 }
+
+
+// Box 1
+
+@mixin box1() {
+	background: fade-out($color_5, .2);
+	border: 2px solid $color_5_lighter;
+	border-radius: 20px;
+}
+
+
+// Box 2
+
+@mixin box2() {
+	background: $background_color;
+	border: 2px dashed $color_6;
+	border-radius: 15px;
+}
