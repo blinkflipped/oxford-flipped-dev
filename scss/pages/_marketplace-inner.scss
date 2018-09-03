@@ -1,3 +1,4 @@
+#oxfl-resources-classresources-wrapper,
 #oxfl-resources-game-wrapper,
 #oxfl-resources-summary-wrapper {
   width: 100%;
@@ -37,6 +38,14 @@
   &>a {
     display: block;
     padding: 10px 20px;
+  }
+  &-icon {
+    border: 2px solid $background_color;
+    border-radius: 200px;
+    display: block;
+    width: 47px;
+    height: 47px;
+    margin: 0 auto;
   }
   .oxfl-resource-image-wrapper {
     width: 100%;
@@ -217,6 +226,24 @@
   top: 2%;
 }
 
+
+body.oxfl-body-resources {
+
+  #oxfl-resources-classresources-wrapper {
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s;
+    pointer-events: auto;
+    .oxfl-resources-container {
+      visibility:visible;
+      opacity: 1;
+      transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+      transition-delay: 0s;
+    }
+  }
+
+}
 
 body.oxfl-body-marketplace-game {
 

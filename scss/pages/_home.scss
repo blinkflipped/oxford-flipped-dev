@@ -136,6 +136,33 @@
         line-height: 45px;
       }
     }
+    &.oxfl-monster-5 { // CLASS RESOURCES FOR TEACHERS
+      // TODO CHANGE
+      width: 190px;
+      height: 250px;
+      &::before,
+      &::after {
+        width: 140px;
+        left: 50%;
+        transform: translate(-50%,0);
+      }
+      &::before {
+        background-image: url(img/monster-classresources.png);
+      }
+      &::after {
+        background-image: url(img/monster-classresources-hover.gif);
+      }
+
+      span {
+        // TODO CHANGE
+        background-image: url(img/monster-1-bubble.png);
+        width: 151px;
+        height: 63px;
+        top: 0;
+        right: 0;
+        line-height: 45px;
+      }
+    }
     &.oxfl-monster-2 {
       width: 346px;
       height: 490px;
