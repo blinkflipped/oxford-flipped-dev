@@ -2232,33 +2232,36 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     max-width: 100%; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-header-top {
     justify-content: flex-end;
-    min-height: 20px; }
-  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img {
-    overflow: hidden;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    position: relative;
-    margin: 0 auto; }
-    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block; }
-    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img.compat-object-fit {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center; }
-      .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img.compat-object-fit img {
-        display: none !important; }
-  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
+    min-height: 20px;
+    margin-bottom: 0; }
+  .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper {
+    margin-bottom: 5px; }
+    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img {
+      overflow: hidden;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto; }
+      .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block; }
+      .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img.compat-object-fit {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center; }
+        .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img.compat-object-fit img {
+          display: none !important; }
+    .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper::before {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-button-lock {
     display: none !important; }
   .oxfl-body-user-student .oxfl-chapter.lock a {

@@ -172,9 +172,10 @@
     .oxfl-chapter-header-top {
       justify-content: flex-end;
       min-height: 20px;
+      margin-bottom: 0;
     }
     .oxfl-chapter-image-wrapper {
-
+      margin-bottom: 5px;
       &-img {
         @include img-fit();
         overflow: hidden;
