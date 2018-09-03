@@ -2148,10 +2148,9 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 		oxfordFlippedApp.changeBackground(backgroundImage);
 
 		$classresourcesWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
-
-		$('body').addClass(bodyClass);
-		if (updateHash) window.location.hash = hash;
-
+			$('body').addClass(bodyClass);
+			if (updateHash) {window.location.hash = hash;}
+		});
 	} else {
 		var resourceList = document.createDocumentFragment(),
 				gameTag = 'game';
