@@ -2198,8 +2198,8 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 
 		oxfordFlippedApp.removeUnusedClass(bodyClass);
 
-		var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
-		oxfordFlippedApp.changeBackground(marketplaceBackground);
+		var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
+		oxfordFlippedApp.changeBackground(backgroundImage);
 
 		// Object Fit support
 		oxfordFlippedApp.objectFitSupport();
