@@ -1838,7 +1838,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
           margin-bottom: 0; }
       .oxfl-resource .oxfl-resource-image-wrapper .oxfl-resource-image-cover .oxfl-title4 {
         font-size: 18px;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        height: 20px; }
         .oxfl-resource .oxfl-resource-image-wrapper .oxfl-resource-image-cover .oxfl-title4:last-child {
           margin-bottom: 0; }
     .oxfl-resource .oxfl-resource-image-wrapper-img {
@@ -1918,7 +1919,9 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   justify-content: center;
   min-height: 35px; }
   .oxfl-resource-item-2 .oxfl-resource-header .oxfl-title4 {
-    font-size: 15px; }
+    font-size: 15px;
+    white-space: normal;
+    text-overflow: clip; }
 
 .oxfl-resources-page {
   margin-left: -5px;
