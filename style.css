@@ -1958,28 +1958,26 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   transition-timing-function: ease-out;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(img/monster_lessons.gif);
+  background-image: url(img/monster-16.png);
   background-position: left bottom;
-  width: 715px;
-  max-height: 370px;
-  min-height: 260px;
-  height: calc(100vh - 430px);
+  width: 270px;
+  height: 356px;
   position: relative;
   top: 0;
   left: 0;
   z-index: 100;
-  margin-bottom: -143px; }
+  margin: 0 auto; }
   #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble {
-    font-size: 36px;
+    font-size: 30px;
     line-height: 1em;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-style: italic;
     text-align: center;
     color: #ffffff;
-    background: url(img/bubble-9.png) 0 0 no-repeat;
+    background: url(img/bubble-10.png) 0 0 no-repeat;
     background-size: contain;
-    width: 235px;
+    width: 208px;
     height: 118px;
     display: flex;
     vertical-align: middle;
@@ -1991,7 +1989,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     margin: 0 0 0 60px;
     padding: 0 10px; }
     #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble span {
-      display: block; }
+      display: block;
+      transform: rotate(15deg); }
 
 body.oxfl-body-resources #oxfl-resources-classresources-wrapper {
   visibility: visible;
