@@ -28,10 +28,6 @@
   transition-duration: .3s;
   transition-timing-function: ease-out;
   background-size: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
   background-repeat: no-repeat;
   background-image: url(img/monster_lessons.gif);
   background-position: left bottom;
@@ -40,6 +36,9 @@
   min-height: 260px;
   height: calc(100vh - 430px);
   position: relative;
+  top: 0;
+  left: 0;
+  z-index: 100;
   margin-bottom: -143px;
   .oxfl-monster-lessons-bubble {
     font-size: 36px;

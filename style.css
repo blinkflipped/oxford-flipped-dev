@@ -1950,6 +1950,49 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   right: -140px;
   top: 2%; }
 
+#oxfl-resources-classresources-monster {
+  opacity: 0;
+  transform: translate(0, -100%);
+  transition-property: opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(img/monster_lessons.gif);
+  background-position: left bottom;
+  width: 715px;
+  max-height: 370px;
+  min-height: 260px;
+  height: calc(100vh - 430px);
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  margin-bottom: -143px; }
+  #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble {
+    font-size: 36px;
+    line-height: 1em;
+    font-family: "Myfrida", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    color: #ffffff;
+    background: url(img/bubble-9.png) 0 0 no-repeat;
+    background-size: contain;
+    width: 235px;
+    height: 118px;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin: 0 0 0 60px;
+    padding: 0 10px; }
+    #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble span {
+      display: block; }
+
 body.oxfl-body-resources #oxfl-resources-classresources-wrapper {
   visibility: visible;
   opacity: 1;
@@ -1961,6 +2004,9 @@ body.oxfl-body-resources #oxfl-resources-classresources-wrapper {
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s; }
+body.oxfl-body-resources #oxfl-resources-classresources-monster {
+  opacity: 1;
+  transform: translate(0, 0); }
 
 body.oxfl-body-marketplace-game #oxfl-resources-game-wrapper {
   visibility: visible;
@@ -2140,10 +2186,6 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   transition-duration: .3s;
   transition-timing-function: ease-out;
   background-size: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
   background-repeat: no-repeat;
   background-image: url(img/monster_lessons.gif);
   background-position: left bottom;
@@ -2152,6 +2194,9 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   min-height: 260px;
   height: calc(100vh - 430px);
   position: relative;
+  top: 0;
+  left: 0;
+  z-index: 100;
   margin-bottom: -143px; }
   #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
     font-size: 36px;
