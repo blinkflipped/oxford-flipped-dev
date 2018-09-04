@@ -2542,7 +2542,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				} else {
 					if (isChallenge) {
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
-								finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-go-to-start">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
+								finalSlideCustomContent = '<div id="lightnings"><div class="box-one"><div class="lightning-one"></div></div><div class="box-two"><div class="lightning-two"></div></div><div class="box-three"><div class="lightning-three"></div></div><div class="box-four"><div class="lightning-four"></div></div></div>',
+								finalSlideContent = '<div id="oxfl-final-slide">'+finalSlideCustomContent+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-go-to-start">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 						if (finalSlideBackground != '') {
 							$lastSlide.css('background-image', 'url('+finalSlideBackground+')').find('.slide_aux').hide();
 						}

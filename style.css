@@ -3075,3 +3075,512 @@ body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .slider-control {
   display: none !important; }
 body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .navbar-bottom {
   display: none !important; }
+
+/* FINAL CHALLENGE FAIL */
+@-webkit-keyframes shake-one {
+  from, to {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0px, 0px, 0px); }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: skewX(5deg) skewY(20deg) rotate(0deg);
+    transform: skewX(5deg) skewY(20deg) rotate(0deg); }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0); } }
+@keyframes shake-one {
+  from, to {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0px, 10px, 0px); }
+  30%, 50%, 70% {
+    -webkit-transform: skewX(0deg) skewY(0deg) rotate(0deg);
+    transform: skewX(0deg) skewY(20deg) rotate(0deg); }
+  20%, 40%, 60% {
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 15px, 0); }
+  0% {
+    opacity: 0; }
+  80% {
+    opacity: 1; }
+  85% {
+    opacity: 0; }
+  99% {
+    opacity: 0; } }
+@-webkit-keyframes color-one {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@keyframes color-one {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@-webkit-keyframes border-color-one {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+@keyframes border-color-one {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+.lightning-one {
+  margin: 0;
+  position: relative;
+  width: 20px;
+  height: 40px;
+  transform-origin: 50% 50%;
+  transform: skewX(0deg) skewY(20deg) rotate(-20deg);
+  background-color: #f9eb4a;
+  -webkit-animation-name: color-one !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-one !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-one:before {
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  transform-origin: 50% 50%;
+  background-color: #f9eb4a;
+  top: -35px;
+  left: 15px;
+  content: "";
+  -webkit-animation-name: color-one !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-one !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-one:after {
+  position: absolute;
+  border-style: solid;
+  border-width: 0px 20px 40px 20px;
+  border-color: transparent #f9eb4a transparent transparent;
+  bottom: -29px;
+  left: -40px;
+  content: "";
+  -webkit-animation-name: border-color-one !important;
+  -webkit-animation-duration: 2s;
+  animation-name: border-color-one !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.box-one {
+  position: absolute;
+  left: 26%;
+  top: 26%;
+  -webkit-animation-name: shake-one;
+  animation-name: shake-one;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes shake-two {
+  from, to {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px); }
+  30%, 50%, 70% {
+    -webkit-transform: skewX(0deg) skewY(0deg) rotate(0deg);
+    transform: skewX(0deg) skewY(0deg) rotate(0deg); }
+  20%, 40%, 60% {
+    -webkit-transform: translate3d(5px, 1px, 0);
+    transform: translate3d(5px, 1px, 0); }
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 1; }
+  65% {
+    opacity: 0; }
+  90% {
+    opacity: 0; } }
+@keyframes shake-two {
+  from, to {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px); }
+  30%, 50%, 70% {
+    -webkit-transform: skewX(0deg) skewY(0deg) rotate(5deg);
+    transform: skewX(0deg) skewY(0deg) rotate(5deg); }
+  20%, 40%, 60% {
+    -webkit-transform: translate3d(8px, 20px, 0);
+    transform: translate3d(8px, 20px, 0); }
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 1; }
+  65% {
+    opacity: 0; }
+  90% {
+    opacity: 0; } }
+@-webkit-keyframes color-two {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@keyframes color-two {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@-webkit-keyframes border-color-two {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+@keyframes border-color-two {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+.lightning-two {
+  margin: 0;
+  position: relative;
+  width: 10px;
+  height: 25px;
+  transform-origin: 50% 50%;
+  transform: skewX(5deg) skewY(40deg) rotate(0deg);
+  background-color: #f9eb4a;
+  -webkit-animation-name: color-two !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-two !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-two:before {
+  position: absolute;
+  width: 10px;
+  height: 25px;
+  transform-origin: 50% 50%;
+  background-color: #f9eb4a;
+  top: -25px;
+  left: 6px;
+  content: "";
+  -webkit-animation-name: color-two !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-two !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-two:after {
+  position: absolute;
+  border-style: solid;
+  border-width: 0px 10px 20px 10px;
+  border-color: transparent #f9eb4a transparent transparent;
+  bottom: -17px;
+  left: -17px;
+  content: "";
+  -webkit-animation-name: border-color-two !important;
+  -webkit-animation-duration: 2s;
+  animation-name: border-color-two !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.box-two {
+  position: absolute;
+  left: 62.5%;
+  top: 12%;
+  -webkit-animation-name: shake-two;
+  animation-name: shake-two;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.3s;
+  animation-duration: 1.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes shake-three {
+  from, to {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0px, 0px, 0px); }
+  5%, 15%, 25%, 35%, 45% {
+    -webkit-transform: skewX(5deg) skewY(20deg) rotate(0deg);
+    transform: skewX(5deg) skewY(20deg) rotate(10deg); }
+  10%, 20%, 30%, 40% {
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0) rotate(3deg); } }
+@keyframes shake-three {
+  from, to {
+    -webkit-transform: translate3d(0, 0px, 0);
+    transform: translate3d(-10px, 15px, 0) rotate(2deg); }
+  5%, 15%, 25%, 35%, 45% {
+    -webkit-transform: skewX(10deg) skewY(10deg) rotate(0deg);
+    transform: skewX(10deg) skewY(10deg) rotate(3deg); }
+  10%, 20%, 30%, 40% {
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(-10px, 15px, 0) rotate(2deg); }
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  55% {
+    opacity: 0; }
+  99% {
+    opacity: 0; } }
+@-webkit-keyframes color-three {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@keyframes color-three {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@-webkit-keyframes border-color-three {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+@keyframes border-color-three {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+.lightning-three {
+  margin: 0;
+  position: relative;
+  width: 15px;
+  height: 20px;
+  transform-origin: 50% 50%;
+  transform: skewX(0deg) skewY(40deg) rotate(-40deg);
+  background-color: #f9eb4a;
+  -webkit-animation-name: color-three !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-three !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-three:before {
+  position: absolute;
+  width: 20px;
+  height: 25px;
+  transform-origin: 50% 50%;
+  background-color: #f9eb4a;
+  top: -20px;
+  left: 10px;
+  content: "";
+  -webkit-animation-name: color-three !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-three !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-three:after {
+  position: absolute;
+  border-style: solid;
+  border-width: 0px 20px 25px 20px;
+  border-color: transparent #f9eb4a transparent transparent;
+  bottom: -22px;
+  left: -35px;
+  content: "";
+  -webkit-animation-name: border-color-three !important;
+  -webkit-animation-duration: 2s;
+  animation-name: border-color-three !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.box-three {
+  position: absolute;
+  left: 25%;
+  top: 54%;
+  -webkit-animation-name: shake-three;
+  animation-name: shake-three;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes shake-four {
+  from, to {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0px, 0px, 0px); }
+  30%, 50%, 70% {
+    -webkit-transform: skewX(0deg) skewY(0deg) rotate(0deg);
+    transform: skewX(5deg) skewY(0deg) rotate(0deg); }
+  20%, 40%, 60% {
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(3px, 3px, 7px); }
+  0% {
+    opacity: 0; }
+  40% {
+    opacity: 1; }
+  51% {
+    opacity: 0; }
+  60% {
+    opacity: 1; } }
+@keyframes shake-four {
+  from, to {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0px, 0px, 0px); }
+  30%, 50%, 70% {
+    -webkit-transform: skewX(0deg) skewY(0deg) rotate(0deg);
+    transform: skewX(5deg) skewY(0deg) rotate(0deg); }
+  20%, 40%, 60% {
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(3px, 3px, 7px); }
+  0% {
+    opacity: 0; }
+  40% {
+    opacity: 1; }
+  51% {
+    opacity: 0; }
+  60% {
+    opacity: 1; } }
+@-webkit-keyframes color-four {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@keyframes color-four {
+  0% {
+    background-color: #f9eb4a; }
+  25% {
+    background-color: #fff; }
+  50% {
+    background-color: #f9eb4a; }
+  100% {
+    background-color: #fff; } }
+@-webkit-keyframes border-color-four {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+@keyframes border-color-four {
+  0% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  25% {
+    border-color: transparent #fff transparent transparent; }
+  50% {
+    border-color: transparent #f9eb4a transparent transparent; }
+  100% {
+    border-color: transparent #fff transparent transparent; } }
+.lightning-four {
+  margin: 0;
+  position: relative;
+  width: 10px;
+  height: 20px;
+  transform-origin: 50% 50%;
+  transform: skewX(-40deg) skewY(45deg) rotate(0deg);
+  background-color: #f9eb4a;
+  -webkit-animation-name: color-four !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-four !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-four:before {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  transform-origin: 50% 50%;
+  background-color: #f9eb4a;
+  top: -15px;
+  left: 9px;
+  content: "";
+  -webkit-animation-name: color-four !important;
+  -webkit-animation-duration: 2s;
+  animation-name: color-four !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.lightning-four:after {
+  position: absolute;
+  border-style: solid;
+  border-width: 0px 15px 25px 10px;
+  border-color: transparent #f9eb4a transparent transparent;
+  bottom: -22px;
+  left: -20px;
+  content: "";
+  -webkit-animation-name: border-color-four !important;
+  -webkit-animation-duration: 2s;
+  animation-name: border-color-four !important;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.box-four {
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  -webkit-animation-name: shake-four;
+  animation-name: shake-four;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
