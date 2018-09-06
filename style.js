@@ -1577,7 +1577,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 			if (!chapterIsChallenge) {
 
 				// Activities not started
-				if (typeof activities[chapterID] === 'undefined') {
+				var isChapterNew = (typeof activities[chapterID] === 'undefined' || typeof activities[chapterID].custom_activity_status === 'undefined' || ( typeof activities[chapterID].custom_activity_status !== 'undefined' && activities[chapterID].custom_activity_status === oxfordFlippedApp.config.stateNew));
+				if (isChapterNew) {
 					chaptersNotStarted = true;
 				} else {
 					// Activities not completed
