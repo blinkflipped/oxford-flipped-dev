@@ -15,10 +15,12 @@
   bottom: 0;
   z-index: 1000;
   font-family: $font_family_1;
+  
+  .oxfl-body-resources &,
   .oxfl-body-chapters & {
     min-height: 760px;
   }
-  .oxfl-body-resources &,
+
   .oxfl-body-marketplace-game &,
   .oxfl-body-marketplace-summary & {
     min-height: 860px;

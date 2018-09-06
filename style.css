@@ -919,9 +919,9 @@ body.oxfl-body-gradebook {
   bottom: 0;
   z-index: 1000;
   font-family: "Quicksand", sans-serif; }
-  .oxfl-body-chapters #oxfl-general {
+  .oxfl-body-resources #oxfl-general, .oxfl-body-chapters #oxfl-general {
     min-height: 760px; }
-  .oxfl-body-resources #oxfl-general, .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
+  .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
     min-height: 860px; }
   .oxfl-body-gradebook #oxfl-general {
     min-height: 1880px; }
