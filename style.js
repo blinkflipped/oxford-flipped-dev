@@ -2249,6 +2249,7 @@ oxfordFlippedApp.updateUserData = function() {
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
+			console.log(dataChapter.custom_activity_status);
 			var islessonsNotCompleted = (dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof dataChapter.custom_activity_status === 'undefined');
 			if (islessonsNotCompleted) {
 				lessonsNotCompleted = true;
