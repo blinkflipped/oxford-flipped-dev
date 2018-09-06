@@ -1515,7 +1515,9 @@ oxfordFlippedApp.loadNotifications = function(data) {
 					var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false;
 
 					if (!isChallengeLock) {
+						console.log(chapter.custom_activity_status);
 						var challengeNotNew = ((chapter.custom_activity_status === oxfordFlippedApp.config.stateCompleted) || (chapter.custom_activity_status === oxfordFlippedApp.config.stateStarted));
+						console.log(challengeNotNew);
 						if (!challengeNotNew) {
 							totalNotif++;
 							var notificationsListItem = document.createElement('div');
