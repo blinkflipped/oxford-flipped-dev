@@ -2229,47 +2229,49 @@ oxfordFlippedApp.updateUserData = function() {
 	var chaptersNotStarted = false,
 			lessonsNotCompleted = false;
 
-	$('.oxfl-chapter:not(.oxfl-chapter-challenge)').each(function(i,e) {
-		var dataChapterId = $(e).attr('data-id'),
-				dataChapter = window.actividades[dataChapterId];
+	if ($('.oxfl-chapter').length) {
+		$('.oxfl-chapter:not(.oxfl-chapter-challenge)').each(function(i,e) {
+			var dataChapterId = $(e).attr('data-id'),
+					dataChapter = window.actividades[dataChapterId];
 
-		var isChapterNew = (typeof dataChapter === 'undefined' || typeof dataChapter.custom_activity_status === 'undefined' || ( typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew));
-		console.log(isChapterNew);
-		console.log("stateChapter");
-		console.log(typeof dataChapter === 'undefined');
-		console.log(typeof dataChapter.custom_activity_status === 'undefined', typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew);
+			var isChapterNew = (typeof dataChapter === 'undefined' || typeof dataChapter.custom_activity_status === 'undefined' || ( typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew));
+			console.log(isChapterNew);
+			console.log("stateChapter");
+			console.log(typeof dataChapter === 'undefined');
+			console.log(typeof dataChapter.custom_activity_status === 'undefined', typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew);
 
-		if (!isChapterNew) {
-			var newState = oxfordFlippedApp.getState(dataChapterId),
-					newGrade = dataChapter.clasificacion,
-					newStars = oxfordFlippedApp.gradeToStars(newGrade);
+			if (!isChapterNew) {
+				var newState = oxfordFlippedApp.getState(dataChapterId),
+						newGrade = dataChapter.clasificacion,
+						newStars = oxfordFlippedApp.gradeToStars(newGrade);
 
-			$(e).find('.oxfl-stars').removeClass('oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
+				$(e).find('.oxfl-stars').removeClass('oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
 
-			//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
-			var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1],
-					chapterStateID = newState,
-					chapterStateText =  chapterStateTextArr[chapterStateID];
-			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
-			console.log(dataChapter.custom_activity_status);
-			var islessonsNotCompleted = (dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted);
-			if (islessonsNotCompleted) {
-				lessonsNotCompleted = true;
+				//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
+				var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1],
+						chapterStateID = newState,
+						chapterStateText =  chapterStateTextArr[chapterStateID];
+				$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
+				console.log(dataChapter.custom_activity_status);
+				var islessonsNotCompleted = (dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted);
+				if (islessonsNotCompleted) {
+					lessonsNotCompleted = true;
+				}
+			} else {
+				chaptersNotStarted = true;
 			}
-		} else {
-			chaptersNotStarted = true;
-		}
 
-	});
-	console.log(lessonsNotCompleted, chaptersNotStarted);
-	if (!chaptersNotStarted && !lessonsNotCompleted) {
-		console.log("challenge",!chaptersNotStarted, !lessonsNotCompleted )
-		// Challenge is open
-		var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
-				innerHTML = $challengeLink.html(),
-				challengeID = $('.oxfl-chapter-challenge').attr('data-id'),
-				newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+challengeID+'"';
-		$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
+		});
+		console.log(lessonsNotCompleted, chaptersNotStarted);
+		if (!chaptersNotStarted && !lessonsNotCompleted) {
+			console.log("challenge",!chaptersNotStarted, !lessonsNotCompleted )
+			// Challenge is open
+			var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
+					innerHTML = $challengeLink.html(),
+					challengeID = $('.oxfl-chapter-challenge').attr('data-id'),
+					newLink = 'class="oxfl-js-load-chapter" data-chapter-id="'+challengeID+'"';
+			$('.oxfl-chapter-challenge').removeClass('lock').children('a').replaceWith($('<a href="javascript:void(0)" '+newLink+'>' + innerHTML + '</a>'));
+		}
 	}
 
 	var totalCoins = blink.activity.currentStyle.userCoins ? blink.activity.currentStyle.userCoins : 0;
