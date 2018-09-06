@@ -2235,7 +2235,9 @@ oxfordFlippedApp.updateUserData = function() {
 
 		var isChapterNew = (typeof dataChapter === 'undefined' || dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew || typeof dataChapter.custom_activity_status === 'undefined');
 		console.log(isChapterNew);
-		console.log(dataChapter);
+		console.log("stateChapter");
+		console.log(typeof dataChapter === 'undefined');
+		console.log(dataChapter.custom_activity_status, oxfordFlippedApp.config.stateNew);
 
 		if (!isChapterNew) {
 			var newState = oxfordFlippedApp.getState(dataChapterId),
@@ -2250,7 +2252,7 @@ oxfordFlippedApp.updateUserData = function() {
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
 			console.log(dataChapter.custom_activity_status);
-			var islessonsNotCompleted = (dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof dataChapter.custom_activity_status === 'undefined');
+			var islessonsNotCompleted = (dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted);
 			if (islessonsNotCompleted) {
 				lessonsNotCompleted = true;
 			}
@@ -2261,6 +2263,7 @@ oxfordFlippedApp.updateUserData = function() {
 	});
 	console.log(lessonsNotCompleted, chaptersNotStarted);
 	if (!chaptersNotStarted && !lessonsNotCompleted) {
+		console.log("challenge",!chaptersNotStarted, !lessonsNotCompleted )
 		// Challenge is open
 		var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
 				innerHTML = $challengeLink.html(),
