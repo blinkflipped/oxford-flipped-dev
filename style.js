@@ -1483,7 +1483,7 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 							notifChapterID = chapter.id;
 
 					var isChapterNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'),
-							isChapterNotCompleted = ((typeof window.actividades[chapter.id] !== 'undefined' && window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted) || typeof window.actividades[chapter.id].custom_activity_status === 'undefined');
+							isChapterNotCompleted = (typeof window.actividades[chapter.id] !== 'undefined' && (window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'));
 
 					// Activities not started
 					if (isChapterNew) {
