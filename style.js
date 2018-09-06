@@ -1483,7 +1483,7 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 							notifChapterID = chapter.id;
 
 					// Activities not started
-					if (typeof window.actividades[notifChapterID] === 'undefined') {
+					if (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateNew) {
 						lessonsNotStarted = true;
 					} else {
 						// Activities not completed
