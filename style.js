@@ -1457,7 +1457,7 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 }
 
 
-oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
+oxfordFlippedApp.loadNotifications = function(data) {
 
 	var notificationsList = document.createDocumentFragment();
 	var totalNotif = 0;
@@ -1478,10 +1478,10 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 				var notifChapterTitle = chapter.title,
 						notifChapterIsChallenge = (notifChapterTitle === oxfordFlippedApp.config.nameChallenge );
 
-				if (!notifChapterIsChallenge) {
-					var notifChapterDescription = chapter.description,
-							notifChapterID = chapter.id;
+				var notifChapterDescription = chapter.description,
+						notifChapterID = chapter.id;
 
+				if (!notifChapterIsChallenge) {
 					var isChapterNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'),
 							isChapterNotCompleted = (typeof window.actividades[chapter.id] !== 'undefined' && (window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'));
 
@@ -1498,7 +1498,6 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
 						// Comprobar que esas actividades NO estan en el json de actividades o su custom_activity_status es igual a 0 (no están empezadas ni completadas)
-						console.log(isChapterNew);
 						if (isChapterNew) {
 							var notifChapterTag = chapter.tag;
 							if (notifChapterTag != oxfordFlippedApp.config.tagMarketplace) {
@@ -2234,8 +2233,10 @@ oxfordFlippedApp.updateUserData = function() {
 		var dataChapterId = $(e).attr('data-id'),
 				dataChapter = window.actividades[dataChapterId];
 
-		if (typeof dataChapter !== 'undefined') {
 
+		var isChapterNew = (typeof dataChapter === 'undefined' || dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew || typeof dataChapter.custom_activity_status === 'undefined'),
+
+		if (!isChapterNew) {
 			var newState = oxfordFlippedApp.getState(dataChapterId),
 					newGrade = dataChapter.clasificacion,
 					newStars = oxfordFlippedApp.gradeToStars(newGrade);
@@ -2247,7 +2248,8 @@ oxfordFlippedApp.updateUserData = function() {
 					chapterStateID = newState,
 					chapterStateText =  chapterStateTextArr[chapterStateID];
 			$(e).find('.oxfl-label').removeClass('oxfl-label-0 oxfl-label-1 oxfl-label-2').addClass('oxfl-label-'+chapterStateID).text(chapterStateText);
-			if (typeof dataChapter.custom_activity_status === 'undefined' || dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted) {
+			var islessonsNotCompleted = (dataChapter.custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof dataChapter.custom_activity_status === 'undefined');
+			if (islessonsNotCompleted) {
 				lessonsNotCompleted = true;
 			}
 		} else {
