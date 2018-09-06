@@ -1516,7 +1516,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 					if (!isChallengeLock) {
 						console.log(window.actividades[notifChapterID].custom_activity_status);
-						var challengeNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[notifChapterID].custom_activity_status === 'undefined');
+						var challengeNew = (typeof window.actividades[notifChapterID] === 'undefined' || typeof window.actividades[notifChapterID].custom_activity_status === 'undefined' || (typeof window.actividades[notifChapterID].custom_activity_status !== 'undefined' && window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew));
 						console.log(challengeNew);
 						if (challengeNew) {
 							totalNotif++;
