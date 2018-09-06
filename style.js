@@ -2233,8 +2233,9 @@ oxfordFlippedApp.updateUserData = function() {
 		var dataChapterId = $(e).attr('data-id'),
 				dataChapter = window.actividades[dataChapterId];
 
-
 		var isChapterNew = (typeof dataChapter === 'undefined' || dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew || typeof dataChapter.custom_activity_status === 'undefined');
+		console.log(isChapterNew);
+		console.log(dataChapter);
 
 		if (!isChapterNew) {
 			var newState = oxfordFlippedApp.getState(dataChapterId),
@@ -2257,6 +2258,7 @@ oxfordFlippedApp.updateUserData = function() {
 		}
 
 	});
+	console.log(lessonsNotCompleted, chaptersNotStarted);
 	if (!chaptersNotStarted && !lessonsNotCompleted) {
 		// Challenge is open
 		var $challengeLink = $('.oxfl-chapter-challenge').children('a'),
@@ -2459,7 +2461,8 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		var $wrapper = $(this).closest('.js-slider-item'),
 				$bckContent = $(this).closest('.bck-content'),
-				videoContent = $bckContent.find('.video-js');
+				videoContent = $bckContent.find('.video-js'),
+				audioContent = $bckContent.find('.audio-js');
 
 
 		$bckContent.removeClass('oxfl-visible');
@@ -2469,6 +2472,12 @@ oxfordFlippedApp.activityContentZone = function() {
 				videojs.players[videoContentID].pause();
 			});
 		}
+		/*if (audioContent.length) {
+			audioContent.each(function(i,e) {
+				var audioContentID = $(e).attr('id');
+				audiojs.players[audioContentID].pause();
+			});
+		}*/
 		$('body').removeClass('oxfl-content-zone-card-on');
 		$wrapper.find('.oxfl-js-cz-next').removeClass('oxfl-disabled');
 
