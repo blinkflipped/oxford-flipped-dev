@@ -2233,11 +2233,11 @@ oxfordFlippedApp.updateUserData = function() {
 		var dataChapterId = $(e).attr('data-id'),
 				dataChapter = window.actividades[dataChapterId];
 
-		var isChapterNew = (typeof dataChapter === 'undefined' || dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew || typeof dataChapter.custom_activity_status === 'undefined');
+		var isChapterNew = (typeof dataChapter === 'undefined' || typeof dataChapter.custom_activity_status === 'undefined' || ( typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew));
 		console.log(isChapterNew);
 		console.log("stateChapter");
 		console.log(typeof dataChapter === 'undefined');
-		console.log(dataChapter.custom_activity_status, oxfordFlippedApp.config.stateNew);
+		console.log(typeof dataChapter.custom_activity_status === 'undefined', typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew);
 
 		if (!isChapterNew) {
 			var newState = oxfordFlippedApp.getState(dataChapterId),
