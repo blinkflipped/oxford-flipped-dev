@@ -1524,7 +1524,6 @@ oxfordFlippedApp.loadNotifications = function(data) {
 							notificationsList.appendChild(notificationsListItem);
 						}
 					}
-				}
 			});
 		}
 	});
