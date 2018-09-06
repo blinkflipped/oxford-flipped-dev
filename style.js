@@ -2202,7 +2202,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 
 					$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 		} else {
-			$resourceWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+noclassresources+'</h2>');
+			$resourceWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
 		}
 
 		oxfordFlippedApp.removeUnusedClass(bodyClass);
