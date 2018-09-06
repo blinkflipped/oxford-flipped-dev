@@ -1564,6 +1564,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				chapterDescription = chapter.description,
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
+				chapterIsOnlyVisibleTeacher = chapter.OnlyVisibleTeacher,
 				chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
 				chapterIsMarketplace = (chapterTag === oxfordFlippedApp.config.tagMarketplace);
 
@@ -1571,7 +1572,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 		var grade = (typeof activities[chapterID] === 'undefined') ? 0 : parseInt(activities[chapterID].clasificacion),
 				chapterStars = (typeof activities[chapterID] === 'undefined') ? 0 : oxfordFlippedApp.gradeToStars(grade);
 
-		if (!chapterIsMarketplace) {
+		if (!chapterIsMarketplace && !chapterIsOnlyVisibleTeacher) {
 			// Regular Chapters
 			if (!chapterIsChallenge) {
 
