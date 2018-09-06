@@ -1482,8 +1482,8 @@ oxfordFlippedApp.loadNotifications = function(data) {
 						notifChapterID = chapter.id;
 
 				if (!notifChapterIsChallenge) {
-					var isChapterNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'),
-							isChapterNotCompleted = (typeof window.actividades[chapter.id] !== 'undefined' && (window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'));
+					var isChapterNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[notifChapterID].custom_activity_status === 'undefined'),
+							isChapterNotCompleted = (typeof window.actividades[notifChapterID] !== 'undefined' && (window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[notifChapterID].custom_activity_status === 'undefined'));
 
 					// Activities not started
 					if (isChapterNew) {
@@ -1515,10 +1515,10 @@ oxfordFlippedApp.loadNotifications = function(data) {
 					var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false;
 
 					if (!isChallengeLock) {
-						console.log(chapter.custom_activity_status);
-						var challengeNotNew = ((chapter.custom_activity_status === oxfordFlippedApp.config.stateCompleted) || (chapter.custom_activity_status === oxfordFlippedApp.config.stateStarted));
-						console.log(challengeNotNew);
-						if (!challengeNotNew) {
+						console.log(window.actividades[notifChapterID].custom_activity_status);
+						var challengeNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[notifChapterID].custom_activity_status === 'undefined');
+						console.log(challengeNew);
+						if (challengeNew) {
 							totalNotif++;
 							var notificationsListItem = document.createElement('div');
 							notificationsListItem.className = 'oxfl-notification-item';
