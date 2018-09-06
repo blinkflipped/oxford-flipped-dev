@@ -2238,7 +2238,10 @@ oxfordFlippedApp.updateUserData = function() {
 			console.log(isChapterNew);
 			console.log("stateChapter");
 			console.log(typeof dataChapter === 'undefined');
-			console.log(typeof dataChapter.custom_activity_status === 'undefined', typeof dataChapter.custom_activity_status !== 'undefined' && dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew);
+			console.log(typeof dataChapter.custom_activity_status === 'undefined');
+			if (typeof dataChapter.custom_activity_status !== 'undefined') {
+				console.log(dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew);
+			}
 
 			if (!isChapterNew) {
 				var newState = oxfordFlippedApp.getState(dataChapterId),
