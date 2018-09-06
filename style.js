@@ -846,7 +846,6 @@ oxfordFlippedApp.config.isDEV = (ENTORNO === 'DEV');
 oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.nameActivityInfo = 'Info';
 oxfordFlippedApp.config.nameChallenge = 'Challenge';
-oxfordFlippedApp.config.tagClassResources = 'marketplace';
 oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.marketplaceType1 = 'game';
 oxfordFlippedApp.config.marketplaceType2 = 'summary';
@@ -2155,26 +2154,26 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 			if (updateHash) {window.location.hash = hash;}
 		});
 	} else {
-		var resourceList = document.createDocumentFragment(),
-				gameTag = 'game';
+		var resourceList = document.createDocumentFragment();
 		$.each(oxfordFlippedApp.bookData.units, function(i, unit){
 			if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 				var subunits = unit.subunits,
 						parentTitle = unit.title;
 				$.each(subunits, function(x, resource){
-					if (resource.tag === oxfordFlippedApp.config.tagClassResources) {
-					var resourceTitle = resource.title,
-							resourceDescription = resource.description,
-							resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
-							resourceType = resource.type,
-							resourceId = resource.id,
-							resourceurl = resource.url,
-							resourceOnClick = resource.onclickTitle,
-							resourceListItem = document.createElement('div');
-							resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
-					resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h4 class="oxfl-title4">'+parentTitle+'</h4></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"><h2 class="oxfl-title2">'+resourceTitle+'</h2><h3 class="oxfl-title4">'+resourceDescription+'</h3><div class="oxfl-resource-icon-wrapper"><span class="oxfl-resource-icon oxfl-resource-icon-'+resourceType+'"></span></div></div> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
-					resourceList.appendChild(resourceListItem);
-					}
+					var onlyVisibleForTeachers = resource.OnlyVisibleTeacher;
+					if (onlyVisibleForTeachers) {
+						var resourceTitle = resource.title,
+								resourceDescription = resource.description,
+								resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
+								resourceType = resource.type,
+								resourceId = resource.id,
+								resourceurl = resource.url,
+								resourceOnClick = resource.onclickTitle,
+								resourceListItem = document.createElement('div');
+								resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
+						resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h4 class="oxfl-title4">'+parentTitle+'</h4></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"><h2 class="oxfl-title2">'+resourceTitle+'</h2><h3 class="oxfl-title4">'+resourceDescription+'</h3><div class="oxfl-resource-icon-wrapper"><span class="oxfl-resource-icon oxfl-resource-icon-'+resourceType+'"></span></div></div> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
+						resourceList.appendChild(resourceListItem);
+						}
 				});
 			}
 		});

@@ -73,8 +73,8 @@
 
 // Box 2
 
-@mixin box2() {
+@mixin box2($borderradius: 15px) {
 	background: $background_color;
 	border: 2px dashed $color_6;
-	border-radius: 15px;
+	border-radius: $borderradius;
 }

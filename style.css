@@ -2286,7 +2286,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
 .oxfl-chapter {
   background: #ffffff;
   border: 2px dashed #FBB03B;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 5px 10px; }
   .oxfl-chapter a {
     display: block; }
