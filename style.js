@@ -1482,12 +1482,15 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 					var notifChapterDescription = chapter.description,
 							notifChapterID = chapter.id;
 
+					var isChapterNew = (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapter.id].custom_activity_status === 'undefined'),
+							isChapterNotCompleted = (typeof window.actividades[chapter.id].custom_activity_status === 'undefined' || window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted);
+
 					// Activities not started
-					if (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew) {
+					if (isChapterNew) {
 						lessonsNotStarted = true;
 					} else {
 						// Activities not completed
-						if (typeof window.actividades[notifChapterID].custom_activity_status === 'undefined' || window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted) {
+						if (isChapterNotCompleted) {
 							lessonsNotCompleted = true;
 						}
 					}
@@ -1495,8 +1498,8 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
 						// Comprobar que esas actividades NO estan en el json de actividades o su custom_activity_status es igual a 0 (no están empezadas ni completadas)
-						console.log(window.actividades[chapter.id], window.actividades[chapter.id].custom_activity_status);
-						if (typeof window.actividades[chapter.id] === 'undefined' || window.actividades[chapter.id].custom_activity_status === oxfordFlippedApp.config.stateNew) {
+						console.log(isChapterNew);
+						if (isChapterNew) {
 							var notifChapterTag = chapter.tag;
 							if (notifChapterTag != oxfordFlippedApp.config.tagMarketplace) {
 
