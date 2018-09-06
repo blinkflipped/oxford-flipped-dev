@@ -1784,6 +1784,15 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   padding: 0; }
   .oxfl-resources-container .oxfl-resources-page {
     padding: 30px; }
+  .oxfl-resources-container.oxfl-empty {
+    height: 490px;
+    max-height: calc(100vh - 320px);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .oxfl-resources-container.oxfl-empty .oxfl-title2b {
+      color: #ffffff; }
 
 .oxfl-resource {
   text-align: center;

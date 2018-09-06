@@ -29,6 +29,17 @@
   .oxfl-resources-page {
     padding: $padding_1;
   }
+  &.oxfl-empty {
+    height: 490px;
+    max-height: calc(100vh - 320px);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .oxfl-title2b {
+      color: $negative_color;
+    }
+  }
 }
 
 

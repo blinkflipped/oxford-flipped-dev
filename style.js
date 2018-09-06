@@ -998,7 +998,8 @@ oxfordFlippedApp.text = {
 	gradebookawards1 : '% completed',
 	gradebookawards2 : 'coins earned',
 	gradebookawards3 : 'lessons with 3 stars',
-	chooseclassresources : 'Choose a resource for your class'
+	chooseclassresources : 'Choose a resource for your class',
+	noclassresources : 'No resources available'
 }
 
 oxfordFlippedApp.console = function(logValue) {
@@ -2155,13 +2156,17 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 		});
 	} else {
 		var resourceList = document.createDocumentFragment();
+		var totalResources = 0;
 		$.each(oxfordFlippedApp.bookData.units, function(i, unit){
 			if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 				var subunits = unit.subunits,
 						parentTitle = unit.title;
+
 				$.each(subunits, function(x, resource){
+
 					var onlyVisibleForTeachers = resource.OnlyVisibleTeacher;
 					if (onlyVisibleForTeachers) {
+						totalResources++;
 						var resourceTitle = resource.title,
 								resourceDescription = resource.description,
 								resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
@@ -2180,20 +2185,25 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 
 		var $resourceWrapper = $('#oxfl-resources-classresources');
 
-		if ($resourceWrapper.hasClass('slick-initialized')) {
-			$resourceWrapper.slick('unslick');
-		}
-		$resourceWrapper.empty();
-		$resourceWrapper[0].appendChild(resourceList);
+		if (totalResources > 0) {
 
-		var items = $resourceWrapper.find('.oxfl-resource-item'),
-				itemsLength = items.length,
-				itemperpage = 6;
-		for(var i = 0; i < itemsLength; i+=itemperpage) {
-			items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
-		}
+					if ($resourceWrapper.hasClass('slick-initialized')) {
+						$resourceWrapper.slick('unslick');
+					}
+					$resourceWrapper.empty();
+					$resourceWrapper[0].appendChild(resourceList);
 
-		$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+					var items = $resourceWrapper.find('.oxfl-resource-item'),
+							itemsLength = items.length,
+							itemperpage = 6;
+					for(var i = 0; i < itemsLength; i+=itemperpage) {
+						items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
+					}
+
+					$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+		} else {
+			$resourceWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+noclassresources+'</h2>');
+		}
 
 		oxfordFlippedApp.removeUnusedClass(bodyClass);
 
