@@ -1483,7 +1483,7 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 							notifChapterID = chapter.id;
 
 					// Activities not started
-					if (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status !== oxfordFlippedApp.config.stateNew) {
+					if (typeof window.actividades[notifChapterID] === 'undefined' || window.actividades[notifChapterID].custom_activity_status === oxfordFlippedApp.config.stateNew) {
 						lessonsNotStarted = true;
 					} else {
 						// Activities not completed
@@ -1493,8 +1493,8 @@ oxfordFlippedApp.loadNotifications = function(data) { // TODO CHECK NOTIF
 							lessonsNotCompleted = true;
 						}
 					}
-					console.log(lessonsNotStarted);
-					console.log(lessonsNotCompleted);
+					console.log('lessonsNotStarted', lessonsNotStarted);
+					console.log('lessonsNotCompleted',lessonsNotCompleted);
 					var chapterLockStatus = chapter.lock;
 					// Buscar todas las actividades - chapters - que están abiertas (NO lock)
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
