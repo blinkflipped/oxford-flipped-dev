@@ -2239,7 +2239,7 @@ oxfordFlippedApp.updateUserData = function() {
 			console.log("stateChapter");
 			console.log(typeof dataChapter === 'undefined');
 			if(typeof dataChapter !== 'undefined' ) {
-				console.log(typeof dataChapter.custom_activity_status === 'undefined');
+				console.log(dataChapter.custom_activity_status);
 			}
 			if (typeof dataChapter.custom_activity_status !== 'undefined') {
 				console.log(dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew);
