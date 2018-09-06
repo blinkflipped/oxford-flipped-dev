@@ -2234,7 +2234,7 @@ oxfordFlippedApp.updateUserData = function() {
 				dataChapter = window.actividades[dataChapterId];
 
 
-		var isChapterNew = (typeof dataChapter === 'undefined' || dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew || typeof dataChapter.custom_activity_status === 'undefined'),
+		var isChapterNew = (typeof dataChapter === 'undefined' || dataChapter.custom_activity_status === oxfordFlippedApp.config.stateNew || typeof dataChapter.custom_activity_status === 'undefined');
 
 		if (!isChapterNew) {
 			var newState = oxfordFlippedApp.getState(dataChapterId),
