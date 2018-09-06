@@ -1516,7 +1516,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 					if (!isChallengeLock) {
 						var challengeNotNew = ((chapter.custom_activity_status === oxfordFlippedApp.config.stateCompleted) || (chapter.custom_activity_status === oxfordFlippedApp.config.stateStarted));
-						if (!challengeNotNew)
+						if (!challengeNotNew) {
 							totalNotif++;
 							var notificationsListItem = document.createElement('div');
 							notificationsListItem.className = 'oxfl-notification-item';
@@ -1524,6 +1524,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 							notificationsList.appendChild(notificationsListItem);
 						}
 					}
+				}
 			});
 		}
 	});
