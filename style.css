@@ -1076,7 +1076,7 @@ body.oxfl-iframe-visible {
         line-height: 45px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5 {
       width: 302px;
-      height: 340px; }
+      height: 310px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5::before, #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5::after {
         width: 300px;
         left: 50%;
@@ -1090,8 +1090,9 @@ body.oxfl-iframe-visible {
         width: 185px;
         height: 65px;
         top: 0;
-        left: 0;
-        line-height: 45px; }
+        left: 10px;
+        line-height: 33px;
+        padding-right: 7px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
       width: 346px;
       height: 490px; }

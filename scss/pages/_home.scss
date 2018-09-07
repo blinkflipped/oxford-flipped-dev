@@ -138,7 +138,7 @@
     }
     &.oxfl-monster-5 { // CLASS RESOURCES FOR TEACHERS
       width: 302px;
-      height: 340px;
+      height: 310px;
       &::before,
       &::after {
         width: 300px;
@@ -157,8 +157,9 @@
         width: 185px;
         height: 65px;
         top: 0;
-        left: 0;
-        line-height: 45px;
+        left: 10px;
+        line-height: 33px;
+        padding-right: 7px;
       }
     }
     &.oxfl-monster-2 {
