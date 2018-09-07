@@ -1567,7 +1567,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				chapterDescription = chapter.description,
 				chapterImage = chapter.image,
 				chapterImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
-				chapterIsOnlyVisibleTeacher = chapter.OnlyVisibleTeacher,
+				chapterIsOnlyVisibleTeacher = chapter.onlyVisibleTeachers,
 				chapterIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
 				chapterIsMarketplace = (chapterTag === oxfordFlippedApp.config.tagMarketplace);
 
@@ -2171,7 +2171,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 
 				$.each(subunits, function(x, resource){
 
-					var onlyVisibleForTeachers = resource.OnlyVisibleTeacher;
+					var onlyVisibleForTeachers = resource.onlyVisibleTeachers;
 					console.log(resource);
 					console.log(resource);
 					console.log(onlyVisibleForTeachers);
