@@ -2172,7 +2172,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 				$.each(subunits, function(x, resource){
 
 					var onlyVisibleForTeachers = resource.OnlyVisibleTeacher;
-					if (onlyVisibleForTeachers) {
+					if (!onlyVisibleForTeachers) {
 						totalResources++;
 						var resourceTitle = resource.title,
 								resourceDescription = resource.description,

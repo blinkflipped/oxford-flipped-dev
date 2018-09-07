@@ -1812,8 +1812,16 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     height: 47px;
     margin: 0 auto;
     background: url(img/classresource-document.png) center center no-repeat;
-    background-size: 35px 26px; }
-    .oxfl-resource-icon-archivo, .oxfl-resource-icon-url, .oxfl-resource-icon-img, .oxfl-resource-icon-libro, .oxfl-resource-icon-actividad {
+    background-size: 36px 36px; }
+    .oxfl-resource-icon-url {
+      background-image: url(img/classresource-url.png); }
+    .oxfl-resource-icon-img {
+      background-image: url(img/classresource-image.png); }
+    .oxfl-resource-icon-libro {
+      background-image: url(img/classresource-digitalbook.png); }
+    .oxfl-resource-icon-actividad {
+      background-image: url(img/classresource-activity.png); }
+    .oxfl-resource-icon-archivo {
       background-image: url(img/classresource-document.png); }
     .oxfl-resource-icon-musica {
       background-image: url(img/classresource-audio.png); }

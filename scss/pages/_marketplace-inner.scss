@@ -58,12 +58,20 @@
     height: 47px;
     margin: 0 auto;
     background: url(img/classresource-document.png) center center no-repeat;
-    background-size: 35px 26px;
-    &-archivo,
-    &-url,
-    &-img,
-    &-libro,
+    background-size: 36px 36px;
+    &-url {
+      background-image: url(img/classresource-url.png);
+    }
+    &-img {
+      background-image: url(img/classresource-image.png);
+    }
+    &-libro {
+      background-image: url(img/classresource-digitalbook.png);
+    }
     &-actividad {
+      background-image: url(img/classresource-activity.png);
+    }
+    &-archivo {
       background-image: url(img/classresource-document.png);
     }
     &-musica {
