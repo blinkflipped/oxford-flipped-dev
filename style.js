@@ -428,10 +428,10 @@
 		},
 
 		/**
-		 * Compra un actividad del Market Place
-		 * @param  {activityId} activityId ID de la actividad
-		 */
-		 buyActivityMarketPlace: function (activityId) {
+		* Compra un actividad del Market Place
+		* @param  {activityId} activityId ID de la actividad
+		*/
+		buyActivityMarketPlace: function (activityId) {
 			if (actividades && actividades[activityId]) {
 				return alert('actividad comprada con anterioridad');
 			}
@@ -2538,8 +2538,11 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
 				}
+				console.log(window.actividades[idclase]);
+				console.log(grade);
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 					if (isChallenge) {
+						console.log("Final OK Challenge");
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 								finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
 						if (finalSlideBackground != '') {
@@ -2547,6 +2550,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 						}
 						$lastSlide.addClass('oxfl-final-slide-challenge');
 					} else {
+						console.log("Final OK Not challenge");
 						var finalSlideTip = $lastSlide.find('.oxfl-end-screen-tip').clone().wrap('<div/>').parent().html(),
 								finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
 						$lastSlide.removeClass('oxfl-final-slide-challenge');
@@ -2563,6 +2567,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 				} else {
 					if (isChallenge) {
+						console.log("Final KO Challenge");
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 								finalSlideCustomContent = '<div id="lightnings"><div class="box-one"><div class="lightning-one"></div></div><div class="box-two"><div class="lightning-two"></div></div><div class="box-three"><div class="lightning-three"></div></div><div class="box-four"><div class="lightning-four"></div></div></div>',
 								finalSlideContent = '<div id="oxfl-final-slide">'+finalSlideCustomContent+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-go-to-start">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
@@ -2571,6 +2576,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 						}
 						$lastSlide.addClass('oxfl-final-slide-challenge');
 					} else {
+						console.log("Final KO Not challenge");
 						var finalSlideContent = '<div id="oxfl-final-slide"><div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-tryagain">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 						$lastSlide.removeClass('oxfl-final-slide-challenge');
 					}
