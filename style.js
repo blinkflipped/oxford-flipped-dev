@@ -1601,7 +1601,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
 
 				var chapterNumber = i + 1,
-						chapterActionsStudents = (chapterStateID !== oxfordFlippedApp.config.stateNew) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
+						chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
+						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
 						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
@@ -2245,7 +2246,7 @@ oxfordFlippedApp.updateUserData = function() {
 						newGrade = dataChapter.clasificacion,
 						newStars = oxfordFlippedApp.gradeToStars(newGrade);
 
-				$(e).find('.oxfl-stars').removeClass('oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
+				$(e).find('.oxfl-stars').removeClass('oxfl-stars-hidden oxfl-stars-filled-0 oxfl-stars-filled-1 oxfl-stars-filled-2 oxfl-stars-filled-3').addClass('oxfl-stars-filled-'+newStars);
 
 				//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
 				var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1],

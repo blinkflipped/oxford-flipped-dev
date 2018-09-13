@@ -447,6 +447,9 @@
       background-position: -19px 0;
     }
   }
+  &-hidden {
+    display: none;
+  }
   &-filled-0 {}
   &-filled-1 {
     .oxfl-star-item:first-child {
