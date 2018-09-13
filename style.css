@@ -589,6 +589,8 @@ body.oxfl-body-gradebook {
   float: left; }
   .oxfl-stars .oxfl-star-item.oxfl-star-item-filled {
     background-position: -19px 0; }
+.oxfl-stars-hidden {
+  display: none; }
 .oxfl-stars-filled-1 .oxfl-star-item:first-child {
   background-position: -19px 0; }
 .oxfl-stars-filled-2 .oxfl-star-item:first-child,
