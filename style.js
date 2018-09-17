@@ -2480,6 +2480,7 @@ oxfordFlippedApp.activityContentZone = function() {
 			multimediaContent.each(function(i,e) {
 				var multimediaContentID = $(e).attr('id');
 				videojs.players[multimediaContentID].pause();
+				$(e).find(".vjs-close").click();
 			});
 		}
 		$('body').removeClass('oxfl-content-zone-card-on');
