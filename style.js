@@ -497,7 +497,7 @@
 				}
 				if (this.shouldCalculateGameScore()) {
 					// TODO Final Slide
-					var sectionOnLoad = blink.activity.currentSection;
+					var currentSection = blink.activity.currentSection;
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 
 					this.storeGameScore(this.calculateActivityGameScore());
