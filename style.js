@@ -496,6 +496,10 @@
 					this.storeGameScore(this.calculateVocabularyCoins());
 				}
 				if (this.shouldCalculateGameScore()) {
+					// TODO Final Slide
+					var sectionOnLoad = blink.activity.currentSection;
+					oxfordFlippedApp.activityFinalScreenTest(currentSection);
+
 					this.storeGameScore(this.calculateActivityGameScore());
 				}
 			}).bind(this));
@@ -620,7 +624,7 @@
 				oxfordFlippedApp.onSliderChange(sectionOnLoad);
 
 				blink.events.on('slider:change', function(currentSection) {
-					oxfordFlippedApp.activityFinalScreenTest(currentSection);
+					// TODO Final SlideoxfordFlippedApp.activityFinalScreenTest(currentSection);
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
 				blink.events.on('slider:changed', function() {
@@ -2650,12 +2654,13 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 			hasContentZone = $('.oxfl-content-zone-wrapper').length,
 			contentZoneIDNum = (hasContentZone) ? Number($('.oxfl-content-zone-wrapper').attr('id').replace('slider-item-', '')) : '',
 			hasCoverChallenge = $('.oxfl-challenge-cover-wrapper').length,
-			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '',
-			isFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
+			coverChallengeIDNum = (hasCoverChallenge) ? Number($('.oxfl-challenge-cover-wrapper').attr('id').replace('slider-item-', '')) : '';
+			// TODO Final SlideisFinalSlide = $('#slider-item-'+currentSection).find('.oxfl-end-screen-tip').length;
 
-	if (isFinalSlide) {
-		oxfordFlippedApp.activityFinalScreenTest(currentSection);
-	}
+// TODO Final Slide
+//	if (isFinalSlide) {
+//		oxfordFlippedApp.activityFinalScreenTest(currentSection);
+//	}
 
 	if (currentSection === coverChallengeIDNum) {
 		$('body').addClass('oxfl-challenge-cover-wrapper-on');
