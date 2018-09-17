@@ -496,11 +496,13 @@
 					this.storeGameScore(this.calculateVocabularyCoins());
 				}
 				if (this.shouldCalculateGameScore()) {
+
+					this.storeGameScore(this.calculateActivityGameScore());
+
 					// Detect if is Final Slide
 					var currentSection = blink.activity.currentSection;
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
 
-					this.storeGameScore(this.calculateActivityGameScore());
 				}
 			}).bind(this));
 		},
