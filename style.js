@@ -851,6 +851,7 @@ oxfordFlippedApp.config.isDEV = (ENTORNO === 'DEV');
 oxfordFlippedApp.config.ConfigActivityIndex = 0;
 oxfordFlippedApp.config.nameActivityInfo = 'Info';
 oxfordFlippedApp.config.nameChallenge = 'Challenge';
+oxfordFlippedApp.config.nameMarketplace = 'Marketplace';
 oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.marketplaceType1 = 'game';
 oxfordFlippedApp.config.marketplaceType2 = 'summary';
@@ -1739,7 +1740,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
-	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
+	var marketplaceBackground = oxfordFlippedApp.getMarketplaceBackground();
 	oxfordFlippedApp.changeBackground(marketplaceBackground);
 
 	// Object Fit support
@@ -1751,6 +1752,9 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 	});
 }
 
+
+
+
 oxfordFlippedApp.loadMarketplace = function(updateHash) {
 
 	oxfordFlippedApp.console("Load Marketplace");
@@ -1760,7 +1764,7 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
-	var marketplaceBackground = oxfordFlippedApp.bookData.units[0].subunits[1].image;
+	var marketplaceBackground = oxfordFlippedApp.getMarketplaceBackground();
 	oxfordFlippedApp.changeBackground(marketplaceBackground);
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
@@ -1786,6 +1790,16 @@ oxfordFlippedApp.loadMarketplace = function(updateHash) {
 
 	});
 
+}
+
+oxfordFlippedApp.getMarketplaceBackground = function() {
+	var image = oxfordFlippedApp.bookData.units[0].subunits[0].image;
+	$.each(oxfordFlippedApp.bookData.units[0].subunits, function(i, subunit) {
+		if (subunit.title === oxfordFlippedApp.config.nameMarketplace) {
+			image = subunit.image;
+		}
+	});
+	return image;
 }
 
 oxfordFlippedApp.updateMarketplaceList = function(activityId) {
