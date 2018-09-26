@@ -258,14 +258,20 @@
 #oxfl-resources-game-monster {
   width: 290px;
   height: 214px;
-  background: url(img/monster-14.svg) 0 0 no-repeat;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url(img/monster-14.gif);
+  background-image: url(img/monster-14.svg);
   background-size: contain;
 }
 
 #oxfl-resources-summary-monster {
   width: 282px;
   height: 190px;
-  background: url(img/monster-15.svg) 0 0 no-repeat;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url(img/monster-15.gif);
+  background-image: url(img/monster-15.svg);
   background-size: contain;
   left: -100px;
 }
@@ -316,6 +322,7 @@
   transition-timing-function: ease-out;
   background-size: contain;
   background-repeat: no-repeat;
+  background-image: url(img/monster-16.gif);
   background-image: url(img/monster-16.png);
   background-position: left bottom;
   width: 270px;

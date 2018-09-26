@@ -1725,6 +1725,7 @@ body.oxfl-body-gradebook #oxfl-general-buttons .oxfl-button-icon-marketplace {
   #oxfl-marketplace-menu .oxfl-marketplace-menu-button-1 {
     width: 297px;
     height: 384px;
+    background-image: url(img/monster-12.gif);
     background-image: url(img/monster-12.svg); }
     #oxfl-marketplace-menu .oxfl-marketplace-menu-button-1 .oxfl-marketplace-menu-button-bubble {
       width: 244px;
@@ -1738,6 +1739,7 @@ body.oxfl-body-gradebook #oxfl-general-buttons .oxfl-button-icon-marketplace {
   #oxfl-marketplace-menu .oxfl-marketplace-menu-button-2 {
     width: 308px;
     height: 342px;
+    background-image: url(img/monster-13.gif);
     background-image: url(img/monster-13.svg); }
     #oxfl-marketplace-menu .oxfl-marketplace-menu-button-2 .oxfl-marketplace-menu-button-bubble {
       width: 274px;
@@ -1972,13 +1974,19 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
 #oxfl-resources-game-monster {
   width: 290px;
   height: 214px;
-  background: url(img/monster-14.svg) 0 0 no-repeat;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url(img/monster-14.gif);
+  background-image: url(img/monster-14.svg);
   background-size: contain; }
 
 #oxfl-resources-summary-monster {
   width: 282px;
   height: 190px;
-  background: url(img/monster-15.svg) 0 0 no-repeat;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url(img/monster-15.gif);
+  background-image: url(img/monster-15.svg);
   background-size: contain;
   left: -100px; }
 
@@ -2023,6 +2031,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   transition-timing-function: ease-out;
   background-size: contain;
   background-repeat: no-repeat;
+  background-image: url(img/monster-16.gif);
   background-image: url(img/monster-16.png);
   background-position: left bottom;
   width: 270px;
@@ -2125,7 +2134,10 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   height: calc(100vh - 180px);
   min-height: 440px;
   max-height: 600px;
-  background: url(img/monster-5.svg) right center no-repeat;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-image: url(img/monster-5.gif);
+  background-image: url(img/monster-5.svg);
   background-size: contain;
   position: absolute;
   top: 30px;
