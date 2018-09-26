@@ -96,6 +96,9 @@
   right: 15px;
   z-index: 900;
   transition: opacity .3 ease-in;
+  body.app:not(.offline-pc) & {
+    top: 16px;
+  }
 }
 #oxfl-coins-icon {
   @include icon-sprite();
@@ -167,6 +170,9 @@
   .oxfl-button-icon {
     float: left;
     margin-right: 15px;
+  }
+  body.app:not(.offline-pc) & {
+    top: 16px;
   }
 }
 
