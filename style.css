@@ -917,9 +917,11 @@ body.oxfl-body-gradebook {
   color: #000000; }
   .oxfl-box-title {
     font-weight: bold;
-    font-size: 14px; }
+    font-size: 16px;
+    margin: 0 0 10px 0; }
   .oxfl-box p {
-    font-size: 12px; }
+    font-size: 14px;
+    margin: 0 0 10px 0; }
     .oxfl-box p:last-child {
       margin-bottom: 0; }
 
@@ -2799,10 +2801,8 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-box {
     width: 270px;
     position: fixed;
-    top: 104px;
+    top: 72px;
     right: 30px; }
-    body.app:not(.offline-pc) body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-box {
-      top: 60px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next {
     border: 0;
     overflow: visible;

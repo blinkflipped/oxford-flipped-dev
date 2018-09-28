@@ -59,10 +59,10 @@ body.body_clase.view-mode {
       .oxfl-box {
         width: 270px;
         position: fixed;
-        top: 40px + 20px + $header_height;
+        top: 40px + 20px + 12px;
         right: 30px;
         body.app:not(.offline-pc) & {
-          top: 40px + 20px;
+          //top: 40px + 20px;
         }
       }
       .oxfl-cz-button-next {
