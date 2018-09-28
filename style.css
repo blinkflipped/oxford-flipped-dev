@@ -910,6 +910,19 @@ body.oxfl-body-gradebook {
   -moz-box-shadow: 0px 4px 0px 0px #2f81a7;
   box-shadow: 0px 4px 0px 0px #2f81a7; }
 
+.oxfl-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 20px;
+  color: #000000; }
+  .oxfl-box-title {
+    font-weight: bold;
+    font-size: 14px; }
+  .oxfl-box p {
+    font-size: 12px; }
+    .oxfl-box p:last-child {
+      margin-bottom: 0; }
+
 #oxfl-general {
   width: 100%;
   height: 100vh;
@@ -2783,6 +2796,13 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     display: none; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .layout-panel {
     width: 100% !important; }
+  body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-box {
+    width: 270px;
+    position: fixed;
+    top: 104px;
+    right: 30px; }
+    body.app:not(.offline-pc) body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-box {
+      top: 60px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next {
     border: 0;
     overflow: visible;

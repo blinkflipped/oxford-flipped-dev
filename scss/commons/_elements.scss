@@ -883,3 +883,23 @@
   -moz-box-shadow: 0px 4px 0px 0px $color_13_darker;
   box-shadow: 0px 4px 0px 0px $color_13_darker;
 }
+
+
+
+
+.oxfl-box {
+  background: $background_color;
+  border-radius: 20px;
+  padding: 18px 20px;
+  color: $primary_color;
+  &-title {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  p {
+    font-size: 12px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

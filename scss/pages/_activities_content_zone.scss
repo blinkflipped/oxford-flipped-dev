@@ -56,6 +56,15 @@ body.body_clase.view-mode {
       .layout-panel {
         width: 100%!important;
       }
+      .oxfl-box {
+        width: 270px;
+        position: fixed;
+        top: 40px + 20px + $header_height;
+        right: 30px;
+        body.app:not(.offline-pc) & {
+          top: 40px + 20px;
+        }
+      }
       .oxfl-cz-button-next {
         border: 0;
         overflow: visible;

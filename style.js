@@ -1005,7 +1005,9 @@ oxfordFlippedApp.text = {
 	gradebookawards2 : 'coins earned',
 	gradebookawards3 : 'lessons with 3 stars',
 	chooseclassresources : 'Choose a resource for your class',
-	noclassresources : 'No resources available'
+	noclassresources : 'No resources available',
+	contentzoneinfotitle: 'Welcome to the content zone!',
+	contentzoneinfotext : 'Remember that in order to continue first yout hace to watch, read or listen to any of the content proposals shown here'
 }
 
 oxfordFlippedApp.console = function(logValue) {
@@ -2447,9 +2449,10 @@ oxfordFlippedApp.activityContentZone = function() {
 
 		if ($(e).find('.oxfl-cz').length) {
 			var backgroundImage = $(e).find('.image_slide').attr('src'),
+					informationHTML = '<div class="oxfl-box"><div class="oxfl-box-inner"><h2 class="oxfl-box-title">'+oxfordFlippedApp.text.contentzoneinfotext+'</h2><p>'+oxfordFlippedApp.text.contentzoneinfotitle+'</p></div></div>',
 					buttonNextHTML = '<button class="oxfl-cz-button-next oxfl-disabled oxfl-js-cz-next"><span>'+oxfordFlippedApp.text.nextContentZone+'</span></button>',
 					modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-start-test" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.startTest+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-start-test">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
-			$(e).addClass('oxfl-content-zone-wrapper').append(buttonNextHTML+'<div class="oxfl-content-zone-background"></div>').find('.oxfl-content-zone-background').css('background-image', 'url('+backgroundImage+')');
+			$(e).addClass('oxfl-content-zone-wrapper').append(informationHTML+buttonNextHTML+'<div class="oxfl-content-zone-background"></div>').find('.oxfl-content-zone-background').css('background-image', 'url('+backgroundImage+')');
 			$('body').prepend(modalHTML);
 		}
 
