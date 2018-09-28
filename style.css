@@ -2799,9 +2799,9 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .layout-panel {
     width: 100% !important; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-box {
-    width: 270px;
+    width: 320px;
     position: fixed;
-    top: 72px;
+    top: 60px;
     right: 30px; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-button-next {
     border: 0;
