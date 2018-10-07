@@ -534,7 +534,7 @@
 		/**
 		 * Cierra el iframe de una actividad flipped.
 		 */
-		closeIframe: function() {
+		closeIframe: function() { 
 			if (parent) {
 				parent.cerrarIframe();
 				parent.$('#oxfl-modal-close-chapter').modal('hide');
@@ -2342,7 +2342,12 @@ oxfordFlippedApp.modalCloseIframe = function() {
 
 oxfordFlippedApp.closeIframe = function() {
 
-	cerrarIframe();
+	if (blink.isApp) {
+		blink.rest.closeWindow();
+	} else {
+		cerrarIframe();
+	}
+
 	$('#oxfl-modal-close-chapter').modal('hide');
 	$('body').removeClass('oxfl-iframe-visible');
 
