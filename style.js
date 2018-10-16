@@ -596,9 +596,9 @@
 			var isBookCover = idclase.toString() === window.bookcover;
 
 			if (isBookCover) {
-				this.loadUserData();
+				//TODO TEST this.loadUserData();
 				var updateHash = false;
-				oxfordFlippedApp.homepage(data, updateHash);
+				//TODO TEST oxfordFlippedApp.homepage(data, updateHash);
 			}
 		},
 
