@@ -666,13 +666,13 @@
 		 * Operciones a ejecutar antes de salir de una ventana.
 		 */
 		onAfterUnloadVentana: function() {
-			this.exitSequencing();
+			//TODO TEST this.exitSequencing();
 
 			if (window.actividades) {
 				parent.actividades = window.actividades;
 			}
 
-			this.refreshUserData();
+			//TODO TEST this.refreshUserData();
 		},
 
 		/**
