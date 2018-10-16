@@ -647,9 +647,9 @@
 		loadUserData: function() {
 			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
 
-			/*TODO TEST loadScript(urlSeguimiento, true, (function() {
+			loadScript(urlSeguimiento, true, (function() {
 				this.refreshUserData();
-			}).bind(this));*/
+			}).bind(this));
 		},
 
 		/**
@@ -657,9 +657,9 @@
 		 * @param  {Object} data Información del curso.
 		 */
 		refreshUserData: function() {
-			this.userCoins = this.calculateUserCoins(window.actividades);
+			/*TODO TEST this.userCoins = this.calculateUserCoins(window.actividades);
 			parent.blink.activity.currentStyle.userCoins = this.userCoins;
-			parent && parent.blink.events.trigger('course:refresh');
+			parent && parent.blink.events.trigger('course:refresh');*/
 		},
 
 		/**
