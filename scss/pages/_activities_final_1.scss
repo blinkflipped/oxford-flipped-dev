@@ -46,11 +46,9 @@ body.body_clase.view-mode {
             }
           }
         }
-        .oxfl-final-screen-one-wrapper-active & {
-          display: block;
-        }
       }
       &-active {
+        overflow: hidden;
         .oxfl-final-screen-one {
           display: block;
         }

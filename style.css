@@ -2756,10 +2756,10 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-
         color: #ffffff;
         font-family: "Quicksand", sans-serif;
         font-weight: 500; }
-  .oxfl-final-screen-one-wrapper-active body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one {
+body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active {
+  overflow: hidden; }
+  body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active .oxfl-final-screen-one {
     display: block; }
-body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active .oxfl-final-screen-one {
-  display: block; }
 
 body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
   overflow: auto; }
