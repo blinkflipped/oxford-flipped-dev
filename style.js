@@ -659,7 +659,7 @@
 		refreshUserData: function() {
 			this.userCoins = this.calculateUserCoins(window.actividades);
 			parent.blink.activity.currentStyle.userCoins = this.userCoins;
-			/*TODO TEST parent && parent.blink.events.trigger('course:refresh');*/
+			parent && parent.blink.events.trigger('course:refresh');
 		},
 
 		/**
