@@ -2632,6 +2632,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				$('body').on('click', '.oxfl-js-go-to-start', function(e) {
 
 					e.preventDefault();
+					parent.top.oxfordFlippedApp.showIframeButton();
 					$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
 					blink.activity.showSection(0);
 
@@ -2640,6 +2641,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				$('body').on('click', '.oxfl-js-tryagain', function(e) {
 
 					e.preventDefault();
+					parent.top.oxfordFlippedApp.showIframeButton();
 					$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
 					blink.activity.currentStyle.quitAndGoToContentZone();
 					e.stopPropagation();
@@ -2648,6 +2650,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 			}
 
 		} else {
+
 			parent.top.oxfordFlippedApp.showIframeButton();
 			$('body').removeClass('oxfl-final-slide-on');
 		}
@@ -2708,6 +2711,7 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 	$('.js-slider-item').removeClass('oxfl-final-screen-one-wrapper-active');
 
 	if (!isFinalSlide) {
+		parent.top.oxfordFlippedApp.showIframeButton();
 		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
 	}
 
