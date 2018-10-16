@@ -657,9 +657,9 @@
 		 * @param  {Object} data Información del curso.
 		 */
 		refreshUserData: function() {
-			/*TODO TEST this.userCoins = this.calculateUserCoins(window.actividades);
+			this.userCoins = this.calculateUserCoins(window.actividades);
 			parent.blink.activity.currentStyle.userCoins = this.userCoins;
-			parent && parent.blink.events.trigger('course:refresh');*/
+			/*TODO TEST parent && parent.blink.events.trigger('course:refresh');*/
 		},
 
 		/**
