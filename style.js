@@ -942,58 +942,58 @@ oxfordFlippedApp.bookData = '';
 
 
 oxfordFlippedApp.text = {
-		text1: textweb('style_flipped_oxford'),
-		chapterStatus0: textweb('style_flipped_status_started'),
-		chapterStatus1: textweb('style_flipped_status_completed'),
-		chapterStatus2: textweb('style_flipped_status_new'),
-		//popoverChallenge : 'To access the Challenge you first have to complete all chapters',
-		//popoverChapter: 'Your teacher first has to provide access to you',
-		//confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?',
-		closeContentZone: textweb('style_flipped_close_contentzone'),
-		nextContentZone: textweb('style_flipped_lesson_contentzone_title'),
-		nextContentZoneGo: textweb('style_flipped_lesson_contentzone_button'),
-		startTest: textweb('style_flipped_alert3'),
-		no: textweb('style_flipped_alert_button_no'),
-		yes: textweb('style_flipped_alert_button_yes'),
-		ok: textweb('style_flipped_ok'),
-		buttonhome: textweb('style_flipped_home'),
-		buttoninfo: textweb('style_flipped_about'),
-		buttonmarketplace: textweb('style_flipped_marketplace'),
-		buttongradebook: textweb('style_flipped_gradebook'),
-		buttonresources: textweb('style_flipped_classresources'),
-		buttonprepare: textweb('style_flipped_prepare'),
-		buttongoback: textweb('style_flipped_goback'),
-		hello: textweb('style_flipped_hi'),
-		beforeYouLeave: textweb('style_flipped_lesson_finalok_description'),
-		viewtip: textweb('style_flipped_viewtip'),
-		exit: textweb('style_flipped_lesson_finalko_button2'),
-		tryagain: textweb('style_flipped_lesson_finalko_button1'),
-		or: textweb('style_flipped_lesson_finalko_or'),
-		dontworry: textweb('style_flipped_lesson_finalko_title'),
-		welldonefinal: textweb('style_flipped_lesson_finalok_title'),
-		challengefinalko: textweb('style_flipped_challenge_finalko_title'),
-		challengefinalok: textweb('style_flipped_challenge_finalok_title'),
-		selectepidose: textweb('style_flipped_prepare_unit'),
-		buygame: textweb('style_flipped_marketplace_game'),
-		buysummary: textweb('style_flipped_marketplace_summary'),
-		choosegame: textweb('style_flipped_marketplace_game_title'),
-		chooseshorcut: textweb('style_flipped_marketplace_summary_title'),
-		start: textweb('style_flipped_notifications_start'),
-		titleNotif: textweb('style_flipped_notifications_title'),
-		gamificacion_monedas_insuficientes: 'You do not have enough coins.',
-		oxfordFlipped_lost_progress_alert: textweb('style_flipped_alert1'),
-		oxfordFlipped_no_access_alert: textweb('style_flipped_prepare_lesson_alert1'),
-		oxfordFlipped_no_complete_alert: textweb('style_flipped_prepare_lesson_alert2'),
-		oxfordFlipped_return_contentzone_alert: textweb('style_flipped_alert2'),
-		modalLock: textweb('style_flipped_alert4'),
-		modalUnlock: textweb('style_flipped_alert5'),
-		noconnection: textweb('style_flipped_noconex'),
-		vocabulary_done: textweb('style_flipped_lesson_vocabulary'),
-		//nocoins : 'No tienes monedas suficientes',
-		buy: textweb('style_flipped_buy'),
-		popoverGoToContentZoneDisabled: textweb('style_flipped_lesson_vocabulary_locked'),
-		popoverNextContentZoneDisabled: textweb('style_flipped_lesson_contentzone_locked'),
-		quit: textweb('style_flipped_lesson_button_quit'),
+	text1: textweb('style_flipped_oxford'),
+	chapterStatus0: textweb('style_flipped_status_started'),
+	chapterStatus1: textweb('style_flipped_status_completed'),
+	chapterStatus2: textweb('style_flipped_status_new'),
+	//popoverChallenge : 'To access the Challenge you first have to complete all chapters',
+	//popoverChapter: 'Your teacher first has to provide access to you',
+	//confirmCloseIframe: 'Si sales perderás el progreso realizado. ¿Estás seguro?',
+	closeContentZone: textweb('style_flipped_close_contentzone'),
+	nextContentZone: textweb('style_flipped_lesson_contentzone_title'),
+	nextContentZoneGo: textweb('style_flipped_lesson_contentzone_button'),
+	startTest: textweb('style_flipped_alert3'),
+	no: textweb('style_flipped_alert_button_no'),
+	yes: textweb('style_flipped_alert_button_yes'),
+	ok: textweb('style_flipped_ok'),
+	buttonhome: textweb('style_flipped_home'),
+	buttoninfo: textweb('style_flipped_about'),
+	buttonmarketplace: textweb('style_flipped_marketplace'),
+	buttongradebook: textweb('style_flipped_gradebook'),
+	buttonresources: textweb('style_flipped_classresources'),
+	buttonprepare: textweb('style_flipped_prepare'),
+	buttongoback: textweb('style_flipped_goback'),
+	hello: textweb('style_flipped_hi'),
+	beforeYouLeave: textweb('style_flipped_lesson_finalok_description'),
+	viewtip: textweb('style_flipped_viewtip'),
+	exit: textweb('style_flipped_lesson_finalko_button2'),
+	tryagain: textweb('style_flipped_lesson_finalko_button1'),
+	or: textweb('style_flipped_lesson_finalko_or'),
+	dontworry: textweb('style_flipped_lesson_finalko_title'),
+	welldonefinal: textweb('style_flipped_lesson_finalok_title'),
+	challengefinalko: textweb('style_flipped_challenge_finalko_title'),
+	challengefinalok: textweb('style_flipped_challenge_finalok_title'),
+	selectepidose: textweb('style_flipped_prepare_unit'),
+	buygame: textweb('style_flipped_marketplace_game'),
+	buysummary: textweb('style_flipped_marketplace_summary'),
+	choosegame: textweb('style_flipped_marketplace_game_title'),
+	chooseshorcut: textweb('style_flipped_marketplace_summary_title'),
+	start: textweb('style_flipped_notifications_start'),
+	titleNotif: textweb('style_flipped_notifications_title'),
+	gamificacion_monedas_insuficientes: 'You do not have enough coins.',
+	oxfordFlipped_lost_progress_alert: textweb('style_flipped_alert1'),
+	oxfordFlipped_no_access_alert: textweb('style_flipped_prepare_lesson_alert1'),
+	oxfordFlipped_no_complete_alert: textweb('style_flipped_prepare_lesson_alert2'),
+	oxfordFlipped_return_contentzone_alert: textweb('style_flipped_alert2'),
+	modalLock: textweb('style_flipped_alert4'),
+	modalUnlock: textweb('style_flipped_alert5'),
+	noconnection: textweb('style_flipped_noconex'),
+	vocabulary_done: textweb('style_flipped_lesson_vocabulary'),
+	//nocoins : 'No tienes monedas suficientes',
+	buy: textweb('style_flipped_buy'),
+	popoverGoToContentZoneDisabled: textweb('style_flipped_lesson_vocabulary_locked'),
+	popoverNextContentZoneDisabled: textweb('style_flipped_lesson_contentzone_locked'),
+	quit: textweb('style_flipped_lesson_button_quit'),
 	selectalesson: textweb('style_flipped_prepare_lesson_student'),
 	unlocklesson: textweb('style_flipped_prepare_lesson_teacher'),
 	gradebooktitle: textweb('style_flipped_gradebook_title'),
@@ -1302,7 +1302,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				gradebookAwardsHtml = '<div class="oxfl-gradebook-award oxfl-gradebook-award-1 inactive" id="oxfl-gradebook-award-1"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-1-label">'+oxfordFlippedApp.config.awards.percent.bronze+oxfordFlippedApp.text.gradebookawards1+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-2 inactive" id="oxfl-gradebook-award-2"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-2-label">'+oxfordFlippedApp.config.awards.lessonthreestars.bronze+' '+oxfordFlippedApp.text.gradebookawards3+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-3 inactive" id="oxfl-gradebook-award-3"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-3-label">'+oxfordFlippedApp.config.awards.coins.bronze+' '+oxfordFlippedApp.text.gradebookawards2+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-4 inactive" id="oxfl-gradebook-award-4"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-4-label">'+oxfordFlippedApp.config.awards.percent.silver+oxfordFlippedApp.text.gradebookawards1+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-5 inactive" id="oxfl-gradebook-award-5"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-5-label">'+oxfordFlippedApp.config.awards.lessonthreestars.silver+' '+oxfordFlippedApp.text.gradebookawards3+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-6 inactive" id="oxfl-gradebook-award-6"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-6-label">'+oxfordFlippedApp.config.awards.coins.silver+' '+oxfordFlippedApp.text.gradebookawards2+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-7 inactive" id="oxfl-gradebook-award-7"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-7-label">'+oxfordFlippedApp.config.awards.percent.gold+oxfordFlippedApp.text.gradebookawards1+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-8 inactive" id="oxfl-gradebook-award-8"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-8-label">'+oxfordFlippedApp.config.awards.lessonthreestars.gold+' '+oxfordFlippedApp.text.gradebookawards3+'</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-9 inactive" id="oxfl-gradebook-award-9"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-9-label">'+oxfordFlippedApp.config.awards.coins.gold+' '+oxfordFlippedApp.text.gradebookawards2+'</div> </div> </div>',
 				gradebookHtml = '<div id="oxfl-gradebook-wrapper"><section id="oxfl-gradebook-inner" class="oxfl-container"><header class="oxfl-gradebook-header"> <h2 class="oxfl-gradebook-title-1">'+oxfordFlippedApp.text.gradebooktitle+'</h2> </header> <div id="oxfl-gradebook"> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-intro"> <p>'+oxfordFlippedApp.text.gradebookintro+'</p> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle2+' <span id="gradebook-total-lessons-available"></span></h3> <div class="row"> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle3+'</h4> <div class="oxfl-gradebook-donutchart-wrapper"><div class="oxfl-gradebook-donutchart-legend"><span id="oxfl-gradebook-donutchart-completed"></span>/<span id="oxfl-gradebook-donutchart-total"></span></div> <canvas id="oxfl-gradebook-donutchart" width="228" height="228" style="width: 228px; height: 228px;"></canvas> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle4+'</h4> <div class="oxfl-gradebook-barchart"> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-3"> <div class="oxfl-gradebook-barchart-item-bar"></div><div class="oxfl-gradebook-barchart-item-number"></div></div><div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-2"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-1"><div class="oxfl-gradebook-barchart-item-bar"></div><div class="oxfl-gradebook-barchart-item-number"></div> </div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">'+oxfordFlippedApp.text.gradebooktitle5+'</h4> <div class="oxfl-gradebook-average-stars-wrapper"> <div class="oxfl-gradebook-average-stars"></div></div><div class="oxfl-gradebook-average-grade-challenge"> <div class="oxfl-gradebook-average-grade-challenge-inner"></div> </div> </div> </div> </div> <div class="oxfl-gradebook-section"> <ul class="oxfl-gradebook-captions"> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-1"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption1+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-2"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption2+'</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-3"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">'+oxfordFlippedApp.text.gradebookcaption3+'</span> </li> </ul> </div> <div class="oxfl-gradebook-section oxfl-gradebook-section-2"> <div class="oxfl-gradebook-units"></div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">'+oxfordFlippedApp.text.gradebooktitle6+'</h3> <div class="oxfl-gradebook-awards">'+gradebookAwardsHtml+'</div> </div> </div> </section> </div>',
 				customHtmlByUser = (oxfordFlippedApp.config.isStudent) ? gradebookHtml : classResourcesHtml,
-				modalLockChaptersHtml = '<div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.modalLock+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div></div>',
+				modalLockChaptersHtml = '<div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p></p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div></div>',
 				modalNotificationsHtml = '<div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-list-notifications" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <div class="oxfl-title3">'+oxfordFlippedApp.text.titleNotif+'</div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div id="oxfl-notifications-list"></div> </div> </div></div> </div>',
 				modalConnectionHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-noconnection" id="oxfl-modal-marketplace-noconnection" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.noconnection+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div>',
 				modalNoCoinsHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-nocoins" id="oxfl-modal-marketplace-nocoins" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.gamificacion_monedas_insuficientes+'</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">'+oxfordFlippedApp.text.ok+'</button> </div> </div> </div> </div> </div>',
@@ -2840,11 +2840,23 @@ $(document).ready(function() {
 				$modal = $('#oxfl-modal-lock-chapters');
 
 		if (isLocked) {
-			$('#oxfl-modal-lock-chapters-text').text('unlock');
-			$modal.find('.oxfl-js-toggle-lock-chapter').addClass('lock').removeClass('unlock');
+			//$('#oxfl-modal-lock-chapters-text').text('unlock');
+			$modal
+				.find('.modal-body p')
+					.text(oxfordFlippedApp.text.modalUnlock)
+					.end()
+				.find('.oxfl-js-toggle-lock-chapter')
+					.addClass('lock')
+					.removeClass('unlock');
 		} else {
-			$('#oxfl-modal-lock-chapters-text').text('lock');
-			$modal.find('.oxfl-js-toggle-lock-chapter').addClass('unlock').removeClass('lock');
+			//$('#oxfl-modal-lock-chapters-text').text('lock');
+			$modal
+				.find('.modal-body p')
+					.text(oxfordFlippedApp.text.modalLock)
+					.end()
+				.find('.oxfl-js-toggle-lock-chapter')
+					.addClass('unlock')
+					.removeClass('lock');
 		}
 		$modal.find('.oxfl-js-toggle-lock-chapter').removeAttr('data-chapter-id').attr('data-chapter-id', chapterID);
 

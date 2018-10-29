@@ -97,7 +97,7 @@
   z-index: 900;
   transition: opacity .3 ease-in;
   body.app:not(.offline-pc) & {
-    top: 16px;
+    top: 26px;
   }
 }
 #oxfl-coins-icon {
@@ -172,7 +172,7 @@
     margin-right: 15px;
   }
   body.app:not(.offline-pc) & {
-    top: 16px;
+    top: 26px;
   }
 }
 

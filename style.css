@@ -285,7 +285,7 @@ body.oxfl-body-gradebook {
   z-index: 900;
   transition: opacity .3 ease-in; }
   body.app:not(.offline-pc) #oxfl-coins {
-    top: 16px; }
+    top: 26px; }
 
 #oxfl-coins-icon {
   display: block;
@@ -363,7 +363,7 @@ body.oxfl-body-gradebook {
     float: left;
     margin-right: 15px; }
   body.app:not(.offline-pc) #oxfl-general-buttons {
-    top: 16px; }
+    top: 26px; }
 
 .oxfl-button-lock {
   border: 0;
