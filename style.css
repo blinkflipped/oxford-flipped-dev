@@ -2977,7 +2977,8 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
     background-position: center bottom;
     background-image: url(img/endscreen-challenge-bg.jpg);
     background-repeat: no-repeat;
-    background-size: cover; }
+    background-size: cover;
+    overflow: hidden; }
     body.body_clase.view-mode #actividad .oxfl-final-slide-challenge .item-container {
       background-position: center bottom;
       background-image: url(img/endscreen-ok-challenge.png);

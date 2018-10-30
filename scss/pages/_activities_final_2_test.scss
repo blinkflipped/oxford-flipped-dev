@@ -17,6 +17,7 @@ body.body_clase.view-mode {
         background-image: url(img/endscreen-challenge-bg.jpg);
         background-repeat: no-repeat;
         background-size: cover;
+        overflow: hidden; // Add because of Confetti animation given by client.
         .item-container {
           background-position: center bottom;
           background-image: url(img/endscreen-ok-challenge.png);
