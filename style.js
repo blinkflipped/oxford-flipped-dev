@@ -527,6 +527,10 @@
 			blink.events.on('slide:update:after', (function() {
 				if (this.shouldCalculateGameScore()) {
 					this.storeGameScore(this.calculateActivityGameScore());
+					// Detect if is Final Slide
+					var currentSection = blink.activity.currentSection;
+					oxfordFlippedApp.activityFinalScreenTest(currentSection);
+
 				}
 			}).bind(this));
 		},
@@ -2671,7 +2675,7 @@ oxfordFlippedApp.challengeCover = function() {
 		if (challengeBackground != '') {
 			$slide.css('background-image', 'url('+challengeBackground+')').find('.slide_aux').hide();
 		}
-		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(customAnimation+startButton);
+		$(e).closest('.js-slider-item').addClass('oxfl-challenge-cover-wrapper').append(startButton).find('.item-container').append(customAnimation);
 	});
 
 	$('body').on('click', '.oxfl-js-start-challenge', function() {

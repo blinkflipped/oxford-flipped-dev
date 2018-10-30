@@ -10,6 +10,7 @@ body.body_clase.view-mode {
       &-fail {
         background-position: center top;
         background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);
+        overflow: hidden; // Add because of Raining animation given by client.
       }
       &-challenge {
         background-position: center bottom;
