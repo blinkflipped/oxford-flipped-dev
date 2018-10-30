@@ -2428,7 +2428,8 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 	var prevContentZone =  (typeof contentZoneIndex !== 'undefined') ? contentZoneIndex - 1 : '';
 
 	if (prevContentZone != '') {
-		var html = '<div class="oxfl-final-screen-one"><div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
+		var customAnimation = '<div class="moneda-1 flip animated infinite"></div><div class="moneda-2 flip animated infinite"></div><div class="moneda-3 flip animated infinite"></div><div class="moneda-4 flip animated infinite"></div><div class="moneda-5 flip animated infinite"></div>',
+				html = '<div class="oxfl-final-screen-one">'+customAnimation+'<div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
 		var $slide = $('.js-slide-wrapper[data-slide-index="'+prevContentZone+'"]');
 		$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
 
@@ -2585,7 +2586,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 						$lastSlide.addClass('oxfl-final-slide-challenge');
 					} else {
 						var finalSlideTip = $lastSlide.find('.oxfl-end-screen-tip').clone().wrap('<div/>').parent().html(),
-								finalSlideContent = '<div id="oxfl-final-slide"> <div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
+								customAnimation = '<div id="estrellas"><div class="star-1 flip star-rotation"></div><div class="star-2 flip star-rotation"> </div> <div class="star-3 star-rotation"> </div> <div class="star-4 star-rotation"> </div> <div class="star-5 star-rotation"> </div> </div>',
+								finalSlideContent = '<div id="oxfl-final-slide">'+customAnimation+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-leave"><div class="oxfl-bubble-leave-inner">'+oxfordFlippedApp.text.beforeYouLeave+'</div></div><button class="oxfl-button-large oxfl-button-large-next oxfl-js-show-final-tip"><span>'+oxfordFlippedApp.text.viewtip+'</span></button><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div id="oxfl-final-slide-tip"><button class="oxfl-button-bubble oxfl-button-bubble-1 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button><button class="left oxfl-slider-control oxfl-js-hide-final-tip"><span class="fa fa-chevron-left"></span></button></div></div>';
 						$lastSlide.removeClass('oxfl-final-slide-challenge');
 					}
 
