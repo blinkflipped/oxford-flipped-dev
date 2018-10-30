@@ -2437,8 +2437,7 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 	if (prevContentZone != '') {
 		var customAnimation = '<div class="moneda-1 flip animated infinite"></div><div class="moneda-2 flip animated infinite"></div><div class="moneda-3 flip animated infinite"></div><div class="moneda-4 flip animated infinite"></div><div class="moneda-5 flip animated infinite"></div>',
-				customSound = '<div style="display: none"><audio autoplay><source src="'+oxfordFlippedApp.sounds[0]+'" type="audio/mpeg"></audio></div>',
-				html = '<div class="oxfl-final-screen-one">'+customSound+customAnimation+'<div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
+				html = '<div class="oxfl-final-screen-one">'+customAnimation+'<div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
 		var $slide = $('.js-slide-wrapper[data-slide-index="'+prevContentZone+'"]');
 		$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
 
@@ -2460,7 +2459,8 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 		var coins = blink.activity.currentStyle.calculateVocabularyCoins();
 		$('#oxfl-total-coins-1').text(coins);
-		$slide.closest('.js-slider-item').scrollTop(0).addClass('oxfl-final-screen-one-wrapper-active');
+		var customSound = '<div style="display: none"><audio autoplay><source src="'+oxfordFlippedApp.sounds[0]+'" type="audio/mpeg"></audio></div>';
+		$slide.closest('.js-slider-item').prepend(customSound).scrollTop(0).addClass('oxfl-final-screen-one-wrapper-active');
 
 	}));
 
