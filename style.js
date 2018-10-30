@@ -1022,6 +1022,10 @@ oxfordFlippedApp.text = {
 	contentzoneinfotext: textweb('style_flipped_contentzone_box_text')
 }
 
+oxfordFlippedApp.sounds = {
+	0 : 'https://external06.blinklearning.com/themes/responsive/assets/styles/oxford-flipped-dev/sounds/Coins_mezcla.mp3'
+}
+
 oxfordFlippedApp.console = function(logValue) {
 	if (oxfordFlippedApp.config.isDEV) {
 		console.log(logValue);
@@ -2433,7 +2437,8 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 	if (prevContentZone != '') {
 		var customAnimation = '<div class="moneda-1 flip animated infinite"></div><div class="moneda-2 flip animated infinite"></div><div class="moneda-3 flip animated infinite"></div><div class="moneda-4 flip animated infinite"></div><div class="moneda-5 flip animated infinite"></div>',
-				html = '<div class="oxfl-final-screen-one">'+customAnimation+'<div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
+				customSound = '<div style="display: none"><audio autoplay><source src="'+oxfordFlippedApp.sounds[0]+'" type="audio/mpeg"></audio></div>',
+				html = '<div class="oxfl-final-screen-one">'+customSound+customAnimation+'<div class="oxfl-final-screen-one-inner"><div class="oxfl-coins-bubble-1"><div class="oxfl-coins-bubble-1-coins" id="oxfl-total-coins-1"></div></div></div></div>';
 		var $slide = $('.js-slide-wrapper[data-slide-index="'+prevContentZone+'"]');
 		$slide.closest('.js-slider-item').prepend(html).addClass('oxfl-final-screen-one-wrapper');
 
