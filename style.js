@@ -1738,7 +1738,6 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
-						console.log(resourceListItem.innerHTML);
 						resourceList.appendChild(resourceListItem);
 					}
 				}
@@ -2773,7 +2772,6 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitleModa
 
 oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
 
-	oxfordFlippedApp.console(resourceTitleModal);
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
