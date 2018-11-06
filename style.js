@@ -1705,49 +1705,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 }
 
 
-oxfordFlippedApp.escape = function(string) {
-	// List of HTML entities for escaping.
-	var htmlEscapes = {
-		'&': '*amp;',
-		'<': '*lt;',
-		'>': '*gt;',
-		'"': '*quot;',
-		"'": '*#x27;',
-		'/': '*#x2F;'
-	};
-
-	// Regex containing the keys listed immediately above.
-	var htmlEscaper = /[&<>"'\/]/g;
-
-	// Escape a string for HTML interpolation.
-	return ('' + string).replace(htmlEscaper, function(match) {
-		return htmlEscapes[match];
-	});
-
-}
-
-oxfordFlippedApp.unescape = function(string) {
-	// List of HTML entities for escaping.
-	var htmlEscapes = {
-		'*amp;' : '&',
-		'*lt;' : '<',
-		'*gt;' : '>',
-		'*quot;' : '"',
-		'*#x27;' : "'",
-		'*#x2F;' : '/'
-	};
-
-	// Regex containing the keys listed immediately above.
-	var htmlEscaper = /[&<>"'\/]/g;
-
-	// Escape a string for HTML interpolation.
-	return ('' + string).replace(htmlEscaper, function(match) {
-		return htmlEscapes[match];
-	});
-
-}
-
-
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
 
 	var resourceList = document.createDocumentFragment(),
@@ -1776,8 +1733,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 								resourceurl = resource.url,
 								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
 								resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
-								resourceTitleModal = oxfordFlippedApp.escape(resourceTitle),
-								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+ resourceTitleModal +"', '"+resourceDescription+"',"+resourceId+")",
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", \"" + resourceTitle + "\", '" +resourceDescription+"',"+resourceId+")",
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
@@ -2799,14 +2755,14 @@ oxfordFlippedApp.showIframeButton = function() {
 	$('#iframe_div .btn-close-iframe').show();
 }
 
-oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
+oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
 	blink.checkConnection(
 		function() {
 			var currentTotalCoins = blink.activity.currentStyle.userCoins;
 			if (currentTotalCoins < resourceToken) {
 				oxfordFlippedApp.oxflMarketplaceModalNoCoins();
 			} else {
-				oxfordFlippedApp.oxflMarketplaceModalInfo(resourceToken,resourceTitleModal,resourceDescription,resourceID)
+				oxfordFlippedApp.oxflMarketplaceModalInfo(resourceToken,resourceTitle,resourceDescription,resourceID)
 			}
 	},
 		function() {
@@ -2814,16 +2770,14 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitleModa
 	});
 }
 
-oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
+oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
 
-	oxfordFlippedApp.console(resourceTitleModal);
-	oxfordFlippedApp.console(oxfordFlippedApp.unescape(resourceTitleModal));
+	oxfordFlippedApp.console(resourceTitle);
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
-	var modalTitle = oxfordFlippedApp.unescape(resourceTitleModal);
 
-	$('#oxfl-modal-marketplace-info-title').text(modalTitle);
+	$('#oxfl-modal-marketplace-info-title').text(resourceTitle);
 	$('#oxfl-modal-marketplace-info-description').text(resourceDescription);
 	$('#oxfl-modal-marketplace-info-coin').text(resourceToken);
 	$modal.find('[data-marketplace-id]').attr('data-marketplace-id', resourceID);
