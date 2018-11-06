@@ -2755,14 +2755,14 @@ oxfordFlippedApp.showIframeButton = function() {
 	$('#iframe_div .btn-close-iframe').show();
 }
 
-oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
+oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
 	blink.checkConnection(
 		function() {
 			var currentTotalCoins = blink.activity.currentStyle.userCoins;
 			if (currentTotalCoins < resourceToken) {
 				oxfordFlippedApp.oxflMarketplaceModalNoCoins();
 			} else {
-				oxfordFlippedApp.oxflMarketplaceModalInfo(resourceToken,resourceTitle,resourceDescription,resourceID)
+				oxfordFlippedApp.oxflMarketplaceModalInfo(resourceToken,resourceTitleModal,resourceDescription,resourceID)
 			}
 	},
 		function() {
@@ -2770,14 +2770,14 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,res
 	});
 }
 
-oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
+oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
 
-	oxfordFlippedApp.console(resourceTitle);
+	oxfordFlippedApp.console(resourceTitleModal);
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
 
-	$('#oxfl-modal-marketplace-info-title').html(resourceTitle);
+	$('#oxfl-modal-marketplace-info-title').html(resourceTitleModal);
 	$('#oxfl-modal-marketplace-info-description').text(resourceDescription);
 	$('#oxfl-modal-marketplace-info-coin').text(resourceToken);
 	$modal.find('[data-marketplace-id]').attr('data-marketplace-id', resourceID);
