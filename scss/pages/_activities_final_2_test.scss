@@ -97,6 +97,9 @@ body.body_clase.view-mode {
     }
   }
   &.oxfl-end-screen-tip-on {
+    #estrellas {
+      display: none;
+    }
     .slider-control:not(.oxfl-slider-control ) {
       display: none;
     }

@@ -1023,10 +1023,10 @@ oxfordFlippedApp.text = {
 }
 
 oxfordFlippedApp.sounds = {
-	0 : 'https://external06.blinklearning.com/themes/responsive/assets/styles/oxford-flipped-dev/sounds/Coins_mezcla.mp3',
-	1 : 'https://external06.blinklearning.com/themes/responsive/assets/styles/oxford-flipped-dev/sounds/DefeatChallenge_mezcla_2.mp3',
-	2 : 'https://external06.blinklearning.com/themes/responsive/assets/styles/oxford-flipped-dev/sounds/DefeatLesson_mezcla_2.mp3',
-	3 : 'https://external06.blinklearning.com/themes/responsive/assets/styles/oxford-flipped-dev/sounds/ChallengeVictory_mezcla.mp3'
+	0 : '../themes/responsive/assets/styles/oxford-flipped/sounds/Coins_mezcla.mp3',
+	1 : '../themes/responsive/assets/styles/oxford-flipped/sounds/DefeatChallenge_mezcla_2.mp3',
+	2 : '../themes/responsive/assets/styles/oxford-flipped/sounds/DefeatLesson_mezcla_2.mp3',
+	3 : '../themes/responsive/assets/styles/oxford-flipped/sounds/ChallengeVictory_mezcla.mp3'
 
 }
 
@@ -1733,7 +1733,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 								resourceurl = resource.url,
 								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
 								resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
-								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+resourceTitle+"', '"+resourceDescription+"',"+resourceId+")",
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+", '"+ ", \"" + resourceTitle + "\", '" +"', '"+resourceDescription+"',"+resourceId+")",
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';

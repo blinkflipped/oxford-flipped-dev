@@ -3042,6 +3042,8 @@ body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
 body.body_clase.view-mode.oxfl-final-slide-on .navbar.libro,
 body.body_clase.view-mode.oxfl-final-slide-on .navbar-bottom {
   display: none; }
+body.body_clase.view-mode.oxfl-end-screen-tip-on #estrellas {
+  display: none; }
 body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slider-control) {
   display: none; }
 
