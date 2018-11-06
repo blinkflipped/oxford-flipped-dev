@@ -864,7 +864,7 @@ body.oxfl-body-gradebook {
   .oxfl-popover.left {
     background-image: url(img/popover-bubble-2.png);
     background-size: contain; }
-  .oxfl-popover.left.top {
+  .oxfl-popover.top {
     margin-top: 40px;
     margin-left: 60px; }
   .oxfl-popover.oxfl-popover-contentzone {
