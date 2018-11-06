@@ -824,6 +824,10 @@
     background-image: url(img/popover-bubble-2.png);
     background-size: contain;
   }
+  &.left.top {
+    margin-top: 40px;
+    margin-left: 60px;
+  }
   &.oxfl-popover-contentzone {
     margin-top: 35px;
   }
