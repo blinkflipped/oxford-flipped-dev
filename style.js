@@ -1734,7 +1734,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
 								resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
 								resourceTitleModal = resourceTitle.replace("'", "#x27"),
-								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", " + resourceTitleModal + ", '" +resourceDescription+"',"+resourceId+")",
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", '" + resourceTitleModal + "', '" +resourceDescription+"',"+resourceId+")",
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
