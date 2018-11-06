@@ -1708,12 +1708,33 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 oxfordFlippedApp.escape = function(string) {
 	// List of HTML entities for escaping.
 	var htmlEscapes = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		"'": '&#x27;',
-		'/': '&#x2F;'
+		'&': '&/amp;',
+		'<': '&/lt;',
+		'>': '&/gt;',
+		'"': '&/quot;',
+		"'": '&/#x27;',
+		'/': '&/#x2F;'
+	};
+
+	// Regex containing the keys listed immediately above.
+	var htmlEscaper = /[&<>"'\/]/g;
+
+	// Escape a string for HTML interpolation.
+	return ('' + string).replace(htmlEscaper, function(match) {
+		return htmlEscapes[match];
+	});
+
+}
+
+oxfordFlippedApp.unescape = function(string) {
+	// List of HTML entities for escaping.
+	var htmlEscapes = {
+		'&/amp;' : '&',
+		'&/lt;' : '<',
+		'&/gt;' : '>',
+		'&/quot;' : '"',
+		'&/#x27;' : "'",
+		'&/#x2F;' : '/'
 	};
 
 	// Regex containing the keys listed immediately above.
@@ -2796,11 +2817,13 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitleModa
 oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
 
 	oxfordFlippedApp.console(resourceTitleModal);
+	oxfordFlippedApp.console(oxfordFlippedApp.unescape(resourceTitleModal));
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
-
-	$('#oxfl-modal-marketplace-info-title').html(resourceTitleModal);
+	var modalTitle = oxfordFlippedApp.unescape(resourceTitleModal);
+	
+	$('#oxfl-modal-marketplace-info-title').text(modalTitle);
 	$('#oxfl-modal-marketplace-info-description').text(resourceDescription);
 	$('#oxfl-modal-marketplace-info-coin').text(resourceToken);
 	$modal.find('[data-marketplace-id]').attr('data-marketplace-id', resourceID);
