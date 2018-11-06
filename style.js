@@ -1733,7 +1733,8 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 								resourceurl = resource.url,
 								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
 								resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
-								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", \"" + resourceTitle + "\", '" +resourceDescription+"',"+resourceId+")",
+								resourceTitleModal = resourceTitle.replace("'", "#x27"),
+								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew)) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", " + resourceTitleModal + ", '" +resourceDescription+"',"+resourceId+")",
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
 						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2><div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div></header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
@@ -2755,14 +2756,14 @@ oxfordFlippedApp.showIframeButton = function() {
 	$('#iframe_div .btn-close-iframe').show();
 }
 
-oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
+oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
 	blink.checkConnection(
 		function() {
 			var currentTotalCoins = blink.activity.currentStyle.userCoins;
 			if (currentTotalCoins < resourceToken) {
 				oxfordFlippedApp.oxflMarketplaceModalNoCoins();
 			} else {
-				oxfordFlippedApp.oxflMarketplaceModalInfo(resourceToken,resourceTitle,resourceDescription,resourceID)
+				oxfordFlippedApp.oxflMarketplaceModalInfo(resourceToken,resourceTitleModal,resourceDescription,resourceID)
 			}
 	},
 		function() {
@@ -2770,14 +2771,16 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,res
 	});
 }
 
-oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
+oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitleModal,resourceDescription,resourceID) {
 
-	oxfordFlippedApp.console(resourceTitle);
+	oxfordFlippedApp.console(resourceTitleModal);
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
 
-	$('#oxfl-modal-marketplace-info-title').text(resourceTitle);
+	var modalTitle = resourceTitleModal.replace("#x27", "'");
+
+	$('#oxfl-modal-marketplace-info-title').text(modalTitle);
 	$('#oxfl-modal-marketplace-info-description').text(resourceDescription);
 	$('#oxfl-modal-marketplace-info-coin').text(resourceToken);
 	$modal.find('[data-marketplace-id]').attr('data-marketplace-id', resourceID);
