@@ -2772,6 +2772,7 @@ oxfordFlippedApp.oxflMarketplaceModal = function(resourceToken,resourceTitle,res
 
 oxfordFlippedApp.oxflMarketplaceModalInfo = function(resourceToken,resourceTitle,resourceDescription,resourceID) {
 
+	oxfordFlippedApp.console(resourceTitle);
 	oxfordFlippedApp.console("Enough coins");
 
 	var $modal = $('#oxfl-modal-marketplace-info');
