@@ -1708,12 +1708,12 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 oxfordFlippedApp.escape = function(string) {
 	// List of HTML entities for escaping.
 	var htmlEscapes = {
-		'&': '&*amp;',
-		'<': '&*lt;',
-		'>': '&*gt;',
-		'"': '&*quot;',
-		"'": '&*#x27;',
-		'/': '&*#x2F;'
+		'&': '*amp;',
+		'<': '*lt;',
+		'>': '*gt;',
+		'"': '*quot;',
+		"'": '*#x27;',
+		'/': '*#x2F;'
 	};
 
 	// Regex containing the keys listed immediately above.
@@ -1729,12 +1729,12 @@ oxfordFlippedApp.escape = function(string) {
 oxfordFlippedApp.unescape = function(string) {
 	// List of HTML entities for escaping.
 	var htmlEscapes = {
-		'&*amp;' : '&',
-		'&*lt;' : '<',
-		'&*gt;' : '>',
-		'&*quot;' : '"',
-		'&*#x27;' : "'",
-		'&*#x2F;' : '/'
+		'*amp;' : '&',
+		'*lt;' : '<',
+		'*gt;' : '>',
+		'*quot;' : '"',
+		'*#x27;' : "'",
+		'*#x2F;' : '/'
 	};
 
 	// Regex containing the keys listed immediately above.
