@@ -2659,7 +2659,8 @@ body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .item-cont
 body.body_clase.view-mode #actividad .oxfl-checkpoint-1-cover-wrapper .slide_img {
   width: 298px;
   position: absolute;
-  bottom: 0;
+  bottom: auto;
+  top: 240px;
   left: 50%;
   transform: translate(-50%, 0);
   margin-left: 160px;
