@@ -2363,7 +2363,7 @@ oxfordFlippedApp.modalCloseIframe = function() {
 
 oxfordFlippedApp.closeIframe = function() {
 
-	if (blink.isApp) {
+	if (blink.isApp && !blink.isOfflinePC) {
 		blink.rest.closeWindow();
 	} else {
 		cerrarIframe();
@@ -2664,7 +2664,10 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 					e.preventDefault();
 					parent.top.oxfordFlippedApp.showIframeButton();
+					// Reset final screen
 					$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+					$('#oxfl-final-slide').remove();
+
 					blink.activity.currentStyle.quitAndGoToContentZone();
 					e.stopPropagation();
 					e.stopImmediatePropagation();
