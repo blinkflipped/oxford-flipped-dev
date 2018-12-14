@@ -2472,10 +2472,6 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 oxfordFlippedApp.activityContentZone = function() {
 
-	// Reset final screen
-	$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
-	$('#oxfl-final-slide').remove();
-
 	// Create content Zone
 	$('.js-slider-item').each(function(i,e) {
 
@@ -2740,6 +2736,10 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 	if (!isFinalSlide) {
 		parent.top.oxfordFlippedApp.showIframeButton();
 		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+		// Reset final screen
+		$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+		$('#oxfl-final-slide').remove();
+
 	}
 
 	if (currentSection !== coverChallengeIDNum) {
