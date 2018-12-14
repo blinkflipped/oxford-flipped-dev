@@ -1023,11 +1023,10 @@ oxfordFlippedApp.text = {
 }
 
 oxfordFlippedApp.sounds = {
-	0 : '../themes/responsive/assets/styles/oxford-flipped/sounds/Coins_mezcla.mp3',
-	1 : '../themes/responsive/assets/styles/oxford-flipped/sounds/DefeatChallenge_mezcla_2.mp3',
-	2 : '../themes/responsive/assets/styles/oxford-flipped/sounds/DefeatLesson_mezcla_2.mp3',
-	3 : '../themes/responsive/assets/styles/oxford-flipped/sounds/ChallengeVictory_mezcla.mp3'
-
+	0 : '../themes/responsive/assets/styles/oxford-flipped-dev/sounds/Coins_mezcla.mp3',
+	1 : '../themes/responsive/assets/styles/oxford-flipped-dev/sounds/DefeatChallenge_mezcla_2.mp3',
+	2 : '../themes/responsive/assets/styles/oxford-flipped-dev/sounds/DefeatLesson_mezcla_2.mp3',
+	3 : '../themes/responsive/assets/styles/oxford-flipped-dev/sounds/ChallengeVictory_mezcla.mp3'
 }
 
 oxfordFlippedApp.console = function(logValue) {
