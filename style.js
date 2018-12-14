@@ -2472,6 +2472,11 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 oxfordFlippedApp.activityContentZone = function() {
 
+	// Reset final screen
+	$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
+	$('#oxfl-final-slide').remove();
+
+	// Create content Zone
 	$('.js-slider-item').each(function(i,e) {
 
 		if ($(e).find('.oxfl-cz').length) {
@@ -2663,13 +2668,10 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 					e.preventDefault();
 					parent.top.oxfordFlippedApp.showIframeButton();
-					// Reset final screen
-					$('body').removeClass('oxfl-final-slide-on oxfl-end-screen-tip-on');
-					$('#oxfl-final-slide').remove();
-
 					blink.activity.currentStyle.quitAndGoToContentZone();
 					e.stopPropagation();
 					e.stopImmediatePropagation();
+
 				});
 			}
 
