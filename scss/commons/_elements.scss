@@ -182,7 +182,7 @@
   outline: 0;
   padding: 0;
   margin: 0;
-  display: block;
+  display: inline-block;
   width: 20px;
   height: 18px;
   background: url(img/lock.png) 0 0 no-repeat;
@@ -192,6 +192,20 @@
   &.lock {
     background-position: -20px 0;
   }
+}
+
+
+.oxfl-button-calendar {
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  width: 17px;
+  height: 18px;
+  background: url(img/calendar.png) 0 0 no-repeat;
+  background-size: 17px 18px;
 }
 
 .oxfl-button-bubble {
