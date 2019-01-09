@@ -1300,7 +1300,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		var bookTitle = data.title,
 				username = nombreusuario,
 				totalCoins = blink.activity.currentStyle.userCoins ? blink.activity.currentStyle.userCoins : 0,
-				coinsElem = oxfordFlippedApp.config.isStudent) ? '<div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div>' : '',
+				coinsElem = (oxfordFlippedApp.config.isStudent) ? '<div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div>' : '',
 				lessonPageText = (oxfordFlippedApp.config.isStudent) ? oxfordFlippedApp.text.selectalesson : oxfordFlippedApp.text.unlocklesson;
 
 		var customButton = (oxfordFlippedApp.config.isStudent) ? '<button class="oxfl-monster oxfl-monster-1 oxfl-js-load-gradebook" id="oxfl-goto-gradebook"><span>'+oxfordFlippedApp.text.buttongradebook+'</span></button>' : '<button class="oxfl-monster oxfl-monster-5 oxfl-js-load-classresources" id="oxfl-goto-classresources"><span>'+oxfordFlippedApp.text.buttonresources+'</span></button>';
