@@ -743,19 +743,33 @@
       font-family: $font_family_1;
     }
   }
-}
-
-.oxfl-modal-datepicker {
-  &-monster {
-    background: url(img/monster-7.png) center bottom no-repeat transparent;
-    padding-bottom: 100px;
-    padding-top: 0;
-    background-size: 240px 95px;
-    width: 240px;
-    height: 95px;
-    margin-top: -40px;
+  &-5 {
+    .modal-dialog {
+      width: 680px;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding-bottom: 0;
+      .oxfl-modal-datepicker-monster {
+        background: url(img/monster-7.png) center bottom no-repeat transparent;
+        padding-bottom: 100px;
+        padding-top: 0;
+        background-size: 240px 95px;
+        width: 240px;
+        height: 95px;
+        margin-top: -60px;
+        margin-right: 60px;
+      }
+    }
+    .modal-body {
+      padding-top: 0;
+    }
   }
 }
+
+
 
 // Custom by Blink
 
@@ -782,7 +796,12 @@
   }
   &-left {
     text-align: center;
-    font-size: 19px;
+
+    .oxfl-datepicker-title {
+      font-size: 19px;
+      margin-bottom: 20px;
+    }
+
   }
   &-right {
     width: 60%;

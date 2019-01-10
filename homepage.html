@@ -204,7 +204,7 @@
 
 
 
-  <div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-datepicker" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade oxfl-modal oxfl-modal-5" id="oxfl-modal-datepicker" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -217,15 +217,16 @@
           <div class="oxfl-datepicker-wrapper">
             <div class="oxfl-datepicker-content">
               <div class="oxfl-datepicker-content-left">
-                <div class="">'+oxfordFlippedApp.text.modalDatepicker1+'</div>
+                <div class="oxfl-datepicker-title">'+oxfordFlippedApp.text.modalDatepicker1+'</div>
                 <button class="oxfl-button oxfl-button-bubble oxfl-button-bubble-5">'+oxfordFlippedApp.text.modalDatepicker2+'</button>
               </div>
               <div class="oxfl-datepicker-content-right">
                 <div class="oxfl-modal-datepicker">
                   <div class="oxfl-modal-datepicker-form">
                     <div class="form-group">
-                      <input type="text" readonly>
-                      <div id="oxfl-datepicker" class="oxfl-datepicker"></div>
+                      <div class="input-group" id="oxfl-datepicker">
+                        <input type="text" class="form-control" name="time-trade" value=""/>
+                      </div>
                     </div>
                   </div>
                 </div>
