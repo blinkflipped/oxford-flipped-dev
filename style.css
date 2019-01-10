@@ -559,6 +559,48 @@ body.oxfl-body-gradebook {
   .oxfl-label.oxfl-label-2 {
     background-position: 0 -102px; }
 
+/*.oxfl-label-date {
+  width: 103px;
+  height: 44px;
+  background: url(img/labels-date.png) 0 0 no-repeat;
+  background-size: 103px 174px;
+  font-family: $font_family_1;
+  font-size: 12px;
+  font-weight: bold;
+  color: $label_color;
+  text-align: center;
+  padding-right: 7px;
+  padding-top: 7px;
+  &.oxfl-label-0 {//Red
+    background-position: 0 0;
+  }
+  &.oxfl-label-1 {//Yellow
+    background-position: 0 -58px;
+  }
+  &.oxfl-label-2 {//Green
+    background-position: 0 -116px;
+  }
+}*/
+.oxfl-label-date {
+  width: 72px;
+  height: 30px;
+  background: #39B54A;
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  padding: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25); }
+  .oxfl-label-date.oxfl-label-date-0 {
+    background-color: #39B54A; }
+  .oxfl-label-date.oxfl-label-date-1 {
+    background-color: #ffd764;
+    color: #000000; }
+  .oxfl-label-date.oxfl-label-date-2 {
+    background-color: #c1272d; }
+
 .oxfl-strip {
   display: inline-block;
   background: #FBB03B;
@@ -2378,6 +2420,11 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 5px; }
+    .oxfl-chapter .oxfl-chapter-header-top-right .oxfl-button {
+      margin-left: 5px;
+      vertical-align: middle; }
+      .oxfl-chapter .oxfl-chapter-header-top-right .oxfl-button:first-child {
+        margin-left: 0; }
   .oxfl-chapter .oxfl-chapter-image-wrapper {
     width: 100%;
     height: 110px;
@@ -2398,6 +2445,11 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       position: absolute;
       top: -3px;
       left: 6px;
+      z-index: 20; }
+    .oxfl-chapter .oxfl-chapter-image-wrapper .oxfl-label-date {
+      position: absolute;
+      bottom: 0px;
+      right: 16px;
       z-index: 20; }
     .oxfl-chapter .oxfl-chapter-image-wrapper-img {
       position: absolute;

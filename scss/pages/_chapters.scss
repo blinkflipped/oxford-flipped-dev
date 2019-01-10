@@ -119,7 +119,17 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 5px;
+    &-right {
+      .oxfl-button {
+        margin-left: 5px;
+        vertical-align: middle;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
   }
+
   .oxfl-chapter-image-wrapper {
     width: 100%;
     height: 110px;
@@ -141,6 +151,12 @@
       position: absolute;
       top: -3px;
       left: 6px;
+      z-index: 20;
+    }
+    .oxfl-label-date {
+      position: absolute;
+      bottom: 0px;
+      right: 16px;
       z-index: 20;
     }
     &-img {
