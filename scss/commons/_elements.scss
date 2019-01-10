@@ -253,6 +253,13 @@
     padding-top: 0;
     @include font-size(1.4);
   }
+  &-5 {
+    width: 111px;
+    height: 44px;
+    background-image: url(img/button-3.png);
+    padding-top: 0;
+    font-size: 21px;
+  }
 }
 
 .oxfl-button-large {
@@ -738,6 +745,18 @@
   }
 }
 
+.oxfl-modal-datepicker {
+  &-monster {
+    background: url(img/monster-7.png) center bottom no-repeat transparent;
+    padding-bottom: 100px;
+    padding-top: 0;
+    background-size: 240px 95px;
+    width: 240px;
+    height: 95px;
+    margin-top: -40px;
+  }
+}
+
 // Custom by Blink
 
 .oxfl-modal .modal-body {
@@ -748,6 +767,28 @@
 	font-size: 25px;
 }
 
+// Datepicker
+
+.oxfl-datepicker-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-right,
+  &-left {
+    width: 40%;
+    min-width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  &-left {
+    text-align: center;
+    font-size: 19px;
+  }
+  &-right {
+    width: 60%;
+    min-width: 60%;
+  }
+}
 
 // Notifications list
 

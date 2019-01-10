@@ -432,6 +432,12 @@ body.oxfl-body-gradebook {
     padding-top: 0;
     font-size: 14px;
     font-size: 1.4rem; }
+  .oxfl-button-bubble-5 {
+    width: 111px;
+    height: 44px;
+    background-image: url(img/button-3.png);
+    padding-top: 0;
+    font-size: 21px; }
 
 .oxfl-button-large {
   overflow: visible;
@@ -804,11 +810,36 @@ body.oxfl-body-gradebook {
   font-weight: 400;
   font-family: "Quicksand", sans-serif; }
 
+.oxfl-modal-datepicker-monster {
+  background: url(img/monster-7.png) center bottom no-repeat transparent;
+  padding-bottom: 100px;
+  padding-top: 0;
+  background-size: 240px 95px;
+  width: 240px;
+  height: 95px;
+  margin-top: -40px; }
+
 .oxfl-modal .modal-body {
   font-size: 19px; }
 
 .oxfl-modal .modal-footer .btn {
   font-size: 25px; }
+
+.oxfl-datepicker-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .oxfl-datepicker-content-right, .oxfl-datepicker-content-left {
+    width: 40%;
+    min-width: 40%;
+    padding-left: 20px;
+    padding-right: 20px; }
+  .oxfl-datepicker-content-left {
+    text-align: center;
+    font-size: 19px; }
+  .oxfl-datepicker-content-right {
+    width: 60%;
+    min-width: 60%; }
 
 .oxfl-notification-item {
   display: flex;
