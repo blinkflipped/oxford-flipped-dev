@@ -1633,11 +1633,11 @@ body.oxfl-body-home #oxfl-home-menu {
   .oxfl-gradebook-unit-lesson-state-0, .oxfl-gradebook-unit-lesson-state-1, .oxfl-gradebook-unit-lesson-state-2 {
     border-radius: 100%; }
   .oxfl-gradebook-unit-lesson-state-0 {
-    background-color: #ff931e; }
-  .oxfl-gradebook-unit-lesson-state-1 {
-    background-color: #39B54A; }
-  .oxfl-gradebook-unit-lesson-state-2 {
     background-color: #ED1E79; }
+  .oxfl-gradebook-unit-lesson-state-1 {
+    background-color: #ff931e; }
+  .oxfl-gradebook-unit-lesson-state-2 {
+    background-color: #39B54A; }
   .oxfl-gradebook-unit-lesson-state-3 {
     border: 0;
     overflow: visible;

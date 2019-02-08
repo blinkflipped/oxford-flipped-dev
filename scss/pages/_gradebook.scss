@@ -398,14 +398,14 @@ $barchart_height: 235px;
   &-2 {
     border-radius: 100%;
   }
-  &-0 {//Started but not completed
+  &-0 {//Available but not started, like New
+    background-color:$color_4;
+  }
+  &-1 {//Started but not completed
     background-color: $color_6_mod;
   }
-  &-1 {//Completed
+  &-2 {//Completed
     background-color: $color_7;
-  }
-  &-2 {//Available but not started, like New
-    background-color: $color_4
   }
   &-3 {// Lock!
     border: 0;
