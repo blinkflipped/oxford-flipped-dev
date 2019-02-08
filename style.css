@@ -389,7 +389,8 @@ body.oxfl-body-gradebook {
   width: 17px;
   height: 18px;
   background: url(img/calendar.png) 0 0 no-repeat;
-  background-size: 17px 18px; }
+  background-size: 17px 18px;
+  display: none; }
 
 .oxfl-button-bubble {
   font-size: 24px;
