@@ -1970,8 +1970,9 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 			$.each(chapters, function(x, chapter){
 
-				var chapterTag = chapter.tag;
-				if (chapterTag != oxfordFlippedApp.config.tagMarketplace) {
+				var chapterTag = chapter.tag,
+						chapterIsOnlyVisibleTeacher = chapter.onlyVisibleTeachers;
+				if (chapterTag !== oxfordFlippedApp.config.tagMarketplace && !chapterIsOnlyVisibleTeacher) {
 					var chapterTitle = chapter.title,
 							chapterDescription = chapter.description,
 							chapterID = chapter.id,
@@ -1979,15 +1980,16 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							chapterGralState = 3, // 0: New, 1: Started, 2: Completed, 3: Lock
 							chapterStars = 0;
 
+					var isChapterNew = (typeof window.actividades[chapterID] === 'undefined' || window.actividades[chapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapterID].custom_activity_status === 'undefined'),
+							isChapterNotCompleted = (typeof window.actividades[chapterID] !== 'undefined' && (window.actividades[chapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[chapterID].custom_activity_status === 'undefined'));
+
 					if (!chapterIsChallenge) {
 						// Activities not started
-						if (typeof window.actividades[chapterID] === 'undefined') {
+						if (isChapterNew) {
 							lessonsNotStarted = true;
-						} else {
+						} else if (isChapterNotCompleted) {
 							// Activities not completed
-							if (typeof window.actividades[chapterID].custom_activity_status === 'undefined' || window.actividades[chapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted) {
-								lessonsNotCompleted = true;
-							}
+							lessonsNotCompleted = true;
 						}
 						var chapterLockStatus = chapter.lock;
 						// Buscar todas las actividades - chapters - que están abiertas (NO lock)
@@ -2002,7 +2004,8 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 							}
 
 							// Count grade and stars in started AND completed lessons.
-							if (typeof window.actividades[chapterID] !== 'undefined') {
+							// TODO REMOVE --> if (typeof window.actividades[chapterID] !== 'undefined') {
+							if (!isChapterNew) {
 								var chapterGradeData =  window.actividades[chapterID].clasificacion,
 										chapterGrade = (chapterGradeData !== '') ? parseInt(chapterGradeData) : 0;
 								totalGrade += chapterGrade;
@@ -2019,7 +2022,8 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 						var isChallengeLock = ((lessonsNotStarted || lessonsNotCompleted)) ? true : false;
 						if (!isChallengeLock) {
 							//totalUnits++;// We dont count challenge lessons anymore
-							if (typeof window.actividades[chapterID] !== 'undefined') {
+							//if (typeof window.actividades[chapterID] !== 'undefined') {
+							if (!isChapterNew) {
 								var chapterGradeData =  window.actividades[chapterID].clasificacion,
 										chapterGrade = (chapterGradeData !== '') ? parseInt(chapterGradeData) : 0;
 								chapterStars = oxfordFlippedApp.gradeToStars(chapterGrade);
