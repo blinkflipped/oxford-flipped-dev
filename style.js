@@ -860,7 +860,7 @@ oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.marketplaceType1 = 'game';
 oxfordFlippedApp.config.marketplaceType2 = 'summary';
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
-oxfordFlippedApp.config.isStudent = true;
+oxfordFlippedApp.config.isStudent = false;
 oxfordFlippedApp.config.minGrade = 50;
 oxfordFlippedApp.config.oneStarGradeMax = 70;
 oxfordFlippedApp.config.twoStarsGradeMax = 99;
@@ -1297,7 +1297,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	if (oxfordFlippedApp.config.firstTime) {
 
-		//TODO REMOVE COMMENT WHEN FINISHED oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
+		oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
 		oxfordFlippedApp.bookData = data;
 
 		var bookTitle = data.title,
