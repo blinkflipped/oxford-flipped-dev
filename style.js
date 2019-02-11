@@ -40,6 +40,7 @@
 			this.initSequencing();
 			this.removeFinalSlide();
 			this.preventTouchCarousel();
+			this.closeWebviewApps();
 		},
 
 		preventTouchCarousel: function () {
@@ -49,6 +50,12 @@
 					event.stopImmediatePropagation();
 					return;
 				});
+		},
+		closeWebviewApps: function() {
+			var self = this;
+			blink.currentPage.refresh = function() {
+				self.loadUserData();
+			}
 		},
 
 		/**
@@ -63,8 +70,18 @@
 				this.setSequencingContentZoneEvents();
 				this.initSystemSaveSCORM();
 			} else {
-					this.setSequencingChallengeEvents();
-						}
+				this.setSequencingChallengeEvents();
+			}
+		},
+
+		/**
+		*   Bucle para poner los intentos máximos de todas las slides a 1
+		*/
+		limitNumMaxIntentos: function(currentslide) {
+			var isExercise = currentslide.esEvaluable;
+				if (isExercise) {
+					currentslide.numMaxIntentos = 1;
+				}
 		},
 
 		/**
@@ -160,7 +177,11 @@
 				slideIsContent 			= currentSlide.esContenido,
 				$sliderControl 			= $(".slider-control"),
 				$sliderLeft 			= $(".left.slider-control"),
-				$sliderRight 			= $(".right.slider-control");
+				$sliderRight 			= $(".right.slider-control"),
+				lastSlide = blink.activity.numSlides - 1;
+
+			//BK-16517 seteamos el número máximo de intentos de cada slide a 1
+			this.limitNumMaxIntentos(currentSlide);
 
 			// Modificar botones de la slide.
 			currentSlide.reviewButtons.principal['btn-reset'] = { "statusOptions" : {} };
@@ -180,6 +201,8 @@
 				if (activeSlide == (this.contentZone + 1)) {
 					$sliderControl.hideBlink();
 				// Si no es la primera, se muestra la flecha 'previous'.
+				} else if(activeSlide >= lastSlide) {
+					$sliderLeft.hideBlink();
 				} else {
 					$sliderLeft.showBlink();
 				}
@@ -207,6 +230,19 @@
 				if (!self.pageIsLoading && !$(this).hasClass("not-allowed")) {
 					blink.activity.showNextSection();
 					self.pageIsLoading = true;
+					var lastSlide = blink.activity.numSlides - 1;
+					if(activeSlide === lastSlide - 1) {
+						//Pongo el timeout porque en tablets android no le da tiempo a recalcular la nota antes de reproducir el audio
+						setTimeout(function(){
+							var audio2play = self.whatAudioPlay();
+							if(audio2play !== false) {
+								var audio = document.getElementById('audio' + audio2play)
+								if(typeof audio !== 'undefined'){
+									audio.play();
+								}
+							}
+						}, 200);
+					}
 				}
 			});
 
@@ -319,6 +355,9 @@
 			} else if(this.contentZone && isStarted) {
 					statusResult = 1;
 			}
+			if(typeof suspdata.custom_activity_status === 'undefined' || suspdata.custom_activity_status === '') {
+				suspdata.custom_activity_status = 0;
+			}
 
 			return statusResult <= suspdata.custom_activity_status? suspdata.custom_activity_status : statusResult;
 		},
@@ -397,24 +436,25 @@
 		},
 
 		/**
-		 * Calcula la cantidad de monedas que posee el usuario
-		 * @param  {Array} activities  Arreglo del conjunto de datos de cada actividad.
-		 * @return {Int}             Cantidad de monedas que posee el usuario.
-		 */
+		* Calcula la cantidad de monedas que posee el usuario
+		* @param  {Array} activities  Arreglo del conjunto de datos de cada actividad.
+		* @return {Int}             Cantidad de monedas que posee el usuario.
+		*/
 		calculateUserCoins: function(activities) {
 			var userCoins = 0;
-
-			activities.forEach((function(activity, index) {
-				var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
+			for (var index in activities){
+				var activity = activities[index];
+				if(typeof activity === "object" ){
+					var unit = _.findWhere(this.cursoJson.units, {id: activity.idtema}),
 					subunit = _.findWhere(unit.subunits, {id: index.toString()});
 
-				if (subunit.tag && subunit.tag.indexOf(this.marketPlaceTag) != -1 && activity.game_token) {
-					userCoins -= activity.game_token;
-				} else if (activity.game_score) {
-					userCoins += activity.game_score;
+					if (subunit.tag && subunit.tag.indexOf(this.marketPlaceTag) != -1 && activity.game_token) {
+						userCoins -= activity.game_token;
+					} else if (activity.game_score) {
+						userCoins += activity.game_score;
+					}
 				}
-			}).bind(this));
-
+			}
 			return userCoins;
 		},
 
@@ -493,16 +533,17 @@
 			blink.events.on('slide:update:after', (function() {
 				if (this.shouldCalculateVocabularyCoins()) {
 					blink.events.trigger('vocabulary:done');
+					var audio = document.getElementById('audio0');
+					if(typeof audio !== 'undefined'){
+						audio.play();
+					}
 					this.storeGameScore(this.calculateVocabularyCoins());
 				}
 				if (this.shouldCalculateGameScore()) {
-
 					this.storeGameScore(this.calculateActivityGameScore());
-
 					// Detect if is Final Slide
 					var currentSection = blink.activity.currentSection;
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
-
 				}
 			}).bind(this));
 		},
@@ -523,14 +564,28 @@
 				}
 			}).bind(this));
 
+			blink.events.on('section:shown', (function() {
+				//BK-16517 seteamos el número máximo de intentos de cada slide a 1
+				var currentSlide = window['t'+activeSlide+'_slide'];
+				this.limitNumMaxIntentos(currentSlide);
+			}).bind(this));
+
 			// Listener al actualizar slide para comprobar si se deben proporcionar las monedas de Vocabulario
 			blink.events.on('slide:update:after', (function() {
 				if (this.shouldCalculateGameScore()) {
+					$(".left.slider-control").hideBlink();
+
+					$('.oxfl-js-close-iframe-inside, .oxfl-js-go-to-start').one('click', (function() {
+						if(!this.contentZone){
+							this.exitChallenge();
+						}
+					}).bind(this));
+
 					this.storeGameScore(this.calculateActivityGameScore());
+
 					// Detect if is Final Slide
 					var currentSection = blink.activity.currentSection;
 					oxfordFlippedApp.activityFinalScreenTest(currentSection);
-
 				}
 			}).bind(this));
 		},
@@ -551,10 +606,7 @@
 		 */
 		setSequencyToInit: function() {
 			var user = blink.user;
-
-			if (user.esAlumno()) {
-				window.numSec = 1;
-			}
+			window.numSec = 1;
 		},
 
 		/**
@@ -589,7 +641,7 @@
 			var unit = _.findWhere(data.units, {id: window.idtema.toString()});
 			var subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()});
 
-			window.bookcover = data.units[0].subunits[0].id;
+			window.bookcover = (typeof data.units[0] !== "undefined" && typeof data.units[0].subunits[0] !== "undefined") ? data.units[0].subunits[0].id : "";
 			this.cursoJson = data;
 
 			if(blink.activity.secuencia.length >= 1) {
@@ -618,8 +670,6 @@
 
 				if (data.title === oxfordFlippedApp.config.nameChallenge) oxfordFlippedApp.config.challengeIDs.push(data.id);
 
-				oxfordFlippedApp.console("onActivityDataLoaded");
-				oxfordFlippedApp.console(data);
 				oxfordFlippedApp.activityCreateFalseNavigation(data);
 				oxfordFlippedApp.activityCheckpointCover();
 				oxfordFlippedApp.challengeCover();
@@ -663,14 +713,19 @@
 		refreshUserData: function() {
 			this.userCoins = this.calculateUserCoins(window.actividades);
 			parent.blink.activity.currentStyle.userCoins = this.userCoins;
-			parent && parent.blink.events.trigger('course:refresh');
+			parent.blink.events.trigger('course:refresh');
+			blink.events.trigger('course:refresh');
 		},
 
 		/**
 		 * Operciones a ejecutar antes de salir de una ventana.
 		 */
 		onAfterUnloadVentana: function() {
-			this.exitSequencing();
+			if (this.contentZone) {
+				this.exitSequencing();
+			} else {
+				this.exitChallenge();
+			}
 
 			if (window.actividades) {
 				parent.actividades = window.actividades;
@@ -699,6 +754,7 @@
 		processHash: function() {
 			var hash = '',
 			curso = blink.getCourse(idcurso);
+
 			if (window.idtema == undefined) {
 				return false;
 			}
@@ -712,15 +768,39 @@
 			});
 
 			if (!actividad.tag || actividad.tag !== 'marketplace') {
-				return false
+				hash = false;
 			}
 
-			if (actividad.typeInt === 6 && actividad.type === 'actividad') {
+			if (typeof actividad.marketType !== 'undefined' && actividad.marketType === 'game') {
 				hash = '#marketplace_games';
-			} else {
+			}
+
+			if (typeof actividad.marketType !== 'undefined' && actividad.marketType === 'sumary') {
 				hash = '#marketplace_summaries';
 			}
+
+			if (typeof actividad.onlyVisibleTeachers !== 'undefined' && actividad.onlyVisibleTeachers) {
+				hash = '#resources';
+			}
+
 			return hash;
+		},
+
+		whatAudioPlay: function() {
+			var grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
+
+			if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
+					return 3;
+			} else {
+					if (this.contentZone) {
+							// Estamos en chapter
+							return 2;
+					} else {
+							// Estamos en challenge
+							return 1;
+					}
+			}
+			return false;
 		}
 
 	};
