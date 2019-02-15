@@ -2897,22 +2897,23 @@ oxfordFlippedApp.oxflMarketplaceModalNoConnection = function() {
 
 }
 
-
-oxfordFlippedApp.oxflModalDatepicker = function() {
-	//oxfordFlippedApp.console();
-
-	var $modal = $('#oxfl-modal-datepicker');
-	$modal.modal('show');
-
-}
-
-
 oxfordFlippedApp.datepickerInit = function() {
+	moment.lang('en', {
+		week: { dow: 1 }
+	});
 	$('#oxfl-datepicker').datetimepicker({
-			//inline: true
+		format : 'DD/MM/YYYY',
+		useCurrent : true
 	});
 }
 
+oxfordFlippedApp.oxflModalDatepicker = function() {
+
+	var $modal = $('#oxfl-modal-datepicker');
+	$modal.modal('show');
+	oxfordFlippedApp.datepickerInit();
+
+}
 
 
 oxfordFlippedApp.objectFitSupport = function() {
@@ -3087,5 +3088,10 @@ $(document).ready(function() {
 
 	// Object Fit support
 	oxfordFlippedApp.objectFitSupport();
+
+	//
+	$('body').on('click', '.oxfl-js-datepicker', function(e) {
+		oxfordFlippedApp.oxflModalDatepicker();
+	});
 
 });

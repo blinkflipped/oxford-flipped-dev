@@ -746,7 +746,7 @@
   }
   &-5 {
     .modal-dialog {
-      width: 680px;
+      width: 580px;
     }
     .modal-header {
       display: flex;
@@ -787,7 +787,7 @@
 .oxfl-datepicker-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   &-right,
   &-left {
     width: 40%;
@@ -807,6 +807,66 @@
   &-right {
     width: 60%;
     min-width: 60%;
+  }
+}
+
+#oxfl-datepicker {
+  font-family: $font_family_1;
+  font-size: 20px;
+  border-radius: 0px;
+  text-align: center;
+  color: $color_10;
+  border: 1px solid $color_10;
+  width: 250px;
+  padding: 10px;
+}
+
+.bootstrap-datetimepicker-widget {
+  .datepicker-day {
+    table {
+      border-spacing: 4px;
+      border-collapse: separate;
+    }
+  }
+  .dow {
+    font-size: 10px;
+    font-weight: 500;
+    color: $color_10;
+  }
+  th.next,
+  th.prev {
+    font-size: 32px;
+    color: $negative_color;
+    position: relative;
+    text-indent: 100%;
+    overflow: hidden;
+    background: url('img/datepicker-arrows.png') 0 0 no-repeat;
+    background-size: 46px 24px;
+    &:hover {
+      background: transparent!important;
+      color: $negative_color;
+    }
+  }
+  th.next {
+    background-position: -23px 0;
+  }
+  td.day {
+    font-size: 12px;
+    font-weight: bold;
+    color: $color_10;
+    border-radius: 0;
+  }
+  td.active,
+  td.active:hover {
+    background: $color_17;
+    color: $negative_color;
+    text-shadow: none;
+  }
+  .picker-switch {
+    font-family: $font_family_1;
+    font-size: 20px;
+    color: $color_10;
+    font-weight: bold;
   }
 }
 
