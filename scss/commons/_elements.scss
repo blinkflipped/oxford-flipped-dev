@@ -822,10 +822,12 @@
 }
 
 .bootstrap-datetimepicker-widget {
+  font-family: $font_family_1;
   .datepicker-day {
     table {
       border-spacing: 4px;
       border-collapse: separate;
+      table-layout: fixed;
     }
   }
   .dow {
@@ -840,10 +842,10 @@
     position: relative;
     text-indent: 100%;
     overflow: hidden;
-    background: url('img/datepicker-arrows.png') 0 0 no-repeat;
+    background: url('img/datepicker-arrows.png') 3px 0 no-repeat;
     background-size: 46px 24px;
+    width: 24px;
     &:hover {
-      background: transparent!important;
       color: $negative_color;
     }
   }
@@ -856,6 +858,8 @@
     color: $color_10;
     border-radius: 0;
   }
+  td span.active,
+  td span.active:hover,
   td.active,
   td.active:hover {
     background: $color_17;

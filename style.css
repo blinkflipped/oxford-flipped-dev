@@ -863,43 +863,48 @@ body.oxfl-body-gradebook {
   width: 250px;
   padding: 10px; }
 
-.bootstrap-datetimepicker-widget .datepicker-day table {
-  border-spacing: 4px;
-  border-collapse: separate; }
-.bootstrap-datetimepicker-widget .dow {
-  font-size: 10px;
-  font-weight: 500;
-  color: #999999; }
-.bootstrap-datetimepicker-widget th.next,
-.bootstrap-datetimepicker-widget th.prev {
-  font-size: 32px;
-  color: #ffffff;
-  position: relative;
-  text-indent: 100%;
-  overflow: hidden;
-  background: url("img/datepicker-arrows.png") 0 0 no-repeat;
-  background-size: 46px 24px; }
-  .bootstrap-datetimepicker-widget th.next:hover,
-  .bootstrap-datetimepicker-widget th.prev:hover {
-    background: transparent !important;
-    color: #ffffff; }
-.bootstrap-datetimepicker-widget th.next {
-  background-position: -23px 0; }
-.bootstrap-datetimepicker-widget td.day {
-  font-size: 12px;
-  font-weight: bold;
-  color: #999999;
-  border-radius: 0; }
-.bootstrap-datetimepicker-widget td.active,
-.bootstrap-datetimepicker-widget td.active:hover {
-  background: #7ac943;
-  color: #ffffff;
-  text-shadow: none; }
-.bootstrap-datetimepicker-widget .picker-switch {
-  font-family: "Quicksand", sans-serif;
-  font-size: 20px;
-  color: #999999;
-  font-weight: bold; }
+.bootstrap-datetimepicker-widget {
+  font-family: "Quicksand", sans-serif; }
+  .bootstrap-datetimepicker-widget .datepicker-day table {
+    border-spacing: 4px;
+    border-collapse: separate;
+    table-layout: fixed; }
+  .bootstrap-datetimepicker-widget .dow {
+    font-size: 10px;
+    font-weight: 500;
+    color: #999999; }
+  .bootstrap-datetimepicker-widget th.next,
+  .bootstrap-datetimepicker-widget th.prev {
+    font-size: 32px;
+    color: #ffffff;
+    position: relative;
+    text-indent: 100%;
+    overflow: hidden;
+    background: url("img/datepicker-arrows.png") 3px 0 no-repeat;
+    background-size: 46px 24px;
+    width: 24px; }
+    .bootstrap-datetimepicker-widget th.next:hover,
+    .bootstrap-datetimepicker-widget th.prev:hover {
+      color: #ffffff; }
+  .bootstrap-datetimepicker-widget th.next {
+    background-position: -23px 0; }
+  .bootstrap-datetimepicker-widget td.day {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999999;
+    border-radius: 0; }
+  .bootstrap-datetimepicker-widget td span.active,
+  .bootstrap-datetimepicker-widget td span.active:hover,
+  .bootstrap-datetimepicker-widget td.active,
+  .bootstrap-datetimepicker-widget td.active:hover {
+    background: #7ac943;
+    color: #ffffff;
+    text-shadow: none; }
+  .bootstrap-datetimepicker-widget .picker-switch {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    color: #999999;
+    font-weight: bold; }
 
 .oxfl-notification-item {
   display: flex;

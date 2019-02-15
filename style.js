@@ -2903,7 +2903,8 @@ oxfordFlippedApp.datepickerInit = function() {
 	});
 	$('#oxfl-datepicker').datetimepicker({
 		format : 'DD/MM/YYYY',
-		useCurrent : true
+		useCurrent : true,
+		minDate : moment()
 	});
 }
 
