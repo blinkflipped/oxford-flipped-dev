@@ -824,17 +824,18 @@
 
 .bootstrap-datetimepicker-widget {
   font-family: $font_family_1;
-  .datepicker-day {
-    table {
-      border-spacing: 4px;
-      border-collapse: separate;
-      table-layout: fixed;
-    }
+  table {
+    border-spacing: 4px;
+    border-collapse: separate;
+    table-layout: fixed;
   }
   .dow {
     font-size: 10px;
     font-weight: 500;
     color: $color_10;
+  }
+  th.picker-switch {
+    width: 90px;
   }
   th.next,
   th.prev {
@@ -843,21 +844,37 @@
     position: relative;
     text-indent: 100%;
     overflow: hidden;
-    background: url('img/datepicker-arrows.png') 3px 0 no-repeat;
-    background-size: 46px 24px;
-    width: 24px;
+    background: url('img/datepicker-arrows.png') 0 0 no-repeat;
+    background-size: 100px 24px;
     &:hover {
-      color: $negative_color;
+      background: url('img/datepicker-arrows.png') 0 0 no-repeat;
     }
   }
   th.next {
-    background-position: -23px 0;
+    background-position: -77px 0;
+    &:hover {
+      background-position: -77px 0;
+    }
+  }
+  td.today {
+    &::before {
+      border-bottom-color: $color_17;
+    }
+    &.active {
+      &::before {
+        border-bottom-color: $negative_color;
+      }
+    }
   }
   td.day {
     font-size: 12px;
     font-weight: bold;
     color: $color_10;
     border-radius: 0;
+    padding: 2px;
+    &.disabled {
+      opacity: .5;
+    }
   }
   td span.active,
   td span.active:hover,

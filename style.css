@@ -866,7 +866,7 @@ body.oxfl-body-gradebook {
 
 .bootstrap-datetimepicker-widget {
   font-family: "Quicksand", sans-serif; }
-  .bootstrap-datetimepicker-widget .datepicker-day table {
+  .bootstrap-datetimepicker-widget table {
     border-spacing: 4px;
     border-collapse: separate;
     table-layout: fixed; }
@@ -874,6 +874,8 @@ body.oxfl-body-gradebook {
     font-size: 10px;
     font-weight: 500;
     color: #999999; }
+  .bootstrap-datetimepicker-widget th.picker-switch {
+    width: 90px; }
   .bootstrap-datetimepicker-widget th.next,
   .bootstrap-datetimepicker-widget th.prev {
     font-size: 32px;
@@ -881,19 +883,27 @@ body.oxfl-body-gradebook {
     position: relative;
     text-indent: 100%;
     overflow: hidden;
-    background: url("img/datepicker-arrows.png") 3px 0 no-repeat;
-    background-size: 46px 24px;
-    width: 24px; }
+    background: url("img/datepicker-arrows.png") 0 0 no-repeat;
+    background-size: 100px 24px; }
     .bootstrap-datetimepicker-widget th.next:hover,
     .bootstrap-datetimepicker-widget th.prev:hover {
-      color: #ffffff; }
+      background: url("img/datepicker-arrows.png") 0 0 no-repeat; }
   .bootstrap-datetimepicker-widget th.next {
-    background-position: -23px 0; }
+    background-position: -77px 0; }
+    .bootstrap-datetimepicker-widget th.next:hover {
+      background-position: -77px 0; }
+  .bootstrap-datetimepicker-widget td.today::before {
+    border-bottom-color: #7ac943; }
+  .bootstrap-datetimepicker-widget td.today.active::before {
+    border-bottom-color: #ffffff; }
   .bootstrap-datetimepicker-widget td.day {
     font-size: 12px;
     font-weight: bold;
     color: #999999;
-    border-radius: 0; }
+    border-radius: 0;
+    padding: 2px; }
+    .bootstrap-datetimepicker-widget td.day.disabled {
+      opacity: .5; }
   .bootstrap-datetimepicker-widget td span.active,
   .bootstrap-datetimepicker-widget td span.active:hover,
   .bootstrap-datetimepicker-widget td.active,
