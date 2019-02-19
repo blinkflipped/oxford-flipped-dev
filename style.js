@@ -2916,7 +2916,8 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 		week: { dow: 1 }
 	});
 
-	$('#oxfl-datepicker').val('');
+	if (endDate === '') $('#oxfl-datepicker').val('');
+	
 	$('#oxfl-datepicker').datetimepicker({
 		format : 'DD/MM/YYYY',
 		useCurrent : true,
