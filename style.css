@@ -825,7 +825,7 @@ body.oxfl-body-gradebook {
     width: 240px;
     height: 95px;
     margin-top: -60px;
-    margin-right: 60px; }
+    margin-right: 75px; }
 .oxfl-modal-5 .modal-body {
   padding-top: 0; }
 
@@ -876,22 +876,28 @@ body.oxfl-body-gradebook {
     color: #999999; }
   .bootstrap-datetimepicker-widget th.picker-switch {
     width: 90px; }
-  .bootstrap-datetimepicker-widget th.next,
-  .bootstrap-datetimepicker-widget th.prev {
+  .bootstrap-datetimepicker-widget thead tr:first-child th.next,
+  .bootstrap-datetimepicker-widget thead tr:first-child th.prev {
     font-size: 32px;
     color: #ffffff;
     position: relative;
     text-indent: 100%;
     overflow: hidden;
-    background: url("img/datepicker-arrows.png") 0 0 no-repeat;
+    background: url("img/datepicker-arrows.png") 0 3px no-repeat;
     background-size: 100px 24px; }
-    .bootstrap-datetimepicker-widget th.next:hover,
-    .bootstrap-datetimepicker-widget th.prev:hover {
-      background: url("img/datepicker-arrows.png") 0 0 no-repeat; }
-  .bootstrap-datetimepicker-widget th.next {
-    background-position: -77px 0; }
-    .bootstrap-datetimepicker-widget th.next:hover {
-      background-position: -77px 0; }
+    .bootstrap-datetimepicker-widget thead tr:first-child th.next.disabled,
+    .bootstrap-datetimepicker-widget thead tr:first-child th.prev.disabled {
+      opacity: .5; }
+    .bootstrap-datetimepicker-widget thead tr:first-child th.next:hover,
+    .bootstrap-datetimepicker-widget thead tr:first-child th.prev:hover {
+      background-image: url("img/datepicker-arrows.png");
+      background-color: transparent;
+      background-position: 0 3px;
+      background-size: 100px 24px; }
+  .bootstrap-datetimepicker-widget thead tr:first-child th.next {
+    background-position: -77px 3px; }
+    .bootstrap-datetimepicker-widget thead tr:first-child th.next:hover {
+      background-position: -77px 3px; }
   .bootstrap-datetimepicker-widget td.today::before {
     border-bottom-color: #7ac943; }
   .bootstrap-datetimepicker-widget td.today.active::before {

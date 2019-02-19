@@ -1713,12 +1713,24 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
 
 				var chapterNumber = i + 1,
-						chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
+						chapterFinishDateTimestap = 1552085940; //TODO Put actual date
+				var chapterFinishDate, chapterFinishDateDay, chapterFinishDateMonth, chapterFinishDateYear, chapterFinishDateDDMM, chapterFinishDateDDMMYYYY;
+
+				if (chapterFinishDateTimestap) {
+					var chapterFinishDate = new Date(chapterFinishDateTimestap * 1000),
+							chapterFinishDateDay = "0" + chapterFinishDate.getDate(),
+							chapterFinishDateMonth = "0" + parseInt(chapterFinishDate.getMonth() + 1),
+							chapterFinishDateYear = chapterFinishDate.getFullYear(),
+							chapterFinishDateDDMM = chapterFinishDateDay.substr(-2) + '/' +  chapterFinishDateMonth.substr(-2),
+							chapterFinishDateDDMMYYYY = chapterFinishDateDay.substr(-2) + '-' +  chapterFinishDateMonth.substr(-2) + '-' + chapterFinishDateYear;
+				}
+
+				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
 						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
-						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker"></button><button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
+						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateDDMMYYYY+'"></button><button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterDateCode = '<div class="oxfl-label-date oxfl-label-date-1">dd/mm</div>',
+						chapterDateCode = '<div class="oxfl-label-date oxfl-label-date-1">'+chapterFinishDateDDMM+'</div>',
 						chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img"> '+chapterImageCode+'</div> </div> </a> </article>';
 
 			} else { // Challenge Chapter
@@ -2897,7 +2909,7 @@ oxfordFlippedApp.oxflMarketplaceModalNoConnection = function() {
 
 }
 
-oxfordFlippedApp.datepickerInit = function() {
+oxfordFlippedApp.datepickerInit = function(endDate) {
 	moment.lang('en', {
 		week: { dow: 1 }
 	});
@@ -2906,13 +2918,18 @@ oxfordFlippedApp.datepickerInit = function() {
 		useCurrent : true,
 		minDate : moment()
 	});
+
+	if (endDate !== '') {
+		$('#oxfl-datepicker').datepicker('setDate', new Date(endDate));
+		$('#oxfl-datepicker').datepicker('update');
+	}
 }
 
-oxfordFlippedApp.oxflModalDatepicker = function() {
+oxfordFlippedApp.oxflModalDatepicker = function(endDate) {
 
 	var $modal = $('#oxfl-modal-datepicker');
 	$modal.modal('show');
-	oxfordFlippedApp.datepickerInit();
+	oxfordFlippedApp.datepickerInit(endDate);
 
 }
 
@@ -3092,7 +3109,8 @@ $(document).ready(function() {
 
 	//
 	$('body').on('click', '.oxfl-js-datepicker', function(e) {
-		oxfordFlippedApp.oxflModalDatepicker();
+		var endDate = $(this).attr('data-endDate');
+		oxfordFlippedApp.oxflModalDatepicker(endDate);
 	});
 
 });

@@ -761,7 +761,7 @@
         width: 240px;
         height: 95px;
         margin-top: -60px;
-        margin-right: 60px;
+        margin-right: 75px;
       }
     }
     .modal-body {
@@ -837,25 +837,35 @@
   th.picker-switch {
     width: 90px;
   }
-  th.next,
-  th.prev {
-    font-size: 32px;
-    color: $negative_color;
-    position: relative;
-    text-indent: 100%;
-    overflow: hidden;
-    background: url('img/datepicker-arrows.png') 0 0 no-repeat;
-    background-size: 100px 24px;
-    &:hover {
-      background: url('img/datepicker-arrows.png') 0 0 no-repeat;
+  thead tr:first-child {
+    th.next,
+    th.prev {
+      font-size: 32px;
+      color: $negative_color;
+      position: relative;
+      text-indent: 100%;
+      overflow: hidden;
+      background: url('img/datepicker-arrows.png') 0 3px no-repeat;
+      background-size: 100px 24px;
+      &.disabled {
+        opacity: .5;
+      }
+      &:hover {
+        background-image: url('img/datepicker-arrows.png');
+        background-color: transparent;
+        background-position: 0 3px;
+        background-size: 100px 24px;
+      }
+    }
+    th.next {
+      background-position: -77px 3px;
+      &:hover {
+        background-position: -77px 3px;
+      }
     }
   }
-  th.next {
-    background-position: -77px 0;
-    &:hover {
-      background-position: -77px 0;
-    }
-  }
+
+
   td.today {
     &::before {
       border-bottom-color: $color_17;
