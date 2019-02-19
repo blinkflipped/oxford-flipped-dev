@@ -692,6 +692,7 @@
 				$('body').imagesLoaded({background: 'div, a, span, button'}, function() {
 					$('html').addClass('htmlReady');
 				});
+				this.calculateActivityStatus();
 			}
 
 			this.gameToken = this.getActivityGameToken(data);
