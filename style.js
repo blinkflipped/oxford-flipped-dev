@@ -534,7 +534,7 @@
 				if (this.shouldCalculateVocabularyCoins()) {
 					blink.events.trigger('vocabulary:done');
 					var audio = document.getElementById('audio0');
-					if(typeof audio !== 'undefined'){
+					if(typeof audio !== 'undefined' && audio) {
 						audio.play();
 					}
 					this.storeGameScore(this.calculateVocabularyCoins());
