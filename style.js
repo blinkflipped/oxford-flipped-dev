@@ -2566,7 +2566,7 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 		var coins = blink.activity.currentStyle.calculateVocabularyCoins();
 		$('#oxfl-total-coins-1').text(coins);
-		var customSound = '<div style="display: none"><audio autoplay><source src="'+oxfordFlippedApp.sounds[0]+'" type="audio/mpeg"></audio></div>';
+		var customSound = '<div style="display: none"><audio id="audio0" autoplay><source src="'+oxfordFlippedApp.sounds[0]+'" type="audio/mpeg"></audio></div>';
 		$slide.closest('.js-slider-item').prepend(customSound).scrollTop(0).addClass('oxfl-final-screen-one-wrapper-active');
 
 	}));
