@@ -2912,10 +2912,11 @@ oxfordFlippedApp.oxflMarketplaceModalNoConnection = function() {
 
 oxfordFlippedApp.datepickerInit = function(endDate) {
 
-	moment.lang('en', {
+	moment.locale('en', {
 		week: { dow: 1 }
 	});
-	
+
+	$('#oxfl-datepicker').val('');
 	$('#oxfl-datepicker').datetimepicker({
 		format : 'DD/MM/YYYY',
 		useCurrent : true,
