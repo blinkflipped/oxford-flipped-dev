@@ -1723,7 +1723,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 							chapterFinishDateMonth = "0" + parseInt(chapterFinishDate.getMonth() + 1),
 							chapterFinishDateYear = chapterFinishDate.getFullYear(),
 							chapterFinishDateDDMM = chapterFinishDateDay.substr(-2) + '/' +  chapterFinishDateMonth.substr(-2),
-							chapterFinishDateDDMMYYYY = chapterFinishDateDay.substr(-2) + '-' +  chapterFinishDateMonth.substr(-2) + '-' + chapterFinishDateYear;
+							chapterFinishDateDDMMYYYY = chapterFinishDateDay.substr(-2) + '/' +  chapterFinishDateMonth.substr(-2) + '/' + chapterFinishDateYear;
 				}
 
 				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
@@ -2916,8 +2916,12 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 		week: { dow: 1 }
 	});
 
-	if (endDate === '') $('#oxfl-datepicker').val('');
-	
+	if (endDate === '') {
+		$('#oxfl-datepicker').val('');
+	} else {
+		$('#oxfl-datepicker').val(endDate);
+	}
+
 	$('#oxfl-datepicker').datetimepicker({
 		format : 'DD/MM/YYYY',
 		useCurrent : true,
