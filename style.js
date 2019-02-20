@@ -2924,15 +2924,18 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 
 	var $datepicker = $('#oxfl-datepicker');
 
-	if ($datepicker.is('.datetimepickerInit')) $datepicker.data("DateTimePicker").destroy()
-
 	$datepicker.datetimepicker({
 		format : 'DD/MM/YYYY',
 		useCurrent : true,
 		defaultDate: (endDate !== '') ? endDate : moment(),
 		minDate : moment()
 	});
-	$datepicker.addClass('datetimepickerInit');
+
+	if (endDate === '' || typeof endDate === 'undefined') {
+		$datepicker.data("DateTimePicker").setDate(new Date());
+	} else {
+		$datepicker.data("DateTimePicker").setDate(endDate);
+	}
 
 }
 
