@@ -15,7 +15,7 @@
   bottom: 0;
   z-index: 1000;
   font-family: $font_family_1;
-  
+
   .oxfl-body-resources &,
   .oxfl-body-chapters & {
     min-height: 760px;
@@ -26,7 +26,7 @@
     min-height: 860px;
   }
   .oxfl-body-gradebook & {
-    min-height: 1880px; //TODO PROV
+    min-height: 1880px;
   }
 }
 

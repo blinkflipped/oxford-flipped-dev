@@ -389,8 +389,7 @@ body.oxfl-body-gradebook {
   width: 17px;
   height: 18px;
   background: url(img/calendar.png) 0 0 no-repeat;
-  background-size: 17px 18px;
-  display: none; }
+  background-size: 17px 18px; }
 
 .oxfl-button-bubble {
   font-size: 24px;
@@ -2563,8 +2562,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       position: absolute;
       bottom: 0px;
       right: 16px;
-      z-index: 20;
-      display: none; }
+      z-index: 20; }
     .oxfl-chapter .oxfl-chapter-image-wrapper-img {
       position: absolute;
       top: 0;
