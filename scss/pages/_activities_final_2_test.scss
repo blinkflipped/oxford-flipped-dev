@@ -7,6 +7,7 @@ body.body_clase.view-mode {
       background-image: url(img/endscreen-ok-regular.png), url(img/endscreen-ok-regular-bg.png);
       background-repeat: no-repeat, repeat-x;
       background-size: contain;
+      overflow: hidden;
       &-fail {
         background-position: center top;
         background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);

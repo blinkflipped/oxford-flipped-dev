@@ -3148,7 +3148,8 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
   background-position: center center;
   background-image: url(img/endscreen-ok-regular.png), url(img/endscreen-ok-regular-bg.png);
   background-repeat: no-repeat, repeat-x;
-  background-size: contain; }
+  background-size: contain;
+  overflow: hidden; }
   body.body_clase.view-mode #actividad .oxfl-final-slide-fail {
     background-position: center top;
     background-image: url(img/endscreen-wrong-regular.png), url(img/endscreen-wrong-regular-bg.png);
