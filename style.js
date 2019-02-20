@@ -2920,14 +2920,19 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 		week: { dow: 1 }
 	});
 
-	$('#oxfl-datepicker').datetimepicker('destroy');
+	console.log(endDate);
 
-	$('#oxfl-datepicker').datetimepicker({
+	var $datepicker = $('#oxfl-datepicker');
+
+	if ($datepicker.is('.datetimepickerInit')) $datepicker.data("DateTimePicker").destroy()
+
+	$datepicker.datetimepicker({
 		format : 'DD/MM/YYYY',
 		useCurrent : true,
 		defaultDate: (endDate !== '') ? endDate : moment(),
 		minDate : moment()
 	});
+	$datepicker.addClass('datetimepickerInit');
 
 }
 
