@@ -3008,6 +3008,10 @@ oxfordFlippedApp.datepickerDeleteDate = function(idActivity) {
 
 				$cardButton.attr('data-enddate', '');
 				$cardLabel.removeClass('oxfl-label-date-0 oxfl-label-date-1 oxfl-label-date-2').addClass('oxfl-label-date-hidden ').text('');
+
+				var $modal = $('#oxfl-modal-datepicker');
+				$modal.modal('hide');
+				
 			}
 		})
 	);
