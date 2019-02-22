@@ -644,6 +644,8 @@
 			window.bookcover = (typeof data.units[0] !== "undefined" && typeof data.units[0].subunits[0] !== "undefined") ? data.units[0].subunits[0].id : "";
 			this.cursoJson = data;
 
+			console.log(this.cursoJson);
+
 			if(blink.activity.secuencia.length >= 1) {
 				this.onActivityDataLoaded(subunit);
 			}
