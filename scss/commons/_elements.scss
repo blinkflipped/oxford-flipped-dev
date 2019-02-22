@@ -778,11 +778,12 @@
     display: none;
   }
   &.oxfl-modal-datepicker-update {
-    .oxfl-button-setdate {
+    .oxfl-button-newdate {
       display: none;
     }
     .oxfl-button-updatedate {
       display: inline-block;
+      margin-top: 20px;
     }
   }
 }

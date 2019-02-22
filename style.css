@@ -832,10 +832,11 @@ body.oxfl-body-gradebook {
 
 #oxfl-modal-datepicker .oxfl-button-updatedate {
   display: none; }
-#oxfl-modal-datepicker.oxfl-modal-datepicker-update .oxfl-button-setdate {
+#oxfl-modal-datepicker.oxfl-modal-datepicker-update .oxfl-button-newdate {
   display: none; }
 #oxfl-modal-datepicker.oxfl-modal-datepicker-update .oxfl-button-updatedate {
-  display: inline-block; }
+  display: inline-block;
+  margin-top: 20px; }
 
 .oxfl-modal .modal-body {
   font-size: 19px; }
