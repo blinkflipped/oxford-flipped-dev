@@ -643,31 +643,19 @@
 
 			window.bookcover = (typeof data.units[0] !== "undefined" && typeof data.units[0].subunits[0] !== "undefined") ? data.units[0].subunits[0].id : "";
 			this.cursoJson = data;
-
 			console.log(this.cursoJson);
-
-			var isBookCover = idclase.toString() === window.bookcover;
-			if (isBookCover) {
-				this.loadUserData();
-			}
-			var urlCursoJson = '/coursePlayer/curso_json.php?idcurso='+idcurso+'&idgrupo='+idgrupo+'&_completo=true';
-			blink.ajax(urlCursoJson, (function(o) {
-				if (o.startsWith('ERROR')) {
-					_showAlert(textweb('error_general_AJAX'));
-				} else {
-					console.log(o);
-					if (isBookCover) {
-
-						var updateHash = false;
-						oxfordFlippedApp.homepage(o, updateHash);
-					}
-				}
-			}));
-
 			if(blink.activity.secuencia.length >= 1) {
 				this.onActivityDataLoaded(subunit);
 			}
 			oxfordFlippedApp.getChallengeIDs(data);
+
+			var isBookCover = idclase.toString() === window.bookcover;
+
+			if (isBookCover) {
+				this.loadUserData();
+				var updateHash = false;
+				oxfordFlippedApp.homepage(data, updateHash);
+			}
 		},
 
 		/**
