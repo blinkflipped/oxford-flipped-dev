@@ -1234,6 +1234,38 @@ oxfordFlippedApp.gradeToStars = function(grade) {
 
 }
 
+oxfordFlippedApp.deadlineState = function(endDate) {
+	// 0: En verde cuando todavía queda más de un día para llegar a la fecha límite
+	// 1: En amarillo cuando queda un día para llega a la fecha limite
+	// 2: En rojo cuando ha pasado la fecha límite
+	if (!Date.now) {
+		Date.now = function() { return new Date().getTime(); }
+	}
+	var currentTimeStamp = Math.floor(Date.now() / 1000)
+
+	var difference = endDate - currentTimeStamp;
+	var daysDifference = Math.floor(difference/60/60/24);
+	console.log(daysDifference);
+
+	if (daysDifference < 0) {
+		return 2;
+	} else if (daysDifference >= 0 < 2) {
+		return 1;
+	} else {
+		return 0;
+	}
+
+}
+
+oxfordFlippedApp.getDateDDMM = function(date) {
+	var dateMiliseconds = new Date(date * 1000),
+			dateDay = "0" + dateMiliseconds.getDate(),
+			dateMonth = "0" + parseInt(dateMiliseconds.getMonth() + 1),
+			dateDDMM = dateDay.substr(-2) + '/' +  dateMonth.substr(-2);
+	return dateDDMM;
+}
+
+
 oxfordFlippedApp.fontSizeResize = function(elements) {
 	if (elements.length < 0) {
 		return;
@@ -1713,24 +1745,18 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
 
 				var chapterNumber = i + 1,
-						chapterFinishDateTimestap = 1552085940; //TODO Put actual date
-				var chapterFinishDate, chapterFinishDateDay, chapterFinishDateMonth, chapterFinishDateYear, chapterFinishDateDDMM, chapterFinishDateDDMMYYYY;
+						//chapterFinishDateTimestap = 1552085940; //TODO Put actual date
+						chapterFinishDateTimestap = chapter.planing.endDate;
 
-				if (chapterFinishDateTimestap) {
-					var chapterFinishDate = new Date(chapterFinishDateTimestap * 1000),
-							chapterFinishDateDay = "0" + chapterFinishDate.getDate(),
-							chapterFinishDateMonth = "0" + parseInt(chapterFinishDate.getMonth() + 1),
-							chapterFinishDateYear = chapterFinishDate.getFullYear(),
-							chapterFinishDateDDMM = chapterFinishDateDay.substr(-2) + '/' +  chapterFinishDateMonth.substr(-2),
-							chapterFinishDateDDMMYYYY = chapterFinishDateDay.substr(-2) + '/' +  chapterFinishDateMonth.substr(-2) + '/' + chapterFinishDateYear;
-				}
+				var chapterFinishDateDDMM = (chapterFinishDateTimestap && typeof chapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(chapterFinishDateTimestap) : '';
+				var chapterFinishDateState = (chapterFinishDateTimestap) ? oxfordFlippedApp.deadlineState(chapterFinishDateTimestap) : '';
 
 				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
 						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
-						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateDDMMYYYY+'"></button><button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
+						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button><button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterDateCode = '<div class="oxfl-label-date oxfl-label-date-1">'+chapterFinishDateDDMM+'</div>',
+						chapterDateCode = (chapterFinishDateDDMM !== '') ? '<div class="oxfl-label-date oxfl-label-date-'+chapterFinishDateState+'">'+chapterFinishDateDDMM+'</div>' : '',
 						chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img"> '+chapterImageCode+'</div> </div> </a> </article>';
 
 			} else { // Challenge Chapter
@@ -2936,6 +2962,27 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 	} else {
 		$datepicker.data("DateTimePicker").setDate(endDate);
 	}
+
+}
+
+oxfordFlippedApp.datepickerSetDate = function(endDate,idActivity) {
+
+	var endDateDDMM = oxfordFlippedApp.getDateDDMM(endDate);
+
+	blink.ajax("/LMS/ajax.php?op=GroupPlanning.updateGroupPlanning&idgrupo=" + idgrupo + "&idcurso=" + idcurso + "&id=" + idActivity + "&type=activity&startDate=&endDate=" + endDate, (function(o) {
+			if (o.startsWith('ERROR')) {
+				_showAlert(textweb('error_general_AJAX'));
+			} else {
+				console.log("Done!");
+				var $card = $('.oxfl-chapter[data-id="'+idActivity+'"]'),
+						$cardButton = $card.find('.oxfl-js-datepicker'),
+						$cardLabel = $card.find('.oxfl-label-date');
+
+				$cardButton.attr('data-enddate', endDate);
+				$cardLabel.text(endDateDDMM);
+			}
+		})
+	);
 
 }
 
