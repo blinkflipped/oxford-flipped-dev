@@ -430,13 +430,19 @@ body.oxfl-body-gradebook {
     height: 30px;
     background-image: url(img/button-2-a.png);
     padding-top: 0;
-    font-size: 14px;
-    font-size: 1.4rem; }
+    font-size: 14px; }
   .oxfl-button-bubble-5 {
-    width: 111px;
-    height: 44px;
+    width: 160px;
+    height: 68px;
     background-image: url(img/button-3.png);
     padding-top: 0;
+    font-size: 21px; }
+  .oxfl-button-bubble-6 {
+    width: 180px;
+    height: 64px;
+    background-image: url(img/button-2-a.png);
+    padding-top: 0;
+    padding-bottom: 10px;
     font-size: 21px; }
 
 .oxfl-button-large {
@@ -836,7 +842,7 @@ body.oxfl-body-gradebook {
   display: none; }
 #oxfl-modal-datepicker.oxfl-modal-datepicker-update .oxfl-button-updatedate {
   display: inline-block;
-  margin-top: 20px; }
+  margin-top: 10px; }
 
 .oxfl-modal .modal-body {
   font-size: 19px; }
