@@ -2979,7 +2979,8 @@ oxfordFlippedApp.datepickerSetDate = function(endDate,idActivity) {
 						$cardLabel = $card.find('.oxfl-label-date');
 
 				$cardButton.attr('data-enddate', endDate);
-				$cardLabel.removeClass('oxfl-label-date-hidden').text(endDateDDMM);
+				var cardLabelState = oxfordFlippedApp.deadlineState(endDate);
+				$cardLabel.removeClass('oxfl-label-date-hidden').addClass('oxfl-label-date-'+cardLabelState).text(endDateDDMM);
 			}
 		})
 	);
