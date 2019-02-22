@@ -2980,7 +2980,7 @@ oxfordFlippedApp.datepickerSetDate = function(endDate,idActivity) {
 
 				$cardButton.attr('data-enddate', endDate);
 				var cardLabelState = oxfordFlippedApp.deadlineState(endDate);
-				$cardLabel.removeClass('oxfl-label-date-hidden').addClass('oxfl-label-date-'+cardLabelState).text(endDateDDMM);
+				$cardLabel.removeClass('oxfl-label-date-hidden oxfl-label-date-0 oxfl-label-date-1 oxfl-label-date-2').addClass('oxfl-label-date-'+cardLabelState).text(endDateDDMM);
 			}
 		})
 	);
