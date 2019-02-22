@@ -655,7 +655,9 @@
 				if (o.startsWith('ERROR')) {
 					_showAlert(textweb('error_general_AJAX'));
 				} else {
+					console.log(o);
 					if (isBookCover) {
+
 						var updateHash = false;
 						oxfordFlippedApp.homepage(o, updateHash);
 					}
