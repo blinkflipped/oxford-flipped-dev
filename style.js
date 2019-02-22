@@ -1746,7 +1746,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 				var chapterNumber = i + 1,
 						//chapterFinishDateTimestap = 1552085940; //TODO Put actual date
-						chapterFinishDateTimestap = chapter.planing.endDate;
+						chapterFinishDateTimestap = (typeof chapter.planning !== 'undefined') ? chapter.planning.endDate : '';
 
 				var chapterFinishDateDDMM = (chapterFinishDateTimestap && typeof chapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(chapterFinishDateTimestap) : '';
 				var chapterFinishDateState = (chapterFinishDateTimestap) ? oxfordFlippedApp.deadlineState(chapterFinishDateTimestap) : '';
