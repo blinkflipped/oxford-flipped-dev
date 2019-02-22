@@ -773,6 +773,20 @@
 }
 
 
+#oxfl-modal-datepicker {
+  .oxfl-button-updatedate {
+    display: none;
+  }
+  &.oxfl-modal-datepicker-update {
+    .oxfl-button-setdate {
+      display: none;
+    }
+    .oxfl-button-updatedate {
+      display: inline-block;
+    }
+  }
+}
+
 
 // Custom by Blink
 
