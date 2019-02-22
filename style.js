@@ -1434,7 +1434,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				modalConnectionHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-noconnection" id="oxfl-modal-marketplace-noconnection" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>' + oxfordFlippedApp.text.noconnection + '</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">' + oxfordFlippedApp.text.ok + '</button> </div> </div> </div> </div> </div>',
 				modalNoCoinsHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-nocoins" id="oxfl-modal-marketplace-nocoins" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>' + oxfordFlippedApp.text.gamificacion_monedas_insuficientes + '</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">' + oxfordFlippedApp.text.ok + '</button> </div> </div> </div> </div> </div>',
 				modalMarketplaceInfoHtml = '<div class="modal fade oxfl-modal oxfl-modal-4 oxfl-modal-marketplace-info" id="oxfl-modal-marketplace-info" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div class="oxfl-title2b" id="oxfl-modal-marketplace-info-title"></div> <p id="oxfl-modal-marketplace-info-description"></p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <div class="oxfl-strip"> <div class="oxfl-strip-inner"> <span id="oxfl-modal-marketplace-info-coin"></span> <span class="oxfl-icon oxfl-icon-coin"></span></div></div><button type="button" class="btn btn-primary oxfl-js-buy-resource" data-marketplace-id data-dismiss="modal">' + oxfordFlippedApp.text.buy + '</button></div></div></div></div></div>',
-				modalDatepicker = '<div class="modal fade oxfl-modal oxfl-modal-5" id="oxfl-modal-datepicker" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <div class="oxfl-modal-datepicker-monster"></div> </div> <div class="modal-body"> <div class="oxfl-datepicker-wrapper"> <div class="oxfl-datepicker-content"> <div class="oxfl-datepicker-content-left"> <div class="oxfl-datepicker-title">' + oxfordFlippedApp.text.modalDatepicker1 + '</div> <button class="oxfl-button oxfl-button-bubble oxfl-button-bubble-5">' + oxfordFlippedApp.text.modalDatepicker2 + '</button> </div> <div class="oxfl-datepicker-content-right"> <div class="oxfl-modal-datepicker"> <div class="oxfl-modal-datepicker-form"><input type="text" class="form-control" id="oxfl-datepicker" /></div> </div> </div> </div> </div> </div> </div> </div> </div>';
+				modalDatepicker = '<div class="modal fade oxfl-modal oxfl-modal-5" id="oxfl-modal-datepicker" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <div class="oxfl-modal-datepicker-monster"></div> </div> <div class="modal-body"> <div class="oxfl-datepicker-wrapper"> <div class="oxfl-datepicker-content"> <div class="oxfl-datepicker-content-left"> <div class="oxfl-datepicker-title">' + oxfordFlippedApp.text.modalDatepicker1 + '</div> <button class="oxfl-button oxfl-button-bubble oxfl-button-bubble-5 oxfl-js-setdate">' + oxfordFlippedApp.text.modalDatepicker2 + '</button> </div> <div class="oxfl-datepicker-content-right"> <div class="oxfl-modal-datepicker"> <div class="oxfl-modal-datepicker-form"><input type="text" class="form-control" id="oxfl-datepicker" /></div> </div> </div> </div> </div> </div> </div> </div> </div>';
 
 		var totalHtml = '<div id="oxfl-general">' + homeHtml + lessonsHtml + unitHtml + marketplaceHtml + marketplaceInnerHtml + customHtmlByUser + ' </div> ' + modalLockChaptersHtml + modalNotificationsHtml + modalConnectionHtml + modalNoCoinsHtml + modalMarketplaceInfoHtml + modalDatepicker;
 
@@ -2940,7 +2940,7 @@ oxfordFlippedApp.oxflMarketplaceModalNoConnection = function() {
 
 }
 
-oxfordFlippedApp.datepickerInit = function(endDate) {
+oxfordFlippedApp.datepickerInit = function(endDate, idActivity) {
 
 	moment.locale('en', {
 		week: { dow: 1 }
@@ -2949,6 +2949,8 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 	console.log(endDate);
 
 	var $datepicker = $('#oxfl-datepicker');
+
+	$datepicker.attr('data-activityid', idActivity);
 
 	$datepicker.datetimepicker({
 		format : 'DD/MM/YYYY',
@@ -3006,11 +3008,11 @@ oxfordFlippedApp.datepickerDeleteDate = function(idActivity) {
 }
 
 
-oxfordFlippedApp.oxflModalDatepicker = function(endDate) {
+oxfordFlippedApp.oxflModalDatepicker = function(endDate, idActivity) {
 
 	var $modal = $('#oxfl-modal-datepicker');
 	$modal.modal('show');
-	oxfordFlippedApp.datepickerInit(endDate);
+	oxfordFlippedApp.datepickerInit(endDate, idActivity);
 
 }
 
@@ -3190,8 +3192,23 @@ $(document).ready(function() {
 
 	//
 	$('body').on('click', '.oxfl-js-datepicker', function(e) {
-		var endDate = $(this).attr('data-endDate');
-		oxfordFlippedApp.oxflModalDatepicker(endDate);
+		var endDate = $(this).attr('data-endDate')
+				idActivity = $(this).closest('.oxfl-chapter').attr('data-id');
+		oxfordFlippedApp.oxflModalDatepicker(endDate, idActivity);
 	});
+
+
+	$('body').on('click', '.oxfl-js-setdate', function(e) {
+
+		var $datepicker = $('#oxfl-datepicker'),
+				idActivity = $datepicker.attr('data-activityid'),
+				newDate = $datepicker.data('DateTimePicker').getDate();
+
+		var endDate = new Date(newDate._d).getTime()/1000;
+
+		oxfordFlippedApp.datepickerSetDate(endDate,idActivity);
+
+	});
+
 
 });
