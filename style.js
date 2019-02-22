@@ -647,14 +647,15 @@
 			console.log(this.cursoJson);
 
 			var isBookCover = idclase.toString() === window.bookcover;
-
+			if (isBookCover) {
+				this.loadUserData();
+			}
 			var urlCursoJson = '/coursePlayer/curso_json.php?idcurso='+idcurso+'&idgrupo='+idgrupo+'&_completo=true';
 			blink.ajax(urlCursoJson, (function(o) {
 				if (o.startsWith('ERROR')) {
 					_showAlert(textweb('error_general_AJAX'));
 				} else {
 					if (isBookCover) {
-						this.loadUserData();
 						var updateHash = false;
 						oxfordFlippedApp.homepage(o, updateHash);
 					}
