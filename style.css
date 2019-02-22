@@ -606,6 +606,8 @@ body.oxfl-body-gradebook {
     color: #000000; }
   .oxfl-label-date.oxfl-label-date-2 {
     background-color: #c1272d; }
+  .oxfl-label-date-hidden {
+    display: none; }
 
 .oxfl-strip {
   display: inline-block;
