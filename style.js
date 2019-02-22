@@ -628,7 +628,7 @@
 		 * Carga de datos del libro en un actividad
 		 */
 		fetchData: function() {
-			blink.getCourse(idcurso).done((function(data) {
+			blink.getCourse(idcurso,idgrupo).done((function(data) {
 				this.onCourseDataLoaded(data);
 			}).bind(this));
 		},
