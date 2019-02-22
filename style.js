@@ -2968,7 +2968,7 @@ oxfordFlippedApp.datepickerInit = function(endDate) {
 oxfordFlippedApp.datepickerSetDate = function(endDate,idActivity) {
 
 	var endDateDDMM = oxfordFlippedApp.getDateDDMM(endDate);
-	console.log(endDate);
+
 	blink.ajax("/LMS/ajax.php?op=GroupPlanning.updateGroupPlanning&idgrupo=" + idgrupo + "&idcurso=" + idcurso + "&id=" + idActivity + "&type=activity&startDate=&endDate=" + endDate, (function(o) {
 			if (o.startsWith('ERROR')) {
 				_showAlert(textweb('error_general_AJAX'));
@@ -2986,6 +2986,25 @@ oxfordFlippedApp.datepickerSetDate = function(endDate,idActivity) {
 	);
 
 }
+
+oxfordFlippedApp.datepickerDeleteDate = function(idActivity) {
+
+	blink.ajax('/LMS/ajax.php?op=GroupPlanning.deleteGroupPlanning&idgrupo='+idgrupo+'&idcurso='+idcurso+'&id='+idActivity+'&type=activity', (function(o) {
+			if (o.startsWith('ERROR')) {
+				_showAlert(textweb('error_general_AJAX'));
+			} else {
+				console.log("Deleted!");
+				var $card = $('.oxfl-chapter[data-id="'+idActivity+'"]'),
+						$cardButton = $card.find('.oxfl-js-datepicker'),
+						$cardLabel = $card.find('.oxfl-label-date');
+
+				$cardButton.attr('data-enddate', '');
+				$cardLabel.removeClass('oxfl-label-date-0 oxfl-label-date-1 oxfl-label-date-2').addClass('oxfl-label-date-hidden ').text('');
+			}
+		})
+	);
+}
+
 
 oxfordFlippedApp.oxflModalDatepicker = function(endDate) {
 
