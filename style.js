@@ -1249,7 +1249,7 @@ oxfordFlippedApp.deadlineState = function(endDate) {
 
 	if (daysDifference < 0) {
 		return 2;
-	} else if (daysDifference >= 0 && daysDifference < 2) {
+	} else if (daysDifference >= 0 && daysDifference < 1) {
 		return 1;
 	} else {
 		return 0;
@@ -3202,9 +3202,10 @@ $(document).ready(function() {
 
 		var $datepicker = $('#oxfl-datepicker'),
 				idActivity = $datepicker.attr('data-activityid'),
-				newDate = $datepicker.data('DateTimePicker').getDate();
+				getDate = $datepicker.data('DateTimePicker').getDate(),
+				newDate = (getDate && typeof getDate !== 'undefined') ? getDate : moment(); // Get current date if null or doesnt exist
 
-		var endDate = new Date(newDate._d).getTime()/1000;
+		var endDate = Math.floor(new Date(newDate._d).getTime()/1000);
 
 		oxfordFlippedApp.datepickerSetDate(endDate,idActivity);
 
