@@ -938,26 +938,31 @@ body.oxfl-body-gradebook {
     color: #999999;
     font-weight: bold; }
 
+#oxfl-notifications-list {
+  table-layout: auto;
+  width: 100%; }
+
 .oxfl-notification-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  display: table-row;
   font-size: 12px;
   font-size: 1.2rem; }
-  .oxfl-notification-item > div:nth-child(1) {
+  .oxfl-notification-item th {
+    font-weight: 500; }
+  .oxfl-notification-item th:nth-child(1), .oxfl-notification-item td:nth-child(1) {
     width: 70px;
     min-width: 70px; }
-  .oxfl-notification-item > div:nth-child(2) {
+  .oxfl-notification-item th.oxfl-notification-item-chapter, .oxfl-notification-item td.oxfl-notification-item-chapter {
     width: 70px;
     min-width: 70px; }
-  .oxfl-notification-item > div.oxfl-notification-item-chapter-description {
-    flex-grow: 2; }
-  .oxfl-notification-item > div.oxfl-notification-item-chapter-duedate {
+  .oxfl-notification-item th.oxfl-notification-item-chapter-description, .oxfl-notification-item td.oxfl-notification-item-chapter-description {
+    width: 200px;
+    max-width: 200px; }
+  .oxfl-notification-item th.oxfl-notification-item-chapter-duedate, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate {
     text-align: center;
     width: 50px;
     min-width: 50px;
     font-size: 10px; }
-  .oxfl-notification-item > div.oxfl-notification-item-chapter-duedate-label {
+  .oxfl-notification-item th.oxfl-notification-item-chapter-duedate-label, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate-label {
     width: 24px;
     min-width: 24px; }
   .oxfl-notification-item .oxfl-title3 {
@@ -970,6 +975,8 @@ body.oxfl-body-gradebook {
       display: inline-block;
       margin-left: 4px; }
   .oxfl-notification-item-chapter, .oxfl-notification-item-chapter-description {
+    font-size: 12px;
+    font-size: 1.2rem;
     padding-left: 8px;
     padding-right: 8px;
     text-overflow: ellipsis;

@@ -933,23 +933,29 @@
 
 // Notifications list
 
+#oxfl-notifications-list {
+  table-layout: auto;
+  width: 100%;
+}
 .oxfl-notification-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  display: table-row;
   @include font-size(1.2);
-  &>div {
+  th {
+    font-weight: 500;
+  }
+  th,td {
     &:nth-child(1) {
       width: 70px;
       min-width: 70px;
     }
-    &:nth-child(2) {
+    &.oxfl-notification-item-chapter {
       width: 70px;
       min-width: 70px;
     }
 
     &.oxfl-notification-item-chapter-description {
-      flex-grow: 2;
+      width: 200px;
+      max-width: 200px;
     }
 
     &.oxfl-notification-item-chapter-duedate {
@@ -975,6 +981,7 @@
   }
   &-chapter,
   &-chapter-description {
+    @include font-size(1.2);
     padding-left: 8px;
     padding-right: 8px;
     text-overflow: ellipsis;
