@@ -2490,9 +2490,12 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 		blink.getCourse(idcurso).done((function(data) {
 			oxfordFlippedApp.bookData = data;
-		}).bind(this));
+			console.log("NEW DATA");
+			console.log(data);
+			console.log(oxfordFlippedApp.bookData);
+		});
 
-		console.log(oxfordFlippedApp.bookData);
+
 	}
 
 }
