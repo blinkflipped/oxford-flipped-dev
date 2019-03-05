@@ -2487,6 +2487,12 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 			$items.addClass('unlock').removeClass('lock');
 		}
 		$('#oxfl-modal-lock-chapters').modal('hide');
+
+		blink.getCourse(idcurso).done((function(data) {
+			oxfordFlippedApp.bookData = data;
+		}).bind(this));
+
+		console.log(oxfordFlippedApp.bookData);
 	}
 
 }
