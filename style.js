@@ -2493,7 +2493,7 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 			console.log("NEW DATA");
 			console.log(data);
 			console.log(oxfordFlippedApp.bookData);
-		});
+		}));
 
 
 	}
