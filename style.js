@@ -1268,7 +1268,7 @@ oxfordFlippedApp.deadlineState = function(endDate) {
 
 	if (daysDifference < 0) {
 		return 2;
-	} else if (daysDifference === 0) {
+	} else if (daysDifference >= 0 && daysDifference < 2) {
 		return 1;
 	} else {
 		return 0;
