@@ -1671,7 +1671,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 							//
 							var notifChapterFinishDateTimestap = (typeof chapter.planning !== 'undefined') ? chapter.planning.endDate : '',
 									notifChapterFinishDateDDMM = (notifChapterFinishDateTimestap !== '' && typeof notifChapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(notifChapterFinishDateTimestap) : '-',
-									notifChapterFinishDateState = (notifChapterFinishDateTimestap) ? oxfordFlippedApp.deadlineState(notifChapterFinishDateTimestap) : 'hidden';
+									notifChapterFinishDateState = (notifChapterFinishDateTimestap !== '' && typeof notifChapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.deadlineState(notifChapterFinishDateTimestap) : 'hidden';
 
 							if (isChapterNew || (lessonsNotCompleted && notifChapterFinishDateTimestap !== '') ) {
 								var notifChapterTag = chapter.tag;
