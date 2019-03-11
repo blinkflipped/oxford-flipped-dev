@@ -2492,22 +2492,30 @@ oxfordFlippedApp.goback = function(classRef) {
 
 oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
-	onCursoCambiarBloqueado(chapterID, idcurso);
+	onCursoCambiarBloqueado(chapterID, idcurso, function() {
 
-	var isDone = true,
-			newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
+		var isDone = true,
+				newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
 
-	if (isDone) {
+		if (isDone) {
 
-		var $items = $('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-chapter');
+			var $items = $('.oxfl-chapter[data-id="'+chapterID+'"], .oxfl-chapter[data-id="'+chapterID+'"] .oxfl-js-modal-lock-chapter');
 
-		if (newIsLocked) {
-			$items.removeClass('unlock').addClass('lock');
-		} else {
-			$items.addClass('unlock').removeClass('lock');
+			if (newIsLocked) {
+				$items.removeClass('unlock').addClass('lock');
+			} else {
+				$items.addClass('unlock').removeClass('lock');
+			}
+			$('#oxfl-modal-lock-chapters').modal('hide');
 		}
-		$('#oxfl-modal-lock-chapters').modal('hide');
-	}
+
+		blink.getCourse(idcurso).done((function(data) {
+			oxfordFlippedApp.bookData = data;
+			console.log("NEW DATA");
+			console.log(data);
+			console.log(oxfordFlippedApp.bookData);
+		}));
+	});
 
 }
 
