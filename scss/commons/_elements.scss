@@ -951,11 +951,17 @@
     &.oxfl-notification-item-chapter {
       width: 70px;
       min-width: 70px;
+      span {
+        width: 70px;
+      }
     }
 
     &.oxfl-notification-item-chapter-description {
       width: 200px;
       max-width: 200px;
+      span {
+        width: 200px;
+      }
     }
 
     &.oxfl-notification-item-chapter-duedate {
@@ -984,9 +990,24 @@
     @include font-size(1.2);
     padding-left: 8px;
     padding-right: 8px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    span {
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+  }
+}
+
+.oxfl-notif-label-date {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url(img/notif-date-label.png) 0 0 no-repeat;
+  background-size: 24px 64px;
+  &-2 {
+    background-position: 0 -40px;
   }
 }
 

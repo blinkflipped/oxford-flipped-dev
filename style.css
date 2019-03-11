@@ -954,9 +954,13 @@ body.oxfl-body-gradebook {
   .oxfl-notification-item th.oxfl-notification-item-chapter, .oxfl-notification-item td.oxfl-notification-item-chapter {
     width: 70px;
     min-width: 70px; }
+    .oxfl-notification-item th.oxfl-notification-item-chapter span, .oxfl-notification-item td.oxfl-notification-item-chapter span {
+      width: 70px; }
   .oxfl-notification-item th.oxfl-notification-item-chapter-description, .oxfl-notification-item td.oxfl-notification-item-chapter-description {
     width: 200px;
     max-width: 200px; }
+    .oxfl-notification-item th.oxfl-notification-item-chapter-description span, .oxfl-notification-item td.oxfl-notification-item-chapter-description span {
+      width: 200px; }
   .oxfl-notification-item th.oxfl-notification-item-chapter-duedate, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate {
     text-align: center;
     width: 50px;
@@ -978,10 +982,22 @@ body.oxfl-body-gradebook {
     font-size: 12px;
     font-size: 1.2rem;
     padding-left: 8px;
-    padding-right: 8px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap; }
+    padding-right: 8px; }
+    .oxfl-notification-item-chapter span, .oxfl-notification-item-chapter-description span {
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 100%; }
+
+.oxfl-notif-label-date {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url(img/notif-date-label.png) 0 0 no-repeat;
+  background-size: 24px 64px; }
+  .oxfl-notif-label-date-2 {
+    background-position: 0 -40px; }
 
 .slick-track,
 .slick-slide {

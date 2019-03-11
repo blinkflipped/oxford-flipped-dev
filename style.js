@@ -658,7 +658,6 @@
 
 			window.bookcover = (typeof data.units[0] !== "undefined" && typeof data.units[0].subunits[0] !== "undefined") ? data.units[0].subunits[0].id : "";
 			this.cursoJson = data;
-			console.log(this.cursoJson);
 			if(blink.activity.secuencia.length >= 1) {
 				this.onActivityDataLoaded(subunit);
 			}
@@ -1265,7 +1264,6 @@ oxfordFlippedApp.deadlineState = function(endDate) {
 
 	var difference = endDate - currentTimeStamp;
 	var daysDifference = Math.floor(difference/60/60/24);
-	console.log(daysDifference);
 
 	if (daysDifference < 0) {
 		return 2;
@@ -1637,7 +1635,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 	var notificationsListHeaderItem = document.createElement('tr');
 	notificationsListHeaderItem.className = 'oxfl-notification-item oxfl-notification-item-header';
-	notificationsListHeaderItem.innerHTML = '<th></th><th class="oxfl-notification-item-chapter"></th><th class="oxfl-notification-item-chapter-description"></th><th class="oxfl-notification-item-chapter-duedate">' + oxfordFlippedApp.text.dueDate + '</th><th class="oxfl-notification-item-chapter-duedate-label"></th><th></th>';
+	notificationsListHeaderItem.innerHTML = '<th></th><th class="oxfl-notification-item-chapter"></th><th class="oxfl-notification-item-chapter-description"></th><th class="oxfl-notification-item-chapter-duedate"><span>' + oxfordFlippedApp.text.dueDate + '</span></th><th class="oxfl-notification-item-chapter-duedate-label"></th><th></th>';
 	notificationsList.appendChild(notificationsListHeaderItem);
 
 	$.each(data.units, function(i, unit){
@@ -1681,7 +1679,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 								totalNotif++;
 								var notificationsListItem = document.createElement('tr');
 								notificationsListItem.className = 'oxfl-notification-item';
-								notificationsListItem.innerHTML = '<td><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></td><td class="oxfl-notification-item-chapter">'+notifChapterTitle+'.</td><td class="oxfl-notification-item-chapter-description">'+notifChapterDescription+'</td><td class="oxfl-notification-item-chapter-duedate">'+notifChapterFinishDateDDMM+'</td><td class="oxfl-notification-item-chapter-duedate-label"><div class="oxfl-notif-label-date oxfl-notif-label-date-'+notifChapterFinishDateState+'"></div></td><td><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></td>';
+								notificationsListItem.innerHTML = '<td><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></td><td class="oxfl-notification-item-chapter"><span>'+notifChapterTitle+'</span></td><td class="oxfl-notification-item-chapter-description"><span>'+notifChapterDescription+'</span></td><td class="oxfl-notification-item-chapter-duedate">'+notifChapterFinishDateDDMM+'</td><td class="oxfl-notification-item-chapter-duedate-label"><div class="oxfl-notif-label-date oxfl-notif-label-date-'+notifChapterFinishDateState+'"></div></td><td><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></td>';
 								notificationsList.appendChild(notificationsListItem);
 							}
 						}
@@ -1696,7 +1694,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 							totalNotif++;
 							var notificationsListItem = document.createElement('tr');
 							notificationsListItem.className = 'oxfl-notification-item';
-							notificationsListItem.innerHTML = '<td><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></td><td class="oxfl-notification-item-chapter">'+notifChapterTitle+'.</td><td class="oxfl-notification-item-chapter-description">'+notifChapterDescription+'</td><td class="oxfl-notification-item-chapter-duedate"></td><td class="oxfl-notification-item-chapter-duedate-label"></td><td><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></td>';
+							notificationsListItem.innerHTML = '<td><h3 class="oxfl-title3">'+notifEpisodeTitle+'</h3></td><td class="oxfl-notification-item-chapter"><span>'+notifChapterTitle+'</span></td><td class="oxfl-notification-item-chapter-description"><span>'+notifChapterDescription+'</span></td><td class="oxfl-notification-item-chapter-duedate"></td><td class="oxfl-notification-item-chapter-duedate-label"></td><td><button class="oxfl-button-bubble oxfl-button-bubble-4 oxfl-js-load-chapter" data-chapter-id="'+notifChapterID+'">'+oxfordFlippedApp.text.start+'</button></td>';
 							notificationsList.appendChild(notificationsListItem);
 						}
 					}
@@ -2982,8 +2980,6 @@ oxfordFlippedApp.datepickerInit = function(endDate, idActivity) {
 		week: { dow: 1 }
 	});
 
-	console.log(endDate);
-
 	var $datepicker = $('#oxfl-datepicker');
 
 	$datepicker.attr('data-activityid', idActivity);
@@ -3011,7 +3007,7 @@ oxfordFlippedApp.datepickerSetDate = function(endDate,idActivity) {
 			if (o.startsWith('ERROR')) {
 				_showAlert(textweb('error_general_AJAX'));
 			} else {
-				console.log("Done!");
+				oxfordFlippedApp.console("Done!");
 				var $card = $('.oxfl-chapter[data-id="'+idActivity+'"]'),
 						$cardButton = $card.find('.oxfl-js-datepicker'),
 						$cardLabel = $card.find('.oxfl-label-date');
@@ -3035,7 +3031,7 @@ oxfordFlippedApp.datepickerDeleteDate = function(idActivity) {
 			if (o.startsWith('ERROR')) {
 				_showAlert(textweb('error_general_AJAX'));
 			} else {
-				console.log("Deleted!");
+				oxfordFlippedApp.console("Deleted!");
 				var $card = $('.oxfl-chapter[data-id="'+idActivity+'"]'),
 						$cardButton = $card.find('.oxfl-js-datepicker'),
 						$cardLabel = $card.find('.oxfl-label-date');
