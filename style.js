@@ -1119,7 +1119,8 @@ oxfordFlippedApp.text = {
 	modalDatepicker1: textweb('style_flipped_datepicker_text'),
 	modalDatepicker2: textweb('style_flipped_datepicker_set'),
 	modalDatepicker3 : 'Change date',
-	modalDatepicker4 : 'Delete date'
+	modalDatepicker4 : 'Delete date',
+	dueDate : 'Due Date'
 }
 
 
@@ -1636,7 +1637,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 
 	var notificationsListHeaderItem = document.createElement('tr');
 	notificationsListHeaderItem.className = 'oxfl-notification-item oxfl-notification-item-header';
-	notificationsListHeaderItem.innerHTML = '<th></th><th class="oxfl-notification-item-chapter"></th><th class="oxfl-notification-item-chapter-description"></th><th class="oxfl-notification-item-chapter-duedate">Due Date</th><th class="oxfl-notification-item-chapter-duedate-label"></th><th></th>';
+	notificationsListHeaderItem.innerHTML = '<th></th><th class="oxfl-notification-item-chapter"></th><th class="oxfl-notification-item-chapter-description"></th><th class="oxfl-notification-item-chapter-duedate">' + oxfordFlippedApp.text.dueDate + '</th><th class="oxfl-notification-item-chapter-duedate-label"></th><th></th>';
 	notificationsList.appendChild(notificationsListHeaderItem);
 
 	$.each(data.units, function(i, unit){
@@ -1670,7 +1671,7 @@ oxfordFlippedApp.loadNotifications = function(data) {
 					if (chapterLockStatus != oxfordFlippedApp.config.statusLock1 && chapterLockStatus != oxfordFlippedApp.config.statusLock2) {
 						//
 						var notifChapterFinishDateTimestap = (typeof chapter.planning !== 'undefined') ? chapter.planning.endDate : '',
-								notifChapterFinishDateDDMM = (notifChapterFinishDateTimestap && typeof notifChapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(notifChapterFinishDateTimestap) : '-',
+								notifChapterFinishDateDDMM = (notifChapterFinishDateTimestap !== '' && typeof notifChapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(notifChapterFinishDateTimestap) : '-',
 								notifChapterFinishDateState = (notifChapterFinishDateTimestap) ? oxfordFlippedApp.deadlineState(notifChapterFinishDateTimestap) : 'hidden';
 
 						if (isChapterNew || (lessonsNotCompleted && notifChapterFinishDateTimestap !== '') ) {
