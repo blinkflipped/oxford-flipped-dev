@@ -2997,7 +2997,7 @@ oxfordFlippedApp.datepickerInit = function(endDate, idActivity) {
 	if (endDate === '' || typeof endDate === 'undefined') {
 		$datepicker.data("DateTimePicker").setDate(new Date());
 	} else {
-		$datepicker.data("DateTimePicker").setDate(endDate);
+		$datepicker.data("DateTimePicker").setDate(new Date(endDate * 1000));
 	}
 
 }
@@ -3240,6 +3240,7 @@ $(document).ready(function() {
 
 	//
 	$('body').on('click', '.oxfl-js-datepicker', function(e) {
+		e.preventDefault();
 		var endDate = $(this).attr('data-endDate')
 				idActivity = $(this).closest('.oxfl-chapter').attr('data-id');
 		oxfordFlippedApp.oxflModalDatepicker(endDate, idActivity);
@@ -3247,7 +3248,7 @@ $(document).ready(function() {
 
 
 	$('body').on('click', '.oxfl-js-setdate', function(e) {
-
+		e.preventDefault();
 		var $datepicker = $('#oxfl-datepicker'),
 				idActivity = $datepicker.attr('data-activityid'),
 				getDate = $datepicker.data('DateTimePicker').getDate(),
@@ -3260,7 +3261,7 @@ $(document).ready(function() {
 	});
 
 	$('body').on('click', '.oxfl-js-deletedate', function(e) {
-
+		e.preventDefault();
 		var $datepicker = $('#oxfl-datepicker'),
 				idActivity = $datepicker.attr('data-activityid');
 		oxfordFlippedApp.datepickerDeleteDate(idActivity);
