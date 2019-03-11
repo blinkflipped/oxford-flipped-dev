@@ -30,6 +30,7 @@
 				{ name: 'Challenge Cover', type: 'widget', widget: 'blink_box', attributes: { 'class': 'oxfl-challenge-cover' } },
 			]
 		},
+		allowGroupPlanningBlockContent: function () { return false; },
 
 		init: function() {
 			this.activityInitialized = true;
@@ -624,11 +625,25 @@
 			return game_token;
 		},
 
+		getIdGroupFromUrl: function(){
+
+			var idGroupPlanning = 0,
+				urlParams = getUrlParameters();
+
+			if( urlParams && !$.isEmptyObject(urlParams) ){
+				idGroupPlanning = ( typeof urlParams['idgrupo'] != "undefined" && urlParams['idgrupo'] > 0 ) ? urlParams['idgrupo'] : 0;
+			}
+
+			return idGroupPlanning;
+
+		},
+
 		/**
 		 * Carga de datos del libro en un actividad
 		 */
 		fetchData: function() {
-			blink.getCourse(idcurso).done((function(data) {
+			var idGroup = this.getIdGroupFromUrl();
+			blink.getCourse(idcurso,false,false,idGroup).done((function(data) {
 				this.onCourseDataLoaded(data);
 			}).bind(this));
 		},
@@ -753,7 +768,8 @@
 		*/
 		processHash: function() {
 			var hash = '',
-					curso = blink.getCourse(idcurso);
+					idGroup = this.getIdGroupFromUrl(),
+					curso = blink.getCourse(idcurso,false,false,idGroup);
 
 			if (window.idtema == undefined) {
 				return false;
@@ -810,9 +826,10 @@
 	blink.theme.styles['oxford-flipped-dev'] = OxfordFlippedDevStyle;
 
 	blink.events.on('digitalbook:bpdfloaded', function() {
+		var idGroup = this.getIdGroupFromUrl();
 		// Ejemplo carga de datos del curso desde un libro digital.
-		blink.getCourse(idcurso).done(function(data) {
-			var style = new OxfordFlippedDevStyle;
+		blink.getCourse(idcurso,false,false,idGroup).done(function(data) {
+			var style = new OxfordFlippedStyle;
 			style.onCourseDataLoaded(data);
 		});
 	});
@@ -1768,7 +1785,9 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
 						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
-						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button><button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
+						chapterActionsTeachersLock = '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
+						chapterActionsTeachers = (blink.activity.currentStyle.getIdGroupFromUrl() !== 0) ? '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button>' + chapterActionsTeachersLock : chapterActionsTeachersLock,
+						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : chapterActionsTeachers,
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 						chapterDateCode = (chapterFinishDateDDMM !== '') ? '<div class="oxfl-label-date oxfl-label-date-'+chapterFinishDateState+'">'+chapterFinishDateDDMM+'</div>' : '<div class="oxfl-label-date oxfl-label-date-hidden"></div>',
@@ -2487,15 +2506,6 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 			$items.addClass('unlock').removeClass('lock');
 		}
 		$('#oxfl-modal-lock-chapters').modal('hide');
-
-		blink.getCourse(idcurso).done((function(data) {
-			oxfordFlippedApp.bookData = data;
-			console.log("NEW DATA");
-			console.log(data);
-			console.log(oxfordFlippedApp.bookData);
-		}));
-
-
 	}
 
 }
