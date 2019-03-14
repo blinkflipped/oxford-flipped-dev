@@ -1359,7 +1359,7 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadClassResources(updateHash)}, timeToWait);
 
-	} else if (currentHash === oxfordFlippedApp.config.tree[8].hash) { // Professor Resource Unit and ID
+	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[8].hash)) {  // Professor Resource Unit and ID
 
 		// This works different because we need an ID to load the Units / Chapters
 		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[8].hash, ''),
@@ -2534,6 +2534,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 		var unitID = $(this).attr('data-resource-unit-id'),
 				newHash = oxfordFlippedApp.config.tree[8].hash + unitID;
 
+		console.log(newHash);
 		window.location.hash = newHash;
 
 	});

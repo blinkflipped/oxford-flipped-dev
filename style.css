@@ -2253,7 +2253,9 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   .oxfl-resource-item-2 .oxfl-resource-header .oxfl-title4 {
     font-size: 15px;
     white-space: normal;
-    text-overflow: clip; }
+    text-overflow: clip;
+    width: 100%;
+    max-width: 100%; }
 
 .oxfl-resources-page {
   margin-left: -5px;
@@ -2346,7 +2348,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   background-repeat: no-repeat;
   background-image: url(img/monster-16.gif);
   background-position: left bottom;
-  width: 270px;
+  width: 780px;
   height: 178px;
   position: relative;
   top: 0;
@@ -2354,31 +2356,43 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   z-index: 100;
   margin: 70px auto 0; }
   #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble {
-    font-size: 30px;
-    line-height: 1em;
-    font-family: "Myfrida", sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    text-align: center;
-    color: #ffffff;
-    background: url(img/bubble-10.png) 0 0 no-repeat;
-    background-size: contain;
-    width: 208px;
-    height: 118px;
     display: flex;
     vertical-align: middle;
     justify-content: center;
     flex-direction: column;
+    font-family: "Myfrida", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-align: left;
+    color: #ffffff;
+    background: #ED1E79;
+    padding: 20px;
+    border-radius: 40px;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    min-height: 110px;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 200px;
     margin: -40px 0 0 80px;
-    padding: 0 10px;
     transform: translate(0, -50%); }
+    #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #ED1E79;
+      position: absolute;
+      top: 48px;
+      left: -15px;
+      transform: translate(0, -50%) rotate(90deg); }
     #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble span {
       display: block;
-      margin: -4px 0 0 -3px;
-      transform: rotate(10deg); }
+      transform: none;
+      margin: 0; }
 
 body.oxfl-body-resources #oxfl-resources-classresources-wrapper {
   visibility: visible;
@@ -2607,29 +2621,29 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
     font-size: 36px;
     line-height: 1em;
+    background-size: contain;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    flex-direction: column;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-style: italic;
     text-align: left;
     color: #ffffff;
     background: #ED1E79;
-    background-size: contain;
+    padding: 20px;
+    border-radius: 40px;
     width: auto;
     height: auto;
     min-width: 280px;
     min-height: 80px;
     max-width: 100%;
     max-height: 100%;
-    display: flex;
-    vertical-align: middle;
-    justify-content: center;
-    flex-direction: column;
     position: absolute;
     top: 0;
     left: 260px;
-    margin: 0 0 0 80px;
-    padding: 10px;
-    border-radius: 40px; }
+    margin: 0 0 0 80px; }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble::before {
       content: '';
       display: block;
@@ -2643,8 +2657,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       left: -15px;
       transform: translate(0, -50%) rotate(90deg); }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble span {
-      display: block;
-      padding: 10px 20px; }
+      display: block; }
     .oxfl-body-user-not-student #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
       font-size: 28px; }
 

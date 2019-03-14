@@ -219,6 +219,8 @@
       font-size: 15px;
       white-space: normal;
       text-overflow: clip;
+      width: 100%;
+      max-width: 100%;
     }
   }
 }
@@ -333,9 +335,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url(img/monster-16.gif);
-  //background-image: url(img/monster-16.png);
   background-position: left bottom;
-  width: 270px;
+  width: 780px;
   height: 178px;
   position: relative;
   top: 0;
@@ -343,31 +344,20 @@
   z-index: 100;
   margin: 70px auto 0;
   .oxfl-resources-classresources-monster-bubble {
-    font-size: 30px;
-    line-height: 1em;
-    font-family: $font_family_2;
-    font-weight: bold;
-    font-style: italic;
-    text-align: center;
-    color: $negative_color;
-    background: url(img/bubble-10.png) 0 0 no-repeat;
-    background-size: contain;
-    width: 208px;
-    height: 118px;
-    display: flex;
-    vertical-align: middle;
-    justify-content: center;
-    flex-direction: column;
+    @include bubble1();
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    min-height: 110px;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 200px;
     margin: -40px 0 0 80px;
-    padding: 0 10px;
     transform: translate(0,-50%);
     span {
       display: block;
-      margin: -4px 0 0 -3px;
-      transform: rotate(10deg);
+      transform: none;
+      margin: 0;
     }
   }
 
