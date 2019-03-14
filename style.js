@@ -1270,9 +1270,9 @@ oxfordFlippedApp.deadlineState = function(endDate) {
 	var daysDifference = Math.floor(difference/60/60/24);
 	console.log(daysDifference);
 
-	if (daysDifference < 0) {
+	if (daysDifference < -1) {
 		return 2;
-	} else if (daysDifference >= 0 && daysDifference < 2) {
+	} else if (daysDifference >= -1 && daysDifference < 2) {
 		return 1;
 	} else {
 		return 0;
