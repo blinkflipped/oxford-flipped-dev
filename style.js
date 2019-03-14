@@ -1122,7 +1122,7 @@ oxfordFlippedApp.text = {
 	modalDatepicker2: textweb('style_flipped_datepicker_set'),
 	modalDatepicker3 : 'Change date',
 	modalDatepicker4 : 'Delete date',
-	dueDate : 'Due Date'.
+	dueDate : 'Due Date',
 	legend1 : 'This lesson is due in less than two days',
 	legend2 : "You didn't complete this lesson by the due date"
 }
