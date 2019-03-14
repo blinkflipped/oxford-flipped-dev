@@ -1180,13 +1180,14 @@ body.oxfl-body-gradebook {
   right: 0;
   bottom: 0;
   z-index: -1;
-  opacity: 1; }
+  opacity: 1;
+  overflow: hidden; }
   #oxfl-custom-background-inner-1, #oxfl-custom-background-inner-2 {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -1194,6 +1195,8 @@ body.oxfl-body-gradebook {
     transition: opacity .3s ease-out; }
     #oxfl-custom-background-inner-1.active, #oxfl-custom-background-inner-2.active {
       opacity: 1; }
+    .oxfl-body-home #oxfl-custom-background-inner-1, .oxfl-body-home #oxfl-custom-background-inner-2 {
+      filter: blur(4px); }
 
 .oxfl-container {
   max-width: 1000px;
@@ -1290,13 +1293,25 @@ body.oxfl-iframe-visible {
       font-family: "Quicksand", sans-serif;
       font-weight: 700;
       color: #ffffff;
-      background-color: transparent;
-      background-size: contain;
-      background-repeat: no-repeat;
+      background: #29AAE3;
       display: inline-block;
       position: absolute;
       text-align: center;
-      z-index: 10; }
+      z-index: 10;
+      border-radius: 40px;
+      padding: 10px 20px; }
+      #oxfl-home-menu-inner .oxfl-monster span::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #29AAE3;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translate(-50%, 0); }
     #oxfl-home-menu-inner .oxfl-monster:hover {
       transform: none; }
       #oxfl-home-menu-inner .oxfl-monster:hover::before {
@@ -1315,12 +1330,12 @@ body.oxfl-iframe-visible {
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::after {
         background-image: url(img/monster-1-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1 span {
-        background-image: url(img/monster-1-bubble.png);
-        width: 151px;
-        height: 63px;
+        background-image: none;
+        width: auto;
+        height: auto;
         top: 0;
         right: 0;
-        line-height: 45px; }
+        line-height: 1em; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5 {
       width: 302px;
       height: 310px; }
@@ -1333,13 +1348,13 @@ body.oxfl-iframe-visible {
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5::after {
         background-image: url(img/monster-classresources-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5 span {
-        background-image: url(img/bubble-11.png);
-        width: 185px;
-        height: 65px;
+        background-image: none;
         top: 0;
         left: 10px;
-        line-height: 33px;
-        padding-right: 7px; }
+        line-height: 1em;
+        padding: 10px 20px;
+        width: auto;
+        height: auto; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
       width: 346px;
       height: 490px; }
@@ -1348,14 +1363,17 @@ body.oxfl-iframe-visible {
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::after {
         background-image: url(img/monster-2-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 span {
-        background-image: url(img/monster-2-bubble.png);
-        width: 135px;
-        height: 62px;
+        background-image: none;
+        width: auto;
+        height: auto;
         top: 43%;
         left: 50%;
         margin-left: -60px;
         font-size: 22px;
-        line-height: 40px; }
+        line-height: 1em;
+        background-color: #ED1E79; }
+        #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 span::before {
+          border-top-color: #ED1E79; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
       width: 222px;
       height: 318px; }
@@ -1364,20 +1382,25 @@ body.oxfl-iframe-visible {
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::after {
         background-image: url(img/monster-3-hover.gif); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 span {
-        background-image: url(img/monster-3-bubble.png);
-        width: 161px;
-        height: 58px;
+        background-image: none;
+        width: auto;
+        height: auto;
         bottom: 0;
         left: 0;
-        line-height: 60px; }
+        line-height: 1em;
+        background-color: #FBB03B; }
+        #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 span::before {
+          border-top-color: #FBB03B;
+          transform: translate(-50%, 0) rotate(180deg);
+          bottom: auto;
+          top: -10px; }
 
 .oxfl-bubble-hello {
-  background: url(img/bubble-2.png) 0 0 no-repeat;
-  background-size: contain;
+  background: #ffffff;
   width: 120px;
-  height: 100px;
-  font-size: 29px;
-  line-height: 23px;
+  height: auto;
+  font-size: 28px;
+  line-height: 1em;
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-style: italic;
@@ -1385,21 +1408,35 @@ body.oxfl-iframe-visible {
   top: -40px;
   right: -40px;
   color: #ED1E79;
-  text-align: center; }
-  .oxfl-bubble-hello .oxfl-bubble-hello-inner {
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px 20px; }
+  .oxfl-bubble-hello::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffffff;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: -14px; }
+    bottom: -8px;
+    left: 30px;
+    transform: rotate(130deg); }
+  .oxfl-bubble-hello .oxfl-bubble-hello-inner {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: 0; }
   .oxfl-bubble-hello .oxfl-bubble-hello-text {
     display: block;
     margin-top: 2px; }
   .oxfl-bubble-hello .oxfl-bubble-hello-name {
     display: block;
-    width: 80px;
+    width: auto;
     margin: 0 auto;
-    white-space: nowrap;
+    white-space: normal;
     line-height: 1.2em; }
 
 #oxfl-notifications {
@@ -2388,20 +2425,34 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   top: 30px;
   left: 45px; }
   #oxfl-episodes-monster span {
-    font-size: 56px;
-    line-height: 50px;
+    display: block;
+    font-size: 32px;
+    line-height: 30px;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-style: italic;
     text-align: center;
     color: #ffffff;
-    background: url(img/monster-5-bubble.png) 0 0 no-repeat;
-    background-size: contain;
-    width: 279px;
-    height: 200px;
-    padding-top: 20px;
-    padding-right: 20px;
-    display: block; }
+    background: #8BE23F;
+    width: 280px;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 310px;
+    left: 0; }
+    #oxfl-episodes-monster span::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #8BE23F;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translate(-50%, 0); }
 
 #oxfl-episodes {
   background: rgba(242, 242, 242, 0.8);
@@ -2425,6 +2476,8 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   .oxfl-episode > a {
     display: block;
     padding: 10px 20px; }
+  .oxfl-episode .oxfl-title2 {
+    display: none; }
   .oxfl-episode .oxfl-episode-image-wrapper {
     width: 100%;
     min-height: 90px;

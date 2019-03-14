@@ -37,32 +37,43 @@ $episodes_monster_height: $episodes_image_height/2;
   height: calc(100vh - #{$episodes_monster_height});
   min-height: 440px;
   max-height: 600px;
-  //background-position: right center;
   background-position: right bottom;
   background-repeat: no-repeat;
   background-image: url(img/monster-5.gif);
-  //background-image: url(img/monster-5.svg);
   background-size: contain;
   position: absolute;
   top: 30px;
   left: $space_1/2;
   span {
-    //@include font-size(5.6);
-    //line-height: .9em;
-    font-size: 56px;
-    line-height: 50px;
+    display: block;
+    font-size: 32px;
+    line-height: 30px;
     font-family: $font_family_2;
     font-weight: bold;
     font-style: italic;
     text-align: center;
     color: $negative_color;
-    background: url(img/monster-5-bubble.png) 0 0 no-repeat;
-    background-size: contain;
-    width: 279px;
-    height: 200px;
-    padding-top: 20px;
-    padding-right: 20px;
-    display: block;
+    background: $color_1;
+    width: 280px;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 310px;
+    left: 0;
+    &::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid $color_1;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
   }
 }
 
@@ -87,6 +98,9 @@ $episodes_monster_height: $episodes_image_height/2;
   &>a {
     display: block;
     padding: 10px 20px;
+  }
+  .oxfl-title2 {
+    display: none;
   }
   .oxfl-episode-image-wrapper {
     width: 100%;
