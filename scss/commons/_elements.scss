@@ -44,7 +44,7 @@
 .oxfl-title3 {
   font-family: $font_family_2;
   font-weight: bold;
-  font-style: italic;
+  font-style: normal; //italic
   //@include font-size(2.2);
   font-size: 22px;
   color: $color_4;
@@ -247,12 +247,14 @@
     padding-top: 0;
   }
   &-4 {
-    width: 80px;
+    width: auto;
+    min-width: 80px;
     height: 30px;
-    background-image: url(img/button-2-a.png);
-    padding-top: 0;
-    //@include font-size(1.4);
+    background:$color_4;
+    padding: 4px;
+    text-transform: uppercase;
     font-size: 14px;
+    border-radius: 40px;
   }
   &-5 {
     //width: 111px;
@@ -458,7 +460,7 @@
 .oxfl-label-date {
   width: 72px;
   height: 30px;
-  background: $color_7;
+  background: $color_19;
   font-family: $font_family_1;
   font-size: 12px;
   font-weight: bold;
@@ -468,7 +470,7 @@
   padding: 4px;
   box-shadow: 0px 0px 10px rgba(0,0,0,.25);
   &.oxfl-label-date-0 {//Green
-    background-color: $color_7;
+    background-color: $color_19;
   }
   &.oxfl-label-date-1 {//Yellow
     background-color: #ffd764;
@@ -937,6 +939,24 @@
   table-layout: auto;
   width: 100%;
 }
+
+.oxfl-notifications-legend {
+  list-style: none;
+  margin: 110px 0 0 0;
+  padding: 0;
+  li {
+    padding: 0;
+    margin: 0 0 20px 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    span {
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+}
+
 .oxfl-notification-item {
   display: table-row;
   @include font-size(1.2);
@@ -947,12 +967,13 @@
     &:nth-child(1) {
       width: 70px;
       min-width: 70px;
+      display: none; //Hide title
     }
     &.oxfl-notification-item-chapter {
-      width: 70px;
-      min-width: 70px;
+      width: 140px;
+      min-width: 140px;
       span {
-        width: 70px;
+        width: 140px;
       }
     }
 

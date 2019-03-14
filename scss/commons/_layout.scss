@@ -54,7 +54,8 @@
     &.active {
       opacity: 1;
     }
-    .oxfl-body-home & {
+    .oxfl-body-home &,
+    .oxfl-body-episodes & {
       filter: blur(4px);
     }
   }

@@ -245,7 +245,7 @@ body.oxfl-body-gradebook {
 .oxfl-title3 {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
-  font-style: italic;
+  font-style: normal;
   font-size: 22px;
   color: #ED1E79;
   margin: 0; }
@@ -298,7 +298,7 @@ body.oxfl-body-gradebook {
   left: -15px; }
 
 #oxfl-coins-total {
-  background: rgba(77, 77, 77, 0.8);
+  background: rgba(51, 51, 51, 0.8);
   border-radius: 0 40px 40px 0;
   font-family: "Quicksand", sans-serif;
   font-size: 14px;
@@ -426,11 +426,14 @@ body.oxfl-body-gradebook {
     background-image: url(img/button-2-b.png);
     padding-top: 0; }
   .oxfl-button-bubble-4 {
-    width: 80px;
+    width: auto;
+    min-width: 80px;
     height: 30px;
-    background-image: url(img/button-2-a.png);
-    padding-top: 0;
-    font-size: 14px; }
+    background: #ED1E79;
+    padding: 4px;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 40px; }
   .oxfl-button-bubble-5 {
     width: 160px;
     height: 68px;
@@ -596,7 +599,7 @@ body.oxfl-body-gradebook {
 .oxfl-label-date {
   width: 72px;
   height: 30px;
-  background: #39B54A;
+  background: #22b573;
   font-family: "Quicksand", sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -606,7 +609,7 @@ body.oxfl-body-gradebook {
   padding: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25); }
   .oxfl-label-date.oxfl-label-date-0 {
-    background-color: #39B54A; }
+    background-color: #22b573; }
   .oxfl-label-date.oxfl-label-date-1 {
     background-color: #ffd764;
     color: #000000; }
@@ -757,7 +760,7 @@ body.oxfl-body-gradebook {
     padding: 30px 10px 20px; }
   .oxfl-modal-2 .modal-content .oxfl-title2,
   .oxfl-modal-2 .modal-content .oxfl-title3 {
-    color: #4D4D4D; }
+    color: #333333; }
   .oxfl-modal-2 .modal-content .oxfl-notification-item .oxfl-title3 {
     color: #FBB03B; }
 .oxfl-modal-2 .modal-body {
@@ -942,6 +945,19 @@ body.oxfl-body-gradebook {
   table-layout: auto;
   width: 100%; }
 
+.oxfl-notifications-legend {
+  list-style: none;
+  margin: 110px 0 0 0;
+  padding: 0; }
+  .oxfl-notifications-legend li {
+    padding: 0;
+    margin: 0 0 20px 0; }
+    .oxfl-notifications-legend li:last-child {
+      margin-bottom: 0; }
+    .oxfl-notifications-legend li span {
+      vertical-align: middle;
+      display: inline-block; }
+
 .oxfl-notification-item {
   display: table-row;
   font-size: 12px;
@@ -950,12 +966,13 @@ body.oxfl-body-gradebook {
     font-weight: 500; }
   .oxfl-notification-item th:nth-child(1), .oxfl-notification-item td:nth-child(1) {
     width: 70px;
-    min-width: 70px; }
+    min-width: 70px;
+    display: none; }
   .oxfl-notification-item th.oxfl-notification-item-chapter, .oxfl-notification-item td.oxfl-notification-item-chapter {
-    width: 70px;
-    min-width: 70px; }
+    width: 140px;
+    min-width: 140px; }
     .oxfl-notification-item th.oxfl-notification-item-chapter span, .oxfl-notification-item td.oxfl-notification-item-chapter span {
-      width: 70px; }
+      width: 140px; }
   .oxfl-notification-item th.oxfl-notification-item-chapter-description, .oxfl-notification-item td.oxfl-notification-item-chapter-description {
     width: 200px;
     max-width: 200px; }
@@ -1195,7 +1212,7 @@ body.oxfl-body-gradebook {
     transition: opacity .3s ease-out; }
     #oxfl-custom-background-inner-1.active, #oxfl-custom-background-inner-2.active {
       opacity: 1; }
-    .oxfl-body-home #oxfl-custom-background-inner-1, .oxfl-body-home #oxfl-custom-background-inner-2 {
+    .oxfl-body-home #oxfl-custom-background-inner-1, .oxfl-body-episodes #oxfl-custom-background-inner-1, .oxfl-body-home #oxfl-custom-background-inner-2, .oxfl-body-episodes #oxfl-custom-background-inner-2 {
       filter: blur(4px); }
 
 .oxfl-container {
@@ -1299,7 +1316,11 @@ body.oxfl-iframe-visible {
       text-align: center;
       z-index: 10;
       border-radius: 40px;
-      padding: 10px 20px; }
+      padding: 10px 20px;
+      right: auto;
+      left: 50%;
+      transform: translate(-50%, 0);
+      max-width: 100%; }
       #oxfl-home-menu-inner .oxfl-monster span::before {
         content: '';
         display: block;
@@ -1334,7 +1355,10 @@ body.oxfl-iframe-visible {
         width: auto;
         height: auto;
         top: 0;
-        right: 0;
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, 0);
+        max-width: 100%;
         line-height: 1em; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-5 {
       width: 302px;
@@ -1368,7 +1392,7 @@ body.oxfl-iframe-visible {
         height: auto;
         top: 43%;
         left: 50%;
-        margin-left: -60px;
+        margin-left: -10px;
         font-size: 22px;
         line-height: 1em;
         background-color: #ED1E79; }
@@ -1386,7 +1410,7 @@ body.oxfl-iframe-visible {
         width: auto;
         height: auto;
         bottom: 0;
-        left: 0;
+        left: 50%;
         line-height: 1em;
         background-color: #FBB03B; }
         #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 span::before {
@@ -2414,7 +2438,7 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   transition-timing-function: ease-out;
   will-change: transform;
   width: 300px;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 150px);
   min-height: 440px;
   max-height: 600px;
   background-position: right bottom;
@@ -2436,7 +2460,7 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
     background: #8BE23F;
     width: 280px;
     height: auto;
-    padding: 10px 20px;
+    padding: 20px 40px;
     border-radius: 100px;
     position: absolute;
     bottom: 310px;
@@ -2475,13 +2499,13 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   border-radius: 15px; }
   .oxfl-episode > a {
     display: block;
-    padding: 10px 20px; }
+    padding: 16px; }
   .oxfl-episode .oxfl-title2 {
     display: none; }
   .oxfl-episode .oxfl-episode-image-wrapper {
     width: 100%;
     min-height: 90px;
-    height: calc((100vh - 360px)/2);
+    height: calc((100vh - 300px)/2);
     max-height: 200px;
     overflow: hidden;
     position: relative;
@@ -2582,10 +2606,14 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     font-style: italic;
     text-align: center;
     color: #ffffff;
-    background: url(img/bubble-9.png) 0 0 no-repeat;
+    background: #ED1E79;
     background-size: contain;
-    width: 235px;
-    height: 118px;
+    width: auto;
+    height: auto;
+    min-width: 280px;
+    min-height: 120px;
+    max-width: 100%;
+    max-height: 100%;
     display: flex;
     vertical-align: middle;
     justify-content: center;
@@ -2593,10 +2621,24 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     position: absolute;
     top: 0;
     left: 50%;
-    margin: 0 0 0 60px;
-    padding: 0 10px; }
+    margin: 0 0 0 80px;
+    padding: 0 10px;
+    border-radius: 40px; }
+    #oxfl-chapters-monster .oxfl-monster-lessons-bubble::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #ED1E79;
+      position: absolute;
+      top: 70px;
+      left: -15px;
+      transform: translate(0, -50%) rotate(90deg); }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble span {
-      display: block; }
+      display: block;
+      padding: 10px 20px; }
     .oxfl-body-user-not-student #oxfl-chapters-monster .oxfl-monster-lessons-bubble {
       font-size: 28px; }
 
@@ -2618,13 +2660,15 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
   background: #ffffff;
   border: 2px dashed #FBB03B;
   border-radius: 10px;
-  padding: 5px 10px; }
+  padding: 10px 10px; }
   .oxfl-chapter a {
     display: block; }
     .oxfl-chapter a .oxfl-title4 {
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden; }
+      overflow: hidden;
+      max-width: 100%;
+      min-width: 100%; }
   .oxfl-chapter .oxfl-title3,
   .oxfl-chapter .oxfl-title4 {
     max-width: calc(100% - 70px);

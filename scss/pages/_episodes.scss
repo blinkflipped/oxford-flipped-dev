@@ -1,5 +1,5 @@
 
-$episodes_title_height : 30px;
+$episodes_title_height : 0; //Former 30px
 $episodes_description_height : 30px;
 $episodes_top :  90px;
 $episodes_padding :  $padding_1;
@@ -56,7 +56,7 @@ $episodes_monster_height: $episodes_image_height/2;
     background: $color_1;
     width: 280px;
     height: auto;
-    padding: 10px 20px;
+    padding: 20px 40px;
     border-radius: 100px;
     position: absolute;
     bottom: 310px;
@@ -97,7 +97,7 @@ $episodes_monster_height: $episodes_image_height/2;
   @include box2();
   &>a {
     display: block;
-    padding: 10px 20px;
+    padding: 15px;
   }
   .oxfl-title2 {
     display: none;
