@@ -173,11 +173,12 @@
       span {
         background-image: none;
         top: 0;
-        left: 10px;
+        left: 50%;
         line-height: 1em;
         padding: 10px 20px;
         width: auto;
         height: auto;
+        margin-left: -50px;
       }
     }
     &.oxfl-monster-2 {

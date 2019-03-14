@@ -965,7 +965,7 @@ oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
 
 oxfordFlippedApp.config.firstTime = true;
 
-oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-game', 'oxfl-body-marketplace-summary', 'oxfl-body-gradebook', 'oxfl-body-resources'];
+oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-game', 'oxfl-body-marketplace-summary', 'oxfl-body-gradebook', 'oxfl-body-resources', 'oxfl-body-resources-unit'];
 
 oxfordFlippedApp.config.tree = {
 	0 : {
@@ -1007,6 +1007,11 @@ oxfordFlippedApp.config.tree = {
 		'id' : 'resources',
 		'hash' : 'resources',
 		'class' : oxfordFlippedApp.config.bodyClasses[7]
+	},
+	8 : {
+		'id' : 'resources_unit',
+		'hash' : 'resources_unit_',
+		'class' : oxfordFlippedApp.config.bodyClasses[8]
 	}
 }
 
@@ -1354,6 +1359,24 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadClassResources(updateHash)}, timeToWait);
 
+	} else if (currentHash === oxfordFlippedApp.config.tree[8].hash) { // Professor Resource Unit and ID
+
+		// This works different because we need an ID to load the Units / Chapters
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[8].hash, ''),
+				unitExists = (oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit) >= 0);
+
+		if (oxflunit !== '' && oxflunit !== null && unitExists) {
+			var currentEpisode = oxflunit;
+
+			hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadClassResourcesUnit(data,currentEpisode,updateHash)}, timeToWait);
+
+		} else {
+
+			oxfordFlippedApp.console("Not Unit ID given, redirecting to Resources");
+			window.location.hash = oxfordFlippedApp.config.tree[7].hash;
+
+		}
+
 	} else { // Incorrect hash
 
 		oxfordFlippedApp.console("Incorrect hash, redirecting to Home");
@@ -1455,9 +1478,10 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				marketplaceHtml = '<div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">' + oxfordFlippedApp.text.buygame + '</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">' + oxfordFlippedApp.text.buysummary + '</span> </button> </div> </div> </div>',
 				marketplaceInnerHtml = '<div id="oxfl-resources-game-wrapper"> <div id="oxfl-resources-game-monster"> <div class="oxfl-resources-game-monster-bubble"><span>'  +  oxfordFlippedApp.text.choosegame  +  '</span></div> </div> <div id="oxfl-resources-game" class="oxfl-resources-container"> </div> </div> <div id="oxfl-resources-summary-wrapper"> <div id="oxfl-resources-summary-monster"> <div class="oxfl-resources-summary-monster-bubble"><span>' + oxfordFlippedApp.text.chooseshorcut + '</span></div> </div> <div id="oxfl-resources-summary" class="oxfl-resources-container"> </div></div>',
 				classResourcesHtml = '<div id="oxfl-resources-classresources-wrapper"> <div id="oxfl-resources-classresources-monster"> <div class="oxfl-resources-classresources-monster-bubble"><span>'  +  oxfordFlippedApp.text.chooseclassresources + '</span></div> </div> <div id="oxfl-resources-classresources" class="oxfl-resources-container"> </div> </div>',
+				classResourcesInnerHtml = '<div id="oxfl-resources-classresources-unit-wrapper"> <div id="oxfl-resources-classresources-unit-monster"> <div class="oxfl-resources-classresources-monster-bubble"><span>'  +  oxfordFlippedApp.text.chooseclassresources + '</span></div> </div> <div id="oxfl-resources-classresources-unit" class="oxfl-resources-unit-container"> </div> </div>',
 				gradebookAwardsHtml = '<div class="oxfl-gradebook-award oxfl-gradebook-award-1 inactive" id="oxfl-gradebook-award-1"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-1-label">' + oxfordFlippedApp.config.awards.percent.bronze + oxfordFlippedApp.text.gradebookawards1 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-2 inactive" id="oxfl-gradebook-award-2"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-2-label">' + oxfordFlippedApp.config.awards.lessonthreestars.bronze + ' ' + oxfordFlippedApp.text.gradebookawards3 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-3 inactive" id="oxfl-gradebook-award-3"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-3-label">' + oxfordFlippedApp.config.awards.coins.bronze + ' ' + oxfordFlippedApp.text.gradebookawards2 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-4 inactive" id="oxfl-gradebook-award-4"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-4-label">' + oxfordFlippedApp.config.awards.percent.silver + oxfordFlippedApp.text.gradebookawards1 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-5 inactive" id="oxfl-gradebook-award-5"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-5-label">' + oxfordFlippedApp.config.awards.lessonthreestars.silver + ' ' + oxfordFlippedApp.text.gradebookawards3 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-6 inactive" id="oxfl-gradebook-award-6"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-6-label">' + oxfordFlippedApp.config.awards.coins.silver + ' ' + oxfordFlippedApp.text.gradebookawards2 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-7 inactive" id="oxfl-gradebook-award-7"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-7-label">' + oxfordFlippedApp.config.awards.percent.gold + oxfordFlippedApp.text.gradebookawards1 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-8 inactive" id="oxfl-gradebook-award-8"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-8-label">' + oxfordFlippedApp.config.awards.lessonthreestars.gold + ' ' + oxfordFlippedApp.text.gradebookawards3 + '</div> </div> </div> <div class="oxfl-gradebook-award oxfl-gradebook-award-9 inactive" id="oxfl-gradebook-award-9"> <div class="oxfl-gradebook-award-inner"> <div class="oxfl-gradebook-award-label" id="oxfl-gradebook-award-9-label">' + oxfordFlippedApp.config.awards.coins.gold + ' ' + oxfordFlippedApp.text.gradebookawards2 + '</div> </div> </div>',
 				gradebookHtml = '<div id="oxfl-gradebook-wrapper"><section id="oxfl-gradebook-inner" class="oxfl-container"><header class="oxfl-gradebook-header"> <h2 class="oxfl-gradebook-title-1">'  +  oxfordFlippedApp.text.gradebooktitle + '</h2> </header> <div id="oxfl-gradebook"> <div class="oxfl-gradebook-section"> <div class="oxfl-gradebook-intro"> <p>' + oxfordFlippedApp.text.gradebookintro + '</p> </div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">' + oxfordFlippedApp.text.gradebooktitle2 + ' <span id="gradebook-total-lessons-available"></span></h3> <div class="row"> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">' + oxfordFlippedApp.text.gradebooktitle3 + '</h4> <div class="oxfl-gradebook-donutchart-wrapper"><div class="oxfl-gradebook-donutchart-legend"><span id="oxfl-gradebook-donutchart-completed"></span>/<span id="oxfl-gradebook-donutchart-total"></span></div> <canvas id="oxfl-gradebook-donutchart" width="228" height="228" style="width: 228px; height: 228px;"></canvas> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">' + oxfordFlippedApp.text.gradebooktitle4 + '</h4> <div class="oxfl-gradebook-barchart"> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-3"> <div class="oxfl-gradebook-barchart-item-bar"></div><div class="oxfl-gradebook-barchart-item-number"></div></div><div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-2"> <div class="oxfl-gradebook-barchart-item-bar"></div> <div class="oxfl-gradebook-barchart-item-number"></div> </div> <div class="oxfl-gradebook-barchart-item oxfl-gradebook-barchart-item-1"><div class="oxfl-gradebook-barchart-item-bar"></div><div class="oxfl-gradebook-barchart-item-number"></div> </div> </div> </div> <div class="col-sm-4"> <h4 class="oxfl-gradebook-title-3">' + oxfordFlippedApp.text.gradebooktitle5 + '</h4> <div class="oxfl-gradebook-average-stars-wrapper"> <div class="oxfl-gradebook-average-stars"></div></div><div class="oxfl-gradebook-average-grade-challenge"> <div class="oxfl-gradebook-average-grade-challenge-inner"></div> </div> </div> </div> </div> <div class="oxfl-gradebook-section"> <ul class="oxfl-gradebook-captions"> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-1"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">' + oxfordFlippedApp.text.gradebookcaption1 + '</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-2"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">' + oxfordFlippedApp.text.gradebookcaption2 + '</span> </li> <li class="oxfl-gradebook-caption oxfl-gradebook-caption-3"> <span class="oxfl-gradebook-caption-badge"></span> <span class="oxfl-gradebook-caption-text">' + oxfordFlippedApp.text.gradebookcaption3 + '</span> </li> </ul> </div> <div class="oxfl-gradebook-section oxfl-gradebook-section-2"> <div class="oxfl-gradebook-units"></div> </div> <div class="oxfl-gradebook-section"> <h3 class="oxfl-gradebook-title-2">' + oxfordFlippedApp.text.gradebooktitle6 + '</h3> <div class="oxfl-gradebook-awards">' + gradebookAwardsHtml + '</div> </div> </div> </section> </div>',
-				customHtmlByUser = (oxfordFlippedApp.config.isStudent) ? gradebookHtml : classResourcesHtml,
+				customHtmlByUser = (oxfordFlippedApp.config.isStudent) ? gradebookHtml : classResourcesHtml + classResourcesInnerHtml,
 				modalLockChaptersHtml = '<div class="modal fade oxfl-modal" id="oxfl-modal-lock-chapters" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p></p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">' + oxfordFlippedApp.text.no + '</button> <button type="button" class="btn btn-primary oxfl-js-toggle-lock-chapter">' + oxfordFlippedApp.text.yes + '</button> </div> </div></div> </div></div>',
 				modalNotificationsHtml = '<div class="modal fade oxfl-modal oxfl-modal-2" id="oxfl-modal-list-notifications" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <div class="oxfl-title3">' + oxfordFlippedApp.text.titleNotif + '</div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <table id="oxfl-notifications-list"></table>  <div><ul class="oxfl-notifications-legend"><li><span class="oxfl-notif-label-date oxfl-notif-label-date-1"></span> <span> ' + oxfordFlippedApp.text.legend1 + ' </span></li><li><span class="oxfl-notif-label-date oxfl-notif-label-date-2"></span> <span>' + oxfordFlippedApp.text.legend2 + ' </span></li></ul></div></div> </div></div> </div>',
 				modalConnectionHtml = '<div class="modal fade oxfl-modal oxfl-modal-3 oxfl-modal-marketplace-noconnection" id="oxfl-modal-marketplace-noconnection" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>' + oxfordFlippedApp.text.noconnection + '</p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <button type="button" class="btn btn-primary" data-dismiss="modal">' + oxfordFlippedApp.text.ok + '</button> </div> </div> </div> </div> </div>',
@@ -2350,7 +2374,7 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 
 }
 
-oxfordFlippedApp.loadClassResources = function(updateHash) {
+oxfordFlippedApp.loadClassResourcesOLDOLDOLDOLD = function(updateHash) {
 
 	var currentIndex = 7;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
@@ -2439,6 +2463,82 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 	}
 }
 
+oxfordFlippedApp.loadClassResources = function(updateHash) {
+
+	var currentIndex = 7;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
+	var $classresourcesWrapper = $('#oxfl-classresources-wrapper');
+
+	// ***
+	// Init Class Resources
+	// ***
+	var resourceList = document.createDocumentFragment();
+	var totalResources = 0;
+	$.each(oxfordFlippedApp.bookData.units, function(i, unit){
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
+			var subunits = unit.subunits,
+					title = unit.title,
+					description = unit.description,
+					image = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+title+'">' : '',
+					id = unit.id;
+
+					totalResources++;
+					var resourceListItem = document.createElement('div');
+							resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
+					resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-unit-id="'+id+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+title1+'</h2><h3 class="oxfl-title4">'+description+'</h3></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"></div> <div class="oxfl-resource-image-wrapper-img">'+image+'</div> </div> </a> </article>';
+					resourceList.appendChild(resourceListItem);
+		}
+	});
+
+	var $resourceWrapper = $('#oxfl-resources-classresources');
+
+	if (totalResources > 0) {
+
+				if ($resourceWrapper.hasClass('slick-initialized')) {
+					$resourceWrapper.slick('unslick');
+				}
+				$resourceWrapper.empty();
+				$resourceWrapper[0].appendChild(resourceList);
+
+				var items = $resourceWrapper.find('.oxfl-resource-item'),
+						itemsLength = items.length,
+						itemperpage = 6;
+				for(var i = 0; i < itemsLength; i+=itemperpage) {
+					items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
+				}
+
+				$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+	} else {
+		$resourceWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
+	}
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
+	var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
+	oxfordFlippedApp.changeBackground(backgroundImage);
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
+	$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass(bodyClass);
+		if (updateHash) window.location.hash = hash;
+	});
+}
+
+
+oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHash) {
+
+	var currentIndex = 8;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
+	console.log("LOAD RESOURCES OF UNIT " + currentEpisode);
+}
 
 oxfordFlippedApp.updateUserData = function() {
 	var chaptersNotStarted = false,
