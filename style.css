@@ -1197,7 +1197,7 @@ body.oxfl-body-gradebook {
   bottom: 0;
   z-index: 1000;
   font-family: "Quicksand", sans-serif; }
-  .oxfl-body-resources #oxfl-general, .oxfl-body-chapters #oxfl-general {
+  .oxfl-body-resources-unit #oxfl-general, .oxfl-body-resources #oxfl-general, .oxfl-body-chapters #oxfl-general {
     min-height: 760px; }
   .oxfl-body-marketplace-game #oxfl-general, .oxfl-body-marketplace-summary #oxfl-general {
     min-height: 860px; }
@@ -2278,6 +2278,14 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     text-overflow: clip;
     width: 100%;
     max-width: 100%; }
+
+.oxfl-resources-unit-container .oxfl-resource-item-2 .oxfl-resource-image-wrapper .oxfl-resource-image-cover {
+  background: rgba(139, 226, 63, 0.7);
+  padding: 0; }
+  .oxfl-resources-unit-container .oxfl-resource-item-2 .oxfl-resource-image-wrapper .oxfl-resource-image-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 
 .oxfl-resources-page {
   margin-left: -5px;

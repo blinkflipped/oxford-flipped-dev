@@ -2577,7 +2577,7 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 					resourceOnClick = resource.onclickTitle,
 					resourceListItem = document.createElement('div');
 					resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
-			resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <div class="oxfl-title4">'+currentUnitTitle+'</div><h2 class="oxfl-title2">'+resourceTitle+'</h2></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"> ' + resourceImage + ' </div> <div class="oxfl-resource-image-wrapper-img">'+currentUnitImage+'</div> </div> </a> </article>';
+			resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <div class="oxfl-title2">'+currentUnitTitle+'</div><h2 class="oxfl-title4">'+resourceTitle+'</h2></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"> ' + resourceImage + ' </div> <div class="oxfl-resource-image-wrapper-img">'+currentUnitImage+'</div> </div> </a> </article>';
 			resourceList.appendChild(resourceListItem);
 			}
 	});
