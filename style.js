@@ -2584,8 +2584,6 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 
 	var $resourceUnitWrapper = $('#oxfl-resources-classresources-unit');
 
-	$resourceUnitWrapper.prepend('<h1 class="oxfl-title-tab">' + currentUnitDescription + '</h1>');
-
 	if (totalResources > 0) {
 
 				if ($resourceUnitWrapper.hasClass('slick-initialized')) {
@@ -2606,6 +2604,7 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 		$resourceUnitWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
 	}
 
+	$resourceUnitWrapper.prepend('<h1 class="oxfl-title-tab">' + currentUnitDescription + '</h1>');
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 

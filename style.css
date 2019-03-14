@@ -2269,8 +2269,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     z-index: 20; }
 
 .oxfl-resource-item-2 .oxfl-resource-header {
-  display: block;
-  min-height: 35px; }
+  min-height: 40px; }
   .oxfl-resource-item-2 .oxfl-resource-header .oxfl-title2 {
     display: none; }
   .oxfl-resource-item-2 .oxfl-resource-header .oxfl-title4 {
