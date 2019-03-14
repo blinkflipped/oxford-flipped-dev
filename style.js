@@ -1264,6 +1264,7 @@ oxfordFlippedApp.deadlineState = function(endDate) {
 		Date.now = function() { return new Date().getTime(); }
 	}
 	var currentTimeStamp = Math.floor(Date.now() / 1000)
+	console.log(currentTimeStamp)
 
 	var difference = endDate - currentTimeStamp;
 	var daysDifference = Math.floor(difference/60/60/24);
