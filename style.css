@@ -2594,6 +2594,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       vertical-align: middle; }
       .oxfl-chapter .oxfl-chapter-header-top-right .oxfl-button:first-child {
         margin-left: 0; }
+    .oxfl-chapter .oxfl-chapter-header-top-right .oxfl-button-lock {
+      margin-top: -3px; }
   .oxfl-chapter .oxfl-chapter-image-wrapper {
     width: 100%;
     height: 110px;
