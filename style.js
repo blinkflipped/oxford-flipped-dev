@@ -1016,6 +1016,9 @@ oxfordFlippedApp.config.backgroundWrapper = '#oxfl-custom-background';
 oxfordFlippedApp.config.statusLock1 = 8;
 oxfordFlippedApp.config.statusLock2 = 2;
 
+oxfordFlippedApp.config.statusUnlock1 = 16;
+oxfordFlippedApp.config.statusUnlock2 = 1;
+
 oxfordFlippedApp.config.stateNew = 0;
 oxfordFlippedApp.config.stateStarted = 1;
 oxfordFlippedApp.config.stateCompleted = 2;
@@ -2494,8 +2497,8 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 
 	onCursoCambiarBloqueado(chapterID, idcurso, function() {
 
-		var isDone = true,
-				newIsLocked = !isLocked; //Aqui habria que anadir el callback de onCursoCambiarBloqueado
+		var isDone = true, //Aqui habria que anadir el callback de onCursoCambiarBloqueado
+				newIsLocked = !isLocked;
 
 		if (isDone) {
 
@@ -2507,14 +2510,20 @@ oxfordFlippedApp.toggleLockChapter = function(chapterID, isLocked) {
 				$items.addClass('unlock').removeClass('lock');
 			}
 			$('#oxfl-modal-lock-chapters').modal('hide');
+
+			// Modify bookData to new state
+			var newState = (newIsLocked) ? oxfordFlippedApp.config.statusLock1 : oxfordFlippedApp.config.statusUnlock1;
+			var unitIndex, chapterIndex;
+			$.each(oxfordFlippedApp.bookData.units, function(i, unit){
+				unitIndex = i;
+				chapterIndex = unit.subunits.map(function(o) {
+						return o.id;
+				}).indexOf(chapterID);
+				if (chapterIndex >= 0) return false;
+			});
+			oxfordFlippedApp.bookData.units[unitIndex].subunits[chapterIndex].lock = newState;
 		}
 
-		blink.getCourse(idcurso).done((function(data) {
-			oxfordFlippedApp.bookData = data;
-			console.log("NEW DATA");
-			console.log(data);
-			console.log(oxfordFlippedApp.bookData);
-		}));
 	});
 
 }
