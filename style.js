@@ -2488,7 +2488,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 
 					var resourceListItem = document.createElement('div');
 							resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
-					resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-unit-id="'+id+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+title+'</h2><h3 class="oxfl-title4">'+description+'</h3></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"></div> <div class="oxfl-resource-image-wrapper-img">'+image+'</div> </div> </a> </article>';
+					resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-open-resource-unit" data-resource-unit-id="'+id+'"><header class="oxfl-resource-header"> <h2 class="oxfl-title2">'+title+'</h2><h3 class="oxfl-title4">'+description+'</h3></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"></div> <div class="oxfl-resource-image-wrapper-img">'+image+'</div> </div> </a> </article>';
 					resourceList.appendChild(resourceListItem);
 		}
 	});
@@ -2526,6 +2526,16 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 	$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
 		$('body').addClass(bodyClass);
 		if (updateHash) window.location.hash = hash;
+	});
+
+
+	$('body').on('click', '.oxfl-js-open-resource-unit', function(e) {
+		e.preventDefault;
+		var unitID = $(this).attr('data-resource-unit-id'),
+				newHash = oxfordFlippedApp.config.tree[8].hash + unitID;
+
+		window.location.hash = newHash;
+
 	});
 }
 

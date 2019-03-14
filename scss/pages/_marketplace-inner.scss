@@ -210,9 +210,11 @@
 
 .oxfl-resource-item-2 {
   .oxfl-resource-header {
-    text-align: center;
-    justify-content: center;
+    display: block;
     min-height: 35px;
+    .oxfl-title2 {
+      display: none;
+    }
     .oxfl-title4 {
       font-size: 15px;
       white-space: normal;
