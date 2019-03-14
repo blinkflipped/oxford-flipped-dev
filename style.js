@@ -2482,7 +2482,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 			var subunits = unit.subunits,
 					title = unit.title,
 					description = unit.description,
-					image = (unit.image !== '') ? '<img src="'+resource.image+'" alt="'+title+'">' : '',
+					image = (unit.image !== '') ? '<img src="'+unit.image+'" alt="'+title+'">' : '',
 					id = unit.id;
 					totalResources++;
 
