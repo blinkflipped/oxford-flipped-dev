@@ -278,6 +278,17 @@ body.oxfl-body-gradebook {
   .oxfl-title5 a {
     color: #000000; }
 
+.oxfl-title-tab {
+  display: inline-block;
+  background: #ED1E79;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 20px; }
+
 #oxfl-coins {
   position: fixed;
   top: 60px;
@@ -2097,7 +2108,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   opacity: 0;
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   margin: 0 auto 110px;
-  padding: 0; }
+  padding: 0;
+  position: relative; }
   .oxfl-resources-unit-container .oxfl-resources-page,
   .oxfl-resources-container .oxfl-resources-page {
     padding: 30px; }
@@ -2112,6 +2124,11 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     .oxfl-resources-unit-container.oxfl-empty .oxfl-title2b,
     .oxfl-resources-container.oxfl-empty .oxfl-title2b {
       color: #ffffff; }
+  .oxfl-resources-unit-container .oxfl-title-tab,
+  .oxfl-resources-container .oxfl-title-tab {
+    position: absolute;
+    top: 0;
+    right: 20px; }
 
 .oxfl-resource {
   text-align: center;

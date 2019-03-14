@@ -28,6 +28,7 @@
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   margin: 0 auto $space_2;
   padding: 0;
+  position: relative;
   .oxfl-resources-page {
     padding: $padding_1;
   }
@@ -41,6 +42,12 @@
     .oxfl-title2b {
       color: $negative_color;
     }
+  }
+
+  .oxfl-title-tab {
+    position: absolute;
+    top: 0;
+    right: 20px;
   }
 }
 

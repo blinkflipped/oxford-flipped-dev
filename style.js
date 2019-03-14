@@ -2554,6 +2554,59 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 
 	console.log("LOAD RESOURCES OF UNIT " + currentEpisode);
 
+
+	// Load resources
+	var resourceList = document.createDocumentFragment();
+	var totalResources = 0;
+
+
+	var currentUnitData = oxfordFlippedApp.bookData.units[currentEpisode],
+			currentUnitTitle = currentUnitData.title,
+			currentUnitDescription = currentUnitData.description,
+			currentUnitImage = (currentUnitData.image !== '') ? '<img src="'+currentUnitData.image+'" alt="'+currentUnitTitle+'">' : '';
+	$.each(currentUnitData.subunits, function(i, resource){
+		var onlyVisibleForTeachers = resource.onlyVisibleTeachers;
+		if (onlyVisibleForTeachers) {
+			totalResources++;
+			var resourceTitle = resource.title,
+					resourceDescription = resource.description,
+					resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
+					resourceType = resource.type,
+					resourceId = resource.id,
+					resourceurl = resource.url,
+					resourceOnClick = resource.onclickTitle,
+					resourceListItem = document.createElement('div');
+					resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
+			resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <div class="oxfl-title4">'+currentUnitTitle+'</div><h2 class="oxfl-title2">'+resourceTitle+'</h2></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"> ' + resourceImage + ' </div> <div class="oxfl-resource-image-wrapper-img">'+currentUnitImage+'</div> </div> </a> </article>';
+			resourceList.appendChild(resourceListItem);
+			}
+	});
+
+	var $resourceUnitWrapper = $('#oxfl-resources-classresources-unit');
+
+	$resourceUnitWrapper.prepend('<h1 class="oxfl-title-tab">' + currentUnitDescription + '</h1>');
+
+	if (totalResources > 0) {
+
+				if ($resourceUnitWrapper.hasClass('slick-initialized')) {
+					$resourceUnitWrapper.slick('unslick');
+				}
+				$resourceUnitWrapper.empty();
+				$resourceUnitWrapper[0].appendChild(resourceList);
+
+				var items = $resourceUnitWrapper.find('.oxfl-resource-item'),
+						itemsLength = items.length,
+						itemperpage = 6;
+				for(var i = 0; i < itemsLength; i+=itemperpage) {
+					items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
+				}
+
+				$resourceUnitWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+	} else {
+		$resourceUnitWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
+	}
+
+
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
 	var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
