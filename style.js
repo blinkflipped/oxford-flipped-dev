@@ -2484,7 +2484,7 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 					description = unit.description,
 					image = (unit.image !== '') ? '<img src="'+unit.image+'" alt="'+title+'">' : '',
 					id = unit.id,
-					number = unit.number;
+					number = unit.number - 1;
 					totalResources++;
 
 					var resourceListItem = document.createElement('div');
@@ -2549,7 +2549,26 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
+	var $resourceUnitWrapper = $('#oxfl-resources-unit-classresources');
+
+
 	console.log("LOAD RESOURCES OF UNIT " + currentEpisode);
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
+	var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
+	oxfordFlippedApp.changeBackground(backgroundImage);
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
+	$resourceUnitWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass(bodyClass);
+		if (updateHash) window.location.hash = hash;
+	});
+
+
+
 }
 
 oxfordFlippedApp.updateUserData = function() {
