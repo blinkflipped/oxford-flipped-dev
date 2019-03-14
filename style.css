@@ -2069,6 +2069,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   transform: translate(0, 0); }
 
 #oxfl-resources-classresources-wrapper,
+#oxfl-resources-classresources-unit-wrapper,
 #oxfl-resources-game-wrapper,
 #oxfl-resources-summary-wrapper {
   width: 100%;
@@ -2085,6 +2086,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   -webkit-overflow-scrolling: auto;
   pointer-events: none; }
 
+.oxfl-resources-unit-container,
 .oxfl-resources-container {
   background: rgba(242, 242, 242, 0.8);
   border: 2px solid #ffffff;
@@ -2096,8 +2098,10 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
   margin: 0 auto 110px;
   padding: 0; }
+  .oxfl-resources-unit-container .oxfl-resources-page,
   .oxfl-resources-container .oxfl-resources-page {
     padding: 30px; }
+  .oxfl-resources-unit-container.oxfl-empty,
   .oxfl-resources-container.oxfl-empty {
     height: 490px;
     max-height: calc(100vh - 320px);
@@ -2105,6 +2109,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     display: flex;
     justify-content: center;
     align-items: center; }
+    .oxfl-resources-unit-container.oxfl-empty .oxfl-title2b,
     .oxfl-resources-container.oxfl-empty .oxfl-title2b {
       color: #ffffff; }
 
@@ -2338,6 +2343,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   right: -140px;
   top: 2%; }
 
+#oxfl-resources-classresources-unit-monster,
 #oxfl-resources-classresources-monster {
   opacity: 0;
   transform: translate(0, -100%);
@@ -2355,6 +2361,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   left: 0;
   z-index: 100;
   margin: 70px auto 0; }
+  #oxfl-resources-classresources-unit-monster .oxfl-resources-classresources-monster-bubble,
   #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble {
     display: flex;
     vertical-align: middle;
@@ -2377,6 +2384,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     left: 200px;
     margin: -40px 0 0 80px;
     transform: translate(0, -50%); }
+    #oxfl-resources-classresources-unit-monster .oxfl-resources-classresources-monster-bubble::before,
     #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble::before {
       content: '';
       display: block;
@@ -2389,6 +2397,7 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       top: 48px;
       left: -15px;
       transform: translate(0, -50%) rotate(90deg); }
+    #oxfl-resources-classresources-unit-monster .oxfl-resources-classresources-monster-bubble span,
     #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble span {
       display: block;
       transform: none;
@@ -2406,6 +2415,21 @@ body.oxfl-body-resources #oxfl-resources-classresources-wrapper {
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
     transition-delay: 0s; }
 body.oxfl-body-resources #oxfl-resources-classresources-monster {
+  opacity: 1;
+  transform: translate(0, 0); }
+
+body.oxfl-body-resources-unit #oxfl-resources-classresources-unit-wrapper {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  transition-delay: 0s;
+  pointer-events: auto; }
+  body.oxfl-body-resources-unit #oxfl-resources-classresources-unit-wrapper .oxfl-resources-unit-container {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s; }
+body.oxfl-body-resources-unit #oxfl-resources-classresources-unit-monster {
   opacity: 1;
   transform: translate(0, 0); }
 
