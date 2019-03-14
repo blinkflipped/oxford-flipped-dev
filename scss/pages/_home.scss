@@ -237,7 +237,7 @@
   background: $negative_color;
   width: 120px;
   height: auto;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1em;
   font-family: $font_family_2;
   font-weight: bold;
@@ -248,7 +248,7 @@
   color: $color_4;
   text-align: center;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   &::before {
     content: '';
     display: block;

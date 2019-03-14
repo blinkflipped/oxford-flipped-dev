@@ -947,8 +947,9 @@ body.oxfl-body-gradebook {
 
 .oxfl-notifications-legend {
   list-style: none;
-  margin: 110px 0 0 0;
-  padding: 0; }
+  margin: 60px 0 0 0;
+  padding: 0;
+  font-size: 14px; }
   .oxfl-notifications-legend li {
     padding: 0;
     margin: 0 0 20px 0; }
@@ -964,28 +965,30 @@ body.oxfl-body-gradebook {
   font-size: 1.2rem; }
   .oxfl-notification-item th {
     font-weight: 500; }
-  .oxfl-notification-item th:nth-child(1), .oxfl-notification-item td:nth-child(1) {
-    width: 70px;
-    min-width: 70px;
-    display: none; }
-  .oxfl-notification-item th.oxfl-notification-item-chapter, .oxfl-notification-item td.oxfl-notification-item-chapter {
-    width: 140px;
-    min-width: 140px; }
-    .oxfl-notification-item th.oxfl-notification-item-chapter span, .oxfl-notification-item td.oxfl-notification-item-chapter span {
-      width: 140px; }
-  .oxfl-notification-item th.oxfl-notification-item-chapter-description, .oxfl-notification-item td.oxfl-notification-item-chapter-description {
-    width: 200px;
-    max-width: 200px; }
-    .oxfl-notification-item th.oxfl-notification-item-chapter-description span, .oxfl-notification-item td.oxfl-notification-item-chapter-description span {
-      width: 200px; }
-  .oxfl-notification-item th.oxfl-notification-item-chapter-duedate, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate {
-    text-align: center;
-    width: 50px;
-    min-width: 50px;
-    font-size: 10px; }
-  .oxfl-notification-item th.oxfl-notification-item-chapter-duedate-label, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate-label {
-    width: 24px;
-    min-width: 24px; }
+  .oxfl-notification-item th, .oxfl-notification-item td {
+    padding: 2px; }
+    .oxfl-notification-item th:nth-child(1), .oxfl-notification-item td:nth-child(1) {
+      width: 70px;
+      min-width: 70px;
+      display: none; }
+    .oxfl-notification-item th.oxfl-notification-item-chapter, .oxfl-notification-item td.oxfl-notification-item-chapter {
+      width: 140px;
+      min-width: 140px; }
+      .oxfl-notification-item th.oxfl-notification-item-chapter span, .oxfl-notification-item td.oxfl-notification-item-chapter span {
+        width: 140px; }
+    .oxfl-notification-item th.oxfl-notification-item-chapter-description, .oxfl-notification-item td.oxfl-notification-item-chapter-description {
+      width: 200px;
+      max-width: 200px; }
+      .oxfl-notification-item th.oxfl-notification-item-chapter-description span, .oxfl-notification-item td.oxfl-notification-item-chapter-description span {
+        width: 200px; }
+    .oxfl-notification-item th.oxfl-notification-item-chapter-duedate, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate {
+      text-align: center;
+      width: 50px;
+      min-width: 50px;
+      font-size: 10px; }
+    .oxfl-notification-item th.oxfl-notification-item-chapter-duedate-label, .oxfl-notification-item td.oxfl-notification-item-chapter-duedate-label {
+      width: 24px;
+      min-width: 24px; }
   .oxfl-notification-item .oxfl-title3 {
     font-size: 16px;
     font-size: 1.6rem;
@@ -1423,7 +1426,7 @@ body.oxfl-iframe-visible {
   background: #ffffff;
   width: 120px;
   height: auto;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1em;
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
@@ -1434,7 +1437,7 @@ body.oxfl-iframe-visible {
   color: #ED1E79;
   text-align: center;
   border-radius: 20px;
-  padding: 10px 20px; }
+  padding: 10px 10px; }
   .oxfl-bubble-hello::before {
     content: '';
     display: block;
@@ -2499,7 +2502,7 @@ body.oxfl-body-marketplace-summary #oxfl-resources-summary-wrapper {
   border-radius: 15px; }
   .oxfl-episode > a {
     display: block;
-    padding: 16px; }
+    padding: 15px; }
   .oxfl-episode .oxfl-title2 {
     display: none; }
   .oxfl-episode .oxfl-episode-image-wrapper {
@@ -3062,7 +3065,7 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-
   z-index: 100;
   width: 100%;
   height: 100%;
-  padding: 20px; }
+  padding: 100px 20px 20px; }
   body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-inner {
     background: url(img/final-1.png) center center no-repeat #ffffff;
     background-size: contain;
@@ -3073,25 +3076,61 @@ body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-
     bottom: 0;
     z-index: 100; }
     body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-inner .oxfl-coins-bubble-1 {
-      background: url(img/final-1-coins.png) 0 0 no-repeat transparent;
+      background: url(img/coins.png) 20px center #29AAE3;
       width: 353px;
-      height: 180px;
-      background-size: contain;
+      height: 110px;
+      background-size: 66px 66px;
       position: absolute;
       top: 0;
       left: 50%;
       transform: translate(-50%, 0);
-      margin-left: -250px; }
+      margin-left: -250px;
+      border-radius: 100px; }
       body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-inner .oxfl-coins-bubble-1-coins {
         position: absolute;
         top: 25px;
-        right: 110px;
-        text-align: right;
+        left: 110px;
+        text-align: left;
         font-size: 59px;
         line-height: 1em;
         color: #ffffff;
         font-family: "Quicksand", sans-serif;
         font-weight: 500; }
+  body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-1, body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-2 {
+    background: #ED1E79;
+    font-size: 20px;
+    line-height: 1em;
+    font-family: "Myfrida", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    position: absolute;
+    border-radius: 40px;
+    padding: 10px 20px; }
+    body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-1::before, body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-2::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #ED1E79;
+      position: absolute;
+      bottom: -10px;
+      left: 20px; }
+    body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-1::after, body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-2::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 12px solid #ffffff;
+      position: absolute;
+      bottom: -12px;
+      left: 18px; }
+  body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper .oxfl-final-screen-one-bubble-1 {
+    top: -40px;
+    z-index: 100; }
 body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active {
   overflow: hidden; }
   body.body_clase.view-mode #actividad .oxfl-final-screen-one-wrapper-active .oxfl-final-screen-one {

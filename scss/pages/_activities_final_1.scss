@@ -12,7 +12,7 @@ body.body_clase.view-mode {
         z-index: 100;
         width: 100%;
         height: 100%;
-        padding: 20px;
+        padding: 100px 20px 20px;
         &-inner {
           background: url(img/final-1.png) center center no-repeat $background_color;
           background-size: contain;
@@ -23,21 +23,21 @@ body.body_clase.view-mode {
           bottom: 0;
           z-index: 100;
           .oxfl-coins-bubble-1 {
-            background: url(img/final-1-coins.png) 0 0 no-repeat transparent;
+            background: url(img/coins.png) 20px center $color_13;
             width: 353px;
-            height: 180px;
-            background-size: contain;
+            height: 110px;
+            background-size: 66px 66px;
             position: absolute;
             top: 0;
             left: 50%;
             transform: translate(-50%,0);
             margin-left: -250px;
+            border-radius: 100px;
             &-coins {
               position: absolute;
               top: 25px;
-              right: 110px;
-              text-align: right;
-              //@include font-size(5.9);
+              left: 110px;
+              text-align: left;
               font-size: 59px;
               line-height: 1em;
               color: $negative_color;
@@ -46,6 +46,49 @@ body.body_clase.view-mode {
             }
           }
         }
+
+        &-bubble-1,
+        &-bubble-2 {
+          background: $color_4;
+          font-size: 20px;
+          line-height: 1em;
+          font-family: $font_family_2;
+          font-weight: bold;
+          font-style: italic;
+          position: absolute;
+          border-radius: 40px;
+          padding: 10px 20px;
+          &::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid $color_4;
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+          }
+          &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 12px solid $background_color;
+            position: absolute;
+            bottom: -12px;
+            left: 18px;
+          }
+        }
+        &-bubble-1 {
+          top: -40px;
+          z-index: 100;
+        }
+        &-bubble-2 {}
+
       }
       &-active {
         overflow: hidden;

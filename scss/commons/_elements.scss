@@ -942,8 +942,9 @@
 
 .oxfl-notifications-legend {
   list-style: none;
-  margin: 110px 0 0 0;
+  margin: 60px 0 0 0;
   padding: 0;
+  font-size: 14px;
   li {
     padding: 0;
     margin: 0 0 20px 0;
@@ -964,6 +965,7 @@
     font-weight: 500;
   }
   th,td {
+    padding: 2px;
     &:nth-child(1) {
       width: 70px;
       min-width: 70px;
