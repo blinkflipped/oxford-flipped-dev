@@ -1264,11 +1264,9 @@ oxfordFlippedApp.deadlineState = function(endDate) {
 		Date.now = function() { return new Date().getTime(); }
 	}
 	var currentTimeStamp = Math.floor(Date.now() / 1000)
-	console.log(currentTimeStamp)
 
 	var difference = endDate - currentTimeStamp;
 	var daysDifference = Math.floor(difference/60/60/24);
-	console.log(daysDifference);
 
 	if (daysDifference < -1) {
 		return 2;
@@ -1792,7 +1790,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
 						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
 						chapterActionsTeachersLock = '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
-						chapterActionsTeachers = (blink.activity.currentStyle.getIdGroupFromUrl() !== 0) ? '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button>' + chapterActionsTeachersLock : chapterActionsTeachersLock,
+						chapterActionsTeachers = (blink.activity.currentStyle.getIdGroupFromUrl() !== 0) ? chapterActionsTeachersLock + '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button>' : chapterActionsTeachersLock,
 						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : chapterActionsTeachers,
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',

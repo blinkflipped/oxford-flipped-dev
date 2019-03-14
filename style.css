@@ -999,7 +999,7 @@ body.oxfl-body-gradebook {
   margin: 0 10px; }
   .oxfl-notif-label-date-2 {
     background-position: 0 -40px; }
-  .oxfl-notif-label-date-hidden {
+  .oxfl-notif-label-date-0, .oxfl-notif-label-date-hidden {
     visibility: hidden; }
 
 .slick-track,
