@@ -1616,8 +1616,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 	oxfordFlippedApp.objectFitSupport();
 
 
-	// Premium button functionality
-	//if (blink.hasTouch) {
+	// Premium button functionality in touch devices
+	if (blink.hasTouch) {
 		$('body').on('click', '.oxfl-js-button-premium', function() {
 
 				var button = $(this);
@@ -1637,12 +1637,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				button.removeClass('active').removeAttr('onclick');
 			}
 		});
-
-	//}
-
-
-
-
+	}
 }
 
 oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
