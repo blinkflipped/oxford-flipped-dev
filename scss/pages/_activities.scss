@@ -47,10 +47,10 @@ body.body_clase.view-mode {
     border: 0;
     cursor: pointer;
     .fa {
-      background: url(img/arrows-slide-circle.png) 0 0 no-repeat transparent;
+      background: url(img/arrows-slide-circled.png) 0 -55px no-repeat transparent;
       background-size: 47px 101px;
-      width: 45px;
-      height: 45px;
+      width: 47px;
+      height: 47px;
       top: 50%;
       position: absolute;
       margin-top: -20px;
@@ -63,15 +63,15 @@ body.body_clase.view-mode {
       border-radius: 0;
       right: 0;
       .fa {
-        left: 30px;
+        left: 10px;
       }
     }
     &.left {
       border-radius: 0;
       left: 0;
       .fa {
-        right: 30px;
-        background-position: 0 -55px;
+        right: 10px;
+        background-position: 0 0;
       }
     }
     &.disabled {
