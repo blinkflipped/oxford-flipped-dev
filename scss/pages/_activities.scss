@@ -47,10 +47,10 @@ body.body_clase.view-mode {
     border: 0;
     cursor: pointer;
     .fa {
-      background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
-      background-size: 16px 60px;
-      width: 16px;
-      height: 32px;
+      background: url(img/arrows-slide-circle.png) 0 0 no-repeat transparent;
+      background-size: 47px 101px;
+      width: 45px;
+      height: 45px;
       top: 50%;
       position: absolute;
       margin-top: -20px;
@@ -71,7 +71,7 @@ body.body_clase.view-mode {
       left: 0;
       .fa {
         right: 30px;
-        background-position: 0 -30px;
+        background-position: 0 -55px;
       }
     }
     &.disabled {

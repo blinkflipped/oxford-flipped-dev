@@ -2935,10 +2935,10 @@ body.body_clase.view-mode .slider-control:focus {
   body.body_clase.view-mode .oxfl-slider-control .fa,
   body.body_clase.view-mode .slider-control .fa,
   body.body_clase.view-mode .slider-control:focus .fa {
-    background: url(img/arrows-slide.png) 0 0 no-repeat transparent;
-    background-size: 16px 60px;
-    width: 16px;
-    height: 32px;
+    background: url(img/arrows-slide-circle.png) 0 0 no-repeat transparent;
+    background-size: 47px 101px;
+    width: 45px;
+    height: 45px;
     top: 50%;
     position: absolute;
     margin-top: -20px;
@@ -2965,7 +2965,7 @@ body.body_clase.view-mode .slider-control:focus {
     body.body_clase.view-mode .slider-control.left .fa,
     body.body_clase.view-mode .slider-control:focus.left .fa {
       right: 30px;
-      background-position: 0 -30px; }
+      background-position: 0 -55px; }
   body.body_clase.view-mode .oxfl-slider-control.disabled,
   body.body_clase.view-mode .slider-control.disabled,
   body.body_clase.view-mode .slider-control:focus.disabled {
