@@ -302,7 +302,7 @@ body.oxfl-body-gradebook {
   background: none;
   position: fixed;
   top: 60px;
-  right: 15px;
+  right: 35px;
   z-index: 900; }
   body.app:not(.offline-pc) .oxfl-button-premium {
     top: 26px; }
@@ -310,32 +310,35 @@ body.oxfl-body-gradebook {
     position: absolute;
     opacity: 0;
     white-space: nowrap;
-    right: calc(100% + 36px);
+    right: calc(100% + 20px);
     top: 50%;
     transform: translate(0, -50%);
     background: #1b1464;
     color: #ffffff;
     font-size: 12px;
-    padding: 5px 10px;
-    transition: opacity .3 ease-in; }
+    padding: 5px 15px;
+    margin: -2px 0 0 0;
+    transition: opacity .3s ease-in;
+    pointer-events: none;
+    height: 30px; }
     .oxfl-button-premium-tooltip::before {
       content: '';
       display: block;
       width: 0;
       height: 0;
-      border-left: 16px solid #1b1464;
-      border-top: 16px solid transparent;
-      border-bottom: 16px solid transparent;
+      border-left: 15px solid #1b1464;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
       position: absolute;
       top: 0;
-      right: -16px; }
+      right: -15px; }
   .oxfl-button-premium-inner {
     width: 60px;
     height: 63px;
     background: url(img/button-premium.png) 0 0 no-repeat;
     background-size: contain;
     display: block; }
-  .oxfl-button-premium:hover .oxfl-button-premium-tooltip {
+  .oxfl-button-premium.active .oxfl-button-premium-tooltip, .oxfl-button-premium:hover .oxfl-button-premium-tooltip {
     opacity: 1; }
 
 #oxfl-coins {
@@ -343,7 +346,7 @@ body.oxfl-body-gradebook {
   top: 60px;
   right: 15px;
   z-index: 900;
-  transition: opacity .3 ease-in; }
+  transition: opacity .3s ease-in; }
   body.app:not(.offline-pc) #oxfl-coins {
     top: 26px; }
 

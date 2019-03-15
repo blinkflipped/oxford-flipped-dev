@@ -1445,11 +1445,11 @@ oxfordFlippedApp.getState = function(chapterID) {
 oxfordFlippedApp.chapterStateNew = function(chapterID) {
 	return (typeof window.actividades[chapterID] === 'undefined' || window.actividades[chapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapterID].custom_activity_status === 'undefined');
 }
+
 oxfordFlippedApp.chapterStateStarted = function(chapterID) {
 	return (typeof window.actividades[chapterID] !== 'undefined' && (window.actividades[chapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[chapterID].custom_activity_status === 'undefined'));
 }
 
-//oxfordFlippedApp.auxiliarButtonTeacher(oxfordFlippedApp.bookData);
 oxfordFlippedApp.auxiliarButtonTeacher = function(data) {
 	var button, onclick;
 	$.each(data.units, function(i, unit){
@@ -1462,7 +1462,10 @@ oxfordFlippedApp.auxiliarButtonTeacher = function(data) {
 					value = value.toLowerCase();
 					if (value.indexOf(oxfordFlippedApp.config.tagPremium) >= 0) {
 						onclick = subunit.onclickTitle;
-						button =  '<button class="oxfl-button-premium" onclick="' + onclick + '"><span class="oxfl-button-premium-tooltip"> ' + oxfordFlippedApp.text.premiumButton + ' </span><span class="oxfl-button-premium-inner"></span></button>';
+						//var onclickAttr = (blink.hasTouch) ? 'data-onclick="' + onclick + '"' : 'onclick="' + onclick + '"';
+						var onclickAttr = 'data-onclick="' + onclick + '"';
+
+						button =  '<button class="oxfl-button-premium oxfl-js-button-premium" ' + onclickAttr + '><span class="oxfl-button-premium-tooltip"> ' + oxfordFlippedApp.text.premiumButton + ' </span><span class="oxfl-button-premium-inner"></span></button>';
 						return false;
 					}
 				});
@@ -1471,7 +1474,6 @@ oxfordFlippedApp.auxiliarButtonTeacher = function(data) {
 	});
 	return button;
 }
-
 
 
 oxfordFlippedApp.homepage = function(data,updateHash) {
@@ -1613,6 +1615,34 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 	// Object Fit support
 	oxfordFlippedApp.objectFitSupport();
 
+
+	// Premium button functionality
+	//if (blink.hasTouch) {
+		$('body').on('click', '.oxfl-js-button-premium', function() {
+
+				var button = $(this);
+				var isActive = button.hasClass('active');
+
+				if (!isActive) {
+					var onclick = button.attr('data-onclick');
+					button.addClass('active').attr('onclick', onclick);
+				}
+
+		});
+
+		$(document).click(function(e) {
+			let $target = $(e.target);
+			if(!$target.closest('.oxfl-js-button-premium').length) {
+				var button = $('.oxfl-js-button-premium');
+				button.removeClass('active').removeAttr('onclick');
+			}
+		});
+
+	//}
+
+
+
+
 }
 
 oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
@@ -1680,7 +1710,6 @@ oxfordFlippedApp.loadEpisodes = function(data,updateHash) {
 		window.location.hash = newHash;
 	});
 }
-
 
 oxfordFlippedApp.loadNotifications = function(data) {
 
@@ -1771,7 +1800,6 @@ oxfordFlippedApp.loadNotifications = function(data) {
 	}
 
 }
-
 
 oxfordFlippedApp.marginBottomMonsterChapters = function() {
 		var $monster = $('#oxfl-chapters-monster'),
@@ -1921,7 +1949,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 }
 
-
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
 
 	var resourceList = document.createDocumentFragment(),
@@ -1992,9 +2019,6 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 	});
 }
 
-
-
-
 oxfordFlippedApp.loadMarketplace = function(updateHash) {
 
 	oxfordFlippedApp.console("Load Marketplace");
@@ -2055,7 +2079,6 @@ oxfordFlippedApp.updateMarketplaceList = function(activityId) {
 		}
 	});
 }
-
 
 oxfordFlippedApp.drawChartGradebook = function(totalUnits,unitsCompleted) {
 
@@ -2480,7 +2503,6 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 	});
 }
 
-
 oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHash) {
 
 	var currentIndex = 8;
@@ -2749,7 +2771,6 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 	});
 
 }
-
 
 oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
@@ -3034,7 +3055,6 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 	$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
 }
 
-
 oxfordFlippedApp.onSliderChanged = function(currentSection) {
 
 	var hasCover = $('.oxfl-checkpoint-1-cover-wrapper').length,
@@ -3068,6 +3088,7 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 oxfordFlippedApp.hideIframeButton = function() {
 	$('#iframe_div .btn-close-iframe').hide();
 }
+
 oxfordFlippedApp.showIframeButton = function() {
 	$('#iframe_div .btn-close-iframe').show();
 }
@@ -3192,7 +3213,6 @@ oxfordFlippedApp.datepickerDeleteDate = function(idActivity) {
 	);
 }
 
-
 oxfordFlippedApp.oxflModalDatepicker = function(endDate, idActivity) {
 
 	var $modal = $('#oxfl-modal-datepicker');
@@ -3205,7 +3225,6 @@ oxfordFlippedApp.oxflModalDatepicker = function(endDate, idActivity) {
 	oxfordFlippedApp.datepickerInit(endDate, idActivity);
 
 }
-
 
 oxfordFlippedApp.objectFitSupport = function() {
 
@@ -3225,6 +3244,7 @@ oxfordFlippedApp.objectFitSupport = function() {
 		});
 	}
 }
+
 
 $(document).ready(function() {
 
