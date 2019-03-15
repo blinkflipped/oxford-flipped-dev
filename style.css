@@ -293,29 +293,42 @@ body.oxfl-body-gradebook {
 .oxfl-button-premium {
   display: block;
   width: 60px;
-  height: 63px; }
+  height: 63px;
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  z-index: 900; }
+  body.app:not(.offline-pc) .oxfl-button-premium {
+    top: 26px; }
   .oxfl-button-premium-tooltip {
     position: absolute;
     opacity: 0;
     white-space: nowrap;
-    right: 100%;
+    right: calc(100% + 36px);
     top: 50%;
     transform: translate(0, -50%);
     background: #1b1464;
     color: #ffffff;
-    font-size: 14px;
-    padding: 5px 10px; }
+    font-size: 12px;
+    padding: 5px 10px;
+    transition: opacity .3 ease-in; }
     .oxfl-button-premium-tooltip::before {
       content: '';
       display: block;
       width: 0;
       height: 0;
-      border-left: 10px solid #1b1464;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
+      border-left: 16px solid #1b1464;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
       position: absolute;
       top: 0;
-      right: -10px; }
+      right: -16px; }
   .oxfl-button-premium-inner {
     width: 60px;
     height: 63px;

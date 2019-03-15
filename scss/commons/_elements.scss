@@ -105,28 +105,42 @@
   display: block;
   width: 60px;
   height: 63px;
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  z-index: 900;
+  body.app:not(.offline-pc) & {
+    top: 26px;
+  }
   &-tooltip {
     position: absolute;
     opacity: 0;
     white-space: nowrap;
-    right: 100%;
+    right: calc(100% + 26px);
     top: 50%;
     transform: translate(0, -50%);
     background: $color_20;
     color: $negative_color;
-    font-size: 14px;
+    font-size: 12px;
     padding: 5px 10px;
+    transition: opacity .3 ease-in;
     &::before {
       content: '';
       display: block;
       width: 0;
       height: 0;
-      border-left: 10px solid $color_20;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
+      border-left: 16px solid $color_20;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
       position: absolute;
       top: 0;
-      right: -10px;
+      right: -16px;
     }
   }
   &-inner {
