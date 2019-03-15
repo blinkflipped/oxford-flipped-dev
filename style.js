@@ -955,6 +955,7 @@ oxfordFlippedApp.config.nameMarketplace = 'Marketplace';
 oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.marketplaceType1 = 'game';
 oxfordFlippedApp.config.marketplaceType2 = 'summary';
+oxfordFlippedApp.config.tagPremium = 'premium',
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
 oxfordFlippedApp.config.minGrade = 50;
@@ -1131,7 +1132,8 @@ oxfordFlippedApp.text = {
 	legend1 : 'This lesson is due in less than two days',
 	legend2 : "You didn't complete this lesson by the due date",
 	welldone : 'Well done!',
-	continue : 'Click on the arrow to continue'
+	continue : 'Click on the arrow to continue',
+	premiumButton : 'Más recursos en Oxford Premium. ¡Accede ya!'
 }
 
 
@@ -1447,6 +1449,31 @@ oxfordFlippedApp.chapterStateStarted = function(chapterID) {
 	return (typeof window.actividades[chapterID] !== 'undefined' && (window.actividades[chapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted || typeof window.actividades[chapterID].custom_activity_status === 'undefined'));
 }
 
+//oxfordFlippedApp.auxiliarButtonTeacher(oxfordFlippedApp.bookData);
+oxfordFlippedApp.auxiliarButtonTeacher = function(data) {
+	var button, onclick;
+	$.each(data.units, function(i, unit){
+		$.each(unit.subunits, function(i, subunit){
+			var subunitTags = subunit.tags,
+					subunitTagsArray = (typeof subunitTags !== 'undefined') ? subunitTags.split(" ") : [];
+
+			if (subunitTagsArray.length) {
+				$.each(subunitTagsArray, function(index, value) {
+					value = value.toLowerCase();
+					if (value.indexOf(oxfordFlippedApp.config.tagPremium) >= 0) {
+						onclick = subunit.onclickTitle;
+						button =  '<button class="oxfl-button-premium" onclick="' + onclick + '"><span class="oxfl-button-premium-tooltip"> ' + oxfordFlippedApp.text.premiumButton + ' </span><span class="oxfl-button-premium-inner"></span></button>';
+						return false;
+					}
+				});
+			}
+		});
+	});
+	return button;
+}
+
+
+
 oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	oxfordFlippedApp.console("Homepage");
@@ -1467,12 +1494,13 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		var bookTitle = data.title,
 				username = nombreusuario,
 				totalCoins = blink.activity.currentStyle.userCoins ? blink.activity.currentStyle.userCoins : 0,
+				auxiliarButtonTeacher = (!oxfordFlippedApp.config.isStudent) ? oxfordFlippedApp.auxiliarButtonTeacher() : '',
 				coinsElem = (oxfordFlippedApp.config.isStudent) ? '<div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div>' : '',
 				lessonPageText = (oxfordFlippedApp.config.isStudent) ? oxfordFlippedApp.text.selectalesson : oxfordFlippedApp.text.unlocklesson;
 
 		var customButton = (oxfordFlippedApp.config.isStudent) ? '<button class="oxfl-monster oxfl-monster-1 oxfl-js-load-gradebook" id="oxfl-goto-gradebook"><span>' + oxfordFlippedApp.text.buttongradebook + '</span></button>' : '<button class="oxfl-monster oxfl-monster-5 oxfl-js-load-classresources" id="oxfl-goto-classresources"><span>' + oxfordFlippedApp.text.buttonresources + '</span></button>';
 
-		var homeHtml = '<div id="oxfl-custom-background"><div id="oxfl-custom-background-inner-1"></div> <div id="oxfl-custom-background-inner-2"></div> </div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">' + oxfordFlippedApp.text.text1 + '</div><h1 class="oxfl-title1">' + bookTitle + '</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home oxfl-js-gohome"> <span>' + oxfordFlippedApp.text.buttonhome + '</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info oxfl-js-open-info" style="display: none"> <span>' + oxfordFlippedApp.text.buttoninfo + '</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace oxfl-js-load-marketplace"> <span>' + oxfordFlippedApp.text.buttonmarketplace + '</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled"> <span>' + oxfordFlippedApp.text.buttongoback + '</span></button></div>' + coinsElem + '<button id="oxfl-notifications" class="oxfl-js-open-notifications"><div class="oxfl-notifications-badge"></div></button><div id="oxfl-home-menu"><div id="oxfl-home-menu-inner" class="oxfl-container"><div class="oxfl-home-menu-item">' + customButton + '</div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>' + oxfordFlippedApp.text.buttonprepare + '</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3 oxfl-js-load-marketplace" id="oxfl-goto-marketplace"><span>' + oxfordFlippedApp.text.buttonmarketplace + '</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">' + oxfordFlippedApp.text.hello + ' </span><span class="oxfl-bubble-hello-name">' + username + '</span></div></div></div></div></div>',
+		var homeHtml = '<div id="oxfl-custom-background"><div id="oxfl-custom-background-inner-1"></div> <div id="oxfl-custom-background-inner-2"></div> </div>  <div id="oxfl-home-title"><div><div class="oxfl-title5">' + oxfordFlippedApp.text.text1 + '</div><h1 class="oxfl-title1">' + bookTitle + '</h1></div></div>  <div id="oxfl-general-buttons"><button class="oxfl-button-icon oxfl-button-icon-home oxfl-js-gohome"> <span>' + oxfordFlippedApp.text.buttonhome + '</span> </button> <button class="oxfl-button-icon oxfl-button-icon-info oxfl-js-open-info" style="display: none"> <span>' + oxfordFlippedApp.text.buttoninfo + '</span> </button> <button class="oxfl-button-icon oxfl-button-icon-marketplace oxfl-js-load-marketplace"> <span>' + oxfordFlippedApp.text.buttonmarketplace + '</span> </button> <button class="oxfl-button oxfl-button-icon oxfl-button-icon-goback oxfl-js-goback disabled"> <span>' + oxfordFlippedApp.text.buttongoback + '</span></button></div>' + coinsElem + auxiliarButtonTeacher + '<button id="oxfl-notifications" class="oxfl-js-open-notifications"><div class="oxfl-notifications-badge"></div></button><div id="oxfl-home-menu"><div id="oxfl-home-menu-inner" class="oxfl-container"><div class="oxfl-home-menu-item">' + customButton + '</div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-2 oxfl-js-load-episodes" id="oxfl-goto-prepare"><span>' + oxfordFlippedApp.text.buttonprepare + '</span></button></div><div class="oxfl-home-menu-item"><button class="oxfl-monster oxfl-monster-3 oxfl-js-load-marketplace" id="oxfl-goto-marketplace"><span>' + oxfordFlippedApp.text.buttonmarketplace + '</span></button><div class="oxfl-bubble-hello"><div class="oxfl-bubble-hello-inner"><span class="oxfl-bubble-hello-text">' + oxfordFlippedApp.text.hello + ' </span><span class="oxfl-bubble-hello-name">' + username + '</span></div></div></div></div></div>',
 				lessonsHtml = '<div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"><span>'  +  oxfordFlippedApp.text.selectepidose  +  '</span></div> <div id="oxfl-episodes"></div> </div>',
 				unitHtml = '<div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-lessons"><div class="oxfl-monster-lessons-bubble"><span>' + lessonPageText + '</span></div></div> <div id="oxfl-chapters"></div></div>',
 				marketplaceHtml = '<div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">' + oxfordFlippedApp.text.buygame + '</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">' + oxfordFlippedApp.text.buysummary + '</span> </button> </div> </div> </div>',
@@ -2372,95 +2400,6 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 		}
 	});
 
-}
-
-oxfordFlippedApp.loadClassResourcesOLDOLDOLDOLD = function(updateHash) {
-
-	var currentIndex = 7;
-	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
-			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
-			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
-
-	var $classresourcesWrapper = $('#oxfl-classresources-wrapper'),
-			alreadyLoaded = $classresourcesWrapper.is('.loaded');
-
-	// ***
-	// Init Class Resources
-	// ***
-	if (alreadyLoaded) {
-		oxfordFlippedApp.removeUnusedClass(bodyClass);
-		var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
-		oxfordFlippedApp.changeBackground(backgroundImage);
-
-		$classresourcesWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
-			$('body').addClass(bodyClass);
-			if (updateHash) {window.location.hash = hash;}
-		});
-	} else {
-		var resourceList = document.createDocumentFragment();
-		var totalResources = 0;
-		$.each(oxfordFlippedApp.bookData.units, function(i, unit){
-			if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
-				var subunits = unit.subunits,
-						parentTitle = unit.title;
-
-				$.each(subunits, function(x, resource){
-
-					var onlyVisibleForTeachers = resource.onlyVisibleTeachers;
-					if (onlyVisibleForTeachers) {
-						totalResources++;
-						var resourceTitle = resource.title,
-								resourceDescription = resource.description,
-								resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
-								resourceType = resource.type,
-								resourceId = resource.id,
-								resourceurl = resource.url,
-								resourceOnClick = resource.onclickTitle,
-								resourceListItem = document.createElement('div');
-								resourceListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
-						resourceListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h4 class="oxfl-title4">'+parentTitle+'</h4></header> <div class="oxfl-resource-image-wrapper"><div class="oxfl-resource-image-cover"><h2 class="oxfl-title2">'+resourceTitle+'</h2><h3 class="oxfl-title4">'+resourceDescription+'</h3><div class="oxfl-resource-icon-wrapper"><span class="oxfl-resource-icon oxfl-resource-icon-'+resourceType+'"></span></div></div> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
-						resourceList.appendChild(resourceListItem);
-						}
-				});
-			}
-		});
-
-		var $resourceWrapper = $('#oxfl-resources-classresources');
-
-		if (totalResources > 0) {
-
-					if ($resourceWrapper.hasClass('slick-initialized')) {
-						$resourceWrapper.slick('unslick');
-					}
-					$resourceWrapper.empty();
-					$resourceWrapper[0].appendChild(resourceList);
-
-					var items = $resourceWrapper.find('.oxfl-resource-item'),
-							itemsLength = items.length,
-							itemperpage = 6;
-					for(var i = 0; i < itemsLength; i+=itemperpage) {
-						items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
-					}
-
-					$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
-		} else {
-			$resourceWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
-		}
-
-		oxfordFlippedApp.removeUnusedClass(bodyClass);
-
-		var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
-		oxfordFlippedApp.changeBackground(backgroundImage);
-
-		// Object Fit support
-		oxfordFlippedApp.objectFitSupport();
-
-		$resourceWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
-			$('body').addClass(bodyClass);
-			if (updateHash) window.location.hash = hash;
-		});
-
-	}
 }
 
 oxfordFlippedApp.loadClassResources = function(updateHash) {

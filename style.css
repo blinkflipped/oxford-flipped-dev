@@ -290,6 +290,41 @@ body.oxfl-body-gradebook {
   border-radius: 20px 20px 0 0;
   padding: 10px 20px; }
 
+.oxfl-button-premium {
+  display: block;
+  width: 60px;
+  height: 63px; }
+  .oxfl-button-premium-tooltip {
+    position: absolute;
+    opacity: 0;
+    white-space: nowrap;
+    right: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    background: #1b1464;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 10px; }
+    .oxfl-button-premium-tooltip::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid #1b1464;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      position: absolute;
+      top: 0;
+      right: -10px; }
+  .oxfl-button-premium-inner {
+    width: 60px;
+    height: 63px;
+    background: url(img/button-premium.png) 0 0 no-repeat;
+    background-size: contain;
+    display: block; }
+  .oxfl-button-premium:hover .oxfl-button-premium-tooltip {
+    opacity: 1; }
+
 #oxfl-coins {
   position: fixed;
   top: 60px;
@@ -2693,7 +2728,7 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     max-height: 100%;
     position: absolute;
     top: 0;
-    left: 260px;
+    left: 360px;
     margin: 0 0 0 80px; }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble::before {
       content: '';
