@@ -2012,7 +2012,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 		}
 	});
 
-	var $resourceWrapper = $('#oxfl-resources-'+type);
+	var $resourceWrapper = (onlyUnit) ? $('#oxfl-marketplace-summary-unit') : $('#oxfl-resources-'+type);
 
 	if (totalResources > 0) {
 
@@ -2083,7 +2083,7 @@ oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
 		}
 	});
 
-	var $summaryUnitWrapper = $('#oxfl-marketplace-summary-unit');  
+	var $summaryUnitWrapper = $('#oxfl-resources-summary');
 
 	if ($summaryUnitWrapper.hasClass('slick-initialized')) {
 		$summaryUnitWrapper.slick('unslick');
