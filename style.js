@@ -2012,8 +2012,9 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 		}
 	});
 
+	var $resourceWrapper = $('#oxfl-resources-'+type);
+
 	if (totalResources > 0) {
-		var $resourceWrapper = $('#oxfl-resources-'+type);
 
 		if ($resourceWrapper.hasClass('slick-initialized')) {
 			$resourceWrapper.slick('unslick');
