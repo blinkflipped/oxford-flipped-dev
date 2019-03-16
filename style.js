@@ -2072,7 +2072,7 @@ oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
 					unitIsMarketplace = (unit.title === 'Marketplace');
 			unitListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
 			if (!unitIsMarketplace) {
-				unitListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-open-summary-unit" data-summary-unit="'+unitNumber+'"> <h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img"><img src="'+unitImage+'" alt="'+unitTitle+'"> </div></div> </a> </article>';
+				unitListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-open-summary-unit" data-summary-unit="'+unitNumber+'"> <header class="oxfl-resource-header"><h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> </header><div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img"><img src="'+unitImage+'" alt="'+unitTitle+'"> </div></div> </a> </article>';
 				unitList.appendChild(unitListItem);
 			}
 		}
@@ -2089,7 +2089,7 @@ oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
 	var items = $summaryUnitWrapper.find('.oxfl-resource-item'),
 			itemsLength = items.length;
 	for(var i = 0; i < itemsLength; i+=6) {
-		items.slice(i, i + 6).wrapAll('<div class="oxfl-resource-page oxfl-resources-page-ipp-6"></div>');
+		items.slice(i, i + 6).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-6"></div>');
 	}
 
 	$summaryUnitWrapper.slick(oxfordFlippedApp.config.carouselOpt);
