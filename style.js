@@ -966,7 +966,7 @@ oxfordFlippedApp.config.buttonGoBack = '#oxfl-general-buttons .oxfl-js-goback';
 
 oxfordFlippedApp.config.firstTime = true;
 
-oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-game', 'oxfl-body-marketplace-summary', 'oxfl-body-gradebook', 'oxfl-body-resources', 'oxfl-body-resources-unit'];
+oxfordFlippedApp.config.bodyClasses = ['oxfl-body-home', 'oxfl-body-episodes', 'oxfl-body-chapters', 'oxfl-body-marketplace', 'oxfl-body-marketplace-game', 'oxfl-body-marketplace-summary', 'oxfl-body-gradebook', 'oxfl-body-resources', 'oxfl-body-resources-unit', 'oxfl-body-marketplace-summary-unit'];
 
 oxfordFlippedApp.config.tree = {
 	0 : {
@@ -1013,6 +1013,11 @@ oxfordFlippedApp.config.tree = {
 		'id' : 'resources_unit',
 		'hash' : 'resources_unit_',
 		'class' : oxfordFlippedApp.config.bodyClasses[8]
+	},
+	9 :  {
+		'id' : 'marketplace_summaries_unit',
+		'hash' : 'marketplace_summaries_unit_',
+		'class' : oxfordFlippedApp.config.bodyClasses[9]
 	}
 }
 
@@ -1347,11 +1352,11 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[4].hash) { // Games in Marketplace
 
-		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4,updateHash)}, timeToWait);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType1,4,false,updateHash)}, timeToWait);
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[5].hash) { // Summaries in Marketplace
 
-		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,updateHash)}, timeToWait);
+		hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceSummary(data,updateHash)}, timeToWait);
 
 	} else if (currentHash === oxfordFlippedApp.config.tree[6].hash) { // GradeBook
 
@@ -1371,6 +1376,23 @@ oxfordFlippedApp.hashDistributor = function(currentHash,data,updateHash) {
 			var currentEpisode = oxflunit;
 
 			hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadClassResourcesUnit(data,currentEpisode,updateHash)}, timeToWait);
+
+		} else {
+
+			oxfordFlippedApp.console("Not Unit ID given, redirecting to Resources");
+			window.location.hash = oxfordFlippedApp.config.tree[7].hash;
+
+		}
+	} else if (currentHash.startsWith(oxfordFlippedApp.config.tree[9].hash)) {  // Summaries by unit
+
+		// This works different because we need an ID to load the Units / Chapters
+		var oxflunit = currentHash.replace(oxfordFlippedApp.config.tree[9].hash, ''),
+				unitExists = (oxfordFlippedApp.config.unitsIDs.indexOf(oxflunit) >= 0);
+
+		if (oxflunit !== '' && oxflunit !== null && unitExists) {
+			var currentEpisode = oxflunit;
+
+			hashDistributorTimeout = setTimeout(function() {oxfordFlippedApp.loadMarketplaceList(data,oxfordFlippedApp.config.marketplaceType2,6,currentEpisode,updateHash)}, timeToWait);
 
 		} else {
 
@@ -1944,7 +1966,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 }
 
-oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash) {
+oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,updateHash) {
 
 	var resourceList = document.createDocumentFragment(),
 			gameTag = 'game';
@@ -1954,8 +1976,9 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
-
 	$.each(data.units, function(i, unit){
+
+		if ((onlyUnit) && i !== onlyUnit) return;
 
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
 			var subunits = unit.subunits;
@@ -2013,6 +2036,11 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,updateHash
 		if (updateHash) window.location.hash = hash;
 	});
 }
+
+oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
+	console.log('Load Summaries Units');
+}
+
 
 oxfordFlippedApp.loadMarketplace = function(updateHash) {
 
