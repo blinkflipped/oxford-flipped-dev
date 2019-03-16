@@ -62,52 +62,42 @@
       transform: scale(1.05);
     }
   }
-  .oxfl-marketplace-menu-button-bubble {
-    color: $negative_color;
-    font-family: $font_family_2;
-    font-weight: bold;
-    font-style: italic;
-    position: absolute;
-    text-align: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    line-height: 0.8em;
+  .oxfl-marketplace-menu-button-1,
+  .oxfl-marketplace-menu-button-2 {
+    .oxfl-marketplace-menu-button-bubble {
+      display: block;
+      position: absolute;
+      @include bubble2();
+    }
   }
+
   .oxfl-marketplace-menu-button-1 {
-    //width: 297px;
     width: 360px;
     height: 384px;
     background-image: url(img/monster-12.gif);
-    //background-image: url(img/monster-12.svg);
     .oxfl-marketplace-menu-button-bubble {
-      width: 244px;
-      height: 110px;
-      //@include font-size(5.3);
-      font-size: 53px;
-      background-image: url(img/bubble-6.png);
-      top: 50%;
-      right: -177px;
+      top: 70px;
+      right: auto;
+      left: 100%;
       margin-top: -30px;
-      padding: 12px 10px 15px 40px;
     }
   }
   .oxfl-marketplace-menu-button-2 {
-    //width: 308px;
     width: 420px;
     height: 342px;
     background-image: url(img/monster-13.gif);
-    //background-image: url(img/monster-13.svg);
 
     .oxfl-marketplace-menu-button-bubble {
-      width: 274px;
-      height: 134px;
-      //@include font-size(4.8);
-      font-size: 48px;
-      background-image: url(img/bubble-7.png);
+      background:$color_17;
       bottom: 0;
-      left: -137px;
-      padding-top: 30px;
+      left: auto;
+      right: 90%;
+      &::before {
+        left: auto;
+        border-top-color: $color_17;
+        right: -26px;
+        transform: rotate(-225deg);
+      }
     }
   }
 }

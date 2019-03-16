@@ -56,7 +56,10 @@
       opacity: 1;
     }
     .oxfl-body-home &,
-    .oxfl-body-episodes & {
+    .oxfl-body-episodes &,
+    .oxfl-body-marketplace &,
+    .oxfl-body-marketplace-summary &,
+    .oxfl-body-marketplace-game & {
       filter: blur(4px);
     }
   }

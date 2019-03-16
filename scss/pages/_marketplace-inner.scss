@@ -287,71 +287,60 @@
 }
 
 #oxfl-resources-game-monster {
-  width: 290px;
-  //height: 214px;
-  height: 260px;
-  margin-bottom: -82px;
-  position: relative;
-  z-index: 10;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: url(img/monster-14.gif);
-  //background-image: url(img/monster-14.svg);
   background-size: contain;
+  width: 780px;
+  height: 260px;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  margin: 70px auto -82px;
 }
 
 #oxfl-resources-summary-monster {
-  width: 282px;
-  //height: 190px;
-  height: 230px;
-  background-position: 0 0;
+  background-position: 70px 0;
   background-repeat: no-repeat;
   background-image: url(img/monster-15.gif);
-  //background-image: url(img/monster-15.svg);
   background-size: contain;
-  left: -100px;
-  margin-bottom: -72px;
+  width: 780px;
+  height: 260px;
   position: relative;
-  z-index: 100;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  margin: 70px auto -80px;
 }
 
 .oxfl-resources-game-monster-bubble,
 .oxfl-resources-summary-monster-bubble {
-  font-family: $font_family_2;
-  font-weight: bold;
-  font-style: italic;
-  //@include font-size(4.0);
+  @include bubble1($color_17);
   font-size: 40px;
   line-height: 1em;
-  color: $negative_color;
-  background-image: url(img/monster-14-15-bubble.png);
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: contain;
-  text-align: center;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  min-height: 110px;
+  position: absolute;
+  margin: -40px 0 0 80px;
+  transform: translate(0,-50%);
+  width: auto;
+  max-width: 330px;
+  position: absolute;
+  left: 170px;
+  top: 100px;
   span {
     display: block;
-    transform: rotate(10deg);
-    margin: 16px;
+    transform: none;
+    margin: 0;
   }
 }
 
-.oxfl-resources-game-monster-bubble {
-  width: 196px;
-  height: 112px;
-  position: absolute;
-  right: -160px;
-  top: 25%;
-}
-
 .oxfl-resources-summary-monster-bubble {
-  width: 208px;
-  height: 119px;
-  position: absolute;
-  right: -140px;
-  top: 2%;
+  left: 240px;
 }
-
 
 #oxfl-resources-classresources-unit-monster,
 #oxfl-resources-classresources-monster {

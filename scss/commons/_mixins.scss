@@ -81,7 +81,35 @@
 
 // Bubble CSS
 
-@mixin bubble1() {
+@mixin bubble1($bgcolor: $color_4) {
+	display: flex;
+	vertical-align: middle;
+	justify-content: center;
+	flex-direction: column;
+	font-family: $font_family_2;
+	font-weight: bold;
+	font-style: italic;
+	text-align: left;
+	color: $negative_color;
+	background: $bgcolor;
+	padding: 20px;
+	border-radius: 40px;
+	&::before {
+		content: '';
+		display: block;
+		width: 0;
+		height: 0;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 10px solid $bgcolor;
+		position: absolute;
+		top: 48px;
+		left: -15px;
+		transform: translate(0, -50%) rotate(90deg);
+	}
+}
+
+@mixin bubble2() {
 	display: flex;
 	vertical-align: middle;
 	justify-content: center;
@@ -92,19 +120,26 @@
 	text-align: left;
 	color: $negative_color;
 	background: $color_4;
-	padding: 20px;
-	border-radius: 40px;
+	line-height: 0.8em;
+	min-width: 200px;
+	max-width: 350px;
+	min-height: 110px;
+	width: auto;
+	height: auto;
+	font-size: 58px;
+	padding: 10px 20px;
+	border-radius: 20px;
 	&::before {
 		content: '';
 		display: block;
 		width: 0;
 		height: 0;
-		border-left: 10px solid transparent;
-		border-right: 10px solid transparent;
-		border-top: 10px solid $color_4;
+		border-left: 20px solid transparent;
+		border-right: 20px solid transparent;
+		border-top: 20px solid $color_4;
 		position: absolute;
-		top: 48px;
-		left: -15px;
-		transform: translate(0, -50%) rotate(90deg);
+		top: 40px;
+		left: -24px;
+		transform: rotate(-45deg);
 	}
 }
