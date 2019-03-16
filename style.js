@@ -1973,7 +1973,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 	var resourceList = document.createDocumentFragment(),
 			gameTag = 'game';
 
-	var currentIndex = (type === oxfordFlippedApp.config.marketplaceType1) ? 4 : 5;
+	var currentIndex = (onlyUnit) ? 9 : 4;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
@@ -2031,6 +2031,11 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 		$resourceWrapper.removeClass('oxfl-empty').slick(oxfordFlippedApp.config.carouselOpt);
 	} else {
 		$resourceWrapper.empty().addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.nomarketplaceresource+'</h2>');
+	}
+
+	if (onlyUnit) {
+		var unitDescription = oxfordFlippedApp.bookData.units[onlyUnit].description;
+		$resourceWrapper.prepend('<h1 class="oxfl-title-tab">' + unitDescription + '</h1>');
 	}
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
@@ -2615,7 +2620,6 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 	// Load resources
 	var resourceList = document.createDocumentFragment();
 	var totalResources = 0;
-
 
 	var currentUnitData = oxfordFlippedApp.bookData.units[currentEpisode],
 			currentUnitTitle = currentUnitData.title,
