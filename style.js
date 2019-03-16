@@ -1138,7 +1138,8 @@ oxfordFlippedApp.text = {
 	legend2 : "You didn't complete this lesson by the due date",
 	welldone : 'Well done!',
 	continue : 'Click on the arrow to continue',
-	premiumButton : 'Más recursos en Oxford Premium. ¡Accede ya!'
+	premiumButton : 'Más recursos en Oxford Premium. ¡Accede ya!',
+	nomarketplaceresource: 'No hay ningún elemento que mostrar'
 }
 
 
@@ -1978,6 +1979,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
 	onlyUnit = Number(onlyUnit);
+	var totalResource = 0;
 	$.each(data.units, function(i, unit){
 
 		if ((onlyUnit) && i !== onlyUnit) return;
@@ -1989,6 +1991,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 				if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
 					var resourceType = resource.marketType;
 					if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === gameTag) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== gameTag)) {
+						totalResource++;
 						var resourceTitle = resource.title,
 								resourceDescription = resource.description,
 								resourceValue = resource.game_token,
@@ -2009,21 +2012,25 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 		}
 	});
 
-	var $resourceWrapper = $('#oxfl-resources-'+type);
+	if (totalResources > 0) {
+		var $resourceWrapper = $('#oxfl-resources-'+type);
 
-	if ($resourceWrapper.hasClass('slick-initialized')) {
-		$resourceWrapper.slick('unslick');
+		if ($resourceWrapper.hasClass('slick-initialized')) {
+			$resourceWrapper.slick('unslick');
+		}
+		$resourceWrapper.empty();
+		$resourceWrapper[0].appendChild(resourceList);
+
+		var items = $resourceWrapper.find('.oxfl-resource-item'),
+				itemsLength = items.length;
+		for(var i = 0; i < itemsLength; i+=itemperpage) {
+			items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
+		}
+
+		$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+	} else {
+		$resourceWrapper.empty().addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.nomarketplaceresource+'</h2>');
 	}
-	$resourceWrapper.empty();
-	$resourceWrapper[0].appendChild(resourceList);
-
-	var items = $resourceWrapper.find('.oxfl-resource-item'),
-			itemsLength = items.length;
-	for(var i = 0; i < itemsLength; i+=itemperpage) {
-		items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
-	}
-
-	$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
 
@@ -2070,7 +2077,7 @@ oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
 		}
 	});
 
-	var $summaryUnitWrapper = $('#oxfl-marketplace-summary-unit');
+	var $summaryUnitWrapper = $('#oxfl-resources-summary');
 
 	if ($summaryUnitWrapper.hasClass('slick-initialized')) {
 		$summaryUnitWrapper.slick('unslick');
