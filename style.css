@@ -137,6 +137,7 @@ body.oxfl-body-marketplace,
 body.oxfl-body-resources,
 body.oxfl-body-resources-unit,
 body.oxfl-body-marketplace-summary,
+body.oxfl-body-marketplace-summary-unit,
 body.oxfl-body-marketplace-game,
 body.oxfl-body-gradebook {
   overflow: auto;
@@ -1278,7 +1279,7 @@ body.oxfl-body-gradebook {
     transition: opacity .3s ease-out; }
     #oxfl-custom-background-inner-1.active, #oxfl-custom-background-inner-2.active {
       opacity: 1; }
-    .oxfl-body-home #oxfl-custom-background-inner-1, .oxfl-body-episodes #oxfl-custom-background-inner-1, .oxfl-body-marketplace #oxfl-custom-background-inner-1, .oxfl-body-marketplace-summary #oxfl-custom-background-inner-1, .oxfl-body-marketplace-game #oxfl-custom-background-inner-1, .oxfl-body-home #oxfl-custom-background-inner-2, .oxfl-body-episodes #oxfl-custom-background-inner-2, .oxfl-body-marketplace #oxfl-custom-background-inner-2, .oxfl-body-marketplace-summary #oxfl-custom-background-inner-2, .oxfl-body-marketplace-game #oxfl-custom-background-inner-2 {
+    .oxfl-body-home #oxfl-custom-background-inner-1, .oxfl-body-episodes #oxfl-custom-background-inner-1, .oxfl-body-marketplace #oxfl-custom-background-inner-1, .oxfl-body-marketplace-summary #oxfl-custom-background-inner-1, .oxfl-body-marketplace-summary-unit #oxfl-custom-background-inner-1, .oxfl-body-marketplace-game #oxfl-custom-background-inner-1, .oxfl-body-home #oxfl-custom-background-inner-2, .oxfl-body-episodes #oxfl-custom-background-inner-2, .oxfl-body-marketplace #oxfl-custom-background-inner-2, .oxfl-body-marketplace-summary #oxfl-custom-background-inner-2, .oxfl-body-marketplace-summary-unit #oxfl-custom-background-inner-2, .oxfl-body-marketplace-game #oxfl-custom-background-inner-2 {
       filter: blur(4px); }
 
 .oxfl-container {
