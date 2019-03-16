@@ -1976,7 +1976,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 	var currentIndex = (onlyUnit) ? 9 : 4;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
-			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+			hash = (onlyUnit) ? oxfordFlippedApp.config.tree[currentIndex].hash + onlyUnit : oxfordFlippedApp.config.tree[currentIndex].hash;
 
 	onlyUnit = Number(onlyUnit);
 	var totalResources = 0;
@@ -2083,7 +2083,7 @@ oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
 		}
 	});
 
-	var $summaryUnitWrapper = $('#oxfl-resources-summary');
+	var $summaryUnitWrapper = $('#oxfl-marketplace-summary-unit');  
 
 	if ($summaryUnitWrapper.hasClass('slick-initialized')) {
 		$summaryUnitWrapper.slick('unslick');
