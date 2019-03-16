@@ -1528,6 +1528,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				lessonsHtml = '<div id="oxfl-episodes-wrapper"> <div id="oxfl-episodes-monster" class="oxfl-monster oxfl-monster-4"><span>'  +  oxfordFlippedApp.text.selectepidose  +  '</span></div> <div id="oxfl-episodes"></div> </div>',
 				unitHtml = '<div id="oxfl-chapters-wrapper"> <div id="oxfl-chapters-monster" class="oxfl-monster oxfl-monster-lessons"><div class="oxfl-monster-lessons-bubble"><span>' + lessonPageText + '</span></div></div> <div id="oxfl-chapters"></div></div>',
 				marketplaceHtml = '<div id="oxfl-marketplace-wrapper"><div id="oxfl-marketplace-menu"> <div id="oxfl-marketplace-menu-inner"> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-1 oxfl-js-load-game"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">' + oxfordFlippedApp.text.buygame + '</span> </button> <button class="oxfl-marketplace-menu-button oxfl-marketplace-menu-button-2 oxfl-js-load-summary"> <span class="oxfl-marketplace-menu-button-monster"></span> <span class="oxfl-marketplace-menu-button-bubble">' + oxfordFlippedApp.text.buysummary + '</span> </button> </div> </div> </div>',
+				marketplaceSummaryUnitHtml = '<div id="oxfl-marketplace-summary-unit-wrapper"> <div id="oxfl-marketplace-summary-unit-monster"></div> <div id="oxfl-marketplace-summary-unit" class="oxfl-resources-container"> </div> </div>',
 				marketplaceInnerHtml = '<div id="oxfl-resources-game-wrapper"> <div id="oxfl-resources-game-monster"> <div class="oxfl-resources-game-monster-bubble"><span>'  +  oxfordFlippedApp.text.choosegame  +  '</span></div> </div> <div id="oxfl-resources-game" class="oxfl-resources-container"> </div> </div> <div id="oxfl-resources-summary-wrapper"> <div id="oxfl-resources-summary-monster"> <div class="oxfl-resources-summary-monster-bubble"><span>' + oxfordFlippedApp.text.chooseshorcut + '</span></div> </div> <div id="oxfl-resources-summary" class="oxfl-resources-container"> </div></div>',
 				classResourcesHtml = '<div id="oxfl-resources-classresources-wrapper"> <div id="oxfl-resources-classresources-monster"> <div class="oxfl-resources-classresources-monster-bubble"><span>'  +  oxfordFlippedApp.text.chooseclassresources + '</span></div> </div> <div id="oxfl-resources-classresources" class="oxfl-resources-container"> </div> </div>',
 				classResourcesInnerHtml = '<div id="oxfl-resources-classresources-unit-wrapper"> <div id="oxfl-resources-classresources-unit-monster"></div> <div id="oxfl-resources-classresources-unit" class="oxfl-resources-unit-container"> </div> </div>',
@@ -1541,7 +1542,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 				modalMarketplaceInfoHtml = '<div class="modal fade oxfl-modal oxfl-modal-4 oxfl-modal-marketplace-info" id="oxfl-modal-marketplace-info" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div class="oxfl-title2b" id="oxfl-modal-marketplace-info-title"></div> <p id="oxfl-modal-marketplace-info-description"></p> </div> <div class="modal-footer"> <div class="modal-footer-inner"> <div class="oxfl-strip"> <div class="oxfl-strip-inner"> <span id="oxfl-modal-marketplace-info-coin"></span> <span class="oxfl-icon oxfl-icon-coin"></span></div></div><button type="button" class="btn btn-primary oxfl-js-buy-resource" data-marketplace-id data-dismiss="modal">' + oxfordFlippedApp.text.buy + '</button></div></div></div></div></div>',
 				modalDatepicker = '<div class="modal fade oxfl-modal oxfl-modal-5" id="oxfl-modal-datepicker" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <div class="oxfl-modal-datepicker-monster"></div> </div> <div class="modal-body"> <div class="oxfl-datepicker-wrapper"> <div class="oxfl-datepicker-content"> <div class="oxfl-datepicker-content-left"> <div class="oxfl-datepicker-title">' + oxfordFlippedApp.text.modalDatepicker1 + '</div> <button class="oxfl-button oxfl-button-bubble oxfl-button-bubble-5 oxfl-js-setdate oxfl-button-newdate">' + oxfordFlippedApp.text.modalDatepicker2 + '</button><button class="oxfl-button oxfl-button-bubble oxfl-button-bubble-5 oxfl-js-setdate oxfl-button-updatedate">' + oxfordFlippedApp.text.modalDatepicker3 + '</button><button class="oxfl-button oxfl-button-bubble oxfl-button-bubble-6 oxfl-js-deletedate oxfl-button-updatedate">' + oxfordFlippedApp.text.modalDatepicker4 + '</button></div> <div class="oxfl-datepicker-content-right"> <div class="oxfl-modal-datepicker"> <div class="oxfl-modal-datepicker-form"><input type="text" class="form-control" id="oxfl-datepicker" /></div> </div> </div> </div> </div> </div> </div> </div> </div>';
 
-		var totalHtml = '<div id="oxfl-general">' + homeHtml + lessonsHtml + unitHtml + marketplaceHtml + marketplaceInnerHtml + customHtmlByUser + ' </div> ' + modalLockChaptersHtml + modalNotificationsHtml + modalConnectionHtml + modalNoCoinsHtml + modalMarketplaceInfoHtml + modalDatepicker;
+		var totalHtml = '<div id="oxfl-general">' + homeHtml + lessonsHtml + unitHtml + marketplaceHtml + marketplaceInnerHtml + marketplaceSummaryUnitHtml + customHtmlByUser + ' </div> ' + modalLockChaptersHtml + modalNotificationsHtml + modalConnectionHtml + modalNoCoinsHtml + modalMarketplaceInfoHtml + modalDatepicker;
 
 		$('body').prepend(totalHtml);
 
@@ -1976,6 +1977,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
+	onlyUnit = Number(onlyUnit);
 	$.each(data.units, function(i, unit){
 
 		if ((onlyUnit) && i !== onlyUnit) return;
@@ -2038,7 +2040,71 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 }
 
 oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
-	console.log('Load Summaries Units');
+
+	oxfordFlippedApp.console("Load Summaries Units");
+	oxfordFlippedApp.console(data);
+
+	var currentIndex = 5;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
+
+	var marketplaceBackground = oxfordFlippedApp.getMarketplaceBackground();
+	oxfordFlippedApp.changeBackground(marketplaceBackground);
+
+	var unitList = document.createDocumentFragment();
+	$.each(data.units, function(i, unit){
+
+		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
+			var unitTitle = unit.title,
+					unitDescription = unit.description,
+					unitNumber = unit.number - 1,
+					unitImage = unit.image,
+					unitListItem = document.createElement('div'),
+					unitIsMarketplace = (unit.title === 'Marketplace');
+			unitListItem.className = 'oxfl-resource-item oxfl-resource-item-2';
+			if (!unitIsMarketplace) {
+				unitListItem.innerHTML = '<article class="oxfl-resource"> <a href="javascript:void(0)" class="oxfl-js-open-summary-unit" data-summary-unit="'+unitNumber+'"> <h2 class="oxfl-title2">'+unitTitle+'</h2> <h3 class="oxfl-title4">'+unitDescription+'</h3> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img"><img src="'+unitImage+'" alt="'+unitTitle+'"> </div></div> </a> </article>';
+				unitList.appendChild(unitListItem);
+			}
+		}
+	});
+
+	var $summaryUnitWrapper = $('#oxfl-marketplace-summary-unit');
+
+	if ($summaryUnitWrapper.hasClass('slick-initialized')) {
+		$summaryUnitWrapper.slick('unslick');
+	}
+	$summaryUnitWrapper.empty();
+	$summaryUnitWrapper[0].appendChild(unitList);
+
+	var items = $summaryUnitWrapper.find('.oxfl-resource-item'),
+			itemsLength = items.length;
+	for(var i = 0; i < itemsLength; i+=4) {
+		items.slice(i, i + 4).wrapAll('<div class="oxfl-resource-page"></div>');
+	}
+
+
+	$summaryUnitWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
+	$('#oxfl-marketplace-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass(bodyClass);
+		if (updateHash) window.location.hash = hash;
+	});
+
+	$('body').on('click', '.oxfl-js-open-summary-unit', function(e) {
+		e.preventDefault;
+		var unitNumber = $(this).attr('data-summary-unit'),
+				newHash = oxfordFlippedApp.config.tree[9].hash + unitNumber;
+		window.location.hash = newHash;
+	});
+
 }
 
 

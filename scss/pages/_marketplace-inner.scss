@@ -1,7 +1,8 @@
 #oxfl-resources-classresources-wrapper,
 #oxfl-resources-classresources-unit-wrapper,
 #oxfl-resources-game-wrapper,
-#oxfl-resources-summary-wrapper {
+#oxfl-resources-summary-wrapper,
+#oxfl-marketplace-summary-unit-wrapper {
   width: 100%;
   max-width: 100%;
   position: absolute;
@@ -280,7 +281,8 @@
 
 
 #oxfl-resources-game-monster,
-#oxfl-resources-summary-monster {
+#oxfl-resources-summary-monster,
+#oxfl-marketplace-summary-unit-monster {
   position: relative;
   left: -40px;
   margin: 90px auto -2px;
@@ -300,7 +302,8 @@
   margin: 70px auto -82px;
 }
 
-#oxfl-resources-summary-monster {
+#oxfl-resources-summary-monster,
+#oxfl-marketplace-summary-unit-monster {
   background-position: 70px 0;
   background-repeat: no-repeat;
   background-image: url(img/monster-15.gif);
@@ -449,6 +452,24 @@ body.oxfl-body-marketplace-game {
 body.oxfl-body-marketplace-summary {
 
   #oxfl-resources-summary-wrapper{
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition-delay: 0s;
+    pointer-events: auto;
+    .oxfl-resources-container {
+      visibility:visible;
+      opacity: 1;
+      transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+      transition-delay: 0s;
+    }
+  }
+
+}
+
+body.oxfl-body-marketplace-summary-unit {
+
+  #oxfl-marketplace-summary-unit-wrapper {
     visibility:visible;
     opacity: 1;
     transition: visibility 0s linear 0.3s,opacity 0.3s linear;
