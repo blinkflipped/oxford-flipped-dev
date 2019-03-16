@@ -1979,7 +1979,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
 	onlyUnit = Number(onlyUnit);
-	var totalResource = 0;
+	var totalResources = 0;
 	$.each(data.units, function(i, unit){
 
 		if ((onlyUnit) && i !== onlyUnit) return;
@@ -1991,7 +1991,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 				if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
 					var resourceType = resource.marketType;
 					if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === gameTag) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== gameTag)) {
-						totalResource++;
+						totalResources++;
 						var resourceTitle = resource.title,
 								resourceDescription = resource.description,
 								resourceValue = resource.game_token,
