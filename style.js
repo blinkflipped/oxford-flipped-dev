@@ -2028,7 +2028,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 			items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
 		}
 
-		$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+		$resourceWrapper.removeClass('oxfl-empty').slick(oxfordFlippedApp.config.carouselOpt);
 	} else {
 		$resourceWrapper.empty().addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.nomarketplaceresource+'</h2>');
 	}
@@ -2088,10 +2088,9 @@ oxfordFlippedApp.loadMarketplaceSummary = function(data,updateHash) {
 
 	var items = $summaryUnitWrapper.find('.oxfl-resource-item'),
 			itemsLength = items.length;
-	for(var i = 0; i < itemsLength; i+=4) {
-		items.slice(i, i + 4).wrapAll('<div class="oxfl-resource-page"></div>');
+	for(var i = 0; i < itemsLength; i+=6) {
+		items.slice(i, i + 6).wrapAll('<div class="oxfl-resource-page oxfl-resources-page-ipp-6"></div>');
 	}
-
 
 	$summaryUnitWrapper.slick(oxfordFlippedApp.config.carouselOpt);
 
@@ -2570,9 +2569,9 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 					items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
 				}
 
-				$resourceWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+				$resourceWrapper.removeClass('oxfl-empty').slick(oxfordFlippedApp.config.carouselOpt);
 	} else {
-		$resourceWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
+		$resourceWrapper.empty().addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
 	}
 
 	oxfordFlippedApp.removeUnusedClass(bodyClass);
@@ -2657,9 +2656,9 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 					items.slice(i, i+itemperpage).wrapAll('<div class="oxfl-resources-page oxfl-resources-page-ipp-'+itemperpage+'"></div>');
 				}
 
-				$resourceUnitWrapper.slick(oxfordFlippedApp.config.carouselOpt);
+				$resourceUnitWrapper.removeClass('oxfl-empty').slick(oxfordFlippedApp.config.carouselOpt);
 	} else {
-		$resourceUnitWrapper.addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
+		$resourceUnitWrapper.empty().addClass('oxfl-empty').html('<h2 class="oxfl-title2b">'+oxfordFlippedApp.text.noclassresources+'</h2>');
 	}
 
 	$resourceUnitWrapper.prepend('<h1 class="oxfl-title-tab">' + currentUnitDescription + '</h1>');
