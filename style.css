@@ -146,20 +146,6 @@ body.oxfl-body-gradebook {
 .modo_revision {
   display: none; }
 
-.view-mode .btn-danger, .view-mode .btn-danger[disabled], .view-mode .btn-danger:hover, .view-mode .btn-danger:focus, .view-mode .btn-danger:active, .view-mode .btn-danger.active, .open .view-mode .btn-danger.dropdown-toggle {
-  color: #ffffff;
-  background-color: #29AAE3;
-  border-color: transparent;
-  font-family: "Myfrida", sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-  padding: 9px 30px;
-  text-transform: uppercase;
-  border-radius: 30px;
-  -webkit-box-shadow: 0px 4px 0px 0px #2f81a7;
-  -moz-box-shadow: 0px 4px 0px 0px #2f81a7;
-  box-shadow: 0px 4px 0px 0px #2f81a7; }
-
 .revision-budget,
 .attemps {
   visibility: hidden; }
@@ -539,7 +525,7 @@ body.oxfl-body-gradebook {
     width: 58px;
     height: 41px; }
 
-.oxfl-button-round {
+.oxfl-button-round, .view-mode .btn-danger, .view-mode .btn-danger[disabled], .view-mode .btn-danger:hover, .view-mode .btn-danger:focus, .view-mode .btn-danger:active, .view-mode .btn-danger.active, .open .view-mode .btn-danger.dropdown-toggle {
   border: 0;
   overflow: visible;
   outline: 0;
@@ -551,7 +537,7 @@ body.oxfl-body-gradebook {
   font-weight: bold;
   font-style: italic;
   font-size: 18px;
-  padding: 9px 30px;
+  padding: 9px 20px;
   text-transform: uppercase;
   border-radius: 60px;
   background-color: #29AAE3;
@@ -560,12 +546,12 @@ body.oxfl-body-gradebook {
   box-shadow: 0px 4px 0px 0px #2f81a7;
   text-align: center;
   width: 160px;
-  height: 60px; }
+  height: 60px;
+  white-space: normal; }
   .oxfl-button-round-2 {
     width: 160px;
     height: 60px;
-    padding: 9px 30px;
-    transform: uppercase;
+    padding: 9px 20px;
     background-color: #ED1E79;
     -webkit-box-shadow: 0px 4px 0px 0px #b2165b;
     -moz-box-shadow: 0px 4px 0px 0px #b2165b;
@@ -3110,13 +3096,13 @@ body.body_clase.view-mode #actividad .class_slide {
   position: relative; }
 body.body_clase.view-mode #actividad .oxfl-button-round-2 {
   position: absolute;
-  bottom: 18px;
+  bottom: 20px;
   left: 50%;
   transform: translate(-50%, 0);
-  margin-left: -80px;
+  margin-left: -100px;
   width: 160px; }
 body.body_clase.view-mode #actividad .btn-correct {
-  margin-left: 80px; }
+  margin-left: 100px; }
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
   background: transparent;
   -webkit-box-shadow: none;

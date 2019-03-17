@@ -393,7 +393,7 @@
   font-weight: bold;
   font-style: italic;
   font-size: 18px;
-  padding: 9px 30px;
+  padding: 9px 20px;
   text-transform: uppercase;
   border-radius: 60px;
   background-color: $color_13;
@@ -403,11 +403,11 @@
   text-align: center;
   width: 160px;
   height: 60px;
+  white-space: normal;
   &-2 {
     width: 160px;
     height: 60px;
-    padding: 9px 30px;
-    transform: uppercase;
+    padding: 9px 20px;
     background-color: $color_4;
     -webkit-box-shadow: 0px 4px 0px 0px $color_14_darker;
     -moz-box-shadow: 0px 4px 0px 0px $color_14_darker;
@@ -418,6 +418,23 @@
     }
   }
 }
+
+
+// Boton Corregir
+.view-mode {// Added .view-mode to avoid display style in Edit mode.
+	.btn-danger {
+		&,
+		&[disabled],
+		&:hover,
+		&:focus,
+		&:active,
+		&.active,
+		.open &.dropdown-toggle {
+      @extend .oxfl-button-round;
+		}
+	}
+}
+
 
 // Hovers
 .oxfl-button {
