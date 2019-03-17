@@ -3506,14 +3506,36 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     cursor: pointer; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-title p {
       position: absolute;
-      bottom: 12px;
+      bottom: 0;
       left: 50%;
       margin-left: -5px;
       transform: translate(-50%, 0);
+      display: inline-flex;
+      vertical-align: middle;
+      justify-content: center;
+      flex-direction: column;
       font-family: "Quicksand", sans-serif;
+      font-size: 18px;
       font-weight: bold;
-      font-size: 16px;
-      color: #ffffff; }
+      text-align: center;
+      color: #ffffff;
+      background: #ff931e;
+      padding: 5px 10px;
+      border-radius: 40px;
+      min-width: 105px; }
+      body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz .bck-title p::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #ff931e;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0) rotate(180deg);
+        transform-origin: 50% 0; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-video .bck-title {
     background-image: url(img/monster-9.png);
     width: 210px;
@@ -3526,7 +3548,33 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     margin-left: -50px;
     background-image: url(img/monster-10.png); }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title p {
-      bottom: 14px; }
+      bottom: 4px;
+      display: inline-flex;
+      vertical-align: middle;
+      justify-content: center;
+      flex-direction: column;
+      font-family: "Quicksand", sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: #ffffff;
+      background: #662d91;
+      padding: 5px 10px;
+      border-radius: 40px;
+      min-width: 105px; }
+      body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .bck-title p::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #662d91;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0) rotate(180deg);
+        transform-origin: 50% 0; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-infographic .oxfl-cz-content {
     text-align: center; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title {
@@ -3534,7 +3582,33 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     background-image: url(img/monster-11.png);
     margin-left: 160px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title p {
-      margin-left: 0; }
+      margin-left: 0;
+      display: inline-flex;
+      vertical-align: middle;
+      justify-content: center;
+      flex-direction: column;
+      font-family: "Quicksand", sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: #ffffff;
+      background: #22b573;
+      padding: 5px 10px;
+      border-radius: 40px;
+      min-width: 105px; }
+      body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .bck-title p::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #22b573;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0) rotate(180deg);
+        transform-origin: 50% 0; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .oxfl-cz-text .oxfl-cz-content {
     padding: 0 100px; }
 body.body_clase.view-mode.oxfl-content-zone-on .navbar-bottom {

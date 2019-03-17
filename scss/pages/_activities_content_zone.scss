@@ -7,13 +7,7 @@ body.body_clase.view-mode {
 
   #actividad {
     .oxfl-content-zone-wrapper {
-      //overflow: hidden;
       overflow: auto;
-      //.item-container {
-      //  padding: 0;
-      //  max-width: 100%;
-      //  margin: 0;
-      //}
       .oxfl-content-zone-background {
         display: block;
         position: absolute;
@@ -207,15 +201,11 @@ body.body_clase.view-mode {
           cursor: pointer;
           p {
             position: absolute;
-            bottom: 12px;
+            bottom: 0;
             left: 50%;
             margin-left: -5px;
             transform: translate(-50%,0);
-            font-family: $font_family_1;
-            font-weight: bold;
-            //@include font-size(1.6);
-            font-size: 16px;
-            color: $negative_color;
+            @include bubble3();
           }
         }
         &-video {
@@ -237,7 +227,8 @@ body.body_clase.view-mode {
             margin-left: -50px;
             background-image: url(img/monster-10.png);
             p {
-              bottom: 14px;
+              bottom: 4px;
+              @include bubble3($color_21);
             }
           }
           .oxfl-cz-content {
@@ -251,6 +242,7 @@ body.body_clase.view-mode {
             margin-left: 160px;
             p {
               margin-left: 0;
+              @include bubble3($color_19);
             }
           }
           .oxfl-cz-content {
