@@ -547,7 +547,8 @@ body.oxfl-body-gradebook {
   text-align: center;
   width: 160px;
   height: 60px;
-  white-space: normal; }
+  white-space: normal;
+  line-height: 1.25em; }
   .oxfl-button-round-2 {
     width: 160px;
     height: 60px;
@@ -3099,10 +3100,11 @@ body.body_clase.view-mode #actividad .oxfl-button-round-2 {
   bottom: 20px;
   left: 50%;
   transform: translate(-50%, 0);
-  margin-left: -100px;
-  width: 160px; }
+  margin-left: -60px;
+  width: 160px;
+  z-index: 100; }
 body.body_clase.view-mode #actividad .btn-correct {
-  margin-left: 100px; }
+  margin-left: 180px; }
 body.body_clase.view-mode #actividad .carousel-inner .item-container {
   background: transparent;
   -webkit-box-shadow: none;
