@@ -2927,7 +2927,7 @@ oxfordFlippedApp.activityContentZone = function() {
 					.css('background-image', 'url('+backgroundImage+')')
 					.end()
 				.find('.header .title')
-					.prepend('<p>'+ oxfordFlippedApp.text.contentzoneinfotext + '</p>');
+					.append('<p>'+ oxfordFlippedApp.text.contentzoneinfotext + '</p>');
 
 			$('body').prepend(modalHTML + modalExitAppHTML);
 
