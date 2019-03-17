@@ -2297,7 +2297,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
   .oxfl-resource-header {
     display: flex;
     justify-content: space-between;
-    align-items: center; }
+    align-items: center;
+    min-height: 28px; }
     .oxfl-resource-header .oxfl-title4 {
       max-width: calc(100% - 60px);
       text-overflow: ellipsis;
