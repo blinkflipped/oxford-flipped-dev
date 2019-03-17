@@ -392,27 +392,29 @@
   font-family: $font_family_2;
   font-weight: bold;
   font-style: italic;
-  //@include font-size(2.3);
-  font-size: 23px;
+  font-size: 18px;
   padding: 9px 30px;
   text-transform: uppercase;
-  border-radius: 30px;
+  border-radius: 60px;
   background-color: $color_13;
   -webkit-box-shadow: 0px 4px 0px 0px $color_13_darker;
   -moz-box-shadow: 0px 4px 0px 0px $color_13_darker;
   box-shadow: 0px 4px 0px 0px $color_13_darker;
-  &-circled {
-    width: 60px;
+  text-align: center;
+  width: 160px;
+  height: 60px;
+  &-2 {
+    width: 160px;
     height: 60px;
-    padding: 0;
-    transform: rotate(-33deg);
-    background-color: $color_14;
+    padding: 9px 30px;
+    transform: uppercase;
+    background-color: $color_4;
     -webkit-box-shadow: 0px 4px 0px 0px $color_14_darker;
     -moz-box-shadow: 0px 4px 0px 0px $color_14_darker;
     box-shadow: 0px 4px 0px 0px $color_14_darker;
     span {
       display: inline-block;
-      margin-left: -4px;
+      margin-left: 0;
     }
   }
 }

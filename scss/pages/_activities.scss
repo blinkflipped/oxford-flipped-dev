@@ -86,13 +86,21 @@ body.body_clase.view-mode {
 
   #actividad {
     .class_slide {
-      position: relative; // TODO Check all activities not to be broken.
+      position: relative;
     }
-    .oxfl-button-round-circled {
+    .oxfl-button-round-2 {
       position: absolute;
-      bottom: 18px; //FORMER 20px
-      left: 20px;
+      bottom: 18px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      margin-left: -80px;
+      width: 160px;
     }
+
+    .btn-correct {
+      margin-left: 80px;
+    }
+
     .carousel-inner {
       .item-container {
         background: transparent;

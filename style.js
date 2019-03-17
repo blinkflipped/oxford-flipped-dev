@@ -1106,7 +1106,8 @@ oxfordFlippedApp.text = {
 	buy: textweb('style_flipped_buy'),
 	popoverGoToContentZoneDisabled: textweb('style_flipped_lesson_vocabulary_locked'),
 	popoverNextContentZoneDisabled: textweb('style_flipped_lesson_contentzone_locked'),
-	quit: textweb('style_flipped_lesson_button_quit'),
+	//quit: textweb('style_flipped_lesson_button_quit'),
+	quit: 'I think I need to Learn more',
 	selectalesson: textweb('style_flipped_prepare_lesson_student'),
 	unlocklesson: textweb('style_flipped_prepare_lesson_teacher'),
 	gradebooktitle: textweb('style_flipped_gradebook_title'),
@@ -2844,7 +2845,7 @@ oxfordFlippedApp.activityTestSlides = function(contentZoneIndex) {
 			testSlidesLength = (isFinalSlide) ? totalSlides - 1 : totalSlides;
 
 	if (nextContentZone) {
-		var buttonQuitTest = '<button class="oxfl-button-round oxfl-button-round-circled oxfl-js-quit-test-modal"><span>'+oxfordFlippedApp.text.quit+'</span></button>';
+		var buttonQuitTest = '<button class="oxfl-button-round oxfl-button-round-2 oxfl-js-quit-test-modal"><span>'+oxfordFlippedApp.text.quit+'</span></button>';
 		var i;
 		for (i = nextContentZone; i < testSlidesLength; i++) {
 			$('#slider-item-'+i).find('.js-slide-wrapper').append(buttonQuitTest);
