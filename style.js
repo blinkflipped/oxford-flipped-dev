@@ -2922,7 +2922,7 @@ oxfordFlippedApp.activityContentZone = function() {
 					modalExitAppHTML = (blink.isApp && !blink.isOfflinePC) ? '<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.oxfordFlipped_lost_progress_alert+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>' : '';
 			$(e)
 				.addClass('oxfl-content-zone-wrapper')
-				.append(informationHTML + buttonNextHTML + '<div class="oxfl-content-zone-background"></div>')
+				.append(buttonNextHTML + '<div class="oxfl-content-zone-background"></div>')
 				.find('.oxfl-content-zone-background')
 					.css('background-image', 'url('+backgroundImage+')')
 					.end()
@@ -2930,7 +2930,7 @@ oxfordFlippedApp.activityContentZone = function() {
 					.prepend('<p>'+ oxfordFlippedApp.text.contentzoneinfotext + '</p>');
 
 			$('body').prepend(modalHTML + modalExitAppHTML);
-		
+
 		}
 
 	});
