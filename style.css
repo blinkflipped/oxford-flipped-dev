@@ -1013,7 +1013,7 @@ body.oxfl-body-gradebook {
   list-style: none;
   margin: 60px 0 0 0;
   padding: 0;
-  font-size: 14px; }
+  font-size: 10px; }
   .oxfl-notifications-legend li {
     padding: 0;
     margin: 0 0 20px 0; }
@@ -1159,40 +1159,55 @@ body.oxfl-body-gradebook {
 
 .oxfl-popover {
   font-size: 14px;
-  font-size: 1.4rem;
   color: #ffffff;
   box-shadow: none;
   background: transparent;
   border: 0;
-  background: url(img/popover-bubble.png) 0 0 no-repeat;
-  background-size: 160px 160px;
-  width: 160px;
-  height: 160px; }
+  background: #338DC9;
+  background-size: auto;
+  width: 220px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.15); }
+  .oxfl-popover::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 14px solid #338DC9;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translate(-50%, 0) rotate(-145deg);
+    transform-origin: 0 0; }
   .oxfl-popover.left {
-    background-image: url(img/popover-bubble-2.png);
-    background-size: contain; }
+    background-image: none;
+    background-size: auto; }
   .oxfl-popover.top {
     margin-top: 40px;
     margin-left: 60px; }
   .oxfl-popover.oxfl-popover-contentzone {
-    margin-top: 35px; }
+    margin-top: 115px;
+    margin-left: -60px; }
   .oxfl-popover .oxfl-popover-inner {
     display: flex;
-    width: 150px;
-    height: 120px;
+    width: 100%;
+    height: auto;
     align-items: center;
     justify-content: center; }
   .oxfl-popover .popover-content {
     color: #ffffff;
-    text-align: center;
-    max-width: 140px;
-    padding: 6px; }
+    text-align: left;
+    max-width: none;
+    padding: 20px 15px; }
   .oxfl-popover .arrow {
     display: none !important; }
   .oxfl-popover .oxfl-close {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -16px;
+    right: -16px;
     border: 2px solid #FCEE21;
     width: 36px;
     height: 36px;
@@ -3066,7 +3081,7 @@ body.body_clase.view-mode .slider-control:focus {
     body.body_clase.view-mode .oxfl-slider-control.right .fa,
     body.body_clase.view-mode .slider-control.right .fa,
     body.body_clase.view-mode .slider-control:focus.right .fa {
-      left: 10px; }
+      left: 0px; }
   body.body_clase.view-mode .oxfl-slider-control.left,
   body.body_clase.view-mode .slider-control.left,
   body.body_clase.view-mode .slider-control:focus.left {
@@ -3075,7 +3090,7 @@ body.body_clase.view-mode .slider-control:focus {
     body.body_clase.view-mode .oxfl-slider-control.left .fa,
     body.body_clase.view-mode .slider-control.left .fa,
     body.body_clase.view-mode .slider-control:focus.left .fa {
-      right: 10px;
+      right: 0px;
       background-position: 0 0; }
   body.body_clase.view-mode .oxfl-slider-control.disabled,
   body.body_clase.view-mode .slider-control.disabled,
@@ -3342,21 +3357,28 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
     padding-top: 40px; }
     body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .header .title {
       width: 430px;
-      height: 125px;
-      background: url(img/content-zone-bubble-1.png) 0 0 no-repeat;
+      height: auto;
+      background: #ffffff;
       background-size: cover;
       display: flex;
-      align-items: center;
-      justify-content: center; }
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 30px;
+      border-radius: 40px;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      text-align: left; }
       body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .header .title h3 {
         font-family: "Myfrida", sans-serif;
         font-weight: bold;
-        font-style: italic;
-        font-size: 50px;
+        font-style: normal;
+        font-size: 26px;
         line-height: 0.8em;
         color: #8BE23F;
         margin: 0;
-        text-align: center; }
+        text-align: left; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .slide_img {
     display: none; }
   body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper .layout-panel {

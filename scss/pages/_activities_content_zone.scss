@@ -31,22 +31,28 @@ body.body_clase.view-mode {
         padding-top: 40px;
         .title {
           width: 430px;
-          height: 125px;
-          background: url(img/content-zone-bubble-1.png) 0 0 no-repeat;
+          height: auto;
+          background: $negative_color;
           background-size: cover;
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          align-items: flex-start;
           justify-content: center;
+          padding: 30px;
+          border-radius: 40px;
+          font-family: $font_family_1;
+          font-weight: 500;
+          font-size: 15px;
+          text-align: left;
           h3 {
             font-family: $font_family_2;
             font-weight: bold;
-            font-style: italic;
-            //@include font-size(5.0);
-            font-size: 50px;
+            font-style: normal;
+            font-size: 26px;
             line-height: 0.8em;
             color: $color_1;
             margin: 0;
-            text-align: center;
+            text-align: left;
           }
         }
       }
