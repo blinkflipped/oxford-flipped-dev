@@ -3921,6 +3921,12 @@ body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .slider-control {
 body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .navbar-bottom {
   display: none !important; }
 
+/*Textwebs*/
+.oxfl-resources-game-monster-bubble, .oxfl-resources-summary-monster-bubble {
+  font-size: 34px;
+  max-width: 420px;
+  top: 120px; }
+
 /* FINAL CHALLENGE FAIL */
 @-webkit-keyframes shake-one {
   from, to {
