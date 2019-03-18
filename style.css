@@ -455,7 +455,8 @@ body.oxfl-body-gradebook {
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
-  color: #ffffff; }
+  color: #ffffff;
+  border-radius: 40px; }
   .oxfl-notification-item .oxfl-button-bubble {
     font-size: 14px;
     font-size: 1.4rem; }
@@ -464,19 +465,19 @@ body.oxfl-body-gradebook {
     min-width: 120px;
     height: auto;
     padding: 10px 20px;
-    background: #ff931e;
-    border-radius: 40px; }
+    background: #ff931e; }
   .oxfl-button-bubble-2 {
-    width: 180px;
-    height: 64px;
-    background-image: url(img/button-2-a.png);
-    padding-top: 0;
-    padding-bottom: 10px; }
+    width: auto;
+    min-width: 180px;
+    height: auto;
+    background: #ED1E79;
+    padding: 10px 20px; }
   .oxfl-button-bubble-3 {
-    width: 125px;
-    height: 66px;
-    background-image: url(img/button-2-b.png);
-    padding-top: 0; }
+    width: auto;
+    min-width: 125px;
+    height: auto;
+    background: #2cd66e;
+    padding: 10px 20px; }
   .oxfl-button-bubble-4 {
     width: auto;
     min-width: 80px;
@@ -633,28 +634,6 @@ body.oxfl-body-gradebook {
   .oxfl-label.oxfl-label-2 {
     background-position: 0 -102px; }
 
-/*.oxfl-label-date {
-  width: 103px;
-  height: 44px;
-  background: url(img/labels-date.png) 0 0 no-repeat;
-  background-size: 103px 174px;
-  font-family: $font_family_1;
-  font-size: 12px;
-  font-weight: bold;
-  color: $label_color;
-  text-align: center;
-  padding-right: 7px;
-  padding-top: 7px;
-  &.oxfl-label-0 {//Red
-    background-position: 0 0;
-  }
-  &.oxfl-label-1 {//Yellow
-    background-position: 0 -58px;
-  }
-  &.oxfl-label-2 {//Green
-    background-position: 0 -116px;
-  }
-}*/
 .oxfl-label-date {
   width: 72px;
   height: 30px;
@@ -1179,7 +1158,15 @@ body.oxfl-body-gradebook {
     transform-origin: 0 0; }
   .oxfl-popover.left {
     background-image: none;
-    background-size: auto; }
+    background-size: auto;
+    margin-top: -70px; }
+    .oxfl-popover.left::before {
+      bottom: auto;
+      top: 50px;
+      left: auto;
+      right: -25px;
+      transform: translate(0, 0) rotate(32deg);
+      transform-origin: 0 0; }
   .oxfl-popover.top {
     margin-top: 40px;
     margin-left: 60px; }
@@ -2467,8 +2454,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     border-right: 10px solid transparent;
     border-top: 10px solid #7ac943;
     position: absolute;
-    top: 48px;
-    left: -15px;
+    top: 40px;
+    left: -14px;
     transform: translate(0, -50%) rotate(90deg); }
   .oxfl-resources-game-monster-bubble span,
   .oxfl-resources-summary-monster-bubble span {
@@ -2530,8 +2517,8 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
       border-right: 10px solid transparent;
       border-top: 10px solid #ED1E79;
       position: absolute;
-      top: 48px;
-      left: -15px;
+      top: 40px;
+      left: -14px;
       transform: translate(0, -50%) rotate(90deg); }
     #oxfl-resources-classresources-unit-monster .oxfl-resources-classresources-monster-bubble span,
     #oxfl-resources-classresources-monster .oxfl-resources-classresources-monster-bubble span {
@@ -2825,8 +2812,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
       border-right: 10px solid transparent;
       border-top: 10px solid #ED1E79;
       position: absolute;
-      top: 48px;
-      left: -15px;
+      top: 40px;
+      left: -14px;
       transform: translate(0, -50%) rotate(90deg); }
     #oxfl-chapters-monster .oxfl-monster-lessons-bubble span {
       display: block; }
