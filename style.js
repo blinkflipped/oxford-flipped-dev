@@ -3040,6 +3040,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
 				}
+				console.log(grade);
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 					if (isChallenge) {
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
@@ -3121,6 +3122,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 			parent.top.oxfordFlippedApp.showIframeButton();
 			$('body').removeClass('oxfl-final-slide-on');
+			
 		}
 
 }

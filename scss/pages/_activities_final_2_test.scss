@@ -55,14 +55,30 @@ body.body_clase.view-mode {
     }
     .oxfl-end-screen-tip {
       display: none;
-      width: 369px!important;
-      height: 254px;
-      background: url(img/bubble-5.png) 0 0 no-repeat;
-      background-size: contain;
+      width: 370px!important;
+      height: auto;
+      background: $color_13;
+      background-size: auto;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
+      border-radius: 40px;
+      padding: 20px;
+      &::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid $color_13;
+        position: absolute;
+        bottom: 50px;
+        right: -38px;
+        transform: translate(0, 0) rotate(45deg);
+        transform-origin: 0 0;
+      }
       .bck-title,
       h2,
       h3 {
@@ -163,28 +179,11 @@ body.body_clase.view-mode {
 }
 
 .oxfl-coins-bubble-2 {
-  background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
-  width: 240px;
-  height: 98px;
-  background-size: contain;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%,0);
-  margin-left: 10px;
-  z-index: 100;
-  &-coins {
-    position: absolute;
-    top: 18px;
-    right: 65px;
-    text-align: right;
-    //@include font-size(3.0);
-    font-size: 30px;
-    line-height: 1em;
-    color: $negative_color;
-    font-family: $font_family_1;
-    font-weight: 500;
-  }
+
+  @include coinsBubble() ;
+  margin-left: 70px;
+  margin-top: 10px;
+
   .oxfl-final-slide-challenge & {
     top: 50%;
     margin-top: -40px;
@@ -222,20 +221,38 @@ body.body_clase.view-mode {
 }
 
 .oxfl-bubble-leave {
-  display: block;
-  width: 264px;
-  height: 100px;
-  padding: 34px 10px 10px;
-  background: url(img/bubble-4.png) 0 0 no-repeat transparent;
-  background-size: contain;
-  @include font-size(1.8);
-  line-height: 1em;
+  max-width: 260px;
+  width: auto;
+  height: auto;
+  background: $color_4;
+  background-size: auto;
   color: $negative_color;
-  font-family: $font_family_1;
-  font-weight: 700;
-  display: flex;
-  text-align: center;
+  display: inline-flex;
+  text-align: left;
   align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  flex-direction: column;
+  font-family: $font_family_1;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1em;
+  padding: 10px 20px;
+  border-radius: 40px;
+  &::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $color_4;
+    position: absolute;
+    top: -6px;
+    left: 40px;
+    transform: translate(0, 0) rotate(-45deg);
+    transform-origin: 50% 0;
+  }
   &-inner {
     width: 100%;
     text-align: center;
@@ -245,7 +262,7 @@ body.body_clase.view-mode {
     bottom: 40px;
     left: 50%;
     transform: translate(-50%,0);
-    margin-left: 250px;
+    margin-left: 70px;
   }
 }
 

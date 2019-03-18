@@ -23,27 +23,7 @@ body.body_clase.view-mode {
           bottom: 0;
           z-index: 100;
           .oxfl-coins-bubble-1 {
-            background: url(img/coins.png) 20px center $color_13 no-repeat;
-            min-width: 280px;
-            height: 90px;
-            background-size: 55px 55px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%,0);
-            margin-left: -220px;
-            border-radius: 100px;
-            &-coins {
-              position: absolute;
-              top: 18px;
-              left: 95px;
-              text-align: left;
-              font-size: 52px;
-              line-height: 1em;
-              color: $negative_color;
-              font-family: $font_family_1;
-              font-weight: 500;
-            }
+            @include coinsBubble();
           }
         }
 

@@ -460,10 +460,12 @@ body.oxfl-body-gradebook {
     font-size: 14px;
     font-size: 1.4rem; }
   .oxfl-button-bubble-1 {
-    width: 186px;
-    height: 74px;
-    background-image: url(img/button-2.png);
-    padding-top: 0; }
+    width: auto;
+    min-width: 120px;
+    height: auto;
+    padding: 10px 20px;
+    background: #ff931e;
+    border-radius: 40px; }
   .oxfl-button-bubble-2 {
     width: 180px;
     height: 64px;
@@ -560,6 +562,9 @@ body.oxfl-body-gradebook {
     .oxfl-button-round-2 span {
       display: inline-block;
       margin-left: 0; }
+
+.libro .close-edit-mode, #indice .add, #indice .unit-content .material .add, #indice .delete, #indice .edit {
+  display: none; }
 
 .oxfl-button-bubble, .oxfl-button-large {
   transform: scale(1);
@@ -3666,14 +3671,29 @@ body.body_clase.view-mode #actividad .oxfl-final-slide {
       z-index: 100; }
 body.body_clase.view-mode #actividad .oxfl-end-screen-tip {
   display: none;
-  width: 369px !important;
-  height: 254px;
-  background: url(img/bubble-5.png) 0 0 no-repeat;
-  background-size: contain;
+  width: 370px !important;
+  height: auto;
+  background: #29AAE3;
+  background-size: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center; }
+  text-align: center;
+  border-radius: 40px;
+  padding: 20px; }
+  body.body_clase.view-mode #actividad .oxfl-end-screen-tip::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #29AAE3;
+    position: absolute;
+    bottom: 50px;
+    right: -38px;
+    transform: translate(0, 0) rotate(45deg);
+    transform-origin: 0 0; }
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip .bck-title,
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip h2,
   body.body_clase.view-mode #actividad .oxfl-end-screen-tip h3 {
@@ -3756,22 +3776,24 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
       transform: translate(0, 0); }
 
 .oxfl-coins-bubble-2 {
-  background: url(img/final-2-coins.png) 0 0 no-repeat transparent;
-  width: 240px;
-  height: 98px;
-  background-size: contain;
+  background: url(img/coins.png) 20px center #29AAE3 no-repeat;
+  min-width: 280px;
+  height: 90px;
+  background-size: 55px 55px;
   position: absolute;
-  top: 20px;
+  top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  margin-left: 10px;
-  z-index: 100; }
+  margin-left: -220px;
+  border-radius: 100px;
+  margin-left: 70px;
+  margin-top: 10px; }
   .oxfl-coins-bubble-2-coins {
     position: absolute;
     top: 18px;
-    right: 65px;
-    text-align: right;
-    font-size: 30px;
+    left: 95px;
+    text-align: left;
+    font-size: 52px;
     line-height: 1em;
     color: #ffffff;
     font-family: "Quicksand", sans-serif;
@@ -3802,21 +3824,37 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     background-image: url(img/endscreen-stars-regular-3.png); }
 
 .oxfl-bubble-leave {
-  display: block;
-  width: 264px;
-  height: 100px;
-  padding: 34px 10px 10px;
-  background: url(img/bubble-4.png) 0 0 no-repeat transparent;
-  background-size: contain;
-  font-size: 18px;
-  font-size: 1.8rem;
-  line-height: 1em;
+  max-width: 260px;
+  width: auto;
+  height: auto;
+  background: #ED1E79;
+  background-size: auto;
   color: #ffffff;
+  display: inline-flex;
+  text-align: left;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  flex-direction: column;
   font-family: "Quicksand", sans-serif;
-  font-weight: 700;
-  display: flex;
-  text-align: center;
-  align-items: center; }
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1em;
+  padding: 10px 20px;
+  border-radius: 40px; }
+  .oxfl-bubble-leave::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ED1E79;
+    position: absolute;
+    top: -6px;
+    left: 40px;
+    transform: translate(0, 0) rotate(-45deg);
+    transform-origin: 50% 0; }
   .oxfl-bubble-leave-inner {
     width: 100%;
     text-align: center; }
@@ -3825,7 +3863,7 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
     bottom: 40px;
     left: 50%;
     transform: translate(-50%, 0);
-    margin-left: 250px; }
+    margin-left: 70px; }
 
 .oxfl-final-slide-fail-buttons {
   position: fixed;
