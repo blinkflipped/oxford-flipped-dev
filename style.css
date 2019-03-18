@@ -1407,7 +1407,7 @@ body.oxfl-iframe-visible {
       width: 190px;
       height: 250px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::before, #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::after {
-        width: 140px;
+        width: 220px;
         left: 50%;
         transform: translate(-50%, 0); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-1::before {
@@ -1446,7 +1446,8 @@ body.oxfl-iframe-visible {
         margin-left: -50px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
       width: 346px;
-      height: 490px; }
+      height: 490px;
+      margin-left: 20px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::before {
         background-image: url(img/monster-2.png); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::after {
@@ -1464,8 +1465,8 @@ body.oxfl-iframe-visible {
         #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 span::before {
           border-top-color: #ED1E79; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
-      width: 222px;
-      height: 318px; }
+      width: 280px;
+      height: 370px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::before {
         background-image: url(img/monster-3.png); }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3::after {
@@ -1494,7 +1495,7 @@ body.oxfl-iframe-visible {
   font-weight: bold;
   font-style: italic;
   position: absolute;
-  top: -40px;
+  top: 40px;
   right: -40px;
   color: #ED1E79;
   text-align: center;

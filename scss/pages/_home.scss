@@ -131,7 +131,7 @@
       height: 250px;
       &::before,
       &::after {
-        width: 140px; //183
+        width: 220px;
         left: 50%;
         transform: translate(-50%,0);
       }
@@ -184,6 +184,7 @@
     &.oxfl-monster-2 {
       width: 346px;
       height: 490px;
+      margin-left: 20px;
       &::before {
         background-image: url(img/monster-2.png);
       }
@@ -207,8 +208,8 @@
       }
     }
     &.oxfl-monster-3 {
-      width: 222px;//299
-      height: 318px;
+      width: 280px;
+      height: 370px;
       &::before {
         background-image: url(img/monster-3.png);
       }
@@ -244,7 +245,7 @@
   font-weight: bold;
   font-style: italic;
   position: absolute;
-  top: -40px;
+  top: 40px;
   right: -40px;
   color: $color_4;
   text-align: center;
