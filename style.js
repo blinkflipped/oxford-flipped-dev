@@ -2000,6 +2000,8 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 		if ((onlyUnit) && i !== onlyUnit) return;
 
 		if (i != oxfordFlippedApp.config.ConfigActivityIndex) {
+			var unitImage = unit.image
+					unitTitle = unit.title;
 			var subunits = unit.subunits;
 
 			$.each(subunits, function(x, resource){
@@ -2022,6 +2024,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 								resourceValue = (resource.game_token) ? resource.game_token : 0,
 								resourceValueHTML = (resourceValue !== 0) ? '<div class="oxfl-resource-coins"><span>'+resourceValue+'</span><span class="oxfl-icon oxfl-icon-coin"></span></div>' : '',
 								resourceImage = (resource.image !== '') ? '<img src="'+resource.image+'" alt="'+resourceTitle+'">' : '',
+								resourceImageHTML = (isGame) ? resourceImage : '<div class="oxfl-resource-image-cover"> ' + resourceImage + ' </div><img src="'+unitImage+'" alt="'+unitTitle+'">',
 								resourceId = resource.id,
 								resourceurl = resource.url,
 								resourceStateNew = (typeof window.actividades[resourceId] === 'undefined'),
@@ -2030,7 +2033,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew) || resourceValue === 0) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", '" + resourceTitleModal + "', '" +resourceDescription+"',"+resourceId+")",
 								resourceListItem = document.createElement('div');
 								resourceListItem.className = 'oxfl-resource-item';
-						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2> ' + resourceValueHTML + '</header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImage+'</div> </div> </a> </article>';
+						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2> ' + resourceValueHTML + '</header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImageHTML+'</div> </div> </a> </article>';
 						resourceList.appendChild(resourceListItem);
 					}
 				}
