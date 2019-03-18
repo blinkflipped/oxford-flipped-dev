@@ -1136,11 +1136,12 @@ oxfordFlippedApp.text = {
 	modalDatepicker4 : 'Delete date',
 	dueDate : 'Due Date',
 	legend1 : 'This lesson is due in less than two days',
-	legend2 : "You didn't complete this lesson by the due date",
+	legend2 : 'You didn’t complete this lesson by the due date',
 	welldone : 'Well done!',
 	continue : 'Click on the arrow to continue',
 	premiumButton : 'Más recursos en Oxford Premium. ¡Accede ya!',
-	nomarketplaceresource: 'No hay ningún elemento que mostrar'
+	nomarketplaceresource: 'No hay ningún elemento que mostrar',
+	keepworking: 'Don’t worry, keep working to win stars!'
 }
 
 
@@ -2600,7 +2601,6 @@ oxfordFlippedApp.loadClassResources = function(updateHash) {
 		var unitNumber = $(this).attr('data-resource-unit-number'),
 				newHash = oxfordFlippedApp.config.tree[8].hash + unitNumber;
 
-		console.log(newHash);
 		window.location.hash = newHash;
 
 	});
@@ -2614,10 +2614,6 @@ oxfordFlippedApp.loadClassResourcesUnit = function(data,currentEpisode,updateHas
 			hash = oxfordFlippedApp.config.tree[currentIndex].hash;
 
 	var $resourceUnitWrapper = $('#oxfl-resources-unit-classresources');
-
-
-	console.log("LOAD RESOURCES OF UNIT " + currentEpisode);
-
 
 	// Load resources
 	var resourceList = document.createDocumentFragment();
@@ -3040,7 +3036,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
 				}
-				console.log(grade);
+
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 					if (isChallenge) {
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
@@ -3066,7 +3062,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					$('#oxfl-final-slide-stars').addClass('oxfl-final-slide-stars-'+totalStars);
 
 
-				} else {
+				} else { //FAIL
 					if (isChallenge) {
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 								customAnimation = '<div id="lightnings"><div class="box-one"><div class="lightning-one"></div></div><div class="box-two"><div class="lightning-two"></div></div><div class="box-three"><div class="lightning-three"></div></div><div class="box-four"><div class="lightning-four"></div></div></div>',
@@ -3077,7 +3073,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 						$lastSlide.addClass('oxfl-final-slide-challenge');
 					} else {
 						var customAnimation = '<div id="drops-falling"><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i></div>',
-								finalSlideContent = '<div id="oxfl-final-slide">'+customAnimation+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-tryagain">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
+								finalSlideContent = '<div id="oxfl-final-slide">'+customAnimation+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-final-ko"><span>' + oxfordFlippedApp.text.keepworking + '</span></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-tryagain">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 						$lastSlide.removeClass('oxfl-final-slide-challenge');
 					}
 					$lastSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
@@ -3122,7 +3118,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 			parent.top.oxfordFlippedApp.showIframeButton();
 			$('body').removeClass('oxfl-final-slide-on');
-			
+
 		}
 
 }
