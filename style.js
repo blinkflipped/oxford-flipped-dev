@@ -956,6 +956,7 @@ oxfordFlippedApp.config.tagMarketplace = 'marketplace';
 oxfordFlippedApp.config.marketplaceType1 = 'game';
 oxfordFlippedApp.config.marketplaceType2 = 'summary';
 oxfordFlippedApp.config.tagPremium = 'premium',
+oxfordFlippedApp.config.tagGame = 'game',
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
 oxfordFlippedApp.config.minGrade = 50;
@@ -1315,6 +1316,17 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 			$(element).css('font-size', newFontSize);
 		}
 	});
+}
+
+oxfordFlippedApp.endsWith = function() {
+	if (!String.prototype.endsWith) {
+		String.prototype.endsWith = function(search, this_len) {
+			if (this_len === undefined || this_len > this.length) {
+				this_len = this.length;
+			}
+			return this.substring(this_len - search.length, this_len) === search;
+		}
+	}
 }
 
 
@@ -1973,7 +1985,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,updateHash) {
 
 	var resourceList = document.createDocumentFragment(),
-			gameTag = 'game';
+			gameTag = oxfordFlippedApp.config.tagGame;
 
 	var currentIndex = (onlyUnit) ? 9 : 4;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
@@ -1982,6 +1994,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 
 	onlyUnit = Number(onlyUnit);
 	var totalResources = 0;
+
 	$.each(data.units, function(i, unit){
 
 		if ((onlyUnit) && i !== onlyUnit) return;
@@ -1991,8 +2004,18 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 
 			$.each(subunits, function(x, resource){
 				if (resource.tag === oxfordFlippedApp.config.tagMarketplace) {
-					var resourceType = resource.marketType;
-					if ((type === oxfordFlippedApp.config.marketplaceType1 && resourceType === gameTag) || (type === oxfordFlippedApp.config.marketplaceType2 && resourceType !== gameTag)) {
+					var resourceType = resource.marketType,
+							isGame = (resourceType === gameTag);
+
+					// Init TEMP Detect Games (ActivityType = 7 and Fileurl ends with .html or .htm)
+					oxfordFlippedApp.endsWith();
+					var activityTypeGame = (resource.activityType === 7),
+							fileurl = resource.fileurl,
+							fileUrlGame = (fileurl.endsWith('.html') || fileurl.endsWith('.htm'));
+					var isGame = (activityTypeGame && fileUrlGame);
+					// ENDS TEMP Detect Games
+
+					if ((type === oxfordFlippedApp.config.marketplaceType1 && isGame) || (type === oxfordFlippedApp.config.marketplaceType2 && !isGame)) {
 						totalResources++;
 						var resourceTitle = resource.title,
 								resourceDescription = resource.description,
