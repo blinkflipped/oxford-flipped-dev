@@ -2031,8 +2031,9 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 								resourceStateClass = (oxfordFlippedApp.config.isStudent && resourceStateNew) ? 'oxfl-resource-locked' : '',
 								resourceTitleModal = resourceTitle.replace("'", "#x27"),
 								resourceOnClick = (!oxfordFlippedApp.config.isStudent || (oxfordFlippedApp.config.isStudent && !resourceStateNew) || resourceValue === 0) ? resource.onclickTitle : "oxfordFlippedApp.oxflMarketplaceModal("+resourceValue+ ", '" + resourceTitleModal + "', '" +resourceDescription+"',"+resourceId+")",
+								resourceClass = (isGame) ? 'oxfl-resource-item' : 'oxfl-resource-item oxfl-resource-item-3',
 								resourceListItem = document.createElement('div');
-								resourceListItem.className = (isGame) ? 'oxfl-resource-item' : 'oxfl-resource-item oxfl-resource-item-3';
+								resourceListItem.className = resourceClass;
 						resourceListItem.innerHTML = '<article class="oxfl-resource '+resourceStateClass+'"> <a href="javascript:void(0)" class="oxfl-js-load-resource" data-resource-id="'+resourceId+'" onclick="'+resourceOnClick+'" ><header class="oxfl-resource-header"> <h2 class="oxfl-title4">'+resourceTitle+'</h2> ' + resourceValueHTML + '</header> <div class="oxfl-resource-image-wrapper"> <div class="oxfl-resource-image-wrapper-img">'+resourceImageHTML+'</div> </div> </a> </article>';
 						resourceList.appendChild(resourceListItem);
 					}
