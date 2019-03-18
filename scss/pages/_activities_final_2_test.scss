@@ -36,6 +36,7 @@ body.body_clase.view-mode {
           }
         }
       }
+
       .item-container  {
         max-width: 100%;
         min-height: 100%!important;
@@ -173,6 +174,31 @@ body.body_clase.view-mode {
       }
     }
 
+    .oxfl-bubble-challenge-ok {
+      max-width: 300px;
+      width: auto;
+      height: auto;
+      background: $color_4;
+      background-size: auto;
+      color: $negative_color;
+      display: inline-flex;
+      text-align: left;
+      align-items: center;
+      vertical-align: middle;
+      justify-content: center;
+      flex-direction: column;
+      font-family: $font_family_1;
+      font-weight: bold;
+      font-size: italic;
+      font-size: 26px;
+      line-height: 1em;
+      padding: 20px;
+      border-radius: 40px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+
   }
 
   &.oxfl-final-slide-on {
@@ -224,7 +250,7 @@ body.body_clase.view-mode {
     content: '';
     display: block;
     position: absolute;
-    bottom: -9px; // TODO CAMBIAR CUANDO SE ACTUALICE EL MONSTRUo
+    bottom: -9px;
     right: 0;
     background: url(img/monster-tip.svg) right bottom no-repeat;
     background-size: contain;
@@ -259,12 +285,12 @@ body.body_clase.view-mode {
   .oxfl-final-slide-challenge & {
     top: 50%;
     margin-top: -40px;
-    background-image: url(img/final-2-coins-b.png);
+    background-image: url(img/coins.png);
     width: 215px;
     height: 70px;
     margin-left: 41vh;
     .oxfl-coins-bubble-2-coins {
-      top: 20px;
+      top: 10px;
     }
   }
 }

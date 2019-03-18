@@ -3770,6 +3770,29 @@ body.body_clase.view-mode #actividad .oxfl-bubble-challenge-fail {
     left: 120px;
     transform: rotate(-135deg);
     transform-origin: 0 0; }
+body.body_clase.view-mode #actividad .oxfl-bubble-challenge-ok {
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  background: #ED1E79;
+  background-size: auto;
+  color: #ffffff;
+  display: inline-flex;
+  text-align: left;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: italic;
+  font-size: 26px;
+  line-height: 1em;
+  padding: 20px;
+  border-radius: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%; }
 body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
   padding-top: 0;
   padding-bottom: 0; }
@@ -3856,12 +3879,12 @@ body.body_clase.view-mode.oxfl-end-screen-tip-on .slider-control:not(.oxfl-slide
   .oxfl-final-slide-challenge .oxfl-coins-bubble-2 {
     top: 50%;
     margin-top: -40px;
-    background-image: url(img/final-2-coins-b.png);
+    background-image: url(img/coins.png);
     width: 215px;
     height: 70px;
     margin-left: 41vh; }
     .oxfl-final-slide-challenge .oxfl-coins-bubble-2 .oxfl-coins-bubble-2-coins {
-      top: 20px; }
+      top: 10px; }
 
 .oxfl-final-slide-stars {
   position: absolute;

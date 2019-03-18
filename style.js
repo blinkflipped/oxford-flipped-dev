@@ -1054,7 +1054,6 @@ oxfordFlippedApp.config.awards = {
 }
 
 oxfordFlippedApp.bookData = '';
-oxfordFlippedApp.userActitivies = ''; // TEMP Not window.actividades in Challenge
 
 oxfordFlippedApp.text = {
 	text1: textweb('style_flipped_oxford'),
@@ -1144,7 +1143,8 @@ oxfordFlippedApp.text = {
 	premiumButton : 'Más recursos en Oxford Premium. ¡Accede ya!',
 	nomarketplaceresource: 'No hay ningún elemento que mostrar',
 	keepworking: 'Don’t worry, keep working to win stars!',
-	keeptrying : 'MUAHAHAHAHA!! I GOT YOU! Try again to win stars.'
+	keeptrying : 'MUAHAHAHAHA!! I GOT YOU! Try again to win stars.',
+	welldonechallenge : 'Well done!! Time to chill and play a game'
 }
 
 
@@ -1517,8 +1517,6 @@ oxfordFlippedApp.auxiliarButtonTeacher = function(data) {
 oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	oxfordFlippedApp.console("Homepage");
-
-	oxfordFlippedApp.userActitivies = window.actividades; // TEMP Not window.actividades in Challenge
 
 	var currentIndex = 0;
 	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
@@ -3071,7 +3069,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 					if (isChallenge) {
 						var finalSlideBackground = $lastSlide.find('.image_slide').attr('src'),
 								customAnimation = '<i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i><i class="confetti"></i>',
-								finalSlideContent = '<div id="oxfl-final-slide">'+customAnimation+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
+								finalSlideContent = '<div id="oxfl-final-slide">'+customAnimation+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-coins-bubble-2"><div class="oxfl-coins-bubble-2-coins" id="oxfl-total-coins-2"></div></div><div class="oxfl-bubble-challenge-ok"><span>' + oxfordFlippedApp.text.welldonechallenge + '</span></div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div>';
 						if (finalSlideBackground != '') {
 							$lastSlide.css('background-image', 'url('+finalSlideBackground+')').find('.slide_aux').hide();
 						}
@@ -3502,9 +3500,6 @@ $(document).ready(function() {
 		if (oxfordFlippedApp.config.isStudent) {
 			oxfordFlippedApp.loadNotifications(oxfordFlippedApp.bookData);
 		}
-
-		// TEMP Not window.actividades in Challenge
-		oxfordFlippedApp.userActitivies = window.actividades;
 
 	}));
 
