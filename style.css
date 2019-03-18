@@ -3786,10 +3786,10 @@ body.body_clase.view-mode #actividad .oxfl-bubble-challenge-ok {
   font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-size: italic;
-  font-size: 26px;
-  line-height: 1em;
+  font-size: 28px;
+  line-height: 1.1em;
   padding: 20px;
-  border-radius: 40px;
+  border-radius: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
