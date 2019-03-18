@@ -671,7 +671,7 @@
 				oxfordFlippedApp.homepage(data, updateHash);
 			} else {
 				// TEMP Not window.actividades in Challenge
-				oxfordFlippedApp.userActitivies = window.actividades;
+				oxfordFlippedApp.userActitivies = actividades;
 			}
 		},
 
