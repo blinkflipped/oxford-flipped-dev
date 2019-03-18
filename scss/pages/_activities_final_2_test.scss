@@ -135,6 +135,40 @@ body.body_clase.view-mode {
         transform-origin: 0 0;
       }
     }
+
+    .oxfl-bubble-challenge-fail {
+      background: $color_6;
+      display: inline-flex;
+      vertical-align: middle;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: $negative_color;
+      font-family: $font_family_2;
+      font-size: 31px;
+      line-height: 1em;
+      font-weight: bold;
+      font-style: italic;
+      border-radius: 40px;
+      max-width: 300px;
+      height: auto;
+      padding: 20px;
+      &::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid $color_6;
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        transform: rotate(-45deg);
+        transform-origin: 0 0;
+      }
+    }
+
   }
 
   &.oxfl-final-slide-on {
