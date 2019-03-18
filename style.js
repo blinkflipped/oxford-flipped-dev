@@ -1499,8 +1499,7 @@ oxfordFlippedApp.auxiliarButtonTeacher = function(data) {
 					value = value.toLowerCase();
 					if (value.indexOf(oxfordFlippedApp.config.tagPremium) >= 0) {
 						onclick = subunit.onclickTitle;
-						//var onclickAttr = (blink.hasTouch) ? 'data-onclick="' + onclick + '"' : 'onclick="' + onclick + '"';
-						var onclickAttr = 'data-onclick="' + onclick + '"';
+						var onclickAttr = (blink.hasTouch) ? 'data-onclick="' + onclick + '"' : 'onclick="' + onclick + '"';
 
 						button =  '<button class="oxfl-button-premium oxfl-js-button-premium" ' + onclickAttr + '><span class="oxfl-button-premium-tooltip"> ' + oxfordFlippedApp.text.premiumButton + ' </span><span class="oxfl-button-premium-inner"></span></button>';
 						return false;
