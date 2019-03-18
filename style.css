@@ -3750,21 +3750,25 @@ body.body_clase.view-mode #actividad .oxfl-bubble-challenge-fail {
   font-weight: bold;
   font-style: italic;
   border-radius: 40px;
-  max-width: 300px;
+  max-width: 440px;
   height: auto;
-  padding: 20px; }
+  padding: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 20px; }
   body.body_clase.view-mode #actividad .oxfl-bubble-challenge-fail::before {
     content: '';
     display: block;
     width: 0;
     height: 0;
-    border-left: 20px solid transparent;
+    border-left: 40px solid transparent;
     border-right: 20px solid transparent;
     border-top: 20px solid #FBB03B;
     position: absolute;
-    bottom: -20px;
-    left: -20px;
-    transform: rotate(-45deg);
+    bottom: -60px;
+    left: 120px;
+    transform: rotate(-135deg);
     transform-origin: 0 0; }
 body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
   padding-top: 0;
