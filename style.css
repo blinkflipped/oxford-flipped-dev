@@ -3908,6 +3908,8 @@ body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper {
     position: fixed;
     right: 40px;
     bottom: 40px; }
+    body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper .oxfl-button-bubble-2 {
+      background: #29AAE3; }
   body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper .item-container {
     max-width: 100%;
     min-height: 100% !important;
@@ -3921,30 +3923,32 @@ body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper {
     body.body_clase.view-mode #actividad .oxfl-challenge-cover-wrapper .item-container .header {
       display: none; }
 body.body_clase.view-mode .oxfl-challenge-cover {
-  background: url(img/bubble-8.png) 0 0 no-repeat;
-  background-size: contain;
-  width: 265px !important;
-  height: 113px !important;
+  background: #ED1E79;
+  background-size: auto;
+  width: 290px !important;
+  height: auto !important;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 500;
   transform: translate(-50%, -50%);
-  margin-left: 320px; }
+  margin-left: 320px;
+  padding: 20px;
+  border-radius: 40px; }
   body.body_clase.view-mode .oxfl-challenge-cover .bck-title {
     color: #ffffff;
     font-family: "Myfrida", sans-serif;
     font-weight: bold;
     font-style: italic;
     font-size: 30px;
-    max-width: 250px;
-    margin: 5px auto 0;
-    padding-left: 40px; }
+    max-width: 100%;
+    margin: 0;
+    padding-left: 0; }
   body.body_clase.view-mode .oxfl-challenge-cover .bck-content {
     display: none; }
 body.body_clase.view-mode.oxfl-challenge-cover-wrapper-on .content-wrapper {

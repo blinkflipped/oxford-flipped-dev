@@ -11,6 +11,9 @@ body.body_clase.view-mode {
         position: fixed;
         right: 40px;
         bottom: 40px;
+        &-2 {
+          background: $color_13;
+        }
       }
       .item-container  {
         max-width: 100%;
@@ -30,31 +33,32 @@ body.body_clase.view-mode {
   }
 
   .oxfl-challenge-cover {
-    background: url(img/bubble-8.png) 0 0 no-repeat;
-    background-size: contain;
-    width: 265px !important;
-    height: 113px !important;
+    background: $color_4;
+    background-size: auto;
+    width: 290px !important;
+    height: auto !important;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     position: fixed;
     top: 50%;
     left: 50%;
     z-index: 500;
     transform: translate(-50%, -50%);
     margin-left: 320px;
+    padding: 20px;
+    border-radius: 40px;
     .bck-title {
       color: $negative_color;
       font-family:$font_family_2;
       font-weight: bold;
       font-style: italic;
-      //@include font-size(3.0);
       font-size: 30px;
-      max-width: 250px;
-      margin: 5px auto 0;
-      padding-left: 40px;
+      max-width: 100%;
+      margin: 0;
+      padding-left: 0;
     }
     .bck-content {
       display: none;
