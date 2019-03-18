@@ -669,9 +669,6 @@
 				this.loadUserData();
 				var updateHash = false;
 				oxfordFlippedApp.homepage(data, updateHash);
-			} else {
-				// TEMP Not window.actividades in Challenge
-				oxfordFlippedApp.userActitivies = window.actividades;
 			}
 		},
 
@@ -3063,8 +3060,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				$('body').removeClass('oxfl-end-screen-tip-on').addClass('oxfl-final-slide-on');
 
 				//var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion,
-				// TEMP Not window.actividades in Challenge
-				var grade =  (typeof oxfordFlippedApp.userActitivies[idclase] === 'undefined') ? 0 : oxfordFlippedApp.userActitivies[idclase].clasificacion,
+				var activity = parent.window.actividades[idclase];
+				var grade =  (typeof activity === 'undefined') ? 0 : activity.clasificacion,
 						finalSlideLoaded = $lastSlide.hasClass('oxfl-final-slide');
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
