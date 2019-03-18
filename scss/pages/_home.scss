@@ -127,8 +127,8 @@
       &::after{opacity:1}
     }
     &.oxfl-monster-1 {
-      width: 190px; //183
-      height: 250px;
+      width: 228px;
+      height: 300px;
       &::before,
       &::after {
         width: 220px;
@@ -146,7 +146,7 @@
         background-image: none;
         width: auto;
         height: auto;
-        top: 0;
+        top: 20px;
         right: auto;
         left: 50%;
         transform: translate(-50%,0);
