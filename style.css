@@ -2355,10 +2355,12 @@ body.oxfl-body-marketplace #oxfl-marketplace-menu {
     width: 100%;
     max-width: 100%; }
 
-.oxfl-resources-unit-container .oxfl-resource-item-2 .oxfl-resource-image-wrapper .oxfl-resource-image-cover {
+.oxfl-resources-unit-container .oxfl-resource-item-2 .oxfl-resource-image-wrapper .oxfl-resource-image-cover,
+.oxfl-resources-unit-container .oxfl-resource-item-3 .oxfl-resource-image-wrapper .oxfl-resource-image-cover {
   background: rgba(139, 226, 63, 0.7);
   padding: 0; }
-  .oxfl-resources-unit-container .oxfl-resource-item-2 .oxfl-resource-image-wrapper .oxfl-resource-image-cover img {
+  .oxfl-resources-unit-container .oxfl-resource-item-2 .oxfl-resource-image-wrapper .oxfl-resource-image-cover img,
+  .oxfl-resources-unit-container .oxfl-resource-item-3 .oxfl-resource-image-wrapper .oxfl-resource-image-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover; }
