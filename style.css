@@ -1445,8 +1445,8 @@ body.oxfl-iframe-visible {
         height: auto;
         margin-left: -50px; }
     #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
-      width: 346px;
-      height: 490px;
+      width: 460px;
+      height: 540px;
       margin-left: 20px; }
       #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2::before {
         background-image: url(img/monster-2.png); }
