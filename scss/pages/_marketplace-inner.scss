@@ -237,18 +237,16 @@
   }
 }
 
-.oxfl-resources-unit-container {
-  .oxfl-resource-item-2,
-  .oxfl-resource-item-3 {
-    .oxfl-resource-image-wrapper {
-      .oxfl-resource-image-cover {
-        background: fade-out($color_1, .3);
-        padding: 0;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+.oxfl-resources-unit-container .oxfl-resource-item-2,
+.oxfl-resources-page .oxfl-resource-item-3 {
+  .oxfl-resource-image-wrapper {
+    .oxfl-resource-image-cover {
+      background: fade-out($color_1, .3);
+      padding: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }

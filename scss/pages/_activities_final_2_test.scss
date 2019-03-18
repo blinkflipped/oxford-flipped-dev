@@ -111,11 +111,15 @@ body.body_clase.view-mode {
       color: $negative_color;
       font-family: $font_family_2;
       font-size: 36px;
+      line-height: 1em;
       font-weight: bold;
       border-radius: 40px 40px 40px 0;
       max-width: 300px;
       height: auto;
       padding: 20px;
+      position: absolute;
+      left: 55%;
+      top: 40%;
       &::before {
         content: '';
         display: block;
@@ -125,7 +129,7 @@ body.body_clase.view-mode {
         border-right: 20px solid transparent;
         border-top: 20px solid $color_23;
         position: absolute;
-        bottom: 0;
+        bottom: -20px;
         left: -20px;
         transform: rotate(-45deg);
         transform-origin: 0 0;
