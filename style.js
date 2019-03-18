@@ -2010,7 +2010,7 @@ oxfordFlippedApp.loadMarketplaceList = function(data,type,itemperpage,onlyUnit,u
 					// Init TEMP Detect Games (ActivityType = 7 and Fileurl ends with .html or .htm)
 					oxfordFlippedApp.endsWith();
 					var activityTypeGame = (resource.activityType === 7),
-							fileurl = resource.fileurl,
+							fileurl = (typeof resource.fileurl !== 'undefined') ? resource.fileurl : '',
 							fileUrlGame = (fileurl.endsWith('.html') || fileurl.endsWith('.htm'));
 					var isGame = (activityTypeGame && fileUrlGame);
 					// ENDS TEMP Detect Games
