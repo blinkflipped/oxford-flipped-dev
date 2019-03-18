@@ -3771,7 +3771,7 @@ body.body_clase.view-mode #actividad .oxfl-bubble-challenge-fail {
     transform: rotate(-135deg);
     transform-origin: 0 0; }
 body.body_clase.view-mode #actividad .oxfl-bubble-challenge-ok {
-  max-width: 300px;
+  max-width: 370px;
   width: auto;
   height: auto;
   background: #ED1E79;
@@ -3783,7 +3783,7 @@ body.body_clase.view-mode #actividad .oxfl-bubble-challenge-ok {
   vertical-align: middle;
   justify-content: center;
   flex-direction: column;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Myfrida", sans-serif;
   font-weight: bold;
   font-size: italic;
   font-size: 26px;
@@ -3792,7 +3792,10 @@ body.body_clase.view-mode #actividad .oxfl-bubble-challenge-ok {
   border-radius: 40px;
   position: absolute;
   top: 50%;
-  left: 50%; }
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-left: 41vh;
+  margin-top: 30px; }
 body.body_clase.view-mode.oxfl-final-slide-on .content-wrapper {
   padding-top: 0;
   padding-bottom: 0; }
