@@ -3473,13 +3473,13 @@ body.body_clase.view-mode #actividad .oxfl-content-zone-wrapper {
       border: 0;
       overflow: visible;
       background: url(img/arrow-up.png) center top no-repeat;
-      background-size: 30px 30px;
+      background-size: 60px 60px;
       font-family: "Myfrida", sans-serif;
       font-weight: bold;
       font-style: italic;
       font-size: 12px;
       color: #FBB03B;
-      padding: 30px 6px 6px;
+      padding: 60px 6px 6px;
       position: absolute;
       right: 50px;
       top: 50%;
