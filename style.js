@@ -3386,6 +3386,11 @@ oxfordFlippedApp.objectFitSupport = function() {
 
 $(document).ready(function() {
 
+	//Avoid right click
+	$(document).on('contextmenu',function(e){
+		return false;
+	});
+
 	// Go back
 	$('body').on('click', oxfordFlippedApp.config.buttonGoBack, function() {
 
