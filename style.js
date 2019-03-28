@@ -3060,7 +3060,8 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 
 				//var grade =  (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion,
 				var activity = parent.window.actividades[idclase];
-				var grade =  (typeof activity === 'undefined') ? 0 : activity.clasificacion,
+				//var grade =  (typeof activity === 'undefined') ? 0 : activity.clasificacion,
+				var grade = blink.activity.currentStyle.calculateExercisesGrade(),
 						finalSlideLoaded = $lastSlide.hasClass('oxfl-final-slide');
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
