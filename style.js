@@ -802,7 +802,9 @@
 		},
 
 		whatAudioPlay: function() {
-			var grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
+
+			//var grade = (typeof window.actividades[idclase] === 'undefined') ? 0 : window.actividades[idclase].clasificacion;
+			var grade = blink.activity.currentStyle.calculateExercisesGrade();
 
 			if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 					return 3;
