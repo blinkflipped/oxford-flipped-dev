@@ -333,3 +333,18 @@ body.oxfl-body-home {
     transform: translate(0,0);
   }
 }
+
+
+@media (max-width: 1270px) {
+  #oxfl-home-menu-inner {
+    .oxfl-monster.oxfl-monster-5 {
+
+    }
+    .oxfl-monster.oxfl-monster-2 {
+      margin-left: -50px;
+    }
+    .oxfl-monster.oxfl-monster-3 {
+      margin-left: -110px;
+    }
+  }
+}

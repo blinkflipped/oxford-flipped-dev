@@ -1572,6 +1572,11 @@ body.oxfl-body-home #oxfl-home-menu {
   opacity: 1;
   transform: translate(0, 0); }
 
+@media (max-width: 1270px) {
+  #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-2 {
+    margin-left: -50px; }
+  #oxfl-home-menu-inner .oxfl-monster.oxfl-monster-3 {
+    margin-left: -110px; } }
 #oxfl-gradebook-wrapper {
   width: 100%;
   max-width: 100%;
