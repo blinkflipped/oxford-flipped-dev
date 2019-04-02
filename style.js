@@ -1531,7 +1531,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 
 	if (oxfordFlippedApp.config.firstTime) {
 
-		oxfordFlippedApp.config.isStudent = blink.user.esAlumno();
+		oxfordFlippedApp.config.isStudent = blink.user.esAlumno() || blink.user.esPadre();
 		oxfordFlippedApp.bookData = data;
 
 		var bookTitle = data.title,
