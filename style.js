@@ -2937,6 +2937,12 @@ oxfordFlippedApp.activityFinalScreenOne = function(contentZoneIndex) {
 
 oxfordFlippedApp.activityContentZone = function() {
 
+	// Add modal in App
+	if (!blink.isApp && !blink.isOfflinePC) {
+		var modalExitAppHTML =  '<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.oxfordFlipped_lost_progress_alert+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
+		$('body').prepend(modalExitAppHTML);
+	}
+
 	// Create content Zone
 	$('.js-slider-item').each(function(i,e) {
 
@@ -2944,8 +2950,7 @@ oxfordFlippedApp.activityContentZone = function() {
 			var backgroundImage = $(e).find('.image_slide').attr('src'),
 					//informationHTML = '<div class="oxfl-box"><div class="oxfl-box-inner"><h2 class="oxfl-box-title">'+oxfordFlippedApp.text.contentzoneinfotitle+'</h2><p>'+oxfordFlippedApp.text.contentzoneinfotext+'</p></div></div>',
 					buttonNextHTML = '<button class="oxfl-cz-button-next oxfl-disabled oxfl-js-cz-next"><span>'+oxfordFlippedApp.text.nextContentZone+'</span></button>',
-					modalHTML =	'<div class="modal fade oxfl-modal" id="oxfl-modal-start-test" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.startTest+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-start-test">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>',
-					modalExitAppHTML = (blink.isApp && !blink.isOfflinePC) ? '<div class="modal fade oxfl-modal" id="oxfl-modal-close-chapter" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.oxfordFlipped_lost_progress_alert+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary" onclick="oxfordFlippedApp.closeIframe();">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>' : '';
+					modalHTML = '<div class="modal fade oxfl-modal" id="oxfl-modal-start-test" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <p>'+oxfordFlippedApp.text.startTest+'</p> </div> <div class="modal-footer"><div class="modal-footer-inner"> <button type="button" class="btn btn-secondary" data-dismiss="modal">'+oxfordFlippedApp.text.no+'</button> <button type="button" class="btn btn-primary oxfl-js-start-test">'+oxfordFlippedApp.text.yes+'</button> </div> </div></div> </div>';
 			$(e)
 				.addClass('oxfl-content-zone-wrapper')
 				.append(buttonNextHTML + '<div class="oxfl-content-zone-background"></div>')
@@ -2955,7 +2960,7 @@ oxfordFlippedApp.activityContentZone = function() {
 				.find('.header .title')
 					.append('<p>'+ oxfordFlippedApp.text.contentzoneinfotext + '</p>');
 
-			$('body').prepend(modalHTML + modalExitAppHTML);
+			$('body').prepend(modalHTML);
 
 		}
 
