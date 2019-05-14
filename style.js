@@ -1484,6 +1484,9 @@ oxfordFlippedApp.getState = function(chapterID) {
 }
 
 oxfordFlippedApp.chapterStateNew = function(chapterID) {
+	if (typeof window.actividades === 'undefined') {
+		return false;
+	}
 	return (typeof window.actividades[chapterID] === 'undefined' || window.actividades[chapterID].custom_activity_status === oxfordFlippedApp.config.stateNew || typeof window.actividades[chapterID].custom_activity_status === 'undefined');
 }
 
@@ -3513,6 +3516,7 @@ $(document).ready(function() {
 		oxfordFlippedApp.updateUserData();
 		if (oxfordFlippedApp.config.isStudent) {
 			oxfordFlippedApp.loadNotifications(oxfordFlippedApp.bookData);
+			oxfordFlippedApp.loadGradebook(false);
 		}
 
 	}));
