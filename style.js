@@ -2508,56 +2508,59 @@ oxfordFlippedApp.loadGradebook = function(updateHash) {
 	// Init Gradebook
 	// ***
 
-	oxfordFlippedApp.removeUnusedClass(bodyClass);
-	var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
-	oxfordFlippedApp.changeBackground(backgroundImage);
+	if (updateHash) {
+		oxfordFlippedApp.removeUnusedClass(bodyClass);
+		var backgroundImage = oxfordFlippedApp.bookData.units[0].subunits[0].image;
+		oxfordFlippedApp.changeBackground(backgroundImage);
 
-	$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
-		var customStyle = document.getElementById('gradebook-custom-style');
+		$gradebookWrapper.imagesLoaded({background: 'div, a, span, button'}, function(){
+			var customStyle = document.getElementById('gradebook-custom-style');
 
-		var gradebookHeight = $gradebookWrapper.children('#oxfl-gradebook-inner').outerHeight();
-		var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}';
-		if (customStyle) {
-			customStyle.innerHTML = '';
-			if (customStyle.styleSheet){
-				customStyle.styleSheet.cssText = css;
+			var gradebookHeight = $gradebookWrapper.children('#oxfl-gradebook-inner').outerHeight();
+			var css = '.oxfl-body-gradebook #oxfl-general {min-height: '+gradebookHeight+'px}';
+			if (customStyle) {
+				customStyle.innerHTML = '';
+				if (customStyle.styleSheet){
+					customStyle.styleSheet.cssText = css;
+				} else {
+					customStyle.appendChild(document.createTextNode(css));
+				}
 			} else {
-				customStyle.appendChild(document.createTextNode(css));
+				var head = document.head || document.getElementsByTagName('head')[0],
+						style = document.createElement('style');
+						style.type = 'text/css';
+						style.id = 'gradebook-custom-style';
+				if (style.styleSheet){
+					style.styleSheet.cssText = css;
+				} else {
+					style.appendChild(document.createTextNode(css));
+				}
+				head.appendChild(style);
 			}
-		} else {
-			var head = document.head || document.getElementsByTagName('head')[0],
-					style = document.createElement('style');
-					style.type = 'text/css';
-					style.id = 'gradebook-custom-style';
-			if (style.styleSheet){
-				style.styleSheet.cssText = css;
+
+			$('body').addClass(bodyClass);
+			window.location.hash = hash;
+
+			if (alreadyLoaded) {
+				oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
 			} else {
-				style.appendChild(document.createTextNode(css));
+				oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
+				// Object Fit support
+				oxfordFlippedApp.objectFitSupport();
+
+				// Circled text in Gradebook Awards
+				$('.oxfl-gradebook-award-label').each(function(i,e) {
+					var textLength = $(e).text().length,
+							radius = textLength*8;
+					var itemId = $(e).attr('id');
+					var circleLabel = new CircleType(document.getElementById(itemId));
+					circleLabel.radius(radius).dir(-1);
+				});
+
 			}
-			head.appendChild(style);
-		}
+		});
+	}
 
-		$('body').addClass(bodyClass);
-		if (updateHash) window.location.hash = hash;
-
-		if (alreadyLoaded) {
-			oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
-		} else {
-			oxfordFlippedApp.drawChartGradebook(totalUnits,unitsCompleted);
-			// Object Fit support
-			oxfordFlippedApp.objectFitSupport();
-
-			// Circled text in Gradebook Awards
-			$('.oxfl-gradebook-award-label').each(function(i,e) {
-				var textLength = $(e).text().length,
-						radius = textLength*8;
-				var itemId = $(e).attr('id');
-				var circleLabel = new CircleType(document.getElementById(itemId));
-				circleLabel.radius(radius).dir(-1);
-			});
-
-		}
-	});
 
 }
 
