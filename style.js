@@ -1923,7 +1923,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 				//Lock Chapters
 				var chapterLockStatus = chapter.lock,
-						hasLicense = chapterLockStatus !== oxfordFlippedApp.config.statusUnlock3 && oxfordFlippedApp.config.lockLicense,
+						hasLicense = chapterLockStatus === oxfordFlippedApp.config.statusUnlock3 && oxfordFlippedApp.config.lockLicense,
 						isChapterLock = (!hasLicense || chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
 						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
 
