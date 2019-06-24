@@ -961,7 +961,7 @@ oxfordFlippedApp.config.tagPremium = 'premium',
 oxfordFlippedApp.config.tagGame = 'game',
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
-oxfordFlippedApp.config.lockLicense = true;
+oxfordFlippedApp.config.hasCredit = false;
 oxfordFlippedApp.config.minGrade = 50;
 oxfordFlippedApp.config.oneStarGradeMax = 70;
 oxfordFlippedApp.config.twoStarsGradeMax = 99;
@@ -1313,23 +1313,22 @@ oxfordFlippedApp.getDateDDMM = function(date) {
 }
 
 oxfordFlippedApp.getMainLockState = function(chapterLockStatus) {
-	// 0 = Popup License --> No license + No editorial access (!4)
-	// 1 = Access --> No license + Editorial access (4)
-	// 2 = Access --> (Stud + License + Teacher access (1 || 16)) || Teacher + License
-	// 3 = Popup Teacher --> Stud + License + No Teacher access (8)
+	// 0 = Popup License --> Teacher + Lock 2 (statusLock2)
+	// 1 = Popup License --> Lock 8, No license, Student (statusLock1)
+	// 2 = Popup Teacher --> Stud + License + No Teacher access (8) (statusLock1)
+	// 3 = Access
 
 	var mainLockState = 0;
 
-	if (oxfordFlippedApp.config.lockLicense && chapterLockStatus !== oxfordFlippedApp.config.statusUnlock3) {
+	if (!oxfordFlippedApp.config.isStudent && chapterLockStatus === oxfordFlippedApp.config.statusLock2) {
 		mainLockState = 0;
-	} else if (oxfordFlippedApp.config.lockLicense && chapterLockStatus === oxfordFlippedApp.config.statusUnlock3) {
+	} else if (oxfordFlippedApp.config.isStudent && chapterLockStatus === oxfordFlippedApp.config.statusLock1 && !oxfordFlippedApp.config.hasCredit) {
 		mainLockState = 1;
-	} else if ((oxfordFlippedApp.config.isStudent && !oxfordFlippedApp.config.lockLicense && (chapterLockStatus === oxfordFlippedApp.config.statusUnlock2 && chapterLockStatus === oxfordFlippedApp.config.statusUnlock1)) || !oxfordFlippedApp.config.isStudent && !oxfordFlippedApp.config.lockLicense) {
+	} else if (oxfordFlippedApp.config.isStudent && chapterLockStatus === oxfordFlippedApp.config.statusLock1 && oxfordFlippedApp.config.hasCredit) {
 		mainLockState = 2;
-	} else if (oxfordFlippedApp.config.isStudent && !oxfordFlippedApp.config.lockLicense && chapterLockStatus === oxfordFlippedApp.config.statusLock1) {
+	} else {
 		mainLockState = 3;
 	}
-
 	return mainLockState;
 }
 
@@ -1558,7 +1557,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 	if (oxfordFlippedApp.config.firstTime) {
 
 		oxfordFlippedApp.config.isStudent = blink.user.esAlumno() || blink.user.esPadre();
-		oxfordFlippedApp.config.lockLicense = data.lock_type;
+		oxfordFlippedApp.config.hasCredit = data.has_credit;
 		oxfordFlippedApp.bookData = data;
 
 		var bookTitle = data.description, //Former title
@@ -1921,43 +1920,43 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						chapterStateID = oxfordFlippedApp.getState(chapterID),
 						chapterStateText = chapterStateTextArr[chapterStateID];
 
-				//Lock Chapters
-				var chapterLockStatus = chapter.lock,
-						hasLicense = chapterLockStatus === oxfordFlippedApp.config.statusUnlock3 && oxfordFlippedApp.config.lockLicense,
-						isChapterLock = (!hasLicense || chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
-						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
-
 				var chapterNumber = i + 1,
 						chapterFinishDateTimestap = (typeof chapter.planning !== 'undefined') ? chapter.planning.endDate : '';
 
 				var chapterFinishDateDDMM = (chapterFinishDateTimestap && typeof chapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(chapterFinishDateTimestap) : '';
 				var chapterFinishDateState = (chapterFinishDateTimestap) ? oxfordFlippedApp.deadlineState(chapterFinishDateTimestap) : '';
 
-				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
-						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
-						chapterActionsTeachersLock = (hasLicense) ? '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>' : '',
-						chapterActionsTeachers = (blink.activity.currentStyle.getIdGroupFromUrl() !== 0) ? chapterActionsTeachersLock + '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button>' : chapterActionsTeachersLock,
-						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : chapterActionsTeachers,
-						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert;
-
 				var chapterUrlHTMLStudentLock = 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"';
 				var chapterUrlHTMLWitouthLicense = 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"';
 				var chapterUrlHTMLUnlock = 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"';
 				var chapterUrlHTML = '';
 
-				// 0 = Popup License
-				// 1 = Access
-				// 2 = Access
-				// 3 = Popup Teacher
-
+				// 0 = Popup License - Teacher
+				// 1 = Popup License - Student
+				// 2 = Popup Lock by Teacher - Student
+				// 3 = Access
+				var showLock = false;
 				var mainLockState = oxfordFlippedApp.getMainLockState(chapterLockStatus);
-				if (mainLockState === 0) {
+				if (mainLockState === 0 || mainLockState === 1) {
 					chapterUrlHTML = chapterUrlHTMLWitouthLicense;
-				} else if (mainLockState === 1 || mainLockState === 2) {
-					chapterUrlHTML = chapterUrlHTMLUnlock;
-				} else if (mainLockState === 3) {
+				} else if (mainLockState === 2) {
 					chapterUrlHTML = chapterUrlHTMLStudentLock;
+				} else if (mainLockState === 3) {
+					chapterUrlHTML = chapterUrlHTMLUnlock;
+					showLock = true;
 				}
+
+				//Lock Chapters
+				var chapterLockStatus = chapter.lock,
+						isChapterLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
+						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
+
+				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
+						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
+						chapterActionsTeachersLock = (showLock) ? '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>' : '',
+						chapterActionsTeachers = (blink.activity.currentStyle.getIdGroupFromUrl() !== 0) ? chapterActionsTeachersLock + '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button>' : chapterActionsTeachersLock,
+						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : chapterActionsTeachers,
+						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert;
 
 				var chapterDateCode = (chapterFinishDateDDMM !== '') ? '<div class="oxfl-label-date oxfl-label-date-'+chapterFinishDateState+'">'+chapterFinishDateDDMM+'</div>' : '<div class="oxfl-label-date oxfl-label-date-hidden"></div>',
 						chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img"> '+chapterImageCode+'</div> </div> </a> </article>';
@@ -1967,10 +1966,13 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				var isChallengeLock = ((chaptersNotStarted || lessonsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false,
 						challengeStateID = oxfordFlippedApp.getState(chapterID),
 						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
+
+				var mainLockState = oxfordFlippedApp.getMainLockState(chapterLockStatus);
+								
 				var chapterActions = (oxfordFlippedApp.config.isStudent && challengeStateID !== oxfordFlippedApp.config.stateNew) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterUrlHTML = (!oxfordFlippedApp.config.lockLicense) ? chapterUrlHTML : 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"',
+						chapterUrlHTML = (mainLockState !== 0 && mainLockState !== 1) ? chapterUrlHTML : 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"',
 						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"><a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div>  <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</h2></a> </article>';
 			}
 			var chapterListItem = document.createElement('div');
