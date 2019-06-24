@@ -1931,6 +1931,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						isChapterLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
 						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
 
+				var chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert;
 				var chapterUrlHTMLStudentLock = 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"';
 				var chapterUrlHTMLWitouthLicense = 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"';
 				var chapterUrlHTMLUnlock = 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"';
@@ -1955,8 +1956,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
 						chapterActionsTeachersLock = (showLock) ? '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>' : '',
 						chapterActionsTeachers = (blink.activity.currentStyle.getIdGroupFromUrl() !== 0) ? chapterActionsTeachersLock + '<button class="oxfl-button oxfl-button-calendar oxfl-js-datepicker" data-endDate="'+chapterFinishDateTimestap+'"></button>' : chapterActionsTeachersLock,
-						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : chapterActionsTeachers,
-						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert;
+						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : chapterActionsTeachers;
 
 				var chapterDateCode = (chapterFinishDateDDMM !== '') ? '<div class="oxfl-label-date oxfl-label-date-'+chapterFinishDateState+'">'+chapterFinishDateDDMM+'</div>' : '<div class="oxfl-label-date oxfl-label-date-hidden"></div>',
 						chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> '+chapterDateCode+'<div class="oxfl-chapter-image-wrapper-img"> '+chapterImageCode+'</div> </div> </a> </article>';
