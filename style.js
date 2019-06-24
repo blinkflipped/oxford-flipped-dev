@@ -1926,6 +1926,11 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 				var chapterFinishDateDDMM = (chapterFinishDateTimestap && typeof chapterFinishDateTimestap !== 'undefined') ? oxfordFlippedApp.getDateDDMM(chapterFinishDateTimestap) : '';
 				var chapterFinishDateState = (chapterFinishDateTimestap) ? oxfordFlippedApp.deadlineState(chapterFinishDateTimestap) : '';
 
+				//Lock Chapters
+				var chapterLockStatus = chapter.lock,
+						isChapterLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
+						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
+
 				var chapterUrlHTMLStudentLock = 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"';
 				var chapterUrlHTMLWitouthLicense = 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"';
 				var chapterUrlHTMLUnlock = 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"';
@@ -1946,11 +1951,6 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 					showLock = true;
 				}
 
-				//Lock Chapters
-				var chapterLockStatus = chapter.lock,
-						isChapterLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
-						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
-
 				var chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
 						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
 						chapterActionsTeachersLock = (showLock) ? '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>' : '',
@@ -1968,7 +1968,7 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 
 				var mainLockState = oxfordFlippedApp.getMainLockState(chapterLockStatus);
-								
+
 				var chapterActions = (oxfordFlippedApp.config.isStudent && challengeStateID !== oxfordFlippedApp.config.stateNew) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
 						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
 						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
