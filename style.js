@@ -1337,7 +1337,6 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 		return;
 	}
 	elements.each(function(i, element) {
-		console.log("a");
 		while(element.scrollWidth > element.parentElement.offsetWidth || element.scrollHeight > element.parentElement.offsetHeight) {
 			var newFontSize = (parseFloat($(element).css('font-size').slice(0, -2)) * 0.95) + 'px';
 			$(element).css('font-size', newFontSize);
