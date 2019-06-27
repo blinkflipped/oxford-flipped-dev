@@ -1611,8 +1611,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			oxfordFlippedApp.config.unitsIDs.push(unitNumberStr);
 		});
 
-		//var elements = $('.oxfl-bubble-hello-name');
-		//oxfordFlippedApp.fontSizeResize(elements);
+		var elements = $('.oxfl-home-title .oxfl-title1');
+		oxfordFlippedApp.fontSizeResize(elements);
 
 		var userBodyClass = (oxfordFlippedApp.config.isStudent) ? 'oxfl-body-user-student' : 'oxfl-body-user-not-student';
 
@@ -1969,10 +1969,26 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 
 				var mainLockState = oxfordFlippedApp.getMainLockState(chapterLockStatus);
 
+				var chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
+						chapterUrlHTMLStudentLock = 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"',
+						chapterUrlHTMLWitouthLicense = 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"',
+						chapterUrlHTMLUnlock = 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"';
+
+				var chapterUrlHTML = '';
+
+				// 0 = Popup License - Teacher
+				// 1 = Popup License - Student
+				// 2 = Popup Lock by Teacher - Student
+				// 3 = Access
+				if (mainLockState === 0 || mainLockState === 1) {
+					chapterUrlHTML = chapterUrlHTMLWitouthLicense;
+				} else if (mainLockState === 2 || isChallengeLock) {
+					chapterUrlHTML = chapterUrlHTMLStudentLock;
+				} else if (mainLockState === 3) {
+					chapterUrlHTML = chapterUrlHTMLUnlock;
+				}
+
 				var chapterActions = (oxfordFlippedApp.config.isStudent && challengeStateID !== oxfordFlippedApp.config.stateNew) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
-						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
-						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterUrlHTML = (mainLockState !== 0 && mainLockState !== 1) ? chapterUrlHTML : 'onclick="blink.domain.showCreditMessageBox('+idcurso+')"',
 						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"><a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div>  <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</h2></a> </article>';
 			}
 			var chapterListItem = document.createElement('div');
