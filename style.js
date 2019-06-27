@@ -1611,8 +1611,8 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			oxfordFlippedApp.config.unitsIDs.push(unitNumberStr);
 		});
 
-		var elements = $('.oxfl-fittext');
-		oxfordFlippedApp.fontSizeResize(elements);
+		//var elements = $('.oxfl-fittext');
+		//oxfordFlippedApp.fontSizeResize(elements);
 
 		var userBodyClass = (oxfordFlippedApp.config.isStudent) ? 'oxfl-body-user-student' : 'oxfl-body-user-not-student';
 
