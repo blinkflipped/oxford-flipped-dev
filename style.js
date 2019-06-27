@@ -1967,7 +1967,8 @@ oxfordFlippedApp.loadChapters = function(data,currentEpisode,activities,updateHa
 						challengeStateID = oxfordFlippedApp.getState(chapterID),
 						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
 
-				var mainLockState = oxfordFlippedApp.getMainLockState(chapterLockStatus);
+				var chapterLockStatus = chapter.lock,
+						mainLockState = oxfordFlippedApp.getMainLockState(chapterLockStatus);
 
 				var chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
 						chapterUrlHTMLStudentLock = 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"',
