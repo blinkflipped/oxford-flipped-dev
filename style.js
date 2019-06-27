@@ -1337,7 +1337,8 @@ oxfordFlippedApp.fontSizeResize = function(elements) {
 		return;
 	}
 	elements.each(function(i, element) {
-		while(element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight) {
+		console.log("a");
+		while(element.scrollWidth > element.parentElement.offsetWidth || element.scrollHeight > element.parentElement.offsetHeight) {
 			var newFontSize = (parseFloat($(element).css('font-size').slice(0, -2)) * 0.95) + 'px';
 			$(element).css('font-size', newFontSize);
 		}
@@ -1611,7 +1612,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 			oxfordFlippedApp.config.unitsIDs.push(unitNumberStr);
 		});
 
-		var elements = $('.oxfl-fittex');
+		var elements = $('.oxfl-fittext');
 		oxfordFlippedApp.fontSizeResize(elements);
 
 		var userBodyClass = (oxfordFlippedApp.config.isStudent) ? 'oxfl-body-user-student' : 'oxfl-body-user-not-student';
