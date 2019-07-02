@@ -961,6 +961,7 @@ oxfordFlippedApp.config.tagPremium = 'premium',
 oxfordFlippedApp.config.tagGame = 'game',
 oxfordFlippedApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
 oxfordFlippedApp.config.isStudent = false;
+oxfordFlippedApp.config.isTeacher = false;
 oxfordFlippedApp.config.hasCredit = false;
 oxfordFlippedApp.config.minGrade = 50;
 oxfordFlippedApp.config.oneStarGradeMax = 70;
@@ -1320,7 +1321,7 @@ oxfordFlippedApp.getMainLockState = function(chapterLockStatus) {
 
 	var mainLockState = 0;
 
-	if (!oxfordFlippedApp.config.isStudent && chapterLockStatus === oxfordFlippedApp.config.statusLock2) {
+	if (oxfordFlippedApp.config.isTeacher && chapterLockStatus === oxfordFlippedApp.config.statusLock2) {
 		mainLockState = 0;
 	} else if (oxfordFlippedApp.config.isStudent && chapterLockStatus === oxfordFlippedApp.config.statusLock1 && !oxfordFlippedApp.config.hasCredit) {
 		mainLockState = 1;
@@ -1557,6 +1558,7 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 	if (oxfordFlippedApp.config.firstTime) {
 
 		oxfordFlippedApp.config.isStudent = blink.user.esAlumno() || blink.user.esPadre();
+		oxfordFlippedApp.config.isTeacher = blink.user.esProfesor();
 		oxfordFlippedApp.config.hasCredit = data.has_credit;
 		oxfordFlippedApp.bookData = data;
 
