@@ -1563,11 +1563,14 @@ oxfordFlippedApp.homepage = function(data,updateHash) {
 		oxfordFlippedApp.bookData = data;
 
 		var bookTitle = data.description, //Former title
+				bookGeneralTitle = data.title,
 				username = nombreusuario,
 				totalCoins = blink.activity.currentStyle.userCoins ? blink.activity.currentStyle.userCoins : 0,
 				auxiliarButtonTeacher = (!oxfordFlippedApp.config.isStudent) ? oxfordFlippedApp.auxiliarButtonTeacher(data) : '',
 				coinsElem = (oxfordFlippedApp.config.isStudent) ? '<div id="oxfl-coins"><div id="oxfl-coins-icon"></div><div id="oxfl-coins-total">'+totalCoins+'</div></div>' : '',
 				lessonPageText = (oxfordFlippedApp.config.isStudent) ? oxfordFlippedApp.text.selectalesson : oxfordFlippedApp.text.unlocklesson;
+
+		$('.body_clase .libro-left .title').text(bookGeneralTitle);
 
 		var customButton = (oxfordFlippedApp.config.isStudent) ? '<button class="oxfl-monster oxfl-monster-1 oxfl-js-load-gradebook" id="oxfl-goto-gradebook"><span>' + oxfordFlippedApp.text.buttongradebook + '</span></button>' : '<button class="oxfl-monster oxfl-monster-5 oxfl-js-load-classresources" id="oxfl-goto-classresources"><span>' + oxfordFlippedApp.text.buttonresources + '</span></button>';
 
@@ -3141,6 +3144,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 				if (finalSlideLoaded) {
 					$('#oxfl-final-slide').remove();
 				}
+				$lastSlide.addClass('oxfl-final-slide');
 
 				if (grade > oxfordFlippedApp.config.minGrade && grade != '') {
 					if (isChallenge) {
@@ -3158,7 +3162,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 						$lastSlide.removeClass('oxfl-final-slide-challenge');
 					}
 
-					$lastSlide.removeClass('oxfl-final-slide-fail').addClass('oxfl-final-slide').find('.item-container').prepend(finalSlideContent);
+					$lastSlide.removeClass('oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 					$('#oxfl-final-slide-tip').prepend(finalSlideTip);
 					var finalCoins = blink.activity.currentStyle.calculateActivityGameScore(),
 							totalStars = oxfordFlippedApp.gradeToStars(grade);
@@ -3181,7 +3185,7 @@ oxfordFlippedApp.activityFinalScreenTest = function(currentSection) {
 								finalSlideContent = '<div id="oxfl-final-slide">'+customAnimation+'<div class="oxfl-final-slide-stars" id="oxfl-final-slide-stars"></div><div class="oxfl-bubble-final-ko"><span>' + oxfordFlippedApp.text.keepworking + '</span></div><div class="oxfl-final-slide-fail-buttons"><button class="oxfl-button-bubble oxfl-button-bubble-2 oxfl-js-tryagain">'+oxfordFlippedApp.text.tryagain+'</button><div class="oxfl-separate-text">'+oxfordFlippedApp.text.or+'</div><button class="oxfl-button-bubble oxfl-button-bubble-3 oxfl-js-close-iframe-inside">'+oxfordFlippedApp.text.exit+'</button></div></div>';
 						$lastSlide.removeClass('oxfl-final-slide-challenge');
 					}
-					$lastSlide.addClass('oxfl-final-slide oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
+					$lastSlide.addClass('oxfl-final-slide-fail').find('.item-container').prepend(finalSlideContent);
 
 				}
 
