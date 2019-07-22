@@ -365,6 +365,8 @@
   margin: 70px auto 0;
   .oxfl-resources-classresources-monster-bubble {
     @include bubble1();
+    font-size: 32px;
+    line-height: 1.1em;
     width: auto;
     max-width: 100%;
     height: auto;
