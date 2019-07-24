@@ -694,10 +694,11 @@
 				oxfordFlippedApp.onSliderChange(sectionOnLoad);
 
 				blink.events.on('slider:change', function(currentSection) {
+					console.log(blink.activity.currentSection)
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
 				blink.events.on('slider:changed', function() {
-
+					console.log(blink.activity.currentSection)
 					var currentSection = blink.activity.currentSection;
 					oxfordFlippedApp.onSliderChanged(currentSection);
 
@@ -3270,9 +3271,9 @@ oxfordFlippedApp.onSliderChange = function(currentSection) {
 	}
 
 	if (currentSection === contentZoneIDNum) {
-
 		$('body').addClass('oxfl-content-zone-on');
-
+	} else {
+		$('body').removeClass('oxfl-content-zone-on');
 	}
 	$('#oxfl-activities-navigation li:eq('+currentSection+')').addClass('active').siblings().removeClass('active');
 }
@@ -3299,10 +3300,6 @@ oxfordFlippedApp.onSliderChanged = function(currentSection) {
 
 	if (currentSection !== coverChallengeIDNum) {
 		$('body').removeClass('oxfl-challenge-cover-wrapper-on');
-	}
-
-	if (currentSection !== contentZoneIDNum) {
-		$('body').removeClass('oxfl-content-zone-on');
 	}
 
 }
