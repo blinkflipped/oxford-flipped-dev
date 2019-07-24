@@ -694,11 +694,9 @@
 				oxfordFlippedApp.onSliderChange(sectionOnLoad);
 
 				blink.events.on('slider:change', function(currentSection) {
-					console.log(blink.activity.currentSection)
 					oxfordFlippedApp.onSliderChange(currentSection);
 				});
 				blink.events.on('slider:changed', function() {
-					console.log(blink.activity.currentSection)
 					var currentSection = blink.activity.currentSection;
 					oxfordFlippedApp.onSliderChanged(currentSection);
 
