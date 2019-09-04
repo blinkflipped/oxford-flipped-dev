@@ -3601,7 +3601,7 @@ $(document).ready(function() {
 			if (typeof popoverNotAllowed === 'undefined' || popoverNotAllowed === '') {
 				popoverNotAllowed = $(this).popover({
 					placement: 'left',
-					template: '<div class="popover oxfl-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+					template: '<div class="popover oxfl-popover oxfl-js-popover" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
 					content : oxfordFlippedApp.text.popoverGoToContentZoneDisabled,
 					title : '',
 					container: 'body'
@@ -3620,6 +3620,14 @@ $(document).ready(function() {
 	});
 	$('body').on('click', '#oxfl-popover-close', function(e) {
 		$('.oxfl-js-popover, .slider-control.not-allowed, .oxfl-js-cz-next.oxfl-disabled').popover('hide');
+	});
+	$(document).click(function(event) {
+		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length  && !$(event.target).closest('.slider-control.not-allowed').length) {
+			if($('.oxfl-popover').is(":visible")) {
+				$('.oxfl-js-popover').popover('hide');
+				$('#oxfl-popover-close').click();
+			}
+		}
 	});
 
 	// Object Fit support
