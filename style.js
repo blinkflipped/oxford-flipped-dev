@@ -1209,6 +1209,7 @@ oxfordFlippedApp.popover = function() {
 		if(!$(event.target).closest('.oxfl-popover').length && !$(event.target).closest('.oxfl-js-popover').length  && !$(event.target).closest('.slider-control.not-allowed').length) {
 			if($('.oxfl-popover').is(":visible")) {
 				$('.oxfl-js-popover').popover('hide');
+				$('#oxfl-popover-close').click();
 			}
 		}
 	});
@@ -3100,7 +3101,7 @@ oxfordFlippedApp.activityContentZone = function() {
 			if (typeof popoverNotAllowedContentZone === 'undefined' || popoverNotAllowedContentZone === '') {
 				popoverNotAllowedContentZone = $(this).popover({
 					placement: 'top',
-					template: '<div class="popover oxfl-popover oxfl-popover-contentzone" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
+					template: '<div class="popover oxfl-popover oxfl-js-popover oxfl-popover-contentzone" role="tooltip"><button type="button" id="oxfl-popover-close" class="oxfl-close"><span>&times;</span></button><div class="oxfl-popover-inner"><div class="popover-content"></div></div></div>',
 					content : oxfordFlippedApp.text.popoverNextContentZoneDisabled,
 					title : '',
 					container: 'body'

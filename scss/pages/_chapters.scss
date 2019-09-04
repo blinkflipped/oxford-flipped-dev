@@ -191,6 +191,7 @@
     }
     .oxfl-chapter-image-wrapper {
       margin-bottom: 5px;
+      overflow: visible; 
       &-img {
         @include img-fit();
         overflow: hidden;

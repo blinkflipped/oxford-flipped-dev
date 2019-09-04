@@ -2941,7 +2941,8 @@ body.oxfl-body-episodes #oxfl-episodes-monster {
     min-height: 20px;
     margin-bottom: 0; }
   .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    overflow: visible; }
     .oxfl-chapter.oxfl-chapter-challenge .oxfl-chapter-image-wrapper-img {
       overflow: hidden;
       width: 110px;
